@@ -1,3 +1,4 @@
+const path = require("path");
 const webpack = require("webpack");
 
 module.exports = function override(config) {
@@ -12,6 +13,11 @@ module.exports = function override(config) {
     util: require.resolve("util"),
   });
   config.resolve.fallback = fallback;
+
+  config.resolve.alias = {
+    ...config.alias,
+    "~": path.resolve(__dirname, "src"),
+  };
 
   config.plugins = (config.plugins || []).concat([
     new webpack.ProvidePlugin({

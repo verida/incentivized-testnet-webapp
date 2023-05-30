@@ -2,4 +2,5 @@ node_modules
 build
 tailwind.config.js
 postcss.config.js
-src/lang/*.json
+src/features/i18n/lang/*.json
+config-overrides.js
