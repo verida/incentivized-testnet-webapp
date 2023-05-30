@@ -1,5 +1,8 @@
 import React from "react";
-import { VeridaProvider } from "features/verida";
+import { HelmetProvider } from "react-helmet-async";
+
+import { IntlProvider } from "~/features/i18n";
+import { VeridaProvider } from "~/features/verida";
 
 type AppContextProvidersProps = {
   children: React.ReactNode;
@@ -8,7 +11,11 @@ type AppContextProvidersProps = {
 export const AppContextProviders: React.FunctionComponent<
   AppContextProvidersProps
 > = (props) => {
-  const { children } = props;
-
-  return <VeridaProvider>{children}</VeridaProvider>;
+  return (
+    <IntlProvider>
+      <VeridaProvider>
+        <HelmetProvider>{props.children}</HelmetProvider>
+      </VeridaProvider>
+    </IntlProvider>
+  );
 };
