@@ -1,3 +1,4 @@
+import { WebUser, WebUserProfile } from "@verida/web-helpers";
 import React, {
   useCallback,
   useEffect,
@@ -5,8 +6,8 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { WebUser, WebUserProfile } from "@verida/web-helpers";
-import { config } from "config";
+
+import { config } from "~/config";
 
 if (!config.veridaContextName) {
   throw new Error("Verida Context Name must be defined");
@@ -15,7 +16,7 @@ if (!config.veridaContextName) {
 const webUserInstance = new WebUser({
   debug: true,
   clientConfig: {
-    environment: config.veridaEnv,
+    environment: config.veridaEnvironment,
   },
   contextConfig: {
     name: config.veridaContextName,
