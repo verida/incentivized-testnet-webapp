@@ -6,7 +6,7 @@
     "clean:node_modules": "rm -rf node_modules/",
     "clean:build": "rm -rf build/",
     "clean": "yarn run clean:build && yarn run clean:node_modules",
-    "messages:extract": "formatjs extract 'src/**/*.ts*' --out-file messages/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'",
+    "messages:extract": "formatjs extract 'src/**/*.ts*' --ignore src/**/*.d.ts* --out-file messages/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]' ",
     "messages:compile": "formatjs compile-folder --ast messages src/features/i18n/lang/",
     "check:format": "npx prettier src/ --check",
     "check:lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",

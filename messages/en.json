@@ -1,1 +1,38 @@
-{}
+{
+  "ErrorFallbackCard.cardMessage": {
+    "defaultMessage": "If the error persists, try refreshing your browser and cleaning your browser's data.",
+    "description": "Message of the default error fallback card"
+  },
+  "ErrorFallbackCard.cardTtitle": {
+    "defaultMessage": "Oops, something went wrong!",
+    "description": "Title of the default error fallback card"
+  },
+  "ErrorFallbackCard.resetButtonLabel": {
+    "defaultMessage": "Try again",
+    "description": "Label of the 'Try Again' button displayed on the default error fallback card"
+  },
+  "Footer.builtOnLabel": {
+    "defaultMessage": "Built on",
+    "description": "label of the 'built on' text in the footer section"
+  },
+  "Footer.copyrightMessage": {
+    "defaultMessage": "© {copyrightYear} Verida Network",
+    "description": "Copyright message in the footer section"
+  },
+  "Footer.termsAndConditionLinkLabel": {
+    "defaultMessage": "Terms & Conditions",
+    "description": "Label of the 'Terms and Condition' Link in the footer footer section"
+  },
+  "Header.connectButtonLabel": {
+    "defaultMessage": "Connect",
+    "description": "Label of the Connect button in the Header"
+  },
+  "HomeView.ComingSoon": {
+    "defaultMessage": "Coming Soon",
+    "description": "Message stating that the app will be available soon"
+  },
+  "HomeView.tagLineMessage": {
+    "defaultMessage": "Participate, learn, test and get rewarded",
+    "description": "Message stating that the app will be available soon"
+  }
+}
