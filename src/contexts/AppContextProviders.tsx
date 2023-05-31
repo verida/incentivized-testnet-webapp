@@ -1,6 +1,7 @@
 import React from "react";
 import { HelmetProvider } from "react-helmet-async";
 
+import { ActivityProvider } from "~/features/activities";
 import { IntlProvider } from "~/features/i18n";
 import { VeridaProvider } from "~/features/verida";
 
@@ -14,7 +15,9 @@ export const AppContextProviders: React.FunctionComponent<
   return (
     <IntlProvider>
       <VeridaProvider>
-        <HelmetProvider>{props.children}</HelmetProvider>
+        <ActivityProvider>
+          <HelmetProvider>{props.children}</HelmetProvider>
+        </ActivityProvider>
       </VeridaProvider>
     </IntlProvider>
   );
