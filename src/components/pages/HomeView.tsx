@@ -1,30 +1,29 @@
+/* eslint-disable formatjs/no-literal-string-in-jsx */
 import React from "react";
-import { useIntl } from "react-intl";
 
-import { ReactComponent as VeridaNetworkLogo } from "~/assets/images/verida_network_logo_with_text.svg";
+import { HomeHero } from "~/components/molecules";
+import { ActivityCard } from "~/components/organisms";
+import { useActivity } from "~/features/activities";
 
 export const HomeView: React.FunctionComponent = () => {
-  const i18n = useIntl();
-
-  const comingSoonMessage = i18n.formatMessage({
-    id: "HomeView.ComingSoon",
-    description: "Message stating that the app will be available soon",
-    defaultMessage: "Coming Soon",
-  });
-
-  const tagLineMessage = i18n.formatMessage({
-    id: "HomeView.tagLineMessage",
-    description: "Message stating that the app will be available soon",
-    defaultMessage: "Participate, learn, test and get rewarded",
-  });
+  const { activities, userActivities } = useActivity();
 
   return (
-    <div className="flex flex-grow flex-col items-center justify-center space-y-12 p-8">
-      <div className="aspect-[10/3] w-full">
-        <VeridaNetworkLogo height="100%" width="100%" />
+    <div>
+      <HomeHero />
+      <div className="mt-6">
+        <h3 className="text-2xl">Activities</h3>
+        <ul className="flex flex-col w-full gap-4 mt-4">
+          {activities.sort().map((activity) => (
+            <li key={activity.id}>
+              <ActivityCard
+                activity={activity}
+                status={userActivities.get(activity.id)?.status || "todo"}
+              />
+            </li>
+          ))}
+        </ul>
       </div>
-      <p className="text-xl md:text-4xl">{tagLineMessage}</p>
-      <p className="text-xl md:text-4xl">{comingSoonMessage}</p>
     </div>
   );
 };

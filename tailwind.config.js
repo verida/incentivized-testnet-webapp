@@ -5,7 +5,7 @@ module.exports = {
     colors: {
       "primary": "#ffffff",
       "primary-inverse": "#000000",
-      "background": "#0D0A27",
+      "background": "#19193D",
       "translucent": "rgba(17, 17, 17, 0.2)",
       "transparent": "rgba(255, 255, 255, 0)",
       "primary-5": "rgba(255, 255, 255, 0.05)",
@@ -27,6 +27,9 @@ module.exports = {
       sans: ["Sora", "sans-serif"],
     },
     extend: {
+      animation: {
+        "spin-slow": "spin 5s linear infinite",
+      },
       screens: {
         sm: "696px",
       },
