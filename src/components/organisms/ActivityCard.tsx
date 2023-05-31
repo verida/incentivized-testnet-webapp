@@ -11,6 +11,7 @@ import {
 import { useVerida } from "~/features/verida";
 
 type ActivityCardProps = {
+  index: number;
   activity: Activity;
   status: ActivityStatusType;
 } & Omit<React.ComponentPropsWithoutRef<"div">, "children">;
@@ -18,8 +19,8 @@ type ActivityCardProps = {
 export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
   props
 ) => {
-  const { activity, status, ...divProps } = props;
-  const { id, title, shortDescription, enabled = false } = activity;
+  const { index, activity, status, ...divProps } = props;
+  const { title, shortDescription, enabled = false } = activity;
 
   const i18n = useIntl();
   const { connect, isConnected } = useVerida();
@@ -46,9 +47,9 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
         <div className="flex flex-col gap-4">
           <div className="flex flex-row gap-4 items-baseline">
             <div className="bg-primary-15 aspect-square h-8 rounded-full flex justify-center items-center">
-              {id}
+              {index}
             </div>
-            <p className="text-xl">{title}</p>
+            <p className="text-xl font-semibold">{title}</p>
           </div>
           <div>
             <p>{shortDescription}</p>

@@ -1,5 +1,6 @@
 export type Activity = {
   id: string;
+  order: number;
   enabled: boolean;
   title: string;
   shortDescription: string;

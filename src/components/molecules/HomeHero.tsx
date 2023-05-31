@@ -26,7 +26,7 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
   return (
     <div {...props}>
       <div className="flex flex-grow flex-col items-center justify-center space-y-12">
-        <h1 className="text-3xl md:text-5xl">{title}</h1>
+        <h1 className="text-3xl md:text-5xl font-bold">{title}</h1>
         <p className="text-2xl md:text-3xl">{subtitle}</p>
         <p className="text-sm text-primary/70">{description}</p>
       </div>

@@ -12,11 +12,12 @@ export const HomeView: React.FunctionComponent = () => {
     <div>
       <HomeHero />
       <div className="mt-6">
-        <h3 className="text-2xl">Activities</h3>
+        <h3 className="text-2xl font-bold">Activities</h3>
         <ul className="flex flex-col w-full gap-4 mt-4">
-          {activities.sort().map((activity) => (
+          {activities.sort().map((activity, index) => (
             <li key={activity.id}>
               <ActivityCard
+                index={index + 1}
                 activity={activity}
                 status={userActivities.get(activity.id)?.status || "todo"}
               />

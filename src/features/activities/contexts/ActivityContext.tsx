@@ -29,7 +29,7 @@ export const ActivityProvider: React.FunctionComponent<
   const { isConnected } = useVerida();
 
   useEffect(() => {
-    if (isConnected) {
+    if (!isConnected) {
       setUserActivities(new Map([]));
       return;
     }
