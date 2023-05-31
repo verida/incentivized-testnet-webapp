@@ -39,6 +39,9 @@ module.exports = {
       backdropBlur: {
         xs: "3px",
       },
+      lineHeight: {
+        3.5: "0.875rem",
+      },
     },
   },
 };

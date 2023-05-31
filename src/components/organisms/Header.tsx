@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as VeridaNetworkLogo } from "~/assets/images/verida_network_logo.svg";
 import { ReactComponent as VeridaNetworkLogoWithText } from "~/assets/images/verida_network_logo_with_text.svg";
 import { Button } from "~/components/atoms";
+import { AvatarWithInfo } from "~/components/molecules";
+import { useVerida } from "~/features/verida";
 
 export const Header: React.FC = () => {
   const i18n = useIntl();
+  const { connect, isConnected, profile, did } = useVerida();
+
+  const handleConnect = useCallback(() => {
+    void connect();
+  }, [connect]);
 
   const connectButtonLabel = i18n.formatMessage({
     id: "Header.connectButtonLabel",
@@ -15,21 +22,35 @@ export const Header: React.FC = () => {
     defaultMessage: "Connect",
   });
 
+  const contentHeight = "h-10";
+
   return (
-    <header className="grid grid-cols-[minmax(165px,_1fr)_minmax(min-content,696px)_minmax(165px,_1fr)] border-b border-solid border-gray-dark bg-background/80 px-4 pt-3 pb-[calc(0.75rem_-_1px)] backdrop-blur-[10px] sm:px-6">
-      <h1 className="col-start-1 justify-self-start">
+    <header className="flex flex-row justify-between border-b border-solid border-gray-dark bg-translucent px-4 pt-3 pb-[calc(0.75rem_-_1px)] backdrop-blur-[15px] sm:px-6">
+      <h1 className="justify-self-start">
         <Link to="/">
-          <div className="aspect-[10/6.97] h-10 sm:hidden">
+          <div className={`aspect-[10/6.97] ${contentHeight} sm:hidden`}>
             <VeridaNetworkLogo height="100%" width="100%" />
           </div>
-          <div className="hidden aspect-[10/3] h-10 sm:block">
+          <div className={`hidden aspect-[10/3] ${contentHeight} sm:block`}>
             <VeridaNetworkLogoWithText height="100%" width="100%" />
           </div>
         </Link>
       </h1>
-      <div className="flex sm:col-auto sm:col-start-2 sm:block sm:max-w-screen-sm sm:px-4"></div>
-      <div className="col-start-3 flex items-center justify-between justify-self-end">
-        {/* <Button size="medium">{connectButtonLabel}</Button> */}
+      <div className="flex items-center justify-between justify-self-end">
+        {isConnected ? (
+          <>
+            <AvatarWithInfo
+              did={did}
+              image={profile?.avatarUri}
+              name={profile?.name}
+              className={`${contentHeight} -mr-4 sm:-mr-6 max-w-[220px]`}
+            />
+          </>
+        ) : (
+          <Button onClick={handleConnect} size="medium">
+            {connectButtonLabel}
+          </Button>
+        )}
       </div>
     </header>
   );
