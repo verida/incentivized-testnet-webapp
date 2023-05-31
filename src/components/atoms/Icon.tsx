@@ -1,7 +1,9 @@
-import { Close, User } from "@icon-park/react";
+import { Close, LoadingOne, User } from "@icon-park/react";
 import React from "react";
 
-export type GenericIconType = "user" | "close";
+import { ReactComponent as VeridaTick } from "~/assets/icons/verida_tick.svg";
+
+export type GenericIconType = "user" | "close" | "loading" | "verida-tick";
 export type IconType = GenericIconType;
 
 type IconProps = {
@@ -17,6 +19,14 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
       return <User size={size} {...otherProps} />;
     case "close":
       return <Close size={size} {...otherProps} />;
+    case "loading":
+      return <LoadingOne size={size} {...otherProps} />;
+    case "verida-tick":
+      return (
+        <IconContainer {...otherProps}>
+          <VeridaTick height={size} width={size} />
+        </IconContainer>
+      );
     default:
       throw new Error("A supported type must be defined for the icon");
   }
