@@ -1,20 +1,34 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as VeridaNetworkLogo } from "~/assets/images/verida_network_logo.svg";
 import { ReactComponent as VeridaNetworkLogoWithText } from "~/assets/images/verida_network_logo_with_text.svg";
 import { Button } from "~/components/atoms";
-import { AvatarWithInfo } from "~/components/molecules";
+import { AvatarWithInfo, HeaderMenu } from "~/components/molecules";
 import { useVerida } from "~/features/verida";
 
 export const Header: React.FC = () => {
   const i18n = useIntl();
-  const { connect, isConnected, profile, did } = useVerida();
+  const [openMenu, setOpenMenu] = useState(false);
+  const { connect, disconnect, isConnected, profile, did } = useVerida();
+
+  const handleOpenMenu = useCallback(() => {
+    setOpenMenu(true);
+  }, []);
+
+  const handleCloseMenu = useCallback(() => {
+    setOpenMenu(false);
+  }, []);
 
   const handleConnect = useCallback(() => {
     void connect();
   }, [connect]);
+
+  const handleDisconnect = useCallback(() => {
+    handleCloseMenu();
+    void disconnect();
+  }, [handleCloseMenu, disconnect]);
 
   const connectButtonLabel = i18n.formatMessage({
     id: "Header.connectButtonLabel",
@@ -39,11 +53,26 @@ export const Header: React.FC = () => {
       <div className="flex items-center justify-between justify-self-end">
         {isConnected ? (
           <>
-            <AvatarWithInfo
-              did={did}
-              image={profile?.avatarUri}
-              name={profile?.name}
-              className={`${contentHeight} -mr-4 sm:-mr-6 max-w-[220px]`}
+            <button
+              className=" -mr-4 sm:-mr-6 text-start"
+              onClick={handleOpenMenu}
+            >
+              <AvatarWithInfo
+                did={did}
+                image={profile?.avatarUri}
+                name={profile?.name}
+                className={`${contentHeight} max-w-[220px]`}
+              />
+            </button>
+            <HeaderMenu
+              open={openMenu}
+              onClose={handleCloseMenu}
+              items={[
+                {
+                  label: "Disconnect",
+                  action: handleDisconnect,
+                },
+              ]}
             />
           </>
         ) : (
