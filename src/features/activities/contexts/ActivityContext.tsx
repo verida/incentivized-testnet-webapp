@@ -2,6 +2,7 @@ import { createContext, useCallback, useEffect, useState } from "react";
 
 import type { Activity, UserActivities } from "~/features/activities";
 import { activities } from "~/features/activities/constants";
+import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 import { mockUserActivities } from "~/mock";
 
@@ -26,6 +27,7 @@ export const ActivityProvider: React.FunctionComponent<
     new Map([])
   );
 
+  const { status: statusTermsConditions } = useTermsConditions();
   const { isConnected } = useVerida();
 
   useEffect(() => {
@@ -36,32 +38,44 @@ export const ActivityProvider: React.FunctionComponent<
     setUserActivities(mockUserActivities); // TODO: Remove mock data
   }, [isConnected]);
 
-  const completeActivity = useCallback((activityId: string) => {
-    const activity = activities.find((a) => a.id === activityId);
-    if (!activity) {
-      throw new Error(`Activity ${activityId} not found`);
-    }
-
-    setUserActivities((prev) => {
-      const existingStatus = prev.get(activityId);
-      if (!existingStatus) {
-        return new Map([
-          ...prev.entries(),
-          [activityId, { id: activityId, status: "completed" }],
-        ]);
-      } else {
-        prev.set(activityId, { id: activityId, status: "completed" });
-        return new Map([...prev.entries()]);
+  const completeActivity = useCallback(
+    (activityId: string) => {
+      if (statusTermsConditions !== "accepted") {
+        throw new Error("Terms of Use must be accepted");
       }
-    });
-  }, []);
 
-  const performActivity = useCallback(
-    async (activityId: string) => {
       const activity = activities.find((a) => a.id === activityId);
       if (!activity) {
         throw new Error(`Activity ${activityId} not found`);
       }
+
+      setUserActivities((prev) => {
+        const existingStatus = prev.get(activityId);
+        if (!existingStatus) {
+          return new Map([
+            ...prev.entries(),
+            [activityId, { id: activityId, status: "completed" }],
+          ]);
+        } else {
+          prev.set(activityId, { id: activityId, status: "completed" });
+          return new Map([...prev.entries()]);
+        }
+      });
+    },
+    [statusTermsConditions]
+  );
+
+  const performActivity = useCallback(
+    async (activityId: string) => {
+      if (statusTermsConditions !== "accepted") {
+        throw new Error("Terms of Use must be accepted");
+      }
+
+      const activity = activities.find((a) => a.id === activityId);
+      if (!activity) {
+        throw new Error(`Activity ${activityId} not found`);
+      }
+
       return new Promise<void>((resolve) => {
         setUserActivities((prev) => {
           const existingStatus = prev.get(activityId);
@@ -81,7 +95,7 @@ export const ActivityProvider: React.FunctionComponent<
         }, 5000);
       });
     },
-    [completeActivity]
+    [statusTermsConditions, completeActivity]
   );
 
   const contextValue: ActivityContextType = {
