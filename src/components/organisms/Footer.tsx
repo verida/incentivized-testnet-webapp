@@ -21,7 +21,7 @@ export const Footer: React.FunctionComponent = () => {
     id: "Footer.termsAndConditionLinkLabel",
     defaultMessage: "Terms & Conditions",
     description:
-      "Label of the 'Terms and Condition' Link in the footer footer section",
+      "Label of the 'Terms and Condition' Link in the footer section",
   });
 
   const copyrightMessage = i18n.formatMessage(

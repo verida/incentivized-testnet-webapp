@@ -1,18 +1,19 @@
 import React from "react";
-import { useIntl } from "react-intl";
+import { MessageDescriptor, useIntl } from "react-intl";
 
 import { Button, Icon } from "~/components/atoms";
 import type { ActivityStatus as ActivityStatusType } from "~/features/activities";
 
 type ActivityStatusProps = {
   status: ActivityStatusType | "disabled";
+  todoLabel?: MessageDescriptor;
   action?: () => void;
 } & Omit<React.ComponentPropsWithoutRef<"div">, "children">;
 
 export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
   props
 ) => {
-  const { status, action, ...divProps } = props;
+  const { status, todoLabel, action, ...divProps } = props;
 
   const i18n = useIntl();
 
@@ -25,22 +26,22 @@ export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
 
   const activityTodoStatusLabel = i18n.formatMessage({
     id: "ActivityStatus.activityTodoStatusLabel",
-    description: "",
+    description: "Label of the status for an activity to perform",
     defaultMessage: "Start",
   });
   const activityPendingStatusLabel = i18n.formatMessage({
     id: "ActivityStatus.activityPendingStatusLabel",
-    description: "",
+    description: "Label of the status for a pending activity",
     defaultMessage: "Pending",
   });
   const activityCompletedStatusLabel = i18n.formatMessage({
     id: "ActivityStatus.activityCompletedStatusLabel",
-    description: "",
+    description: "Label of the status for a completed activity",
     defaultMessage: "Completed",
   });
   const activityDisabledLabel = i18n.formatMessage({
     id: "ActivityStatus.activityDisabledLabel",
-    description: "",
+    description: "Label of the status for a disabled activity",
     defaultMessage: "Coming Soon",
   });
 
@@ -50,7 +51,9 @@ export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
       : status === "pending"
       ? activityPendingStatusLabel
       : status === "todo"
-      ? activityTodoStatusLabel
+      ? todoLabel
+        ? i18n.formatMessage(todoLabel)
+        : activityTodoStatusLabel
       : activityDisabledLabel;
 
   return (

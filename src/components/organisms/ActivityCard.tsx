@@ -32,7 +32,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
 
   const connectButtonLabel = i18n.formatMessage({
     id: "ActivityCard.connectButtonLabel",
-    description: "Label of the Connect button in the Header",
+    description: "Label of the Connect button in each activity card",
     defaultMessage: "Connect",
   });
 
@@ -60,6 +60,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
             isConnected ? (
               <ActivityStatus
                 status={status}
+                todoLabel={activity.actionLabel}
                 action={() => void performActivity(activity.id)}
               />
             ) : (

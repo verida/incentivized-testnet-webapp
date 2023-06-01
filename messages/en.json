@@ -1,4 +1,24 @@
 {
+  "ActivityCard.connectButtonLabel": {
+    "defaultMessage": "Connect",
+    "description": "Label of the Connect button in each activity card"
+  },
+  "ActivityStatus.activityCompletedStatusLabel": {
+    "defaultMessage": "Completed",
+    "description": "Label of the status for a completed activity"
+  },
+  "ActivityStatus.activityDisabledLabel": {
+    "defaultMessage": "Coming Soon",
+    "description": "Label of the status for a disabled activity"
+  },
+  "ActivityStatus.activityPendingStatusLabel": {
+    "defaultMessage": "Pending",
+    "description": "Label of the status for a pending activity"
+  },
+  "ActivityStatus.activityTodoStatusLabel": {
+    "defaultMessage": "Start",
+    "description": "Label of the status for an activity to perform"
+  },
   "ErrorFallbackCard.cardMessage": {
     "defaultMessage": "If the error persists, try refreshing your browser and cleaning your browser's data.",
     "description": "Message of the default error fallback card"
@@ -21,18 +41,46 @@
   },
   "Footer.termsAndConditionLinkLabel": {
     "defaultMessage": "Terms & Conditions",
-    "description": "Label of the 'Terms and Condition' Link in the footer footer section"
+    "description": "Label of the 'Terms and Condition' Link in the footer section"
   },
   "Header.connectButtonLabel": {
     "defaultMessage": "Connect",
     "description": "Label of the Connect button in the Header"
   },
-  "HomeView.ComingSoon": {
-    "defaultMessage": "Coming Soon",
-    "description": "Message stating that the app will be available soon"
+  "HomeHero.description": {
+    "defaultMessage": "The purpose of the Verida incentivized testnet is to stress-test network infrastructure and prepare storage node operations for mainnet. The program covers security, tooling, and UX testing across the Verida network and ecosystem of apps. Users will be rewarded VDA for participating in the testing process.",
+    "description": "Description of the Verida incentivized testnet program"
   },
-  "HomeView.tagLineMessage": {
+  "HomeHero.subtitle": {
     "defaultMessage": "Participate, learn, test and get rewarded",
-    "description": "Message stating that the app will be available soon"
+    "description": "Subtitle or tag line displayed in the hero section"
+  },
+  "HomeHero.title": {
+    "defaultMessage": "Incentivized Testnet",
+    "description": "Main title displayed in the hero section"
+  },
+  "activities.claimPolygonId.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity claim polygon id"
+  },
+  "activities.claimSocialMediaData.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity claim social media data"
+  },
+  "activities.createVeridaIdentity.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity create identity"
+  },
+  "activities.referFriend.actionLabel": {
+    "defaultMessage": "Get Referal Link",
+    "description": "Label of the button to start the activity refer friend"
+  },
+  "activities.updateProfile.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity update profile"
+  },
+  "activities.useMarkdownEditor.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity use markdown editor"
   }
 }

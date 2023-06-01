@@ -1,12 +1,18 @@
+import type { MessageDescriptor } from "react-intl";
+
 export type Activity = {
   id: string;
-  order: number;
   enabled: boolean;
+  visible: boolean;
+  order: number;
   title: string;
   shortDescription: string;
-  actionLabel?: string;
-  url?: string;
+  longDescription?: string;
+  instructions?: string[];
+  resourceUrls?: string[];
+  videoUrl?: string;
   note?: string;
+  actionLabel: MessageDescriptor;
 };
 
 export type UserActivity = {
