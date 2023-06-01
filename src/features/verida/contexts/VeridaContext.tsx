@@ -1,3 +1,4 @@
+import { DatastoreOpenConfig, IDatastore } from "@verida/types";
 import { WebUser, WebUserProfile } from "@verida/web-helpers";
 import React, {
   useCallback,
@@ -35,6 +36,10 @@ type VeridaContextType = {
   profile: WebUserProfile | undefined;
   connect: () => Promise<boolean>;
   disconnect: () => Promise<void>;
+  openDatastore: (
+    schemaUrl: string,
+    config?: DatastoreOpenConfig
+  ) => Promise<IDatastore>;
 };
 
 export const VeridaContext = React.createContext<VeridaContextType | null>(
@@ -100,20 +105,36 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
     return webUserInstanceRef.current.disconnect();
   }, [webUserInstanceRef]);
 
-  const contexValue: VeridaContextType = useMemo(
+  const openDatastore = useCallback(
+    (schemaUrl: string, config?: DatastoreOpenConfig) => {
+      return webUserInstanceRef.current.openDatastore(schemaUrl, config);
+    },
+    [webUserInstanceRef]
+  );
+
+  const contextValue: VeridaContextType = useMemo(
     () => ({
       isConnected,
       did,
       connect,
       disconnect,
+      openDatastore,
       profile,
       webUserInstanceRef,
     }),
-    [isConnected, did, connect, disconnect, profile, webUserInstanceRef]
+    [
+      isConnected,
+      did,
+      connect,
+      disconnect,
+      openDatastore,
+      profile,
+      webUserInstanceRef,
+    ]
   );
 
   return (
-    <VeridaContext.Provider value={contexValue}>
+    <VeridaContext.Provider value={contextValue}>
       {props.children}
     </VeridaContext.Provider>
   );
