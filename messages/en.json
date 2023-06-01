@@ -1,7 +1,19 @@
 {
+  "AcceptTermsAmdConditionsModal.acceptButtonLabel": {
+    "defaultMessage": "Accept",
+    "description": "Label for the accept button"
+  },
+  "AcceptTermsAmdConditionsModal.termsConditionsTitle": {
+    "defaultMessage": "Please read and accept the Terms of Use",
+    "description": "Title for the terms and conditions modal"
+  },
   "ActivityCard.connectButtonLabel": {
     "defaultMessage": "Connect",
     "description": "Label of the Connect button in each activity card"
+  },
+  "ActivityCard.openTermsConditionsButtonLabel": {
+    "defaultMessage": "Open Terms of Use",
+    "description": "Label of the button to open the terms and conditions modal on each activity card"
   },
   "ActivityStatus.activityCompletedStatusLabel": {
     "defaultMessage": "Completed",
@@ -40,7 +52,7 @@
     "description": "Copyright message in the footer section"
   },
   "Footer.termsAndConditionLinkLabel": {
-    "defaultMessage": "Terms & Conditions",
+    "defaultMessage": "Terms of Use",
     "description": "Label of the 'Terms and Condition' Link in the footer section"
   },
   "Header.connectButtonLabel": {
@@ -58,6 +70,22 @@
   "HomeHero.title": {
     "defaultMessage": "Incentivized Testnet",
     "description": "Main title displayed in the hero section"
+  },
+  "HomeView.activitiesTitle": {
+    "defaultMessage": "Activities",
+    "description": "Title for the activities section"
+  },
+  "HomeView.termsConditionsAlertAcceptButtonLabel": {
+    "defaultMessage": "Open Terms of Use",
+    "description": "Label for the accept button"
+  },
+  "HomeView.termsConditionsAlertMessage": {
+    "defaultMessage": "You must accept the Terms of Use",
+    "description": "Message for the terms and conditions alert"
+  },
+  "TermsConditionsView.termsConditionsTitle": {
+    "defaultMessage": "Verida Incentivized Testnet Terms of Use",
+    "description": "Title for the terms and conditions page"
   },
   "activities.claimPolygonId.actionLabel": {
     "defaultMessage": "Verify",
