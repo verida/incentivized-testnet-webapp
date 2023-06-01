@@ -8,6 +8,7 @@ import {
   ActivityStatus as ActivityStatusType,
   useActivity,
 } from "~/features/activities";
+import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
 type ActivityCardProps = {
@@ -24,6 +25,8 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
 
   const i18n = useIntl();
   const { connect, isConnected } = useVerida();
+  const { status: statusTermsConditions, openAcceptModal } =
+    useTermsConditions();
   const { performActivity } = useActivity();
 
   const handleConnect = useCallback(() => {
@@ -34,6 +37,13 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
     id: "ActivityCard.connectButtonLabel",
     description: "Label of the Connect button in each activity card",
     defaultMessage: "Connect",
+  });
+
+  const openTermsConditionsButtonLabel = i18n.formatMessage({
+    id: "ActivityCard.openTermsConditionsButtonLabel",
+    description:
+      "Label of the button to open the terms and conditions modal on each activity card",
+    defaultMessage: "Open Terms of Use",
   });
 
   const background = enabled ? "bg-primary-15" : "bg-primary-5";
@@ -58,11 +68,17 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
         <div className="flex flex-row md:flex-col justify-center whitespace-nowrap">
           {enabled ? (
             isConnected ? (
-              <ActivityStatus
-                status={status}
-                todoLabel={activity.actionLabel}
-                action={() => void performActivity(activity.id)}
-              />
+              statusTermsConditions === "accepted" ? (
+                <ActivityStatus
+                  status={status}
+                  todoLabel={activity.actionLabel}
+                  action={() => void performActivity(activity.id)}
+                />
+              ) : (
+                <Button onClick={openAcceptModal} size="medium">
+                  {openTermsConditionsButtonLabel}
+                </Button>
+              )
             ) : (
               <Button onClick={handleConnect} size="medium">
                 {connectButtonLabel}
