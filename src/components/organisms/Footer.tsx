@@ -1,11 +1,9 @@
 import { ReactComponent as VeridaNetworkLogo } from "assets/images/verida_network_logo_with_text.svg";
 import React from "react";
 import { useIntl } from "react-intl";
+import { Link } from "react-router-dom";
 
-import {
-  VERIDA_NETWORK_URL,
-  VERIDA_TERMS_AND_CONDITIONS_URL,
-} from "~/constants";
+import { VERIDA_NETWORK_URL } from "~/constants";
 
 export const Footer: React.FunctionComponent = () => {
   const i18n = useIntl();
@@ -19,7 +17,7 @@ export const Footer: React.FunctionComponent = () => {
 
   const termsAndConditionLinkLabel = i18n.formatMessage({
     id: "Footer.termsAndConditionLinkLabel",
-    defaultMessage: "Terms & Conditions",
+    defaultMessage: "Terms of Use",
     description:
       "Label of the 'Terms and Condition' Link in the footer section",
   });
@@ -52,14 +50,9 @@ export const Footer: React.FunctionComponent = () => {
       </div>
       <div className="sm:order-3 sm:flex-1">
         <div className="flex flex-col items-center space-y-3 sm:flex-row sm:justify-end sm:space-x-4 sm:space-y-0">
-          <a
-            href={VERIDA_TERMS_AND_CONDITIONS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-          >
+          <Link to="/terms-and-conditions" className="hover:underline">
             {termsAndConditionLinkLabel}
-          </a>
+          </Link>
         </div>
       </div>
       <div className="sm:order-1 sm:flex-1">

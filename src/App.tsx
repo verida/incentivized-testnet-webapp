@@ -6,7 +6,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 
-import { HomeView } from "~/components/pages";
+import { HomeView, TermsConditionsView } from "~/components/pages";
 import { AppLayout } from "~/components/templates";
 import { ErrorBoundary, RouterErrorHandler } from "~/features/errors";
 
@@ -18,6 +18,7 @@ const router = createBrowserRouter(
       errorElement={<RouterErrorHandler />}
     >
       <Route index element={<HomeView />} />
+      <Route path="terms-and-conditions" element={<TermsConditionsView />} />
     </Route>
   )
 );

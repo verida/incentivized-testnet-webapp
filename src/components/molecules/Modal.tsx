@@ -58,7 +58,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
         role="dialog"
         aria-modal="true"
       >
-        <div className="relative overflow-hidden p-4 pt-6 sm:p-8">
+        <div className="relative p-4 pt-6 sm:p-8 max-h-[90Vh] sm:max-h-[80vh]">
           <div className="mb-5 flex items-center justify-between sm:mb-8">
             <div className="w-8" />
             <h1 className="text-lg font-semibold leading-5" id={labelId}>
