@@ -17,9 +17,14 @@ const veridaEnvironment: EnvironmentType =
     ? EnvironmentType.MAINNET
     : EnvironmentType.TESTNET;
 
+const termsSchemaUrl = process.env.REACT_APP_TERMS_SCHEMA_URL;
+
 export const config = {
   appTitle,
   veridaEnvironment,
   veridaContextName,
   veridaLogoUrl,
+  schemas: {
+    termsSchemaUrl,
+  },
 };
