@@ -8,7 +8,7 @@ import { action } from "./action";
 
 export const activity: Activity = {
   id: "refer-friend", // Never change the id
-  enabled: true,
+  enabled: false,
   visible: true,
   order: 3,
   title: "Refer a friend",
