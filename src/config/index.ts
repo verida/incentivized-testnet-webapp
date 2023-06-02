@@ -20,6 +20,7 @@ const veridaEnvironment: EnvironmentType =
     : EnvironmentType.TESTNET;
 
 const termsSchemaUrl = process.env.REACT_APP_TERMS_SCHEMA_URL;
+const activitiesSchemaUrl = process.env.REACT_APP_ACTIVITIES_SCHEMA_URL;
 
 export const config = {
   appTitle,
@@ -29,5 +30,6 @@ export const config = {
   veridaLogoUrl,
   schemas: {
     termsSchemaUrl,
+    activitiesSchemaUrl,
   },
 };
