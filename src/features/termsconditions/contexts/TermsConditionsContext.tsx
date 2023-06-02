@@ -7,9 +7,10 @@ import { getLatestTermsConditions } from "~/features/termsconditions/utils";
 import { useVerida } from "~/features/verida";
 
 type TermsConditionsContextType = {
-  isChecking: boolean;
+  isCheckingStatus: boolean;
   status: TermsConditionsStatus;
-  updateStatus: (status: TermsConditionsStatus) => Promise<void>;
+  updateStatus: (status: TermsConditionsStatus) => void;
+  deleteTermsStatus: () => void;
   getLatestVersion: () => string;
   openAcceptModal: () => void;
 };
@@ -27,32 +28,35 @@ export const TermsConditionsProvider: React.FunctionComponent<
   const [openModal, setOpenModal] = useState(false);
   const { isConnected } = useVerida();
 
-  const { isChecking, status, saveStatus } =
+  const { isCheckingStatus, status, saveStatus, deleteStatus } =
     useTermsConditionsQueries(isConnected);
 
   useEffect(() => {
-    if (!isConnected || isChecking || status === "accepted") {
+    if (!isConnected || isCheckingStatus || status === "accepted") {
       setOpenModal(false);
     } else {
       setOpenModal(true);
     }
-  }, [isChecking, isConnected, status]);
+  }, [isCheckingStatus, isConnected, status]);
 
   const openAcceptModal = useCallback(() => {
-    if (!isConnected || isChecking) {
+    if (!isConnected || isCheckingStatus) {
       // Do not open if user not connected
       return;
     }
     setOpenModal(true);
-  }, [isConnected, isChecking]);
+  }, [isConnected, isCheckingStatus]);
 
   const updateStatus = useCallback(
-    async (status: TermsConditionsStatus) => {
+    (status: TermsConditionsStatus) => {
       saveStatus(status);
-      return Promise.resolve();
     },
     [saveStatus]
   );
+
+  const deleteTermsStatus = useCallback(() => {
+    deleteStatus();
+  }, [deleteStatus]);
 
   const handleCloseModal = useCallback(() => {
     setOpenModal(false);
@@ -60,13 +64,14 @@ export const TermsConditionsProvider: React.FunctionComponent<
 
   const contextValue: TermsConditionsContextType = useMemo(
     () => ({
-      isChecking,
+      isCheckingStatus,
       status: status ?? "unknown",
       updateStatus,
+      deleteTermsStatus,
       getLatestVersion: getLatestTermsConditions,
       openAcceptModal,
     }),
-    [isChecking, status, updateStatus, openAcceptModal]
+    [isCheckingStatus, status, updateStatus, deleteTermsStatus, openAcceptModal]
   );
 
   return (

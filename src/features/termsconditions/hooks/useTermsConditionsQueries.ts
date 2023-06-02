@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { config } from "~/config";
 import {
   TermsConditionsStatus,
+  deleteStatusInDatastore,
   getStatusFromDatastore,
   setStatusInDatastore,
 } from "~/features/termsconditions";
@@ -29,8 +30,8 @@ export function useTermsConditionsQueries(isUserConnected: boolean) {
     void getDatastore();
   }, [isUserConnected, openDatastore]);
 
-  // TODO: Use query states (loading, error, etc.)
-  const { data: status, isLoading } = useQuery({
+  // TODO: Handle error state
+  const { data: status, isLoading: isCheckingStatus } = useQuery({
     queryKey: ["terms", did],
     queryFn: () => {
       return getStatusFromDatastore(termsDatastore);
@@ -39,8 +40,8 @@ export function useTermsConditionsQueries(isUserConnected: boolean) {
     staleTime: 1000 * 60 * 60 * 24, // 1 day, as term status is not expected to change
   });
 
-  // TODO: Use mutation states (loading, error, etc.)
-  const { mutate: saveStatus } = useMutation({
+  // TODO: Handle error states
+  const { mutate: saveStatus, isLoading: isUpdatingStatus } = useMutation({
     mutationFn: (status: TermsConditionsStatus) => {
       return setStatusInDatastore(termsDatastore, status);
     },
@@ -50,9 +51,23 @@ export function useTermsConditionsQueries(isUserConnected: boolean) {
     },
   });
 
+  // TODO: Handle error states
+  const { mutate: deleteStatus, isLoading: isDeletingStatus } = useMutation({
+    mutationFn: () => {
+      return deleteStatusInDatastore(termsDatastore);
+    },
+    onSuccess: async () => {
+      // TODO: Optimise with an optimistic update
+      await queryClient.invalidateQueries(["terms", did]);
+    },
+  });
+
   return {
-    isChecking: isLoading,
     status,
+    isCheckingStatus,
     saveStatus,
+    isUpdatingStatus,
+    deleteStatus,
+    isDeletingStatus,
   };
 }

@@ -11,8 +11,8 @@ export const HomeView: React.FunctionComponent = () => {
   const i18n = useIntl();
   const { isConnected } = useVerida();
   const {
-    isChecking: isCheckingTermsConditions,
     status,
+    isCheckingStatus: isCheckingTermsConditions,
     openAcceptModal,
   } = useTermsConditions();
   const { activities, userActivities } = useActivity();

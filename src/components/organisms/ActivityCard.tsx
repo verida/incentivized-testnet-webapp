@@ -26,8 +26,8 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
   const i18n = useIntl();
   const { connect, isConnected } = useVerida();
   const {
-    isChecking: isCheckingTermsConditions,
     status: statusTermsConditions,
+    isCheckingStatus: isCheckingTermsConditions,
     openAcceptModal,
   } = useTermsConditions();
   const { executeActivity } = useActivity();

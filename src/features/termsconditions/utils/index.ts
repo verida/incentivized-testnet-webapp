@@ -53,3 +53,14 @@ export async function setStatusInDatastore(
     throw new Error("Error setting terms", { cause: error });
   }
 }
+
+export async function deleteStatusInDatastore(datastore: IDatastore | null) {
+  if (!datastore) {
+    throw new Error("Terms Datastore must be defined");
+  }
+  try {
+    await datastore.deleteAll();
+  } catch (error: unknown) {
+    throw new Error("Error deleting terms", { cause: error });
+  }
+}

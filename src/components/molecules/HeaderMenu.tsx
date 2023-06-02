@@ -2,7 +2,7 @@ import React from "react";
 
 import { PortalWrapper } from "~/components/molecules/PortalWrapper";
 
-type MenuItem = {
+export type MenuItem = {
   label: string;
   action: () => void;
 };
@@ -29,7 +29,10 @@ export const HeaderMenu: React.FunctionComponent<HeaderMenuProps> = (props) => {
             <li key={item.label}>
               <button
                 className="hover:bg-background-button-hover w-full p-2.5"
-                onClick={item.action}
+                onClick={() => {
+                  item.action();
+                  onClose();
+                }}
               >
                 {item.label}
               </button>

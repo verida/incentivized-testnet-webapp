@@ -5,13 +5,17 @@ import { Link } from "react-router-dom";
 import { ReactComponent as VeridaNetworkLogo } from "~/assets/images/verida_network_logo.svg";
 import { ReactComponent as VeridaNetworkLogoWithText } from "~/assets/images/verida_network_logo_with_text.svg";
 import { Button } from "~/components/atoms";
+import type { MenuItem } from "~/components/molecules";
 import { AvatarWithInfo, HeaderMenu } from "~/components/molecules";
+import { config } from "~/config";
+import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
 export const Header: React.FC = () => {
   const i18n = useIntl();
   const [openMenu, setOpenMenu] = useState(false);
   const { connect, disconnect, isConnected, profile, did } = useVerida();
+  const { deleteTermsStatus } = useTermsConditions();
 
   const handleOpenMenu = useCallback(() => {
     setOpenMenu(true);
@@ -37,6 +41,23 @@ export const Header: React.FC = () => {
   });
 
   const contentHeight = "h-10";
+
+  const devModeMenuItems: MenuItem[] = config.devMode
+    ? [
+        {
+          label: "Delete Terms",
+          action: deleteTermsStatus,
+        },
+      ]
+    : [];
+
+  const menuItems: MenuItem[] = [
+    {
+      label: "Disconnect",
+      action: handleDisconnect,
+    },
+    ...devModeMenuItems,
+  ];
 
   return (
     <header className="flex flex-row justify-between border-b border-solid border-gray-dark bg-translucent px-4 pt-3 pb-[calc(0.75rem_-_1px)] backdrop-blur-[15px] sm:px-6">
@@ -67,12 +88,7 @@ export const Header: React.FC = () => {
             <HeaderMenu
               open={openMenu}
               onClose={handleCloseMenu}
-              items={[
-                {
-                  label: "Disconnect",
-                  action: handleDisconnect,
-                },
-              ]}
+              items={menuItems}
             />
           </>
         ) : (
