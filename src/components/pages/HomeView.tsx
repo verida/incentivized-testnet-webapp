@@ -3,17 +3,22 @@ import { useIntl } from "react-intl";
 
 import { Alert, HomeHero } from "~/components/molecules";
 import { ActivityCard } from "~/components/organisms";
-import { useActivity } from "~/features/activities";
+import { useActivity } from "~/features/activity";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
 export const HomeView: React.FunctionComponent = () => {
   const i18n = useIntl();
   const { isConnected } = useVerida();
-  const { status, openAcceptModal } = useTermsConditions();
+  const {
+    isChecking: isCheckingTermsConditions,
+    status,
+    openAcceptModal,
+  } = useTermsConditions();
   const { activities, userActivities } = useActivity();
 
-  const displayTermsConditionsAlert = isConnected && status !== "accepted";
+  const displayTermsConditionsAlert =
+    isConnected && status !== "accepted" && !isCheckingTermsConditions;
 
   const activitiesTitle = i18n.formatMessage({
     id: "HomeView.activitiesTitle",

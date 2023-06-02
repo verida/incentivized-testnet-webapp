@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
 
 import { Button } from "~/components/atoms";
@@ -7,7 +7,7 @@ import {
   Activity,
   ActivityStatus as ActivityStatusType,
   useActivity,
-} from "~/features/activities";
+} from "~/features/activity";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
@@ -25,13 +25,30 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
 
   const i18n = useIntl();
   const { connect, isConnected } = useVerida();
-  const { status: statusTermsConditions, openAcceptModal } =
-    useTermsConditions();
-  const { performActivity } = useActivity();
+  const {
+    isChecking: isCheckingTermsConditions,
+    status: statusTermsConditions,
+    openAcceptModal,
+  } = useTermsConditions();
+  const { executeActivity } = useActivity();
+  const [executing, setExecuting] = useState(false);
+
+  const isChecking = isCheckingTermsConditions;
 
   const handleConnect = useCallback(() => {
     void connect();
   }, [connect]);
+
+  const handleExecuteActivity = useCallback(async () => {
+    setExecuting(true);
+    try {
+      await executeActivity(activity.id);
+    } catch (error: unknown) {
+      // TODO: Handle error
+    } finally {
+      setExecuting(false);
+    }
+  }, [executeActivity, activity.id]);
 
   const connectButtonLabel = i18n.formatMessage({
     id: "ActivityCard.connectButtonLabel",
@@ -68,12 +85,20 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
         <div className="flex flex-row md:flex-col justify-center whitespace-nowrap">
           {enabled ? (
             isConnected ? (
-              statusTermsConditions === "accepted" ? (
-                <ActivityStatus
-                  status={status}
-                  todoLabel={activity.actionLabel}
-                  action={() => void performActivity(activity.id)}
-                />
+              isChecking ? (
+                <ActivityStatus status="checking" />
+              ) : statusTermsConditions === "accepted" ? (
+                status === "todo" ? (
+                  <Button
+                    size="medium"
+                    onClick={() => void handleExecuteActivity()}
+                    disabled={executing}
+                  >
+                    {i18n.formatMessage(activity.actionLabel)}
+                  </Button>
+                ) : (
+                  <ActivityStatus status={status} />
+                )
               ) : (
                 <Button onClick={openAcceptModal} size="medium">
                   {openTermsConditionsButtonLabel}

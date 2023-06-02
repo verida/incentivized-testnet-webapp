@@ -1,18 +1,13 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { IDatastore } from "@verida/types";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 import { AcceptTermsAmdConditionsModal } from "~/components/organisms";
-import { config } from "~/config";
+import { useTermsConditionsQueries } from "~/features/termsconditions/hooks";
 import { TermsConditionsStatus } from "~/features/termsconditions/types";
-import {
-  getLatestTermsConditions,
-  getStatusFromDatastore,
-  setStatusInDatastore,
-} from "~/features/termsconditions/utils";
+import { getLatestTermsConditions } from "~/features/termsconditions/utils";
 import { useVerida } from "~/features/verida";
 
 type TermsConditionsContextType = {
+  isChecking: boolean;
   status: TermsConditionsStatus;
   updateStatus: (status: TermsConditionsStatus) => Promise<void>;
   getLatestVersion: () => string;
@@ -30,65 +25,29 @@ export const TermsConditionsProvider: React.FunctionComponent<
   TermsConditionsProviderProps
 > = (props) => {
   const [openModal, setOpenModal] = useState(false);
-  const [termsDatastore, setTermsDatastore] = useState<IDatastore | null>(null);
-  const { isConnected, did, openDatastore } = useVerida();
+  const { isConnected } = useVerida();
+
+  const { isChecking, status, saveStatus } =
+    useTermsConditionsQueries(isConnected);
 
   useEffect(() => {
-    if (!isConnected) {
-      return;
-    }
-    const getDatastore = async () => {
-      if (!config.schemas.termsSchemaUrl) {
-        throw new Error("Terms Schema URL must be defined");
-      }
-      const datastore = await openDatastore(config.schemas.termsSchemaUrl);
-      setTermsDatastore(datastore);
-    };
-    void getDatastore();
-  }, [isConnected, openDatastore]);
-
-  const queryClient = useQueryClient();
-
-  // TODO: Use query states (loading, error, etc.)
-  const { data: status } = useQuery({
-    queryKey: ["terms", did],
-    queryFn: () => {
-      return getStatusFromDatastore(termsDatastore);
-    },
-    enabled: !!termsDatastore,
-    staleTime: 1000 * 60 * 60 * 24, // 1 day, as term status is not expected to change
-  });
-
-  // TODO: Use mutation states (loading, error, etc.)
-  const { mutate: saveStatus } = useMutation({
-    mutationFn: (status: TermsConditionsStatus) => {
-      return setStatusInDatastore(termsDatastore, status);
-    },
-    onSuccess: async () => {
-      // TODO: Optimise with an optimistic update
-      await queryClient.invalidateQueries(["terms", did]);
-    },
-  });
-
-  useEffect(() => {
-    if (!isConnected || status === "accepted") {
+    if (!isConnected || isChecking || status === "accepted") {
       setOpenModal(false);
     } else {
       setOpenModal(true);
     }
-  }, [isConnected, status]);
+  }, [isChecking, isConnected, status]);
 
   const openAcceptModal = useCallback(() => {
-    if (!isConnected) {
+    if (!isConnected || isChecking) {
       // Do not open if user not connected
       return;
     }
     setOpenModal(true);
-  }, [isConnected]);
+  }, [isConnected, isChecking]);
 
   const updateStatus = useCallback(
     async (status: TermsConditionsStatus) => {
-      // TODO: Implement setting the terms status in the dedicated datastore
       saveStatus(status);
       return Promise.resolve();
     },
@@ -101,12 +60,13 @@ export const TermsConditionsProvider: React.FunctionComponent<
 
   const contextValue: TermsConditionsContextType = useMemo(
     () => ({
+      isChecking,
       status: status ?? "unknown",
       updateStatus,
       getLatestVersion: getLatestTermsConditions,
       openAcceptModal,
     }),
-    [status, updateStatus, openAcceptModal]
+    [isChecking, status, updateStatus, openAcceptModal]
   );
 
   return (

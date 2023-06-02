@@ -1,26 +1,24 @@
 import React from "react";
-import { MessageDescriptor, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 
-import { Button, Icon } from "~/components/atoms";
-import type { ActivityStatus as ActivityStatusType } from "~/features/activities";
+import { Icon } from "~/components/atoms";
+import type { ActivityStatus as ActivityStatusType } from "~/features/activity";
 
 type ActivityStatusProps = {
-  status: ActivityStatusType | "disabled";
-  todoLabel?: MessageDescriptor;
-  action?: () => void;
+  status: ActivityStatusType | "disabled" | "checking";
 } & Omit<React.ComponentPropsWithoutRef<"div">, "children">;
 
 export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
   props
 ) => {
-  const { status, todoLabel, action, ...divProps } = props;
+  const { status, ...divProps } = props;
 
   const i18n = useIntl();
 
   const iconType =
     status === "completed"
       ? "verida-tick"
-      : status === "pending"
+      : status === "pending" || status === "checking"
       ? "loading"
       : undefined;
 
@@ -42,6 +40,12 @@ export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
     defaultMessage: "Completed",
   });
 
+  const activityCheckingLabel = i18n.formatMessage({
+    id: "ActivityStatus.activityCheckingLabel",
+    description: "Label of the status for a disabled activity",
+    defaultMessage: "Checking...",
+  });
+
   const activityDisabledLabel = i18n.formatMessage({
     id: "ActivityStatus.activityDisabledLabel",
     description: "Label of the status for a disabled activity",
@@ -54,29 +58,26 @@ export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
       : status === "pending"
       ? activityPendingStatusLabel
       : status === "todo"
-      ? todoLabel
-        ? i18n.formatMessage(todoLabel)
-        : activityTodoStatusLabel
+      ? activityTodoStatusLabel
+      : status === "checking"
+      ? activityCheckingLabel
       : activityDisabledLabel;
 
   return (
     <div {...divProps}>
-      {status === "todo" ? (
-        <Button onClick={action}>
-          {iconType && <Icon type={iconType} />}
-          {label}
-        </Button>
-      ) : (
-        <div className="p-2.5 rounded-xl border border-solid border-gray-dark flex items-center justify-center gap-2 font-medium">
-          {iconType && (
-            <Icon
-              type={iconType}
-              className={status === "pending" ? "animate-spin-slow" : undefined}
-            />
-          )}
-          {label}
-        </div>
-      )}
+      <div className="p-2.5 rounded-xl border border-solid border-gray-dark flex items-center justify-center gap-2 font-medium">
+        {iconType && (
+          <Icon
+            type={iconType}
+            className={
+              status === "pending" || status === "checking"
+                ? "animate-spin-slow"
+                : undefined
+            }
+          />
+        )}
+        {label}
+      </div>
     </div>
   );
 };
