@@ -1,7 +1,7 @@
 import React from "react";
 import { HelmetProvider } from "react-helmet-async";
 
-import { ActivityProvider } from "~/features/activities";
+import { ActivityProvider } from "~/features/activity";
 import { IntlProvider } from "~/features/i18n";
 import { TermsConditionsProvider } from "~/features/termsconditions";
 import { VeridaProvider } from "~/features/verida";

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { ActivityContext } from "~/features/activities";
+import { ActivityContext } from "~/features/activity";
 
 export function useActivity() {
   const context = useContext(ActivityContext);

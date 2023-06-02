@@ -1,4 +1,15 @@
+import { WebUser } from "@verida/web-helpers";
+import { MutableRefObject } from "react";
 import type { MessageDescriptor } from "react-intl";
+
+export type Resource = {
+  label: string;
+  url: string;
+};
+
+export type ActivityAction = (
+  veridaWebUser: MutableRefObject<WebUser>
+) => Promise<ActivityStatus>;
 
 export type Activity = {
   id: string;
@@ -9,10 +20,11 @@ export type Activity = {
   shortDescription: string;
   longDescription?: string;
   instructions?: string[];
-  resourceUrls?: string[];
-  videoUrl?: string;
-  note?: string;
+  resourceUrls?: Resource[];
+  videoUrl?: Resource;
+  footnote?: string;
   actionLabel: MessageDescriptor;
+  action: ActivityAction;
 };
 
 export type UserActivity = {
