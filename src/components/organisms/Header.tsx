@@ -8,6 +8,7 @@ import { Button } from "~/components/atoms";
 import type { MenuItem } from "~/components/molecules";
 import { AvatarWithInfo, HeaderMenu } from "~/components/molecules";
 import { config } from "~/config";
+import { useActivity } from "~/features/activity";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
@@ -16,6 +17,7 @@ export const Header: React.FC = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const { connect, disconnect, isConnected, profile, did } = useVerida();
   const { deleteTermsStatus } = useTermsConditions();
+  const { deleteUserActivities } = useActivity();
 
   const handleOpenMenu = useCallback(() => {
     setOpenMenu(true);
@@ -47,6 +49,10 @@ export const Header: React.FC = () => {
         {
           label: "Delete Terms",
           action: deleteTermsStatus,
+        },
+        {
+          label: "Delete User Activities",
+          action: deleteUserActivities,
         },
       ]
     : [];
