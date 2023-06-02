@@ -11,18 +11,16 @@ export async function getTermsRecordFromDatastore(
   datastore: IDatastore | null
 ) {
   if (!datastore) {
-    throw new Error("Terms Datastore must be defined");
+    throw new Error("Terms datastore must be defined");
   }
   try {
-    const termsRecords = await datastore.getMany({}, {});
-    if (!termsRecords || termsRecords.length === 0) {
+    const records = await datastore.getMany({}, {});
+    if (!records || records.length === 0) {
       return null;
     }
-    const termsRecordResult = TermsConditionsRecordSchema.safeParse(
-      termsRecords[0]
-    );
-    if (termsRecordResult.success) {
-      return termsRecordResult.data;
+    const recordResult = TermsConditionsRecordSchema.safeParse(records[0]);
+    if (recordResult.success) {
+      return recordResult.data;
     }
     return null;
   } catch (error: unknown) {
@@ -43,11 +41,11 @@ export async function setStatusInDatastore(
   status: string
 ) {
   if (!datastore) {
-    throw new Error("Terms Datastore must be defined");
+    throw new Error("Terms datastore must be defined");
   }
   try {
-    const termsRecord = await getTermsRecordFromDatastore(datastore);
-    const existingRecord = termsRecord || {};
+    const record = await getTermsRecordFromDatastore(datastore);
+    const existingRecord = record || {};
     await datastore.save({ ...existingRecord, status }, {});
   } catch (error: unknown) {
     throw new Error("Error setting terms", { cause: error });
@@ -56,7 +54,7 @@ export async function setStatusInDatastore(
 
 export async function deleteStatusInDatastore(datastore: IDatastore | null) {
   if (!datastore) {
-    throw new Error("Terms Datastore must be defined");
+    throw new Error("Terms datastore must be defined");
   }
   try {
     await datastore.deleteAll();
