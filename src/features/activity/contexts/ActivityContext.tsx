@@ -2,7 +2,7 @@ import { createContext, useCallback, useMemo } from "react";
 
 import {
   Activity,
-  UserActivities,
+  UserActivity,
   useActivityQueries,
 } from "~/features/activity";
 import { activities } from "~/features/activity/activities";
@@ -11,8 +11,10 @@ import { useVerida } from "~/features/verida";
 
 type ActivityContextType = {
   activities: Activity[];
-  userActivities: UserActivities;
+  userActivities: UserActivity[];
+  getUserActivity: (activityId: string) => UserActivity | undefined;
   executeActivity: (activityId: string) => Promise<void>;
+  deleteUserActivities: () => void;
 };
 
 export const ActivityContext = createContext<ActivityContextType | null>(null);
@@ -26,7 +28,7 @@ export const ActivityProvider: React.FunctionComponent<
 > = (props) => {
   const { status: statusTermsConditions } = useTermsConditions();
   const { isConnected, webUserInstanceRef } = useVerida();
-  const { updateActivityStatus, userActivities } = useActivityQueries(
+  const { userActivities, saveActivity, deleteActivities } = useActivityQueries(
     isConnected,
     statusTermsConditions
   );
@@ -43,30 +45,40 @@ export const ActivityProvider: React.FunctionComponent<
       }
 
       // Check existing status, if todo, continue, otherwise return or throw error
-      const userActivity = userActivities.get(activityId);
+      const userActivity = userActivities?.find(
+        (activity) => activity.id === activityId
+      );
       if (userActivity && userActivity.status !== "todo") {
         throw new Error(`Activity ${activityId} already executed`);
       }
 
       // Execute the action
       const status = await activity.action(webUserInstanceRef);
-      updateActivityStatus(activityId, status);
+      saveActivity({ id: activityId, status });
     },
-    [
-      statusTermsConditions,
-      userActivities,
-      updateActivityStatus,
-      webUserInstanceRef,
-    ]
+    [statusTermsConditions, userActivities, webUserInstanceRef, saveActivity]
   );
+
+  const getUserActivity = useCallback(
+    (activityId: string) => {
+      return userActivities?.find((activity) => activity.id === activityId);
+    },
+    [userActivities]
+  );
+
+  const deleteUserActivities = useCallback(() => {
+    deleteActivities();
+  }, [deleteActivities]);
 
   const contextValue: ActivityContextType = useMemo(
     () => ({
       activities: activities.filter((a) => a.visible),
-      userActivities,
+      userActivities: userActivities || [],
+      getUserActivity,
       executeActivity,
+      deleteUserActivities,
     }),
-    [userActivities, executeActivity]
+    [userActivities, executeActivity, getUserActivity, deleteUserActivities]
   );
 
   return (

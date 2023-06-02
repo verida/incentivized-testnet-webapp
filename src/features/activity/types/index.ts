@@ -1,6 +1,9 @@
 import { WebUser } from "@verida/web-helpers";
 import { MutableRefObject } from "react";
 import type { MessageDescriptor } from "react-intl";
+import { z } from "zod";
+
+import { ActivityRecordSchema } from "~/features/activity";
 
 export type Resource = {
   label: string;
@@ -27,12 +30,6 @@ export type Activity = {
   action: ActivityAction;
 };
 
-export type UserActivity = {
-  id: string;
-  status: ActivityStatus;
-  // TODO: Add need information: proof, ...
-};
-
-export type UserActivities = Map<string, UserActivity>;
+export type UserActivity = z.infer<typeof ActivityRecordSchema>;
 
 export type ActivityStatus = "todo" | "pending" | "completed";

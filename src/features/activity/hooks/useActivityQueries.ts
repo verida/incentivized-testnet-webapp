@@ -1,43 +1,80 @@
-import { useCallback, useState } from "react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { IDatastore } from "@verida/types";
+import { useEffect, useState } from "react";
 
-import { activities } from "~/features/activity/activities";
-import { ActivityStatus, UserActivities } from "~/features/activity/types";
+import { config } from "~/config";
+import {
+  deleteActivitiesInDatastore,
+  getActivitiesFromDatastore,
+  saveActivityInDatastore,
+} from "~/features/activity";
+import { UserActivity } from "~/features/activity/types";
 import { TermsConditionsStatus } from "~/features/termsconditions";
+import { useVerida } from "~/features/verida";
 
 export function useActivityQueries(
-  _isUserConnected: boolean,
+  isUserConnected: boolean,
   statusTermsConditions: TermsConditionsStatus
 ) {
-  const [userActivities, setUserActivities] = useState<UserActivities>(
-    new Map([])
+  const [activitiesDatastore, setTermsDatastore] = useState<IDatastore | null>(
+    null
   );
+  const { did, openDatastore } = useVerida();
+  const queryClient = useQueryClient();
 
-  const updateActivityStatus = useCallback(
-    (activityId: string, status: ActivityStatus) => {
-      if (statusTermsConditions !== "accepted") {
-        throw new Error("Terms of Use must be accepted");
+  useEffect(() => {
+    if (!isUserConnected) {
+      return;
+    }
+    const getDatastore = async () => {
+      if (!config.schemas.activitiesSchemaUrl) {
+        throw new Error("Activities Schema URL must be defined");
       }
+      const datastore = await openDatastore(config.schemas.activitiesSchemaUrl);
+      setTermsDatastore(datastore);
+    };
+    void getDatastore();
+  }, [isUserConnected, openDatastore]);
 
-      const activity = activities.find((a) => a.id === activityId);
-      if (!activity) {
-        throw new Error(`Activity ${activityId} not found`);
-      }
-
-      setUserActivities((prev) => {
-        const existingStatus = prev.get(activityId);
-        if (!existingStatus) {
-          return new Map([
-            ...prev.entries(),
-            [activityId, { id: activityId, status: status }],
-          ]);
-        } else {
-          prev.set(activityId, { id: activityId, status: status });
-          return new Map([...prev.entries()]);
-        }
-      });
+  // TODO: Handle error state
+  const { data: userActivities, isLoading: isLoadingActivities } = useQuery({
+    queryKey: ["userActivities", did],
+    queryFn: () => {
+      return getActivitiesFromDatastore(activitiesDatastore);
     },
-    [statusTermsConditions]
-  );
+    enabled: !!activitiesDatastore,
+    staleTime: 1000 * 60, // 1 minutes
+  });
 
-  return { userActivities, updateActivityStatus };
+  // TODO: Handle error states
+  const { mutate: saveActivity, isLoading: isSavingActivity } = useMutation({
+    mutationFn: (userActivity: UserActivity) => {
+      return saveActivityInDatastore(activitiesDatastore, userActivity);
+    },
+    onSuccess: async () => {
+      // TODO: Optimise with an optimistic update
+      await queryClient.invalidateQueries(["userActivities", did]);
+    },
+  });
+
+  // TODO: Handle error states
+  const { mutate: deleteActivities, isLoading: isDeletingActivities } =
+    useMutation({
+      mutationFn: () => {
+        return deleteActivitiesInDatastore(activitiesDatastore);
+      },
+      onSuccess: async () => {
+        // TODO: Optimise with an optimistic update
+        await queryClient.invalidateQueries(["userActivities", did]);
+      },
+    });
+
+  return {
+    userActivities,
+    isLoadingActivities,
+    saveActivity,
+    isSavingActivity,
+    deleteActivities,
+    isDeletingActivities,
+  };
 }
