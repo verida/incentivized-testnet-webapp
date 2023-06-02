@@ -15,7 +15,7 @@ export const HomeView: React.FunctionComponent = () => {
     isCheckingStatus: isCheckingTermsConditions,
     openAcceptModal,
   } = useTermsConditions();
-  const { activities, userActivities } = useActivity();
+  const { activities, getUserActivity } = useActivity();
 
   const displayTermsConditionsAlert =
     isConnected && status !== "accepted" && !isCheckingTermsConditions;
@@ -58,7 +58,7 @@ export const HomeView: React.FunctionComponent = () => {
               <ActivityCard
                 index={index + 1}
                 activity={activity}
-                status={userActivities.get(activity.id)?.status || "todo"}
+                status={getUserActivity(activity.id)?.status || "todo"}
               />
             </li>
           ))}
