@@ -1,4 +1,6 @@
 import { createContext, useCallback, useMemo } from "react";
+import { toast } from "react-hot-toast";
+import { useIntl } from "react-intl";
 
 import { config } from "~/config";
 import {
@@ -27,6 +29,7 @@ type ActivityProviderProps = {
 export const ActivityProvider: React.FunctionComponent<
   ActivityProviderProps
 > = (props) => {
+  const i18n = useIntl();
   const { status: statusTermsConditions } = useTermsConditions();
   const { isConnected, webUserInstanceRef } = useVerida();
   const { userActivities, saveActivity, deleteActivities } = useActivityQueries(
@@ -37,12 +40,28 @@ export const ActivityProvider: React.FunctionComponent<
   const executeActivity = useCallback(
     async (activityId: string) => {
       if (statusTermsConditions !== "accepted") {
-        throw new Error("Terms of Use must be accepted");
+        // Unlikely because blocked by the UI but still
+        const termsNotAcceptedNotificationMessage = i18n.formatMessage({
+          id: "ActivityProvider.termsNotAcceptedNotificationMessage",
+          defaultMessage: "Please accept the terms and conditions",
+          description:
+            "Notification message when user tries to execute an activity but the terms and conditions are not accepted",
+        });
+        toast.error(termsNotAcceptedNotificationMessage);
+        return;
       }
 
       const activity = activities.find((a) => a.id === activityId);
       if (!activity) {
-        throw new Error(`Activity ${activityId} not found`);
+        // Unlikely but sill
+        const activityNotFoundNotificationMessage = i18n.formatMessage({
+          id: "ActivityProvider.activityNotFoundNotificationMessage",
+          defaultMessage: "Activity not found",
+          description:
+            "Notification message when user tries to execute an activity but the activity is not found",
+        });
+        toast.error(activityNotFoundNotificationMessage);
+        return;
       }
 
       // Check existing status, if todo, continue, otherwise return or throw error
@@ -50,14 +69,84 @@ export const ActivityProvider: React.FunctionComponent<
         (activity) => activity.id === activityId
       );
       if (userActivity && userActivity.status !== "todo") {
-        throw new Error(`Activity ${activityId} already executed`);
+        const activityAlreadyExecutedNotificationMessage = i18n.formatMessage({
+          id: "ActivityProvider.activityAlreadyExecutedNotificationMessage",
+          defaultMessage: "Activity already executed",
+          description:
+            "Notification message when user tries to execute an activity but the activity is already executed",
+        });
+        toast.success(activityAlreadyExecutedNotificationMessage);
+        return;
       }
 
       // Execute the action
-      const status = await activity.action(webUserInstanceRef);
-      saveActivity({ id: activityId, status });
+      const result = await activity.action(webUserInstanceRef);
+
+      // Handle the result
+      switch (result.status) {
+        case "completed": {
+          const activityExecutionCompletedNotificationMessage =
+            i18n.formatMessage({
+              id: "ActivityProvider.activityExecutionCompletedNotificationMessage",
+              defaultMessage: "Congrats, you have completed the activity",
+              description:
+                "Notification message when user completes an activity",
+            });
+          toast.success(
+            result.message
+              ? i18n.formatMessage(result.message)
+              : activityExecutionCompletedNotificationMessage
+          );
+          break;
+        }
+        case "todo": {
+          const activityExecutionTodoNotificationMessage = i18n.formatMessage({
+            id: "ActivityProvider.activityExecutionTodoNotificationMessage",
+            defaultMessage: "Hmm, the activity was not completed properly",
+            description:
+              "Notification message when executing an activity reset back to its todo status",
+          });
+          toast.error(
+            result.message
+              ? i18n.formatMessage(result.message)
+              : activityExecutionTodoNotificationMessage
+          );
+          break;
+        }
+        case "pending": {
+          const activityExecutionPendingNotificationMessage =
+            i18n.formatMessage({
+              id: "ActivityProvider.activityExecutionPendingNotificationMessage",
+              defaultMessage:
+                "The activity is pending, check the next step in the instructions",
+              description:
+                "Notification message when after the execution, an activity is in pending state",
+            });
+          toast.success(
+            result.message
+              ? i18n.formatMessage(result.message)
+              : activityExecutionPendingNotificationMessage,
+            {
+              icon: null,
+            }
+          );
+          break;
+        }
+        default: {
+          // Nothing by default
+        }
+      }
+
+      // Save the result
+      saveActivity({ id: activityId, status: result.status });
     },
-    [statusTermsConditions, userActivities, webUserInstanceRef, saveActivity]
+    [
+      i18n,
+      statusTermsConditions,
+      userActivities,
+      webUserInstanceRef,
+      saveActivity,
+    ]
   );
 
   const getUserActivity = useCallback(

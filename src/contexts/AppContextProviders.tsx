@@ -3,6 +3,7 @@ import { HelmetProvider } from "react-helmet-async";
 
 import { ActivityProvider } from "~/features/activity";
 import { IntlProvider } from "~/features/i18n";
+import { Notifications } from "~/features/notifications";
 import { TermsConditionsProvider } from "~/features/termsconditions";
 import { VeridaProvider } from "~/features/verida";
 
@@ -22,6 +23,7 @@ export const AppContextProviders: React.FunctionComponent<
           <TermsConditionsProvider>
             <ActivityProvider>
               <HelmetProvider>{props.children}</HelmetProvider>
+              <Notifications />
             </ActivityProvider>
           </TermsConditionsProvider>
         </VeridaProvider>

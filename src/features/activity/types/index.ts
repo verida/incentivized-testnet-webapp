@@ -12,7 +12,12 @@ export type Resource = {
 
 export type ActivityAction = (
   veridaWebUser: MutableRefObject<WebUser>
-) => Promise<ActivityStatus>;
+) => Promise<ActivityActionResult>;
+
+export type ActivityActionResult = {
+  status: ActivityStatus;
+  message?: MessageDescriptor;
+};
 
 export type Activity = {
   id: string;
@@ -27,6 +32,7 @@ export type Activity = {
   video?: Resource;
   footnote?: string;
   actionLabel: MessageDescriptor;
+  actionExecutingLabel: MessageDescriptor;
   action: ActivityAction;
 };
 
