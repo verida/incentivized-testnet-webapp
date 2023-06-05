@@ -19,5 +19,11 @@ export const activity: Activity = {
     description:
       "Label of the button to start the activity use markdown editor",
   }),
+  actionExecutingLabel: defineMessage({
+    id: "activities.useMarkdownEditor.actionExecutingLabel",
+    defaultMessage: "Verifying...",
+    description:
+      "Label of the button when the activity 'use markdown editor is being executed",
+  }),
   action: action,
 };

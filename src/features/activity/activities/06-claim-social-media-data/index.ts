@@ -20,5 +20,11 @@ export const activity: Activity = {
     description:
       "Label of the button to start the activity claim social media data",
   }),
+  actionExecutingLabel: defineMessage({
+    id: "activities.claimSocialMediaData.actionExecutingLabel",
+    defaultMessage: "Verifying...",
+    description:
+      "Label of the button when the activity 'claim social media data' is being executed",
+  }),
   action: action,
 };

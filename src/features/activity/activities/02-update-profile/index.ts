@@ -18,6 +18,12 @@ export const activity: Activity = {
     defaultMessage: "Verify",
     description: "Label of the button to start the activity update profile",
   }),
+  actionExecutingLabel: defineMessage({
+    id: "activities.updateProfile.actionExecutingLabel",
+    defaultMessage: "Verifying...",
+    description:
+      "Label of the button when the activity 'update your profile' is being executed",
+  }),
   action: action,
   resources: [
     {

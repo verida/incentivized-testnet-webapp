@@ -19,6 +19,12 @@ export const activity: Activity = {
     defaultMessage: "Verify",
     description: "Label of the button to start the activity create identity",
   }),
+  actionExecutingLabel: defineMessage({
+    id: "activities.createVeridaIdentity.actionExecutingLabel",
+    defaultMessage: "Verifying...",
+    description:
+      "Label of the button when the activity 'create Verida Identity' is being executed",
+  }),
   action: action,
   resources: [
     {

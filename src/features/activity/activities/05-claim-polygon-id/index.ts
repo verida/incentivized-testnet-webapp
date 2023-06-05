@@ -19,5 +19,11 @@ export const activity: Activity = {
     defaultMessage: "Verify",
     description: "Label of the button to start the activity claim polygon id",
   }),
+  actionExecutingLabel: defineMessage({
+    id: "activities.claimPolygonId.actionExecutingLabel",
+    defaultMessage: "Verifying...",
+    description:
+      "Label of the button when the activity 'claim Polygon ID' is being executed",
+  }),
   action: action,
 };

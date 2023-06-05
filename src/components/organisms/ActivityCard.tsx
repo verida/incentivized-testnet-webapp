@@ -121,7 +121,9 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
                     onClick={() => void handleExecuteActivity()}
                     disabled={executing}
                   >
-                    {i18n.formatMessage(activity.actionLabel)}
+                    {executing
+                      ? i18n.formatMessage(activity.actionExecutingLabel)
+                      : i18n.formatMessage(activity.actionLabel)}
                   </Button>
                 ) : (
                   <ActivityStatus status={status} />

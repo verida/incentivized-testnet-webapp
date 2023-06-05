@@ -8,7 +8,7 @@ import { action } from "./action";
 
 export const activity: Activity = {
   id: "refer-friend", // Never change the id
-  enabled: false,
+  enabled: true,
   visible: true,
   order: 3,
   title: "Refer a friend",
@@ -17,6 +17,12 @@ export const activity: Activity = {
     id: "activities.referFriend.actionLabel",
     defaultMessage: "Get Referal Link",
     description: "Label of the button to start the activity refer friend",
+  }),
+  actionExecutingLabel: defineMessage({
+    id: "activities.referFriend.actionExecutingLabel",
+    defaultMessage: "Preparing...",
+    description:
+      "Label of the button when the activity 'refer friend' is being executed",
   }),
   action: action,
 };
