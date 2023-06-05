@@ -23,8 +23,8 @@ export type Activity = {
   shortDescription: string;
   longDescription?: string;
   instructions?: string[];
-  resourceUrls?: Resource[];
-  videoUrl?: Resource;
+  resources?: Resource[];
+  video?: Resource;
   footnote?: string;
   actionLabel: MessageDescriptor;
   action: ActivityAction;

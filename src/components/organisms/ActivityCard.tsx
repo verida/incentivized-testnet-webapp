@@ -50,6 +50,12 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
     }
   }, [executeActivity, activity.id]);
 
+  const resourcesSectionTitle = i18n.formatMessage({
+    id: "ActivityCard.resourcesSectionTitle",
+    description: "Title of the resources section in each activity card",
+    defaultMessage: "Resources:",
+  });
+
   const connectButtonLabel = i18n.formatMessage({
     id: "ActivityCard.connectButtonLabel",
     description: "Label of the Connect button in each activity card",
@@ -81,6 +87,27 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
           <div>
             <p>{shortDescription}</p>
           </div>
+          {enabled && activity.resources && activity.resources.length > 0 ? (
+            <div>
+              <p className="font-semibold text-primary/70">
+                {resourcesSectionTitle}
+              </p>
+              <ul>
+                {activity.resources.map((resource, index) => (
+                  <li key={index}>
+                    <a
+                      href={resource.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline"
+                    >
+                      {resource.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
         </div>
         <div className="flex flex-row md:flex-col justify-center whitespace-nowrap">
           {enabled ? (

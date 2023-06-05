@@ -15,6 +15,14 @@
     "defaultMessage": "Open Terms of Use",
     "description": "Label of the button to open the terms and conditions modal on each activity card"
   },
+  "ActivityCard.resourcesSectionTitle": {
+    "defaultMessage": "Resources:",
+    "description": "Title of the resources section in each activity card"
+  },
+  "ActivityStatus.activityCheckingLabel": {
+    "defaultMessage": "Checking...",
+    "description": "Label of the status for a disabled activity"
+  },
   "ActivityStatus.activityCompletedStatusLabel": {
     "defaultMessage": "Completed",
     "description": "Label of the status for a completed activity"

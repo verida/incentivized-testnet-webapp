@@ -20,4 +20,10 @@ export const activity: Activity = {
     description: "Label of the button to start the activity create identity",
   }),
   action: action,
+  resources: [
+    {
+      label: "How to create a Verida Identity",
+      url: "https://verida.io",
+    },
+  ],
 };

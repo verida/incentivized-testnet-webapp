@@ -19,4 +19,10 @@ export const activity: Activity = {
     description: "Label of the button to start the activity update profile",
   }),
   action: action,
+  resources: [
+    {
+      label: "How to update your Verida Identity profile",
+      url: "https://verida.io",
+    },
+  ],
 };

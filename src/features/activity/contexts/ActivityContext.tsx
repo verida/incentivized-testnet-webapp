@@ -1,5 +1,6 @@
 import { createContext, useCallback, useMemo } from "react";
 
+import { config } from "~/config";
 import {
   Activity,
   UserActivity,
@@ -72,7 +73,7 @@ export const ActivityProvider: React.FunctionComponent<
 
   const contextValue: ActivityContextType = useMemo(
     () => ({
-      activities: activities.filter((a) => a.visible),
+      activities: activities.filter((a) => (config.devMode ? true : a.visible)),
       userActivities: userActivities || [],
       getUserActivity,
       executeActivity,
