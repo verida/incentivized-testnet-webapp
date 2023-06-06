@@ -24,7 +24,7 @@ const webUserInstance = new WebUser({
   },
   accountConfig: {
     request: {
-      logoUrl: config.veridaLogoUrl,
+      logoUrl: config.veridaConnectLogoUrl,
     },
   },
 });
