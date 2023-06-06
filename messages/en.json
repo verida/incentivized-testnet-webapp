@@ -19,6 +19,30 @@
     "defaultMessage": "Resources:",
     "description": "Title of the resources section in each activity card"
   },
+  "ActivityProvider.activityAlreadyExecutedNotificationMessage": {
+    "defaultMessage": "Activity already executed",
+    "description": "Notification message when user tries to execute an activity but the activity is already executed"
+  },
+  "ActivityProvider.activityExecutionCompletedNotificationMessage": {
+    "defaultMessage": "Congrats, you have completed the activity",
+    "description": "Notification message when user completes an activity"
+  },
+  "ActivityProvider.activityExecutionPendingNotificationMessage": {
+    "defaultMessage": "The activity is pending, check the next step in the instructions",
+    "description": "Notification message when after the execution, an activity is in pending state"
+  },
+  "ActivityProvider.activityExecutionTodoNotificationMessage": {
+    "defaultMessage": "Hmm, the activity was not completed properly",
+    "description": "Notification message when executing an activity reset back to its todo status"
+  },
+  "ActivityProvider.activityNotFoundNotificationMessage": {
+    "defaultMessage": "Activity not found",
+    "description": "Notification message when user tries to execute an activity but the activity is not found"
+  },
+  "ActivityProvider.termsNotAcceptedNotificationMessage": {
+    "defaultMessage": "Please accept the terms and conditions",
+    "description": "Notification message when user tries to execute an activity but the terms and conditions are not accepted"
+  },
   "ActivityStatus.activityCheckingLabel": {
     "defaultMessage": "Checking...",
     "description": "Label of the status for a disabled activity"
@@ -67,21 +91,25 @@
     "defaultMessage": "Connect",
     "description": "Label of the Connect button in the Header"
   },
-  "HomeHero.description": {
-    "defaultMessage": "The purpose of the Verida incentivized testnet is to stress-test network infrastructure and prepare storage node operations for mainnet. The program covers security, tooling, and UX testing across the Verida network and ecosystem of apps. Users will be rewarded VDA for participating in the testing process.",
-    "description": "Description of the Verida incentivized testnet program"
+  "HomeHero.descriptionPart1": {
+    "defaultMessage": "The purpose of Verida Missions incentivized testnet is to stress-test network infrastructure, Verida applications and prepare storage node operations for the Verida mainnet.",
+    "description": "Description (part 1) of the Verida incentivized testnet program"
+  },
+  "HomeHero.descriptionPart2": {
+    "defaultMessage": "By undertaking the following activities, you'll play a vital role in preparing the Verida network for mainnet.",
+    "description": "Description (part 2) of the Verida incentivized testnet program"
+  },
+  "HomeHero.descriptionPart3": {
+    "defaultMessage": "More missions will be released throughout the program. Get started now with the first mission below.",
+    "description": "Description (part 3) of the Verida incentivized testnet program"
+  },
+  "HomeHero.descriptionPart4": {
+    "defaultMessage": "Are you ready to ignite your journey? The countdown to the Verida mainnet begins now!",
+    "description": "Description (part 4) of the Verida incentivized testnet program"
   },
   "HomeHero.subtitle": {
     "defaultMessage": "Participate, learn, test and get rewarded",
     "description": "Subtitle or tag line displayed in the hero section"
-  },
-  "HomeHero.title": {
-    "defaultMessage": "Incentivized Testnet",
-    "description": "Main title displayed in the hero section"
-  },
-  "HomeView.activitiesTitle": {
-    "defaultMessage": "Activities",
-    "description": "Title for the activities section"
   },
   "HomeView.termsConditionsAlertAcceptButtonLabel": {
     "defaultMessage": "Open Terms of Use",
@@ -95,28 +123,56 @@
     "defaultMessage": "Verida Incentivized Testnet Terms of Use",
     "description": "Title for the terms and conditions page"
   },
+  "activities.claimPolygonId.actionExecutingLabel": {
+    "defaultMessage": "Verifying...",
+    "description": "Label of the button when the activity 'claim Polygon ID' is being executed"
+  },
   "activities.claimPolygonId.actionLabel": {
     "defaultMessage": "Verify",
     "description": "Label of the button to start the activity claim polygon id"
+  },
+  "activities.claimSocialMediaData.actionExecutingLabel": {
+    "defaultMessage": "Verifying...",
+    "description": "Label of the button when the activity 'claim social media data' is being executed"
   },
   "activities.claimSocialMediaData.actionLabel": {
     "defaultMessage": "Verify",
     "description": "Label of the button to start the activity claim social media data"
   },
+  "activities.createVeridaIdentity.actionExecutingLabel": {
+    "defaultMessage": "Verifying...",
+    "description": "Label of the button when the activity 'create Verida Identity' is being executed"
+  },
   "activities.createVeridaIdentity.actionLabel": {
     "defaultMessage": "Verify",
     "description": "Label of the button to start the activity create identity"
+  },
+  "activities.referFriend.actionExecutingLabel": {
+    "defaultMessage": "Preparing...",
+    "description": "Label of the button when the activity 'refer friend' is being executed"
   },
   "activities.referFriend.actionLabel": {
     "defaultMessage": "Get Referal Link",
     "description": "Label of the button to start the activity refer friend"
   },
+  "activities.updateProfile.actionExecutingLabel": {
+    "defaultMessage": "Verifying...",
+    "description": "Label of the button when the activity 'update your profile' is being executed"
+  },
   "activities.updateProfile.actionLabel": {
     "defaultMessage": "Verify",
     "description": "Label of the button to start the activity update profile"
   },
+  "activities.useMarkdownEditor.actionExecutingLabel": {
+    "defaultMessage": "Verifying...",
+    "description": "Label of the button when the activity 'use markdown editor is being executed"
+  },
   "activities.useMarkdownEditor.actionLabel": {
     "defaultMessage": "Verify",
     "description": "Label of the button to start the activity use markdown editor"
+  },
+  "activity.updateProfile.missingFieldsErrorMessage": {
+    "defaultMessage": "Some information are missing, please fill your public name, description and set an avatar in your profile",
+    "description": "Error message when the user didn't fill all the fields of their profile"
   }
 }
