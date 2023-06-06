@@ -1,5 +1,6 @@
 import React from "react";
 import { useIntl } from "react-intl";
+import { Balancer } from "react-wrap-balancer";
 
 type HomeHeroProps = Omit<React.ComponentPropsWithoutRef<"div">, "children">;
 
@@ -38,13 +39,23 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
       "Are you ready to ignite your journey? The countdown to the Verida mainnet begins now!",
   });
 
+  const balancerRatio = 0.7;
+
   return (
     <div {...props}>
       <div className="flex flex-grow flex-col items-center justify-center text-center gap-2 text-sm">
-        <p>{descriptionPart1}</p>
-        <p>{descriptionPart2}</p>
-        <p>{descriptionPart3}</p>
-        <p>{descriptionPart4}</p>
+        <p>
+          <Balancer ratio={balancerRatio}>{descriptionPart1}</Balancer>
+        </p>
+        <p>
+          <Balancer ratio={balancerRatio}>{descriptionPart2}</Balancer>
+        </p>
+        <p>
+          <Balancer ratio={balancerRatio}>{descriptionPart3}</Balancer>
+        </p>
+        <p>
+          <Balancer ratio={balancerRatio}>{descriptionPart4}</Balancer>
+        </p>
       </div>
     </div>
   );
