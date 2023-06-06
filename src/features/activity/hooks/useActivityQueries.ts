@@ -2,8 +2,8 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { IDatastore } from "@verida/types";
 import { useEffect, useState } from "react";
 
-import { config } from "~/config";
 import {
+  ACTIVITIES_SCHEMA_LATEST_URL,
   deleteActivitiesInDatastore,
   getActivitiesFromDatastore,
   saveActivityInDatastore,
@@ -27,10 +27,7 @@ export function useActivityQueries(
       return;
     }
     const getDatastore = async () => {
-      if (!config.schemas.activitiesSchemaUrl) {
-        throw new Error("Activities Schema URL must be defined");
-      }
-      const datastore = await openDatastore(config.schemas.activitiesSchemaUrl);
+      const datastore = await openDatastore(ACTIVITIES_SCHEMA_LATEST_URL);
       setTermsDatastore(datastore);
     };
     void getDatastore();

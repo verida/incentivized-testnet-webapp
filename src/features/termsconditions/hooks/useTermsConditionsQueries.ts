@@ -2,8 +2,8 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { IDatastore } from "@verida/types";
 import { useEffect, useState } from "react";
 
-import { config } from "~/config";
 import {
+  TERMS_SCHEMA_LATEST_URL,
   TermsConditionsStatus,
   deleteStatusInDatastore,
   getStatusFromDatastore,
@@ -21,10 +21,7 @@ export function useTermsConditionsQueries(isUserConnected: boolean) {
       return;
     }
     const getDatastore = async () => {
-      if (!config.schemas.termsSchemaUrl) {
-        throw new Error("Terms Schema URL must be defined");
-      }
-      const datastore = await openDatastore(config.schemas.termsSchemaUrl);
+      const datastore = await openDatastore(TERMS_SCHEMA_LATEST_URL);
       setTermsDatastore(datastore);
     };
     void getDatastore();
