@@ -1,0 +1,178 @@
+{
+  "AcceptTermsAmdConditionsModal.acceptButtonLabel": {
+    "defaultMessage": "Accept",
+    "description": "Label for the accept button"
+  },
+  "AcceptTermsAmdConditionsModal.termsConditionsTitle": {
+    "defaultMessage": "Please read and accept the Terms of Use",
+    "description": "Title for the terms and conditions modal"
+  },
+  "ActivityCard.connectButtonLabel": {
+    "defaultMessage": "Connect",
+    "description": "Label of the Connect button in each activity card"
+  },
+  "ActivityCard.openTermsConditionsButtonLabel": {
+    "defaultMessage": "Open Terms of Use",
+    "description": "Label of the button to open the terms and conditions modal on each activity card"
+  },
+  "ActivityCard.resourcesSectionTitle": {
+    "defaultMessage": "Resources:",
+    "description": "Title of the resources section in each activity card"
+  },
+  "ActivityProvider.activityAlreadyExecutedNotificationMessage": {
+    "defaultMessage": "Activity already executed",
+    "description": "Notification message when user tries to execute an activity but the activity is already executed"
+  },
+  "ActivityProvider.activityExecutionCompletedNotificationMessage": {
+    "defaultMessage": "Congrats, you have completed the activity",
+    "description": "Notification message when user completes an activity"
+  },
+  "ActivityProvider.activityExecutionPendingNotificationMessage": {
+    "defaultMessage": "The activity is pending, check the next step in the instructions",
+    "description": "Notification message when after the execution, an activity is in pending state"
+  },
+  "ActivityProvider.activityExecutionTodoNotificationMessage": {
+    "defaultMessage": "Hmm, the activity was not completed properly",
+    "description": "Notification message when executing an activity reset back to its todo status"
+  },
+  "ActivityProvider.activityNotFoundNotificationMessage": {
+    "defaultMessage": "Activity not found",
+    "description": "Notification message when user tries to execute an activity but the activity is not found"
+  },
+  "ActivityProvider.termsNotAcceptedNotificationMessage": {
+    "defaultMessage": "Please accept the terms and conditions",
+    "description": "Notification message when user tries to execute an activity but the terms and conditions are not accepted"
+  },
+  "ActivityStatus.activityCheckingLabel": {
+    "defaultMessage": "Checking...",
+    "description": "Label of the status for a disabled activity"
+  },
+  "ActivityStatus.activityCompletedStatusLabel": {
+    "defaultMessage": "Completed",
+    "description": "Label of the status for a completed activity"
+  },
+  "ActivityStatus.activityDisabledLabel": {
+    "defaultMessage": "Coming Soon",
+    "description": "Label of the status for a disabled activity"
+  },
+  "ActivityStatus.activityPendingStatusLabel": {
+    "defaultMessage": "Pending",
+    "description": "Label of the status for a pending activity"
+  },
+  "ActivityStatus.activityTodoStatusLabel": {
+    "defaultMessage": "Start",
+    "description": "Label of the status for an activity to perform"
+  },
+  "ErrorFallbackCard.cardMessage": {
+    "defaultMessage": "If the error persists, try refreshing your browser and cleaning your browser's data.",
+    "description": "Message of the default error fallback card"
+  },
+  "ErrorFallbackCard.cardTtitle": {
+    "defaultMessage": "Oops, something went wrong!",
+    "description": "Title of the default error fallback card"
+  },
+  "ErrorFallbackCard.resetButtonLabel": {
+    "defaultMessage": "Try again",
+    "description": "Label of the 'Try Again' button displayed on the default error fallback card"
+  },
+  "Footer.builtOnLabel": {
+    "defaultMessage": "Built on",
+    "description": "label of the 'built on' text in the footer section"
+  },
+  "Footer.copyrightMessage": {
+    "defaultMessage": "© {copyrightYear} Verida Network",
+    "description": "Copyright message in the footer section"
+  },
+  "Footer.termsAndConditionLinkLabel": {
+    "defaultMessage": "Terms of Use",
+    "description": "Label of the 'Terms and Condition' Link in the footer section"
+  },
+  "Header.connectButtonLabel": {
+    "defaultMessage": "Connect",
+    "description": "Label of the Connect button in the Header"
+  },
+  "HomeHero.descriptionPart1": {
+    "defaultMessage": "The purpose of Verida Missions incentivized testnet is to stress-test network infrastructure, Verida applications and prepare storage node operations for the Verida mainnet.",
+    "description": "Description (part 1) of the Verida incentivized testnet program"
+  },
+  "HomeHero.descriptionPart2": {
+    "defaultMessage": "By undertaking the following activities, you'll play a vital role in preparing the Verida network for mainnet.",
+    "description": "Description (part 2) of the Verida incentivized testnet program"
+  },
+  "HomeHero.descriptionPart3": {
+    "defaultMessage": "More missions will be released throughout the program. Get started now with the first mission below.",
+    "description": "Description (part 3) of the Verida incentivized testnet program"
+  },
+  "HomeHero.descriptionPart4": {
+    "defaultMessage": "Are you ready to ignite your journey? The countdown to the Verida mainnet begins now!",
+    "description": "Description (part 4) of the Verida incentivized testnet program"
+  },
+  "HomeHero.subtitle": {
+    "defaultMessage": "Participate, learn, test and get rewarded",
+    "description": "Subtitle or tag line displayed in the hero section"
+  },
+  "HomeView.termsConditionsAlertAcceptButtonLabel": {
+    "defaultMessage": "Open Terms of Use",
+    "description": "Label for the accept button"
+  },
+  "HomeView.termsConditionsAlertMessage": {
+    "defaultMessage": "You must accept the Terms of Use",
+    "description": "Message for the terms and conditions alert"
+  },
+  "TermsConditionsView.termsConditionsTitle": {
+    "defaultMessage": "Verida Incentivized Testnet Terms of Use",
+    "description": "Title for the terms and conditions page"
+  },
+  "activities.claimPolygonId.actionExecutingLabel": {
+    "defaultMessage": "Verifying...",
+    "description": "Label of the button when the activity 'claim Polygon ID' is being executed"
+  },
+  "activities.claimPolygonId.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity claim polygon id"
+  },
+  "activities.claimSocialMediaData.actionExecutingLabel": {
+    "defaultMessage": "Verifying...",
+    "description": "Label of the button when the activity 'claim social media data' is being executed"
+  },
+  "activities.claimSocialMediaData.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity claim social media data"
+  },
+  "activities.createVeridaIdentity.actionExecutingLabel": {
+    "defaultMessage": "Verifying...",
+    "description": "Label of the button when the activity 'create Verida Identity' is being executed"
+  },
+  "activities.createVeridaIdentity.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity create identity"
+  },
+  "activities.referFriend.actionExecutingLabel": {
+    "defaultMessage": "Preparing...",
+    "description": "Label of the button when the activity 'refer friend' is being executed"
+  },
+  "activities.referFriend.actionLabel": {
+    "defaultMessage": "Get Referal Link",
+    "description": "Label of the button to start the activity refer friend"
+  },
+  "activities.updateProfile.actionExecutingLabel": {
+    "defaultMessage": "Verifying...",
+    "description": "Label of the button when the activity 'update your profile' is being executed"
+  },
+  "activities.updateProfile.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity update profile"
+  },
+  "activities.useMarkdownEditor.actionExecutingLabel": {
+    "defaultMessage": "Verifying...",
+    "description": "Label of the button when the activity 'use markdown editor is being executed"
+  },
+  "activities.useMarkdownEditor.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity use markdown editor"
+  },
+  "activity.updateProfile.missingFieldsErrorMessage": {
+    "defaultMessage": "Some information are missing, please fill your public name, description and set an avatar in your profile",
+    "description": "Error message when the user didn't fill all the fields of their profile"
+  }
+}

@@ -1,1 +1,1 @@
-# incentivized-testnet-webapp
+# Verida Incentivized Testnet Webapp

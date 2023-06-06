@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://localhost:300/schemas/activities/v0.1.0/schema.json",
+  "name": "http://localhost:300/schemas/activities/v0.1.0/schema.json",
+  "title": "Activity",
+  "titlePlural": "Activities",
+  "description": "Status of the activities for the user",
+  "type": "object",
+  "database": {
+    "name": "activities",
+    "indexes": {
+      "insertedAt": ["insertedAt"]
+    }
+  },
+  "allOf": [
+    { "$ref": "https://core.schemas.verida.io/base/v0.1.0/schema.json" },
+    {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "status": {
+          "title": "Status",
+          "type": "string",
+          "enum": ["todo", "pending", "completed"]
+        }
+      },
+      "required": ["id", "status"]
+    }
+  ]
+}

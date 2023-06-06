@@ -1,0 +1,99 @@
+{
+  "name": "incentivized-testnet-webapp",
+  "version": "1.0.0-beta.1",
+  "private": true,
+  "scripts": {
+    "clean:node_modules": "rm -rf node_modules/",
+    "clean:build": "rm -rf build/",
+    "clean": "yarn run clean:build && yarn run clean:node_modules",
+    "messages:extract": "formatjs extract 'src/**/*.ts*' --ignore src/**/*.d.ts* --out-file messages/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]' ",
+    "messages:compile": "formatjs compile-folder --ast messages src/features/i18n/lang/",
+    "check:format": "npx prettier src/ --check",
+    "check:lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
+    "check": "yarn run check:format && yarn run check:lint",
+    "fix:format": "npx prettier src/ --write",
+    "fix:lint": "eslint src/ --fix --ext .js,.jsx,.ts,.tsx",
+    "fix": "yarn run fix:format && yarn run fix:lint",
+    "start": "react-app-rewired start",
+    "prebuild": "yarn run clean:build",
+    "build": "react-app-rewired build",
+    "build:profiler": "yarn run prebuild && react-app-rewired build --profile",
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "test": "react-app-rewired test --passWithNoTests",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@icon-park/react": "^1.4.2",
+    "@tanstack/react-query": "^4.29.12",
+    "@verida/types": "^2.3.1",
+    "@verida/web-helpers": "2.3.4",
+    "crypto-browserify": "^3.12.0",
+    "https-browserify": "^1.0.0",
+    "process": "^0.11.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-error-boundary": "^4.0.8",
+    "react-helmet-async": "^1.3.0",
+    "react-hot-toast": "^2.4.1",
+    "react-intl": "^6.4.2",
+    "react-router-dom": "^6.11.2",
+    "react-wrap-balancer": "^0.5.0",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "tailwindcss": "^3.3.2",
+    "util": "0.12.4",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@formatjs/cli": "^6.1.1",
+    "@tanstack/react-query-devtools": "^4.29.12",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "@trivago/prettier-plugin-sort-imports": "^4.1.1",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.7.13",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.40.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-formatjs": "^4.10.1",
+    "eslint-plugin-functional": "^5.0.8",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsdoc": "^44.2.4",
+    "eslint-plugin-no-loops": "^0.3.0",
+    "eslint-plugin-no-relative-import-paths": "^1.5.2",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "postcss": "^8.4.23",
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.3.0",
+    "react-app-rewired": "^2.2.1",
+    "react-scripts": "5.0.1",
+    "source-map-explorer": "^2.5.3",
+    "typescript": "^4.4.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
