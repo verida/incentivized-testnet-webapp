@@ -5,4 +5,5 @@ export * from "./ErrorFallbackCard";
 export * from "./HeaderMenu";
 export * from "./HomeHero";
 export * from "./Modal";
+export * from "./PageWrapper";
 export * from "./PortalWrapper";

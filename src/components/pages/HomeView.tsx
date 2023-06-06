@@ -1,7 +1,7 @@
 import React from "react";
 import { useIntl } from "react-intl";
 
-import { Alert, HomeHero } from "~/components/molecules";
+import { Alert, HomeHero, PageWrapper } from "~/components/molecules";
 import { ActivityCard } from "~/components/organisms";
 import { useActivity } from "~/features/activity";
 import { useTermsConditions } from "~/features/termsconditions";
@@ -16,6 +16,12 @@ export const HomeView: React.FunctionComponent = () => {
     openAcceptModal,
   } = useTermsConditions();
   const { activities, getUserActivity } = useActivity();
+
+  const tagline = i18n.formatMessage({
+    id: "HomeView.tagline",
+    description: "Tag line displayed at the top of the Home page",
+    defaultMessage: "Participate, learn, test and get rewarded",
+  });
 
   const displayTermsConditionsAlert =
     isConnected && status !== "accepted" && !isCheckingTermsConditions;
@@ -33,8 +39,8 @@ export const HomeView: React.FunctionComponent = () => {
   });
 
   return (
-    <div>
-      <HomeHero className="mt-24" />
+    <PageWrapper title={tagline}>
+      <HomeHero className="mt-4" />
       {displayTermsConditionsAlert && (
         <Alert
           className="mt-6"
@@ -57,6 +63,6 @@ export const HomeView: React.FunctionComponent = () => {
           ))}
         </ul>
       </div>
-    </div>
+    </PageWrapper>
   );
 };
