@@ -20,12 +20,6 @@ export const HomeView: React.FunctionComponent = () => {
   const displayTermsConditionsAlert =
     isConnected && status !== "accepted" && !isCheckingTermsConditions;
 
-  const activitiesTitle = i18n.formatMessage({
-    id: "HomeView.activitiesTitle",
-    defaultMessage: "Activities",
-    description: "Title for the activities section",
-  });
-
   const termsConditionsAlertMessage = i18n.formatMessage({
     id: "HomeView.termsConditionsAlertMessage",
     defaultMessage: "You must accept the Terms of Use",
@@ -40,7 +34,7 @@ export const HomeView: React.FunctionComponent = () => {
 
   return (
     <div>
-      <HomeHero />
+      <HomeHero className="mt-24" />
       {displayTermsConditionsAlert && (
         <Alert
           className="mt-6"
@@ -50,8 +44,7 @@ export const HomeView: React.FunctionComponent = () => {
           type="warning"
         />
       )}
-      <div className="mt-6">
-        <h3 className="text-2xl font-bold">{activitiesTitle}</h3>
+      <div className="mt-16">
         <ul className="flex flex-col w-full gap-4 mt-4">
           {activities.sort().map((activity, index) => (
             <li key={activity.id}>

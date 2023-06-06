@@ -19,6 +19,7 @@ module.exports = {
       "black": "#000000",
       "error": "#CE4B46",
       "green": "#13ce66",
+      "purple": "#8F36FF",
       "gray-light": "#9D9D9D",
       "verida-blue": "#37D5C7",
       "verida-purple": "#5354D1",
@@ -29,9 +30,6 @@ module.exports = {
     extend: {
       animation: {
         "spin-slow": "spin 5s linear infinite",
-      },
-      screens: {
-        sm: "696px",
       },
       spacing: {
         4.5: "1.125rem",

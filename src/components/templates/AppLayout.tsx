@@ -25,7 +25,7 @@ export const AppLayout: React.FunctionComponent = () => {
                 <Outlet />
               </ErrorBoundary>
             </main>
-            <div className="pt-10">
+            <div className="mt-24">
               <Footer />
             </div>
           </div>

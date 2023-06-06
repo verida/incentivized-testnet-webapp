@@ -75,7 +75,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
   return (
     <div {...divProps}>
       <div
-        className={`p-4 rounded-2xl flex flex-col md:flex-row justify-between gap-4 ${background} ${textColor}`}
+        className={`p-4 rounded-2xl flex flex-col sm:flex-row justify-between gap-4 ${background} ${textColor}`}
       >
         <div className="flex flex-col gap-4">
           <div className="flex flex-row gap-4 items-baseline">
@@ -109,7 +109,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
             </div>
           ) : null}
         </div>
-        <div className="flex flex-row md:flex-col justify-center whitespace-nowrap">
+        <div className="flex flex-row sm:flex-col justify-center whitespace-nowrap">
           {enabled ? (
             isConnected ? (
               isChecking ? (

@@ -1,4 +1,4 @@
-import { ReactComponent as VeridaNetworkLogo } from "assets/images/verida_network_logo_with_text.svg";
+import { ReactComponent as VeridaNetworkLogo } from "assets/images/verida_network_logo_with_text_white.svg";
 import React from "react";
 import { useIntl } from "react-intl";
 import { Link } from "react-router-dom";
@@ -32,7 +32,7 @@ export const Footer: React.FunctionComponent = () => {
   );
 
   return (
-    <footer className="flex flex-col items-center justify-center space-y-3 border-t border-solid border-gray-dark py-4 px-6 text-primary/60 sm:flex-row sm:justify-between">
+    <footer className="flex flex-col items-center justify-center space-y-3 border-t border-solid border-gray-dark py-4 px-6 text-primary sm:flex-row sm:justify-between">
       <div className="flex flex-col justify-center sm:order-2">
         <a
           className="flex flex-col items-center"
