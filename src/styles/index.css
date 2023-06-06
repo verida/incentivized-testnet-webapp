@@ -8,4 +8,11 @@
   body {
     @apply bg-background font-sans text-sm text-primary;
   }
+
+  .bg-app {
+    background-image: url("./images/bg_top.png"), url("./images/bg_bottom.png");
+    background-position: top, bottom;
+    background-repeat: no-repeat, no-repeat;
+    background-size: auto 500px, auto 500px;
+  }
 }

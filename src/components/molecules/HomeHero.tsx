@@ -45,7 +45,7 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
 
   return (
     <div {...props}>
-      <div className="flex flex-grow flex-col items-center justify-center px-1 text-center">
+      <div className="flex flex-grow flex-col items-center justify-center px-6 text-center">
         <h1 className="text-sm sm:text-base font-bold text-purple uppercase">
           {APP_TITLE}
         </h1>
