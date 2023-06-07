@@ -16,7 +16,7 @@
     "description": "Label of the button to open the terms and conditions modal on each activity card"
   },
   "ActivityCard.resourcesSectionTitle": {
-    "defaultMessage": "Resources:",
+    "defaultMessage": "Learn:",
     "description": "Title of the resources section in each activity card"
   },
   "ActivityProvider.activityAlreadyExecutedNotificationMessage": {
@@ -107,9 +107,9 @@
     "defaultMessage": "Are you ready to ignite your journey? The countdown to the Verida mainnet begins now!",
     "description": "Description (part 4) of the Verida incentivized testnet program"
   },
-  "HomeHero.subtitle": {
+  "HomeView.tagline": {
     "defaultMessage": "Participate, learn, test and get rewarded",
-    "description": "Subtitle or tag line displayed in the hero section"
+    "description": "Tag line displayed at the top of the Home page"
   },
   "HomeView.termsConditionsAlertAcceptButtonLabel": {
     "defaultMessage": "Open Terms of Use",
@@ -120,7 +120,7 @@
     "description": "Message for the terms and conditions alert"
   },
   "TermsConditionsView.termsConditionsTitle": {
-    "defaultMessage": "Verida Incentivized Testnet Terms of Use",
+    "defaultMessage": "Terms of Use",
     "description": "Title for the terms and conditions page"
   },
   "activities.claimPolygonId.actionExecutingLabel": {

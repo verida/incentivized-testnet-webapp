@@ -53,7 +53,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
   const resourcesSectionTitle = i18n.formatMessage({
     id: "ActivityCard.resourcesSectionTitle",
     description: "Title of the resources section in each activity card",
-    defaultMessage: "Resources:",
+    defaultMessage: "Learn:",
   });
 
   const connectButtonLabel = i18n.formatMessage({
