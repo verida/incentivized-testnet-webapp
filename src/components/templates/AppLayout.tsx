@@ -1,7 +1,13 @@
 import React from "react";
 import { Outlet, ScrollRestoration } from "react-router-dom";
 
-import { Footer, Header, HeaderOffset } from "~/components/organisms";
+import {
+  Footer,
+  GetSupportSection,
+  Header,
+  HeaderOffset,
+  LearnMoreSection,
+} from "~/components/organisms";
 import { ErrorBoundary } from "~/features/errors";
 import { MetaTags } from "~/features/metatags";
 
@@ -26,6 +32,8 @@ export const AppLayout: React.FunctionComponent = () => {
               </ErrorBoundary>
             </main>
             <div className="mt-24">
+              <GetSupportSection />
+              <LearnMoreSection />
               <Footer />
             </div>
           </div>

@@ -1,7 +1,11 @@
 {
   "AcceptTermsAmdConditionsModal.acceptButtonLabel": {
     "defaultMessage": "Accept",
-    "description": "Label for the accept button"
+    "description": "Label for the accept button in the Terms & Conditions modal"
+  },
+  "AcceptTermsAmdConditionsModal.rejectButtonLabel": {
+    "defaultMessage": "Reject",
+    "description": "Label for the reject button in the Terms & Conditions modal"
   },
   "AcceptTermsAmdConditionsModal.termsConditionsTitle": {
     "defaultMessage": "Please read and accept the Terms of Use",
@@ -87,6 +91,10 @@
     "defaultMessage": "Terms of Use",
     "description": "Label of the 'Terms and Condition' Link in the footer section"
   },
+  "GetSupportSection.sectionTitle": {
+    "defaultMessage": "Get Support",
+    "description": "Title of the 'Get Support' section"
+  },
   "Header.connectButtonLabel": {
     "defaultMessage": "Connect",
     "description": "Label of the Connect button in the Header"
@@ -118,6 +126,10 @@
   "HomeView.termsConditionsAlertMessage": {
     "defaultMessage": "You must accept the Terms of Use",
     "description": "Message for the terms and conditions alert"
+  },
+  "LearnMoreSection.sectionTitle": {
+    "defaultMessage": "Learn More",
+    "description": "Title of the 'Learn More' section"
   },
   "TermsConditionsView.termsConditionsTitle": {
     "defaultMessage": "Terms of Use",

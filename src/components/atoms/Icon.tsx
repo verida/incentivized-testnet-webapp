@@ -1,10 +1,27 @@
-import { Close, LoadingOne, User } from "@icon-park/react";
+import {
+  Close,
+  LoadingOne,
+  Telegram,
+  Twitter,
+  User,
+  Youtube,
+} from "@icon-park/react";
 import React from "react";
 
 import { ReactComponent as VeridaTick } from "~/assets/icons/verida_tick.svg";
+import { ReactComponent as Discord } from "~/assets/logos/platforms/discord.svg";
+import { ReactComponent as LinkedIn } from "~/assets/logos/platforms/linkedin.svg";
 
 export type GenericIconType = "user" | "close" | "loading" | "verida-tick";
-export type IconType = GenericIconType;
+export type PlatformIconType =
+  | "platform-discord"
+  | "platform-linkedin"
+  | "platform-medium"
+  | "platform-reddit"
+  | "platform-telegram"
+  | "platform-twitter"
+  | "platform-youtube";
+export type IconType = GenericIconType | PlatformIconType;
 
 type IconProps = {
   type: IconType;
@@ -27,6 +44,39 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
           <VeridaTick height={size} width={size} />
         </IconContainer>
       );
+    case "platform-discord":
+      return (
+        <IconContainer {...otherProps}>
+          <Discord height={size} width={size} />
+        </IconContainer>
+      );
+    case "platform-linkedin":
+      return (
+        <IconContainer {...otherProps}>
+          <LinkedIn height={size} width={size} />
+        </IconContainer>
+      );
+    case "platform-reddit":
+      return (
+        <IconContainer {...otherProps}>
+          {/* TODO: Put a custom made Reddit logo */}
+          <LinkedIn height={size} width={size} />
+        </IconContainer>
+      );
+    case "platform-medium":
+      return (
+        <IconContainer {...otherProps}>
+          {/* TODO: Put a custom made Medium logo */}
+          <LinkedIn height={size} width={size} />
+        </IconContainer>
+      );
+    case "platform-twitter":
+      return <Twitter size={size} {...otherProps} />;
+    case "platform-telegram":
+      return <Telegram size={size} {...otherProps} />;
+    case "platform-youtube":
+      return <Youtube size={size} {...otherProps} />;
+
     default:
       throw new Error("A supported type must be defined for the icon");
   }
