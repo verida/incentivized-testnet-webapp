@@ -1,7 +1,6 @@
 import React, { useCallback } from "react";
 import { useIntl } from "react-intl";
 
-import { Button } from "~/components/atoms";
 import { Modal } from "~/components/molecules";
 import { TermsAndConditions } from "~/components/organisms/TermsAndConditions";
 import { useTermsConditions } from "~/features/termsconditions";
@@ -32,20 +31,34 @@ export const AcceptTermsAmdConditionsModal: React.FunctionComponent<
   const acceptButtonLabel = i18n.formatMessage({
     id: "AcceptTermsAmdConditionsModal.acceptButtonLabel",
     defaultMessage: "Accept",
-    description: "Label for the accept button",
+    description: "Label for the accept button in the Terms & Conditions modal",
+  });
+
+  const rejectButtonLabel = i18n.formatMessage({
+    id: "AcceptTermsAmdConditionsModal.rejectButtonLabel",
+    defaultMessage: "Reject",
+    description: "Label for the reject button in the Terms & Conditions modal",
   });
 
   return (
-    <Modal open={open} onClose={onClose} title={termsConditionsTitle}>
-      {/* TODO: Handle scroll in modal for long text */}
-      <div className="flex flex-col">
-        <div className="flex flex-col items-center justify-center gap-12">
-          <TermsAndConditions />
-        </div>
-        <div className="flex flex-row-reverse gap-2 mt-5 sm:mt-8 self-end">
-          <Button onClick={handleAccept}>{acceptButtonLabel}</Button>
-        </div>
-      </div>
+    <Modal
+      open={open}
+      onClose={onClose}
+      title={termsConditionsTitle}
+      actions={[
+        {
+          label: acceptButtonLabel,
+          onClick: handleAccept,
+          variant: "contained",
+        },
+        {
+          label: rejectButtonLabel,
+          onClick: onClose,
+          variant: "text",
+        },
+      ]}
+    >
+      <TermsAndConditions />
     </Modal>
   );
 };
