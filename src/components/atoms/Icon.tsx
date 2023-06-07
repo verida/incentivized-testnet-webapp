@@ -1,16 +1,14 @@
-import {
-  Close,
-  LoadingOne,
-  Telegram,
-  Twitter,
-  User,
-  Youtube,
-} from "@icon-park/react";
+import { Close, LoadingOne, User } from "@icon-park/react";
 import React from "react";
 
 import { ReactComponent as VeridaTick } from "~/assets/icons/verida_tick.svg";
 import { ReactComponent as Discord } from "~/assets/logos/platforms/discord.svg";
 import { ReactComponent as LinkedIn } from "~/assets/logos/platforms/linkedin.svg";
+import { ReactComponent as Medium } from "~/assets/logos/platforms/medium.svg";
+import { ReactComponent as Reddit } from "~/assets/logos/platforms/reddit.svg";
+import { ReactComponent as Telegram } from "~/assets/logos/platforms/telegram.svg";
+import { ReactComponent as Twitter } from "~/assets/logos/platforms/twitter.svg";
+import { ReactComponent as Youtube } from "~/assets/logos/platforms/youtube.svg";
 
 export type GenericIconType = "user" | "close" | "loading" | "verida-tick";
 export type PlatformIconType =
@@ -56,26 +54,36 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
           <LinkedIn height={size} width={size} />
         </IconContainer>
       );
-    case "platform-reddit":
-      return (
-        <IconContainer {...otherProps}>
-          {/* TODO: Put a custom made Reddit logo */}
-          <LinkedIn height={size} width={size} />
-        </IconContainer>
-      );
     case "platform-medium":
       return (
         <IconContainer {...otherProps}>
-          {/* TODO: Put a custom made Medium logo */}
-          <LinkedIn height={size} width={size} />
+          <Medium height={size} width={size} />
+        </IconContainer>
+      );
+    case "platform-reddit":
+      return (
+        <IconContainer {...otherProps}>
+          <Reddit height={size} width={size} />
+        </IconContainer>
+      );
+    case "platform-telegram":
+      return (
+        <IconContainer {...otherProps}>
+          <Telegram height={size} width={size} />
         </IconContainer>
       );
     case "platform-twitter":
-      return <Twitter size={size} {...otherProps} />;
-    case "platform-telegram":
-      return <Telegram size={size} {...otherProps} />;
+      return (
+        <IconContainer {...otherProps}>
+          <Twitter height={size} width={size} />
+        </IconContainer>
+      );
     case "platform-youtube":
-      return <Youtube size={size} {...otherProps} />;
+      return (
+        <IconContainer {...otherProps}>
+          <Youtube height={size} width={size} />
+        </IconContainer>
+      );
 
     default:
       throw new Error("A supported type must be defined for the icon");
