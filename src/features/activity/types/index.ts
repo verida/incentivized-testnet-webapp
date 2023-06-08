@@ -3,7 +3,10 @@ import { MutableRefObject } from "react";
 import type { MessageDescriptor } from "react-intl";
 import { z } from "zod";
 
-import { ActivityRecordSchema } from "~/features/activity";
+import {
+  UserActivityRecordSchema,
+  UserActivitySchema,
+} from "~/features/activity/schemas";
 
 export type Resource = {
   label: string;
@@ -36,6 +39,8 @@ export type Activity = {
   action: ActivityAction;
 };
 
-export type UserActivity = z.infer<typeof ActivityRecordSchema>;
+export type UserActivity = z.infer<typeof UserActivitySchema>;
+
+export type UserActivityRecord = z.infer<typeof UserActivityRecordSchema>;
 
 export type ActivityStatus = "todo" | "pending" | "completed";

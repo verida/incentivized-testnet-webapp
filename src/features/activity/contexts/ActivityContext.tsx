@@ -5,7 +5,7 @@ import { useIntl } from "react-intl";
 import { config } from "~/config";
 import {
   Activity,
-  UserActivity,
+  UserActivityRecord,
   useActivityQueries,
 } from "~/features/activity";
 import { activities } from "~/features/activity/activities";
@@ -14,8 +14,8 @@ import { useVerida } from "~/features/verida";
 
 type ActivityContextType = {
   activities: Activity[];
-  userActivities: UserActivity[];
-  getUserActivity: (activityId: string) => UserActivity | undefined;
+  userActivities: UserActivityRecord[];
+  getUserActivity: (activityId: string) => UserActivityRecord | undefined;
   executeActivity: (activityId: string) => Promise<void>;
   deleteUserActivities: () => void;
 };
@@ -138,7 +138,10 @@ export const ActivityProvider: React.FunctionComponent<
       }
 
       // Save the result
-      saveActivity({ id: activityId, status: result.status });
+      saveActivity({
+        id: activityId,
+        status: result.status,
+      });
     },
     [
       i18n,
