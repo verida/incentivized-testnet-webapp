@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://localhost:300/schemas/activities/v0.1.0/schema.json",
-  "name": "http://localhost:300/schemas/activities/v0.1.0/schema.json",
+  "$id": "https://missions.verida.network/schemas/activities/v1.0.0/schema.json",
+  "name": "https://missions.verida.network/schemas/activities/v1.0.0/schema.json",
   "title": "Activity",
   "titlePlural": "Activities",
   "description": "Status of the activities for the user",
@@ -24,6 +24,12 @@
           "title": "Status",
           "type": "string",
           "enum": ["todo", "pending", "completed"]
+        },
+        "completionDate": {
+          "title": "Completion Date",
+          "description": "Date/time this activity was completed",
+          "type": "string",
+          "format": "date-time"
         }
       },
       "required": ["id", "status"]
