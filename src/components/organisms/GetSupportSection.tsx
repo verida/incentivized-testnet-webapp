@@ -6,7 +6,7 @@ import { ButtonLink, Icon } from "~/components/atoms";
 const links = [
   {
     label: "Discord",
-    url: "https://discord.gg/verida",
+    url: "https://discord.verida.io/",
     icon: <Icon type="platform-discord" />,
   },
   {
@@ -16,27 +16,27 @@ const links = [
   },
   {
     label: "Telegram",
-    url: "https://twitter.com/verida_io",
+    url: "https://t.me/verida_community",
     icon: <Icon type="platform-telegram" />,
   },
   {
     label: "Medium",
-    url: "https://twitter.com/verida_io",
+    url: "https://news.verida.io/",
     icon: <Icon type="platform-medium" />,
   },
   {
     label: "LinkedIn",
-    url: "https://twitter.com/verida_io",
+    url: "https://www.linkedin.com/company/verida-technology",
     icon: <Icon type="platform-linkedin" />,
   },
   {
     label: "Youtube",
-    url: "https://twitter.com/verida_io",
+    url: "https://www.youtube.com/@verida_io",
     icon: <Icon type="platform-youtube" />,
   },
   {
     label: "Reddit",
-    url: "https://twitter.com/verida_io",
+    url: "https://www.reddit.com/r/Verida/",
     icon: <Icon type="platform-reddit" />,
   },
 ];
