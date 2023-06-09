@@ -12,7 +12,11 @@ import { useActivity } from "~/features/activity";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
-export const Header: React.FC = () => {
+type HeaderProps = React.ComponentPropsWithoutRef<"header">;
+
+export const Header: React.FunctionComponent<HeaderProps> = (props) => {
+  const { ...headerProps } = props;
+
   const i18n = useIntl();
   const [openMenu, setOpenMenu] = useState(false);
   const { connect, disconnect, isConnected, profile, did } = useVerida();
@@ -66,42 +70,44 @@ export const Header: React.FC = () => {
   ];
 
   return (
-    <header className="flex flex-row justify-between border-b border-solid border-gray-dark bg-translucent px-4 pt-3 pb-[calc(0.75rem_-_1px)] backdrop-blur-[15px] sm:px-6">
-      <h1 className="justify-self-start">
-        <Link to="/">
-          <div className={`aspect-[10/6.97] ${contentHeight} sm:hidden`}>
-            <VeridaNetworkLogo height="100%" width="100%" />
-          </div>
-          <div className={`hidden aspect-[10/3] ${contentHeight} sm:block`}>
-            <VeridaNetworkLogoWithText height="100%" width="100%" />
-          </div>
-        </Link>
-      </h1>
-      <div className="flex items-center justify-between justify-self-end">
-        {isConnected ? (
-          <>
-            <button
-              className=" -mr-4 sm:-mr-6 text-start"
-              onClick={handleOpenMenu}
-            >
-              <AvatarWithInfo
-                did={did}
-                image={profile?.avatarUri}
-                name={profile?.name}
-                className={`${contentHeight} max-w-[220px]`}
+    <header {...headerProps}>
+      <div className="flex flex-row justify-between border-b border-solid border-gray-dark bg-translucent px-4 pt-3 pb-[calc(0.75rem_-_1px)] backdrop-blur-[15px] sm:px-6">
+        <div className="justify-self-start">
+          <Link to="/">
+            <div className={`aspect-[10/6.97] ${contentHeight} sm:hidden`}>
+              <VeridaNetworkLogo height="100%" width="100%" />
+            </div>
+            <div className={`hidden aspect-[10/3] ${contentHeight} sm:block`}>
+              <VeridaNetworkLogoWithText height="100%" width="100%" />
+            </div>
+          </Link>
+        </div>
+        <div className="flex items-center justify-between justify-self-end">
+          {isConnected ? (
+            <>
+              <button
+                className=" -mr-4 sm:-mr-6 text-start"
+                onClick={handleOpenMenu}
+              >
+                <AvatarWithInfo
+                  did={did}
+                  image={profile?.avatarUri}
+                  name={profile?.name}
+                  className={`${contentHeight} max-w-[220px]`}
+                />
+              </button>
+              <HeaderMenu
+                open={openMenu}
+                onClose={handleCloseMenu}
+                items={menuItems}
               />
-            </button>
-            <HeaderMenu
-              open={openMenu}
-              onClose={handleCloseMenu}
-              items={menuItems}
-            />
-          </>
-        ) : (
-          <Button onClick={handleConnect} size="medium">
-            {connectButtonLabel}
-          </Button>
-        )}
+            </>
+          ) : (
+            <Button onClick={handleConnect} size="medium">
+              {connectButtonLabel}
+            </Button>
+          )}
+        </div>
       </div>
     </header>
   );

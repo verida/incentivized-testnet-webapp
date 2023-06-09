@@ -50,7 +50,7 @@ export const HomeView: React.FunctionComponent = () => {
           type="warning"
         />
       )}
-      <div className="mt-16">
+      <article className="mt-16">
         <ul className="flex flex-col w-full gap-4 mt-4">
           {activities.sort().map((activity, index) => (
             <li key={activity.id}>
@@ -62,7 +62,7 @@ export const HomeView: React.FunctionComponent = () => {
             </li>
           ))}
         </ul>
-      </div>
+      </article>
     </PageWrapper>
   );
 };
