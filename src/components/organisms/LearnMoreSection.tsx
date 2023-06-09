@@ -25,7 +25,7 @@ export const LearnMoreSection: React.FunctionComponent = () => {
   return (
     <aside className="p-4 flex flex-col justify-center items-center gap-4">
       <p className="w-full text-center font-semibold text-lg">{sectionTitle}</p>
-      <ul className="flex flex-col w-full text-center gap-2">
+      <ul className="flex flex-col w-full text-center gap-3">
         {links.map((link) => (
           <li key={link.url}>
             <a
