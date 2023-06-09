@@ -78,9 +78,9 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
             <div className="bg-primary-15 aspect-square h-8 rounded-full flex justify-center items-center">
               {index}
             </div>
-            <h3 className="text-xl font-semibold">
+            <h4 className="text-xl font-semibold">
               {i18n.formatMessage(title)}
-            </h3>
+            </h4>
           </header>
           <div>
             <p>{i18n.formatMessage(shortDescription)}</p>

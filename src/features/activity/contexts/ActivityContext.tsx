@@ -3,17 +3,20 @@ import { toast } from "react-hot-toast";
 import { useIntl } from "react-intl";
 
 import { config } from "~/config";
-import {
-  Activity,
-  UserActivityRecord,
-  useActivityQueries,
-} from "~/features/activity";
 import { activities } from "~/features/activity/activities";
+import { useActivityQueries } from "~/features/activity/hooks";
+import { missions } from "~/features/activity/missions";
+import type {
+  Activity,
+  Mission,
+  UserActivityRecord,
+} from "~/features/activity/types";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
 type ActivityContextType = {
   activities: Activity[];
+  missions: Mission[];
   userActivities: UserActivityRecord[];
   getUserActivity: (activityId: string) => UserActivityRecord | undefined;
   executeActivity: (activityId: string) => Promise<void>;
@@ -220,6 +223,7 @@ export const ActivityProvider: React.FunctionComponent<
 
   const contextValue: ActivityContextType = useMemo(
     () => ({
+      missions: missions.filter((m) => (config.devMode ? true : m.visible)),
       activities: activities.filter((a) => (config.devMode ? true : a.visible)),
       userActivities: userActivities || [],
       getUserActivity,

@@ -2,7 +2,7 @@ import React from "react";
 import { useIntl } from "react-intl";
 
 import { Alert, HomeHero, PageWrapper } from "~/components/molecules";
-import { ActivityCard } from "~/components/organisms";
+import { MissionSection } from "~/components/organisms";
 import { useActivity } from "~/features/activity";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
@@ -15,7 +15,7 @@ export const HomeView: React.FunctionComponent = () => {
     isCheckingStatus: isCheckingTermsConditions,
     openAcceptModal,
   } = useTermsConditions();
-  const { activities, getUserActivity } = useActivity();
+  const { missions } = useActivity();
 
   const tagline = i18n.formatMessage({
     id: "HomeView.tagline",
@@ -50,19 +50,15 @@ export const HomeView: React.FunctionComponent = () => {
           type="warning"
         />
       )}
-      <article className="mt-16">
-        <ul className="flex flex-col w-full gap-4 mt-4">
-          {activities.sort().map((activity, index) => (
-            <li key={activity.id}>
-              <ActivityCard
-                index={index + 1}
-                activity={activity}
-                status={getUserActivity(activity.id)?.status || "todo"}
-              />
-            </li>
-          ))}
-        </ul>
-      </article>
+      <div className="mt-16">
+        {missions.map((mission) => (
+          <MissionSection
+            key={mission.id}
+            mission={mission}
+            className="mt-16"
+          />
+        ))}
+      </div>
     </PageWrapper>
   );
 };

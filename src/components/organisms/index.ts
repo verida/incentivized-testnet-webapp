@@ -4,4 +4,5 @@ export * from "./Footer";
 export * from "./GetSupportSection";
 export * from "./Header";
 export * from "./LearnMoreSection";
+export * from "./MissionSection";
 export * from "./TermsAndConditions";
