@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import { useIntl } from "react-intl";
 
 import { DEFAULT_META_DESCRIPTION, DEFAULT_META_TITLE } from "~/constants";
 
@@ -12,11 +13,11 @@ type MetaTagsProps = {
 export const MetaTags: React.FunctionComponent<MetaTagsProps> = (props) => {
   const { title, description, children } = props;
 
-  const metaTitle = title
-    ? `${title} - ${DEFAULT_META_TITLE}`
-    : DEFAULT_META_TITLE;
+  const i18n = useIntl();
 
-  const metaDescription = description || DEFAULT_META_DESCRIPTION;
+  const metaTitle = title || i18n.formatMessage(DEFAULT_META_TITLE);
+  const metaDescription =
+    description || i18n.formatMessage(DEFAULT_META_DESCRIPTION);
 
   return (
     <Helmet prioritizeSeoTags>
