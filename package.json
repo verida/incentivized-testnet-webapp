@@ -1,6 +1,6 @@
 {
   "name": "incentivized-testnet-webapp",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "private": true,
   "scripts": {
     "clean:node_modules": "rm -rf node_modules/",
