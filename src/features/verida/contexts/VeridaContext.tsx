@@ -85,14 +85,12 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
   }, [updateStates]);
 
   useEffect(() => {
-    updateStates();
     webUserInstance.addListener("connected", veridaEventListener);
     webUserInstance.addListener("profileChanged", veridaEventListener);
     webUserInstance.addListener("disconnected", veridaEventListener);
+    void webUserInstance.isConnected(); // Will trigger a 'connected' event if already connected and therefore update the states
     return () => {
-      webUserInstance.removeListener("connected", veridaEventListener);
-      webUserInstance.removeListener("profileChanged", veridaEventListener);
-      webUserInstance.removeListener("disconnected", veridaEventListener);
+      webUserInstance.removeAllListeners();
     };
   }, [updateStates, veridaEventListener]);
 

@@ -29,7 +29,7 @@ export const TermsConditionsProvider: React.FunctionComponent<
   const { isConnected } = useVerida();
 
   const { isCheckingStatus, status, saveStatus, deleteStatus } =
-    useTermsConditionsQueries(isConnected);
+    useTermsConditionsQueries();
 
   useEffect(() => {
     if (!isConnected || isCheckingStatus || status === "accepted") {

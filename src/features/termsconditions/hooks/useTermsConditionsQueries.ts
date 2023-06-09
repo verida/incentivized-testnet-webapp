@@ -11,13 +11,14 @@ import {
 } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
-export function useTermsConditionsQueries(isUserConnected: boolean) {
+export function useTermsConditionsQueries() {
   const [termsDatastore, setTermsDatastore] = useState<IDatastore | null>(null);
-  const { did, openDatastore } = useVerida();
+  const { isConnected, did, openDatastore } = useVerida();
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    if (!isUserConnected) {
+    if (!isConnected) {
+      setTermsDatastore(null);
       return;
     }
     const getDatastore = async () => {
@@ -25,7 +26,7 @@ export function useTermsConditionsQueries(isUserConnected: boolean) {
       setTermsDatastore(datastore);
     };
     void getDatastore();
-  }, [isUserConnected, openDatastore]);
+  }, [isConnected, openDatastore]);
 
   // TODO: Handle error state
   const { data: status, isLoading: isCheckingStatus } = useQuery({
