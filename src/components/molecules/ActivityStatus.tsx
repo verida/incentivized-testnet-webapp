@@ -2,10 +2,10 @@ import React from "react";
 import { useIntl } from "react-intl";
 
 import { Icon } from "~/components/atoms";
-import type { ActivityStatus as ActivityStatusType } from "~/features/activity";
+import type { UserActivityStatus } from "~/features/activity";
 
 type ActivityStatusProps = {
-  status: ActivityStatusType | "disabled" | "checking";
+  status: UserActivityStatus | "disabled" | "checking";
 } & Omit<React.ComponentPropsWithoutRef<"div">, "children">;
 
 export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (

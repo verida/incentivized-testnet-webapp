@@ -3,18 +3,14 @@ import { useIntl } from "react-intl";
 
 import { Button } from "~/components/atoms";
 import { ActivityStatus } from "~/components/molecules";
-import {
-  Activity,
-  ActivityStatus as ActivityStatusType,
-  useActivity,
-} from "~/features/activity";
+import { Activity, UserActivityStatus, useActivity } from "~/features/activity";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
 type ActivityCardProps = {
   index: number;
   activity: Activity;
-  status: ActivityStatusType;
+  status: UserActivityStatus;
 } & Omit<React.ComponentPropsWithoutRef<"section">, "children">;
 
 export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
@@ -82,10 +78,12 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
             <div className="bg-primary-15 aspect-square h-8 rounded-full flex justify-center items-center">
               {index}
             </div>
-            <h3 className="text-xl font-semibold">{title}</h3>
+            <h3 className="text-xl font-semibold">
+              {i18n.formatMessage(title)}
+            </h3>
           </header>
           <div>
-            <p>{shortDescription}</p>
+            <p>{i18n.formatMessage(shortDescription)}</p>
           </div>
           {enabled && activity.resources && activity.resources.length > 0 ? (
             <aside>
@@ -101,7 +99,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
                       rel="noopener noreferrer"
                       className="underline"
                     >
-                      {resource.label}
+                      {i18n.formatMessage(resource.label)}
                     </a>
                   </li>
                 ))}

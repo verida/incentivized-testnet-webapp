@@ -28,8 +28,16 @@ export const activity: Activity = {
   enabled: false,
   visible: true,
   order: 4,
-  title: "Use the Markdown editor demo app",
-  shortDescription: "Connect to the demo app and create a new document",
+  title: defineMessage({
+    id: "activities.useMarkdownEditor.title",
+    defaultMessage: "Use the Markdown editor demo app",
+    description: "Title of the activity 'use markdown editor'",
+  }),
+  shortDescription: defineMessage({
+    id: "activities.useMarkdownEditor.shortDescription",
+    defaultMessage: "Connect to the demo app and create a new document",
+    description: "Short description of the activity 'use markdown editor'",
+  }),
   actionLabel: defineMessage({
     id: "activities.useMarkdownEditor.actionLabel",
     defaultMessage: "Verify",

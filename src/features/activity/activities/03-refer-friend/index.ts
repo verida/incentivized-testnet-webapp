@@ -28,8 +28,16 @@ export const activity: Activity = {
   enabled: false,
   visible: true,
   order: 3,
-  title: "Refer a friend",
-  shortDescription: "Invite a friend to join the Verida Incentivized Testnet",
+  title: defineMessage({
+    id: "activities.referFriend.title",
+    defaultMessage: "Refer a friend",
+    description: "Title of the activity 'refer friend'",
+  }),
+  shortDescription: defineMessage({
+    id: "activities.referFriend.shortDescription",
+    defaultMessage: "Invite a friend to join the Verida Incentivized Testnet",
+    description: "Short description of the activity 'refer friend'",
+  }),
   actionLabel: defineMessage({
     id: "activities.referFriend.actionLabel",
     defaultMessage: "Get Referal Link",

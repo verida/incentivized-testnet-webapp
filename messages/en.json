@@ -139,6 +139,14 @@
     "defaultMessage": "Verify",
     "description": "Label of the button to start the activity claim polygon id"
   },
+  "activities.claimPolygonId.shortDescription": {
+    "defaultMessage": "Go to the Polygon ID issuer demo app and claim a KYC Age Credential",
+    "description": "Short description of the activity 'claim Polygon ID'"
+  },
+  "activities.claimPolygonId.title": {
+    "defaultMessage": "Claim a Polygon ID credential",
+    "description": "Title of the activity 'claim Polygon ID'"
+  },
   "activities.claimSocialMediaData.actionExecutingLabel": {
     "defaultMessage": "Verifying...",
     "description": "Label of the button when the activity 'claim social media data' is being executed"
@@ -146,6 +154,14 @@
   "activities.claimSocialMediaData.actionLabel": {
     "defaultMessage": "Verify",
     "description": "Label of the button to start the activity claim social media data"
+  },
+  "activities.claimSocialMediaData.shortDescription": {
+    "defaultMessage": "Connect your Twitter account in the Verida Wallet and extract your data",
+    "description": "Short description of the activity 'claim social media data'"
+  },
+  "activities.claimSocialMediaData.title": {
+    "defaultMessage": "Claim your social media data",
+    "description": "Title of the activity 'claim social media data'"
   },
   "activities.createVeridaIdentity.actionExecutingLabel": {
     "defaultMessage": "Verifying...",
@@ -155,6 +171,18 @@
     "defaultMessage": "Verify",
     "description": "Label of the button to start the activity create identity"
   },
+  "activities.createVeridaIdentity.resources.howToCreateVeridaIdentity.label": {
+    "defaultMessage": "How to create a Verida Identity",
+    "description": "Label of the resource 'How to create a Verida Identity'"
+  },
+  "activities.createVeridaIdentity.shortDescription": {
+    "defaultMessage": "Download the Verida Wallet, create an identity and connect to this webapp",
+    "description": "Short description of the activity 'create identity'"
+  },
+  "activities.createVeridaIdentity.title": {
+    "defaultMessage": "Create a Verida Identity",
+    "description": "Title of the activity 'create identity'"
+  },
   "activities.referFriend.actionExecutingLabel": {
     "defaultMessage": "Preparing...",
     "description": "Label of the button when the activity 'refer friend' is being executed"
@@ -162,6 +190,14 @@
   "activities.referFriend.actionLabel": {
     "defaultMessage": "Get Referal Link",
     "description": "Label of the button to start the activity refer friend"
+  },
+  "activities.referFriend.shortDescription": {
+    "defaultMessage": "Invite a friend to join the Verida Incentivized Testnet",
+    "description": "Short description of the activity 'refer friend'"
+  },
+  "activities.referFriend.title": {
+    "defaultMessage": "Refer a friend",
+    "description": "Title of the activity 'refer friend'"
   },
   "activities.updateProfile.actionExecutingLabel": {
     "defaultMessage": "Verifying...",
@@ -171,6 +207,18 @@
     "defaultMessage": "Verify",
     "description": "Label of the button to start the activity update profile"
   },
+  "activities.updateProfile.resources.howToUpdateYourVeridaIdentityProfile.label": {
+    "defaultMessage": "How to update your Verida Identity profile",
+    "description": "Label of the resource 'How to update your Verida Identity profile'"
+  },
+  "activities.updateProfile.shortDescription": {
+    "defaultMessage": "Update your public name, avatar and description",
+    "description": "Short description of the activity 'update profile'"
+  },
+  "activities.updateProfile.title": {
+    "defaultMessage": "Update your profile",
+    "description": "Title of the activity 'update profile'"
+  },
   "activities.useMarkdownEditor.actionExecutingLabel": {
     "defaultMessage": "Verifying...",
     "description": "Label of the button when the activity 'use markdown editor is being executed"
@@ -178,6 +226,14 @@
   "activities.useMarkdownEditor.actionLabel": {
     "defaultMessage": "Verify",
     "description": "Label of the button to start the activity use markdown editor"
+  },
+  "activities.useMarkdownEditor.shortDescription": {
+    "defaultMessage": "Connect to the demo app and create a new document",
+    "description": "Short description of the activity 'use markdown editor'"
+  },
+  "activities.useMarkdownEditor.title": {
+    "defaultMessage": "Use the Markdown editor demo app",
+    "description": "Title of the activity 'use markdown editor'"
   },
   "activity.updateProfile.missingFieldsErrorMessage": {
     "defaultMessage": "Some information are missing, please fill your public name, description and set an avatar in your profile",

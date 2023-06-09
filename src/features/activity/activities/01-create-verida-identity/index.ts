@@ -37,9 +37,17 @@ export const activity: Activity = {
   enabled: true,
   visible: true,
   order: 1,
-  title: "Create a Verida Identity",
-  shortDescription:
-    "Download the Verida Wallet, create an identity and connect to this webapp",
+  title: defineMessage({
+    id: "activities.createVeridaIdentity.title",
+    defaultMessage: "Create a Verida Identity",
+    description: "Title of the activity 'create identity'",
+  }),
+  shortDescription: defineMessage({
+    id: "activities.createVeridaIdentity.shortDescription",
+    defaultMessage:
+      "Download the Verida Wallet, create an identity and connect to this webapp",
+    description: "Short description of the activity 'create identity'",
+  }),
   actionLabel: defineMessage({
     id: "activities.createVeridaIdentity.actionLabel",
     defaultMessage: "Verify",
@@ -53,7 +61,11 @@ export const activity: Activity = {
   }),
   resources: [
     {
-      label: "How to create a Verida Identity",
+      label: defineMessage({
+        id: "activities.createVeridaIdentity.resources.howToCreateVeridaIdentity.label",
+        defaultMessage: "How to create a Verida Identity",
+        description: "Label of the resource 'How to create a Verida Identity'",
+      }),
       url: "https://verida.io",
     },
   ],

@@ -78,8 +78,16 @@ export const activity: Activity = {
   enabled: true,
   visible: true,
   order: 2,
-  title: "Update your profile",
-  shortDescription: "Update your public name, avatar and description",
+  title: defineMessage({
+    id: "activities.updateProfile.title",
+    defaultMessage: "Update your profile",
+    description: "Title of the activity 'update profile'",
+  }),
+  shortDescription: defineMessage({
+    id: "activities.updateProfile.shortDescription",
+    defaultMessage: "Update your public name, avatar and description",
+    description: "Short description of the activity 'update profile'",
+  }),
   actionLabel: defineMessage({
     id: "activities.updateProfile.actionLabel",
     defaultMessage: "Verify",
@@ -93,7 +101,12 @@ export const activity: Activity = {
   }),
   resources: [
     {
-      label: "How to update your Verida Identity profile",
+      label: defineMessage({
+        id: "activities.updateProfile.resources.howToUpdateYourVeridaIdentityProfile.label",
+        defaultMessage: "How to update your Verida Identity profile",
+        description:
+          "Label of the resource 'How to update your Verida Identity profile'",
+      }),
       url: "https://verida.io",
     },
   ],

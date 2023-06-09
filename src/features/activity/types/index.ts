@@ -10,9 +10,11 @@ import {
 } from "~/features/activity/schemas";
 
 export type Resource = {
-  label: string;
+  label: MessageDescriptor;
   url: string;
 };
+
+// Activity
 
 export type ActivityOnInit = (
   veridaWebUser: MutableRefObject<WebUser>,
@@ -24,7 +26,7 @@ export type ActivityOnExecute = (
 ) => Promise<ActivityOnExecuteResult>;
 
 export type ActivityOnExecuteResult = {
-  status: ActivityStatus;
+  status: UserActivityStatus;
   message?: MessageDescriptor;
 };
 
@@ -37,13 +39,13 @@ export type Activity = {
   enabled: boolean;
   visible: boolean;
   order: number;
-  title: string;
-  shortDescription: string;
-  longDescription?: string;
-  instructions?: string[];
+  title: MessageDescriptor;
+  shortDescription: MessageDescriptor;
+  longDescription?: MessageDescriptor;
+  instructions?: MessageDescriptor[];
   resources?: Resource[];
   video?: Resource;
-  footnote?: string;
+  footnote?: MessageDescriptor;
   actionLabel: MessageDescriptor;
   actionExecutingLabel: MessageDescriptor;
   onInit: ActivityOnInit;
@@ -51,8 +53,10 @@ export type Activity = {
   onUnmount: ActivityOnUnmount;
 };
 
+// User activity
+
 export type UserActivity = z.infer<typeof UserActivitySchema>;
 
 export type UserActivityRecord = z.infer<typeof UserActivityRecordSchema>;
 
-export type ActivityStatus = "todo" | "pending" | "completed";
+export type UserActivityStatus = "todo" | "pending" | "completed";
