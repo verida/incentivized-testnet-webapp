@@ -40,6 +40,12 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     void disconnect();
   }, [handleCloseMenu, disconnect]);
 
+  const homeLinkAriaLabel = i18n.formatMessage({
+    id: "Header.homeLinkAriaLabel",
+    description: "Aria label for the home link in the Header",
+    defaultMessage: "Return to Home page",
+  });
+
   const connectButtonLabel = i18n.formatMessage({
     id: "Header.connectButtonLabel",
     description: "Label of the Connect button in the Header",
@@ -73,7 +79,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     <header {...headerProps}>
       <div className="flex flex-row justify-between border-b border-solid border-gray-dark bg-translucent px-4 pt-3 pb-[calc(0.75rem_-_1px)] backdrop-blur-[15px] sm:px-6">
         <div className="justify-self-start">
-          <Link to="/">
+          <Link to="/" aria-label={homeLinkAriaLabel}>
             <div className={`aspect-[10/6.97] ${contentHeight} sm:hidden`}>
               <VeridaNetworkLogo height="100%" width="100%" />
             </div>
