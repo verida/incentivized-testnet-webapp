@@ -1,3 +1,4 @@
+import { UseMutateFunction } from "@tanstack/react-query";
 import { WebUser } from "@verida/web-helpers";
 import { MutableRefObject } from "react";
 import type { MessageDescriptor } from "react-intl";
@@ -13,14 +14,23 @@ export type Resource = {
   url: string;
 };
 
-export type ActivityAction = (
-  veridaWebUser: MutableRefObject<WebUser>
-) => Promise<ActivityActionResult>;
+export type ActivityOnInit = (
+  veridaWebUser: MutableRefObject<WebUser>,
+  saveActivity: UseMutateFunction<void, unknown, UserActivity>
+) => Promise<void>;
 
-export type ActivityActionResult = {
+export type ActivityOnExecute = (
+  veridaWebUser: MutableRefObject<WebUser>
+) => Promise<ActivityOnExecuteResult>;
+
+export type ActivityOnExecuteResult = {
   status: ActivityStatus;
   message?: MessageDescriptor;
 };
+
+export type ActivityOnUnmount = (
+  veridaWebUser: MutableRefObject<WebUser>
+) => Promise<void>;
 
 export type Activity = {
   id: string;
@@ -36,7 +46,9 @@ export type Activity = {
   footnote?: string;
   actionLabel: MessageDescriptor;
   actionExecutingLabel: MessageDescriptor;
-  action: ActivityAction;
+  onInit: ActivityOnInit;
+  onExecute: ActivityOnExecute;
+  onUnmount: ActivityOnUnmount;
 };
 
 export type UserActivity = z.infer<typeof UserActivitySchema>;

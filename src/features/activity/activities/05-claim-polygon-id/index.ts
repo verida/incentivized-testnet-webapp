@@ -1,13 +1,30 @@
 import { defineMessage } from "react-intl";
 
-import type { Activity } from "~/features/activity/types";
+import type {
+  Activity,
+  ActivityOnExecute,
+  ActivityOnInit,
+  ActivityOnUnmount,
+} from "~/features/activity/types";
+import { wait } from "~/utils";
 
-import { action } from "./action";
+const ACTIVITY_ID = "claim-polygon-id"; // Never change the id
 
-// TODO: Use uuid for id
+const handleInit: ActivityOnInit = () => {
+  return Promise.resolve();
+};
+
+const handleExecute: ActivityOnExecute = async (_veridaWebUser) => {
+  await wait(5000);
+  return { status: "pending" };
+};
+
+const handleUnmount: ActivityOnUnmount = async (_veridaWebUser) => {
+  return Promise.resolve();
+};
 
 export const activity: Activity = {
-  id: "claim-polygon-id", // Never change the id
+  id: ACTIVITY_ID,
   enabled: false,
   visible: true,
   order: 5,
@@ -25,5 +42,7 @@ export const activity: Activity = {
     description:
       "Label of the button when the activity 'claim Polygon ID' is being executed",
   }),
-  action: action,
+  onInit: handleInit,
+  onExecute: handleExecute,
+  onUnmount: handleUnmount,
 };
