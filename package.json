@@ -1,6 +1,6 @@
 {
   "name": "incentivized-testnet-webapp",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "private": true,
   "scripts": {
     "clean:node_modules": "rm -rf node_modules/",
@@ -14,8 +14,8 @@
     "fix:format": "npx prettier src/ --write",
     "fix:lint": "eslint src/ --fix --ext .js,.jsx,.ts,.tsx",
     "fix": "yarn run fix:format && yarn run fix:lint",
-    "start": "react-app-rewired start",
-    "prebuild": "yarn run clean:build",
+    "start": "yarn run messages:compile && react-app-rewired start",
+    "prebuild": "yarn run clean:build && yarn run messages:compile",
     "build": "react-app-rewired build",
     "build:profiler": "yarn run prebuild && react-app-rewired build --profile",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
@@ -25,8 +25,11 @@
   "dependencies": {
     "@icon-park/react": "^1.4.2",
     "@tanstack/react-query": "^4.29.12",
+    "@uidotdev/usehooks": "^2.0.1",
     "@verida/types": "^2.3.1",
     "@verida/web-helpers": "2.3.4",
+    "class-variance-authority": "^0.6.0",
+    "clsx": "^1.2.1",
     "crypto-browserify": "^3.12.0",
     "https-browserify": "^1.0.0",
     "process": "^0.11.10",
@@ -40,6 +43,7 @@
     "react-wrap-balancer": "^0.5.0",
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.2.0",
+    "tailwind-merge": "^1.13.1",
     "tailwindcss": "^3.3.2",
     "util": "0.12.4",
     "zod": "^3.21.4"

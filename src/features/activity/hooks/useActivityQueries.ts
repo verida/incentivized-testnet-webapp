@@ -9,21 +9,18 @@ import {
   saveActivityInDatastore,
 } from "~/features/activity";
 import { UserActivity } from "~/features/activity/types";
-import { TermsConditionsStatus } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
-export function useActivityQueries(
-  isUserConnected: boolean,
-  statusTermsConditions: TermsConditionsStatus
-) {
+export function useActivityQueries() {
   const [activitiesDatastore, setTermsDatastore] = useState<IDatastore | null>(
     null
   );
-  const { did, openDatastore } = useVerida();
+  const { isConnected, did, openDatastore } = useVerida();
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    if (!isUserConnected) {
+    if (!isConnected) {
+      setTermsDatastore(null);
       return;
     }
     const getDatastore = async () => {
@@ -31,7 +28,7 @@ export function useActivityQueries(
       setTermsDatastore(datastore);
     };
     void getDatastore();
-  }, [isUserConnected, openDatastore]);
+  }, [isConnected, openDatastore]);
 
   // TODO: Handle error state
   const { data: userActivities, isLoading: isLoadingActivities } = useQuery({
@@ -67,6 +64,7 @@ export function useActivityQueries(
     });
 
   return {
+    isReady: !!activitiesDatastore,
     userActivities,
     isLoadingActivities,
     saveActivity,

@@ -1,4 +1,4 @@
-import { Icon, IconButton } from "components/atoms";
+import { Button, ButtonVariant, Icon, IconButton } from "components/atoms";
 import React, { useCallback, useId } from "react";
 import { useEffect } from "react";
 
@@ -6,19 +6,22 @@ import { EVENT_TYPE_KEYDOWN, KEY_NAME_ESC } from "~/constants";
 
 import { PortalWrapper } from "./PortalWrapper";
 
+export type ModalAction = {
+  label: string;
+  onClick: () => void;
+  variant: ButtonVariant;
+};
+
 type ModalProps = {
   title?: string;
   open: boolean;
   onClose: () => void;
+  actions?: ModalAction[];
   children: React.ReactNode;
 };
 
-export const Modal: React.FunctionComponent<ModalProps> = ({
-  children,
-  title,
-  open,
-  onClose,
-}) => {
+export const Modal: React.FunctionComponent<ModalProps> = (props) => {
+  const { title, open, onClose, actions, children } = props;
   const labelId = useId();
 
   const handleEscapeKeyPress = useCallback(
@@ -58,7 +61,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
         role="dialog"
         aria-modal="true"
       >
-        <div className="relative p-4 pt-6 sm:p-8 max-h-[90Vh] sm:max-h-[80vh]">
+        <div className="relative p-4 pt-6 sm:p-8 max-h-[90Vh] sm:max-h-[80vh] flex flex-col">
           <div className="mb-5 flex items-center justify-between sm:mb-8">
             <div className="w-8" />
             <h1 className="text-lg font-semibold leading-5" id={labelId}>
@@ -71,7 +74,22 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
               icon={<Icon type="close" size={20} />}
             />
           </div>
-          <div>{children}</div>
+          <div className="overflow-auto pr-2">{children}</div>
+          {actions && actions.length > 0 ? (
+            <div className="mt-5 sm:mt-8">
+              <div className="flex flex-row-reverse gap-2">
+                {actions.map((action) => (
+                  <Button
+                    key={action.label}
+                    onClick={action.onClick}
+                    variant={action.variant}
+                  >
+                    {action.label}
+                  </Button>
+                ))}
+              </div>
+            </div>
+          ) : null}
         </div>
       </div>
     </PortalWrapper>

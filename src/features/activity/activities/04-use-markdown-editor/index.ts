@@ -1,18 +1,45 @@
 import { defineMessage } from "react-intl";
 
-import type { Activity } from "~/features/activity/types";
+import { MISSION_01_ID } from "~/features/activity/missions";
+import type {
+  Activity,
+  ActivityOnExecute,
+  ActivityOnInit,
+  ActivityOnUnmount,
+} from "~/features/activity/types";
+import { wait } from "~/utils";
 
-import { action } from "./action";
+const ACTIVITY_ID = "use-markdown-editor"; // Never change the id
 
-// TODO: Use uuid for id
+const handleInit: ActivityOnInit = () => {
+  return Promise.resolve();
+};
+
+const handleExecute: ActivityOnExecute = async (_veridaWebUser) => {
+  await wait(5000);
+  return { status: "pending" };
+};
+
+const handleUnmount: ActivityOnUnmount = async (_veridaWebUser) => {
+  return Promise.resolve();
+};
 
 export const activity: Activity = {
-  id: "use-markdown-editor", // Never change the id
+  id: ACTIVITY_ID,
+  missionId: MISSION_01_ID,
   enabled: false,
   visible: true,
   order: 4,
-  title: "Use the Markdown editor demo app",
-  shortDescription: "Connect to the demo app and create a new document",
+  title: defineMessage({
+    id: "activities.useMarkdownEditor.title",
+    defaultMessage: "Use the Markdown editor demo app",
+    description: "Title of the activity 'use markdown editor'",
+  }),
+  shortDescription: defineMessage({
+    id: "activities.useMarkdownEditor.shortDescription",
+    defaultMessage: "Connect to the demo app and create a new document",
+    description: "Short description of the activity 'use markdown editor'",
+  }),
   actionLabel: defineMessage({
     id: "activities.useMarkdownEditor.actionLabel",
     defaultMessage: "Verify",
@@ -25,5 +52,7 @@ export const activity: Activity = {
     description:
       "Label of the button when the activity 'use markdown editor is being executed",
   }),
-  action: action,
+  onInit: handleInit,
+  onExecute: handleExecute,
+  onUnmount: handleUnmount,
 };

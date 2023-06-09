@@ -1,41 +1,75 @@
+import { UseMutateFunction } from "@tanstack/react-query";
 import { WebUser } from "@verida/web-helpers";
 import { MutableRefObject } from "react";
 import type { MessageDescriptor } from "react-intl";
 import { z } from "zod";
 
-import { ActivityRecordSchema } from "~/features/activity";
+import {
+  UserActivityRecordSchema,
+  UserActivitySchema,
+} from "~/features/activity/schemas";
 
 export type Resource = {
-  label: string;
+  label: MessageDescriptor;
   url: string;
 };
 
-export type ActivityAction = (
-  veridaWebUser: MutableRefObject<WebUser>
-) => Promise<ActivityActionResult>;
+// Mission
 
-export type ActivityActionResult = {
-  status: ActivityStatus;
-  message?: MessageDescriptor;
-};
-
-export type Activity = {
+export type Mission = {
   id: string;
   enabled: boolean;
   visible: boolean;
   order: number;
-  title: string;
-  shortDescription: string;
-  longDescription?: string;
-  instructions?: string[];
-  resources?: Resource[];
-  video?: Resource;
-  footnote?: string;
-  actionLabel: MessageDescriptor;
-  actionExecutingLabel: MessageDescriptor;
-  action: ActivityAction;
+  title: MessageDescriptor;
+  shortDescription: MessageDescriptor;
+  longDescription?: MessageDescriptor;
 };
 
-export type UserActivity = z.infer<typeof ActivityRecordSchema>;
+// Activity
 
-export type ActivityStatus = "todo" | "pending" | "completed";
+export type ActivityOnInit = (
+  veridaWebUser: MutableRefObject<WebUser>,
+  saveActivity: UseMutateFunction<void, unknown, UserActivity>
+) => Promise<void>;
+
+export type ActivityOnExecute = (
+  veridaWebUser: MutableRefObject<WebUser>
+) => Promise<ActivityOnExecuteResult>;
+
+export type ActivityOnExecuteResult = {
+  status: UserActivityStatus;
+  message?: MessageDescriptor;
+};
+
+export type ActivityOnUnmount = (
+  veridaWebUser: MutableRefObject<WebUser>
+) => Promise<void>;
+
+export type Activity = {
+  id: string;
+  missionId: string;
+  enabled: boolean;
+  visible: boolean;
+  order: number;
+  title: MessageDescriptor;
+  shortDescription: MessageDescriptor;
+  longDescription?: MessageDescriptor;
+  instructions?: MessageDescriptor[];
+  resources?: Resource[];
+  video?: Resource;
+  footnote?: MessageDescriptor;
+  actionLabel: MessageDescriptor;
+  actionExecutingLabel: MessageDescriptor;
+  onInit: ActivityOnInit;
+  onExecute: ActivityOnExecute;
+  onUnmount: ActivityOnUnmount;
+};
+
+// User activity
+
+export type UserActivity = z.infer<typeof UserActivitySchema>;
+
+export type UserActivityRecord = z.infer<typeof UserActivityRecordSchema>;
+
+export type UserActivityStatus = "todo" | "pending" | "completed";

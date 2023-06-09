@@ -1,18 +1,45 @@
 import { defineMessage } from "react-intl";
 
-import type { Activity } from "~/features/activity/types";
+import { MISSION_01_ID } from "~/features/activity/missions";
+import type {
+  Activity,
+  ActivityOnExecute,
+  ActivityOnInit,
+  ActivityOnUnmount,
+} from "~/features/activity/types";
+import { wait } from "~/utils";
 
-import { action } from "./action";
+const ACTIVITY_ID = "refer-friend"; // Never change the id
 
-// TODO: Use uuid for id
+const handleInit: ActivityOnInit = () => {
+  return Promise.resolve();
+};
+
+const handleExecute: ActivityOnExecute = async (_veridaWebUser) => {
+  await wait(5000);
+  return { status: "pending" };
+};
+
+const handleUnmount: ActivityOnUnmount = async (_veridaWebUser) => {
+  return Promise.resolve();
+};
 
 export const activity: Activity = {
-  id: "refer-friend", // Never change the id
-  enabled: true,
+  id: ACTIVITY_ID,
+  missionId: MISSION_01_ID,
+  enabled: false,
   visible: true,
   order: 3,
-  title: "Refer a friend",
-  shortDescription: "Invite a friend to join the Verida Incentivized Testnet",
+  title: defineMessage({
+    id: "activities.referFriend.title",
+    defaultMessage: "Refer a friend",
+    description: "Title of the activity 'refer friend'",
+  }),
+  shortDescription: defineMessage({
+    id: "activities.referFriend.shortDescription",
+    defaultMessage: "Invite a friend to join the Verida Incentivized Testnet",
+    description: "Short description of the activity 'refer friend'",
+  }),
   actionLabel: defineMessage({
     id: "activities.referFriend.actionLabel",
     defaultMessage: "Get Referal Link",
@@ -24,5 +51,7 @@ export const activity: Activity = {
     description:
       "Label of the button when the activity 'refer friend' is being executed",
   }),
-  action: action,
+  onInit: handleInit,
+  onExecute: handleExecute,
+  onUnmount: handleUnmount,
 };

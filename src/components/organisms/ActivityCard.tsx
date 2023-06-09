@@ -3,24 +3,20 @@ import { useIntl } from "react-intl";
 
 import { Button } from "~/components/atoms";
 import { ActivityStatus } from "~/components/molecules";
-import {
-  Activity,
-  ActivityStatus as ActivityStatusType,
-  useActivity,
-} from "~/features/activity";
+import { Activity, UserActivityStatus, useActivity } from "~/features/activity";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
 type ActivityCardProps = {
   index: number;
   activity: Activity;
-  status: ActivityStatusType;
-} & Omit<React.ComponentPropsWithoutRef<"div">, "children">;
+  status: UserActivityStatus;
+} & Omit<React.ComponentPropsWithoutRef<"section">, "children">;
 
 export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
   props
 ) => {
-  const { index, activity, status, ...divProps } = props;
+  const { index, activity, status, ...sectionProps } = props;
   const { title, shortDescription, enabled = false } = activity;
 
   const i18n = useIntl();
@@ -53,7 +49,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
   const resourcesSectionTitle = i18n.formatMessage({
     id: "ActivityCard.resourcesSectionTitle",
     description: "Title of the resources section in each activity card",
-    defaultMessage: "Resources:",
+    defaultMessage: "Learn:",
   });
 
   const connectButtonLabel = i18n.formatMessage({
@@ -73,22 +69,24 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
   const textColor = enabled ? "text-primary" : "text-primary/70";
 
   return (
-    <div {...divProps}>
+    <section {...sectionProps}>
       <div
         className={`p-4 rounded-2xl flex flex-col sm:flex-row justify-between gap-4 ${background} ${textColor}`}
       >
         <div className="flex flex-col gap-4">
-          <div className="flex flex-row gap-4 items-baseline">
+          <header className="flex flex-row gap-4 items-baseline">
             <div className="bg-primary-15 aspect-square h-8 rounded-full flex justify-center items-center">
               {index}
             </div>
-            <p className="text-xl font-semibold">{title}</p>
-          </div>
+            <h4 className="text-xl font-semibold">
+              {i18n.formatMessage(title)}
+            </h4>
+          </header>
           <div>
-            <p>{shortDescription}</p>
+            <p>{i18n.formatMessage(shortDescription)}</p>
           </div>
           {enabled && activity.resources && activity.resources.length > 0 ? (
-            <div>
+            <aside>
               <p className="font-semibold text-primary/70">
                 {resourcesSectionTitle}
               </p>
@@ -101,12 +99,12 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
                       rel="noopener noreferrer"
                       className="underline"
                     >
-                      {resource.label}
+                      {i18n.formatMessage(resource.label)}
                     </a>
                   </li>
                 ))}
               </ul>
-            </div>
+            </aside>
           ) : null}
         </div>
         <div className="flex flex-row sm:flex-col justify-center whitespace-nowrap">
@@ -143,6 +141,6 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
           )}
         </div>
       </div>
-    </div>
+    </section>
   );
 };

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://localhost:300/schemas/terms/v0.1.0/schema.json",
-  "name": "http://localhost:300/schemas/terms/v0.1.0/schema.json",
+  "$id": "https://missions.verida.network/schemas/terms/v1.0.0/schema.json",
+  "name": "https://missions.verida.network/schemas/terms/v1.0.0/schema.json",
   "title": "Term",
   "titlePlural": "Terms and Conditions",
   "description": "Terms and Conditions of the Verida Incentivized Testnet initiative",

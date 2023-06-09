@@ -1,19 +1,46 @@
 import { defineMessage } from "react-intl";
 
-import type { Activity } from "~/features/activity/types";
+import { MISSION_01_ID } from "~/features/activity/missions";
+import type {
+  Activity,
+  ActivityOnExecute,
+  ActivityOnInit,
+  ActivityOnUnmount,
+} from "~/features/activity/types";
+import { wait } from "~/utils";
 
-import { action } from "./action";
+const ACTIVITY_ID = "claim-social-media-data"; // Never change the id
 
-// TODO: Use uuid for id
+const handleInit: ActivityOnInit = () => {
+  return Promise.resolve();
+};
+
+const handleExecute: ActivityOnExecute = async (_veridaWebUser) => {
+  await wait(5000);
+  return { status: "pending" };
+};
+
+const handleUnmount: ActivityOnUnmount = async (_veridaWebUser) => {
+  return Promise.resolve();
+};
 
 export const activity: Activity = {
-  id: "claim-social-media-data", // Never change the id
+  id: ACTIVITY_ID,
+  missionId: MISSION_01_ID,
   enabled: false,
   visible: true,
   order: 6,
-  title: "Claim your social media data",
-  shortDescription:
-    "Connect your Twitter account in the Verida Wallet and extract your data",
+  title: defineMessage({
+    id: "activities.claimSocialMediaData.title",
+    defaultMessage: "Claim your social media data",
+    description: "Title of the activity 'claim social media data'",
+  }),
+  shortDescription: defineMessage({
+    id: "activities.claimSocialMediaData.shortDescription",
+    defaultMessage:
+      "Connect your Twitter account in the Verida Wallet and extract your data",
+    description: "Short description of the activity 'claim social media data'",
+  }),
   actionLabel: defineMessage({
     id: "activities.claimSocialMediaData.actionLabel",
     defaultMessage: "Verify",
@@ -26,5 +53,7 @@ export const activity: Activity = {
     description:
       "Label of the button when the activity 'claim social media data' is being executed",
   }),
-  action: action,
+  onInit: handleInit,
+  onExecute: handleExecute,
+  onUnmount: handleUnmount,
 };

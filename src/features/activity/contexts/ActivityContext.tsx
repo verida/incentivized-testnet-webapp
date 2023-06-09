@@ -3,19 +3,22 @@ import { toast } from "react-hot-toast";
 import { useIntl } from "react-intl";
 
 import { config } from "~/config";
-import {
-  Activity,
-  UserActivity,
-  useActivityQueries,
-} from "~/features/activity";
 import { activities } from "~/features/activity/activities";
+import { useActivityQueries } from "~/features/activity/hooks";
+import { missions } from "~/features/activity/missions";
+import type {
+  Activity,
+  Mission,
+  UserActivityRecord,
+} from "~/features/activity/types";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
 type ActivityContextType = {
   activities: Activity[];
-  userActivities: UserActivity[];
-  getUserActivity: (activityId: string) => UserActivity | undefined;
+  missions: Mission[];
+  userActivities: UserActivityRecord[];
+  getUserActivity: (activityId: string) => UserActivityRecord | undefined;
   executeActivity: (activityId: string) => Promise<void>;
   deleteUserActivities: () => void;
 };
@@ -29,13 +32,68 @@ type ActivityProviderProps = {
 export const ActivityProvider: React.FunctionComponent<
   ActivityProviderProps
 > = (props) => {
+  // const initExecutedForDid = useRef<string>("");
   const i18n = useIntl();
   const { status: statusTermsConditions } = useTermsConditions();
-  const { isConnected, webUserInstanceRef } = useVerida();
-  const { userActivities, saveActivity, deleteActivities } = useActivityQueries(
-    isConnected,
-    statusTermsConditions
-  );
+  const { webUserInstanceRef } = useVerida();
+  // const { isConnected, did, webUserInstanceRef } = useVerida();
+  const {
+    // isReady: isQueriesReady,
+    userActivities,
+    saveActivity,
+    deleteActivities,
+  } = useActivityQueries();
+
+  // Initialise the activities
+  // useEffect(() => {
+  //   if (
+  //     !isQueriesReady ||
+  //     !did ||
+  //     userActivities === undefined ||
+  //     initExecutedForDid.current === did
+  //   ) {
+  //     return;
+  //   }
+
+  //   const initActivities = async () => {
+  //     const results = await Promise.allSettled([
+  //       // TODO: Filter the ones that are already completed
+  //       activities.map((activity) => {
+  //         console.debug("Activity init", activity.id);
+  //         return activity.onInit(webUserInstanceRef, saveActivity);
+  //       }),
+  //     ]);
+
+  //     results.forEach((result) => {
+  //       if (result.status === "rejected") {
+  //         // TODO: Handle error
+  //       }
+  //     });
+  //   };
+  //   void initActivities();
+
+  //   initExecutedForDid.current = did;
+
+  //   // Clean up activities by calling onUnmount
+  //   return () => {
+  //     const unmountActivities = async () => {
+  //       const results = await Promise.allSettled([
+  //         activities.map((activity) => {
+  //           console.debug("Activity unmount", activity.id);
+  //           return activity.onUnmount(webUserInstanceRef);
+  //         }),
+  //       ]);
+
+  //       results.forEach((result) => {
+  //         if (result.status === "rejected") {
+  //           // TODO: Handle error
+  //         }
+  //       });
+  //     };
+
+  //     void unmountActivities();
+  //   };
+  // }, [isQueriesReady, did, userActivities, webUserInstanceRef, saveActivity]);
 
   const executeActivity = useCallback(
     async (activityId: string) => {
@@ -80,7 +138,7 @@ export const ActivityProvider: React.FunctionComponent<
       }
 
       // Execute the action
-      const result = await activity.action(webUserInstanceRef);
+      const result = await activity.onExecute(webUserInstanceRef);
 
       // Handle the result
       switch (result.status) {
@@ -138,7 +196,10 @@ export const ActivityProvider: React.FunctionComponent<
       }
 
       // Save the result
-      saveActivity({ id: activityId, status: result.status });
+      saveActivity({
+        id: activityId,
+        status: result.status,
+      });
     },
     [
       i18n,
@@ -162,6 +223,7 @@ export const ActivityProvider: React.FunctionComponent<
 
   const contextValue: ActivityContextType = useMemo(
     () => ({
+      missions: missions.filter((m) => (config.devMode ? true : m.visible)),
       activities: activities.filter((a) => (config.devMode ? true : a.visible)),
       userActivities: userActivities || [],
       getUserActivity,

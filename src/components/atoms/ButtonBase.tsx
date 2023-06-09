@@ -1,8 +1,8 @@
 import React from "react";
 
-type ButtonVariant = "text" | "contained";
-type ButtonSize = "no-margin" | "small" | "medium" | "large" | "xlarge";
-type ButtonShape = "standard" | "square";
+export type ButtonVariant = "text" | "contained";
+export type ButtonSize = "no-margin" | "small" | "medium" | "large" | "xlarge";
+export type ButtonShape = "standard" | "square";
 
 type ButtonBaseProps = {
   variant?: ButtonVariant;

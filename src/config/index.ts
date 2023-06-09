@@ -1,9 +1,6 @@
 import { EnvironmentType } from "@verida/types";
 
-import { APP_TITLE, VERIDA_CONTEXT_NAME } from "~/constants";
-
-// Application variables
-const appTitle = APP_TITLE;
+import { VERIDA_CONTEXT_NAME } from "~/constants";
 
 const devMode = process.env.REACT_APP_DEV_MODE === "true" ? true : false;
 
@@ -20,7 +17,6 @@ const veridaEnvironment: EnvironmentType =
     : EnvironmentType.TESTNET;
 
 export const config = {
-  appTitle,
   devMode,
   veridaEnvironment,
   veridaContextName,

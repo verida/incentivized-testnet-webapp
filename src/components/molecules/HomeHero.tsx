@@ -28,14 +28,6 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
     description:
       "Description (part 3) of the Verida incentivized testnet program",
     defaultMessage:
-      "More missions will be released throughout the program. Get started now with the first mission below.",
-  });
-
-  const descriptionPart4 = i18n.formatMessage({
-    id: "HomeHero.descriptionPart4",
-    description:
-      "Description (part 4) of the Verida incentivized testnet program",
-    defaultMessage:
       "Are you ready to ignite your journey? The countdown to the Verida mainnet begins now!",
   });
 
@@ -52,9 +44,6 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
         </p>
         <p>
           <Balancer ratio={balancerRatio}>{descriptionPart3}</Balancer>
-        </p>
-        <p>
-          <Balancer ratio={balancerRatio}>{descriptionPart4}</Balancer>
         </p>
       </div>
     </div>
