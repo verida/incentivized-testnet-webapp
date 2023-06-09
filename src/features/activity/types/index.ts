@@ -14,6 +14,18 @@ export type Resource = {
   url: string;
 };
 
+// Mission
+
+export type Mission = {
+  id: string;
+  enabled: boolean;
+  visible: boolean;
+  order: number;
+  title: MessageDescriptor;
+  shortDescription: MessageDescriptor;
+  longDescription?: MessageDescriptor;
+};
+
 // Activity
 
 export type ActivityOnInit = (
@@ -36,6 +48,7 @@ export type ActivityOnUnmount = (
 
 export type Activity = {
   id: string;
+  missionId: string;
   enabled: boolean;
   visible: boolean;
   order: number;
