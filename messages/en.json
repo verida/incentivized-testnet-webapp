@@ -108,12 +108,8 @@
     "description": "Description (part 2) of the Verida incentivized testnet program"
   },
   "HomeHero.descriptionPart3": {
-    "defaultMessage": "More missions will be released throughout the program. Get started now with the first mission below.",
-    "description": "Description (part 3) of the Verida incentivized testnet program"
-  },
-  "HomeHero.descriptionPart4": {
     "defaultMessage": "Are you ready to ignite your journey? The countdown to the Verida mainnet begins now!",
-    "description": "Description (part 4) of the Verida incentivized testnet program"
+    "description": "Description (part 3) of the Verida incentivized testnet program"
   },
   "HomeView.tagline": {
     "defaultMessage": "Participate, learn, test and get rewarded",
