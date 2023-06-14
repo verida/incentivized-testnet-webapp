@@ -99,6 +99,10 @@
     "defaultMessage": "Connect",
     "description": "Label of the Connect button in the Header"
   },
+  "Header.homeLinkAriaLabel": {
+    "defaultMessage": "Return to Home page",
+    "description": "Aria label for the home link in the Header"
+  },
   "HomeHero.descriptionPart1": {
     "defaultMessage": "The purpose of Verida Missions incentivized testnet is to stress-test network infrastructure, Verida applications and prepare storage node operations for the Verida mainnet.",
     "description": "Description (part 1) of the Verida incentivized testnet program"
@@ -127,9 +131,21 @@
     "defaultMessage": "Learn More",
     "description": "Title of the 'Learn More' section"
   },
+  "MissionSection.activitiesSectionTitle": {
+    "defaultMessage": "Activities:",
+    "description": "Title for the activities section"
+  },
+  "MissionSection.comingSoonMessage": {
+    "defaultMessage": "Coming Soon",
+    "description": "Message to display when a mission is not yet available"
+  },
   "TermsConditionsView.termsConditionsTitle": {
     "defaultMessage": "Terms of Use",
     "description": "Title for the terms and conditions page"
+  },
+  "UpcomingActivitiesCTA.JoinDiscordMessage": {
+    "defaultMessage": "Join Verida's Discord community for updates on new activities and missions.",
+    "description": "Message to display in the upcoming activities CTA"
   },
   "activities.claimPolygonId.actionExecutingLabel": {
     "defaultMessage": "Verifying...",
@@ -182,6 +198,10 @@
   "activities.createVeridaIdentity.title": {
     "defaultMessage": "Create a Verida Identity",
     "description": "Title of the activity 'create identity'"
+  },
+  "activities.createVeridaIdentity.video.label": {
+    "defaultMessage": "How to create a Verida Identity",
+    "description": "Label of the video 'How to create a Verida Identity'"
   },
   "activities.referFriend.actionExecutingLabel": {
     "defaultMessage": "Preparing...",
@@ -238,5 +258,29 @@
   "activity.updateProfile.missingFieldsErrorMessage": {
     "defaultMessage": "Some information are missing, please fill your public name, description and set an avatar in your profile",
     "description": "Error message when the user didn't fill all the fields of their profile"
+  },
+  "app.meta.defaultDescription": {
+    "defaultMessage": "Discover the future of web3 on the Verida Network. Join the incentivized testnet and experience secure decentralized data storage, zero-knowledge credentials, and more.",
+    "description": "Default application description for the meta tags"
+  },
+  "app.meta.defaultTitle": {
+    "defaultMessage": "Verida Missions: Explore Decentralized Identity and Private Data Storage",
+    "description": "Default application title for the meta tags"
+  },
+  "missions.mission-01.shortDescription": {
+    "defaultMessage": "This first mission guides you through the process of onboarding onto the Verida network. It's designed to familiarize you with the network's features, functionalities, and ecosystem, ensuring you have a smooth and seamless experience as a Verida user.",
+    "description": "Short description of the mission 01"
+  },
+  "missions.mission-01.title": {
+    "defaultMessage": "Mission 1: Onboarding to the Verida Network",
+    "description": "Title of the mission 01"
+  },
+  "missions.mission-02.shortDescription": {
+    "defaultMessage": "In Mission 2 we need your help to stress-test the network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+    "description": "Short description of the mission 02"
+  },
+  "missions.mission-02.title": {
+    "defaultMessage": "Mission 2: Stress testing the network",
+    "description": "Title of the mission 02"
   }
 }

@@ -17,7 +17,8 @@ export const UpcomingActivitiesCTA: React.FunctionComponent<
 
   const JoinDiscordMessage = i18n.formatMessage({
     id: "UpcomingActivitiesCTA.JoinDiscordMessage",
-    defaultMessage: "Join our Discord to be informed of upcoming activities",
+    defaultMessage:
+      "Join Verida's Discord community for updates on new activities and missions.",
     description: "Message to display in the upcoming activities CTA",
   });
 
