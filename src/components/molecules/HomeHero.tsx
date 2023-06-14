@@ -2,6 +2,8 @@ import React from "react";
 import { useIntl } from "react-intl";
 import { Balancer } from "react-wrap-balancer";
 
+import { Typography } from "~/components/atoms";
+
 type HomeHeroProps = Omit<React.ComponentPropsWithoutRef<"div">, "children">;
 
 export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
@@ -36,15 +38,15 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
   return (
     <div {...props}>
       <div className="flex flex-grow flex-col items-center justify-center text-center gap-2 text-sm">
-        <p>
+        <Typography>
           <Balancer ratio={balancerRatio}>{descriptionPart1}</Balancer>
-        </p>
-        <p>
+        </Typography>
+        <Typography>
           <Balancer ratio={balancerRatio}>{descriptionPart2}</Balancer>
-        </p>
-        <p>
+        </Typography>
+        <Typography>
           <Balancer ratio={balancerRatio}>{descriptionPart3}</Balancer>
-        </p>
+        </Typography>
       </div>
     </div>
   );

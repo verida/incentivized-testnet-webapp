@@ -7,3 +7,4 @@ export * from "./Icon";
 export * from "./IconButton";
 export * from "./IconButtonLink";
 export * from "./SkeletonBase";
+export * from "./Typography";

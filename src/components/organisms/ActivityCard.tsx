@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
 
-import { Button } from "~/components/atoms";
+import { Button, Typography } from "~/components/atoms";
 import { ActivityStatus } from "~/components/molecules";
 import { Activity, UserActivityStatus, useActivity } from "~/features/activity";
 import { useTermsConditions } from "~/features/termsconditions";
@@ -83,7 +83,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
             </h4>
           </header>
           <div>
-            <p>{i18n.formatMessage(shortDescription)}</p>
+            <Typography>{i18n.formatMessage(shortDescription)}</Typography>
           </div>
           {enabled && activity.resources && activity.resources.length > 0 ? (
             <aside>

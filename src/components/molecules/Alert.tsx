@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button } from "~/components/atoms";
+import { Button, Typography } from "~/components/atoms";
 
 type AlertType = "error" | "warning" | "info" | "success";
 
@@ -17,7 +17,7 @@ export const Alert: React.FunctionComponent<AlertProps> = (props) => {
   return (
     <div {...divProps}>
       <div className="flex flex-row justify-between items-center bg-primary-15 rounded-2xl p-4 gap-4">
-        <p>{message}</p>
+        <Typography>{message}</Typography>
         <Button onClick={action} className="whitespace-nowrap">
           {actionLabel}
         </Button>
