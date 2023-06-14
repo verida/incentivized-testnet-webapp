@@ -1,45 +1,10 @@
 import React from "react";
 import { useIntl } from "react-intl";
 
-import { ButtonLink, Icon } from "~/components/atoms";
+import { ButtonLink } from "~/components/atoms";
+import { veridaSupportPlatforms } from "~/constants";
 
-const links = [
-  {
-    label: "Discord",
-    url: "https://discord.verida.io/",
-    icon: <Icon type="platform-discord" />,
-  },
-  {
-    label: "Twitter",
-    url: "https://twitter.com/verida_io",
-    icon: <Icon type="platform-twitter" />,
-  },
-  {
-    label: "Telegram",
-    url: "https://t.me/verida_community",
-    icon: <Icon type="platform-telegram" />,
-  },
-  {
-    label: "Medium",
-    url: "https://news.verida.io/",
-    icon: <Icon type="platform-medium" />,
-  },
-  {
-    label: "LinkedIn",
-    url: "https://www.linkedin.com/company/verida-technology",
-    icon: <Icon type="platform-linkedin" />,
-  },
-  {
-    label: "Youtube",
-    url: "https://www.youtube.com/@verida_io",
-    icon: <Icon type="platform-youtube" />,
-  },
-  {
-    label: "Reddit",
-    url: "https://www.reddit.com/r/Verida/",
-    icon: <Icon type="platform-reddit" />,
-  },
-];
+const links = Object.values(veridaSupportPlatforms);
 
 export const GetSupportSection: React.FunctionComponent = () => {
   const i18n = useIntl();
