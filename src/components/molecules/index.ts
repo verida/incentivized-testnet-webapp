@@ -7,3 +7,4 @@ export * from "./HomeHero";
 export * from "./Modal";
 export * from "./PageWrapper";
 export * from "./PortalWrapper";
+export * from "./UpcomingActivitiesCTA";
