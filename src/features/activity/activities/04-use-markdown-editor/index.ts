@@ -28,7 +28,7 @@ export const activity: Activity = {
   id: ACTIVITY_ID,
   missionId: MISSION_01_ID,
   enabled: false,
-  visible: true,
+  visible: false,
   order: 4,
   title: defineMessage({
     id: "activities.useMarkdownEditor.title",

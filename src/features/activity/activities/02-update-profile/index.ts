@@ -109,7 +109,7 @@ export const activity: Activity = {
         description:
           "Label of the resource 'How to update your Verida Identity profile'",
       }),
-      url: "https://verida.io",
+      url: "https://community.verida.io/user-guides/update-your-profile-guide",
     },
   ],
   onInit: handleInit,

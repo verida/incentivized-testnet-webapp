@@ -68,9 +68,17 @@ export const activity: Activity = {
         defaultMessage: "How to create a Verida Identity",
         description: "Label of the resource 'How to create a Verida Identity'",
       }),
-      url: "https://verida.io",
+      url: "https://community.verida.io/user-guides/create-a-verida-identity-guide",
     },
   ],
+  video: {
+    label: defineMessage({
+      id: "activities.createVeridaIdentity.video.label",
+      defaultMessage: "How to create a Verida Identity",
+      description: "Label of the video 'How to create a Verida Identity'",
+    }),
+    url: "https://www.youtube.com/watch?v=Iav2TRzBiIs",
+  },
   onInit: handleInit,
   onExecute: handleExecute,
   onUnmount: handleUnmount,

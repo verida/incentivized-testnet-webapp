@@ -224,7 +224,7 @@ export const ActivityProvider: React.FunctionComponent<
   const contextValue: ActivityContextType = useMemo(
     () => ({
       missions: missions.filter((m) => (config.devMode ? true : m.visible)),
-      activities: activities.filter((a) => (config.devMode ? true : a.visible)),
+      activities: activities,
       userActivities: userActivities || [],
       getUserActivity,
       executeActivity,

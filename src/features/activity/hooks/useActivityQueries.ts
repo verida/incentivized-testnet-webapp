@@ -9,6 +9,7 @@ import {
   saveActivityInDatastore,
 } from "~/features/activity";
 import { UserActivity } from "~/features/activity/types";
+import { Sentry } from "~/features/sentry";
 import { useVerida } from "~/features/verida";
 
 export function useActivityQueries() {
@@ -49,6 +50,9 @@ export function useActivityQueries() {
       // TODO: Optimise with an optimistic update
       await queryClient.invalidateQueries(["userActivities", did]);
     },
+    onError(error) {
+      Sentry.captureException(error);
+    },
   });
 
   // TODO: Handle error states
@@ -60,6 +64,9 @@ export function useActivityQueries() {
       onSuccess: async () => {
         // TODO: Optimise with an optimistic update
         await queryClient.invalidateQueries(["userActivities", did]);
+      },
+      onError(error) {
+        Sentry.captureException(error);
       },
     });
 

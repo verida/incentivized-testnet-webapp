@@ -1,9 +1,10 @@
 import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
 
-import { Button } from "~/components/atoms";
+import { Button, Typography } from "~/components/atoms";
 import { ActivityStatus } from "~/components/molecules";
 import { Activity, UserActivityStatus, useActivity } from "~/features/activity";
+import { Sentry } from "~/features/sentry";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
@@ -40,7 +41,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
     try {
       await executeActivity(activity.id);
     } catch (error: unknown) {
-      // TODO: Handle error
+      Sentry.captureException(error);
     } finally {
       setExecuting(false);
     }
@@ -83,7 +84,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
             </h4>
           </header>
           <div>
-            <p>{i18n.formatMessage(shortDescription)}</p>
+            <Typography>{i18n.formatMessage(shortDescription)}</Typography>
           </div>
           {enabled && activity.resources && activity.resources.length > 0 ? (
             <aside>

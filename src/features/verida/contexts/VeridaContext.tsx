@@ -9,6 +9,7 @@ import React, {
 } from "react";
 
 import { config } from "~/config";
+import { Sentry } from "~/features/sentry";
 
 if (!config.veridaContextName) {
   throw new Error("Verida Context Name must be defined");
@@ -68,9 +69,13 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
       });
     webUserInstance
       .getDid()
-      .then(setDid)
+      .then((newDid) => {
+        setDid(newDid);
+        Sentry.setUser({ id: newDid });
+      })
       .catch(() => {
         setDid(undefined);
+        Sentry.setUser(null);
       });
     webUserInstance
       .getPublicProfile()

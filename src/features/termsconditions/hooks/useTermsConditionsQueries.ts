@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { IDatastore } from "@verida/types";
 import { useEffect, useState } from "react";
 
+import { Sentry } from "~/features/sentry";
 import {
   TERMS_SCHEMA_LATEST_URL,
   TermsConditionsStatus,
@@ -47,6 +48,9 @@ export function useTermsConditionsQueries() {
       // TODO: Optimise with an optimistic update
       await queryClient.invalidateQueries(["terms", did]);
     },
+    onError(error) {
+      Sentry.captureException(error);
+    },
   });
 
   // TODO: Handle error states
@@ -57,6 +61,9 @@ export function useTermsConditionsQueries() {
     onSuccess: async () => {
       // TODO: Optimise with an optimistic update
       await queryClient.invalidateQueries(["terms", did]);
+    },
+    onError(error) {
+      Sentry.captureException(error);
     },
   });
 
