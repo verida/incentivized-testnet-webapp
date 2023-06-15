@@ -20,8 +20,6 @@ export const AcceptTermsAmdConditionsModal: React.FunctionComponent<
   const { updateStatus } = useTermsConditions();
 
   const handleAccept = useCallback(() => {
-    const error = new Error("Testing Sentry");
-    Sentry.captureException(error);
     updateStatus("accepted");
   }, [updateStatus]);
 
