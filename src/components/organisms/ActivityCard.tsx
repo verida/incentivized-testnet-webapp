@@ -4,6 +4,7 @@ import { useIntl } from "react-intl";
 import { Button, Typography } from "~/components/atoms";
 import { ActivityStatus } from "~/components/molecules";
 import { Activity, UserActivityStatus, useActivity } from "~/features/activity";
+import { Sentry } from "~/features/sentry";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
@@ -40,7 +41,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
     try {
       await executeActivity(activity.id);
     } catch (error: unknown) {
-      // TODO: Handle error
+      Sentry.captureException(error);
     } finally {
       setExecuting(false);
     }

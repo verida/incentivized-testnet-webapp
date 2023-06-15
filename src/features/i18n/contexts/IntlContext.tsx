@@ -7,6 +7,7 @@ import {
   getUserLocale,
 } from "~/features/i18n/lang";
 import { LocalizedMessages } from "~/features/i18n/types";
+import { Sentry } from "~/features/sentry";
 
 interface Props {
   children: React.ReactNode;
@@ -24,7 +25,7 @@ export const IntlProvider: React.FunctionComponent<Props> = (props) => {
         const messages = await getMessages(locale);
         setMessages(messages);
       } catch (error) {
-        // TODO: Handle error
+        Sentry.captureException(error);
       }
     };
     void loadMessages();
@@ -36,8 +37,8 @@ export const IntlProvider: React.FunctionComponent<Props> = (props) => {
       locale={locale}
       defaultLocale={defaultLocale}
       messages={messages}
-      onError={(_error: unknown) => {
-        // TODO: Handle i18n errors
+      onError={(error: unknown) => {
+        Sentry.captureException(error);
       }}
     >
       {props.children}

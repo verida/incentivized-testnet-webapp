@@ -3,6 +3,7 @@ import { useIntl } from "react-intl";
 
 import { Modal } from "~/components/molecules";
 import { TermsAndConditions } from "~/components/organisms/TermsAndConditions";
+import { Sentry } from "~/features/sentry";
 import { useTermsConditions } from "~/features/termsconditions";
 
 type AcceptTermsAmdConditionsModalProps = {
@@ -19,6 +20,8 @@ export const AcceptTermsAmdConditionsModal: React.FunctionComponent<
   const { updateStatus } = useTermsConditions();
 
   const handleAccept = useCallback(() => {
+    const error = new Error("Testing Sentry");
+    Sentry.captureException(error);
     updateStatus("accepted");
   }, [updateStatus]);
 

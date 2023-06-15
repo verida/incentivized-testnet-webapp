@@ -8,9 +8,14 @@ import {
 
 import { HomeView, TermsConditionsView } from "~/components/pages";
 import { AppLayout } from "~/components/templates";
+import { AppContextProviders } from "~/contexts";
 import { ErrorBoundary, RouterErrorHandler } from "~/features/errors";
+import { Sentry } from "~/features/sentry";
 
-const router = createBrowserRouter(
+const sentryCreateBrowserRouter =
+  Sentry.wrapCreateBrowserRouter(createBrowserRouter);
+
+const router = sentryCreateBrowserRouter(
   createRoutesFromElements(
     <Route
       path="/"
@@ -25,8 +30,19 @@ const router = createBrowserRouter(
 
 export const App: React.FunctionComponent = () => {
   return (
-    <ErrorBoundary defaultFallbackCardClassName="h-screen w-screen flex flex-col items-center justify-center">
-      <RouterProvider router={router} />
-    </ErrorBoundary>
+    <React.StrictMode>
+      <ErrorBoundary
+        noIntl
+        defaultFallbackCardClassName="h-screen w-screen flex flex-col items-center justify-center"
+      >
+        <AppContextProviders>
+          <ErrorBoundary defaultFallbackCardClassName="h-screen w-screen flex flex-col items-center justify-center">
+            <RouterProvider router={router} />
+          </ErrorBoundary>
+        </AppContextProviders>
+      </ErrorBoundary>
+    </React.StrictMode>
   );
 };
+
+export const AppWithSentry = Sentry.withProfiler(App);
