@@ -21,4 +21,19 @@ export const config = {
   veridaEnvironment,
   veridaContextName,
   veridaConnectLogoUrl,
+  sentry: {
+    enabled: process.env.REACT_APP_SENTRY_ENABLED === "false" ? false : true,
+    dsn: process.env.REACT_APP_SENTRY_DSN,
+    environment: process.env.REACT_APP_SENTRY_ENVIRONMENT,
+    release: process.env.REACT_APP_SENTRY_RELEASE,
+    tracesSampleRate: Number(
+      process.env.REACT_APP_SENTRY_TRACE_SAMPLE_RATE || 0.1
+    ),
+    replaysSessionSampleRate: Number(
+      process.env.REACT_APP_SENTRY_REPLAY_SESSION_SAMPLE_RATE || 0.1
+    ),
+    replaysOnErrorSampleRate: Number(
+      process.env.REACT_APP_SENTRY_REPLAYS_ON_ERROR_SAMPLE_RATE || 1.0
+    ),
+  },
 };
