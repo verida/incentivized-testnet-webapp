@@ -5,6 +5,7 @@ import {
   ErrorFallbackCard,
   RawErrorFallbackCard,
 } from "~/components/molecules";
+import { Sentry } from "~/features/sentry";
 
 type ErrorBoundaryProps = {
   children: React.ReactNode;
@@ -39,9 +40,7 @@ export const ErrorBoundary: React.FunctionComponent<ErrorBoundaryProps> = (
 
   const handleError = useCallback(
     (error: Error, info: { componentStack: string }) => {
-      // TODO: Send error to telemetry
-      // eslint-disable-next-line no-console
-      console.error(error.message);
+      Sentry.captureException(error);
       onError && onError(error, info);
     },
     [onError]
