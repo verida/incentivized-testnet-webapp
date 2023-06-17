@@ -21,9 +21,11 @@ const veridaEnvironment: EnvironmentType =
 export const config = {
   appVersion: version,
   devMode,
-  veridaEnvironment,
-  veridaContextName,
-  veridaConnectLogoUrl,
+  verida: {
+    environment: veridaEnvironment,
+    contextName: veridaContextName,
+    connectLogoUrl: veridaConnectLogoUrl,
+  },
   sentry: {
     enabled: process.env.REACT_APP_SENTRY_ENABLED === "false" ? false : true,
     dsn: process.env.REACT_APP_SENTRY_DSN,
