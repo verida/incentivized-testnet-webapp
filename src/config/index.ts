@@ -2,6 +2,8 @@ import { EnvironmentType } from "@verida/types";
 
 import { VERIDA_CONTEXT_NAME } from "~/constants";
 
+import { version } from "./version";
+
 const devMode = process.env.REACT_APP_DEV_MODE === "true" ? true : false;
 
 // Verida variables
@@ -17,6 +19,7 @@ const veridaEnvironment: EnvironmentType =
     : EnvironmentType.TESTNET;
 
 export const config = {
+  appVersion: version,
   devMode,
   veridaEnvironment,
   veridaContextName,
@@ -25,7 +28,7 @@ export const config = {
     enabled: process.env.REACT_APP_SENTRY_ENABLED === "false" ? false : true,
     dsn: process.env.REACT_APP_SENTRY_DSN,
     environment: process.env.REACT_APP_SENTRY_ENVIRONMENT,
-    release: process.env.REACT_APP_SENTRY_RELEASE,
+    release: version,
     tracesSampleRate: Number(
       process.env.REACT_APP_SENTRY_TRACE_SAMPLE_RATE || 0.1
     ),
