@@ -11,21 +11,21 @@ import React, {
 import { config } from "~/config";
 import { Sentry } from "~/features/sentry";
 
-if (!config.veridaContextName) {
+if (!config.verida.contextName) {
   throw new Error("Verida Context Name must be defined");
 }
 
 const webUserInstance = new WebUser({
   debug: true,
   clientConfig: {
-    environment: config.veridaEnvironment,
+    environment: config.verida.environment,
   },
   contextConfig: {
-    name: config.veridaContextName,
+    name: config.verida.contextName,
   },
   accountConfig: {
     request: {
-      logoUrl: config.veridaConnectLogoUrl,
+      logoUrl: config.verida.connectLogoUrl,
     },
   },
 });
