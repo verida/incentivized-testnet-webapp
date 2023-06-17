@@ -3,7 +3,6 @@ import { useIntl } from "react-intl";
 
 import { Modal } from "~/components/molecules";
 import { TermsAndConditions } from "~/components/organisms/TermsAndConditions";
-import { Sentry } from "~/features/sentry";
 import { useTermsConditions } from "~/features/termsconditions";
 
 type AcceptTermsAmdConditionsModalProps = {
