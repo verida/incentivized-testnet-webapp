@@ -1,6 +1,6 @@
 {
   "name": "incentivized-testnet-webapp",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "private": true,
   "scripts": {
     "postinstall": "yarn run version && yarn run messages:compile",
