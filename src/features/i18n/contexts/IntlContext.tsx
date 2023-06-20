@@ -37,8 +37,9 @@ export const IntlProvider: React.FunctionComponent<Props> = (props) => {
       locale={locale}
       defaultLocale={defaultLocale}
       messages={messages}
-      onError={(error: unknown) => {
-        Sentry.captureException(error);
+      onError={(_error: unknown) => {
+        // TODO: Capture error with Sentry
+        // Sentry.captureException(error);
       }}
     >
       {props.children}
