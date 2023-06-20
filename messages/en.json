@@ -83,13 +83,13 @@
     "defaultMessage": "Built on",
     "description": "label of the 'built on' text in the footer section"
   },
+  "Footer.conditionsWillApplyMessage": {
+    "defaultMessage": "Eligibility conditions and terms of use will apply",
+    "description": "Message stating that conditions will apply when using the app"
+  },
   "Footer.copyrightMessage": {
     "defaultMessage": "© {copyrightYear} Verida Network",
     "description": "Copyright message in the footer section"
-  },
-  "Footer.termsAndConditionLinkLabel": {
-    "defaultMessage": "Terms of Use",
-    "description": "Label of the 'Terms and Condition' Link in the footer section"
   },
   "GetSupportSection.sectionTitle": {
     "defaultMessage": "Get Support",
