@@ -1,0 +1,52 @@
+name: Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      save-artifact:
+        description: 'Save build as artifact'
+        type: boolean
+        required: false
+        default: false
+  push:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    env:
+      EXTEND_ESLINT: 'true'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3.5.3
+
+      - name: Define node version
+        run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_ENV
+
+      - name: Set up node
+        uses: actions/setup-node@v2.5.2
+        with:
+          node-version: '${{ env.NODE_VERSION }}'
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Test frontend
+        run: yarn run test
+
+      - name: Build frontend
+        run: yarn run build
+
+      - name: Upload build artifacts
+        if:  ${{ inputs.save-artifact }}
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: build
+          path: build
