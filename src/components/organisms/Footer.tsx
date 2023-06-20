@@ -1,7 +1,6 @@
 import { ReactComponent as VeridaNetworkLogo } from "assets/images/verida_network_logo_with_text_white.svg";
 import React from "react";
 import { useIntl } from "react-intl";
-import { Link } from "react-router-dom";
 
 import { VERIDA_NETWORK_URL } from "~/constants";
 
@@ -15,11 +14,18 @@ export const Footer: React.FunctionComponent = () => {
     description: "label of the 'built on' text in the footer section",
   });
 
-  const termsAndConditionLinkLabel = i18n.formatMessage({
-    id: "Footer.termsAndConditionLinkLabel",
-    defaultMessage: "Terms of Use",
+  // const termsAndConditionLinkLabel = i18n.formatMessage({
+  //   id: "Footer.termsAndConditionLinkLabel",
+  //   defaultMessage: "Terms of Use",
+  //   description:
+  //     "Label of the 'Terms and Condition' Link in the footer section",
+  // });
+
+  const conditionsWillApplyMessage = i18n.formatMessage({
+    id: "Footer.conditionsWillApplyMessage",
+    defaultMessage: "Eligibility conditions and terms of use will apply",
     description:
-      "Label of the 'Terms and Condition' Link in the footer section",
+      "Message stating that conditions will apply when using the app",
   });
 
   const copyrightMessage = i18n.formatMessage(
@@ -50,9 +56,10 @@ export const Footer: React.FunctionComponent = () => {
       </div>
       <div className="sm:order-3 sm:flex-1">
         <div className="flex flex-col items-center space-y-3 sm:flex-row sm:justify-end sm:space-x-4 sm:space-y-0">
-          <Link to="/terms-and-conditions" className="hover:underline">
+          {/* <Link to="/terms-and-conditions" className="hover:underline">
             {termsAndConditionLinkLabel}
-          </Link>
+          </Link> */}
+          <p className="text-center text-xs">{conditionsWillApplyMessage}</p>
         </div>
       </div>
       <div className="sm:order-1 sm:flex-1">
