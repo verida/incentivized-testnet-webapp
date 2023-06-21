@@ -1,4 +1,4 @@
-name: Sentry
+name: Release
 
 on:
   push:
@@ -10,11 +10,32 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
 
+    env:
+      EXTEND_ESLINT: 'true'
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3.5.3
         with:
           fetch-depth: 0
+
+      - name: Define node version
+        run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_ENV
+
+      - name: Set up node
+        uses: actions/setup-node@v2.5.2
+        with:
+          node-version: '${{ env.NODE_VERSION }}'
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Test frontend
+        run: yarn run test
+
+      - name: Build frontend
+        run: yarn run build
 
       - name: Create Sentry release
         uses: getsentry/action-release@v1.4.1
@@ -23,5 +44,5 @@ jobs:
           SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
         with:
-          sourcemaps: build/static/js
+          sourcemaps: "./build"
           version: ${{ github.ref }}
