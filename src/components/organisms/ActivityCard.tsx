@@ -39,6 +39,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
   const handleExecuteActivity = useCallback(async () => {
     setExecuting(true);
     try {
+      // executeActivity handlers errors by itself but surrounding by try/catch just in case something has been forgotten
       await executeActivity(activity.id);
     } catch (error: unknown) {
       Sentry.captureException(error, {

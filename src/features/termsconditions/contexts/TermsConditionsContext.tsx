@@ -5,6 +5,8 @@ import React, { useCallback, useMemo } from "react";
 import { TermsConditionsStatus } from "~/features/termsconditions/types";
 import { useVerida } from "~/features/verida";
 
+// TODO: Add Sentry breadcrumb details
+
 type TermsConditionsContextType = {
   isCheckingStatus: boolean;
   status: TermsConditionsStatus;

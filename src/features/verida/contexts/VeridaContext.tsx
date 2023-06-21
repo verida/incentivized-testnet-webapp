@@ -69,9 +69,21 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
   const updateStates = useCallback(() => {
     webUserInstance
       .isConnected()
-      .then(setIsConnected)
+      .then((newIsConnected) => {
+        setIsConnected(newIsConnected);
+        Sentry.addBreadcrumb({
+          category: "verida",
+          level: "info",
+          message: "User is connected to Verida",
+        });
+      })
       .catch(() => {
         setIsConnected(false);
+        Sentry.addBreadcrumb({
+          category: "verida",
+          level: "info",
+          message: "User is not connected to Verida",
+        });
       });
     webUserInstance
       .getDid()
@@ -97,7 +109,7 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
 
   useEffect(() => {
     Sentry.addBreadcrumb({
-      category: "VeridaProvider",
+      category: "verida",
       level: "info",
       message: "Initialising the Verida client",
     });
@@ -107,7 +119,7 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
     void webUserInstance.isConnected(); // Will trigger a 'connected' event if already connected and therefore update the states
     return () => {
       Sentry.addBreadcrumb({
-        category: "VeridaProvider",
+        category: "verida",
         level: "info",
         message: "Cleaning the Verida client",
       });
@@ -118,8 +130,7 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
   // Exposing common methods for easier access than through the ref
   const connect = useCallback(async () => {
     Sentry.addBreadcrumb({
-      category: "VeridaProvider",
-      type: "Authentication",
+      category: "verida",
       level: "info",
       message: "User connecting to Verida",
     });
@@ -127,11 +138,10 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
     const connected = await webUserInstanceRef.current.connect();
 
     Sentry.addBreadcrumb({
-      category: "VeridaProvider",
-      type: "Authentication",
+      category: "verida",
       level: "info",
       message: connected
-        ? "User connected to Verida"
+        ? "Connection to Verida successful"
         : "User did not connect to Verida",
     });
 
@@ -140,8 +150,7 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
 
   const disconnect = useCallback(async () => {
     Sentry.addBreadcrumb({
-      category: "VeridaProvider",
-      type: "Authentication",
+      category: "verida",
       level: "info",
       message: "User disconnecting from Verida",
     });
@@ -149,17 +158,16 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
     await webUserInstanceRef.current.disconnect();
 
     Sentry.addBreadcrumb({
-      category: "VeridaProvider",
-      type: "Authentication",
+      category: "verida",
       level: "info",
-      message: "User disconnected from Verida",
+      message: "User successfully disconnected from Verida",
     });
   }, [webUserInstanceRef]);
 
   const openDatastore = useCallback(
     async (schemaUrl: string, config?: DatastoreOpenConfig) => {
       Sentry.addBreadcrumb({
-        category: "VeridaProvider",
+        category: "verida",
         level: "info",
         message: "Opening Verida datastore",
         data: {
@@ -174,9 +182,9 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
       );
 
       Sentry.addBreadcrumb({
-        category: "VeridaProvider",
+        category: "verida",
         level: "info",
-        message: "Verida datastore succesfully",
+        message: "Verida datastore succesfully opened",
         data: {
           schemaUrl,
           config,
