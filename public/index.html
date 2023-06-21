@@ -67,8 +67,15 @@
     <script
       defer
       data-domain="%REACT_APP_PLAUSIBLE_DOMAINS%"
-      src="https://plausible.io/js/script.js"
+      src="https://plausible.io/js/script.tagged-events.js"
     ></script>
+    <script>
+      window.plausible =
+        window.plausible ||
+        function () {
+          (window.plausible.q = window.plausible.q || []).push(arguments);
+        };
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
