@@ -41,7 +41,11 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
     try {
       await executeActivity(activity.id);
     } catch (error: unknown) {
-      Sentry.captureException(error);
+      Sentry.captureException(error, {
+        tags: {
+          activityId: activity.id,
+        },
+      });
     } finally {
       setExecuting(false);
     }

@@ -50,8 +50,13 @@ export function useActivityQueries() {
       // TODO: Optimise with an optimistic update
       await queryClient.invalidateQueries(["userActivities", did]);
     },
-    onError(error) {
-      Sentry.captureException(error);
+    onError(error, variables) {
+      Sentry.captureException(error, {
+        extra: variables,
+        tags: {
+          activityId: variables.id,
+        },
+      });
     },
   });
 
