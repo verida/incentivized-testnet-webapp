@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3.5.3
+        with:
+          fetch-depth: 0
 
       - name: Define node version
         run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_ENV
@@ -45,7 +47,7 @@ jobs:
         run: yarn run build
 
       - name: Upload build artifacts
-        if:  ${{ inputs.save-artifact }}
+        if: ${{ inputs.save-artifact }}
         uses: actions/upload-artifact@v3.1.2
         with:
           name: build
