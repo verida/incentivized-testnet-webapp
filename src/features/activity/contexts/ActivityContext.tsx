@@ -11,6 +11,7 @@ import type {
   Mission,
   UserActivityRecord,
 } from "~/features/activity/types";
+import { capturePlausibleEvent } from "~/features/plausible";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
@@ -106,7 +107,7 @@ export const ActivityProvider: React.FunctionComponent<
             "Notification message when user tries to execute an activity but the terms and conditions are not accepted",
         });
         toast.error(termsNotAcceptedNotificationMessage);
-        return;
+        throw new Error("Trying to execute an activity without terms accepted");
       }
 
       const activity = activities.find((a) => a.id === activityId);
@@ -119,7 +120,9 @@ export const ActivityProvider: React.FunctionComponent<
             "Notification message when user tries to execute an activity but the activity is not found",
         });
         toast.error(activityNotFoundNotificationMessage);
-        return;
+        throw new Error(
+          "Trying to execute an activity with an id that cannot be found"
+        );
       }
 
       // Check existing status, if todo, continue, otherwise return or throw error
@@ -134,7 +137,7 @@ export const ActivityProvider: React.FunctionComponent<
             "Notification message when user tries to execute an activity but the activity is already executed",
         });
         toast.success(activityAlreadyExecutedNotificationMessage);
-        return;
+        throw new Error("Trying to execute an activity already executed");
       }
 
       // Execute the action
@@ -155,6 +158,9 @@ export const ActivityProvider: React.FunctionComponent<
               ? i18n.formatMessage(result.message)
               : activityExecutionCompletedNotificationMessage
           );
+          capturePlausibleEvent("Activity Completed", {
+            activityId: activityId,
+          });
           break;
         }
         case "todo": {
@@ -191,7 +197,9 @@ export const ActivityProvider: React.FunctionComponent<
           break;
         }
         default: {
-          // Nothing by default
+          throw new Error(
+            "Non supported status returned by activity.onExecute"
+          );
         }
       }
 
