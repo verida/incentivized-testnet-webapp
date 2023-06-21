@@ -3,7 +3,6 @@ import React, { useCallback, useMemo } from "react";
 // import { AcceptTermsAmdConditionsModal } from "~/components/organisms";
 // import { useTermsConditionsQueries } from "~/features/termsconditions/hooks";
 import { TermsConditionsStatus } from "~/features/termsconditions/types";
-import { getLatestTermsConditions } from "~/features/termsconditions/utils";
 import { useVerida } from "~/features/verida";
 
 type TermsConditionsContextType = {
@@ -11,7 +10,6 @@ type TermsConditionsContextType = {
   status: TermsConditionsStatus;
   updateStatus: (status: TermsConditionsStatus) => void;
   deleteTermsStatus: () => void;
-  getLatestVersion: () => string;
   openAcceptModal: () => void;
 };
 
@@ -68,7 +66,6 @@ export const TermsConditionsProvider: React.FunctionComponent<
       status: "accepted",
       updateStatus,
       deleteTermsStatus,
-      getLatestVersion: getLatestTermsConditions,
       openAcceptModal,
     }),
     [updateStatus, deleteTermsStatus, openAcceptModal]
