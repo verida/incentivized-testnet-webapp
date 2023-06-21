@@ -1,11 +1,6 @@
 import { IDatastore } from "@verida/types";
 
 import { TermsConditionsRecordSchema } from "~/features/termsconditions";
-import { TERMS_CONDITIONS_V1 } from "~/features/termsconditions/constants";
-
-export function getLatestTermsConditions() {
-  return TERMS_CONDITIONS_V1;
-}
 
 export async function getTermsRecordFromDatastore(
   datastore: IDatastore | null

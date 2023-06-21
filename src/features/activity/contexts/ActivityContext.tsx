@@ -11,6 +11,8 @@ import type {
   Mission,
   UserActivityRecord,
 } from "~/features/activity/types";
+import { capturePlausibleEvent } from "~/features/plausible";
+import { Sentry } from "~/features/sentry";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
@@ -97,8 +99,17 @@ export const ActivityProvider: React.FunctionComponent<
 
   const executeActivity = useCallback(
     async (activityId: string) => {
+      Sentry.addBreadcrumb({
+        category: "activity",
+        level: "info",
+        message: "Executing activity",
+        data: {
+          activityId,
+        },
+      });
+
       if (statusTermsConditions !== "accepted") {
-        // Unlikely because blocked by the UI but still
+        // Should be avoided by the UI but just in case
         const termsNotAcceptedNotificationMessage = i18n.formatMessage({
           id: "ActivityProvider.termsNotAcceptedNotificationMessage",
           defaultMessage: "Please accept the terms and conditions",
@@ -106,10 +117,19 @@ export const ActivityProvider: React.FunctionComponent<
             "Notification message when user tries to execute an activity but the terms and conditions are not accepted",
         });
         toast.error(termsNotAcceptedNotificationMessage);
+        Sentry.captureException(
+          new Error("Trying to execute an activity without terms accepted"),
+          {
+            tags: {
+              activityId,
+            },
+          }
+        );
         return;
       }
 
       const activity = activities.find((a) => a.id === activityId);
+
       if (!activity) {
         // Unlikely but sill
         const activityNotFoundNotificationMessage = i18n.formatMessage({
@@ -119,6 +139,16 @@ export const ActivityProvider: React.FunctionComponent<
             "Notification message when user tries to execute an activity but the activity is not found",
         });
         toast.error(activityNotFoundNotificationMessage);
+        Sentry.captureException(
+          new Error(
+            "Trying to execute an activity with an id that cannot be found"
+          ),
+          {
+            tags: {
+              activityId,
+            },
+          }
+        );
         return;
       }
 
@@ -126,7 +156,9 @@ export const ActivityProvider: React.FunctionComponent<
       const userActivity = userActivities?.find(
         (activity) => activity.id === activityId
       );
+
       if (userActivity && userActivity.status !== "todo") {
+        // Should be avoided by the UI but just in case
         const activityAlreadyExecutedNotificationMessage = i18n.formatMessage({
           id: "ActivityProvider.activityAlreadyExecutedNotificationMessage",
           defaultMessage: "Activity already executed",
@@ -134,6 +166,14 @@ export const ActivityProvider: React.FunctionComponent<
             "Notification message when user tries to execute an activity but the activity is already executed",
         });
         toast.success(activityAlreadyExecutedNotificationMessage);
+        Sentry.captureException(
+          new Error("Trying to execute an activity already executed"),
+          {
+            tags: {
+              activityId,
+            },
+          }
+        );
         return;
       }
 
@@ -155,6 +195,10 @@ export const ActivityProvider: React.FunctionComponent<
               ? i18n.formatMessage(result.message)
               : activityExecutionCompletedNotificationMessage
           );
+
+          capturePlausibleEvent("Activity Completed", {
+            activityId,
+          });
           break;
         }
         case "todo": {
@@ -191,7 +235,14 @@ export const ActivityProvider: React.FunctionComponent<
           break;
         }
         default: {
-          // Nothing by default
+          Sentry.captureException(
+            new Error("Non supported status returned by activity.onExecute"),
+            {
+              tags: {
+                activityId,
+              },
+            }
+          );
         }
       }
 
@@ -218,6 +269,7 @@ export const ActivityProvider: React.FunctionComponent<
   );
 
   const deleteUserActivities = useCallback(() => {
+    // deleteActivities handles errors by itself
     deleteActivities();
   }, [deleteActivities]);
 

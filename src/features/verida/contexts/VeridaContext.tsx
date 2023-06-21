@@ -15,6 +15,12 @@ if (!config.verida.contextName) {
   throw new Error("Verida Context Name must be defined");
 }
 
+Sentry.setContext("verida", {
+  environment: config.verida.environment,
+  contextName: config.verida.contextName,
+  connectLogoUrl: config.verida.connectLogoUrl,
+});
+
 const webUserInstance = new WebUser({
   debug: true,
   clientConfig: {
@@ -63,9 +69,21 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
   const updateStates = useCallback(() => {
     webUserInstance
       .isConnected()
-      .then(setIsConnected)
+      .then((newIsConnected) => {
+        setIsConnected(newIsConnected);
+        Sentry.addBreadcrumb({
+          category: "verida",
+          level: "info",
+          message: "User is connected to Verida",
+        });
+      })
       .catch(() => {
         setIsConnected(false);
+        Sentry.addBreadcrumb({
+          category: "verida",
+          level: "info",
+          message: "User is not connected to Verida",
+        });
       });
     webUserInstance
       .getDid()
@@ -90,27 +108,89 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
   }, [updateStates]);
 
   useEffect(() => {
+    Sentry.addBreadcrumb({
+      category: "verida",
+      level: "info",
+      message: "Initialising the Verida client",
+    });
     webUserInstance.addListener("connected", veridaEventListener);
     webUserInstance.addListener("profileChanged", veridaEventListener);
     webUserInstance.addListener("disconnected", veridaEventListener);
     void webUserInstance.isConnected(); // Will trigger a 'connected' event if already connected and therefore update the states
     return () => {
+      Sentry.addBreadcrumb({
+        category: "verida",
+        level: "info",
+        message: "Cleaning the Verida client",
+      });
       webUserInstance.removeAllListeners();
     };
   }, [updateStates, veridaEventListener]);
 
   // Exposing common methods for easier access than through the ref
-  const connect = useCallback(() => {
-    return webUserInstanceRef.current.connect();
+  const connect = useCallback(async () => {
+    Sentry.addBreadcrumb({
+      category: "verida",
+      level: "info",
+      message: "User connecting to Verida",
+    });
+
+    const connected = await webUserInstanceRef.current.connect();
+
+    Sentry.addBreadcrumb({
+      category: "verida",
+      level: "info",
+      message: connected
+        ? "Connection to Verida successful"
+        : "User did not connect to Verida",
+    });
+
+    return connected;
   }, [webUserInstanceRef]);
 
-  const disconnect = useCallback(() => {
-    return webUserInstanceRef.current.disconnect();
+  const disconnect = useCallback(async () => {
+    Sentry.addBreadcrumb({
+      category: "verida",
+      level: "info",
+      message: "User disconnecting from Verida",
+    });
+
+    await webUserInstanceRef.current.disconnect();
+
+    Sentry.addBreadcrumb({
+      category: "verida",
+      level: "info",
+      message: "User successfully disconnected from Verida",
+    });
   }, [webUserInstanceRef]);
 
   const openDatastore = useCallback(
-    (schemaUrl: string, config?: DatastoreOpenConfig) => {
-      return webUserInstanceRef.current.openDatastore(schemaUrl, config);
+    async (schemaUrl: string, config?: DatastoreOpenConfig) => {
+      Sentry.addBreadcrumb({
+        category: "verida",
+        level: "info",
+        message: "Opening Verida datastore",
+        data: {
+          schemaUrl,
+          config,
+        },
+      });
+
+      const datastore = await webUserInstanceRef.current.openDatastore(
+        schemaUrl,
+        config
+      );
+
+      Sentry.addBreadcrumb({
+        category: "verida",
+        level: "info",
+        message: "Verida datastore succesfully opened",
+        data: {
+          schemaUrl,
+          config,
+        },
+      });
+      return datastore;
     },
     [webUserInstanceRef]
   );

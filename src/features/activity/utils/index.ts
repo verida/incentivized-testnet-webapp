@@ -1,6 +1,9 @@
 import { IDatastore } from "@verida/types";
 
-import { UserActivityRecordSchema } from "~/features/activity/schemas";
+import {
+  UserActivityRecordSchema,
+  UserActivitySchema,
+} from "~/features/activity/schemas";
 import type {
   UserActivity,
   UserActivityRecord,
@@ -40,7 +43,10 @@ export async function saveActivityInDatastore(
     throw new Error("Activities datastore must be defined");
   }
   try {
-    // TODO: Check if data is valid before saving
+    const validationResult = UserActivitySchema.safeParse(userActivity);
+    if (!validationResult.success) {
+      throw new Error("Invalid user activity");
+    }
 
     const records = await getActivitiesFromDatastore(datastore);
     const existingRecord =
@@ -57,7 +63,7 @@ export async function saveActivityInDatastore(
       {}
     );
   } catch (error: unknown) {
-    throw new Error("Error setting terms", { cause: error });
+    throw new Error("Error saving user activity", { cause: error });
   }
 }
 
