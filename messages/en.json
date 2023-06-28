@@ -23,30 +23,6 @@
     "defaultMessage": "Learn:",
     "description": "Title of the resources section in each activity card"
   },
-  "ActivityProvider.activityAlreadyExecutedNotificationMessage": {
-    "defaultMessage": "Activity already executed",
-    "description": "Notification message when user tries to execute an activity but the activity is already executed"
-  },
-  "ActivityProvider.activityExecutionCompletedNotificationMessage": {
-    "defaultMessage": "Congrats, you have completed the activity",
-    "description": "Notification message when user completes an activity"
-  },
-  "ActivityProvider.activityExecutionPendingNotificationMessage": {
-    "defaultMessage": "The activity is pending, check the next step in the instructions",
-    "description": "Notification message when after the execution, an activity is in pending state"
-  },
-  "ActivityProvider.activityExecutionTodoNotificationMessage": {
-    "defaultMessage": "Hmm, the activity was not completed properly",
-    "description": "Notification message when executing an activity reset back to its todo status"
-  },
-  "ActivityProvider.activityNotFoundNotificationMessage": {
-    "defaultMessage": "Activity not found",
-    "description": "Notification message when user tries to execute an activity but the activity is not found"
-  },
-  "ActivityProvider.termsNotAcceptedNotificationMessage": {
-    "defaultMessage": "Please accept the terms and conditions",
-    "description": "Notification message when user tries to execute an activity but the terms and conditions are not accepted"
-  },
   "ActivityStatus.activityCheckingLabel": {
     "defaultMessage": "Checking...",
     "description": "Label of the status for a disabled activity"
@@ -282,5 +258,45 @@
   "missions.mission-02.title": {
     "defaultMessage": "Mission 2: Stress testing the network",
     "description": "Title of the mission 02"
+  },
+  "useExecuteActivity.activityAlreadyBeingExecutedMessage": {
+    "defaultMessage": "An activity is already being executed, please wait for it to finish",
+    "description": "Notification message when user try to execute an activity while there's already one being executed"
+  },
+  "useExecuteActivity.activityAlreadyExecutedNotificationMessage": {
+    "defaultMessage": "Activity already executed",
+    "description": "Notification message when user tries to execute an activity but the activity is already executed"
+  },
+  "useExecuteActivity.activityExecutionCompletedNotificationMessage": {
+    "defaultMessage": "Congrats, you have completed the activity",
+    "description": "Notification message when user completes an activity"
+  },
+  "useExecuteActivity.activityExecutionPendingNotificationMessage": {
+    "defaultMessage": "The activity is pending, check the next step in the instructions",
+    "description": "Notification message when after the execution, an activity is in pending state"
+  },
+  "useExecuteActivity.activityExecutionTodoNotificationMessage": {
+    "defaultMessage": "Hmm, the activity was not completed properly",
+    "description": "Notification message when executing an activity reset back to its todo status"
+  },
+  "useExecuteActivity.activityNotFoundNotificationMessage": {
+    "defaultMessage": "Activity not found",
+    "description": "Notification message when user tries to execute an activity but the activity is not found"
+  },
+  "useExecuteActivity.errorWhileExecutionActivityMessage": {
+    "defaultMessage": "Hmm, There was an executing the activity, please wait a moment and try again",
+    "description": "Notification message when user tries to execute an activity but there is an error while executing it"
+  },
+  "useExecuteActivity.errorWhileSavingExecutionResultMessage": {
+    "defaultMessage": "Hmm, There was an issue while saving the activity result, please wait a moment and try again",
+    "description": "Notification message when user tries to execute an activity but there is an error while saving the result"
+  },
+  "useExecuteActivity.nonSupportedExecutionResultMessage": {
+    "defaultMessage": "Hmm, Something went wrong, please wait a moment and try again",
+    "description": "Notification message when the execution activity resulted in an unknown status"
+  },
+  "useExecuteActivity.termsNotAcceptedNotificationMessage": {
+    "defaultMessage": "Please accept the terms and conditions",
+    "description": "Notification message when user tries to execute an activity but the terms and conditions are not accepted"
   }
 }

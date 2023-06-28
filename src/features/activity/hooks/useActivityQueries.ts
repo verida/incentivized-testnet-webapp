@@ -61,41 +61,40 @@ export function useActivityQueries() {
     staleTime: 1000 * 60, // 1 minutes
   });
 
-  // TODO: Handle error states
-  const { mutate: saveActivity, isLoading: isSavingActivity } = useMutation({
-    mutationFn: async (userActivity: UserActivity) => {
-      Sentry.addBreadcrumb({
-        category: "activity",
-        level: "info",
-        message: "Saving user activity",
-        data: { userActivity },
-      });
+  const { mutateAsync: saveActivity, isLoading: isSavingActivity } =
+    useMutation({
+      mutationFn: async (userActivity: UserActivity) => {
+        Sentry.addBreadcrumb({
+          category: "activity",
+          level: "info",
+          message: "Saving user activity",
+          data: { userActivity },
+        });
 
-      await saveActivityInDatastore(activitiesDatastore, userActivity);
+        await saveActivityInDatastore(activitiesDatastore, userActivity);
 
-      Sentry.addBreadcrumb({
-        category: "activity",
-        level: "info",
-        message: "User activity saved",
-        data: { userActivity },
-      });
-    },
-    onSuccess: async () => {
-      // TODO: Optimise with an optimistic update
-      await queryClient.invalidateQueries(["userActivities", did]);
-    },
-    onError(error, variables) {
-      Sentry.captureException(error, {
-        extra: variables,
-        tags: {
-          activityId: variables.id,
-        },
-      });
-    },
-  });
+        Sentry.addBreadcrumb({
+          category: "activity",
+          level: "info",
+          message: "User activity saved",
+          data: { userActivity },
+        });
+      },
+      onSuccess: async () => {
+        // TODO: Optimise with an optimistic update
+        await queryClient.invalidateQueries(["userActivities", did]);
+      },
+      onError(error, variables) {
+        Sentry.captureException(error, {
+          extra: variables,
+          tags: {
+            activityId: variables.id,
+          },
+        });
+      },
+    });
 
-  // TODO: Handle error states
-  const { mutate: deleteActivities, isLoading: isDeletingActivities } =
+  const { mutateAsync: deleteActivities, isLoading: isDeletingActivities } =
     useMutation({
       mutationFn: async () => {
         Sentry.addBreadcrumb({

@@ -19,7 +19,7 @@ export const AcceptTermsAmdConditionsModal: React.FunctionComponent<
   const { updateStatus } = useTermsConditions();
 
   const handleAccept = useCallback(() => {
-    updateStatus("accepted");
+    void updateStatus("accepted");
   }, [updateStatus]);
 
   const termsConditionsTitle = i18n.formatMessage({

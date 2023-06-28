@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
+import { useDebouncedCallback } from "use-debounce";
 
 import { Button, Typography } from "~/components/atoms";
 import { ActivityStatus } from "~/components/molecules";
@@ -27,30 +28,36 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
     isCheckingStatus: isCheckingTermsConditions,
     openAcceptModal,
   } = useTermsConditions();
-  const { executeActivity } = useActivity();
+  const { executeActivity, isLoadingUserActivities } = useActivity();
   const [executing, setExecuting] = useState(false);
 
-  const isChecking = isCheckingTermsConditions;
+  const isChecking = isCheckingTermsConditions || isLoadingUserActivities;
 
   const handleConnect = useCallback(() => {
     void connect();
   }, [connect]);
 
-  const handleExecuteActivity = useCallback(async () => {
-    setExecuting(true);
-    try {
-      // executeActivity handlers errors by itself but surrounding by try/catch just in case something has been forgotten
-      await executeActivity(activity.id);
-    } catch (error: unknown) {
-      Sentry.captureException(error, {
-        tags: {
-          activityId: activity.id,
-        },
-      });
-    } finally {
-      setExecuting(false);
+  const handleExecuteActivity = useDebouncedCallback(
+    async () => {
+      setExecuting(true);
+      try {
+        // executeActivity handlers errors by itself but surrounding by try/catch just in case something has been forgotten
+        await executeActivity(activity.id);
+      } catch (error: unknown) {
+        Sentry.captureException(error, {
+          tags: {
+            activityId: activity.id,
+          },
+        });
+      } finally {
+        setExecuting(false);
+      }
+    },
+    1000,
+    {
+      leading: true,
     }
-  }, [executeActivity, activity.id]);
+  );
 
   const resourcesSectionTitle = i18n.formatMessage({
     id: "ActivityCard.resourcesSectionTitle",
