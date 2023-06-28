@@ -11,9 +11,17 @@
     "defaultMessage": "Please read and accept the Terms of Use",
     "description": "Title for the terms and conditions modal"
   },
+  "ActivityCard.checkingConnectionButtonLabel": {
+    "defaultMessage": "Checking Verida",
+    "description": "Label of the disabled Checking Verida  button in each activity card"
+  },
   "ActivityCard.connectButtonLabel": {
     "defaultMessage": "Connect",
     "description": "Label of the Connect button in each activity card"
+  },
+  "ActivityCard.connectingButtonLabel": {
+    "defaultMessage": "Connecting",
+    "description": "Label of the disabled Connecting button in each activity card"
   },
   "ActivityCard.openTermsConditionsButtonLabel": {
     "defaultMessage": "Open Terms of Use",
@@ -71,9 +79,17 @@
     "defaultMessage": "Get Support",
     "description": "Title of the 'Get Support' section"
   },
+  "Header.checkingConnectionButtonLabel": {
+    "defaultMessage": "Checking Verida",
+    "description": "Label of the disabled Checking Verida button in the Header"
+  },
   "Header.connectButtonLabel": {
     "defaultMessage": "Connect",
     "description": "Label of the Connect button in the Header"
+  },
+  "Header.connectingButtonLabel": {
+    "defaultMessage": "Connecting",
+    "description": "Label of the disabled Connecting button in the Header"
   },
   "Header.homeLinkAriaLabel": {
     "defaultMessage": "Return to Home page",
@@ -230,6 +246,10 @@
   "activities.useMarkdownEditor.title": {
     "defaultMessage": "Use the Markdown editor demo app",
     "description": "Title of the activity 'use markdown editor'"
+  },
+  "activity.updateProfile.gettingProfileErrorMessage": {
+    "defaultMessage": "There was an error while getting your profile, please try again later",
+    "description": "Error message when we can't get the user profile"
   },
   "activity.updateProfile.missingFieldsErrorMessage": {
     "defaultMessage": "Some information are missing, please fill your public name, description and set an avatar in your profile",
