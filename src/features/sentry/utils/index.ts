@@ -38,6 +38,18 @@ export function initSentry() {
     // Session Replay
     replaysSessionSampleRate: config.sentry.replaysSessionSampleRate,
     replaysOnErrorSampleRate: config.sentry.replaysOnErrorSampleRate,
-    ignoreErrors: ["ResizeObserver loop limit exceeded"],
+    ignoreErrors: [
+      "ResizeObserver loop limit exceeded",
+      "ResizeObserver loop",
+      "Failed to fetch", // TODO: Remove when we have a better solution
+    ],
+    denyUrls: [
+      // Chrome extensions
+      /extensions\//i,
+      /^chrome:\/\//i,
+      /^chrome-extension:\/\//i,
+      // Mozilla extensions
+      /^moz-extension:\/\//i,
+    ],
   });
 }
