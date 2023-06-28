@@ -7,6 +7,7 @@ import type {
   ActivityOnInit,
   ActivityOnUnmount,
 } from "~/features/activity/types";
+import { Sentry } from "~/features/sentry";
 import { wait } from "~/utils";
 
 const ACTIVITY_ID = "update-profile"; // Never change the id
@@ -33,7 +34,23 @@ const handleInit: ActivityOnInit = async (veridaWebUser, saveActivity) => {
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
-  const profile = await veridaWebUser.current.getPublicProfile(true);
+  let profile;
+  try {
+    profile = await veridaWebUser.current.getPublicProfile(true);
+  } catch (error: unknown) {
+    Sentry.captureException(error);
+
+    const gettingProfileErrorMessage = defineMessage({
+      id: "activity.updateProfile.gettingProfileErrorMessage",
+      defaultMessage: `There was an error while getting your profile, please try again later`,
+      description: "Error message when we can't get the user profile",
+    });
+
+    return {
+      status: "todo",
+      message: gettingProfileErrorMessage,
+    };
+  }
 
   // Checking if the profile fields are filled
   const missingFields = [];
