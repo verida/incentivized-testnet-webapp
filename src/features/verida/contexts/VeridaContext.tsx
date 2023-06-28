@@ -38,7 +38,11 @@ const webUserInstance = new WebUser({
 
 type VeridaContextType = {
   webUserInstanceRef: React.MutableRefObject<WebUser>;
+  isReady: boolean;
   isConnected: boolean;
+  isConnecting: boolean;
+  isDisconnecting: boolean;
+  isCheckingConnection: boolean;
   did: string | undefined;
   profile: WebUserProfile | undefined;
   connect: () => Promise<boolean>;
@@ -63,6 +67,9 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
   const webUserInstanceRef = useRef(webUserInstance);
 
   const [isConnected, setIsConnected] = useState(false);
+  const [isConnecting, setIsConnecting] = useState(false);
+  const [isDisconnecting, setIsDisconnecting] = useState(false);
+  const [isCheckingConnection, setIsCheckingConnection] = useState(false);
   const [did, setDid] = useState<string>();
   const [profile, setProfile] = useState<WebUserProfile>();
 
@@ -71,14 +78,22 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
       .isConnected()
       .then((newIsConnected) => {
         setIsConnected(newIsConnected);
+        setIsConnecting(false);
+        setIsDisconnecting(false);
+        setIsCheckingConnection(false);
         Sentry.addBreadcrumb({
           category: "verida",
           level: "info",
-          message: "User is connected to Verida",
+          message: newIsConnected
+            ? "User is connected to Verida"
+            : "User is not connected to Verida",
         });
       })
       .catch(() => {
         setIsConnected(false);
+        setIsConnecting(false);
+        setIsDisconnecting(false);
+        setIsCheckingConnection(false);
         Sentry.addBreadcrumb({
           category: "verida",
           level: "info",
@@ -116,7 +131,15 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
     webUserInstance.addListener("connected", veridaEventListener);
     webUserInstance.addListener("profileChanged", veridaEventListener);
     webUserInstance.addListener("disconnected", veridaEventListener);
-    void webUserInstance.isConnected(); // Will trigger a 'connected' event if already connected and therefore update the states
+
+    const autoConnect = async () => {
+      setIsCheckingConnection(true);
+      await webUserInstanceRef.current.isConnected();
+      // Will trigger a 'connected' event if already connected and therefore update the states
+      setIsCheckingConnection(false);
+    };
+    void autoConnect();
+
     return () => {
       Sentry.addBreadcrumb({
         category: "verida",
@@ -135,7 +158,9 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
       message: "User connecting to Verida",
     });
 
+    setIsConnecting(true);
     const connected = await webUserInstanceRef.current.connect();
+    setIsConnecting(false);
 
     Sentry.addBreadcrumb({
       category: "verida",
@@ -155,7 +180,9 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
       message: "User disconnecting from Verida",
     });
 
+    setIsDisconnecting(true);
     await webUserInstanceRef.current.disconnect();
+    setIsDisconnecting(false);
 
     Sentry.addBreadcrumb({
       category: "verida",
@@ -197,7 +224,11 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
 
   const contextValue: VeridaContextType = useMemo(
     () => ({
+      isReady: isConnected && !!did && !!profile,
       isConnected,
+      isConnecting,
+      isDisconnecting,
+      isCheckingConnection,
       did,
       connect,
       disconnect,
@@ -207,6 +238,9 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
     }),
     [
       isConnected,
+      isConnecting,
+      isDisconnecting,
+      isCheckingConnection,
       did,
       connect,
       disconnect,

@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
+import { useDebouncedCallback } from "use-debounce";
 
-import { Button, Typography } from "~/components/atoms";
+import { Button, Icon, Typography } from "~/components/atoms";
 import { ActivityStatus } from "~/components/molecules";
 import { Activity, UserActivityStatus, useActivity } from "~/features/activity";
 import { Sentry } from "~/features/sentry";
@@ -21,36 +22,43 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
   const { title, shortDescription, enabled = false } = activity;
 
   const i18n = useIntl();
-  const { connect, isConnected } = useVerida();
+  const { connect, isConnected, isConnecting, isCheckingConnection } =
+    useVerida();
   const {
     status: statusTermsConditions,
     isCheckingStatus: isCheckingTermsConditions,
     openAcceptModal,
   } = useTermsConditions();
-  const { executeActivity } = useActivity();
+  const { executeActivity, isLoadingUserActivities } = useActivity();
   const [executing, setExecuting] = useState(false);
 
-  const isChecking = isCheckingTermsConditions;
+  const isChecking = isCheckingTermsConditions || isLoadingUserActivities;
 
   const handleConnect = useCallback(() => {
     void connect();
   }, [connect]);
 
-  const handleExecuteActivity = useCallback(async () => {
-    setExecuting(true);
-    try {
-      // executeActivity handlers errors by itself but surrounding by try/catch just in case something has been forgotten
-      await executeActivity(activity.id);
-    } catch (error: unknown) {
-      Sentry.captureException(error, {
-        tags: {
-          activityId: activity.id,
-        },
-      });
-    } finally {
-      setExecuting(false);
+  const handleExecuteActivity = useDebouncedCallback(
+    async () => {
+      setExecuting(true);
+      try {
+        // executeActivity handlers errors by itself but surrounding by try/catch just in case something has been forgotten
+        await executeActivity(activity.id);
+      } catch (error: unknown) {
+        Sentry.captureException(error, {
+          tags: {
+            activityId: activity.id,
+          },
+        });
+      } finally {
+        setExecuting(false);
+      }
+    },
+    1000,
+    {
+      leading: true,
     }
-  }, [executeActivity, activity.id]);
+  );
 
   const resourcesSectionTitle = i18n.formatMessage({
     id: "ActivityCard.resourcesSectionTitle",
@@ -62,6 +70,20 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
     id: "ActivityCard.connectButtonLabel",
     description: "Label of the Connect button in each activity card",
     defaultMessage: "Connect",
+  });
+
+  const connectingButtonLabel = i18n.formatMessage({
+    id: "ActivityCard.connectingButtonLabel",
+    description:
+      "Label of the disabled Connecting button in each activity card",
+    defaultMessage: "Connecting",
+  });
+
+  const checkingConnectionButtonLabel = i18n.formatMessage({
+    id: "ActivityCard.checkingConnectionButtonLabel",
+    description:
+      "Label of the disabled Checking Verida  button in each activity card",
+    defaultMessage: "Checking Verida",
   });
 
   const openTermsConditionsButtonLabel = i18n.formatMessage({
@@ -138,8 +160,19 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
                 </Button>
               )
             ) : (
-              <Button onClick={handleConnect} size="medium">
-                {connectButtonLabel}
+              <Button
+                onClick={handleConnect}
+                disabled={isConnecting || isCheckingConnection}
+                size="medium"
+              >
+                {isConnecting || isCheckingConnection ? (
+                  <Icon type="loading" className="animate-spin-slow mr-2" />
+                ) : null}
+                {isCheckingConnection
+                  ? checkingConnectionButtonLabel
+                  : isConnecting
+                  ? connectingButtonLabel
+                  : connectButtonLabel}
               </Button>
             )
           ) : (

@@ -39,8 +39,7 @@ export function useTermsConditionsQueries() {
     staleTime: 1000 * 60 * 60 * 24, // 1 day, as term status is not expected to change
   });
 
-  // TODO: Handle error states
-  const { mutate: saveStatus, isLoading: isUpdatingStatus } = useMutation({
+  const { mutateAsync: saveStatus, isLoading: isUpdatingStatus } = useMutation({
     mutationFn: (status: TermsConditionsStatus) => {
       return setStatusInDatastore(termsDatastore, status);
     },
@@ -53,19 +52,19 @@ export function useTermsConditionsQueries() {
     },
   });
 
-  // TODO: Handle error states
-  const { mutate: deleteStatus, isLoading: isDeletingStatus } = useMutation({
-    mutationFn: () => {
-      return deleteStatusInDatastore(termsDatastore);
-    },
-    onSuccess: async () => {
-      // TODO: Optimise with an optimistic update
-      await queryClient.invalidateQueries(["terms", did]);
-    },
-    onError(error) {
-      Sentry.captureException(error);
-    },
-  });
+  const { mutateAsync: deleteStatus, isLoading: isDeletingStatus } =
+    useMutation({
+      mutationFn: () => {
+        return deleteStatusInDatastore(termsDatastore);
+      },
+      onSuccess: async () => {
+        // TODO: Optimise with an optimistic update
+        await queryClient.invalidateQueries(["terms", did]);
+      },
+      onError(error) {
+        Sentry.captureException(error);
+      },
+    });
 
   return {
     status,

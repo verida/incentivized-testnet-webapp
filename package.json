@@ -1,6 +1,6 @@
 {
   "name": "incentivized-testnet-webapp",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
     "postinstall": "yarn run version && yarn run messages:compile",
@@ -49,11 +49,13 @@
     "stream-http": "^3.2.0",
     "tailwind-merge": "^1.13.2",
     "tailwindcss": "^3.3.2",
+    "use-debounce": "^9.0.4",
     "util": "^0.12.5",
     "zod": "^3.21.4"
   },
   "devDependencies": {
     "@formatjs/cli": "^6.1.3",
+    "@sentry/cli": "^2.19.1",
     "@tanstack/react-query-devtools": "^4.29.14",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^14.0.0",

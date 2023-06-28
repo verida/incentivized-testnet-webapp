@@ -1,5 +1,6 @@
 import { defineMessage } from "react-intl";
 
+export const APP_PACKAGE_NAME = "incentivized-testnet-webapp";
 export const VERIDA_CONTEXT_NAME = "Verida Missions";
 export const APP_TITLE = "Verida Missions";
 
