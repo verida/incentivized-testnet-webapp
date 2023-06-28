@@ -48,6 +48,8 @@ export function initSentry() {
       /extensions\//i,
       /^chrome:\/\//i,
       /^chrome-extension:\/\//i,
+      // Mozilla extensions
+      /^moz-extension:\/\//i,
     ],
   });
 }
