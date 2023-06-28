@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import { ReactComponent as VeridaNetworkLogo } from "~/assets/images/verida_network_logo.svg";
 import { ReactComponent as VeridaNetworkLogoWithText } from "~/assets/images/verida_network_logo_with_text.svg";
-import { Button } from "~/components/atoms";
+import { Button, Icon } from "~/components/atoms";
 import type { MenuItem } from "~/components/molecules";
 import { AvatarWithInfo, HeaderMenu } from "~/components/molecules";
 import { config } from "~/config";
@@ -19,7 +19,15 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
 
   const i18n = useIntl();
   const [openMenu, setOpenMenu] = useState(false);
-  const { connect, disconnect, isConnected, profile, did } = useVerida();
+  const {
+    connect,
+    disconnect,
+    isConnected,
+    isConnecting,
+    isCheckingConnection,
+    profile,
+    did,
+  } = useVerida();
   const { deleteTermsStatus } = useTermsConditions();
   const { deleteUserActivities } = useActivity();
 
@@ -50,6 +58,18 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     id: "Header.connectButtonLabel",
     description: "Label of the Connect button in the Header",
     defaultMessage: "Connect",
+  });
+
+  const connectingButtonLabel = i18n.formatMessage({
+    id: "Header.connectingButtonLabel",
+    description: "Label of the disabled Connecting button in the Header",
+    defaultMessage: "Connecting",
+  });
+
+  const checkingConnectionButtonLabel = i18n.formatMessage({
+    id: "Header.checkingConnectionButtonLabel",
+    description: "Label of the disabled Checking Verida button in the Header",
+    defaultMessage: "Checking Verida",
   });
 
   const contentHeight = "h-10";
@@ -109,8 +129,19 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
               />
             </>
           ) : (
-            <Button onClick={handleConnect} size="medium">
-              {connectButtonLabel}
+            <Button
+              onClick={handleConnect}
+              disabled={isConnecting || isCheckingConnection}
+              size="medium"
+            >
+              {isConnecting || isCheckingConnection ? (
+                <Icon type="loading" className="animate-spin-slow mr-2" />
+              ) : null}
+              {isCheckingConnection
+                ? checkingConnectionButtonLabel
+                : isConnecting
+                ? connectingButtonLabel
+                : connectButtonLabel}
             </Button>
           )}
         </div>
