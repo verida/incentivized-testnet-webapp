@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Navigate,
   Route,
   RouterProvider,
   createBrowserRouter,
@@ -24,6 +25,7 @@ const router = sentryCreateBrowserRouter(
     >
       <Route index element={<HomeView />} />
       {/* <Route path="terms-and-conditions" element={<TermsConditionsView />} /> */}
+      <Route path="*" element={<Navigate replace to="/" />} />
     </Route>
   )
 );
