@@ -48,12 +48,12 @@ export const TermsConditionsProvider: React.FunctionComponent<
     // setOpenModal(true);
   }, [isConnected]);
 
-  const updateStatus = useCallback((_status: TermsConditionsStatus) => {
-    // saveStatus(status);
+  const updateStatus = useCallback(async (_status: TermsConditionsStatus) => {
+    // await saveStatus(status);
   }, []);
 
-  const deleteTermsStatus = useCallback(() => {
-    // deleteStatus();
+  const deleteTermsStatus = useCallback(async () => {
+    // await deleteStatus();
   }, []);
 
   // const handleCloseModal = useCallback(() => {
