@@ -27,10 +27,10 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
     isCheckingStatus: isCheckingTermsConditions,
     openAcceptModal,
   } = useTermsConditions();
-  const { executeActivity } = useActivity();
+  const { executeActivity, isLoadingUserActivities } = useActivity();
   const [executing, setExecuting] = useState(false);
 
-  const isChecking = isCheckingTermsConditions;
+  const isChecking = isCheckingTermsConditions || isLoadingUserActivities;
 
   const handleConnect = useCallback(() => {
     void connect();

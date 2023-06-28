@@ -17,6 +17,7 @@ type ActivityContextType = {
   activities: Activity[];
   missions: Mission[];
   userActivities: UserActivityRecord[];
+  isLoadingUserActivities: boolean;
   getUserActivity: (activityId: string) => UserActivityRecord | undefined;
   executeActivity: (activityId: string) => Promise<void>;
   deleteUserActivities: () => void;
@@ -36,6 +37,7 @@ export const ActivityProvider: React.FunctionComponent<
   const {
     // isReady: isQueriesReady,
     userActivities,
+    isLoadingActivities: isLoadingUserActivities,
     deleteActivities,
   } = useActivityQueries();
 
@@ -109,11 +111,18 @@ export const ActivityProvider: React.FunctionComponent<
       missions: missions.filter((m) => (config.devMode ? true : m.visible)),
       activities: activities,
       userActivities: userActivities || [],
+      isLoadingUserActivities,
       getUserActivity,
       executeActivity,
       deleteUserActivities,
     }),
-    [userActivities, executeActivity, getUserActivity, deleteUserActivities]
+    [
+      userActivities,
+      isLoadingUserActivities,
+      executeActivity,
+      getUserActivity,
+      deleteUserActivities,
+    ]
   );
 
   return (
