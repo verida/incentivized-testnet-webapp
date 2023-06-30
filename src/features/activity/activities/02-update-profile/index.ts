@@ -1,3 +1,4 @@
+import { WebUserProfile } from "@verida/web-helpers";
 import { defineMessage } from "react-intl";
 
 import { MISSION_01_ID } from "~/features/activity/missions";
@@ -34,7 +35,7 @@ const handleInit: ActivityOnInit = async (veridaWebUser, saveActivity) => {
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
-  let profile;
+  let profile: WebUserProfile;
   try {
     profile = await veridaWebUser.current.getPublicProfile(true);
   } catch (error: unknown) {

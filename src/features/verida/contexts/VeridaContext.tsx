@@ -111,7 +111,7 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
         Sentry.setUser(null);
       });
     webUserInstance
-      .getPublicProfile()
+      .getPublicProfile(true)
       .then(setProfile)
       .catch(() => {
         setProfile(undefined);
