@@ -25,6 +25,10 @@ const webUserInstance = new WebUser({
   debug: true,
   clientConfig: {
     environment: config.verida.environment,
+    didClientConfig: {
+      network: config.verida.environment,
+      rpcUrl: config.verida.rpcUrl,
+    },
   },
   contextConfig: {
     name: config.verida.contextName,
