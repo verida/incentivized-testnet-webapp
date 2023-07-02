@@ -18,6 +18,8 @@ const veridaEnvironment: EnvironmentType =
     ? EnvironmentType.MAINNET
     : EnvironmentType.TESTNET;
 
+const veridaRpcUrl = process.env.REACT_APP_VERIDA_RPC_URL || undefined;
+
 export const config = {
   appVersion: version,
   devMode,
@@ -25,6 +27,7 @@ export const config = {
     environment: veridaEnvironment,
     contextName: veridaContextName,
     connectLogoUrl: veridaConnectLogoUrl,
+    rpcUrl: veridaRpcUrl,
   },
   sentry: {
     enabled: process.env.REACT_APP_SENTRY_ENABLED === "false" ? false : true,
