@@ -2,32 +2,98 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    colors: {
-      "primary": "#ffffff",
-      "primary-inverse": "#000000",
-      "background": "#19193D",
-      "translucent": "rgba(17, 17, 17, 0.2)",
-      "transparent": "rgba(255, 255, 255, 0)",
-      "primary-5": "rgba(255, 255, 255, 0.05)",
-      "primary-10": "rgba(255, 255, 255, 0.10)",
-      "primary-15": "rgba(255, 255, 255, 0.15)",
-      "gray": "rgba(255, 255, 255, 0.05)",
-      "gray-dark": "rgba(255, 255, 255, 0.15)",
-      "background-button": "rgba(255, 255, 255, 0.15)",
-      "background-button-hover": "rgba(255, 255, 255, 0.3)",
-      "white": "#ffffff",
-      "black": "#000000",
-      "error": "#CE4B46",
-      "green": "#13ce66",
-      "purple": "#8F36FF",
-      "gray-light": "#9D9D9D",
-      "verida-blue": "#37D5C7",
-      "verida-purple": "#5354D1",
-    },
     fontFamily: {
       sans: ["Sora", "sans-serif"],
     },
     extend: {
+      colors: {
+        white: "hsl(var(--white))",
+        black: "hsl(var(--black))",
+        translucent: "rgba(17, 17, 17, 0.2)",
+        transparent: {
+          DEFAULT: "hsla(var(--white) / 0)",
+          5: "hsla(var(--white) / 0.05)",
+          10: "hsla(var(--white) / 0.10)",
+          15: "hsla(var(--white) / 0.15)",
+          30: "hsla(var(--white) / 0.3)",
+        },
+
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        muted: {
+          DEFAULT: "hsla(var(--background) / 0.2)",
+          foreground: "hsla(var(--foreground) / 0.7)",
+        },
+
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          background: "hsla(var(--primary) / 0.2)",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          background: "hsla(var(--success) / 0.2)",
+        },
+        pending: {
+          DEFAULT: "hsl(var(--pending))",
+          background: "hsla(var(--pending) / 0.2)",
+        },
+        gray: {
+          DEFAULT: "hsl(var(--gray))",
+        },
+
+        button: {
+          DEFAULT: "hsla(var(--white) / 0.15)",
+          hover: "hsla(var(--white) / 0.3)",
+        },
+        border: "hsla(var(--white) / 0.15)",
+        divider: {
+          DEFAULT: "hsla(var(--white) / 0.15)",
+        },
+      },
+      fontSize: {
+        "heading-l": [
+          "3rem",
+          {
+            lineHeight: "120%",
+            fontWeight: "700",
+          },
+        ],
+        "heading-m": [
+          "1.75rem",
+          {
+            lineHeight: "120%",
+            fontWeight: "700",
+          },
+        ],
+        "heading-s": [
+          "1.25rem",
+          {
+            lineHeight: "120%",
+            fontWeight: "600",
+          },
+        ],
+        "base": [
+          "1rem",
+          {
+            lineHeight: "140%",
+            fontWeight: "400",
+          },
+        ],
+        "subtitle": [
+          "0.875rem",
+          {
+            lineHeight: "1rem",
+            fontWeight: "600",
+          },
+        ],
+        "button": [
+          "0.875rem",
+          {
+            lineHeight: "1rem",
+            fontWeight: "600",
+          },
+        ],
+      },
       animation: {
         "spin-slow": "spin 5s linear infinite",
       },
@@ -45,4 +111,5 @@ module.exports = {
       },
     },
   },
+  plugins: [require("tailwindcss-animate")],
 };
