@@ -6,12 +6,17 @@ export const MISSION_01_ID = "mission-01";
 
 export const mission: Mission = {
   id: MISSION_01_ID,
+  idLabel: defineMessage({
+    id: "missions.mission-01.idLabel",
+    defaultMessage: "Mission 1",
+    description: "Label of the mission if 01",
+  }),
   enabled: true,
   visible: true,
   order: 1,
   title: defineMessage({
     id: "missions.mission-01.title",
-    defaultMessage: "Mission 1: Onboarding to the Verida Network",
+    defaultMessage: "Onboarding to the Verida Network",
     description: "Title of the mission 01",
   }),
   shortDescription: defineMessage({
