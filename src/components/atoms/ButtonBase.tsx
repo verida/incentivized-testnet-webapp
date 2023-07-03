@@ -88,7 +88,7 @@ export const ButtonBase: React.FunctionComponent<ButtonBaseProps> = (props) => {
     props;
 
   const classes = twMerge(
-    buttonBaseVariants({ variant, size, shape, color }),
+    buttonBaseVariants({ variant, color, size, shape }),
     className
   );
 

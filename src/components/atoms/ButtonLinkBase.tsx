@@ -3,12 +3,16 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 
 const buttonLinkBaseVariants = cva(
-  "flex items-center justify-center space-x-2.5 font-medium disabled:opacity-20",
+  "flex items-center justify-center space-x-2.5 text-sm font-medium",
   {
     variants: {
       variant: {
-        text: "hover:bg-button",
-        contained: "bg-button hover:bg-button-hover",
+        text: "bg-transparent disabled:bg-transparent",
+        contained: "disabled:text-muted-foreground",
+      },
+      color: {
+        default: "",
+        primary: "",
       },
       size: {
         "no-margin": "p-0 rounded-lg",
@@ -44,9 +48,31 @@ const buttonLinkBaseVariants = cva(
         shape: "standard",
         className: "px-5",
       },
+      {
+        variant: "contained",
+        color: "default",
+        className:
+          "bg-transparent-10 hover:bg-transparent-20 disabled:bg-transparent-5 ",
+      },
+      {
+        variant: "text",
+        color: "default",
+        className: "hover:bg-transparent-10 disabled:text-muted-foreground",
+      },
+      {
+        variant: "contained",
+        color: "primary",
+        className: "bg-primary hover:bg-primary/80 disabled:bg-primary/20",
+      },
+      {
+        variant: "text",
+        color: "primary",
+        className: "text-primary hover:bg-primary/10 disabled:text-primary/70",
+      },
     ],
     defaultVariants: {
       variant: "contained",
+      color: "default",
       size: "medium",
       shape: "standard",
     },
@@ -65,11 +91,19 @@ export type ButtonLinkBaseProps = {
 export const ButtonLinkBase: React.FunctionComponent<ButtonLinkBaseProps> = (
   props
 ) => {
-  const { variant, size, shape, children, url, className, ...otherProps } =
-    props;
+  const {
+    variant,
+    color,
+    size,
+    shape,
+    children,
+    url,
+    className,
+    ...otherProps
+  } = props;
 
   const classes = twMerge(
-    buttonLinkBaseVariants({ variant, size, shape }),
+    buttonLinkBaseVariants({ variant, color, size, shape }),
     className
   );
 
