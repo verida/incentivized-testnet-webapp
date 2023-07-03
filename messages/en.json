@@ -11,18 +11,6 @@
     "defaultMessage": "Please read and accept the Terms of Use",
     "description": "Title for the terms and conditions modal"
   },
-  "ActivityCard.checkingConnectionButtonLabel": {
-    "defaultMessage": "Checking Verida",
-    "description": "Label of the disabled Checking Verida  button in each activity card"
-  },
-  "ActivityCard.connectButtonLabel": {
-    "defaultMessage": "Connect",
-    "description": "Label of the Connect button in each activity card"
-  },
-  "ActivityCard.connectingButtonLabel": {
-    "defaultMessage": "Connecting",
-    "description": "Label of the disabled Connecting button in each activity card"
-  },
   "ActivityCard.openTermsConditionsButtonLabel": {
     "defaultMessage": "Open Terms of Use",
     "description": "Label of the button to open the terms and conditions modal on each activity card"
@@ -32,7 +20,7 @@
     "description": "Title of the resources section in each activity card"
   },
   "ActivityStatus.activityCheckingLabel": {
-    "defaultMessage": "Checking...",
+    "defaultMessage": "Checking",
     "description": "Label of the status for a disabled activity"
   },
   "ActivityStatus.activityCompletedStatusLabel": {
@@ -48,8 +36,20 @@
     "description": "Label of the status for a pending activity"
   },
   "ActivityStatus.activityTodoStatusLabel": {
-    "defaultMessage": "Start",
+    "defaultMessage": "To do",
     "description": "Label of the status for an activity to perform"
+  },
+  "ConnectVeridaButton.checkingConnectionButtonLabel": {
+    "defaultMessage": "Checking",
+    "description": "Label of the disabled Checking Verida  button in each activity card"
+  },
+  "ConnectVeridaButton.connectButtonLabel": {
+    "defaultMessage": "Connect",
+    "description": "Label of the Connect button in each activity card"
+  },
+  "ConnectVeridaButton.connectingButtonLabel": {
+    "defaultMessage": "Connecting",
+    "description": "Label of the disabled Connecting button in each activity card"
   },
   "ErrorFallbackCard.cardMessage": {
     "defaultMessage": "If the error persists, try refreshing your browser and cleaning your browser's data.",
@@ -78,18 +78,6 @@
   "GetSupportSection.sectionTitle": {
     "defaultMessage": "Get Support",
     "description": "Title of the 'Get Support' section"
-  },
-  "Header.checkingConnectionButtonLabel": {
-    "defaultMessage": "Checking Verida",
-    "description": "Label of the disabled Checking Verida button in the Header"
-  },
-  "Header.connectButtonLabel": {
-    "defaultMessage": "Connect",
-    "description": "Label of the Connect button in the Header"
-  },
-  "Header.connectingButtonLabel": {
-    "defaultMessage": "Connecting",
-    "description": "Label of the disabled Connecting button in the Header"
   },
   "Header.homeLinkAriaLabel": {
     "defaultMessage": "Return to Home page",
@@ -268,7 +256,7 @@
     "description": "Label of the mission if 01"
   },
   "missions.mission-01.shortDescription": {
-    "defaultMessage": "This first mission guides you through the process of onboarding onto the Verida network. It's designed to familiarize you with the network's features, functionalities, and ecosystem, ensuring you have a smooth and seamless experience as a Verida user.",
+    "defaultMessage": "This first mission guides you through the process of onboarding onto the Verida Network. It's designed to familiarize you with the Network's features, functionalities, and ecosystem, ensuring you have a smooth and seamless experience as a Verida user.",
     "description": "Short description of the mission 01"
   },
   "missions.mission-01.title": {
