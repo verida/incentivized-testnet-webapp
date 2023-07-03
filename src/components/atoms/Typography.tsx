@@ -1,6 +1,14 @@
 import React from "react";
+import { twMerge } from "tailwind-merge";
 
-type TypographyVariant = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body";
+// TODO: Use cva for variants definition
+type TypographyVariant =
+  | "heading-l"
+  | "heading-m"
+  | "heading-s"
+  | "base"
+  | "subtitle"
+  | "button";
 
 type TypographyComponent =
   | "h1"
@@ -19,40 +27,38 @@ type TypographyProps = {
 } & Omit<React.ComponentPropsWithoutRef<"div">, "children">;
 
 const mapping = {
-  h1: "h1",
-  h2: "h2",
-  h3: "h3",
-  h4: "h4",
-  h5: "h5",
-  h6: "h6",
-  body: "p",
+  "heading-l": "h1",
+  "heading-m": "h2",
+  "heading-s": "h3",
+  "base": "p",
+  "subtitle": "span",
+  "button": "span",
 };
 
 // TODO: Properly define the styles for each variant
 const variantClasses = {
-  h1: "text-4xl font-bold mt-8 mb-2",
-  h2: "text-3xl font-bold mt-8 mb-4",
-  h3: "text-2xl font-bold mt-8 mb-2",
-  h4: "text-xl font-bold mt-4 mb-2",
-  h5: "text-lg font-bold mt-4 mb-2",
-  h6: "text-base font-bold mt-4 mb-2",
-  body: "text-sm font-normal",
+  "heading-l": "text-heading-l",
+  "heading-m": "text-heading-m",
+  "heading-s": "text-heading-s",
+  "base": "text-base",
+  "subtitle": "text-subtitle",
+  "button": "text-button",
 };
 
 // TODO: Replace all p and h tags by Typography component
 
 export const Typography: React.FunctionComponent<TypographyProps> = (props) => {
   const {
-    variant = "body",
+    variant = "base",
     component,
     children,
-    className = "",
+    className,
     ...otherProps
   } = props;
 
   const htmlTag = component || mapping[variant];
-  // TODO: Use twMerge
-  const classes = `${variantClasses[variant]} ${className}`;
+
+  const classes = twMerge(variantClasses[variant], className);
 
   switch (htmlTag) {
     case "h1":

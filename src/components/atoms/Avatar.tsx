@@ -2,10 +2,10 @@ import React from "react";
 
 import { Icon } from "./Icon";
 
-type AvatarProps = {
+export type AvatarProps = {
   image?: string;
   alt?: string;
-} & Omit<React.ComponentPropsWithoutRef<"div">, "children">;
+} & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const Avatar: React.FunctionComponent<AvatarProps> = (props) => {
   const { image, alt = "avatar", ...otherProps } = props;

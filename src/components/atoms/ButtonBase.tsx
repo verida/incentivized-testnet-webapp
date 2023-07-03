@@ -1,56 +1,72 @@
+import { type VariantProps, cva } from "class-variance-authority";
 import React from "react";
+import { twMerge } from "tailwind-merge";
 
-export type ButtonVariant = "text" | "contained";
-export type ButtonSize = "no-margin" | "small" | "medium" | "large" | "xlarge";
-export type ButtonShape = "standard" | "square";
+const buttonBaseVariants = cva(
+  "flex items-center justify-center space-x-2.5 font-medium disabled:opacity-20",
+  {
+    variants: {
+      variant: {
+        text: "hover:bg-button",
+        contained: "bg-button hover:bg-button-hover",
+      },
+      size: {
+        "no-margin": "p-0 rounded-lg",
+        "small": "p-1.5 rounded-lg",
+        "medium": "p-2.5 rounded-xl",
+        "large": "p-3.5 rounded-xl w-full",
+        "xlarge": "p-4.5 rounded-xl w-full",
+      },
+      shape: {
+        standard: "",
+        square: "",
+      },
+    },
+    compoundVariants: [
+      {
+        size: "small",
+        shape: "standard",
+        className: "px-2",
+      },
+      {
+        size: "medium",
+        shape: "standard",
+        className: "px-4",
+      },
+      {
+        size: "large",
+        shape: "standard",
+        className: "px-4",
+      },
+      {
+        size: "xlarge",
+        shape: "standard",
+        className: "px-5",
+      },
+    ],
+    defaultVariants: {
+      variant: "contained",
+      size: "medium",
+      shape: "standard",
+    },
+  }
+);
 
-type ButtonBaseProps = {
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-  shape?: ButtonShape;
-  disableHover?: boolean;
-} & Omit<React.ComponentPropsWithoutRef<"button">, "type">;
+export type ButtonBaseVariants = VariantProps<typeof buttonBaseVariants>;
+
+export type ButtonBaseProps = ButtonBaseVariants &
+  Omit<React.ComponentPropsWithRef<"button">, "type">;
 
 export const ButtonBase: React.FunctionComponent<ButtonBaseProps> = (props) => {
-  const {
-    variant = "contained",
-    size = "medium",
-    shape = "standard",
-    disableHover = false,
-    children,
-    className = "",
-    ...otherProps
-  } = props;
+  const { variant, size, shape, children, className, ...buttonProps } = props;
 
-  const padding =
-    size === "no-margin"
-      ? `p-0`
-      : size === "small"
-      ? `py-1.5 ${shape === "standard" ? "px-2" : "px-1.5"}`
-      : size === "xlarge"
-      ? `py-4.5 ${shape === "standard" ? "px-5" : "px-4.5"} w-full`
-      : size === "large"
-      ? `py-3.5 ${shape === "standard" ? "px-4" : "px-3.5"} w-full`
-      : `py-2.5 ${shape === "standard" ? "px-4" : "px-2.5"}`;
-
-  const radius =
-    size === "no-margin" || size === "small" ? "rounded-lg" : "rounded-xl";
-
-  const background =
-    variant === "text"
-      ? disableHover
-        ? ""
-        : "hover:bg-background-button"
-      : disableHover
-      ? ""
-      : "bg-background-button hover:bg-background-button-hover";
+  const classes = twMerge(
+    buttonBaseVariants({ variant, size, shape }),
+    className
+  );
 
   return (
-    <button
-      {...otherProps}
-      type="button"
-      className={`flex items-center justify-center space-x-2.5 font-medium disabled:opacity-20 ${background} ${padding} ${radius} ${className}`}
-    >
+    <button {...buttonProps} type="button" className={classes}>
       {children}
     </button>
   );
