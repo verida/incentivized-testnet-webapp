@@ -1,5 +1,4 @@
 import React from "react";
-import { twMerge } from "tailwind-merge";
 
 import { Chip } from "~/components/atoms";
 
@@ -13,14 +12,7 @@ export const MissionIdLabelChip: React.FunctionComponent<
   const { label, className, ...divProps } = props;
 
   return (
-    <Chip
-      {...divProps}
-      color="default"
-      className={twMerge(
-        "bg-background border-border text-muted-foreground",
-        className
-      )}
-    >
+    <Chip {...divProps} variant="muted" className="bg-background">
       {label}
     </Chip>
   );

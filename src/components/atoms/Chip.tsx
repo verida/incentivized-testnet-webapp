@@ -3,18 +3,19 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 
 const chipVariants = cva(
-  "px-4 py-2 rounded-full border border-solid w-fit leading-4",
+  "px-3 py-2 rounded-full border border-solid w-fit leading-4",
   {
     variants: {
-      color: {
+      variant: {
         default: "bg-foreground/20 text-foreground border-foreground",
+        muted: "bg-transparent text-muted-foreground border-border",
         primary: "bg-primary-background text-primary border-primary",
         success: "bg-success-background text-success border-success",
         pending: "bg-pending-background text-pending border-pending",
       },
     },
     defaultVariants: {
-      color: "default",
+      variant: "default",
     },
   }
 );
@@ -27,9 +28,9 @@ export type ChipProps = {
   React.ComponentPropsWithoutRef<"div">;
 
 export const Chip: React.FunctionComponent<ChipProps> = (props) => {
-  const { children, color, className, ...divProps } = props;
+  const { children, variant, className, ...divProps } = props;
 
-  const classes = twMerge(chipVariants({ color }), className);
+  const classes = twMerge(chipVariants({ variant }), className);
 
   return (
     <div {...divProps} className={classes}>
