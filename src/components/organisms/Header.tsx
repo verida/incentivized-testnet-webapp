@@ -97,7 +97,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
 
   return (
     <header {...headerProps}>
-      <div className="flex flex-row justify-between border-b border-solid border-gray-dark bg-translucent px-4 pt-3 pb-[calc(0.75rem_-_1px)] backdrop-blur-[15px] sm:px-6">
+      <div className="flex flex-row justify-between border-b border-solid border-divider bg-translucent px-4 pt-3 pb-[calc(0.75rem_-_1px)] backdrop-blur-[15px] sm:px-6">
         <div className="justify-self-start">
           <Link to="/" aria-label={homeLinkAriaLabel}>
             <div className={`aspect-[10/6.97] ${contentHeight} sm:hidden`}>

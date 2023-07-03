@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
 import { useDebouncedCallback } from "use-debounce";
 
-import { Button, Icon, Typography } from "~/components/atoms";
+import { ActivityIndex, Button, Icon, Typography } from "~/components/atoms";
 import { ActivityStatus } from "~/components/molecules";
 import { Activity, UserActivityStatus, useActivity } from "~/features/activity";
 import { Sentry } from "~/features/sentry";
@@ -63,7 +63,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
   const resourcesSectionTitle = i18n.formatMessage({
     id: "ActivityCard.resourcesSectionTitle",
     description: "Title of the resources section in each activity card",
-    defaultMessage: "Learn:",
+    defaultMessage: "Resources",
   });
 
   const connectButtonLabel = i18n.formatMessage({
@@ -93,8 +93,8 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
     defaultMessage: "Open Terms of Use",
   });
 
-  const background = enabled ? "bg-primary-15" : "bg-primary-5";
-  const textColor = enabled ? "text-primary" : "text-primary/70";
+  const background = enabled ? "bg-transparent-15" : "bg-transparent-5";
+  const textColor = enabled ? "text-foreground" : "text-muted-foreground";
 
   return (
     <section {...sectionProps}>
@@ -103,19 +103,17 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
       >
         <div className="flex flex-col gap-4">
           <header className="flex flex-row gap-4 items-baseline">
-            <div className="bg-primary-15 aspect-square h-8 rounded-full flex justify-center items-center">
-              {index}
-            </div>
-            <h4 className="text-xl font-semibold">
+            <ActivityIndex index={String(index)} />
+            <Typography component="h4" variant="heading-s">
               {i18n.formatMessage(title)}
-            </h4>
+            </Typography>
           </header>
           <div>
             <Typography>{i18n.formatMessage(shortDescription)}</Typography>
           </div>
           {enabled && activity.resources && activity.resources.length > 0 ? (
             <aside>
-              <p className="font-semibold text-primary/70">
+              <p className="font-semibold text-opacity-70">
                 {resourcesSectionTitle}
               </p>
               <ul>

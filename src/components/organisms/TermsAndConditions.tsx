@@ -13,16 +13,16 @@ export const TermsAndConditions: React.FunctionComponent<
 > = (props) => {
   return (
     <div {...props}>
-      <Typography variant="h2" component="p">
+      <Typography variant="subtitle" component="p">
         Verida DAO
       </Typography>
-      <Typography variant="h2">
+      <Typography variant="heading-l">
         Participation Incentives Program Terms
       </Typography>
 
       <Typography>Effective Date: 23 May 2023</Typography>
 
-      <Typography variant="h3">1. Important Information</Typography>
+      <Typography variant="heading-m">1. Important Information</Typography>
 
       <Typography>
         Deserunt dolor minim consequat mollit cillum Lorem velit velit ex. Do
@@ -39,9 +39,11 @@ export const TermsAndConditions: React.FunctionComponent<
         nulla dolore incididunt.
       </Typography>
 
-      <Typography variant="h3">2. About Verida Foundation DAO</Typography>
+      <Typography variant="heading-m">
+        2. About Verida Foundation DAO
+      </Typography>
 
-      <Typography variant="h5" component="h4">
+      <Typography variant="heading-s" component="h4">
         Overview
       </Typography>
 
@@ -60,7 +62,7 @@ export const TermsAndConditions: React.FunctionComponent<
         nulla dolore incididunt.
       </Typography>
 
-      <Typography variant="h5" component="h4">
+      <Typography variant="heading-s" component="h4">
         Governance
       </Typography>
 
@@ -79,7 +81,7 @@ export const TermsAndConditions: React.FunctionComponent<
         nulla dolore incididunt.
       </Typography>
 
-      <Typography variant="h3">3. Risks</Typography>
+      <Typography variant="heading-m">3. Risks</Typography>
 
       <Typography>
         Deserunt dolor minim consequat mollit cillum Lorem velit velit ex. Do
@@ -96,7 +98,7 @@ export const TermsAndConditions: React.FunctionComponent<
         nulla dolore incididunt.
       </Typography>
 
-      <Typography variant="h3">
+      <Typography variant="heading-m">
         4. How to interact with the Particpation Incentives Program
       </Typography>
 
@@ -115,7 +117,7 @@ export const TermsAndConditions: React.FunctionComponent<
         nulla dolore incididunt.
       </Typography>
 
-      <Typography variant="h3">5. Additional Information</Typography>
+      <Typography variant="heading-m">5. Additional Information</Typography>
 
       <Typography>
         Deserunt dolor minim consequat mollit cillum Lorem velit velit ex. Do
