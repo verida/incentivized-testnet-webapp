@@ -3,7 +3,13 @@ import { useIntl } from "react-intl";
 import { twMerge } from "tailwind-merge";
 import { useDebouncedCallback } from "use-debounce";
 
-import { ActivityIndex, Button, Icon, Typography } from "~/components/atoms";
+import {
+  ActivityIndex,
+  Button,
+  Chip,
+  Icon,
+  Typography,
+} from "~/components/atoms";
 import { ActivityStatus } from "~/components/molecules";
 import { Activity, UserActivityStatus, useActivity } from "~/features/activity";
 import { Sentry } from "~/features/sentry";
@@ -69,6 +75,15 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
     defaultMessage: "Open Terms of Use",
   });
 
+  const xpPointsChipLabel = i18n.formatMessage(
+    {
+      id: "ActivityCard.xpPointsChipLabel",
+      description: "Label of the XP points chip on each activity card",
+      defaultMessage: "{points} XP",
+    },
+    { points: activity.points }
+  );
+
   const backgroundClasses =
     enabled && status !== "completed"
       ? "bg-transparent-10"
@@ -121,14 +136,17 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
             </ul>
           </aside>
         ) : null}
-        <footer className="flex justify-between items-center">
-          <div>
+        <footer className="flex justify-between items-end">
+          <div className="flex gap-2">
             {enabled ? (
-              isConnected ? (
-                <ActivityStatus
-                  status={isLoadingUserActivities ? "checking" : status}
-                />
-              ) : null
+              <>
+                <Chip variant="primary">{xpPointsChipLabel}</Chip>
+                {isConnected && status !== "todo" ? (
+                  <ActivityStatus
+                    status={isLoadingUserActivities ? "checking" : status}
+                  />
+                ) : null}
+              </>
             ) : (
               <ActivityStatus status="disabled" />
             )}
