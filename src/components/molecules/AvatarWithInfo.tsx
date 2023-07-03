@@ -18,7 +18,7 @@ export const AvatarWithInfo: React.FunctionComponent<AvatarWithInfoProps> = (
 
   return (
     <div {...divProps}>
-      <div className="h-full flex flex-row gap-2 bg-primary-15 rounded-s-full pr-4 md:pr-2">
+      <div className="h-full flex flex-row gap-2 bg-transparent-15 rounded-s-full pr-4 md:pr-2">
         <Avatar image={image} alt={name} className="h-full flex-shrink-0" />
         <div className="hidden md:flex flex-col justify-between py-0.5 flex-shrink truncate">
           <p
@@ -29,7 +29,7 @@ export const AvatarWithInfo: React.FunctionComponent<AvatarWithInfoProps> = (
             {formattedName}
           </p>
           {did === undefined ? null : (
-            <p className="truncate text-sm leading-3.5 text-primary/70">
+            <p className="truncate text-sm leading-3.5 text-foreground/70">
               {truncateDid(did)}
             </p>
           )}

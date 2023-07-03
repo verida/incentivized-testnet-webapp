@@ -14,13 +14,13 @@ export const Avatar: React.FunctionComponent<AvatarProps> = (props) => {
     <img
       src={image}
       alt={alt}
-      className={`border-1 aspect-square h-full rounded-full border border-primary/60 object-cover`}
+      className={`border-1 aspect-square h-full rounded-full border border-border/60 object-cover`}
     />
   ) : (
     <Icon
       type="user"
       size="70%"
-      className={`flex aspect-square h-full items-center justify-center rounded-full border-2 border-primary/60 bg-gray-dark`}
+      className={`flex aspect-square h-full items-center justify-center rounded-full border-2 border-border/60 bg-transparent-15`}
     />
   );
 

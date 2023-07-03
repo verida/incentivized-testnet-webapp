@@ -24,11 +24,11 @@ export const HeaderMenu: React.FunctionComponent<HeaderMenuProps> = (props) => {
     <PortalWrapper>
       <div className="fixed inset-0 z-50" onClick={onClose}></div>
       <div className="fixed top-14 right-1 z-50 bg-background rounded-lg shadow-lg">
-        <ul className="py-2 bg-background-button rounded-lg">
+        <ul className="py-2 bg-button rounded-lg">
           {items.map((item) => (
             <li key={item.label}>
               <button
-                className="hover:bg-background-button-hover w-full p-2.5"
+                className="hover:bg-button-hover w-full p-2.5"
                 onClick={() => {
                   item.action();
                   onClose();
