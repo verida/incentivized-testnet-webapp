@@ -7,11 +7,11 @@ const chipVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-foreground/20 text-foreground border-foreground",
+        default: "bg-foreground/20 text-foreground border-foreground/20",
         muted: "bg-transparent text-muted-foreground border-border",
-        primary: "bg-primary-background text-primary border-primary",
-        success: "bg-success-background text-success border-success",
-        pending: "bg-pending-background text-pending border-pending",
+        primary: "bg-primary-background text-primary border-primary/20",
+        success: "bg-success-background text-success border-success/20",
+        pending: "bg-pending-background text-pending border-pending/20",
       },
     },
     defaultVariants: {
