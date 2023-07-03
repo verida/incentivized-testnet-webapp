@@ -8,7 +8,7 @@ const buttonLinkBaseVariants = cva(
     variants: {
       variant: {
         text: "bg-transparent disabled:bg-transparent",
-        contained: "disabled:text-muted-foreground",
+        contained: "",
       },
       color: {
         default: "",
@@ -52,7 +52,7 @@ const buttonLinkBaseVariants = cva(
         variant: "contained",
         color: "default",
         className:
-          "bg-transparent-10 hover:bg-transparent-20 disabled:bg-transparent-5 ",
+          "bg-transparent-10 hover:bg-transparent-20 disabled:bg-transparent-5 disabled:text-muted-foreground",
       },
       {
         variant: "text",
@@ -62,7 +62,8 @@ const buttonLinkBaseVariants = cva(
       {
         variant: "contained",
         color: "primary",
-        className: "bg-primary hover:bg-primary/80 disabled:bg-primary/20",
+        className:
+          "text-primary-foreground bg-primary hover:bg-primary/80 disabled:bg-primary/20",
       },
       {
         variant: "text",

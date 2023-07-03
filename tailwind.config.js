@@ -30,6 +30,7 @@ module.exports = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           background: "hsla(var(--primary) / 0.2)",
+          foreground: "hsl(var(--background))",
         },
         success: {
           DEFAULT: "hsl(var(--success))",
