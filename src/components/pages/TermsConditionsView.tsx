@@ -1,8 +1,8 @@
 import React from "react";
 import { useIntl } from "react-intl";
 
-import { PageWrapper } from "~/components/molecules";
 import { TermsAndConditions } from "~/components/organisms";
+import { PageLayout } from "~/components/templates";
 
 export const TermsConditionsView: React.FunctionComponent = () => {
   const i18n = useIntl();
@@ -14,8 +14,8 @@ export const TermsConditionsView: React.FunctionComponent = () => {
   });
 
   return (
-    <PageWrapper title={termsConditionsTitle}>
+    <PageLayout title={termsConditionsTitle}>
       <TermsAndConditions className="mt-16" />
-    </PageWrapper>
+    </PageLayout>
   );
 };
