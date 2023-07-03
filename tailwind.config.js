@@ -47,10 +47,6 @@ module.exports = {
           foreground: "hsl(var(--foreground))",
         },
 
-        button: {
-          DEFAULT: "hsla(var(--white) / 0.15)",
-          hover: "hsla(var(--white) / 0.3)",
-        },
         border: "hsla(var(--white) / 0.15)",
         divider: {
           DEFAULT: "hsla(var(--white) / 0.15)",
@@ -86,13 +82,6 @@ module.exports = {
           },
         ],
         "subtitle": [
-          "0.875rem",
-          {
-            lineHeight: "1rem",
-            fontWeight: "600",
-          },
-        ],
-        "button": [
           "0.875rem",
           {
             lineHeight: "1rem",

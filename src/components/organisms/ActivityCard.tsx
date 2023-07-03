@@ -3,9 +3,8 @@ import { useIntl } from "react-intl";
 import { twMerge } from "tailwind-merge";
 import { useDebouncedCallback } from "use-debounce";
 
-import { ActivityIndex, Button, Typography } from "~/components/atoms";
+import { ActivityIndex, Button, Icon, Typography } from "~/components/atoms";
 import { ActivityStatus } from "~/components/molecules";
-import { ConnectVeridaButton } from "~/components/organisms";
 import { Activity, UserActivityStatus, useActivity } from "~/features/activity";
 import { Sentry } from "~/features/sentry";
 import { useTermsConditions } from "~/features/termsconditions";
@@ -147,9 +146,17 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
                       onClick={() => void handleExecuteActivity()}
                       disabled={executing}
                     >
-                      {executing
-                        ? i18n.formatMessage(activity.actionExecutingLabel)
-                        : i18n.formatMessage(activity.actionLabel)}
+                      {executing ? (
+                        <>
+                          <Icon
+                            type="loading"
+                            className="animate-spin-slow mr-2"
+                          />
+                          {i18n.formatMessage(activity.actionExecutingLabel)}
+                        </>
+                      ) : (
+                        i18n.formatMessage(activity.actionLabel)
+                      )}
                     </Button>
                   ) : null
                 ) : (
@@ -157,9 +164,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
                     {openTermsConditionsButtonLabel}
                   </Button>
                 )
-              ) : (
-                <ConnectVeridaButton />
-              )}
+              ) : null}
             </div>
           ) : null}
         </footer>
