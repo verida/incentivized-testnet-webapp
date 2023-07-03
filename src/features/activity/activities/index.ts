@@ -1,15 +1,15 @@
-import { activity as activity05 } from "./claim-polygon-id";
-import { activity as activity06 } from "./claim-social-media-data";
-import { activity as activity01 } from "./create-verida-identity";
-import { activity as activity03 } from "./refer-friend";
-import { activity as activity02 } from "./update-profile";
-import { activity as activity04 } from "./use-markdown-editor";
+import { activity as activityClaimPolygonId } from "./claim-polygon-id";
+import { activity as activityClaimSocialMediaData } from "./claim-social-media-data";
+import { activity as activityCreateVeridaIdentity } from "./create-verida-identity";
+import { activity as activityReferFriend } from "./refer-friend";
+import { activity as activityUpdateProfile } from "./update-profile";
+import { activity as activityUseMarkdownEditor } from "./use-markdown-editor";
 
 export const activities = [
-  activity01,
-  activity02,
-  activity03,
-  activity04,
-  activity05,
-  activity06,
+  activityCreateVeridaIdentity,
+  activityUpdateProfile,
+  activityReferFriend,
+  activityUseMarkdownEditor,
+  activityClaimPolygonId,
+  activityClaimSocialMediaData,
 ].sort((a, b) => a.order - b.order);

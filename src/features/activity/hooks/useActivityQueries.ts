@@ -23,6 +23,7 @@ export function useActivityQueries() {
       setActivitiesDatastore(null);
       return;
     }
+
     const getDatastore = async () => {
       const datastore = await openDatastore(ACTIVITIES_SCHEMA_LATEST_URL);
       setActivitiesDatastore(datastore);
@@ -57,7 +58,7 @@ export function useActivityQueries() {
 
       return userActivities;
     },
-    enabled: !!activitiesDatastore,
+    enabled: !!activitiesDatastore && isConnected && !!did,
     staleTime: 1000 * 60, // 1 minutes
   });
 
