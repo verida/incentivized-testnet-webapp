@@ -1,5 +1,6 @@
 export * from "./AcceptTermsAmdConditionsModal";
 export * from "./ActivityCard";
+export * from "./ConnectVeridaButton";
 export * from "./Footer";
 export * from "./GetSupportSection";
 export * from "./Header";
