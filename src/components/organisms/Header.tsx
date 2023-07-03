@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import { ReactComponent as VeridaNetworkLogo } from "~/assets/images/verida_network_logo.svg";
 import { ReactComponent as VeridaNetworkLogoWithText } from "~/assets/images/verida_network_logo_with_text.svg";
+import { Chip } from "~/components/atoms";
 import type { MenuItem } from "~/components/molecules";
 import { AvatarWithInfo, HeaderMenu } from "~/components/molecules";
 import { ConnectVeridaButton } from "~/components/organisms/ConnectVeridaButton";
@@ -21,7 +22,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const [openMenu, setOpenMenu] = useState(false);
   const { disconnect, isConnected, profile, did } = useVerida();
   const { deleteTermsStatus } = useTermsConditions();
-  const { deleteUserActivities } = useActivity();
+  const { deleteUserActivities, userXpPoints } = useActivity();
 
   const handleOpenMenu = useCallback(() => {
     setOpenMenu(true);
@@ -41,6 +42,15 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     description: "Aria label for the home link in the Header",
     defaultMessage: "Return to Home page",
   });
+
+  const xpPointsChipLabel = i18n.formatMessage(
+    {
+      id: "ActivityCard.xpPointsChipLabel",
+      description: "Label of the XP points chip on each activity card",
+      defaultMessage: "{points} XP",
+    },
+    { points: userXpPoints }
+  );
 
   const contentHeight = "h-10";
 
@@ -78,9 +88,10 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
             </div>
           </Link>
         </div>
-        <div className="flex items-center justify-between justify-self-end">
+        <div className="flex items-center justify-between justify-self-end gap-2 md:gap-4">
           {isConnected ? (
             <>
+              <Chip variant="primary">{xpPointsChipLabel}</Chip>
               <button
                 className=" -mr-4 sm:-mr-6 text-start"
                 onClick={handleOpenMenu}
