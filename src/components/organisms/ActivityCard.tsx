@@ -103,11 +103,8 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
           </Typography>
         </div>
         {enabled && activity.resources && activity.resources.length > 0 ? (
-          <aside>
-            <p className="font-semibold text-muted-foreground">
-              {/* TODO: Use Typography */}
-              {resourcesSectionTitle}
-            </p>
+          <aside className="text-muted-foreground">
+            <Typography variant="subtitle">{resourcesSectionTitle}</Typography>
             <ul>
               {activity.resources.map((resource, index) => (
                 <li key={index}>
@@ -115,7 +112,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
                     href={resource.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline text-muted-foreground hover:text-foreground"
+                    className="underline hover:text-foreground"
                   >
                     {i18n.formatMessage(resource.label)}
                   </a>

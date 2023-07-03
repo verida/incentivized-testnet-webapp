@@ -87,7 +87,10 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
               ))}
             </ul>
             {hasUpcomingActivities ? (
-              <UpcomingActivitiesCTA className="mt-4" />
+              <UpcomingActivitiesCTA
+                index={displayedActivities.length + 1}
+                className="mt-4"
+              />
             ) : null}
           </div>
         )}
