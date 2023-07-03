@@ -31,6 +31,7 @@ export const activity: Activity = {
   enabled: false,
   visible: false,
   order: 2,
+  points: 50,
   title: defineMessage({
     id: "activities.referFriend.title",
     defaultMessage: "Refer a friend",

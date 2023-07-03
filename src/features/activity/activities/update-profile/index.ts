@@ -100,6 +100,7 @@ export const activity: Activity = {
   enabled: true,
   visible: true,
   order: 2,
+  points: 50,
   title: defineMessage({
     id: "activities.updateProfile.title",
     defaultMessage: "Update your profile",
