@@ -12,9 +12,11 @@ module.exports = {
         translucent: "rgba(17, 17, 17, 0.2)",
         transparent: {
           DEFAULT: "hsla(var(--white) / 0)",
+          3: "hsla(var(--white) / 0.03)",
           5: "hsla(var(--white) / 0.05)",
           10: "hsla(var(--white) / 0.10)",
           15: "hsla(var(--white) / 0.15)",
+          20: "hsla(var(--white) / 0.2)",
           30: "hsla(var(--white) / 0.3)",
         },
 
@@ -39,6 +41,10 @@ module.exports = {
         },
         gray: {
           DEFAULT: "hsl(var(--gray))",
+        },
+        notification: {
+          DEFAULT: "hsl(var(--notification))",
+          foreground: "hsl(var(--foreground))",
         },
 
         button: {
@@ -104,7 +110,8 @@ module.exports = {
         4.5: "1.125rem",
       },
       backdropBlur: {
-        xs: "3px",
+        "xs": "3px",
+        "4xl": "100px",
       },
       lineHeight: {
         3.5: "0.875rem",
