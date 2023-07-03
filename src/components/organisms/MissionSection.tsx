@@ -1,5 +1,6 @@
 import React from "react";
 import { useIntl } from "react-intl";
+import { twMerge } from "tailwind-merge";
 
 import { MissionIdLabelChip, Typography } from "~/components/atoms";
 import { UpcomingActivitiesCTA } from "~/components/molecules";
@@ -48,7 +49,12 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
 
   return (
     <article {...articleProps}>
-      <div className="border border-solid border-border p-6 rounded-xl bg-mission-section">
+      <div
+        className={twMerge(
+          "border border-solid border-border p-6 rounded-xl bg-mission-section backdrop-blur-4xl",
+          isMissionComingSoon ? "text-muted-foreground" : undefined
+        )}
+      >
         <div className="flex flex-col gap-3">
           <div className="flex gap-2">
             <MissionIdLabelChip label={i18n.formatMessage(mission.idLabel)} />
