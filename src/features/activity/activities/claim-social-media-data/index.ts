@@ -9,14 +9,15 @@ import type {
 } from "~/features/activity/types";
 import { wait } from "~/utils";
 
-const ACTIVITY_ID = "refer-friend"; // Never change the id
+const ACTIVITY_ID = "claim-social-media-data"; // Never change the id
 
 const handleInit: ActivityOnInit = () => {
   return Promise.resolve();
 };
 
 const handleExecute: ActivityOnExecute = async (_veridaWebUser) => {
-  await wait(5000);
+  // Wait a bit for UX purposes
+  await wait(2000);
   return { status: "pending" };
 };
 
@@ -29,27 +30,29 @@ export const activity: Activity = {
   missionId: MISSION_01_ID,
   enabled: false,
   visible: false,
-  order: 3,
+  order: 4,
   title: defineMessage({
-    id: "activities.referFriend.title",
-    defaultMessage: "Refer a friend",
-    description: "Title of the activity 'refer friend'",
+    id: "activities.claimSocialMediaData.title",
+    defaultMessage: "Claim your social media data",
+    description: "Title of the activity 'claim social media data'",
   }),
   shortDescription: defineMessage({
-    id: "activities.referFriend.shortDescription",
-    defaultMessage: "Invite a friend to join the Verida Incentivized Testnet",
-    description: "Short description of the activity 'refer friend'",
+    id: "activities.claimSocialMediaData.shortDescription",
+    defaultMessage:
+      "Connect your Twitter account in the Verida Wallet and extract your data",
+    description: "Short description of the activity 'claim social media data'",
   }),
   actionLabel: defineMessage({
-    id: "activities.referFriend.actionLabel",
-    defaultMessage: "Get Referal Link",
-    description: "Label of the button to start the activity refer friend",
+    id: "activities.claimSocialMediaData.actionLabel",
+    defaultMessage: "Verify",
+    description:
+      "Label of the button to start the activity claim social media data",
   }),
   actionExecutingLabel: defineMessage({
-    id: "activities.referFriend.actionExecutingLabel",
-    defaultMessage: "Preparing...",
+    id: "activities.claimSocialMediaData.actionExecutingLabel",
+    defaultMessage: "Verifying",
     description:
-      "Label of the button when the activity 'refer friend' is being executed",
+      "Label of the button when the activity 'claim social media data' is being executed",
   }),
   onInit: handleInit,
   onExecute: handleExecute,

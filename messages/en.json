@@ -128,7 +128,7 @@
     "description": "Message to display in the upcoming activities CTA"
   },
   "activities.claimPolygonId.actionExecutingLabel": {
-    "defaultMessage": "Verifying...",
+    "defaultMessage": "Verifying",
     "description": "Label of the button when the activity 'claim Polygon ID' is being executed"
   },
   "activities.claimPolygonId.actionLabel": {
@@ -144,7 +144,7 @@
     "description": "Title of the activity 'claim Polygon ID'"
   },
   "activities.claimSocialMediaData.actionExecutingLabel": {
-    "defaultMessage": "Verifying...",
+    "defaultMessage": "Verifying",
     "description": "Label of the button when the activity 'claim social media data' is being executed"
   },
   "activities.claimSocialMediaData.actionLabel": {
@@ -160,7 +160,7 @@
     "description": "Title of the activity 'claim social media data'"
   },
   "activities.createVeridaIdentity.actionExecutingLabel": {
-    "defaultMessage": "Verifying...",
+    "defaultMessage": "Verifying",
     "description": "Label of the button when the activity 'create Verida Identity' is being executed"
   },
   "activities.createVeridaIdentity.actionLabel": {
@@ -184,7 +184,7 @@
     "description": "Label of the video 'How to create a Verida Identity'"
   },
   "activities.referFriend.actionExecutingLabel": {
-    "defaultMessage": "Preparing...",
+    "defaultMessage": "Preparing",
     "description": "Label of the button when the activity 'refer friend' is being executed"
   },
   "activities.referFriend.actionLabel": {
@@ -200,7 +200,7 @@
     "description": "Title of the activity 'refer friend'"
   },
   "activities.updateProfile.actionExecutingLabel": {
-    "defaultMessage": "Verifying...",
+    "defaultMessage": "Verifying",
     "description": "Label of the button when the activity 'update your profile' is being executed"
   },
   "activities.updateProfile.actionLabel": {
@@ -220,7 +220,7 @@
     "description": "Title of the activity 'update profile'"
   },
   "activities.useMarkdownEditor.actionExecutingLabel": {
-    "defaultMessage": "Verifying...",
+    "defaultMessage": "Verifying",
     "description": "Label of the button when the activity 'use markdown editor is being executed"
   },
   "activities.useMarkdownEditor.actionLabel": {

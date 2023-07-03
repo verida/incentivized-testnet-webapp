@@ -35,6 +35,8 @@ const handleInit: ActivityOnInit = async (veridaWebUser, saveActivity) => {
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
+  // Wait a bit for UX purposes
+  await wait(2000);
   let profile: WebUserProfile;
   try {
     profile = await veridaWebUser.current.getPublicProfile(true);
@@ -72,7 +74,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
   // If not, the activity is back to its initial state
 
   // Wait a bit for UX purposes or the user will think nothing happened
-  await wait(3000);
+  await wait(2000);
 
   const missingFieldErrorMessage = defineMessage({
     id: "activity.updateProfile.missingFieldsErrorMessage",
@@ -115,7 +117,7 @@ export const activity: Activity = {
   }),
   actionExecutingLabel: defineMessage({
     id: "activities.updateProfile.actionExecutingLabel",
-    defaultMessage: "Verifying...",
+    defaultMessage: "Verifying",
     description:
       "Label of the button when the activity 'update your profile' is being executed",
   }),

@@ -22,7 +22,7 @@ export const mission: Mission = {
   shortDescription: defineMessage({
     id: "missions.mission-01.shortDescription",
     defaultMessage:
-      "This first mission guides you through the process of onboarding onto the Verida network. It's designed to familiarize you with the network's features, functionalities, and ecosystem, ensuring you have a smooth and seamless experience as a Verida user.",
+      "This first mission guides you through the process of onboarding onto the Verida Network. It's designed to familiarize you with the Network's features, functionalities, and ecosystem, ensuring you have a smooth and seamless experience as a Verida user.",
     description: "Short description of the mission 01",
   }),
 };

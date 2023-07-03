@@ -9,14 +9,15 @@ import type {
 } from "~/features/activity/types";
 import { wait } from "~/utils";
 
-const ACTIVITY_ID = "claim-social-media-data"; // Never change the id
+const ACTIVITY_ID = "use-markdown-editor"; // Never change the id
 
 const handleInit: ActivityOnInit = () => {
   return Promise.resolve();
 };
 
 const handleExecute: ActivityOnExecute = async (_veridaWebUser) => {
-  await wait(5000);
+  // Wait a bit for UX purposes
+  await wait(2000);
   return { status: "pending" };
 };
 
@@ -29,29 +30,28 @@ export const activity: Activity = {
   missionId: MISSION_01_ID,
   enabled: false,
   visible: false,
-  order: 6,
+  order: 3,
   title: defineMessage({
-    id: "activities.claimSocialMediaData.title",
-    defaultMessage: "Claim your social media data",
-    description: "Title of the activity 'claim social media data'",
+    id: "activities.useMarkdownEditor.title",
+    defaultMessage: "Use the Markdown editor demo app",
+    description: "Title of the activity 'use markdown editor'",
   }),
   shortDescription: defineMessage({
-    id: "activities.claimSocialMediaData.shortDescription",
-    defaultMessage:
-      "Connect your Twitter account in the Verida Wallet and extract your data",
-    description: "Short description of the activity 'claim social media data'",
+    id: "activities.useMarkdownEditor.shortDescription",
+    defaultMessage: "Connect to the demo app and create a new document",
+    description: "Short description of the activity 'use markdown editor'",
   }),
   actionLabel: defineMessage({
-    id: "activities.claimSocialMediaData.actionLabel",
+    id: "activities.useMarkdownEditor.actionLabel",
     defaultMessage: "Verify",
     description:
-      "Label of the button to start the activity claim social media data",
+      "Label of the button to start the activity use markdown editor",
   }),
   actionExecutingLabel: defineMessage({
-    id: "activities.claimSocialMediaData.actionExecutingLabel",
-    defaultMessage: "Verifying...",
+    id: "activities.useMarkdownEditor.actionExecutingLabel",
+    defaultMessage: "Verifying",
     description:
-      "Label of the button when the activity 'claim social media data' is being executed",
+      "Label of the button when the activity 'use markdown editor is being executed",
   }),
   onInit: handleInit,
   onExecute: handleExecute,
