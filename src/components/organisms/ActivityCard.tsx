@@ -107,7 +107,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
           borderClasses
         )}
       >
-        <header className="flex flex-row gap-4 items-baseline">
+        <header className="flex flex-row gap-4 items-center">
           <ActivityIndex index={String(index)} />
           <Typography component="h4" variant="heading-s">
             {i18n.formatMessage(title)}
