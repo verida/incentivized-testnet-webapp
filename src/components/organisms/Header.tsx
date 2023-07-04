@@ -1,10 +1,11 @@
 import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
 import { Link } from "react-router-dom";
+import { twJoin } from "tailwind-merge";
 
 import { ReactComponent as VeridaNetworkLogo } from "~/assets/images/verida_network_logo.svg";
 import { ReactComponent as VeridaNetworkLogoWithText } from "~/assets/images/verida_network_logo_with_text.svg";
-import { Chip } from "~/components/atoms";
+import { Chip, Icon } from "~/components/atoms";
 import type { MenuItem } from "~/components/molecules";
 import { AvatarWithInfo, HeaderMenu } from "~/components/molecules";
 import { ConnectVeridaButton } from "~/components/organisms/ConnectVeridaButton";
@@ -22,7 +23,8 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const [openMenu, setOpenMenu] = useState(false);
   const { disconnect, isConnected, profile, did } = useVerida();
   const { deleteTermsStatus } = useTermsConditions();
-  const { deleteUserActivities, userXpPoints } = useActivity();
+  const { deleteUserActivities, userXpPoints, isLoadingUserActivities } =
+    useActivity();
 
   const handleOpenMenu = useCallback(() => {
     setOpenMenu(true);
@@ -80,10 +82,14 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
       <div className="flex flex-row justify-between border-b border-solid border-divider bg-translucent px-4 pt-3 pb-[calc(0.75rem_-_1px)] backdrop-blur-[15px] sm:px-6">
         <div className="justify-self-start">
           <Link to="/" aria-label={homeLinkAriaLabel}>
-            <div className={`aspect-[10/6.97] ${contentHeight} sm:hidden`}>
+            <div
+              className={twJoin("aspect-[10/6.97] sm:hidden", contentHeight)}
+            >
               <VeridaNetworkLogo height="100%" width="100%" />
             </div>
-            <div className={`hidden aspect-[10/3] ${contentHeight} sm:block`}>
+            <div
+              className={twJoin("hidden aspect-[10/3] sm:block", contentHeight)}
+            >
               <VeridaNetworkLogoWithText height="100%" width="100%" />
             </div>
           </Link>
@@ -91,16 +97,23 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
         <div className="flex items-center justify-between justify-self-end gap-2 md:gap-4">
           {isConnected ? (
             <>
-              <Chip variant="primary">{xpPointsChipLabel}</Chip>
+              <Chip variant="primary">
+                {isLoadingUserActivities ? (
+                  // FIXME: Icon doesn't spin
+                  <Icon type="loading" className="animate-spin-slow" />
+                ) : (
+                  xpPointsChipLabel
+                )}
+              </Chip>
               <button
-                className=" -mr-4 sm:-mr-6 text-start"
+                className="-mr-4 sm:-mr-6 text-start"
                 onClick={handleOpenMenu}
               >
                 <AvatarWithInfo
                   did={did}
                   image={profile?.avatarUri}
                   name={profile?.name}
-                  className={`${contentHeight} max-w-[220px]`}
+                  className={twJoin("max-w-[220px]", contentHeight)}
                 />
               </button>
               <HeaderMenu
