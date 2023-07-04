@@ -46,7 +46,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const profileNameFallback = i18n.formatMessage({
     id: "Header.profileNameFallback",
     description: "Fallback name for the profile name in the Header",
-    defaultMessage: "<Anon>",
+    defaultMessage: "'<Anon>'",
   });
 
   const contentHeight = "h-10";

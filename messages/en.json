@@ -84,7 +84,7 @@
     "description": "Aria label for the home link in the Header"
   },
   "Header.profileNameFallback": {
-    "defaultMessage": "<Anon>",
+    "defaultMessage": "'<Anon>'",
     "description": "Fallback name for the profile name in the Header"
   },
   "HomeHero.descriptionPart1": {
