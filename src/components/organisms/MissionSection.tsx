@@ -52,7 +52,9 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
       <div
         className={twMerge(
           "border border-solid border-border p-6 rounded-xl bg-mission-section backdrop-blur-4xl",
-          isMissionComingSoon ? "text-muted-foreground" : undefined
+          isMissionComingSoon
+            ? "text-muted-foreground border-dashed"
+            : undefined
         )}
       >
         <div className="flex flex-col gap-3">

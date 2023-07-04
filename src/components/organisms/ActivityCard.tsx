@@ -3,7 +3,13 @@ import { useIntl } from "react-intl";
 import { twMerge } from "tailwind-merge";
 import { useDebouncedCallback } from "use-debounce";
 
-import { ActivityIndex, Button, Icon, Typography } from "~/components/atoms";
+import {
+  ActivityIndex,
+  Button,
+  ExternalLink,
+  Icon,
+  Typography,
+} from "~/components/atoms";
 import { ActivityStatus } from "~/components/molecules";
 import { Activity, UserActivityStatus, useActivity } from "~/features/activity";
 import { Sentry } from "~/features/sentry";
@@ -108,14 +114,9 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
             <ul>
               {activity.resources.map((resource, index) => (
                 <li key={index}>
-                  <a
-                    href={resource.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline hover:text-foreground"
-                  >
+                  <ExternalLink href={resource.url} openInNewTab>
                     {i18n.formatMessage(resource.label)}
-                  </a>
+                  </ExternalLink>
                 </li>
               ))}
             </ul>
@@ -124,11 +125,14 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
         <footer className="flex justify-between items-center">
           <div>
             {enabled ? (
-              isConnected ? (
-                <ActivityStatus
-                  status={isLoadingUserActivities ? "checking" : status}
-                />
-              ) : null
+              <>
+                {isConnected &&
+                (isLoadingUserActivities || status !== "todo") ? (
+                  <ActivityStatus
+                    status={isLoadingUserActivities ? "checking" : status}
+                  />
+                ) : null}
+              </>
             ) : (
               <ActivityStatus status="disabled" />
             )}

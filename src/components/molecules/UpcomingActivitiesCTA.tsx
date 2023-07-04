@@ -43,11 +43,7 @@ export const UpcomingActivitiesCTA: React.FunctionComponent<
           <Typography className="italic">{JoinDiscordMessage}</Typography>
         </div>
         <footer className="w-full">
-          <ButtonLink
-            url={discordLink.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <ButtonLink href={discordLink.url} openInNewTab>
             {discordLink.icon}
             <span>{discordLink.label}</span>
           </ButtonLink>

@@ -79,7 +79,7 @@ export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
   return (
     <div {...divProps}>
       <Chip variant={chipVariants.variant} className="flex gap-2 items-center">
-        {iconType && (
+        {iconType ? (
           <Icon
             type={iconType}
             size={16}
@@ -89,7 +89,7 @@ export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
                 : undefined
             }
           />
-        )}
+        ) : null}
         <span>{label}</span>
       </Chip>
     </div>
