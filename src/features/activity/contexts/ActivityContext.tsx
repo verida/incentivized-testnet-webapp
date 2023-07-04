@@ -1,10 +1,11 @@
-import { createContext, useCallback, useEffect, useMemo, useRef } from "react";
+import { createContext, useCallback, useMemo } from "react";
 
 import { config } from "~/config";
 import { activities } from "~/features/activity/activities";
 import {
   useActivityQueries,
   useExecuteActivity,
+  useInitialiseActivities,
 } from "~/features/activity/hooks";
 import { missions } from "~/features/activity/missions";
 import type {
@@ -34,7 +35,6 @@ type ActivityProviderProps = {
 export const ActivityProvider: React.FunctionComponent<
   ActivityProviderProps
 > = (props) => {
-  const initExecutedForDid = useRef<string>("");
   const { did, webUserInstanceRef } = useVerida();
   const {
     isReady: isQueriesReady,
@@ -61,64 +61,14 @@ export const ActivityProvider: React.FunctionComponent<
       : 0;
   }, [userActivities]);
 
-  // Initialise the activities
-  useEffect(() => {
-    if (
-      !isQueriesReady ||
-      !did ||
-      userActivities === undefined ||
-      initExecutedForDid.current === did
-    ) {
-      return;
-    }
-
-    const initActivities = async () => {
-      const results = await Promise.allSettled([
-        activities
-          .filter((activity) => {
-            return (
-              activity.enabled &&
-              userActivities.find(
-                (userActivity) => userActivity.id === activity.id
-              ) === undefined
-            );
-          })
-          .map((activity) => {
-            console.debug("Activity init", activity.id);
-            return activity.onInit(webUserInstanceRef, saveActivity);
-          }),
-      ]);
-
-      results.forEach((result) => {
-        if (result.status === "rejected") {
-          // TODO: Handle error
-        }
-      });
-    };
-    void initActivities();
-
-    initExecutedForDid.current = did;
-
-    // Clean up activities by calling onUnmount
-    return () => {
-      const unmountActivities = async () => {
-        const results = await Promise.allSettled([
-          activities.map((activity) => {
-            console.debug("Activity unmount", activity.id);
-            return activity.onUnmount(webUserInstanceRef);
-          }),
-        ]);
-
-        results.forEach((result) => {
-          if (result.status === "rejected") {
-            // TODO: Handle error
-          }
-        });
-      };
-
-      void unmountActivities();
-    };
-  }, [isQueriesReady, did, userActivities, webUserInstanceRef, saveActivity]);
+  useInitialiseActivities(
+    activities,
+    isQueriesReady,
+    did,
+    userActivities,
+    webUserInstanceRef,
+    saveActivity
+  );
 
   const { executeActivity } = useExecuteActivity(activities);
 
