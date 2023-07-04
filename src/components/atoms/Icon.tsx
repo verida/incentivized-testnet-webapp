@@ -1,7 +1,13 @@
-import { Close, LoadingOne, User } from "@icon-park/react";
+import {
+  Attention,
+  Check,
+  CheckOne,
+  Close,
+  LoadingOne,
+  User,
+} from "@icon-park/react";
 import React from "react";
 
-import { ReactComponent as VeridaTick } from "~/assets/icons/verida_tick.svg";
 import { ReactComponent as Discord } from "~/assets/logos/platforms/discord.svg";
 import { ReactComponent as LinkedIn } from "~/assets/logos/platforms/linkedin.svg";
 import { ReactComponent as Medium } from "~/assets/logos/platforms/medium.svg";
@@ -10,7 +16,13 @@ import { ReactComponent as Telegram } from "~/assets/logos/platforms/telegram.sv
 import { ReactComponent as Twitter } from "~/assets/logos/platforms/twitter.svg";
 import { ReactComponent as Youtube } from "~/assets/logos/platforms/youtube.svg";
 
-export type GenericIconType = "user" | "close" | "loading" | "verida-tick";
+export type GenericIconType =
+  | "user"
+  | "close"
+  | "loading"
+  | "check"
+  | "notification-success"
+  | "notification-error";
 export type PlatformIconType =
   | "platform-discord"
   | "platform-linkedin"
@@ -36,12 +48,12 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
       return <Close size={size} {...otherProps} />;
     case "loading":
       return <LoadingOne size={size} {...otherProps} />;
-    case "verida-tick":
-      return (
-        <IconContainer {...otherProps}>
-          <VeridaTick height={size} width={size} />
-        </IconContainer>
-      );
+    case "check":
+      return <Check size={size} {...otherProps} />;
+    case "notification-success":
+      return <CheckOne size={size} {...otherProps} />;
+    case "notification-error":
+      return <Attention size={size} {...otherProps} />;
     case "platform-discord":
       return (
         <IconContainer {...otherProps}>

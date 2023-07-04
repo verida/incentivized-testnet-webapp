@@ -11,28 +11,16 @@
     "defaultMessage": "Please read and accept the Terms of Use",
     "description": "Title for the terms and conditions modal"
   },
-  "ActivityCard.checkingConnectionButtonLabel": {
-    "defaultMessage": "Checking Verida",
-    "description": "Label of the disabled Checking Verida  button in each activity card"
-  },
-  "ActivityCard.connectButtonLabel": {
-    "defaultMessage": "Connect",
-    "description": "Label of the Connect button in each activity card"
-  },
-  "ActivityCard.connectingButtonLabel": {
-    "defaultMessage": "Connecting",
-    "description": "Label of the disabled Connecting button in each activity card"
-  },
   "ActivityCard.openTermsConditionsButtonLabel": {
     "defaultMessage": "Open Terms of Use",
     "description": "Label of the button to open the terms and conditions modal on each activity card"
   },
   "ActivityCard.resourcesSectionTitle": {
-    "defaultMessage": "Learn:",
+    "defaultMessage": "Resources",
     "description": "Title of the resources section in each activity card"
   },
   "ActivityStatus.activityCheckingLabel": {
-    "defaultMessage": "Checking...",
+    "defaultMessage": "Checking",
     "description": "Label of the status for a disabled activity"
   },
   "ActivityStatus.activityCompletedStatusLabel": {
@@ -48,8 +36,20 @@
     "description": "Label of the status for a pending activity"
   },
   "ActivityStatus.activityTodoStatusLabel": {
-    "defaultMessage": "Start",
+    "defaultMessage": "To do",
     "description": "Label of the status for an activity to perform"
+  },
+  "ConnectVeridaButton.checkingConnectionButtonLabel": {
+    "defaultMessage": "Checking",
+    "description": "Label of the disabled Checking Verida  button in each activity card"
+  },
+  "ConnectVeridaButton.connectButtonLabel": {
+    "defaultMessage": "Connect",
+    "description": "Label of the Connect button in each activity card"
+  },
+  "ConnectVeridaButton.connectingButtonLabel": {
+    "defaultMessage": "Connecting",
+    "description": "Label of the disabled Connecting button in each activity card"
   },
   "ErrorFallbackCard.cardMessage": {
     "defaultMessage": "If the error persists, try refreshing your browser and cleaning your browser's data.",
@@ -79,21 +79,13 @@
     "defaultMessage": "Get Support",
     "description": "Title of the 'Get Support' section"
   },
-  "Header.checkingConnectionButtonLabel": {
-    "defaultMessage": "Checking Verida",
-    "description": "Label of the disabled Checking Verida button in the Header"
-  },
-  "Header.connectButtonLabel": {
-    "defaultMessage": "Connect",
-    "description": "Label of the Connect button in the Header"
-  },
-  "Header.connectingButtonLabel": {
-    "defaultMessage": "Connecting",
-    "description": "Label of the disabled Connecting button in the Header"
-  },
   "Header.homeLinkAriaLabel": {
     "defaultMessage": "Return to Home page",
     "description": "Aria label for the home link in the Header"
+  },
+  "Header.profileNameFallback": {
+    "defaultMessage": "'<Anon>'",
+    "description": "Fallback name for the profile name in the Header"
   },
   "HomeHero.descriptionPart1": {
     "defaultMessage": "The purpose of Verida Missions incentivized testnet is to stress-test network infrastructure, Verida applications and prepare storage node operations for the Verida mainnet.",
@@ -124,7 +116,7 @@
     "description": "Title of the 'Learn More' section"
   },
   "MissionSection.activitiesSectionTitle": {
-    "defaultMessage": "Activities:",
+    "defaultMessage": "Activities",
     "description": "Title for the activities section"
   },
   "MissionSection.comingSoonMessage": {
@@ -139,8 +131,12 @@
     "defaultMessage": "Join Verida's Discord community for updates on new activities and missions.",
     "description": "Message to display in the upcoming activities CTA"
   },
+  "UpcomingActivitiesCTA.title": {
+    "defaultMessage": "Next activity coming soon",
+    "description": "Message to display in the upcoming activities CTA"
+  },
   "activities.claimPolygonId.actionExecutingLabel": {
-    "defaultMessage": "Verifying...",
+    "defaultMessage": "Verifying",
     "description": "Label of the button when the activity 'claim Polygon ID' is being executed"
   },
   "activities.claimPolygonId.actionLabel": {
@@ -156,7 +152,7 @@
     "description": "Title of the activity 'claim Polygon ID'"
   },
   "activities.claimSocialMediaData.actionExecutingLabel": {
-    "defaultMessage": "Verifying...",
+    "defaultMessage": "Verifying",
     "description": "Label of the button when the activity 'claim social media data' is being executed"
   },
   "activities.claimSocialMediaData.actionLabel": {
@@ -172,7 +168,7 @@
     "description": "Title of the activity 'claim social media data'"
   },
   "activities.createVeridaIdentity.actionExecutingLabel": {
-    "defaultMessage": "Verifying...",
+    "defaultMessage": "Verifying",
     "description": "Label of the button when the activity 'create Verida Identity' is being executed"
   },
   "activities.createVeridaIdentity.actionLabel": {
@@ -196,7 +192,7 @@
     "description": "Label of the video 'How to create a Verida Identity'"
   },
   "activities.referFriend.actionExecutingLabel": {
-    "defaultMessage": "Preparing...",
+    "defaultMessage": "Preparing",
     "description": "Label of the button when the activity 'refer friend' is being executed"
   },
   "activities.referFriend.actionLabel": {
@@ -212,7 +208,7 @@
     "description": "Title of the activity 'refer friend'"
   },
   "activities.updateProfile.actionExecutingLabel": {
-    "defaultMessage": "Verifying...",
+    "defaultMessage": "Verifying",
     "description": "Label of the button when the activity 'update your profile' is being executed"
   },
   "activities.updateProfile.actionLabel": {
@@ -275,20 +271,28 @@
     "defaultMessage": "Verida Missions: Explore Decentralized Identity and Private Data Storage",
     "description": "Default application title for the meta tags"
   },
+  "missions.mission-01.idLabel": {
+    "defaultMessage": "Mission 1",
+    "description": "Label of the mission if 01"
+  },
   "missions.mission-01.shortDescription": {
-    "defaultMessage": "This first mission guides you through the process of onboarding onto the Verida network. It's designed to familiarize you with the network's features, functionalities, and ecosystem, ensuring you have a smooth and seamless experience as a Verida user.",
+    "defaultMessage": "This first mission guides you through the process of onboarding onto the Verida Network. It's designed to familiarize you with the Network's features, functionalities, and ecosystem, ensuring you have a smooth and seamless experience as a Verida user.",
     "description": "Short description of the mission 01"
   },
   "missions.mission-01.title": {
-    "defaultMessage": "Mission 1: Onboarding to the Verida Network",
+    "defaultMessage": "Onboarding to the Verida Network",
     "description": "Title of the mission 01"
+  },
+  "missions.mission-02.idLabel": {
+    "defaultMessage": "Mission 2",
+    "description": "Label of the mission id 02"
   },
   "missions.mission-02.shortDescription": {
     "defaultMessage": "In Mission 2 we need your help to stress-test the network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
     "description": "Short description of the mission 02"
   },
   "missions.mission-02.title": {
-    "defaultMessage": "Mission 2: Stress testing the network",
+    "defaultMessage": "Stress testing the network",
     "description": "Title of the mission 02"
   },
   "useExecuteActivity.activityAlreadyBeingExecutedMessage": {

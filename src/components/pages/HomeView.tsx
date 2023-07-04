@@ -1,8 +1,9 @@
 import React from "react";
 import { useIntl } from "react-intl";
 
-import { Alert, HomeHero, PageWrapper } from "~/components/molecules";
+import { Alert, HomeHero } from "~/components/molecules";
 import { MissionSection } from "~/components/organisms";
+import { PageLayout } from "~/components/templates";
 import { useActivity } from "~/features/activity";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
@@ -39,7 +40,7 @@ export const HomeView: React.FunctionComponent = () => {
   });
 
   return (
-    <PageWrapper title={tagline}>
+    <PageLayout title={tagline}>
       <HomeHero className="mt-4" />
       {displayTermsConditionsAlert && (
         <Alert
@@ -59,6 +60,6 @@ export const HomeView: React.FunctionComponent = () => {
           />
         ))}
       </div>
-    </PageWrapper>
+    </PageLayout>
   );
 };

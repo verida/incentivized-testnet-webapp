@@ -37,7 +37,7 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
 
   return (
     <div {...props}>
-      <div className="flex flex-grow flex-col items-center justify-center text-center gap-2 text-sm">
+      <div className="flex flex-grow flex-col items-center justify-center text-center gap-2 text-muted-foreground">
         <Typography>
           <Balancer ratio={balancerRatio}>{descriptionPart1}</Balancer>
         </Typography>

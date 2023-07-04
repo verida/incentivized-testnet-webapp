@@ -18,6 +18,7 @@ export type Resource = {
 
 export type Mission = {
   id: string;
+  idLabel: MessageDescriptor;
   enabled: boolean;
   visible: boolean;
   order: number;

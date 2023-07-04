@@ -69,10 +69,11 @@ export const activity: Activity = {
   missionId: MISSION_01_ID,
   enabled: true,
   visible: true,
-  order: 4,
+  order: 3,
   title: defineMessage({
     id: "activities.useMarkdownEditor.title",
     defaultMessage: "Use the Markdown Editor demo app",
+
     description: "Title of the activity 'use markdown editor'",
   }),
   shortDescription: defineMessage({

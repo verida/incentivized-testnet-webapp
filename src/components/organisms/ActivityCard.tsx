@@ -1,8 +1,15 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { useIntl } from "react-intl";
+import { twMerge } from "tailwind-merge";
 import { useDebouncedCallback } from "use-debounce";
 
-import { Button, Icon, Typography } from "~/components/atoms";
+import {
+  ActivityIndex,
+  Button,
+  ExternalLink,
+  Icon,
+  Typography,
+} from "~/components/atoms";
 import { ActivityStatus } from "~/components/molecules";
 import { Activity, UserActivityStatus, useActivity } from "~/features/activity";
 import { Sentry } from "~/features/sentry";
@@ -22,8 +29,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
   const { title, shortDescription, enabled = false } = activity;
 
   const i18n = useIntl();
-  const { connect, isConnected, isConnecting, isCheckingConnection } =
-    useVerida();
+  const { isConnected } = useVerida();
   const {
     status: statusTermsConditions,
     isCheckingStatus: isCheckingTermsConditions,
@@ -33,10 +39,6 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
   const [executing, setExecuting] = useState(false);
 
   const isChecking = isCheckingTermsConditions || isLoadingUserActivities;
-
-  const handleConnect = useCallback(() => {
-    void connect();
-  }, [connect]);
 
   const handleExecuteActivity = useDebouncedCallback(
     async () => {
@@ -63,27 +65,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
   const resourcesSectionTitle = i18n.formatMessage({
     id: "ActivityCard.resourcesSectionTitle",
     description: "Title of the resources section in each activity card",
-    defaultMessage: "Learn:",
-  });
-
-  const connectButtonLabel = i18n.formatMessage({
-    id: "ActivityCard.connectButtonLabel",
-    description: "Label of the Connect button in each activity card",
-    defaultMessage: "Connect",
-  });
-
-  const connectingButtonLabel = i18n.formatMessage({
-    id: "ActivityCard.connectingButtonLabel",
-    description:
-      "Label of the disabled Connecting button in each activity card",
-    defaultMessage: "Connecting",
-  });
-
-  const checkingConnectionButtonLabel = i18n.formatMessage({
-    id: "ActivityCard.checkingConnectionButtonLabel",
-    description:
-      "Label of the disabled Checking Verida  button in each activity card",
-    defaultMessage: "Checking Verida",
+    defaultMessage: "Resources",
   });
 
   const openTermsConditionsButtonLabel = i18n.formatMessage({
@@ -93,92 +75,100 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
     defaultMessage: "Open Terms of Use",
   });
 
-  const background = enabled ? "bg-primary-15" : "bg-primary-5";
-  const textColor = enabled ? "text-primary" : "text-primary/70";
+  const backgroundClasses =
+    enabled && status !== "completed"
+      ? "bg-transparent-10"
+      : "bg-transparent-3";
+  const textColorClasses =
+    enabled && status !== "completed"
+      ? "text-foreground"
+      : "text-muted-foreground";
+  const borderClasses = enabled
+    ? undefined
+    : "border border-dashed border-border";
 
   return (
     <section {...sectionProps}>
       <div
-        className={`p-4 rounded-2xl flex flex-col sm:flex-row justify-between gap-4 ${background} ${textColor}`}
+        className={twMerge(
+          "p-4 rounded-xl flex flex-col gap-4",
+          backgroundClasses,
+          textColorClasses,
+          borderClasses
+        )}
       >
-        <div className="flex flex-col gap-4">
-          <header className="flex flex-row gap-4 items-baseline">
-            <div className="bg-primary-15 aspect-square h-8 rounded-full flex justify-center items-center">
-              {index}
-            </div>
-            <h4 className="text-xl font-semibold">
-              {i18n.formatMessage(title)}
-            </h4>
-          </header>
+        <header className="flex flex-row gap-4 items-baseline">
+          <ActivityIndex index={String(index)} />
+          <Typography component="h4" variant="heading-s">
+            {i18n.formatMessage(title)}
+          </Typography>
+        </header>
+        <div>
+          <Typography className="text-muted-foreground">
+            {i18n.formatMessage(shortDescription)}
+          </Typography>
+        </div>
+        {enabled && activity.resources && activity.resources.length > 0 ? (
+          <aside className="text-muted-foreground">
+            <Typography variant="subtitle">{resourcesSectionTitle}</Typography>
+            <ul>
+              {activity.resources.map((resource, index) => (
+                <li key={index}>
+                  <ExternalLink href={resource.url} openInNewTab>
+                    {i18n.formatMessage(resource.label)}
+                  </ExternalLink>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        ) : null}
+        <footer className="flex justify-between items-center">
           <div>
-            <Typography>{i18n.formatMessage(shortDescription)}</Typography>
-          </div>
-          {enabled && activity.resources && activity.resources.length > 0 ? (
-            <aside>
-              <p className="font-semibold text-primary/70">
-                {resourcesSectionTitle}
-              </p>
-              <ul>
-                {activity.resources.map((resource, index) => (
-                  <li key={index}>
-                    <a
-                      href={resource.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline"
-                    >
-                      {i18n.formatMessage(resource.label)}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </aside>
-          ) : null}
-        </div>
-        <div className="flex flex-row sm:flex-col justify-center whitespace-nowrap">
-          {enabled ? (
-            isConnected ? (
-              isChecking ? (
-                <ActivityStatus status="checking" />
-              ) : statusTermsConditions === "accepted" ? (
-                status === "todo" ? (
-                  <Button
-                    size="medium"
-                    onClick={() => void handleExecuteActivity()}
-                    disabled={executing}
-                  >
-                    {executing
-                      ? i18n.formatMessage(activity.actionExecutingLabel)
-                      : i18n.formatMessage(activity.actionLabel)}
-                  </Button>
-                ) : (
-                  <ActivityStatus status={status} />
-                )
-              ) : (
-                <Button onClick={openAcceptModal} size="medium">
-                  {openTermsConditionsButtonLabel}
-                </Button>
-              )
-            ) : (
-              <Button
-                onClick={handleConnect}
-                disabled={isConnecting || isCheckingConnection}
-                size="medium"
-              >
-                {isConnecting || isCheckingConnection ? (
-                  <Icon type="loading" className="animate-spin-slow mr-2" />
+            {enabled ? (
+              <>
+                {isConnected &&
+                (isLoadingUserActivities || status !== "todo") ? (
+                  <ActivityStatus
+                    status={isLoadingUserActivities ? "checking" : status}
+                  />
                 ) : null}
-                {isCheckingConnection
-                  ? checkingConnectionButtonLabel
-                  : isConnecting
-                  ? connectingButtonLabel
-                  : connectButtonLabel}
-              </Button>
-            )
-          ) : (
-            <ActivityStatus status="disabled" />
-          )}
-        </div>
+              </>
+            ) : (
+              <ActivityStatus status="disabled" />
+            )}
+          </div>
+          {enabled ? (
+            <div>
+              {isConnected ? (
+                isChecking ? null : statusTermsConditions === "accepted" ? (
+                  status === "todo" ? (
+                    <Button
+                      size="medium"
+                      onClick={() => void handleExecuteActivity()}
+                      disabled={executing}
+                    >
+                      {executing ? (
+                        <>
+                          <Icon
+                            type="loading"
+                            className="animate-spin-slow mr-2"
+                          />
+                          {i18n.formatMessage(activity.actionExecutingLabel)}
+                        </>
+                      ) : (
+                        i18n.formatMessage(activity.actionLabel)
+                      )}
+                    </Button>
+                  ) : null
+                ) : (
+                  <Button onClick={openAcceptModal} size="medium">
+                    {openTermsConditionsButtonLabel}
+                  </Button>
+                )
+              ) : null}
+            </div>
+          ) : null}
+        </footer>
       </div>
     </section>
   );

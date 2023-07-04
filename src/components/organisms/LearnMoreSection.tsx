@@ -1,6 +1,8 @@
 import React from "react";
 import { useIntl } from "react-intl";
 
+import { ExternalLink, Typography } from "~/components/atoms";
+
 const links = [
   {
     label: "The Verida Acacia Testnet is Live",
@@ -24,18 +26,19 @@ export const LearnMoreSection: React.FunctionComponent = () => {
 
   return (
     <aside className="p-4 flex flex-col justify-center items-center gap-4">
-      <p className="w-full text-center font-semibold text-lg">{sectionTitle}</p>
+      <Typography variant="heading-s" component="p">
+        {sectionTitle}
+      </Typography>
       <ul className="flex flex-col w-full text-center gap-3">
         {links.map((link) => (
           <li key={link.url}>
-            <a
+            <ExternalLink
               href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline"
+              openInNewTab
+              className="text-muted-foreground"
             >
               {link.label}
-            </a>
+            </ExternalLink>
           </li>
         ))}
       </ul>

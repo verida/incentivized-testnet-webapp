@@ -10,11 +10,13 @@ export const Notifications: React.FunctionComponent = () => {
       reverseOrder={true}
       toastOptions={{
         duration: 8000,
-        // TODO: Define colour in tailwind config file
-        className: "bg-[#585871] rounded-lg shadow-lg text-primary",
-        error: {},
+        className:
+          "bg-notification rounded-lg shadow-lg text-notification-foreground",
+        error: {
+          icon: <Icon type="notification-error" />,
+        },
         success: {
-          icon: <Icon type="verida-tick" />,
+          icon: <Icon type="notification-success" />,
         },
       }}
     />

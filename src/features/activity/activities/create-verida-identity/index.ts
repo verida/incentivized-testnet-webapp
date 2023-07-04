@@ -19,12 +19,14 @@ const handleInit: ActivityOnInit = async (veridaWebUser, saveActivity) => {
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
+  // Wait a bit for UX purposes
+  await wait(2000);
   const isConnected = await veridaWebUser.current.isConnected();
   if (isConnected) {
     return { status: "completed" };
   }
   // Wait a bit for UX purposes or the user will think nothing happened
-  await wait(3000);
+  await wait(2000);
   return { status: "todo" };
 };
 
@@ -57,7 +59,7 @@ export const activity: Activity = {
   }),
   actionExecutingLabel: defineMessage({
     id: "activities.createVeridaIdentity.actionExecutingLabel",
-    defaultMessage: "Verifying...",
+    defaultMessage: "Verifying",
     description:
       "Label of the button when the activity 'create Verida Identity' is being executed",
   }),
