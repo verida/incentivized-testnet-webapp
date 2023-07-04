@@ -1,4 +1,4 @@
-import { UseMutateFunction } from "@tanstack/react-query";
+import { UseMutateAsyncFunction } from "@tanstack/react-query";
 import { WebUser } from "@verida/web-helpers";
 import { MutableRefObject } from "react";
 import type { MessageDescriptor } from "react-intl";
@@ -31,7 +31,7 @@ export type Mission = {
 
 export type ActivityOnInit = (
   veridaWebUser: MutableRefObject<WebUser>,
-  saveActivity: UseMutateFunction<void, unknown, UserActivity>
+  saveActivity: UseMutateAsyncFunction<void, unknown, UserActivity>
 ) => Promise<void>;
 
 export type ActivityOnExecute = (
