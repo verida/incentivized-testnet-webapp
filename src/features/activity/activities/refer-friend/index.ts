@@ -1,6 +1,6 @@
 import { defineMessage } from "react-intl";
 
-import { MISSION_02_ID } from "~/features/activity/missions";
+import { MISSION_03_ID } from "~/features/activity/missions";
 import type {
   Activity,
   ActivityOnExecute,
@@ -27,7 +27,7 @@ const handleUnmount: ActivityOnUnmount = async (_veridaWebUser) => {
 
 export const activity: Activity = {
   id: ACTIVITY_ID,
-  missionId: MISSION_02_ID,
+  missionId: MISSION_03_ID,
   enabled: false,
   visible: false,
   order: 2,
