@@ -19,6 +19,10 @@
     "defaultMessage": "Resources",
     "description": "Title of the resources section in each activity card"
   },
+  "ActivityCard.xpPointsChipLabel": {
+    "defaultMessage": "{points} XP",
+    "description": "Label of the XP points chip on each activity card"
+  },
   "ActivityStatus.activityCheckingLabel": {
     "defaultMessage": "Checking",
     "description": "Label of the status for a disabled activity"
@@ -86,6 +90,10 @@
   "Header.profileNameFallback": {
     "defaultMessage": "'<Anon>'",
     "description": "Fallback name for the profile name in the Header"
+  },
+  "Header.xpPointsChipLabel": {
+    "defaultMessage": "{points} XP",
+    "description": "Display of the user total XP points"
   },
   "HomeHero.descriptionPart1": {
     "defaultMessage": "The purpose of Verida Missions incentivized testnet is to stress-test network infrastructure, Verida applications and prepare storage node operations for the Verida mainnet.",

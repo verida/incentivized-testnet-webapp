@@ -39,7 +39,7 @@ export const ConnectVeridaButton: React.FunctionComponent = () => {
       size="medium"
     >
       {isConnecting || isCheckingConnection ? (
-        <Icon type="loading" className="animate-spin-slow mr-2" />
+        <Icon size={16} type="loading" className="animate-spin-slow mr-2" />
       ) : null}
       {isCheckingConnection
         ? checkingConnectionButtonLabel

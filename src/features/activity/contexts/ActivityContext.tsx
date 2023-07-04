@@ -17,6 +17,7 @@ type ActivityContextType = {
   activities: Activity[];
   missions: Mission[];
   userActivities: UserActivityRecord[];
+  userXpPoints: number;
   isLoadingUserActivities: boolean;
   getUserActivity: (activityId: string) => UserActivityRecord | undefined;
   executeActivity: (activityId: string) => Promise<void>;
@@ -40,6 +41,23 @@ export const ActivityProvider: React.FunctionComponent<
     isLoadingActivities: isLoadingUserActivities,
     deleteActivities,
   } = useActivityQueries();
+
+  const userXpPoints = useMemo(() => {
+    return userActivities
+      ? userActivities.reduce((acc, userActivity) => {
+          if (userActivity.status !== "completed") {
+            return acc;
+          }
+          const activity = activities.find(
+            (activity) => activity.id === userActivity.id
+          );
+          if (activity === undefined) {
+            return acc;
+          }
+          return acc + activity.points;
+        }, 0)
+      : 0;
+  }, [userActivities]);
 
   // Initialise the activities
   // useEffect(() => {
@@ -111,6 +129,7 @@ export const ActivityProvider: React.FunctionComponent<
       missions: missions.filter((m) => (config.devMode ? true : m.visible)),
       activities: activities,
       userActivities: userActivities || [],
+      userXpPoints,
       isLoadingUserActivities,
       getUserActivity,
       executeActivity,
@@ -118,6 +137,7 @@ export const ActivityProvider: React.FunctionComponent<
     }),
     [
       userActivities,
+      userXpPoints,
       isLoadingUserActivities,
       executeActivity,
       getUserActivity,

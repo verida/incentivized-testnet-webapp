@@ -31,6 +31,7 @@ export const activity: Activity = {
   enabled: false,
   visible: false,
   order: 4,
+  points: 50,
   title: defineMessage({
     id: "activities.claimSocialMediaData.title",
     defaultMessage: "Claim your social media data",

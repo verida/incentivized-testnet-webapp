@@ -31,6 +31,7 @@ export const activity: Activity = {
   enabled: false,
   visible: false,
   order: 1,
+  points: 50,
   title: defineMessage({
     id: "activities.claimPolygonId.title",
     defaultMessage: "Claim a Polygon ID credential",

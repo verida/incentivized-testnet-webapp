@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { twJoin, twMerge } from "tailwind-merge";
 
 import { ReactComponent as VeridaNetworkLogoWithText } from "~/assets/images/verida_network_logo_with_text.svg";
-import { Avatar, Typography } from "~/components/atoms";
+import { Avatar, Chip, Icon, Typography } from "~/components/atoms";
 import type { MenuItem } from "~/components/molecules";
 import { HeaderMenu } from "~/components/molecules";
 import { ConnectVeridaButton } from "~/components/organisms/ConnectVeridaButton";
@@ -22,7 +22,8 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const [openMenu, setOpenMenu] = useState(false);
   const { disconnect, isConnected, profile, did } = useVerida();
   const { deleteTermsStatus } = useTermsConditions();
-  const { deleteUserActivities } = useActivity();
+  const { deleteUserActivities, userXpPoints, isLoadingUserActivities } =
+    useActivity();
 
   const handleOpenMenu = useCallback(() => {
     setOpenMenu(true);
@@ -48,6 +49,15 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     description: "Fallback name for the profile name in the Header",
     defaultMessage: "'<Anon>'",
   });
+
+  const xpPointsChipLabel = i18n.formatMessage(
+    {
+      id: "Header.xpPointsChipLabel",
+      description: "Display of the user total XP points",
+      defaultMessage: "{points} XP",
+    },
+    { points: userXpPoints }
+  );
 
   const contentHeight = "h-10";
 
@@ -108,9 +118,21 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
             </div>
           </Link>
         </div>
-        <div className="flex items-center gap-2 justify-between justify-self-end">
+        <div className="flex items-center gap-2 md:gap-4 justify-between justify-self-end">
           {isConnected ? (
             <>
+              <Chip variant="primary">
+                {isLoadingUserActivities ? (
+                  // FIXME: Icon doesn't spin
+                  <Icon
+                    size={16}
+                    type="loading"
+                    className="animate-spin-slow"
+                  />
+                ) : (
+                  xpPointsChipLabel
+                )}
+              </Chip>
               <button onClick={handleOpenMenu}>
                 <Avatar
                   image={profile?.avatarUri}

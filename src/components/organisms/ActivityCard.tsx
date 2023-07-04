@@ -6,6 +6,7 @@ import { useDebouncedCallback } from "use-debounce";
 import {
   ActivityIndex,
   Button,
+  Chip,
   ExternalLink,
   Icon,
   Typography,
@@ -75,6 +76,15 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
     defaultMessage: "Open Terms of Use",
   });
 
+  const xpPointsChipLabel = i18n.formatMessage(
+    {
+      id: "ActivityCard.xpPointsChipLabel",
+      description: "Label of the XP points chip on each activity card",
+      defaultMessage: "{points} XP",
+    },
+    { points: activity.points }
+  );
+
   const backgroundClasses =
     enabled && status !== "completed"
       ? "bg-transparent-10"
@@ -97,7 +107,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
           borderClasses
         )}
       >
-        <header className="flex flex-row gap-4 items-baseline">
+        <header className="flex flex-row gap-4 items-center">
           <ActivityIndex index={String(index)} />
           <Typography component="h4" variant="heading-s">
             {i18n.formatMessage(title)}
@@ -122,10 +132,11 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
             </ul>
           </aside>
         ) : null}
-        <footer className="flex justify-between items-center">
-          <div>
+        <footer className="flex justify-between items-end">
+          <div className="flex gap-2">
             {enabled ? (
               <>
+                <Chip variant="primary">{xpPointsChipLabel}</Chip>
                 {isConnected &&
                 (isLoadingUserActivities || status !== "todo") ? (
                   <ActivityStatus
@@ -150,6 +161,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
                       {executing ? (
                         <>
                           <Icon
+                            size={16}
                             type="loading"
                             className="animate-spin-slow mr-2"
                           />

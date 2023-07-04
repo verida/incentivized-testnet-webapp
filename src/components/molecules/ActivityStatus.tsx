@@ -72,8 +72,8 @@ export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
         : status === "disabled" || status === "checking"
         ? "muted"
         : status === "todo"
-        ? "primary"
-        : "default",
+        ? "muted"
+        : "primary",
   };
 
   return (
