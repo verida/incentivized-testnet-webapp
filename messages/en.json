@@ -83,6 +83,10 @@
     "defaultMessage": "Return to Home page",
     "description": "Aria label for the home link in the Header"
   },
+  "Header.profileNameFallback": {
+    "defaultMessage": "<Anon>",
+    "description": "Fallback name for the profile name in the Header"
+  },
   "HomeHero.descriptionPart1": {
     "defaultMessage": "The purpose of Verida Missions incentivized testnet is to stress-test network infrastructure, Verida applications and prepare storage node operations for the Verida mainnet.",
     "description": "Description (part 1) of the Verida incentivized testnet program"
@@ -125,6 +129,10 @@
   },
   "UpcomingActivitiesCTA.JoinDiscordMessage": {
     "defaultMessage": "Join Verida's Discord community for updates on new activities and missions.",
+    "description": "Message to display in the upcoming activities CTA"
+  },
+  "UpcomingActivitiesCTA.title": {
+    "defaultMessage": "Next activity coming soon",
     "description": "Message to display in the upcoming activities CTA"
   },
   "activities.claimPolygonId.actionExecutingLabel": {

@@ -1,16 +1,17 @@
 import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
 import { Link } from "react-router-dom";
+import { twJoin, twMerge } from "tailwind-merge";
 
-import { ReactComponent as VeridaNetworkLogo } from "~/assets/images/verida_network_logo.svg";
 import { ReactComponent as VeridaNetworkLogoWithText } from "~/assets/images/verida_network_logo_with_text.svg";
+import { Avatar, Typography } from "~/components/atoms";
 import type { MenuItem } from "~/components/molecules";
-import { AvatarWithInfo, HeaderMenu } from "~/components/molecules";
+import { HeaderMenu } from "~/components/molecules";
 import { ConnectVeridaButton } from "~/components/organisms/ConnectVeridaButton";
 import { config } from "~/config";
 import { useActivity } from "~/features/activity";
 import { useTermsConditions } from "~/features/termsconditions";
-import { useVerida } from "~/features/verida";
+import { truncateDid, useVerida } from "~/features/verida";
 
 type HeaderProps = React.ComponentPropsWithoutRef<"header">;
 
@@ -42,15 +43,23 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     defaultMessage: "Return to Home page",
   });
 
+  const profileNameFallback = i18n.formatMessage({
+    id: "Header.profileNameFallback",
+    description: "Fallback name for the profile name in the Header",
+    defaultMessage: "<Anon>",
+  });
+
   const contentHeight = "h-10";
 
   const devModeMenuItems: MenuItem[] = config.devMode
     ? [
         {
+          key: "delete-terms",
           label: "Delete Terms",
           action: deleteTermsStatus,
         },
         {
+          key: "delete-user-activities",
           label: "Delete User Activities",
           action: deleteUserActivities,
         },
@@ -59,6 +68,30 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
 
   const menuItems: MenuItem[] = [
     {
+      key: "profile-info",
+      label: (
+        <div className="flex flex-col justify-between flex-shrink truncate">
+          <Typography
+            className={twMerge(
+              "truncate font-semibold",
+              profile?.name === undefined ? "italic" : undefined
+            )}
+          >
+            {profile?.name || profileNameFallback}
+          </Typography>
+          {did === undefined ? null : (
+            <>
+              <Typography className="truncate text-sm leading-3.5 text-foreground/50">
+                {truncateDid(did, 7, 4)}
+              </Typography>
+            </>
+          )}
+        </div>
+      ),
+      disabled: true,
+    },
+    {
+      key: "disconnect",
       label: "Disconnect",
       action: handleDisconnect,
     },
@@ -70,26 +103,19 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
       <div className="flex flex-row justify-between border-b border-solid border-divider bg-translucent px-4 pt-3 pb-[calc(0.75rem_-_1px)] backdrop-blur-[15px] sm:px-6">
         <div className="justify-self-start">
           <Link to="/" aria-label={homeLinkAriaLabel}>
-            <div className={`aspect-[10/6.97] ${contentHeight} sm:hidden`}>
-              <VeridaNetworkLogo height="100%" width="100%" />
-            </div>
-            <div className={`hidden aspect-[10/3] ${contentHeight} sm:block`}>
+            <div className={twJoin("aspect-[10/3]", contentHeight)}>
               <VeridaNetworkLogoWithText height="100%" width="100%" />
             </div>
           </Link>
         </div>
-        <div className="flex items-center justify-between justify-self-end">
+        <div className="flex items-center gap-2 justify-between justify-self-end">
           {isConnected ? (
             <>
-              <button
-                className=" -mr-4 sm:-mr-6 text-start"
-                onClick={handleOpenMenu}
-              >
-                <AvatarWithInfo
-                  did={did}
+              <button onClick={handleOpenMenu}>
+                <Avatar
                   image={profile?.avatarUri}
-                  name={profile?.name}
-                  className={`${contentHeight} max-w-[220px]`}
+                  alt={profile?.name}
+                  className={contentHeight}
                 />
               </button>
               <HeaderMenu
