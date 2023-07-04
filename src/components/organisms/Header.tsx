@@ -124,7 +124,11 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
               <Chip variant="primary">
                 {isLoadingUserActivities ? (
                   // FIXME: Icon doesn't spin
-                  <Icon type="loading" className="animate-spin-slow" />
+                  <Icon
+                    size={16}
+                    type="loading"
+                    className="animate-spin-slow"
+                  />
                 ) : (
                   xpPointsChipLabel
                 )}
