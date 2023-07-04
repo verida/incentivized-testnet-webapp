@@ -3,7 +3,7 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 
 const chipVariants = cva(
-  "px-3 py-2 rounded-full border border-solid w-fit leading-4",
+  "px-3 py-2 rounded-full border border-solid w-fit text-sm leading-4 font-semibold",
   {
     variants: {
       variant: {
