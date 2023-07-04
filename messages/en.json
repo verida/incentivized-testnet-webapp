@@ -144,19 +144,27 @@
     "description": "Message to display in the upcoming activities CTA"
   },
   "activities.claimPolygonId.actionExecutingLabel": {
-    "defaultMessage": "Verifying",
+    "defaultMessage": "Sending message",
     "description": "Label of the button when the activity 'claim Polygon ID' is being executed"
   },
   "activities.claimPolygonId.actionLabel": {
-    "defaultMessage": "Verify",
+    "defaultMessage": "Start",
     "description": "Label of the button to start the activity claim polygon id"
   },
+  "activities.claimPolygonId.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a Polygon ID KYC Age credential.",
+    "description": "Message explaining a request has been sent to the their Wallet inbox"
+  },
+  "activities.claimPolygonId.resources.polygonIdDemoAppUrl.label": {
+    "defaultMessage": "Polygon ID demo app",
+    "description": "Label of the resource 'Polygon ID issuer demo app'"
+  },
   "activities.claimPolygonId.shortDescription": {
-    "defaultMessage": "Go to the Polygon ID issuer demo app and claim a KYC Age Credential",
+    "defaultMessage": "Go to the Polygon ID issuer demo app and claim a KYC Age Credential, then share this credential by replying to the message you received in your inbox.",
     "description": "Short description of the activity 'claim Polygon ID'"
   },
   "activities.claimPolygonId.title": {
-    "defaultMessage": "Claim a Polygon ID credential",
+    "defaultMessage": "Claim a Polygon ID Age credential",
     "description": "Title of the activity 'claim Polygon ID'"
   },
   "activities.claimSocialMediaData.actionExecutingLabel": {
@@ -255,6 +263,10 @@
     "defaultMessage": "Use the Markdown Editor demo app",
     "description": "Title of the activity 'use markdown editor'"
   },
+  "activity.claimPolygonId.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
   "activity.updateProfile.gettingProfileErrorMessage": {
     "defaultMessage": "There was an error while getting your profile, please try again later",
     "description": "Error message when we can't get the user profile"
@@ -296,12 +308,24 @@
     "description": "Label of the mission id 02"
   },
   "missions.mission-02.shortDescription": {
-    "defaultMessage": "In Mission 2 we need your help to stress-test the network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+    "defaultMessage": "The Verida Wallet supports Polygon ID for the reception, holding of Verifiable Credentials (VC) that can then be presented in a privacy preserving way to third parties, via Zero-Knowledge Proof (ZKP). This mission will guide you through the process of claiming Polygon ID credentials.",
     "description": "Short description of the mission 02"
   },
   "missions.mission-02.title": {
-    "defaultMessage": "Stress testing the network",
+    "defaultMessage": "Leverage Credentials and Zero-Knowledge with Polygon ID",
     "description": "Title of the mission 02"
+  },
+  "missions.mission-03.idLabel": {
+    "defaultMessage": "Mission 3",
+    "description": "Label of the mission id 03"
+  },
+  "missions.mission-03.shortDescription": {
+    "defaultMessage": "In Mission 3 we need your help to stress-test the network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+    "description": "Short description of the mission 03"
+  },
+  "missions.mission-03.title": {
+    "defaultMessage": "Stress testing the network",
+    "description": "Title of the mission 03"
   },
   "useExecuteActivity.activityAlreadyBeingExecutedMessage": {
     "defaultMessage": "An activity is already being executed, please wait for it to finish",
