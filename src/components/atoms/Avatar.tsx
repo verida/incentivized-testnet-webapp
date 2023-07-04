@@ -1,4 +1,5 @@
 import React from "react";
+import { twJoin } from "tailwind-merge";
 
 import { Icon } from "./Icon";
 
@@ -10,17 +11,23 @@ export type AvatarProps = {
 export const Avatar: React.FunctionComponent<AvatarProps> = (props) => {
   const { image, alt = "avatar", ...otherProps } = props;
 
+  const commonClasses =
+    "aspect-square h-full rounded-full border border-border-60 bg-transparent-15";
+
   const avatar = image ? (
     <img
       src={image}
       alt={alt}
-      className={`border-1 aspect-square h-full rounded-full border border-border/60 object-cover`}
+      className={twJoin(commonClasses, "border-1 object-cover")}
     />
   ) : (
     <Icon
       type="user"
       size="70%"
-      className={`flex aspect-square h-full items-center justify-center rounded-full border-2 border-border/60 bg-transparent-15`}
+      className={twJoin(
+        commonClasses,
+        "flex items-center justify-center border-2"
+      )}
     />
   );
 

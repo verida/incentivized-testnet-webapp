@@ -48,7 +48,11 @@ module.exports = {
           foreground: "hsl(var(--foreground))",
         },
 
-        border: "hsla(var(--white) / 0.15)",
+        border: {
+          DEFAULT: "hsla(var(--white) / 0.15)",
+          30: "hsla(var(--white) / 0.3)",
+          60: "hsla(var(--white) / 0.6)",
+        },
         divider: {
           DEFAULT: "hsla(var(--white) / 0.15)",
         },
