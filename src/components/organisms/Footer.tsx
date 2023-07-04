@@ -2,7 +2,7 @@ import { ReactComponent as VeridaNetworkLogo } from "assets/images/verida_networ
 import React from "react";
 import { useIntl } from "react-intl";
 
-import { Typography } from "~/components/atoms";
+import { ExternalLink, Typography } from "~/components/atoms";
 import { VERIDA_NETWORK_URL } from "~/constants";
 
 export const Footer: React.FunctionComponent = () => {
@@ -41,12 +41,10 @@ export const Footer: React.FunctionComponent = () => {
   return (
     <footer className="flex flex-col items-center justify-center space-y-3 border-t border-solid border-divider py-4 px-6 sm:flex-row sm:justify-between">
       <div className="flex flex-col justify-center sm:order-2">
-        <a
-          className="flex flex-col items-center"
+        <ExternalLink
           href={VERIDA_NETWORK_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          // TODO: Create an ExternalLink component
+          openInNewTab
+          className="flex flex-col items-center no-underline hover:underline text-muted-foreground"
         >
           <Typography
             component="span"
@@ -57,7 +55,7 @@ export const Footer: React.FunctionComponent = () => {
           <div className="aspect-[9/3] h-6">
             <VeridaNetworkLogo height="100%" width="100%" />
           </div>
-        </a>
+        </ExternalLink>
       </div>
       <div className="sm:order-3 sm:flex-1">
         <div className="flex flex-col items-center space-y-3 sm:flex-row sm:justify-end sm:space-x-4 sm:space-y-0">

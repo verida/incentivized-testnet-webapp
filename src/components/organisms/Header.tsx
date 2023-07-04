@@ -1,18 +1,17 @@
 import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
 import { Link } from "react-router-dom";
-import { twJoin } from "tailwind-merge";
+import { twJoin, twMerge } from "tailwind-merge";
 
-import { ReactComponent as VeridaNetworkLogo } from "~/assets/images/verida_network_logo.svg";
 import { ReactComponent as VeridaNetworkLogoWithText } from "~/assets/images/verida_network_logo_with_text.svg";
-import { Chip, Icon } from "~/components/atoms";
+import { Avatar, Chip, Icon, Typography } from "~/components/atoms";
 import type { MenuItem } from "~/components/molecules";
-import { AvatarWithInfo, HeaderMenu } from "~/components/molecules";
+import { HeaderMenu } from "~/components/molecules";
 import { ConnectVeridaButton } from "~/components/organisms/ConnectVeridaButton";
 import { config } from "~/config";
 import { useActivity } from "~/features/activity";
 import { useTermsConditions } from "~/features/termsconditions";
-import { useVerida } from "~/features/verida";
+import { truncateDid, useVerida } from "~/features/verida";
 
 type HeaderProps = React.ComponentPropsWithoutRef<"header">;
 
@@ -45,10 +44,16 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     defaultMessage: "Return to Home page",
   });
 
+  const profileNameFallback = i18n.formatMessage({
+    id: "Header.profileNameFallback",
+    description: "Fallback name for the profile name in the Header",
+    defaultMessage: "'<Anon>'",
+  });
+
   const xpPointsChipLabel = i18n.formatMessage(
     {
-      id: "ActivityCard.xpPointsChipLabel",
-      description: "Label of the XP points chip on each activity card",
+      id: "Header.xpPointsChipLabel",
+      description: "Display of the user total XP points",
       defaultMessage: "{points} XP",
     },
     { points: userXpPoints }
@@ -59,10 +64,12 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const devModeMenuItems: MenuItem[] = config.devMode
     ? [
         {
+          key: "delete-terms",
           label: "Delete Terms",
           action: deleteTermsStatus,
         },
         {
+          key: "delete-user-activities",
           label: "Delete User Activities",
           action: deleteUserActivities,
         },
@@ -71,6 +78,30 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
 
   const menuItems: MenuItem[] = [
     {
+      key: "profile-info",
+      label: (
+        <div className="flex flex-col justify-between flex-shrink truncate">
+          <Typography
+            className={twMerge(
+              "truncate font-semibold",
+              profile?.name === undefined ? "italic" : undefined
+            )}
+          >
+            {profile?.name || profileNameFallback}
+          </Typography>
+          {did === undefined ? null : (
+            <>
+              <Typography className="truncate text-sm leading-3.5 text-foreground/50">
+                {truncateDid(did, 7, 4)}
+              </Typography>
+            </>
+          )}
+        </div>
+      ),
+      disabled: true,
+    },
+    {
+      key: "disconnect",
       label: "Disconnect",
       action: handleDisconnect,
     },
@@ -82,19 +113,12 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
       <div className="flex flex-row justify-between border-b border-solid border-divider bg-translucent px-4 pt-3 pb-[calc(0.75rem_-_1px)] backdrop-blur-[15px] sm:px-6">
         <div className="justify-self-start">
           <Link to="/" aria-label={homeLinkAriaLabel}>
-            <div
-              className={twJoin("aspect-[10/6.97] sm:hidden", contentHeight)}
-            >
-              <VeridaNetworkLogo height="100%" width="100%" />
-            </div>
-            <div
-              className={twJoin("hidden aspect-[10/3] sm:block", contentHeight)}
-            >
+            <div className={twJoin("aspect-[10/3]", contentHeight)}>
               <VeridaNetworkLogoWithText height="100%" width="100%" />
             </div>
           </Link>
         </div>
-        <div className="flex items-center justify-between justify-self-end gap-2 md:gap-4">
+        <div className="flex items-center gap-2 md:gap-4 justify-between justify-self-end">
           {isConnected ? (
             <>
               <Chip variant="primary">
@@ -105,15 +129,11 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
                   xpPointsChipLabel
                 )}
               </Chip>
-              <button
-                className="-mr-4 sm:-mr-6 text-start"
-                onClick={handleOpenMenu}
-              >
-                <AvatarWithInfo
-                  did={did}
+              <button onClick={handleOpenMenu}>
+                <Avatar
                   image={profile?.avatarUri}
-                  name={profile?.name}
-                  className={twJoin("max-w-[220px]", contentHeight)}
+                  alt={profile?.name}
+                  className={contentHeight}
                 />
               </button>
               <HeaderMenu

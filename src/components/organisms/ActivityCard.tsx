@@ -7,6 +7,7 @@ import {
   ActivityIndex,
   Button,
   Chip,
+  ExternalLink,
   Icon,
   Typography,
 } from "~/components/atoms";
@@ -123,14 +124,9 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
             <ul>
               {activity.resources.map((resource, index) => (
                 <li key={index}>
-                  <a
-                    href={resource.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline hover:text-foreground"
-                  >
+                  <ExternalLink href={resource.url} openInNewTab>
                     {i18n.formatMessage(resource.label)}
-                  </a>
+                  </ExternalLink>
                 </li>
               ))}
             </ul>
@@ -141,7 +137,8 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
             {enabled ? (
               <>
                 <Chip variant="primary">{xpPointsChipLabel}</Chip>
-                {isConnected && status !== "todo" ? (
+                {isConnected &&
+                (isLoadingUserActivities || status !== "todo") ? (
                   <ActivityStatus
                     status={isLoadingUserActivities ? "checking" : status}
                   />

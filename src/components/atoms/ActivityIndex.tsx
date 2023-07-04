@@ -14,7 +14,7 @@ export const ActivityIndex: React.FunctionComponent<ActivityIndexProps> = (
     <div
       {...divProps}
       className={twMerge(
-        "bg-transparent-15 aspect-square h-8 rounded-full flex justify-center items-center",
+        "bg-transparent-15 aspect-square h-8 rounded-full flex justify-center items-center text-sm font-semibold",
         className
       )}
     >

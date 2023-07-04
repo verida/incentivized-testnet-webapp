@@ -3,12 +3,12 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 
 const buttonBaseVariants = cva(
-  "flex items-center justify-center space-x-2.5 text-sm font-medium",
+  "flex items-center gap-2 justify-center text-sm leading-4 font-semibold",
   {
     variants: {
       variant: {
         text: "bg-transparent disabled:bg-transparent",
-        contained: "disabled:text-muted-foreground",
+        contained: "",
       },
       color: {
         default: "",
@@ -16,10 +16,10 @@ const buttonBaseVariants = cva(
       },
       size: {
         "no-margin": "p-0 rounded-lg",
-        "small": "p-1.5 rounded-lg",
-        "medium": "p-2.5 rounded-xl",
-        "large": "p-3.5 rounded-xl w-full",
-        "xlarge": "p-4.5 rounded-xl w-full",
+        "small": "p-2 rounded-lg",
+        "medium": "p-3 rounded-xl",
+        "large": "p-4 rounded-xl w-full",
+        "xlarge": "p-5 rounded-xl w-full",
       },
       shape: {
         standard: "",
@@ -30,28 +30,28 @@ const buttonBaseVariants = cva(
       {
         size: "small",
         shape: "standard",
-        className: "px-2",
+        className: "px-4",
       },
       {
         size: "medium",
         shape: "standard",
-        className: "px-4",
+        className: "px-8",
       },
       {
         size: "large",
         shape: "standard",
-        className: "px-4",
+        className: "px-8",
       },
       {
         size: "xlarge",
         shape: "standard",
-        className: "px-5",
+        className: "px-10",
       },
       {
         variant: "contained",
         color: "default",
         className:
-          "bg-transparent-10 hover:bg-transparent-20 disabled:bg-transparent-5 ",
+          "bg-transparent-10 hover:bg-transparent-20 disabled:bg-transparent-5 disabled:text-muted-foreground",
       },
       {
         variant: "text",
@@ -61,7 +61,8 @@ const buttonBaseVariants = cva(
       {
         variant: "contained",
         color: "primary",
-        className: "bg-primary hover:bg-primary/80 disabled:bg-primary/20",
+        className:
+          "text-primary-foreground bg-primary hover:bg-primary/80 disabled:bg-primary/20",
       },
       {
         variant: "text",
