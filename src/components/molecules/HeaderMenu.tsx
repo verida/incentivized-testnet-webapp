@@ -28,7 +28,7 @@ export const HeaderMenu: React.FunctionComponent<HeaderMenuProps> = (props) => {
   return (
     <PortalWrapper>
       <div className="fixed inset-0 z-50" onClick={onClose}></div>
-      <div className="fixed top-14 right-4 z-50 bg-menu rounded-xl border border-solid border-divider shadow-xl backdrop-blur-[10px]">
+      <div className="fixed top-14 right-4 z-50 bg-menu text-menu-foreground rounded-xl border border-solid border-divider shadow-xl backdrop-blur-[10px]">
         <ul className="flex flex-col p-2 gap-2 rounded-lg">
           {items.map((item) => (
             <li key={item.key}>
