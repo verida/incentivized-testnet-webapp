@@ -7,13 +7,13 @@ import { ReactComponent as VeridaNetworkLogoWithText } from "~/assets/images/ver
 import { Avatar, Chip, Icon, Typography } from "~/components/atoms";
 import type { MenuItem } from "~/components/molecules";
 import { HeaderMenu } from "~/components/molecules";
-import { ConnectVeridaButton } from "~/components/organisms/ConnectVeridaButton";
+import { ConnectVeridaButton } from "~/components/organisms";
 import { config } from "~/config";
 import { useActivity } from "~/features/activity";
 import { useTermsConditions } from "~/features/termsconditions";
 import { truncateDid, useVerida } from "~/features/verida";
 
-type HeaderProps = React.ComponentPropsWithoutRef<"header">;
+export type HeaderProps = React.ComponentPropsWithRef<"header">;
 
 export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const { ...headerProps } = props;

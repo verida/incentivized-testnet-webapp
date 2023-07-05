@@ -12,7 +12,7 @@ export type MenuItem = {
   replaceButton?: boolean;
 };
 
-type HeaderMenuProps = {
+export type HeaderMenuProps = {
   open: boolean;
   items: MenuItem[];
   onClose: () => void;

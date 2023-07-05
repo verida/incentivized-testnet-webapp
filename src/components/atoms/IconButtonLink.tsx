@@ -2,11 +2,11 @@ import React from "react";
 
 import { ButtonLinkBase } from "./ButtonLinkBase";
 
-type IconButtonLinkProps = {
+export type IconButtonLinkProps = {
   icon: React.ReactNode;
   shape: "square" | "circle";
 } & Omit<
-  React.ComponentPropsWithoutRef<typeof ButtonLinkBase>,
+  React.ComponentPropsWithRef<typeof ButtonLinkBase>,
   "children" | "shape"
 >;
 

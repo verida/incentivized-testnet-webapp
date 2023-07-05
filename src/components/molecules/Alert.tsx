@@ -2,14 +2,14 @@ import React from "react";
 
 import { Button, Typography } from "~/components/atoms";
 
-type AlertType = "error" | "warning" | "info" | "success";
+export type AlertType = "error" | "warning" | "info" | "success";
 
-type AlertProps = {
+export type AlertProps = {
   type?: AlertType;
   message: string;
   actionLabel?: string;
   action?: () => void;
-} & Omit<React.ComponentPropsWithoutRef<"div">, "children">;
+} & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const Alert: React.FunctionComponent<AlertProps> = (props) => {
   const { message, actionLabel, action, ...divProps } = props;

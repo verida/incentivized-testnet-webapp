@@ -1,5 +1,5 @@
-import { DatastoreOpenConfig, IDatastore } from "@verida/types";
-import { WebUser, WebUserProfile } from "@verida/web-helpers";
+import type { DatastoreOpenConfig, IDatastore } from "@verida/types";
+import { WebUser, type WebUserProfile } from "@verida/web-helpers";
 import React, {
   useCallback,
   useEffect,

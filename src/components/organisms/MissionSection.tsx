@@ -9,9 +9,9 @@ import { config } from "~/config";
 import type { Mission } from "~/features/activity";
 import { useActivity } from "~/features/activity";
 
-type MissionSectionProps = {
+export type MissionSectionProps = {
   mission: Mission;
-} & React.ComponentPropsWithoutRef<"article">;
+} & React.ComponentPropsWithRef<"article">;
 
 export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
   props

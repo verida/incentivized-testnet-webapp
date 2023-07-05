@@ -1,4 +1,4 @@
-import { WebUserProfile } from "@verida/web-helpers";
+import { type WebUserProfile } from "@verida/web-helpers";
 import { defineMessage } from "react-intl";
 
 import { MISSION_01_ID } from "~/features/activity/missions";

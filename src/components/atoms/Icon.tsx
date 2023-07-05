@@ -35,10 +35,10 @@ export type PlatformIconType =
   | "platform-youtube";
 export type IconType = GenericIconType | PlatformIconType;
 
-type IconProps = {
+export type IconProps = {
   type: IconType;
   size?: number | string;
-} & Omit<React.ComponentPropsWithoutRef<typeof IconContainer>, "children">;
+} & Omit<React.ComponentPropsWithRef<typeof IconContainer>, "children">;
 
 export const Icon: React.FunctionComponent<IconProps> = (props) => {
   const { type, size = 20, ...otherProps } = props;
@@ -107,7 +107,7 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
 };
 
 const IconContainer: React.FunctionComponent<
-  React.ComponentPropsWithoutRef<"span">
+  React.ComponentPropsWithRef<"span">
 > = (props) => {
   const { children, ...otherProps } = props;
   return <span {...otherProps}>{children}</span>;
