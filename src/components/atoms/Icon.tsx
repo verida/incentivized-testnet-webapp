@@ -4,6 +4,7 @@ import {
   CheckOne,
   Close,
   LoadingOne,
+  Logout,
   User,
 } from "@icon-park/react";
 import React from "react";
@@ -21,6 +22,7 @@ export type GenericIconType =
   | "close"
   | "loading"
   | "check"
+  | "disconnect"
   | "notification-success"
   | "notification-error";
 export type PlatformIconType =
@@ -50,6 +52,8 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
       return <LoadingOne size={size} {...otherProps} />;
     case "check":
       return <Check size={size} {...otherProps} />;
+    case "disconnect":
+      return <Logout size={size} {...otherProps} />;
     case "notification-success":
       return <CheckOne size={size} {...otherProps} />;
     case "notification-error":

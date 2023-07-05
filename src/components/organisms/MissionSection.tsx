@@ -51,7 +51,7 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
     <article {...articleProps}>
       <div
         className={twMerge(
-          "border border-solid border-border p-6 rounded-xl bg-mission-section backdrop-blur-4xl",
+          "border border-solid border-border p-4 sm:p-6 rounded-xl bg-mission-section backdrop-blur-4xl",
           isMissionComingSoon
             ? "text-muted-foreground border-dashed"
             : undefined
@@ -72,12 +72,12 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
           </Typography>
         </div>
         {isMissionComingSoon ? null : (
-          <div>
-            <Typography variant="heading-s" className="mt-8">
+          <div className="mt-6">
+            <Typography variant="heading-s">
               {/* FIXME: Update style */}
               {activitiesSectionTitle}
             </Typography>
-            <ul className="flex flex-col w-full gap-4 mt-4">
+            <ul className="flex flex-col w-full gap-4 mt-2">
               {displayedActivities.map((activity, index) => (
                 <li key={activity.id}>
                   <ActivityCard

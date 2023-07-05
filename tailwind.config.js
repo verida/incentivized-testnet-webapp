@@ -9,7 +9,7 @@ module.exports = {
       colors: {
         white: "hsl(var(--white))",
         black: "hsl(var(--black))",
-        translucent: "rgba(17, 17, 17, 0.2)",
+        translucent: "rgba(17, 17, 17, 0.01)",
         transparent: {
           DEFAULT: "hsla(var(--white) / 0)",
           3: "hsla(var(--white) / 0.03)",
@@ -28,9 +28,11 @@ module.exports = {
         },
 
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          background: "hsla(var(--primary) / 0.2)",
-          foreground: "hsl(var(--background))",
+          "DEFAULT": "hsl(var(--primary))",
+          "background": "hsla(var(--primary) / 0.2)",
+          "background-hover": "hsla(255, 100%, 82%, 1)", // TODO: define colour variable
+          "background-disabled": "hsla(250, 35%, 35%, 1)", // TODO: define colour variable
+          "foreground": "hsl(var(--background))",
         },
         success: {
           DEFAULT: "hsl(var(--success))",
@@ -53,34 +55,44 @@ module.exports = {
           30: "hsla(var(--white) / 0.3)",
           60: "hsla(var(--white) / 0.6)",
         },
+        menu: {
+          DEFAULT: "hsla(246, 59%, 10%, 0.8)", // TODO: define colour variable
+        },
         divider: {
           DEFAULT: "hsla(var(--white) / 0.15)",
         },
       },
       fontSize: {
         "heading-l": [
-          "3rem",
+          "2.25rem",
           {
             lineHeight: "120%",
             fontWeight: "700",
           },
         ],
         "heading-m": [
-          "1.75rem",
+          "1.375rem",
           {
             lineHeight: "120%",
             fontWeight: "700",
           },
         ],
         "heading-s": [
-          "1.25rem",
+          "1.125rem",
           {
             lineHeight: "120%",
             fontWeight: "600",
           },
         ],
         "base": [
-          "1rem",
+          "0.875rem",
+          {
+            lineHeight: "140%",
+            fontWeight: "400",
+          },
+        ],
+        "base-s": [
+          "0.75rem",
           {
             lineHeight: "140%",
             fontWeight: "400",
@@ -89,8 +101,43 @@ module.exports = {
         "subtitle": [
           "0.875rem",
           {
-            lineHeight: "1rem",
+            lineHeight: "1.25rem",
             fontWeight: "600",
+          },
+        ],
+        "desktop-heading-l": [
+          "3rem",
+          {
+            lineHeight: "120%",
+            fontWeight: "700",
+          },
+        ],
+        "desktop-heading-m": [
+          "1.75rem",
+          {
+            lineHeight: "120%",
+            fontWeight: "700",
+          },
+        ],
+        "desktop-heading-s": [
+          "1.25rem",
+          {
+            lineHeight: "120%",
+            fontWeight: "600",
+          },
+        ],
+        "desktop-base": [
+          "1rem",
+          {
+            lineHeight: "140%",
+            fontWeight: "400",
+          },
+        ],
+        "desktop-base-s": [
+          "0.875rem",
+          {
+            lineHeight: "140%",
+            fontWeight: "400",
           },
         ],
       },

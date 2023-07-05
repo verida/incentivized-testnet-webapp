@@ -1,6 +1,7 @@
 import React from "react";
 import { Balancer } from "react-wrap-balancer";
 
+import { Typography } from "~/components/atoms";
 import { APP_TITLE } from "~/constants";
 
 export type PageLayoutProps = {
@@ -14,12 +15,18 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = (props) => {
   return (
     <div {...divProps}>
       <div className="flex flex-grow flex-col items-center justify-center text-center mt-24">
-        <p className="text-sm sm:text-base font-semibold text-primary uppercase">
+        <Typography
+          variant="base"
+          className="leading-[120%] font-semibold text-primary uppercase tracking-[0.07rem] sm:tracking-[0.08rem]"
+        >
           {APP_TITLE}
-        </p>
-        <h1 className="text-4xl sm:text-5xl font-bold mt-3 bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/70">
-          <Balancer>{title}</Balancer>
-        </h1>
+        </Typography>
+        <Typography variant="heading-l" className="mt-3">
+          {/* Had to surround by div because of style conflict with Typography, likely 'text-transparent' */}
+          <div className="bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/70">
+            <Balancer>{title}</Balancer>
+          </div>
+        </Typography>
       </div>
       {children}
     </div>
