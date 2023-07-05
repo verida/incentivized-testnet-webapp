@@ -3,7 +3,7 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 
 const buttonBaseVariants = cva(
-  "flex items-center gap-2 justify-center text-sm leading-4 font-semibold",
+  "flex items-center gap-2 justify-center text-sm font-semibold whitespace-nowrap",
   {
     variants: {
       variant: {
@@ -17,7 +17,7 @@ const buttonBaseVariants = cva(
       size: {
         "no-margin": "p-0 rounded-lg",
         "small": "p-2 rounded-lg",
-        "medium": "p-3 rounded-xl",
+        "medium": "p-2.5 rounded-xl",
         "large": "p-4 rounded-xl w-full",
         "xlarge": "p-5 rounded-xl w-full",
       },
@@ -51,7 +51,7 @@ const buttonBaseVariants = cva(
         variant: "contained",
         color: "default",
         className:
-          "bg-transparent-10 hover:bg-transparent-20 disabled:bg-transparent-5 disabled:text-muted-foreground",
+          "text-foreground bg-transparent-15 hover:bg-transparent-30 disabled:opacity-30 disabled:bg-transparent-15",
       },
       {
         variant: "text",
@@ -62,7 +62,7 @@ const buttonBaseVariants = cva(
         variant: "contained",
         color: "primary",
         className:
-          "text-primary-foreground bg-primary hover:bg-primary/80 disabled:bg-primary/20",
+          "text-primary-foreground bg-primary hover:bg-primary-background-hover disabled:bg-primary-background-disabled",
       },
       {
         variant: "text",
@@ -78,6 +78,8 @@ const buttonBaseVariants = cva(
     },
   }
 );
+
+//#332D5D
 
 export type ButtonBaseVariants = VariantProps<typeof buttonBaseVariants>;
 

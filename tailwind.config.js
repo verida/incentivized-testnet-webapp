@@ -28,9 +28,11 @@ module.exports = {
         },
 
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          background: "hsla(var(--primary) / 0.2)",
-          foreground: "hsl(var(--background))",
+          "DEFAULT": "hsl(var(--primary))",
+          "background": "hsla(var(--primary) / 0.2)",
+          "background-hover": "hsla(255, 100%, 82%, 1)",
+          "background-disabled": "hsla(250, 35%, 35%, 1)",
+          "foreground": "hsl(var(--background))",
         },
         success: {
           DEFAULT: "hsl(var(--success))",
