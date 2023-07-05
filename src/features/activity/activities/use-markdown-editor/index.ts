@@ -95,9 +95,6 @@ export const activity: Activity = {
     description:
       "Label of the button when the activity 'use markdown editor is being executed",
   }),
-  onInit: handleInit,
-  onExecute: handleExecute,
-  onUnmount: handleUnmount,
   resources: [
     {
       label: defineMessage({
@@ -107,5 +104,35 @@ export const activity: Activity = {
       }),
       url: "https://markdown-editor.demos.testnet.verida.io/",
     },
+    {
+      label: defineMessage({
+        id: "activities.useMarkdownEditor.resources.HowToUseTheMarkdownEditorDemoApp.label",
+        defaultMessage: "How to use the Markdown Editor demo app",
+        description:
+          "Label of the resource 'How to use the Markdown Editor demo app'",
+      }),
+      url: "https://community.verida.io/user-guides/using-the-verida-markdown-editor-demo",
+    },
+    {
+      label: defineMessage({
+        id: "activities.useMarkdownEditor.resources.HowToUseTheMarkdownEditorDemoAppVideo.label",
+        defaultMessage: "How to use the Markdown Editor demo app (video)",
+        description:
+          "Label of the resource 'How to use the Markdown Editor demo app (video)'",
+      }),
+      url: "https://youtu.be/su_03ZBzhig",
+    },
   ],
+  video: {
+    label: defineMessage({
+      id: "activities.useMarkdownEditor.video.label",
+      defaultMessage: "How to use the Markdown Editor demo app",
+      description:
+        "Label of the video 'How to use the Markdown Editor demo app'",
+    }),
+    url: "https://youtu.be/su_03ZBzhig",
+  },
+  onInit: handleInit,
+  onExecute: handleExecute,
+  onUnmount: handleUnmount,
 };
