@@ -9,7 +9,7 @@ module.exports = {
       colors: {
         white: "hsl(var(--white))",
         black: "hsl(var(--black))",
-        translucent: "rgba(17, 17, 17, 0.2)",
+        translucent: "rgba(17, 17, 17, 0.01)",
         transparent: {
           DEFAULT: "hsla(var(--white) / 0)",
           3: "hsla(var(--white) / 0.03)",
@@ -30,8 +30,8 @@ module.exports = {
         primary: {
           "DEFAULT": "hsl(var(--primary))",
           "background": "hsla(var(--primary) / 0.2)",
-          "background-hover": "hsla(255, 100%, 82%, 1)",
-          "background-disabled": "hsla(250, 35%, 35%, 1)",
+          "background-hover": "hsla(255, 100%, 82%, 1)", // TODO: define colour variable
+          "background-disabled": "hsla(250, 35%, 35%, 1)", // TODO: define colour variable
           "foreground": "hsl(var(--background))",
         },
         success: {
@@ -54,6 +54,9 @@ module.exports = {
           DEFAULT: "hsla(var(--white) / 0.15)",
           30: "hsla(var(--white) / 0.3)",
           60: "hsla(var(--white) / 0.6)",
+        },
+        menu: {
+          DEFAULT: "hsla(246, 59%, 10%, 0.8)", // TODO: define colour variable
         },
         divider: {
           DEFAULT: "hsla(var(--white) / 0.15)",

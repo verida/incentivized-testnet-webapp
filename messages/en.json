@@ -87,6 +87,10 @@
     "defaultMessage": "Get Support",
     "description": "Title of the 'Get Support' section"
   },
+  "Header.disconnectButtonLabel": {
+    "defaultMessage": "Disconnect",
+    "description": "Label for the disconnect button in the Header"
+  },
   "Header.homeLinkAriaLabel": {
     "defaultMessage": "Return to Home page",
     "description": "Aria label for the home link in the Header"
