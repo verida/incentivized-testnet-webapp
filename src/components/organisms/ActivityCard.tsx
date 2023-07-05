@@ -161,9 +161,9 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
                       {executing ? (
                         <>
                           <Icon
-                            size={16}
+                            size={20}
                             type="loading"
-                            className="animate-spin-slow mr-2"
+                            className="animate-spin-slow"
                           />
                           {i18n.formatMessage(activity.actionExecutingLabel)}
                         </>
