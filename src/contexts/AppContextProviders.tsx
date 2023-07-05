@@ -10,7 +10,7 @@ import { VeridaProvider } from "~/features/verida";
 
 import { QueryProvider } from "./QueryContext";
 
-type AppContextProvidersProps = {
+export type AppContextProvidersProps = {
   children: React.ReactNode;
 };
 

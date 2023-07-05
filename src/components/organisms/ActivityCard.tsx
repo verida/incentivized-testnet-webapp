@@ -12,16 +12,20 @@ import {
   Typography,
 } from "~/components/atoms";
 import { ActivityStatus } from "~/components/molecules";
-import { Activity, UserActivityStatus, useActivity } from "~/features/activity";
+import {
+  type Activity,
+  type UserActivityStatus,
+  useActivity,
+} from "~/features/activity";
 import { Sentry } from "~/features/sentry";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
-type ActivityCardProps = {
+export type ActivityCardProps = {
   index: number;
   activity: Activity;
   status: UserActivityStatus;
-} & Omit<React.ComponentPropsWithoutRef<"section">, "children">;
+} & Omit<React.ComponentPropsWithRef<"section">, "children">;
 
 export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
   props

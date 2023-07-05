@@ -1,7 +1,7 @@
 import React from "react";
 import { createPortal } from "react-dom";
 
-type PortalWrapperProps = {
+export type PortalWrapperProps = {
   children: React.ReactNode;
 };
 

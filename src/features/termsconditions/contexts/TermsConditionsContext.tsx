@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from "react";
 
 // import { AcceptTermsAmdConditionsModal } from "~/components/organisms";
 // import { useTermsConditionsQueries } from "~/features/termsconditions/hooks";
-import { TermsConditionsStatus } from "~/features/termsconditions/types";
+import { type TermsConditionsStatus } from "~/features/termsconditions/types";
 import { useVerida } from "~/features/verida";
 
 // TODO: Add Sentry breadcrumb details
@@ -28,8 +28,9 @@ export const TermsConditionsProvider: React.FunctionComponent<
   // const [openModal, setOpenModal] = useState(false);
   const { isConnected } = useVerida();
 
+  // const { termsDatastore } = useTermsDatastore();
   // const { isCheckingStatus, status, saveStatus, deleteStatus } =
-  //   useTermsConditionsQueries();
+  //   useTermsConditionsQueries(termsDatastore);
 
   // useEffect(() => {
   //   if (!isConnected || isCheckingStatus || status === "accepted") {

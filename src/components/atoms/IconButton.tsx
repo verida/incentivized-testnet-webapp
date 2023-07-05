@@ -2,12 +2,9 @@ import React from "react";
 
 import { ButtonBase } from "./ButtonBase";
 
-type IconButtonProps = {
+export type IconButtonProps = {
   icon: React.ReactNode;
-} & Omit<
-  React.ComponentPropsWithoutRef<typeof ButtonBase>,
-  "children" | "shape"
->;
+} & Omit<React.ComponentPropsWithRef<typeof ButtonBase>, "children" | "shape">;
 
 export const IconButton: React.FC<IconButtonProps> = (props) => {
   const { icon, ...otherProps } = props;

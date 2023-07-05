@@ -1,4 +1,4 @@
-import { IDatastore } from "@verida/types";
+import { type IDatastore } from "@verida/types";
 
 import {
   UserActivityRecordSchema,

@@ -4,9 +4,9 @@ import { useIntl } from "react-intl";
 import { ActivityIndex, ButtonLink, Typography } from "~/components/atoms";
 import { veridaSupportPlatforms } from "~/constants";
 
-type UpcomingActivitiesCTAProps = {
+export type UpcomingActivitiesCTAProps = {
   index: number;
-} & React.ComponentPropsWithoutRef<"aside">;
+} & React.ComponentPropsWithRef<"aside">;
 
 export const UpcomingActivitiesCTA: React.FunctionComponent<
   UpcomingActivitiesCTAProps

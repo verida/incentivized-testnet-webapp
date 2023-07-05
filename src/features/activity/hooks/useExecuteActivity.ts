@@ -1,20 +1,25 @@
+import { type IDatastore } from "@verida/types";
 import { useCallback, useRef } from "react";
 import { toast } from "react-hot-toast";
 import { useIntl } from "react-intl";
 
 import { useActivityQueries } from "~/features/activity/hooks/useActivityQueries";
-import { Activity } from "~/features/activity/types";
+import { type Activity } from "~/features/activity/types";
 import { capturePlausibleEvent } from "~/features/plausible";
 import { Sentry } from "~/features/sentry";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
-export function useExecuteActivity(activities: Activity[]) {
+export function useExecuteActivity(
+  activities: Activity[],
+  activitiesDatastore: IDatastore | null
+) {
   const i18n = useIntl();
   const executingActivityRef = useRef(false);
   const { webUserInstanceRef } = useVerida();
   const { status: statusTermsConditions } = useTermsConditions();
-  const { userActivities, saveActivity } = useActivityQueries();
+  const { userActivities, saveActivity } =
+    useActivityQueries(activitiesDatastore);
 
   const executeActivity = useCallback(
     async (activityId: string) => {

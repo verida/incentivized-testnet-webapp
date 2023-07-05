@@ -25,7 +25,7 @@ export type ChipVariants = VariantProps<typeof chipVariants>;
 export type ChipProps = {
   children: React.ReactNode;
 } & ChipVariants &
-  React.ComponentPropsWithoutRef<"div">;
+  React.ComponentPropsWithRef<"div">;
 
 export const Chip: React.FunctionComponent<ChipProps> = (props) => {
   const { children, variant, className, ...divProps } = props;

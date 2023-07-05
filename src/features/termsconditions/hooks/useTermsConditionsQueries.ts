@@ -1,33 +1,18 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { IDatastore } from "@verida/types";
-import { useEffect, useState } from "react";
+import { type IDatastore } from "@verida/types";
 
 import { Sentry } from "~/features/sentry";
 import {
-  TERMS_SCHEMA_LATEST_URL,
-  TermsConditionsStatus,
+  type TermsConditionsStatus,
   deleteStatusInDatastore,
   getStatusFromDatastore,
   setStatusInDatastore,
 } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
-export function useTermsConditionsQueries() {
-  const [termsDatastore, setTermsDatastore] = useState<IDatastore | null>(null);
-  const { isConnected, did, openDatastore } = useVerida();
+export function useTermsConditionsQueries(termsDatastore: IDatastore | null) {
+  const { did } = useVerida();
   const queryClient = useQueryClient();
-
-  useEffect(() => {
-    if (!isConnected) {
-      setTermsDatastore(null);
-      return;
-    }
-    const getDatastore = async () => {
-      const datastore = await openDatastore(TERMS_SCHEMA_LATEST_URL);
-      setTermsDatastore(datastore);
-    };
-    void getDatastore();
-  }, [isConnected, openDatastore]);
 
   // TODO: Handle error state
   const { data: status, isLoading: isCheckingStatus } = useQuery({
