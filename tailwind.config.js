@@ -86,6 +86,13 @@ module.exports = {
             fontWeight: "400",
           },
         ],
+        "base-s": [
+          "0.875rem",
+          {
+            lineHeight: "140%",
+            fontWeight: "400",
+          },
+        ],
         "subtitle": [
           "0.875rem",
           {

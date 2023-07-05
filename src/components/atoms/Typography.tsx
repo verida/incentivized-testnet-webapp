@@ -7,6 +7,7 @@ type TypographyVariant =
   | "heading-m"
   | "heading-s"
   | "base"
+  | "base-s"
   | "subtitle";
 
 type TypographyComponent =
@@ -30,7 +31,8 @@ const mapping = {
   "heading-m": "h2",
   "heading-s": "h3",
   "base": "p",
-  "subtitle": "span",
+  "base-s": "p",
+  "subtitle": "p",
 };
 
 // TODO: Properly define the styles for each variant
@@ -39,6 +41,7 @@ const variantClasses = {
   "heading-m": "text-heading-m",
   "heading-s": "text-heading-s",
   "base": "text-base",
+  "base-s": "text-base-s",
   "subtitle": "text-subtitle",
 };
 
