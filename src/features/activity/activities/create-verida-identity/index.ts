@@ -19,12 +19,14 @@ const handleInit: ActivityOnInit = async (veridaWebUser, saveActivity) => {
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
+  // Wait a bit for UX purposes
+  await wait(2000);
   const isConnected = await veridaWebUser.current.isConnected();
   if (isConnected) {
     return { status: "completed" };
   }
   // Wait a bit for UX purposes or the user will think nothing happened
-  await wait(3000);
+  await wait(2000);
   return { status: "todo" };
 };
 
@@ -39,6 +41,7 @@ export const activity: Activity = {
   enabled: true,
   visible: true,
   order: 1,
+  points: 50,
   title: defineMessage({
     id: "activities.createVeridaIdentity.title",
     defaultMessage: "Create a Verida Identity",
@@ -57,7 +60,7 @@ export const activity: Activity = {
   }),
   actionExecutingLabel: defineMessage({
     id: "activities.createVeridaIdentity.actionExecutingLabel",
-    defaultMessage: "Verifying...",
+    defaultMessage: "Verifying",
     description:
       "Label of the button when the activity 'create Verida Identity' is being executed",
   }),
@@ -69,6 +72,15 @@ export const activity: Activity = {
         description: "Label of the resource 'How to create a Verida Identity'",
       }),
       url: "https://community.verida.io/user-guides/create-a-verida-identity-guide",
+    },
+    {
+      label: defineMessage({
+        id: "activities.createVeridaIdentity.resources.howToCreateVeridaIdentityVideo.label",
+        defaultMessage: "How to create a Verida Identity (video)",
+        description:
+          "Label of the resource 'How to create a Verida Identity (video)'",
+      }),
+      url: "https://youtu.be/Iav2TRzBiIs",
     },
   ],
   video: {

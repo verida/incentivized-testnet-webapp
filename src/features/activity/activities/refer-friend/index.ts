@@ -1,6 +1,6 @@
 import { defineMessage } from "react-intl";
 
-import { MISSION_01_ID } from "~/features/activity/missions";
+import { MISSION_02_ID } from "~/features/activity/missions";
 import type {
   Activity,
   ActivityOnExecute,
@@ -16,7 +16,8 @@ const handleInit: ActivityOnInit = () => {
 };
 
 const handleExecute: ActivityOnExecute = async (_veridaWebUser) => {
-  await wait(5000);
+  // Wait a bit for UX purposes
+  await wait(2000);
   return { status: "pending" };
 };
 
@@ -26,10 +27,11 @@ const handleUnmount: ActivityOnUnmount = async (_veridaWebUser) => {
 
 export const activity: Activity = {
   id: ACTIVITY_ID,
-  missionId: MISSION_01_ID,
+  missionId: MISSION_02_ID,
   enabled: false,
   visible: false,
-  order: 3,
+  order: 2,
+  points: 50,
   title: defineMessage({
     id: "activities.referFriend.title",
     defaultMessage: "Refer a friend",
@@ -47,7 +49,7 @@ export const activity: Activity = {
   }),
   actionExecutingLabel: defineMessage({
     id: "activities.referFriend.actionExecutingLabel",
-    defaultMessage: "Preparing...",
+    defaultMessage: "Preparing",
     description:
       "Label of the button when the activity 'refer friend' is being executed",
   }),

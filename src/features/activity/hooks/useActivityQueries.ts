@@ -1,39 +1,18 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { IDatastore } from "@verida/types";
-import { useEffect, useState } from "react";
+import { type IDatastore } from "@verida/types";
 
 import {
-  ACTIVITIES_SCHEMA_LATEST_URL,
   deleteActivitiesInDatastore,
   getActivitiesFromDatastore,
   saveActivityInDatastore,
 } from "~/features/activity";
-import { UserActivity } from "~/features/activity/types";
+import { type UserActivity } from "~/features/activity/types";
 import { Sentry } from "~/features/sentry";
 import { useVerida } from "~/features/verida";
 
-export function useActivityQueries() {
-  const [activitiesDatastore, setActivitiesDatastore] =
-    useState<IDatastore | null>(null);
-  const { isConnected, did, openDatastore } = useVerida();
+export function useActivityQueries(activitiesDatastore: IDatastore | null) {
+  const { isConnected, did } = useVerida();
   const queryClient = useQueryClient();
-
-  useEffect(() => {
-    if (!isConnected) {
-      setActivitiesDatastore(null);
-      return;
-    }
-    const getDatastore = async () => {
-      const datastore = await openDatastore(ACTIVITIES_SCHEMA_LATEST_URL);
-      setActivitiesDatastore(datastore);
-    };
-
-    try {
-      void getDatastore();
-    } catch (error: unknown) {
-      Sentry.captureException(error);
-    }
-  }, [isConnected, openDatastore]);
 
   // TODO: Handle error state
   const { data: userActivities, isLoading: isLoadingActivities } = useQuery({
@@ -57,7 +36,7 @@ export function useActivityQueries() {
 
       return userActivities;
     },
-    enabled: !!activitiesDatastore,
+    enabled: !!activitiesDatastore && isConnected && !!did,
     staleTime: 1000 * 60, // 1 minutes
   });
 

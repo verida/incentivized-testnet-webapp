@@ -4,7 +4,10 @@ import { Balancer } from "react-wrap-balancer";
 
 import { Typography } from "~/components/atoms";
 
-type HomeHeroProps = Omit<React.ComponentPropsWithoutRef<"div">, "children">;
+export type HomeHeroProps = Omit<
+  React.ComponentPropsWithRef<"div">,
+  "children"
+>;
 
 export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
   const i18n = useIntl();
@@ -37,7 +40,7 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
 
   return (
     <div {...props}>
-      <div className="flex flex-grow flex-col items-center justify-center text-center gap-2 text-sm">
+      <div className="flex flex-grow flex-col items-center justify-center text-center gap-2 text-muted-foreground">
         <Typography>
           <Balancer ratio={balancerRatio}>{descriptionPart1}</Balancer>
         </Typography>

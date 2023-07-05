@@ -1,3 +1,4 @@
+import { type WebUserProfile } from "@verida/web-helpers";
 import { defineMessage } from "react-intl";
 
 import { MISSION_01_ID } from "~/features/activity/missions";
@@ -34,7 +35,9 @@ const handleInit: ActivityOnInit = async (veridaWebUser, saveActivity) => {
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
-  let profile;
+  // Wait a bit for UX purposes
+  await wait(2000);
+  let profile: WebUserProfile;
   try {
     profile = await veridaWebUser.current.getPublicProfile(true);
   } catch (error: unknown) {
@@ -71,7 +74,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
   // If not, the activity is back to its initial state
 
   // Wait a bit for UX purposes or the user will think nothing happened
-  await wait(3000);
+  await wait(2000);
 
   const missingFieldErrorMessage = defineMessage({
     id: "activity.updateProfile.missingFieldsErrorMessage",
@@ -97,6 +100,7 @@ export const activity: Activity = {
   enabled: true,
   visible: true,
   order: 2,
+  points: 50,
   title: defineMessage({
     id: "activities.updateProfile.title",
     defaultMessage: "Update your profile",
@@ -114,7 +118,7 @@ export const activity: Activity = {
   }),
   actionExecutingLabel: defineMessage({
     id: "activities.updateProfile.actionExecutingLabel",
-    defaultMessage: "Verifying...",
+    defaultMessage: "Verifying",
     description:
       "Label of the button when the activity 'update your profile' is being executed",
   }),
@@ -128,7 +132,25 @@ export const activity: Activity = {
       }),
       url: "https://community.verida.io/user-guides/update-your-profile-guide",
     },
+    {
+      label: defineMessage({
+        id: "activities.updateProfile.resources.howToUpdateYourVeridaIdentityProfileVideo.label",
+        defaultMessage: "How to update your Verida Identity profile (video)",
+        description:
+          "Label of the resource 'How to update your Verida Identity profile (video)'",
+      }),
+      url: "https://youtu.be/MA5yYvO_xVk",
+    },
   ],
+  video: {
+    label: defineMessage({
+      id: "activities.updateProfile.video.label",
+      defaultMessage: "How to update your Verida Identity profile",
+      description:
+        "Label of the video 'How to update your Verida Identity profile'",
+    }),
+    url: "https://youtu.be/MA5yYvO_xVk",
+  },
   onInit: handleInit,
   onExecute: handleExecute,
   onUnmount: handleUnmount,

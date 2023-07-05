@@ -6,12 +6,17 @@ export const MISSION_02_ID = "mission-02";
 
 export const mission: Mission = {
   id: MISSION_02_ID,
+  idLabel: defineMessage({
+    id: "missions.mission-02.idLabel",
+    defaultMessage: "Mission 2",
+    description: "Label of the mission id 02",
+  }),
   enabled: false,
   visible: true,
   order: 2,
   title: defineMessage({
     id: "missions.mission-02.title",
-    defaultMessage: "Mission 2: Stress testing the network",
+    defaultMessage: "Stress testing the network",
     description: "Title of the mission 02",
   }),
   shortDescription: defineMessage({

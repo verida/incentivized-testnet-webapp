@@ -1,8 +1,9 @@
 import React from "react";
 import { useIntl } from "react-intl";
 
-import { Alert, HomeHero, PageWrapper } from "~/components/molecules";
-import { MissionSection } from "~/components/organisms";
+import { Alert, HomeHero } from "~/components/molecules";
+import { ConnectVeridaButton, MissionSection } from "~/components/organisms";
+import { PageLayout } from "~/components/templates";
 import { useActivity } from "~/features/activity";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
@@ -39,8 +40,13 @@ export const HomeView: React.FunctionComponent = () => {
   });
 
   return (
-    <PageWrapper title={tagline}>
+    <PageLayout title={tagline}>
       <HomeHero className="mt-4" />
+      {isConnected ? null : (
+        <div className="mt-6 flex justify-center">
+          <ConnectVeridaButton longLabel />
+        </div>
+      )}
       {displayTermsConditionsAlert && (
         <Alert
           className="mt-6"
@@ -59,6 +65,6 @@ export const HomeView: React.FunctionComponent = () => {
           />
         ))}
       </div>
-    </PageWrapper>
+    </PageLayout>
   );
 };

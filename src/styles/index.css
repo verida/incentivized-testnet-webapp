@@ -5,8 +5,25 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --white: 0deg 0% 100%;
+    --black: 0deg 0% 0%;
+    --background: 240deg 42% 17%;
+    --foreground: 0deg 0% 100%;
+    --primary: 257deg 100% 76%;
+    --primary-bg-hover: 255deg 100% 82%;
+    --primary-bg-disabled: 250deg 35% 35%;
+    --success: 142deg 76% 36%;
+    --warning: 36deg 100% 57%;
+    --error: 0deg 84% 60%;
+    --pending: 41deg 96% 40%;
+    --gray: 251deg 15% 78%;
+    --notification: 246deg 59% 10%;
+    --menu: 246deg 59% 10%;
+  }
+
   body {
-    @apply bg-background font-sans text-sm text-primary;
+    @apply bg-background font-sans text-base text-foreground;
   }
 
   .bg-app {
@@ -15,5 +32,12 @@
     background-position: top, bottom;
     background-repeat: no-repeat, no-repeat;
     background-size: auto 500px, auto 500px;
+  }
+
+  .bg-mission-section {
+    background-image: url("./images/bg_mission_section_top.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: auto auto;
   }
 }

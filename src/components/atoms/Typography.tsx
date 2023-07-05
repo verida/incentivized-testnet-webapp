@@ -1,59 +1,58 @@
+import { type VariantProps, cva } from "class-variance-authority";
 import React from "react";
+import { twMerge } from "tailwind-merge";
 
-type TypographyVariant = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body";
+const typographyVariants = cva("", {
+  variants: {
+    variant: {
+      "heading-l": "text-heading-l sm:text-desktop-heading-l",
+      "heading-m": "text-heading-m sm:text-desktop-heading-m",
+      "heading-s": "text-heading-s sm:text-desktop-heading-s",
+      "base": "text-base sm:text-desktop-base",
+      "base-s": "text-base-s sm:text-desktop-base-s",
+      "subtitle": "text-subtitle sm:text-desktop-subtitle",
+    },
+    component: {
+      h1: "",
+      h2: "",
+      h3: "",
+      h4: "",
+      h5: "",
+      h6: "",
+      p: "",
+      span: "",
+    },
+  },
+  defaultVariants: {
+    variant: "base",
+    component: "p",
+  },
+});
 
-type TypographyComponent =
-  | "h1"
-  | "h2"
-  | "h3"
-  | "h4"
-  | "h5"
-  | "h6"
-  | "p"
-  | "span";
+export type TypographyVariants = VariantProps<typeof typographyVariants>;
 
-type TypographyProps = {
-  variant?: TypographyVariant;
-  component?: TypographyComponent;
+export type TypographyProps = {
   children: React.ReactNode;
-} & Omit<React.ComponentPropsWithoutRef<"div">, "children">;
+} & TypographyVariants &
+  Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 const mapping = {
-  h1: "h1",
-  h2: "h2",
-  h3: "h3",
-  h4: "h4",
-  h5: "h5",
-  h6: "h6",
-  body: "p",
+  "heading-l": "h1",
+  "heading-m": "h2",
+  "heading-s": "h3",
+  "base": "p",
+  "base-s": "p",
+  "subtitle": "p",
 };
-
-// TODO: Properly define the styles for each variant
-const variantClasses = {
-  h1: "text-4xl font-bold mt-8 mb-2",
-  h2: "text-3xl font-bold mt-8 mb-4",
-  h3: "text-2xl font-bold mt-8 mb-2",
-  h4: "text-xl font-bold mt-4 mb-2",
-  h5: "text-lg font-bold mt-4 mb-2",
-  h6: "text-base font-bold mt-4 mb-2",
-  body: "text-sm font-normal",
-};
-
-// TODO: Replace all p and h tags by Typography component
 
 export const Typography: React.FunctionComponent<TypographyProps> = (props) => {
-  const {
-    variant = "body",
-    component,
-    children,
-    className = "",
-    ...otherProps
-  } = props;
+  const { variant, component, children, className, ...otherProps } = props;
 
-  const htmlTag = component || mapping[variant];
-  // TODO: Use twMerge
-  const classes = `${variantClasses[variant]} ${className}`;
+  const htmlTag = component || mapping[variant || "base"];
 
+  const classes = twMerge(typographyVariants({ variant }), className);
+
+  // TODO: Optimise without the switch
   switch (htmlTag) {
     case "h1":
       return (

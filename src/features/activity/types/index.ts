@@ -18,6 +18,7 @@ export type Resource = {
 
 export type Mission = {
   id: string;
+  idLabel: MessageDescriptor;
   enabled: boolean;
   visible: boolean;
   order: number;
@@ -52,6 +53,7 @@ export type Activity = {
   enabled: boolean;
   visible: boolean;
   order: number;
+  points: number;
   title: MessageDescriptor;
   shortDescription: MessageDescriptor;
   longDescription?: MessageDescriptor;

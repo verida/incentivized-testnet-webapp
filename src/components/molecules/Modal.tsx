@@ -1,4 +1,4 @@
-import { Button, ButtonVariant, Icon, IconButton } from "components/atoms";
+import { Button, ButtonBaseVariants, Icon, IconButton } from "components/atoms";
 import React, { useCallback, useId } from "react";
 import { useEffect } from "react";
 
@@ -9,10 +9,9 @@ import { PortalWrapper } from "./PortalWrapper";
 export type ModalAction = {
   label: string;
   onClick: () => void;
-  variant: ButtonVariant;
-};
+} & ButtonBaseVariants;
 
-type ModalProps = {
+export type ModalProps = {
   title?: string;
   open: boolean;
   onClose: () => void;

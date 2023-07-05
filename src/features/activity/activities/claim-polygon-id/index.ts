@@ -1,6 +1,6 @@
 import { defineMessage } from "react-intl";
 
-import { MISSION_01_ID } from "~/features/activity/missions";
+import { MISSION_02_ID } from "~/features/activity/missions";
 import type {
   Activity,
   ActivityOnExecute,
@@ -16,7 +16,8 @@ const handleInit: ActivityOnInit = () => {
 };
 
 const handleExecute: ActivityOnExecute = async (_veridaWebUser) => {
-  await wait(5000);
+  // Wait a bit for UX purposes
+  await wait(2000);
   return { status: "pending" };
 };
 
@@ -26,10 +27,11 @@ const handleUnmount: ActivityOnUnmount = async (_veridaWebUser) => {
 
 export const activity: Activity = {
   id: ACTIVITY_ID,
-  missionId: MISSION_01_ID,
+  missionId: MISSION_02_ID,
   enabled: false,
   visible: false,
-  order: 5,
+  order: 1,
+  points: 50,
   title: defineMessage({
     id: "activities.claimPolygonId.title",
     defaultMessage: "Claim a Polygon ID credential",
@@ -48,7 +50,7 @@ export const activity: Activity = {
   }),
   actionExecutingLabel: defineMessage({
     id: "activities.claimPolygonId.actionExecutingLabel",
-    defaultMessage: "Verifying...",
+    defaultMessage: "Verifying",
     description:
       "Label of the button when the activity 'claim Polygon ID' is being executed",
   }),

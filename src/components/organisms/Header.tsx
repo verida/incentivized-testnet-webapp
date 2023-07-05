@@ -1,35 +1,29 @@
 import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
 import { Link } from "react-router-dom";
+import { twJoin, twMerge } from "tailwind-merge";
 
-import { ReactComponent as VeridaNetworkLogo } from "~/assets/images/verida_network_logo.svg";
 import { ReactComponent as VeridaNetworkLogoWithText } from "~/assets/images/verida_network_logo_with_text.svg";
-import { Button, Icon } from "~/components/atoms";
+import { Avatar, Chip, Icon, Typography } from "~/components/atoms";
 import type { MenuItem } from "~/components/molecules";
-import { AvatarWithInfo, HeaderMenu } from "~/components/molecules";
+import { HeaderMenu } from "~/components/molecules";
+import { ConnectVeridaButton } from "~/components/organisms";
 import { config } from "~/config";
 import { useActivity } from "~/features/activity";
 import { useTermsConditions } from "~/features/termsconditions";
-import { useVerida } from "~/features/verida";
+import { truncateDid, useVerida } from "~/features/verida";
 
-type HeaderProps = React.ComponentPropsWithoutRef<"header">;
+export type HeaderProps = React.ComponentPropsWithRef<"header">;
 
 export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const { ...headerProps } = props;
 
   const i18n = useIntl();
   const [openMenu, setOpenMenu] = useState(false);
-  const {
-    connect,
-    disconnect,
-    isConnected,
-    isConnecting,
-    isCheckingConnection,
-    profile,
-    did,
-  } = useVerida();
+  const { disconnect, isConnected, profile, did } = useVerida();
   const { deleteTermsStatus } = useTermsConditions();
-  const { deleteUserActivities } = useActivity();
+  const { deleteUserActivities, userXpPoints, isLoadingUserActivities } =
+    useActivity();
 
   const handleOpenMenu = useCallback(() => {
     setOpenMenu(true);
@@ -38,10 +32,6 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const handleCloseMenu = useCallback(() => {
     setOpenMenu(false);
   }, []);
-
-  const handleConnect = useCallback(() => {
-    void connect();
-  }, [connect]);
 
   const handleDisconnect = useCallback(() => {
     handleCloseMenu();
@@ -54,22 +44,25 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     defaultMessage: "Return to Home page",
   });
 
-  const connectButtonLabel = i18n.formatMessage({
-    id: "Header.connectButtonLabel",
-    description: "Label of the Connect button in the Header",
-    defaultMessage: "Connect",
+  const profileNameFallback = i18n.formatMessage({
+    id: "Header.profileNameFallback",
+    description: "Fallback name for the profile name in the Header",
+    defaultMessage: "'<Anon>'",
   });
 
-  const connectingButtonLabel = i18n.formatMessage({
-    id: "Header.connectingButtonLabel",
-    description: "Label of the disabled Connecting button in the Header",
-    defaultMessage: "Connecting",
-  });
+  const xpPointsChipLabel = i18n.formatMessage(
+    {
+      id: "Header.xpPointsChipLabel",
+      description: "Display of the user total XP points",
+      defaultMessage: "{points} XP",
+    },
+    { points: userXpPoints }
+  );
 
-  const checkingConnectionButtonLabel = i18n.formatMessage({
-    id: "Header.checkingConnectionButtonLabel",
-    description: "Label of the disabled Checking Verida button in the Header",
-    defaultMessage: "Checking Verida",
+  const disconnectButtonLabel = i18n.formatMessage({
+    id: "Header.disconnectButtonLabel",
+    description: "Label for the disconnect button in the Header",
+    defaultMessage: "Disconnect",
   });
 
   const contentHeight = "h-10";
@@ -77,10 +70,12 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const devModeMenuItems: MenuItem[] = config.devMode
     ? [
         {
+          key: "delete-terms",
           label: "Delete Terms",
           action: deleteTermsStatus,
         },
         {
+          key: "delete-user-activities",
           label: "Delete User Activities",
           action: deleteUserActivities,
         },
@@ -89,7 +84,44 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
 
   const menuItems: MenuItem[] = [
     {
-      label: "Disconnect",
+      key: "profile-info",
+      label: (
+        <div className="p-2 flex flex-col gap-0.5 justify-between flex-shrink truncate border-b border-solid border-divider">
+          <Typography
+            variant="subtitle"
+            className={twMerge(
+              "truncate",
+              profile?.name === undefined ? "italic" : undefined
+            )}
+          >
+            <span className="text-foreground">
+              {/* TODO: Investigate class conflict preventing setting 'text-foreground' on Typography */}
+              {profile?.name || profileNameFallback}
+            </span>
+          </Typography>
+          {did === undefined ? null : (
+            <>
+              <Typography variant="base-s" className="truncate">
+                <span className="text-muted-foreground">
+                  {/* TODO: Investigate class conflict preventing setting 'text-foreground' on Typography */}
+                  {truncateDid(did, 7, 4)}
+                </span>
+              </Typography>
+            </>
+          )}
+        </div>
+      ),
+      disabled: true,
+      replaceButton: true,
+    },
+    {
+      key: "disconnect",
+      label: (
+        <div className="flex flex-row gap-2 items-center">
+          <Icon type="disconnect" size={20} />
+          {disconnectButtonLabel}
+        </div>
+      ),
       action: handleDisconnect,
     },
     ...devModeMenuItems,
@@ -97,29 +129,34 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
 
   return (
     <header {...headerProps}>
-      <div className="flex flex-row justify-between border-b border-solid border-gray-dark bg-translucent px-4 pt-3 pb-[calc(0.75rem_-_1px)] backdrop-blur-[15px] sm:px-6">
+      <div className="flex flex-row justify-between border-b border-solid border-divider bg-translucent px-4 pt-3 pb-[calc(0.75rem_-_1px)] backdrop-blur-[5px] sm:px-6">
         <div className="justify-self-start">
           <Link to="/" aria-label={homeLinkAriaLabel}>
-            <div className={`aspect-[10/6.97] ${contentHeight} sm:hidden`}>
-              <VeridaNetworkLogo height="100%" width="100%" />
-            </div>
-            <div className={`hidden aspect-[10/3] ${contentHeight} sm:block`}>
+            <div className={twJoin("aspect-[10/3]", contentHeight)}>
               <VeridaNetworkLogoWithText height="100%" width="100%" />
             </div>
           </Link>
         </div>
-        <div className="flex items-center justify-between justify-self-end">
+        <div className="flex items-center gap-2 md:gap-4 justify-between justify-self-end">
           {isConnected ? (
             <>
-              <button
-                className=" -mr-4 sm:-mr-6 text-start"
-                onClick={handleOpenMenu}
-              >
-                <AvatarWithInfo
-                  did={did}
+              <Chip variant="primary">
+                {isLoadingUserActivities ? (
+                  // FIXME: Icon doesn't spin
+                  <Icon
+                    size={16}
+                    type="loading"
+                    className="animate-spin-slow"
+                  />
+                ) : (
+                  xpPointsChipLabel
+                )}
+              </Chip>
+              <button onClick={handleOpenMenu}>
+                <Avatar
                   image={profile?.avatarUri}
-                  name={profile?.name}
-                  className={`${contentHeight} max-w-[220px]`}
+                  alt={profile?.name}
+                  className={contentHeight}
                 />
               </button>
               <HeaderMenu
@@ -129,20 +166,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
               />
             </>
           ) : (
-            <Button
-              onClick={handleConnect}
-              disabled={isConnecting || isCheckingConnection}
-              size="medium"
-            >
-              {isConnecting || isCheckingConnection ? (
-                <Icon type="loading" className="animate-spin-slow mr-2" />
-              ) : null}
-              {isCheckingConnection
-                ? checkingConnectionButtonLabel
-                : isConnecting
-                ? connectingButtonLabel
-                : connectButtonLabel}
-            </Button>
+            <ConnectVeridaButton />
           )}
         </div>
       </div>

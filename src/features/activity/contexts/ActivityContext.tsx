@@ -3,6 +3,7 @@ import { createContext, useCallback, useMemo } from "react";
 import { config } from "~/config";
 import { activities } from "~/features/activity/activities";
 import {
+  useActivitiesDatastore,
   useActivityQueries,
   useExecuteActivity,
 } from "~/features/activity/hooks";
@@ -17,6 +18,7 @@ type ActivityContextType = {
   activities: Activity[];
   missions: Mission[];
   userActivities: UserActivityRecord[];
+  userXpPoints: number;
   isLoadingUserActivities: boolean;
   getUserActivity: (activityId: string) => UserActivityRecord | undefined;
   executeActivity: (activityId: string) => Promise<void>;
@@ -34,12 +36,30 @@ export const ActivityProvider: React.FunctionComponent<
 > = (props) => {
   // const initExecutedForDid = useRef<string>("");
   // const { isConnected, did, webUserInstanceRef } = useVerida();
+  const { activitiesDatastore } = useActivitiesDatastore();
   const {
     // isReady: isQueriesReady,
     userActivities,
     isLoadingActivities: isLoadingUserActivities,
     deleteActivities,
-  } = useActivityQueries();
+  } = useActivityQueries(activitiesDatastore);
+
+  const userXpPoints = useMemo(() => {
+    return userActivities
+      ? userActivities.reduce((acc, userActivity) => {
+          if (userActivity.status !== "completed") {
+            return acc;
+          }
+          const activity = activities.find(
+            (activity) => activity.id === userActivity.id
+          );
+          if (activity === undefined) {
+            return acc;
+          }
+          return acc + activity.points;
+        }, 0)
+      : 0;
+  }, [userActivities]);
 
   // Initialise the activities
   // useEffect(() => {
@@ -92,7 +112,10 @@ export const ActivityProvider: React.FunctionComponent<
   //   };
   // }, [isQueriesReady, did, userActivities, webUserInstanceRef, saveActivity]);
 
-  const { executeActivity } = useExecuteActivity(activities);
+  const { executeActivity } = useExecuteActivity(
+    activities,
+    activitiesDatastore
+  );
 
   const getUserActivity = useCallback(
     (activityId: string) => {
@@ -111,6 +134,7 @@ export const ActivityProvider: React.FunctionComponent<
       missions: missions.filter((m) => (config.devMode ? true : m.visible)),
       activities: activities,
       userActivities: userActivities || [],
+      userXpPoints,
       isLoadingUserActivities,
       getUserActivity,
       executeActivity,
@@ -118,6 +142,7 @@ export const ActivityProvider: React.FunctionComponent<
     }),
     [
       userActivities,
+      userXpPoints,
       isLoadingUserActivities,
       executeActivity,
       getUserActivity,

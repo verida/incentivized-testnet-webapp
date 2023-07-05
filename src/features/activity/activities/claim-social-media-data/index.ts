@@ -16,7 +16,8 @@ const handleInit: ActivityOnInit = () => {
 };
 
 const handleExecute: ActivityOnExecute = async (_veridaWebUser) => {
-  await wait(5000);
+  // Wait a bit for UX purposes
+  await wait(2000);
   return { status: "pending" };
 };
 
@@ -29,7 +30,8 @@ export const activity: Activity = {
   missionId: MISSION_01_ID,
   enabled: false,
   visible: false,
-  order: 6,
+  order: 4,
+  points: 50,
   title: defineMessage({
     id: "activities.claimSocialMediaData.title",
     defaultMessage: "Claim your social media data",
@@ -49,7 +51,7 @@ export const activity: Activity = {
   }),
   actionExecutingLabel: defineMessage({
     id: "activities.claimSocialMediaData.actionExecutingLabel",
-    defaultMessage: "Verifying...",
+    defaultMessage: "Verifying",
     description:
       "Label of the button when the activity 'claim social media data' is being executed",
   }),

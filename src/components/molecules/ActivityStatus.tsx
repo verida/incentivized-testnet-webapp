@@ -1,12 +1,12 @@
 import React from "react";
 import { useIntl } from "react-intl";
 
-import { Icon } from "~/components/atoms";
+import { Chip, ChipVariants, Icon } from "~/components/atoms";
 import type { UserActivityStatus } from "~/features/activity";
 
-type ActivityStatusProps = {
+export type ActivityStatusProps = {
   status: UserActivityStatus | "disabled" | "checking";
-} & Omit<React.ComponentPropsWithoutRef<"div">, "children">;
+} & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
   props
@@ -15,17 +15,10 @@ export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
 
   const i18n = useIntl();
 
-  const iconType =
-    status === "completed"
-      ? "verida-tick"
-      : status === "pending" || status === "checking"
-      ? "loading"
-      : undefined;
-
   const activityTodoStatusLabel = i18n.formatMessage({
     id: "ActivityStatus.activityTodoStatusLabel",
     description: "Label of the status for an activity to perform",
-    defaultMessage: "Start",
+    defaultMessage: "To do",
   });
 
   const activityPendingStatusLabel = i18n.formatMessage({
@@ -43,7 +36,7 @@ export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
   const activityCheckingLabel = i18n.formatMessage({
     id: "ActivityStatus.activityCheckingLabel",
     description: "Label of the status for a disabled activity",
-    defaultMessage: "Checking...",
+    defaultMessage: "Checking",
   });
 
   const activityDisabledLabel = i18n.formatMessage({
@@ -63,21 +56,42 @@ export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
       ? activityCheckingLabel
       : activityDisabledLabel;
 
+  const iconType =
+    status === "pending" || status === "checking"
+      ? "loading"
+      : status === "completed"
+      ? "check"
+      : undefined;
+
+  const chipVariants: ChipVariants = {
+    variant:
+      status === "completed"
+        ? "success"
+        : status === "pending"
+        ? "pending"
+        : status === "disabled" || status === "checking"
+        ? "muted"
+        : status === "todo"
+        ? "muted"
+        : "primary",
+  };
+
   return (
     <div {...divProps}>
-      <div className="p-2.5 rounded-xl border border-solid border-gray-dark flex items-center justify-center gap-2 font-medium">
-        {iconType && (
+      <Chip variant={chipVariants.variant} className="flex gap-2 items-center">
+        {iconType ? (
           <Icon
             type={iconType}
+            size={16}
             className={
               status === "pending" || status === "checking"
                 ? "animate-spin-slow"
                 : undefined
             }
           />
-        )}
-        {label}
-      </div>
+        ) : null}
+        <span>{label}</span>
+      </Chip>
     </div>
   );
 };
