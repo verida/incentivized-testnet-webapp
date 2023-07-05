@@ -61,35 +61,35 @@ module.exports = {
       },
       fontSize: {
         "heading-l": [
-          "3rem",
+          "2.25rem",
           {
             lineHeight: "120%",
             fontWeight: "700",
           },
         ],
         "heading-m": [
-          "1.75rem",
+          "1.375rem",
           {
             lineHeight: "120%",
             fontWeight: "700",
           },
         ],
         "heading-s": [
-          "1.25rem",
+          "1.125rem",
           {
             lineHeight: "120%",
             fontWeight: "600",
           },
         ],
         "base": [
-          "1rem",
+          "0.875rem",
           {
             lineHeight: "140%",
             fontWeight: "400",
           },
         ],
         "base-s": [
-          "0.875rem",
+          "0.75rem",
           {
             lineHeight: "140%",
             fontWeight: "400",
@@ -98,8 +98,43 @@ module.exports = {
         "subtitle": [
           "0.875rem",
           {
-            lineHeight: "1rem",
+            lineHeight: "1.25rem",
             fontWeight: "600",
+          },
+        ],
+        "desktop-heading-l": [
+          "3rem",
+          {
+            lineHeight: "120%",
+            fontWeight: "700",
+          },
+        ],
+        "desktop-heading-m": [
+          "1.75rem",
+          {
+            lineHeight: "120%",
+            fontWeight: "700",
+          },
+        ],
+        "desktop-heading-s": [
+          "1.25rem",
+          {
+            lineHeight: "120%",
+            fontWeight: "600",
+          },
+        ],
+        "desktop-base": [
+          "1rem",
+          {
+            lineHeight: "140%",
+            fontWeight: "400",
+          },
+        ],
+        "desktop-base-s": [
+          "0.875rem",
+          {
+            lineHeight: "140%",
+            fontWeight: "400",
           },
         ],
       },

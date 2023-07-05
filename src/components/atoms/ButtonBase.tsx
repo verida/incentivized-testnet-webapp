@@ -79,8 +79,6 @@ const buttonBaseVariants = cva(
   }
 );
 
-//#332D5D
-
 export type ButtonBaseVariants = VariantProps<typeof buttonBaseVariants>;
 
 export type ButtonBaseProps = ButtonBaseVariants &

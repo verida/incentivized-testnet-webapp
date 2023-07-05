@@ -2,7 +2,7 @@ import React from "react";
 import { FallbackProps } from "react-error-boundary";
 import { defineMessage, useIntl } from "react-intl";
 
-import { Button } from "~/components/atoms";
+import { Button, Typography } from "~/components/atoms";
 
 const cardTitleDefinition = defineMessage({
   id: "ErrorFallbackCard.cardTtitle",
@@ -52,17 +52,15 @@ export const RawErrorFallbackCard: React.FunctionComponent<
 
   return (
     <div {...divProps}>
-      {/* <div className="flex h-full items-center justify-center"> */}
       <div className="flex flex-col items-center justify-center rounded-xl bg-gray-dark p-4">
         <span className="mb-2 text-lg font-semibold">{title}</span>
-        <p className="mb-4 text-sm">{message}</p>
+        <Typography className="mb-4">{message}</Typography>
         <div className="w-full">
           <Button variant="contained" size="large" onClick={resetErrorBoundary}>
             {resetButtonLabel}
           </Button>
         </div>
       </div>
-      {/* </div> */}
     </div>
   );
 };
