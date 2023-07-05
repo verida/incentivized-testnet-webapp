@@ -30,13 +30,19 @@ module.exports = {
         primary: {
           "DEFAULT": "hsl(var(--primary))",
           "background": "hsla(var(--primary) / 0.2)",
-          "background-hover": "hsla(255, 100%, 82%, 1)", // TODO: define colour variable
-          "background-disabled": "hsla(250, 35%, 35%, 1)", // TODO: define colour variable
+          "background-hover": "hsl(var(--primary-bg-hover))",
+          "background-disabled": "hsl(var(--primary-bg-disabled))",
           "foreground": "hsl(var(--background))",
         },
         success: {
           DEFAULT: "hsl(var(--success))",
           background: "hsla(var(--success) / 0.2)",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+        },
+        error: {
+          DEFAULT: "hsl(var(--error))",
         },
         pending: {
           DEFAULT: "hsl(var(--pending))",
@@ -45,21 +51,22 @@ module.exports = {
         gray: {
           DEFAULT: "hsl(var(--gray))",
         },
-        notification: {
-          DEFAULT: "hsl(var(--notification))",
-          foreground: "hsl(var(--foreground))",
-        },
 
         border: {
           DEFAULT: "hsla(var(--white) / 0.15)",
           30: "hsla(var(--white) / 0.3)",
           60: "hsla(var(--white) / 0.6)",
         },
-        menu: {
-          DEFAULT: "hsla(246, 59%, 10%, 0.8)", // TODO: define colour variable
-        },
         divider: {
           DEFAULT: "hsla(var(--white) / 0.15)",
+        },
+        notification: {
+          DEFAULT: "hsl(var(--notification) / 0.8)",
+          foreground: "hsl(var(--foreground))",
+        },
+        menu: {
+          DEFAULT: "hsla(var(--menu) / 0.8)",
+          foreground: "hsl(var(--foreground))",
         },
       },
       fontSize: {

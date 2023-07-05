@@ -6,15 +6,20 @@
 
 @layer base {
   :root {
-    --white: 0 0% 100%;
+    --white: 0deg 0% 100%;
     --black: 0deg 0% 0%;
     --background: 240deg 42% 17%;
-    --foreground: 0 0% 100%;
+    --foreground: 0deg 0% 100%;
     --primary: 257deg 100% 76%;
+    --primary-bg-hover: 255deg 100% 82%;
+    --primary-bg-disabled: 250deg 35% 35%;
     --success: 142deg 76% 36%;
+    --warning: 36deg 100% 57%;
+    --error: 0deg 84% 60%;
     --pending: 41deg 96% 40%;
     --gray: 251deg 15% 78%;
-    --notification: 240deg 21% 29%;
+    --notification: 246deg 59% 10%;
+    --menu: 246deg 59% 10%;
   }
 
   body {
