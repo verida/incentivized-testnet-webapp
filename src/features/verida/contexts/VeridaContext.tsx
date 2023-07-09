@@ -22,7 +22,7 @@ Sentry.setContext("verida", {
 });
 
 const webUserInstance = new WebUser({
-  debug: true,
+  debug: config.devMode,
   clientConfig: {
     environment: config.verida.environment,
     didClientConfig: {
