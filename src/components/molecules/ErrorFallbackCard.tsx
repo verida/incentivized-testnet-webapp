@@ -1,8 +1,8 @@
 import React from "react";
-import { FallbackProps } from "react-error-boundary";
+import { type FallbackProps } from "react-error-boundary";
 import { defineMessage, useIntl } from "react-intl";
 
-import { Button } from "~/components/atoms";
+import { Button, Typography } from "~/components/atoms";
 
 const cardTitleDefinition = defineMessage({
   id: "ErrorFallbackCard.cardTtitle",
@@ -24,7 +24,7 @@ const resetButtonLabelDefinition = defineMessage({
     "Label of the 'Try Again' button displayed on the default error fallback card",
 });
 
-interface RawErrorFallbackCardProps extends FallbackProps {
+export interface RawErrorFallbackCardProps extends FallbackProps {
   title?: string;
   message?: string;
   resetButtonLabel?: string;
@@ -40,7 +40,7 @@ interface RawErrorFallbackCardProps extends FallbackProps {
  * Consider using the `ErrorFallbackCard` component for a i18n  equivalent.
  */
 export const RawErrorFallbackCard: React.FunctionComponent<
-  RawErrorFallbackCardProps & React.ComponentPropsWithoutRef<"div">
+  RawErrorFallbackCardProps & React.ComponentPropsWithRef<"div">
 > = (props) => {
   const {
     resetErrorBoundary,
@@ -52,17 +52,15 @@ export const RawErrorFallbackCard: React.FunctionComponent<
 
   return (
     <div {...divProps}>
-      {/* <div className="flex h-full items-center justify-center"> */}
       <div className="flex flex-col items-center justify-center rounded-xl bg-gray-dark p-4">
         <span className="mb-2 text-lg font-semibold">{title}</span>
-        <p className="mb-4 text-sm">{message}</p>
+        <Typography className="mb-4">{message}</Typography>
         <div className="w-full">
           <Button variant="contained" size="large" onClick={resetErrorBoundary}>
             {resetButtonLabel}
           </Button>
         </div>
       </div>
-      {/* </div> */}
     </div>
   );
 };
@@ -74,7 +72,7 @@ export const RawErrorFallbackCard: React.FunctionComponent<
  * This component uses the `useIntl` hook, so must be inside the IntlProvider.
  */
 export const ErrorFallbackCard: React.FunctionComponent<
-  React.ComponentPropsWithoutRef<typeof RawErrorFallbackCard>
+  React.ComponentPropsWithRef<typeof RawErrorFallbackCard>
 > = (props) => {
   const { title, message, resetButtonLabel, ...otherProps } = props;
 

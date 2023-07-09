@@ -9,9 +9,10 @@ export type MenuItem = {
   action?: () => void;
   className?: string;
   disabled?: boolean;
+  replaceButton?: boolean;
 };
 
-type HeaderMenuProps = {
+export type HeaderMenuProps = {
   open: boolean;
   items: MenuItem[];
   onClose: () => void;
@@ -27,24 +28,28 @@ export const HeaderMenu: React.FunctionComponent<HeaderMenuProps> = (props) => {
   return (
     <PortalWrapper>
       <div className="fixed inset-0 z-50" onClick={onClose}></div>
-      <div className="fixed top-14 right-4 z-50 bg-background rounded-lg shadow-lg">
-        <ul className="py-2 bg-transparent-15 rounded-lg">
+      <div className="fixed top-14 right-4 z-50 bg-menu text-menu-foreground rounded-xl border border-solid border-divider shadow-xl backdrop-blur-[10px]">
+        <ul className="flex flex-col p-2 gap-2 rounded-lg">
           {items.map((item) => (
             <li key={item.key}>
-              <button
-                className={twMerge(
-                  "hover:bg-transparent-20 w-full py-3 px-8 disabled:text-muted-foreground disabled:bg-transparent text-left",
-                  item.className
-                )}
-                onClick={() => {
-                  if (!item.action) return;
-                  item.action();
-                  onClose();
-                }}
-                disabled={item.disabled}
-              >
-                {item.label}
-              </button>
+              {item.replaceButton ? (
+                <>{item.label}</>
+              ) : (
+                <button
+                  className={twMerge(
+                    "hover:bg-transparent-20 w-full py-2.5 px-2 rounded-lg disabled:text-muted-foreground disabled:bg-transparent text-left text-sm font-semibold",
+                    item.className
+                  )}
+                  onClick={() => {
+                    if (!item.action) return;
+                    item.action();
+                    onClose();
+                  }}
+                  disabled={item.disabled}
+                >
+                  {item.label}
+                </button>
+              )}
             </li>
           ))}
         </ul>

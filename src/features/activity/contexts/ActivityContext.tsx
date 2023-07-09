@@ -3,6 +3,7 @@ import { createContext, useCallback, useMemo } from "react";
 import { config } from "~/config";
 import { activities } from "~/features/activity/activities";
 import {
+  useActivitiesDatastore,
   useActivityQueries,
   useExecuteActivity,
   useInitialiseActivities,
@@ -35,14 +36,16 @@ type ActivityProviderProps = {
 export const ActivityProvider: React.FunctionComponent<
   ActivityProviderProps
 > = (props) => {
+  // const initExecutedForDid = useRef<string>("");
   const { did, webUserInstanceRef } = useVerida();
+  const { activitiesDatastore } = useActivitiesDatastore();
   const {
     isReady: isQueriesReady,
     userActivities,
     isLoadingActivities: isLoadingUserActivities,
     saveActivity,
     deleteActivities,
-  } = useActivityQueries();
+  } = useActivityQueries(activitiesDatastore);
 
   const userXpPoints = useMemo(() => {
     return userActivities
@@ -70,7 +73,10 @@ export const ActivityProvider: React.FunctionComponent<
     saveActivity
   );
 
-  const { executeActivity } = useExecuteActivity(activities);
+  const { executeActivity } = useExecuteActivity(
+    activities,
+    activitiesDatastore
+  );
 
   const getUserActivity = useCallback(
     (activityId: string) => {

@@ -12,16 +12,20 @@ import {
   Typography,
 } from "~/components/atoms";
 import { ActivityStatus } from "~/components/molecules";
-import { Activity, UserActivityStatus, useActivity } from "~/features/activity";
+import {
+  type Activity,
+  type UserActivityStatus,
+  useActivity,
+} from "~/features/activity";
 import { Sentry } from "~/features/sentry";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
-type ActivityCardProps = {
+export type ActivityCardProps = {
   index: number;
   activity: Activity;
   status: UserActivityStatus;
-} & Omit<React.ComponentPropsWithoutRef<"section">, "children">;
+} & Omit<React.ComponentPropsWithRef<"section">, "children">;
 
 export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
   props
@@ -101,13 +105,13 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
     <section {...sectionProps}>
       <div
         className={twMerge(
-          "p-4 rounded-xl flex flex-col gap-4",
+          "p-3 sm:p-4 rounded-xl flex flex-col gap-3 sm:gap-4",
           backgroundClasses,
           textColorClasses,
           borderClasses
         )}
       >
-        <header className="flex flex-row gap-4 items-center">
+        <header className="flex flex-col gap-3 items-start justify-center sm:justify-start sm:flex-row sm:gap-4 sm:items-center">
           <ActivityIndex index={String(index)} />
           <Typography component="h4" variant="heading-s">
             {i18n.formatMessage(title)}
@@ -132,8 +136,8 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
             </ul>
           </aside>
         ) : null}
-        <footer className="flex justify-between items-end">
-          <div className="flex gap-2">
+        <footer className="flex flex-col sm:flex-row items-start gap-4 justify-between sm:items-end">
+          <div className="flex gap-2 items-center">
             {enabled ? (
               <>
                 <Chip variant="primary">{xpPointsChipLabel}</Chip>
@@ -149,7 +153,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
             )}
           </div>
           {enabled ? (
-            <div>
+            <>
               {isConnected ? (
                 isChecking ? null : statusTermsConditions === "accepted" ? (
                   status === "todo" ? (
@@ -157,13 +161,14 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
                       size="medium"
                       onClick={() => void handleExecuteActivity()}
                       disabled={executing}
+                      className="w-full sm:w-fit"
                     >
                       {executing ? (
                         <>
                           <Icon
-                            size={16}
+                            size={20}
                             type="loading"
-                            className="animate-spin-slow mr-2"
+                            className="animate-spin-slow"
                           />
                           {i18n.formatMessage(activity.actionExecutingLabel)}
                         </>
@@ -173,12 +178,16 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
                     </Button>
                   ) : null
                 ) : (
-                  <Button onClick={openAcceptModal} size="medium">
+                  <Button
+                    onClick={openAcceptModal}
+                    size="medium"
+                    className="w-full sm:w-fit"
+                  >
                     {openTermsConditionsButtonLabel}
                   </Button>
                 )
               ) : null}
-            </div>
+            </>
           ) : null}
         </footer>
       </div>

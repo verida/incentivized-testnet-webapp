@@ -4,9 +4,9 @@ import { useIntl } from "react-intl";
 import { ActivityIndex, ButtonLink, Typography } from "~/components/atoms";
 import { veridaSupportPlatforms } from "~/constants";
 
-type UpcomingActivitiesCTAProps = {
+export type UpcomingActivitiesCTAProps = {
   index: number;
-} & React.ComponentPropsWithoutRef<"aside">;
+} & React.ComponentPropsWithRef<"aside">;
 
 export const UpcomingActivitiesCTA: React.FunctionComponent<
   UpcomingActivitiesCTAProps
@@ -32,18 +32,18 @@ export const UpcomingActivitiesCTA: React.FunctionComponent<
 
   return (
     <aside {...asideProps}>
-      <div className="p-4 rounded-2xl bg-transparent-3 flex flex-col gap-4 items-stretch border border-dashed border-border">
-        <header className="flex flex-row gap-4 items-baseline text-muted-foreground">
+      <div className="p-3 sm:p-4 rounded-xl bg-transparent-3 flex flex-col gap-3 sm:gap-4 items-stretch border border-dashed border-border text-muted-foreground">
+        <header className="flex flex-col gap-3 items-start justify-center sm:justify-start sm:flex-row sm:gap-4 sm:items-center">
           <ActivityIndex index={String(index)} />
           <Typography component="p" variant="heading-s" className="italic">
             {title}
           </Typography>
         </header>
-        <div className="text-muted-foreground">
+        <div>
           <Typography className="italic">{JoinDiscordMessage}</Typography>
         </div>
-        <footer className="w-full">
-          <ButtonLink href={discordLink.url} openInNewTab>
+        <footer>
+          <ButtonLink href={discordLink.url} openInNewTab className="w-full">
             {discordLink.icon}
             <span>{discordLink.label}</span>
           </ButtonLink>

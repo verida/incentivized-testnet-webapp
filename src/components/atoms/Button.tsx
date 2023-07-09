@@ -2,8 +2,8 @@ import React from "react";
 
 import { ButtonBase } from "./ButtonBase";
 
-type ButtonProps = Omit<
-  React.ComponentPropsWithoutRef<typeof ButtonBase>,
+export type ButtonProps = Omit<
+  React.ComponentPropsWithRef<typeof ButtonBase>,
   "shape"
 >;
 

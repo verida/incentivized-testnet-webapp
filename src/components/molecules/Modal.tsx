@@ -11,7 +11,7 @@ export type ModalAction = {
   onClick: () => void;
 } & ButtonBaseVariants;
 
-type ModalProps = {
+export type ModalProps = {
   title?: string;
   open: boolean;
   onClose: () => void;

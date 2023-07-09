@@ -73,6 +73,15 @@ export const activity: Activity = {
       }),
       url: "https://community.verida.io/user-guides/create-a-verida-identity-guide",
     },
+    {
+      label: defineMessage({
+        id: "activities.createVeridaIdentity.resources.howToCreateVeridaIdentityVideo.label",
+        defaultMessage: "How to create a Verida Identity (video)",
+        description:
+          "Label of the resource 'How to create a Verida Identity (video)'",
+      }),
+      url: "https://youtu.be/Iav2TRzBiIs",
+    },
   ],
   video: {
     label: defineMessage({

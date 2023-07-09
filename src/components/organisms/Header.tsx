@@ -7,13 +7,13 @@ import { ReactComponent as VeridaNetworkLogoWithText } from "~/assets/images/ver
 import { Avatar, Chip, Icon, Typography } from "~/components/atoms";
 import type { MenuItem } from "~/components/molecules";
 import { HeaderMenu } from "~/components/molecules";
-import { ConnectVeridaButton } from "~/components/organisms/ConnectVeridaButton";
+import { ConnectVeridaButton } from "~/components/organisms";
 import { config } from "~/config";
 import { useActivity } from "~/features/activity";
 import { useTermsConditions } from "~/features/termsconditions";
 import { truncateDid, useVerida } from "~/features/verida";
 
-type HeaderProps = React.ComponentPropsWithoutRef<"header">;
+export type HeaderProps = React.ComponentPropsWithRef<"header">;
 
 export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const { ...headerProps } = props;
@@ -59,6 +59,12 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     { points: userXpPoints }
   );
 
+  const disconnectButtonLabel = i18n.formatMessage({
+    id: "Header.disconnectButtonLabel",
+    description: "Label for the disconnect button in the Header",
+    defaultMessage: "Disconnect",
+  });
+
   const contentHeight = "h-10";
 
   const devModeMenuItems: MenuItem[] = config.devMode
@@ -80,29 +86,42 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     {
       key: "profile-info",
       label: (
-        <div className="flex flex-col justify-between flex-shrink truncate">
+        <div className="p-2 flex flex-col gap-0.5 justify-between flex-shrink truncate border-b border-solid border-divider">
           <Typography
+            variant="subtitle"
             className={twMerge(
-              "truncate font-semibold",
+              "truncate",
               profile?.name === undefined ? "italic" : undefined
             )}
           >
-            {profile?.name || profileNameFallback}
+            <span className="text-foreground">
+              {/* TODO: Investigate class conflict preventing setting 'text-foreground' on Typography */}
+              {profile?.name || profileNameFallback}
+            </span>
           </Typography>
           {did === undefined ? null : (
             <>
-              <Typography className="truncate text-sm leading-3.5 text-foreground/50">
-                {truncateDid(did, 7, 4)}
+              <Typography variant="base-s" className="truncate">
+                <span className="text-muted-foreground">
+                  {/* TODO: Investigate class conflict preventing setting 'text-foreground' on Typography */}
+                  {truncateDid(did, 7, 4)}
+                </span>
               </Typography>
             </>
           )}
         </div>
       ),
       disabled: true,
+      replaceButton: true,
     },
     {
       key: "disconnect",
-      label: "Disconnect",
+      label: (
+        <div className="flex flex-row gap-2 items-center">
+          <Icon type="disconnect" size={20} />
+          {disconnectButtonLabel}
+        </div>
+      ),
       action: handleDisconnect,
     },
     ...devModeMenuItems,
@@ -110,7 +129,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
 
   return (
     <header {...headerProps}>
-      <div className="flex flex-row justify-between border-b border-solid border-divider bg-translucent px-4 pt-3 pb-[calc(0.75rem_-_1px)] backdrop-blur-[15px] sm:px-6">
+      <div className="flex flex-row justify-between border-b border-solid border-divider bg-translucent px-4 pt-3 pb-[calc(0.75rem_-_1px)] backdrop-blur-[5px] sm:px-6">
         <div className="justify-self-start">
           <Link to="/" aria-label={homeLinkAriaLabel}>
             <div className={twJoin("aspect-[10/3]", contentHeight)}>

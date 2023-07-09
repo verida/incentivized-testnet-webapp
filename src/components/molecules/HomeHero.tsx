@@ -4,7 +4,10 @@ import { Balancer } from "react-wrap-balancer";
 
 import { Typography } from "~/components/atoms";
 
-type HomeHeroProps = Omit<React.ComponentPropsWithoutRef<"div">, "children">;
+export type HomeHeroProps = Omit<
+  React.ComponentPropsWithRef<"div">,
+  "children"
+>;
 
 export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
   const i18n = useIntl();

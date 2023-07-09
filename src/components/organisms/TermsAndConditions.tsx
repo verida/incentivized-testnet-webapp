@@ -3,8 +3,8 @@ import React from "react";
 
 import { Typography } from "~/components/atoms";
 
-type TermsAndConditionsProps = Omit<
-  React.ComponentPropsWithoutRef<"div">,
+export type TermsAndConditionsProps = Omit<
+  React.ComponentPropsWithRef<"div">,
   "children"
 >;
 

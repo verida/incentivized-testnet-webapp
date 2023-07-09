@@ -2,10 +2,10 @@ import React, { useCallback } from "react";
 import { useIntl } from "react-intl";
 
 import { Modal } from "~/components/molecules";
-import { TermsAndConditions } from "~/components/organisms/TermsAndConditions";
+import { TermsAndConditions } from "~/components/organisms";
 import { useTermsConditions } from "~/features/termsconditions";
 
-type AcceptTermsAmdConditionsModalProps = {
+export type AcceptTermsAmdConditionsModalProps = {
   open: boolean;
   onClose: () => void;
 };

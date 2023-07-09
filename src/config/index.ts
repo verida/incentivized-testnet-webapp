@@ -1,6 +1,6 @@
 import { EnvironmentType } from "@verida/types";
 
-import { VERIDA_CONTEXT_NAME } from "~/constants";
+import { APP_PACKAGE_NAME, VERIDA_CONTEXT_NAME } from "~/constants";
 
 import { version } from "./version";
 
@@ -33,8 +33,7 @@ export const config = {
     enabled: process.env.REACT_APP_SENTRY_ENABLED === "false" ? false : true,
     dsn: process.env.REACT_APP_SENTRY_DSN,
     environment: process.env.REACT_APP_SENTRY_ENVIRONMENT,
-    // release: `${APP_PACKAGE_NAME}@${version}`, // TODO: Enable when release properly created on Sentry
-    release: version,
+    release: `${APP_PACKAGE_NAME}@${version}`,
     tracesSampleRate: Number(
       process.env.REACT_APP_SENTRY_TRACE_SAMPLE_RATE || 0.1
     ),

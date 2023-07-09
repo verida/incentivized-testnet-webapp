@@ -1,4 +1,4 @@
-import { WebUserProfile } from "@verida/web-helpers";
+import { type WebUserProfile } from "@verida/web-helpers";
 import { defineMessage } from "react-intl";
 
 import { MISSION_01_ID } from "~/features/activity/missions";
@@ -132,7 +132,25 @@ export const activity: Activity = {
       }),
       url: "https://community.verida.io/user-guides/update-your-profile-guide",
     },
+    {
+      label: defineMessage({
+        id: "activities.updateProfile.resources.howToUpdateYourVeridaIdentityProfileVideo.label",
+        defaultMessage: "How to update your Verida Identity profile (video)",
+        description:
+          "Label of the resource 'How to update your Verida Identity profile (video)'",
+      }),
+      url: "https://youtu.be/MA5yYvO_xVk",
+    },
   ],
+  video: {
+    label: defineMessage({
+      id: "activities.updateProfile.video.label",
+      defaultMessage: "How to update your Verida Identity profile",
+      description:
+        "Label of the video 'How to update your Verida Identity profile'",
+    }),
+    url: "https://youtu.be/MA5yYvO_xVk",
+  },
   onInit: handleInit,
   onExecute: handleExecute,
   onUnmount: handleUnmount,

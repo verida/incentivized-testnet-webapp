@@ -3,7 +3,7 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 
 const chipVariants = cva(
-  "px-3 py-2 rounded-full border border-solid w-fit text-sm leading-4 font-semibold",
+  "px-3 py-1.5 rounded-full border border-solid w-fit text-sm font-semibold whitespace-nowrap",
   {
     variants: {
       variant: {
@@ -25,7 +25,7 @@ export type ChipVariants = VariantProps<typeof chipVariants>;
 export type ChipProps = {
   children: React.ReactNode;
 } & ChipVariants &
-  React.ComponentPropsWithoutRef<"div">;
+  React.ComponentPropsWithRef<"div">;
 
 export const Chip: React.FunctionComponent<ChipProps> = (props) => {
   const { children, variant, className, ...divProps } = props;

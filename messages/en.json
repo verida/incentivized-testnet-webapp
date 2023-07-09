@@ -45,15 +45,19 @@
   },
   "ConnectVeridaButton.checkingConnectionButtonLabel": {
     "defaultMessage": "Checking",
-    "description": "Label of the disabled Checking Verida  button in each activity card"
+    "description": "Label of the Connect to Verida button when checking if already conencted. Note, the button has a spinner next to this label"
   },
   "ConnectVeridaButton.connectButtonLabel": {
     "defaultMessage": "Connect",
-    "description": "Label of the Connect button in each activity card"
+    "description": "Label of the Connect to Verida button"
+  },
+  "ConnectVeridaButton.connectButtonLongLabel": {
+    "defaultMessage": "Connect to Verida Network",
+    "description": "Long label of the Connect to Verida button"
   },
   "ConnectVeridaButton.connectingButtonLabel": {
     "defaultMessage": "Connecting",
-    "description": "Label of the disabled Connecting button in each activity card"
+    "description": "Label of the Connect to Verida button when connecting. Note, the button has a spinner next to this label"
   },
   "ErrorFallbackCard.cardMessage": {
     "defaultMessage": "If the error persists, try refreshing your browser and cleaning your browser's data.",
@@ -82,6 +86,10 @@
   "GetSupportSection.sectionTitle": {
     "defaultMessage": "Get Support",
     "description": "Title of the 'Get Support' section"
+  },
+  "Header.disconnectButtonLabel": {
+    "defaultMessage": "Disconnect",
+    "description": "Label for the disconnect button in the Header"
   },
   "Header.homeLinkAriaLabel": {
     "defaultMessage": "Return to Home page",

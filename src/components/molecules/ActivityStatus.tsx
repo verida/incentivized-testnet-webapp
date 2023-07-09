@@ -4,9 +4,9 @@ import { useIntl } from "react-intl";
 import { Chip, ChipVariants, Icon } from "~/components/atoms";
 import type { UserActivityStatus } from "~/features/activity";
 
-type ActivityStatusProps = {
+export type ActivityStatusProps = {
   status: UserActivityStatus | "disabled" | "checking";
-} & Omit<React.ComponentPropsWithoutRef<"div">, "children">;
+} & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
   props
