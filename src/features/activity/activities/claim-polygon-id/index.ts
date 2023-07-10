@@ -77,10 +77,10 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
 export const activity: Activity = {
   id: ACTIVITY_ID,
   missionId: MISSION_02_ID,
-  enabled: true,
-  visible: true,
+  enabled: false,
+  visible: false,
   order: 1,
-  points: 100,
+  points: 50,
   title: defineMessage({
     id: "activities.claimPolygonId.title",
     defaultMessage: "Claim a Polygon ID Age credential",
