@@ -24,3 +24,17 @@ export type SentMessage = {
   ok: boolean;
   rev: string;
 };
+
+export type SendDataRequestOptions = {
+  messageSubject: string;
+  requestSchema: string;
+  filter?: Record<string, unknown>;
+  userSelectLimit?: number;
+  userSelect?: boolean;
+};
+
+export type SentDataRequest = {
+  id: string;
+  ok: boolean;
+  rev: string;
+};
