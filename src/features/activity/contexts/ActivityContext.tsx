@@ -7,6 +7,7 @@ import {
   useActivityQueries,
   useExecuteActivity,
   useInitialiseActivities,
+  useUserXpPoints,
 } from "~/features/activity/hooks";
 import { missions } from "~/features/activity/missions";
 import type {
@@ -36,7 +37,6 @@ type ActivityProviderProps = {
 export const ActivityProvider: React.FunctionComponent<
   ActivityProviderProps
 > = (props) => {
-  // const initExecutedForDid = useRef<string>("");
   const { did, webUserInstanceRef } = useVerida();
   const { activitiesDatastore } = useActivitiesDatastore();
   const {
@@ -47,22 +47,7 @@ export const ActivityProvider: React.FunctionComponent<
     deleteActivities,
   } = useActivityQueries(activitiesDatastore);
 
-  const userXpPoints = useMemo(() => {
-    return userActivities
-      ? userActivities.reduce((acc, userActivity) => {
-          if (userActivity.status !== "completed") {
-            return acc;
-          }
-          const activity = activities.find(
-            (activity) => activity.id === userActivity.id
-          );
-          if (activity === undefined) {
-            return acc;
-          }
-          return acc + activity.points;
-        }, 0)
-      : 0;
-  }, [userActivities]);
+  const { userXpPoints } = useUserXpPoints(activities, userActivities);
 
   useInitialiseActivities(
     activities,
