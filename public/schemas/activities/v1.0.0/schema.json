@@ -30,6 +30,18 @@
           "description": "Date/time this activity was completed",
           "type": "string",
           "format": "date-time"
+        },
+        "data": {
+          "title": "Data",
+          "description": "User Activity Data",
+          "type": "object",
+          "properties": {
+            "requestId": {
+              "title": "Request Id",
+              "description": "Request Id",
+              "type": "string"
+            }
+          }
         }
       },
       "required": ["id", "status"]

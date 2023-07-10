@@ -5,17 +5,16 @@ import type {
   Activity,
   ActivityOnExecute,
   ActivityOnInit,
-  ActivityOnUnmount,
 } from "~/features/activity/types";
 import { wait } from "~/utils";
 
 const ACTIVITY_ID = "create-verida-identity"; // Never change the id
 
-const handleInit: ActivityOnInit = async (veridaWebUser, saveActivity) => {
+const handleInit: ActivityOnInit = async (_veridaWebUser, _saveActivity) => {
   // TODO: Uncomment this code when we have more activities
   // const { status } = await handleExecute(veridaWebUser);
   // saveActivity({ id: ACTIVITY_ID, status });
-  return Promise.resolve();
+  return Promise.resolve(() => Promise.resolve());
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
@@ -28,11 +27,6 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
   // Wait a bit for UX purposes or the user will think nothing happened
   await wait(2000);
   return { status: "todo" };
-};
-
-const handleUnmount: ActivityOnUnmount = async (_veridaWebUser) => {
-  // Nothing to do
-  return Promise.resolve();
 };
 
 export const activity: Activity = {
@@ -93,5 +87,4 @@ export const activity: Activity = {
   },
   onInit: handleInit,
   onExecute: handleExecute,
-  onUnmount: handleUnmount,
 };

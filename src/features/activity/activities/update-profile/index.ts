@@ -6,7 +6,6 @@ import type {
   Activity,
   ActivityOnExecute,
   ActivityOnInit,
-  ActivityOnUnmount,
 } from "~/features/activity/types";
 import { Sentry } from "~/features/sentry";
 import { wait } from "~/utils";
@@ -31,7 +30,7 @@ const handleInit: ActivityOnInit = async (veridaWebUser, saveActivity) => {
   //     // Monitor the possible exception where saveActivity is not defined because the async is not executed
   //   });
   // }
-  return Promise.resolve();
+  return Promise.resolve(() => Promise.resolve());
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
@@ -87,11 +86,6 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
     status: "todo",
     message: missingFieldErrorMessage,
   };
-};
-
-const handleUnmount: ActivityOnUnmount = async (_veridaWebUser) => {
-  // Nothing to do. As the init() set a listener to the WebUser, it will be automatically removed by the Verida Context itself.
-  return Promise.resolve();
 };
 
 export const activity: Activity = {
@@ -153,5 +147,4 @@ export const activity: Activity = {
   },
   onInit: handleInit,
   onExecute: handleExecute,
-  onUnmount: handleUnmount,
 };

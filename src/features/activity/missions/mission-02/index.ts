@@ -16,13 +16,13 @@ export const mission: Mission = {
   order: 2,
   title: defineMessage({
     id: "missions.mission-02.title",
-    defaultMessage: "Stress testing the network",
+    defaultMessage: "Leverage Credentials and Zero-Knowledge with Polygon ID",
     description: "Title of the mission 02",
   }),
   shortDescription: defineMessage({
     id: "missions.mission-02.shortDescription",
     defaultMessage:
-      "In Mission 2 we need your help to stress-test the network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+      "The Verida Wallet supports Polygon ID for the reception, holding of Verifiable Credentials (VC) that can then be presented in a privacy preserving way to third parties, via Zero-Knowledge Proof (ZKP). This mission will guide you through the process of claiming Polygon ID credentials.",
     description: "Short description of the mission 02",
   }),
 };

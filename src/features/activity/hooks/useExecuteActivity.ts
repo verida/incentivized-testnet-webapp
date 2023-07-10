@@ -150,6 +150,7 @@ export function useExecuteActivity(
           await saveActivity({
             id: activityId,
             status: executionResult.status,
+            data: executionResult.data,
           });
         } catch (error: unknown) {
           const errorWhileSavingExecutionResultMessage = i18n.formatMessage({
