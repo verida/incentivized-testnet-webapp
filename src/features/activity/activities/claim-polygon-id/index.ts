@@ -1,17 +1,16 @@
-import { toast } from "react-hot-toast";
 import { defineMessage } from "react-intl";
 
+import { handleInitActivityCheckMessage } from "~/features/activity";
 import { MISSION_02_ID } from "~/features/activity/missions";
 import type {
   Activity,
   ActivityOnExecute,
   ActivityOnInit,
-  ActivityOnUnmount,
 } from "~/features/activity/types";
+import { Sentry } from "~/features/sentry";
 import {
-  ReceivedMessage,
-  VAULT_CONTEXT_NAME,
   VAULT_CREDENTIAL_SCHEMA_URL,
+  sendDataRequest,
 } from "~/features/verida";
 
 import { POLYGON_ID_KYC_AGE_VC_SCHEMA_URL } from "./constants";
@@ -19,69 +18,41 @@ import { verifyReceivedMessage } from "./utils";
 
 const ACTIVITY_ID = "claim-polygon-id"; // Never change the id
 
-const handleInit: ActivityOnInit = async (veridaWebUser, saveActivity) => {
-  try {
-    const context = await veridaWebUser.current.getContext();
-    const messaging = await context.getMessaging();
-
-    void messaging.onMessage(async (message: ReceivedMessage<unknown>) => {
-      console.debug("message", message);
-      // TODO: Check the replyId of the message agains what has been saved in the DB
-
-      const verified = verifyReceivedMessage(message);
-      if (!verified) {
-        // TODO: Display a toast of error
-      }
-
-      await saveActivity({
-        id: ACTIVITY_ID,
-        status: "completed",
-      });
-
-      toast.success("Congrats, you have completed the activity");
-
-      // TODO: Display a toast of success
-    });
-  } catch (error: unknown) {
-    console.error(error); // TODO: Handle error with Sentry
-  }
+const handleInit: ActivityOnInit = async (
+  veridaWebUser,
+  userActivity,
+  saveActivity
+) => {
+  return handleInitActivityCheckMessage({
+    activityId: ACTIVITY_ID,
+    userActivity,
+    veridaWebUser: veridaWebUser.current,
+    verifyReceivedMessage,
+    saveActivity,
+    // TODO: Make a localised message of this message
+    successToastMessage:
+      "Congrats, you have completed the activity 'Claim a Polygon ID Age credential'",
+  });
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
   try {
-    const did = await veridaWebUser.current.getDid();
-    const context = await veridaWebUser.current.getContext();
-    const messaging = await context.getMessaging();
-
     // TODO: Make a localised message of this message
     const message = "Please share a Polygon ID KYC Age credential";
-    const messageType = "inbox/type/dataRequest";
 
-    const messageData = {
+    const sentMessage = await sendDataRequest(veridaWebUser.current, {
+      messageSubject: message,
       requestSchema: VAULT_CREDENTIAL_SCHEMA_URL,
       filter: {
         credentialSchema: POLYGON_ID_KYC_AGE_VC_SCHEMA_URL,
       },
-      userSelectLimit: 1,
-      userSelect: true,
-    };
+    });
 
-    const sentMessage = await messaging.send(
-      did,
-      messageType,
-      messageData,
-      message,
-      {
-        recipientContextName: VAULT_CONTEXT_NAME,
-        did,
-      }
-    );
-
-    console.debug("sentMessage", sentMessage);
-
-    // TODO: Save the message id in the database
     return {
       status: "pending",
+      data: {
+        requestId: sentMessage?.id,
+      },
       message: defineMessage({
         id: "activities.claimPolygonId.executePendingMessage",
         defaultMessage:
@@ -91,7 +62,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
       }),
     };
   } catch (error: unknown) {
-    console.error(error); // TODO: Handle error with Sentry
+    Sentry.captureException(error);
     return {
       status: "todo",
       message: defineMessage({
@@ -101,10 +72,6 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
       }),
     };
   }
-};
-
-const handleUnmount: ActivityOnUnmount = async (_veridaWebUser) => {
-  return Promise.resolve();
 };
 
 export const activity: Activity = {
@@ -138,7 +105,6 @@ export const activity: Activity = {
   }),
   onInit: handleInit,
   onExecute: handleExecute,
-  onUnmount: handleUnmount,
   resources: [
     {
       label: defineMessage({
