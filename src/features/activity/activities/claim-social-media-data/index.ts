@@ -5,24 +5,19 @@ import type {
   Activity,
   ActivityOnExecute,
   ActivityOnInit,
-  ActivityOnUnmount,
 } from "~/features/activity/types";
 import { wait } from "~/utils";
 
 const ACTIVITY_ID = "claim-social-media-data"; // Never change the id
 
 const handleInit: ActivityOnInit = () => {
-  return Promise.resolve();
+  return Promise.resolve(() => Promise.resolve());
 };
 
 const handleExecute: ActivityOnExecute = async (_veridaWebUser) => {
   // Wait a bit for UX purposes
   await wait(2000);
   return { status: "pending" };
-};
-
-const handleUnmount: ActivityOnUnmount = async (_veridaWebUser) => {
-  return Promise.resolve();
 };
 
 export const activity: Activity = {
@@ -57,5 +52,4 @@ export const activity: Activity = {
   }),
   onInit: handleInit,
   onExecute: handleExecute,
-  onUnmount: handleUnmount,
 };

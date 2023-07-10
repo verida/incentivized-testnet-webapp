@@ -5,7 +5,6 @@ import type {
   Activity,
   ActivityOnExecute,
   ActivityOnInit,
-  ActivityOnUnmount,
 } from "~/features/activity/types";
 import { Sentry } from "~/features/sentry";
 import { wait } from "~/utils";
@@ -15,7 +14,7 @@ const ACTIVITY_ID = "use-markdown-editor"; // Never change the id
 const MARKDOWN_EDITOR_CONTEXT_NAME = "Verida: Markdown Notes Demo";
 
 const handleInit: ActivityOnInit = () => {
-  return Promise.resolve();
+  return Promise.resolve(() => Promise.resolve());
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
@@ -58,10 +57,6 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
       message: executionErrorMessage,
     };
   }
-};
-
-const handleUnmount: ActivityOnUnmount = async (_veridaWebUser) => {
-  return Promise.resolve();
 };
 
 export const activity: Activity = {
@@ -134,5 +129,4 @@ export const activity: Activity = {
   },
   onInit: handleInit,
   onExecute: handleExecute,
-  onUnmount: handleUnmount,
 };
