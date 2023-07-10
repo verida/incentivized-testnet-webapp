@@ -151,12 +151,36 @@
     "defaultMessage": "Next activity coming soon",
     "description": "Message to display in the upcoming activities CTA"
   },
+  "activities.claimGateKeperAdopter.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'claim GateKeeper Adopter credential' is being executed"
+  },
+  "activities.claimGateKeperAdopter.actionLabel": {
+    "defaultMessage": "Send Request",
+    "description": "Label of the button to start the activity claim GateKeeper Adopter credential"
+  },
+  "activities.claimGateKeperAdopter.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a GateKeeper Adopter credential.",
+    "description": "Message explaining a request has been sent to the their Wallet inbox"
+  },
+  "activities.claimGateKeperAdopter.resources.gatekeeperClaimPageUrl.label": {
+    "defaultMessage": "GateKeeper claim page",
+    "description": "Label of the resource 'GateKeeper claim page'"
+  },
+  "activities.claimGateKeperAdopter.shortDescription": {
+    "defaultMessage": "Go to the GateKeeper claim page and start the process. You will have the connect with your Verida Wallet and then claim the Credential by scanning the QR code again. Once saved in your Wallet, share this credential by replying to the message you received in your inbox.",
+    "description": "Short description of the activity 'claim GateKeeper Adopter credential'"
+  },
+  "activities.claimGateKeperAdopter.title": {
+    "defaultMessage": "Claim a GateKeeper Adopter credential",
+    "description": "Title of the activity 'Claim Gatekeeper Adopter credential'"
+  },
   "activities.claimPolygonId.actionExecutingLabel": {
-    "defaultMessage": "Sending message",
+    "defaultMessage": "Sending Request",
     "description": "Label of the button when the activity 'claim Polygon ID' is being executed"
   },
   "activities.claimPolygonId.actionLabel": {
-    "defaultMessage": "Start",
+    "defaultMessage": "Send Request",
     "description": "Label of the button to start the activity claim polygon id"
   },
   "activities.claimPolygonId.executePendingMessage": {
@@ -294,6 +318,10 @@
   "activities.useMarkdownEditor.video.label": {
     "defaultMessage": "How to use the Markdown Editor demo app",
     "description": "Label of the video 'How to use the Markdown Editor demo app'"
+  },
+  "activity.claimGateKeperAdopter.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
   },
   "activity.claimPolygonId.gettingExecutionErrorMessage": {
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
