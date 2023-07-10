@@ -203,6 +203,10 @@
     "defaultMessage": "How to create a Verida Identity",
     "description": "Label of the resource 'How to create a Verida Identity'"
   },
+  "activities.createVeridaIdentity.resources.howToCreateVeridaIdentityVideo.label": {
+    "defaultMessage": "How to create a Verida Identity (video)",
+    "description": "Label of the resource 'How to create a Verida Identity (video)'"
+  },
   "activities.createVeridaIdentity.shortDescription": {
     "defaultMessage": "Download the Verida Wallet, create an identity and connect to this webapp",
     "description": "Short description of the activity 'create identity'"
@@ -243,6 +247,10 @@
     "defaultMessage": "How to update your Verida Identity profile",
     "description": "Label of the resource 'How to update your Verida Identity profile'"
   },
+  "activities.updateProfile.resources.howToUpdateYourVeridaIdentityProfileVideo.label": {
+    "defaultMessage": "How to update your Verida Identity profile (video)",
+    "description": "Label of the resource 'How to update your Verida Identity profile (video)'"
+  },
   "activities.updateProfile.shortDescription": {
     "defaultMessage": "Update your public name, avatar and description",
     "description": "Short description of the activity 'update profile'"
@@ -251,6 +259,10 @@
     "defaultMessage": "Update your profile",
     "description": "Title of the activity 'update profile'"
   },
+  "activities.updateProfile.video.label": {
+    "defaultMessage": "How to update your Verida Identity profile",
+    "description": "Label of the video 'How to update your Verida Identity profile'"
+  },
   "activities.useMarkdownEditor.actionExecutingLabel": {
     "defaultMessage": "Checking",
     "description": "Label of the button when the activity 'use markdown editor is being executed"
@@ -258,6 +270,14 @@
   "activities.useMarkdownEditor.actionLabel": {
     "defaultMessage": "Check",
     "description": "Label of the button to start the activity use markdown editor"
+  },
+  "activities.useMarkdownEditor.resources.HowToUseTheMarkdownEditorDemoApp.label": {
+    "defaultMessage": "How to use the Markdown Editor demo app",
+    "description": "Label of the resource 'How to use the Markdown Editor demo app'"
+  },
+  "activities.useMarkdownEditor.resources.HowToUseTheMarkdownEditorDemoAppVideo.label": {
+    "defaultMessage": "How to use the Markdown Editor demo app (video)",
+    "description": "Label of the resource 'How to use the Markdown Editor demo app (video)'"
   },
   "activities.useMarkdownEditor.resources.markdownEditorDemoAppUrl.label": {
     "defaultMessage": "Markdown Editor demo app",
@@ -270,6 +290,10 @@
   "activities.useMarkdownEditor.title": {
     "defaultMessage": "Use the Markdown Editor demo app",
     "description": "Title of the activity 'use markdown editor'"
+  },
+  "activities.useMarkdownEditor.video.label": {
+    "defaultMessage": "How to use the Markdown Editor demo app",
+    "description": "Label of the video 'How to use the Markdown Editor demo app'"
   },
   "activity.claimPolygonId.gettingExecutionErrorMessage": {
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
