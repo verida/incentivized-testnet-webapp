@@ -1,6 +1,7 @@
+import type { IMessaging } from "@verida/types";
+import toast from "react-hot-toast";
 import { defineMessage } from "react-intl";
 
-import { handleInitActivityCheckMessage } from "~/features/activity";
 import { MISSION_02_ID } from "~/features/activity/missions";
 import type {
   Activity,
@@ -9,6 +10,7 @@ import type {
 } from "~/features/activity/types";
 import { Sentry } from "~/features/sentry";
 import {
+  type ReceivedMessage,
   VAULT_CREDENTIAL_SCHEMA_URL,
   sendDataRequest,
 } from "~/features/verida";
@@ -23,16 +25,59 @@ const handleInit: ActivityOnInit = async (
   userActivity,
   saveActivity
 ) => {
-  return handleInitActivityCheckMessage({
-    activityId: ACTIVITY_ID,
-    userActivity,
-    veridaWebUser: veridaWebUser.current,
-    verifyReceivedMessage,
-    saveActivity,
-    // TODO: Make a localised message of this message
-    successToastMessage:
-      "Congrats, you have completed the activity 'Claim a Polygon ID Age credential'",
-  });
+  const checkMessage = async (message: ReceivedMessage<unknown>) => {
+    try {
+      const verified = verifyReceivedMessage(message);
+      if (!verified) {
+        return;
+      }
+
+      await saveActivity({
+        id: ACTIVITY_ID,
+        status: "completed",
+        data: {},
+      });
+
+      toast.success(
+        "Congrats, you have completed the activity 'Claim a Polygon ID Age credential'"
+      );
+    } catch (error: unknown) {
+      Sentry.captureException(error);
+    }
+  };
+
+  let messaging: IMessaging | undefined;
+  try {
+    const context = await veridaWebUser.current.getContext();
+    messaging = await context.getMessaging();
+
+    const existingRequestId = userActivity?.data?.requestId;
+
+    if (existingRequestId) {
+      const messages = (await messaging.getMessages()) as
+        | ReceivedMessage<unknown>[]
+        | undefined;
+
+      if (messages) {
+        void Promise.allSettled(
+          messages
+            .filter((message) => message.data.replyId === existingRequestId)
+            .map(checkMessage)
+        );
+      }
+    }
+
+    void messaging.onMessage(checkMessage);
+  } catch (error: unknown) {
+    Sentry.captureException(error);
+  }
+  return async () => {
+    try {
+      if (messaging) await messaging.offMessage(checkMessage);
+    } catch (error: unknown) {
+      Sentry.captureException(error);
+    }
+  };
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
