@@ -168,7 +168,7 @@
     "description": "Label of the resource 'GateKeeper claim page'"
   },
   "activities.claimGateKeperAdopter.shortDescription": {
-    "defaultMessage": "Go to the GateKeeper claim page and start the process. You will have the connect with your Verida Wallet and then claim the Credential by scanning the QR code again. Once saved in your Wallet, share this credential by replying to the message you received in your inbox.",
+    "defaultMessage": "Go to the GateKeeper claim page and start the process. You can then click on 'Connect with your Verida Wallet', scan the first QR code and then claim the credential by scanning the second QR code. Once saved in your Wallet, share this credential by replying to the message you received in your Wallet inbox.",
     "description": "Short description of the activity 'claim GateKeeper Adopter credential'"
   },
   "activities.claimGateKeperAdopter.title": {
@@ -368,7 +368,7 @@
     "description": "Label of the mission id 02"
   },
   "missions.mission-02.shortDescription": {
-    "defaultMessage": "The Verida Wallet supports Polygon ID for the reception, holding of Verifiable Credentials (VC) that can then be presented in a privacy preserving way to third parties, via Zero-Knowledge Proof (ZKP). This mission will guide you through the process of claiming Polygon ID credentials.",
+    "defaultMessage": "The Verida Wallet supports Polygon ID for the reception and holding of Verifiable Credentials (VC) that can then be presented in a privacy preserving way to third parties, via Zero-Knowledge Proof (ZKP). This mission will guide you through the flow of using the Verida Wallet in the Polygon ID ecosystem.",
     "description": "Short description of the mission 02"
   },
   "missions.mission-02.title": {

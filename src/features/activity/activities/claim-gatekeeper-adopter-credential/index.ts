@@ -134,7 +134,7 @@ export const activity: Activity = {
   shortDescription: defineMessage({
     id: "activities.claimGateKeperAdopter.shortDescription",
     defaultMessage:
-      "Go to the GateKeeper claim page and start the process. You will have the connect with your Verida Wallet and then claim the Credential by scanning the QR code again. Once saved in your Wallet, share this credential by replying to the message you received in your inbox.",
+      "Go to the GateKeeper claim page and start the process. You can then click on 'Connect with your Verida Wallet', scan the first QR code and then claim the credential by scanning the second QR code. Once saved in your Wallet, share this credential by replying to the message you received in your Wallet inbox.",
     description:
       "Short description of the activity 'claim GateKeeper Adopter credential'",
   }),
