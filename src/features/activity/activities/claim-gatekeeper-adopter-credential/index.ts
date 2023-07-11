@@ -122,8 +122,8 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
 export const activity: Activity = {
   id: ACTIVITY_ID,
   missionId: MISSION_02_ID,
-  enabled: false,
-  visible: false,
+  enabled: true,
+  visible: true,
   order: 2,
   points: 50,
   title: defineMessage({
