@@ -161,5 +161,25 @@ export const activity: Activity = {
       }),
       url: "https://gatekeeper.software/claim?vcId=582636f6-a43d-46f8-9d7c-d50424e92d93",
     },
+    {
+      label: defineMessage({
+        id: "activities.claimGateKeperAdopter.resources.userGuide.label",
+        defaultMessage:
+          "User Guide: How to claim a GateKeeper Adopter credential",
+        description:
+          "Label of the user guide resources to claim to the GK adopter credential",
+      }),
+      url: "https://community.verida.io/user-guides/how-to-claim-a-gatekeeper-adopter-credential",
+    },
+    {
+      label: defineMessage({
+        id: "activities.claimGateKeperAdopter.resources.announcementBlogPost.label",
+        defaultMessage:
+          "Blog: Verida Wallet andf GateKeeper Partnership Announcement",
+        description:
+          "Label of the user guide resources to claim to the GK adopter credential",
+      }),
+      url: "https://news.verida.io/verida-wallet-and-gatekeeper-partnership-empowers-users-with-self-sovereign-storage-of-verifiable-d70fab3ef284",
+    },
   ],
 };
