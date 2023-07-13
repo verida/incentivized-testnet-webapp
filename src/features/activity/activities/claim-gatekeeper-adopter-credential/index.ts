@@ -143,6 +143,11 @@ export const activity: Activity = {
     description:
       "Label of the button to start the activity claim GateKeeper Adopter credential",
   }),
+  actionReExecuteLabel: defineMessage({
+    id: "activities.claimGateKeperAdopter.actionReExecuteLabel",
+    defaultMessage: "Re-send Request",
+    description: "Label of the button to perform the activity again ",
+  }),
   actionExecutingLabel: defineMessage({
     id: "activities.claimGateKeperAdopter.actionExecutingLabel",
     defaultMessage: "Sending Request",

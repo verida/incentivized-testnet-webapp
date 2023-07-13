@@ -162,7 +162,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
             <>
               {isConnected ? (
                 isChecking ? null : statusTermsConditions === "accepted" ? (
-                  status === "todo" ? (
+                  status === "todo" || status === "pending" ? (
                     <Button
                       size="medium"
                       onClick={() => void handleExecuteActivity()}
@@ -178,6 +178,9 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
                           />
                           {i18n.formatMessage(activity.actionExecutingLabel)}
                         </>
+                      ) : status === "pending" &&
+                        activity.actionReExecuteLabel ? (
+                        i18n.formatMessage(activity.actionReExecuteLabel)
                       ) : (
                         i18n.formatMessage(activity.actionLabel)
                       )}
