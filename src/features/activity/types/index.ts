@@ -64,6 +64,7 @@ export type Activity = {
   video?: Resource;
   footnote?: MessageDescriptor;
   actionLabel: MessageDescriptor;
+  actionReExecuteLabel?: MessageDescriptor;
   actionExecutingLabel: MessageDescriptor;
   onInit: ActivityOnInit;
   onExecute: ActivityOnExecute;
