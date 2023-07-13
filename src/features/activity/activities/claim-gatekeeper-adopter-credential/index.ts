@@ -125,7 +125,7 @@ export const activity: Activity = {
   enabled: true,
   visible: true,
   order: 2,
-  points: 50,
+  points: 100,
   title: defineMessage({
     id: "activities.claimGateKeperAdopter.title",
     defaultMessage: "Claim a GateKeeper Adopter credential",
@@ -133,8 +133,7 @@ export const activity: Activity = {
   }),
   shortDescription: defineMessage({
     id: "activities.claimGateKeperAdopter.shortDescription",
-    defaultMessage:
-      "Go to the GateKeeper claim page and start the process. You can then click on 'Connect with your Verida Wallet', scan the first QR code and then claim the credential by scanning the second QR code. Once saved in your Wallet, share this credential by replying to the message you received in your Wallet inbox.",
+    defaultMessage: `Claim the GateKeeper Adopter credential to prove you were an early pioneer of GateKeeper! The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the GateKeeper claim page to start the process (link in resources below).{newline}{newline}Step 2. Select the Verida Wallet and follow the prompts to claim the credential and save it in your Wallet.{newline}{newline}Step 3. Click on the 'Send Request' button below and share the credential by replying to the message you received in your Wallet inbox.`,
     description:
       "Short description of the activity 'claim GateKeeper Adopter credential'",
   }),
@@ -176,8 +175,7 @@ export const activity: Activity = {
         id: "activities.claimGateKeperAdopter.resources.announcementBlogPost.label",
         defaultMessage:
           "Blog: Verida Wallet andf GateKeeper Partnership Announcement",
-        description:
-          "Label of the user guide resources to claim to the GK adopter credential",
+        description: "Label of the gatekeeper blog post announcement",
       }),
       url: "https://news.verida.io/verida-wallet-and-gatekeeper-partnership-empowers-users-with-self-sovereign-storage-of-verifiable-d70fab3ef284",
     },

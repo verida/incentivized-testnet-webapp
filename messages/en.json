@@ -163,12 +163,20 @@
     "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a GateKeeper Adopter credential.",
     "description": "Message explaining a request has been sent to the their Wallet inbox"
   },
+  "activities.claimGateKeperAdopter.resources.announcementBlogPost.label": {
+    "defaultMessage": "Blog: Verida Wallet andf GateKeeper Partnership Announcement",
+    "description": "Label of the gatekeeper blog post announcement"
+  },
   "activities.claimGateKeperAdopter.resources.gatekeeperClaimPageUrl.label": {
     "defaultMessage": "GateKeeper claim page",
     "description": "Label of the resource 'GateKeeper claim page'"
   },
+  "activities.claimGateKeperAdopter.resources.userGuide.label": {
+    "defaultMessage": "User Guide: How to claim a GateKeeper Adopter credential",
+    "description": "Label of the user guide resources to claim to the GK adopter credential"
+  },
   "activities.claimGateKeperAdopter.shortDescription": {
-    "defaultMessage": "Go to the GateKeeper claim page and start the process. You can then click on 'Connect with your Verida Wallet', scan the first QR code and then claim the credential by scanning the second QR code. Once saved in your Wallet, share this credential by replying to the message you received in your Wallet inbox.",
+    "defaultMessage": "Claim the GateKeeper Adopter credential to prove you were an early pioneer of GateKeeper! The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the GateKeeper claim page to start the process (link in resources below).{newline}{newline}Step 2. Select the Verida Wallet and follow the prompts to claim the credential and save it in your Wallet.{newline}{newline}Step 3. Click on the 'Send Request' button below and share the credential by replying to the message you received in your Wallet inbox.",
     "description": "Short description of the activity 'claim GateKeeper Adopter credential'"
   },
   "activities.claimGateKeperAdopter.title": {
@@ -224,15 +232,23 @@
     "description": "Label of the button to start the activity create identity"
   },
   "activities.createVeridaIdentity.resources.howToCreateVeridaIdentity.label": {
-    "defaultMessage": "How to create a Verida Identity",
+    "defaultMessage": "User Guide: How to create a Verida Identity",
     "description": "Label of the resource 'How to create a Verida Identity'"
   },
   "activities.createVeridaIdentity.resources.howToCreateVeridaIdentityVideo.label": {
-    "defaultMessage": "How to create a Verida Identity (video)",
-    "description": "Label of the resource 'How to create a Verida Identity (video)'"
+    "defaultMessage": "Video: How to create a Verida Identity",
+    "description": "Label of the resource 'How to create a Verida Identity' video"
+  },
+  "activities.createVeridaIdentity.resources.walletGuideblogPost.label": {
+    "defaultMessage": "Blog: Verida Wallet - The Ultimate Guide to Getting Started",
+    "description": "Label of the wallet guide blog post resource"
+  },
+  "activities.createVeridaIdentity.resources.walletInstallLink.label": {
+    "defaultMessage": "Install the Verida Wallet (iOS and Android)",
+    "description": "Label of the wallet install url resource"
   },
   "activities.createVeridaIdentity.shortDescription": {
-    "defaultMessage": "Download the Verida Wallet, create an identity and connect to this webapp",
+    "defaultMessage": "Verida identities are an implementation of the Decentralized Identifier (DID) Standard from the W3C. A DID has a unique address (e.g. did:vda:testnet:0x6B2...a6F) that is controlled by an end user with a private key or seed phrase. A user can verify themselves to another user, entity or application by sharing their unique DID address.{newline}{newline}Step 1. Install the Verida Wallet (link in resources below) and follow the onboarding to create an identity.{newline}{newline}Step 2. Connect to this Verida Missions webapp with the Verida Wallet, then click the 'Verify' button below.",
     "description": "Short description of the activity 'create identity'"
   },
   "activities.createVeridaIdentity.title": {
@@ -268,19 +284,23 @@
     "description": "Label of the button to start the activity update profile"
   },
   "activities.updateProfile.resources.howToUpdateYourVeridaIdentityProfile.label": {
-    "defaultMessage": "How to update your Verida Identity profile",
+    "defaultMessage": "User Guide: How to update your Verida Identity profile",
     "description": "Label of the resource 'How to update your Verida Identity profile'"
   },
   "activities.updateProfile.resources.howToUpdateYourVeridaIdentityProfileVideo.label": {
-    "defaultMessage": "How to update your Verida Identity profile (video)",
-    "description": "Label of the resource 'How to update your Verida Identity profile (video)'"
+    "defaultMessage": "Video: How to update your Verida Identity profile",
+    "description": "Label of the resource 'How to update your Verida Identity profile' video"
+  },
+  "activities.updateProfile.resources.walletGuideblogPost.label": {
+    "defaultMessage": "Blog: Verida Wallet - The Ultimate Guide to Getting Started",
+    "description": "Label of the wallet guide blog post resource"
   },
   "activities.updateProfile.shortDescription": {
-    "defaultMessage": "Update your public name, avatar and description",
+    "defaultMessage": "Each Verida Identity has a public profile that anyone can read from but only the owner can write to. The profile includes name, country, description and avatar. Except the name, all other properties are optional. Although, for this activity, we ask you to fill them with whatever you want (you can stay anon).{newline}{newline}Step 1. Go to your profile in the Verida Wallet, and update your public name, avatar and description.{newline}{newline}Step 2. Once you've updated your profile, click the 'Verify' button below.",
     "description": "Short description of the activity 'update profile'"
   },
   "activities.updateProfile.title": {
-    "defaultMessage": "Update your profile",
+    "defaultMessage": "Update your public profile",
     "description": "Title of the activity 'update profile'"
   },
   "activities.updateProfile.video.label": {
@@ -296,19 +316,19 @@
     "description": "Label of the button to start the activity use markdown editor"
   },
   "activities.useMarkdownEditor.resources.HowToUseTheMarkdownEditorDemoApp.label": {
-    "defaultMessage": "How to use the Markdown Editor demo app",
+    "defaultMessage": "User Guide: How to use the Markdown Editor demo app",
     "description": "Label of the resource 'How to use the Markdown Editor demo app'"
   },
   "activities.useMarkdownEditor.resources.HowToUseTheMarkdownEditorDemoAppVideo.label": {
-    "defaultMessage": "How to use the Markdown Editor demo app (video)",
-    "description": "Label of the resource 'How to use the Markdown Editor demo app (video)'"
+    "defaultMessage": "Video: How to use the Markdown Editor demo app",
+    "description": "Label of the resource 'How to use the Markdown Editor demo app' video"
   },
   "activities.useMarkdownEditor.resources.markdownEditorDemoAppUrl.label": {
     "defaultMessage": "Markdown Editor demo app",
     "description": "Label of the resource 'Markdown Editor demo app'"
   },
   "activities.useMarkdownEditor.shortDescription": {
-    "defaultMessage": "Connect to the Markdown Editor demo app (link in resources) and create a new note",
+    "defaultMessage": "With the Markdown Editor demo app, you can create notes with markdown formatting. Notes are encrypted and securely stored in your Verida self-sovereign datastore.{newline}Note: this app is for demonstration purposes only.{newline}{newline}Step 1. Connect to the Markdown Editor demo app (link in resources below) and create a new note.{newline}{newline}Step 2. Once you've created a note, click the 'Verify' button below.",
     "description": "Short description of the activity 'use markdown editor'"
   },
   "activities.useMarkdownEditor.title": {
@@ -368,7 +388,7 @@
     "description": "Label of the mission id 02"
   },
   "missions.mission-02.shortDescription": {
-    "defaultMessage": "The Verida Wallet supports Polygon ID for the reception and holding of Verifiable Credentials (VC) that can then be presented in a privacy preserving way to third parties, via Zero-Knowledge Proof (ZKP). This mission will guide you through the flow of using the Verida Wallet in the Polygon ID ecosystem.",
+    "defaultMessage": "The Verida Wallet supports Polygon ID for receiving and storing Verifiable Credentials (VC), which can be presented in a privacy-preserving way to third parties via Zero-Knowledge Proofs (ZKP). This mission will guide you through the flow of using the Verida Wallet with various issuers and verifiers in the Polygon ID ecosystem.",
     "description": "Short description of the mission 02"
   },
   "missions.mission-02.title": {
@@ -380,7 +400,7 @@
     "description": "Label of the mission id 03"
   },
   "missions.mission-03.shortDescription": {
-    "defaultMessage": "In Mission 3 we need your help to stress-test the network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+    "defaultMessage": "In Mission 3 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
     "description": "Short description of the mission 03"
   },
   "missions.mission-03.title": {

@@ -97,12 +97,13 @@ export const activity: Activity = {
   points: 50,
   title: defineMessage({
     id: "activities.updateProfile.title",
-    defaultMessage: "Update your profile",
+    defaultMessage: "Update your public profile",
     description: "Title of the activity 'update profile'",
   }),
   shortDescription: defineMessage({
     id: "activities.updateProfile.shortDescription",
-    defaultMessage: "Update your public name, avatar and description",
+    defaultMessage:
+      "Each Verida Identity has a public profile that anyone can read from but only the owner can write to. The profile includes name, country, description and avatar. Except the name, all other properties are optional. Although, for this activity, we ask you to fill them with whatever you want (you can stay anon).{newline}{newline}Step 1. Go to your profile in the Verida Wallet, and update your public name, avatar and description.{newline}{newline}Step 2. Once you've updated your profile, click the 'Verify' button below.",
     description: "Short description of the activity 'update profile'",
   }),
   actionLabel: defineMessage({
@@ -120,7 +121,8 @@ export const activity: Activity = {
     {
       label: defineMessage({
         id: "activities.updateProfile.resources.howToUpdateYourVeridaIdentityProfile.label",
-        defaultMessage: "How to update your Verida Identity profile",
+        defaultMessage:
+          "User Guide: How to update your Verida Identity profile",
         description:
           "Label of the resource 'How to update your Verida Identity profile'",
       }),
@@ -129,11 +131,20 @@ export const activity: Activity = {
     {
       label: defineMessage({
         id: "activities.updateProfile.resources.howToUpdateYourVeridaIdentityProfileVideo.label",
-        defaultMessage: "How to update your Verida Identity profile (video)",
+        defaultMessage: "Video: How to update your Verida Identity profile",
         description:
-          "Label of the resource 'How to update your Verida Identity profile (video)'",
+          "Label of the resource 'How to update your Verida Identity profile' video",
       }),
       url: "https://youtu.be/MA5yYvO_xVk",
+    },
+    {
+      label: defineMessage({
+        id: "activities.updateProfile.resources.walletGuideblogPost.label",
+        defaultMessage:
+          "Blog: Verida Wallet - The Ultimate Guide to Getting Started",
+        description: "Label of the wallet guide blog post resource",
+      }),
+      url: "https://news.verida.io/verida-wallet-the-ultimate-guide-to-getting-started-998a01cc68b7",
     },
   ],
   video: {
