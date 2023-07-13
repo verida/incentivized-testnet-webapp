@@ -68,7 +68,13 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
             {i18n.formatMessage(mission.title)}
           </Typography>
           <Typography className="text-muted-foreground">
-            {i18n.formatMessage(mission.shortDescription)}
+            {i18n.formatMessage(mission.shortDescription, {
+              newline: (
+                <>
+                  <br />
+                </>
+              ),
+            })}
           </Typography>
         </div>
         {isMissionComingSoon ? null : (

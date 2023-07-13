@@ -1,4 +1,4 @@
-import { UseMutateFunction } from "@tanstack/react-query";
+import { UseMutateAsyncFunction } from "@tanstack/react-query";
 import { WebUser } from "@verida/web-helpers";
 import { MutableRefObject } from "react";
 import type { MessageDescriptor } from "react-intl";
@@ -29,10 +29,13 @@ export type Mission = {
 
 // Activity
 
+export type ActivityOnUnmount = () => Promise<void>;
+
 export type ActivityOnInit = (
   veridaWebUser: MutableRefObject<WebUser>,
-  saveActivity: UseMutateFunction<void, unknown, UserActivity>
-) => Promise<void>;
+  userActivity: UserActivity | null,
+  saveActivity: UseMutateAsyncFunction<void, unknown, UserActivity>
+) => Promise<ActivityOnUnmount>;
 
 export type ActivityOnExecute = (
   veridaWebUser: MutableRefObject<WebUser>
@@ -41,11 +44,10 @@ export type ActivityOnExecute = (
 export type ActivityOnExecuteResult = {
   status: UserActivityStatus;
   message?: MessageDescriptor;
+  data?: {
+    requestId?: string;
+  };
 };
-
-export type ActivityOnUnmount = (
-  veridaWebUser: MutableRefObject<WebUser>
-) => Promise<void>;
 
 export type Activity = {
   id: string;
@@ -62,10 +64,10 @@ export type Activity = {
   video?: Resource;
   footnote?: MessageDescriptor;
   actionLabel: MessageDescriptor;
+  actionReExecuteLabel?: MessageDescriptor;
   actionExecutingLabel: MessageDescriptor;
   onInit: ActivityOnInit;
   onExecute: ActivityOnExecute;
-  onUnmount: ActivityOnUnmount;
 };
 
 // User activity

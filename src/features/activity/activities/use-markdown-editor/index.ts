@@ -5,7 +5,6 @@ import type {
   Activity,
   ActivityOnExecute,
   ActivityOnInit,
-  ActivityOnUnmount,
 } from "~/features/activity/types";
 import { Sentry } from "~/features/sentry";
 import { wait } from "~/utils";
@@ -15,7 +14,7 @@ const ACTIVITY_ID = "use-markdown-editor"; // Never change the id
 const MARKDOWN_EDITOR_CONTEXT_NAME = "Verida: Markdown Notes Demo";
 
 const handleInit: ActivityOnInit = () => {
-  return Promise.resolve();
+  return Promise.resolve(() => Promise.resolve());
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
@@ -60,10 +59,6 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
   }
 };
 
-const handleUnmount: ActivityOnUnmount = async (_veridaWebUser) => {
-  return Promise.resolve();
-};
-
 export const activity: Activity = {
   id: ACTIVITY_ID,
   missionId: MISSION_01_ID,
@@ -80,7 +75,7 @@ export const activity: Activity = {
   shortDescription: defineMessage({
     id: "activities.useMarkdownEditor.shortDescription",
     defaultMessage:
-      "Connect to the Markdown Editor demo app (link in resources) and create a new note",
+      "With the Markdown Editor demo app, you can create notes with markdown formatting. Notes are encrypted and securely stored in your Verida self-sovereign datastore.{newline}Note: this app is for demonstration purposes only.{newline}{newline}Step 1. Connect to the Markdown Editor demo app (link in resources below) and create a new note.{newline}{newline}Step 2. Once you've created a note, click the 'Verify' button below.",
     description: "Short description of the activity 'use markdown editor'",
   }),
   actionLabel: defineMessage({
@@ -107,7 +102,7 @@ export const activity: Activity = {
     {
       label: defineMessage({
         id: "activities.useMarkdownEditor.resources.HowToUseTheMarkdownEditorDemoApp.label",
-        defaultMessage: "How to use the Markdown Editor demo app",
+        defaultMessage: "User Guide: How to use the Markdown Editor demo app",
         description:
           "Label of the resource 'How to use the Markdown Editor demo app'",
       }),
@@ -116,9 +111,9 @@ export const activity: Activity = {
     {
       label: defineMessage({
         id: "activities.useMarkdownEditor.resources.HowToUseTheMarkdownEditorDemoAppVideo.label",
-        defaultMessage: "How to use the Markdown Editor demo app (video)",
+        defaultMessage: "Video: How to use the Markdown Editor demo app",
         description:
-          "Label of the resource 'How to use the Markdown Editor demo app (video)'",
+          "Label of the resource 'How to use the Markdown Editor demo app' video",
       }),
       url: "https://youtu.be/su_03ZBzhig",
     },
@@ -134,5 +129,4 @@ export const activity: Activity = {
   },
   onInit: handleInit,
   onExecute: handleExecute,
-  onUnmount: handleUnmount,
 };

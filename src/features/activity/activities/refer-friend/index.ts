@@ -1,18 +1,17 @@
 import { defineMessage } from "react-intl";
 
-import { MISSION_02_ID } from "~/features/activity/missions";
+import { MISSION_03_ID } from "~/features/activity/missions";
 import type {
   Activity,
   ActivityOnExecute,
   ActivityOnInit,
-  ActivityOnUnmount,
 } from "~/features/activity/types";
 import { wait } from "~/utils";
 
 const ACTIVITY_ID = "refer-friend"; // Never change the id
 
 const handleInit: ActivityOnInit = () => {
-  return Promise.resolve();
+  return Promise.resolve(() => Promise.resolve());
 };
 
 const handleExecute: ActivityOnExecute = async (_veridaWebUser) => {
@@ -21,13 +20,9 @@ const handleExecute: ActivityOnExecute = async (_veridaWebUser) => {
   return { status: "pending" };
 };
 
-const handleUnmount: ActivityOnUnmount = async (_veridaWebUser) => {
-  return Promise.resolve();
-};
-
 export const activity: Activity = {
   id: ACTIVITY_ID,
-  missionId: MISSION_02_ID,
+  missionId: MISSION_03_ID,
   enabled: false,
   visible: false,
   order: 2,
@@ -55,5 +50,4 @@ export const activity: Activity = {
   }),
   onInit: handleInit,
   onExecute: handleExecute,
-  onUnmount: handleUnmount,
 };

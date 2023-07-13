@@ -1,4 +1,6 @@
-import { type IDatastore } from "@verida/types";
+import type { UseMutateAsyncFunction } from "@tanstack/react-query";
+import type { IDatastore } from "@verida/types";
+import type { WebUser } from "@verida/web-helpers";
 
 import {
   UserActivityRecordSchema,
@@ -8,6 +10,7 @@ import type {
   UserActivity,
   UserActivityRecord,
 } from "~/features/activity/types";
+import type { ReceivedMessage } from "~/features/verida";
 
 export async function getActivitiesFromDatastore(datastore: IDatastore | null) {
   if (!datastore) {
@@ -79,3 +82,12 @@ export async function deleteActivitiesInDatastore(
     throw new Error("Error deleting activities", { cause: error });
   }
 }
+
+export type HandleInitActivityArgs = {
+  activityId: string;
+  userActivity: UserActivity | null;
+  veridaWebUser: WebUser;
+  verifyReceivedMessage: (message: ReceivedMessage<unknown>) => boolean;
+  saveActivity: UseMutateAsyncFunction<void, unknown, UserActivity>;
+  successToastMessage: string;
+};
