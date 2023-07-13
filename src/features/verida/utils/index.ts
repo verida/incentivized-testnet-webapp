@@ -1,5 +1,6 @@
 import { WebUser } from "@verida/web-helpers";
 
+import { Sentry } from "~/features/sentry";
 import { VAULT_CONTEXT_NAME } from "~/features/verida/constants";
 import type {
   SendDataRequestOptions,
@@ -32,6 +33,12 @@ export async function sendDataRequest(
     options
   );
 
+  Sentry.addBreadcrumb({
+    category: "verida",
+    level: "info",
+    message: "Getting all the DID, Context and Messaging",
+  });
+
   const did = await veridaWebUser.getDid();
   const context = await veridaWebUser.getContext();
   const messaging = await context.getMessaging();
@@ -45,6 +52,13 @@ export async function sendDataRequest(
     userSelect: opts.userSelect,
   };
 
+  Sentry.addBreadcrumb({
+    category: "verida",
+    level: "info",
+    message: "Sending data request",
+    data: { did, messageType, messageData },
+  });
+
   const sentMessage = await messaging.send(
     did,
     messageType,
@@ -55,6 +69,13 @@ export async function sendDataRequest(
       did,
     }
   );
+
+  Sentry.addBreadcrumb({
+    category: "verida",
+    level: "info",
+    message: "Data request sent",
+    data: { did, messageType, messageData },
+  });
 
   // The `messaging.sent` function is poorly typed so has to cast
   return sentMessage as SentDataRequest | null;

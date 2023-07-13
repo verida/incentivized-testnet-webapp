@@ -25,12 +25,33 @@ const handleInit: ActivityOnInit = async (
   userActivity,
   saveActivity
 ) => {
+  Sentry.addBreadcrumb({
+    category: "activity",
+    level: "info",
+    message: "Init activity",
+    data: { activityId: ACTIVITY_ID },
+  });
+
   const checkMessage = async (message: ReceivedMessage<unknown>) => {
     try {
+      Sentry.addBreadcrumb({
+        category: "activity",
+        level: "info",
+        message: "Checking received message",
+        data: { activityId: ACTIVITY_ID },
+      });
+
       const verified = verifyReceivedMessage(message);
       if (!verified) {
         return;
       }
+
+      Sentry.addBreadcrumb({
+        category: "activity",
+        level: "info",
+        message: "Received message matched and verified, updating activity now",
+        data: { activityId: ACTIVITY_ID },
+      });
 
       await saveActivity({
         id: ACTIVITY_ID,
@@ -42,12 +63,23 @@ const handleInit: ActivityOnInit = async (
         "Congrats, you have completed the activity 'Claim a GateKeeper Adopter credential'"
       );
     } catch (error: unknown) {
-      Sentry.captureException(error);
+      Sentry.captureException(error, {
+        tags: {
+          activityId: ACTIVITY_ID,
+        },
+      });
     }
   };
 
   let messaging: IMessaging | undefined;
   try {
+    Sentry.addBreadcrumb({
+      category: "activity",
+      level: "info",
+      message: "Getting Verida Context and Messaging",
+      data: { activityId: ACTIVITY_ID },
+    });
+
     const context = await veridaWebUser.current.getContext();
     messaging = await context.getMessaging();
 
@@ -59,6 +91,13 @@ const handleInit: ActivityOnInit = async (
         | undefined;
 
       if (messages) {
+        Sentry.addBreadcrumb({
+          category: "activity",
+          level: "info",
+          message: "Checking existing messages for existing request id",
+          data: { activityId: ACTIVITY_ID },
+        });
+
         void Promise.allSettled(
           messages
             .filter((message) => message.data.replyId === existingRequestId)
@@ -67,15 +106,37 @@ const handleInit: ActivityOnInit = async (
       }
     }
 
+    Sentry.addBreadcrumb({
+      category: "activity",
+      level: "info",
+      message: "Setting up onMessage handler",
+      data: { activityId: ACTIVITY_ID },
+    });
+
     void messaging.onMessage(checkMessage);
   } catch (error: unknown) {
-    Sentry.captureException(error);
+    Sentry.captureException(error, {
+      tags: {
+        activityId: ACTIVITY_ID,
+      },
+    });
   }
   return async () => {
     try {
+      Sentry.addBreadcrumb({
+        category: "activity",
+        level: "info",
+        message: "Cleaning up onMessage handler",
+        data: { activityId: ACTIVITY_ID },
+      });
+
       if (messaging) await messaging.offMessage(checkMessage);
     } catch (error: unknown) {
-      Sentry.captureException(error);
+      Sentry.captureException(error, {
+        tags: {
+          activityId: ACTIVITY_ID,
+        },
+      });
     }
   };
 };
@@ -85,12 +146,26 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
     // TODO: Make a localised message of this message
     const message = "Please share a GateKeeper Adopter credential";
 
+    Sentry.addBreadcrumb({
+      category: "activity",
+      level: "info",
+      message: "Sending data request",
+      data: { activityId: ACTIVITY_ID },
+    });
+
     const sentMessage = await sendDataRequest(veridaWebUser.current, {
       messageSubject: message,
       requestSchema: VAULT_CREDENTIAL_SCHEMA_URL,
       filter: {
         credentialSchema: GATEKEEPER_ADOPTER_VC_SCHEMA_URL,
       },
+    });
+
+    Sentry.addBreadcrumb({
+      category: "activity",
+      level: "info",
+      message: "Data request sent",
+      data: { activityId: ACTIVITY_ID, hasRequestId: !!sentMessage?.id },
     });
 
     return {
@@ -107,7 +182,11 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
       }),
     };
   } catch (error: unknown) {
-    Sentry.captureException(error);
+    Sentry.captureException(error, {
+      tags: {
+        activityId: ACTIVITY_ID,
+      },
+    });
     return {
       status: "todo",
       message: defineMessage({
