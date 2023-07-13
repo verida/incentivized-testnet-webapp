@@ -92,24 +92,24 @@ export function useExecuteActivity(
           return;
         }
 
-        // Check existing status, if todo, continue, otherwise return or throw error
+        // Check existing status, if todo or pending, continue, otherwise return or throw error
         const userActivity = userActivities?.find(
           (activity) => activity.id === activityId
         );
 
-        if (userActivity && userActivity.status !== "todo") {
+        if (userActivity && userActivity.status === "completed") {
           // Should be avoided by the UI but just in case
           const activityAlreadyExecutedNotificationMessage = i18n.formatMessage(
             {
-              id: "useExecuteActivity.activityAlreadyExecutedNotificationMessage",
-              defaultMessage: "Activity already executed",
+              id: "useExecuteActivity.activityAlreadyCompletedNotificationMessage",
+              defaultMessage: "Activity already completed",
               description:
-                "Notification message when user tries to execute an activity but the activity is already executed",
+                "Notification message when user tries to execute an activity but the activity is already completed",
             }
           );
           toast.success(activityAlreadyExecutedNotificationMessage);
           Sentry.captureException(
-            new Error("Trying to execute an activity already executed"),
+            new Error("Trying to execute an activity already completed"),
             {
               tags: {
                 activityId,
