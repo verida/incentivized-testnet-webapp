@@ -119,7 +119,13 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
         </header>
         <div>
           <Typography className="text-muted-foreground">
-            {i18n.formatMessage(shortDescription)}
+            {i18n.formatMessage(shortDescription, {
+              newline: (
+                <>
+                  <br />
+                </>
+              ),
+            })}
           </Typography>
         </div>
         {enabled && activity.resources && activity.resources.length > 0 ? (
