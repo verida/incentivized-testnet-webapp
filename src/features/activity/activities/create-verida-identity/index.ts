@@ -10,16 +10,17 @@ import { wait } from "~/utils";
 
 const ACTIVITY_ID = "create-verida-identity"; // Never change the id
 
-const handleInit: ActivityOnInit = async (_veridaWebUser, _saveActivity) => {
-  // TODO: Uncomment this code when we have more activities
-  // const { status } = await handleExecute(veridaWebUser);
-  // saveActivity({ id: ACTIVITY_ID, status });
-  return Promise.resolve(() => Promise.resolve());
+const handleInit: ActivityOnInit = async (
+  veridaWebUser,
+  _userActivity,
+  saveActivity
+) => {
+  const { status } = await handleExecute(veridaWebUser);
+  await saveActivity({ id: ACTIVITY_ID, status });
+  return () => Promise.resolve();
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
-  // Wait a bit for UX purposes
-  await wait(2000);
   const isConnected = await veridaWebUser.current.isConnected();
   if (isConnected) {
     return { status: "completed" };
