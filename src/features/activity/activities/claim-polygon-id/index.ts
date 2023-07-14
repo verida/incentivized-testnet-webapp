@@ -137,6 +137,12 @@ export const activity: Activity = {
       "Go to the Polygon ID issuer demo app and claim a KYC Age Credential, then share this credential by replying to the message you received in your inbox.",
     description: "Short description of the activity 'claim Polygon ID'",
   }),
+  longDescription: defineMessage({
+    id: "activities.claimPolygonId.longDescription",
+    defaultMessage:
+      "Go to the Polygon ID issuer demo app and claim a KYC Age Credential, then share this credential by replying to the message you received in your inbox.",
+    description: "Long description of the activity 'claim Polygon ID'",
+  }),
   actionLabel: defineMessage({
     id: "activities.claimPolygonId.actionLabel",
     defaultMessage: "Send Request",

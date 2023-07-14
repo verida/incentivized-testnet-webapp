@@ -58,7 +58,7 @@ export type Activity = {
   points: number;
   title: MessageDescriptor;
   shortDescription: MessageDescriptor;
-  longDescription?: MessageDescriptor;
+  longDescription: MessageDescriptor;
   instructions?: MessageDescriptor[];
   resources?: Resource[];
   video?: Resource;
