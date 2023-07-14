@@ -35,8 +35,14 @@ export const activity: Activity = {
   shortDescription: defineMessage({
     id: "activities.claimSocialMediaData.shortDescription",
     defaultMessage:
-      "Connect your Twitter account in the Verida Wallet and extract your data",
+      "Connect your Social Media account in the Verida Wallet and extract your data.",
     description: "Short description of the activity 'claim social media data'",
+  }),
+  longDescription: defineMessage({
+    id: "activities.claimSocialMediaData.longDescription",
+    defaultMessage:
+      "Connect your Social Media account in the Verida Wallet and extract your data",
+    description: "Long description of the activity 'claim social media data'",
   }),
   actionLabel: defineMessage({
     id: "activities.claimSocialMediaData.actionLabel",

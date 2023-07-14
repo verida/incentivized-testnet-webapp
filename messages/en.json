@@ -11,6 +11,10 @@
     "defaultMessage": "Please read and accept the Terms of Use",
     "description": "Title for the terms and conditions modal"
   },
+  "ActivityCard.connectToCompleteMessage": {
+    "defaultMessage": "Connect for details",
+    "description": "Message to show when the user is not connected"
+  },
   "ActivityCard.openTermsConditionsButtonLabel": {
     "defaultMessage": "Open Terms of Use",
     "description": "Label of the button to open the terms and conditions modal on each activity card"
@@ -159,9 +163,17 @@
     "defaultMessage": "Send Request",
     "description": "Label of the button to start the activity claim GateKeeper Adopter credential"
   },
+  "activities.claimGateKeperAdopter.actionReExecuteLabel": {
+    "defaultMessage": "Re-send Request",
+    "description": "Label of the button to perform the activity again "
+  },
   "activities.claimGateKeperAdopter.executePendingMessage": {
     "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a GateKeeper Adopter credential.",
     "description": "Message explaining a request has been sent to the their Wallet inbox"
+  },
+  "activities.claimGateKeperAdopter.longDescription": {
+    "defaultMessage": "Claim the GateKeeper Adopter credential to prove you were an early pioneer of GateKeeper! The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the GateKeeper claim page to start the process (link in resources below).{newline}{newline}Step 2. Select the Verida Wallet and follow the prompts to claim the credential and save it in your Wallet.{newline}{newline}Step 3. Click on the 'Send Request' button below and share the credential by replying to the message you received in your Wallet inbox.",
+    "description": "Long description of the activity 'claim GateKeeper Adopter credential'"
   },
   "activities.claimGateKeperAdopter.resources.announcementBlogPost.label": {
     "defaultMessage": "Blog: Verida Wallet andf GateKeeper Partnership Announcement",
@@ -176,7 +188,7 @@
     "description": "Label of the user guide resources to claim to the GK adopter credential"
   },
   "activities.claimGateKeperAdopter.shortDescription": {
-    "defaultMessage": "Claim the GateKeeper Adopter credential to prove you were an early pioneer of GateKeeper! The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the GateKeeper claim page to start the process (link in resources below).{newline}{newline}Step 2. Select the Verida Wallet and follow the prompts to claim the credential and save it in your Wallet.{newline}{newline}Step 3. Click on the 'Send Request' button below and share the credential by replying to the message you received in your Wallet inbox.",
+    "defaultMessage": "Claim the GateKeeper Adopter credential to prove you were an early pioneer of GateKeeper! The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
     "description": "Short description of the activity 'claim GateKeeper Adopter credential'"
   },
   "activities.claimGateKeperAdopter.title": {
@@ -194,6 +206,10 @@
   "activities.claimPolygonId.executePendingMessage": {
     "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a Polygon ID KYC Age credential.",
     "description": "Message explaining a request has been sent to the their Wallet inbox"
+  },
+  "activities.claimPolygonId.longDescription": {
+    "defaultMessage": "Go to the Polygon ID issuer demo app and claim a KYC Age Credential, then share this credential by replying to the message you received in your inbox.",
+    "description": "Long description of the activity 'claim Polygon ID'"
   },
   "activities.claimPolygonId.resources.polygonIdDemoAppUrl.label": {
     "defaultMessage": "Polygon ID demo app",
@@ -215,8 +231,12 @@
     "defaultMessage": "Verify",
     "description": "Label of the button to start the activity claim social media data"
   },
+  "activities.claimSocialMediaData.longDescription": {
+    "defaultMessage": "Connect your Social Media account in the Verida Wallet and extract your data",
+    "description": "Long description of the activity 'claim social media data'"
+  },
   "activities.claimSocialMediaData.shortDescription": {
-    "defaultMessage": "Connect your Twitter account in the Verida Wallet and extract your data",
+    "defaultMessage": "Connect your Social Media account in the Verida Wallet and extract your data.",
     "description": "Short description of the activity 'claim social media data'"
   },
   "activities.claimSocialMediaData.title": {
@@ -230,6 +250,10 @@
   "activities.createVeridaIdentity.actionLabel": {
     "defaultMessage": "Verify",
     "description": "Label of the button to start the activity create identity"
+  },
+  "activities.createVeridaIdentity.longDescription": {
+    "defaultMessage": "Verida identities are an implementation of the Decentralized Identifier (DID) Standard from the W3C. A DID has a unique address (e.g. did:vda:testnet:0x6B2...a6F) that is controlled by an end user with a private key or seed phrase. A user can verify themselves to another user, entity or application by sharing their unique DID address.{newline}{newline}Step 1. Install the Verida Wallet (link in resources below) and follow the onboarding to create an identity.{newline}{newline}Step 2. Connect to this Verida Missions webapp with the Verida Wallet, then click the 'Verify' button below.",
+    "description": "Long description of the activity 'create identity'"
   },
   "activities.createVeridaIdentity.resources.howToCreateVeridaIdentity.label": {
     "defaultMessage": "User Guide: How to create a Verida Identity",
@@ -248,7 +272,7 @@
     "description": "Label of the wallet install url resource"
   },
   "activities.createVeridaIdentity.shortDescription": {
-    "defaultMessage": "Verida identities are an implementation of the Decentralized Identifier (DID) Standard from the W3C. A DID has a unique address (e.g. did:vda:testnet:0x6B2...a6F) that is controlled by an end user with a private key or seed phrase. A user can verify themselves to another user, entity or application by sharing their unique DID address.{newline}{newline}Step 1. Install the Verida Wallet (link in resources below) and follow the onboarding to create an identity.{newline}{newline}Step 2. Connect to this Verida Missions webapp with the Verida Wallet, then click the 'Verify' button below.",
+    "defaultMessage": "Verida identities are an implementation of the Decentralized Identifier (DID) Standard from the W3C. A DID has a unique address (e.g. did:vda:testnet:0x6B2...a6F) that is controlled by an end user with a private key or seed phrase. A user can verify themselves to another user, entity or application by sharing their unique DID address.",
     "description": "Short description of the activity 'create identity'"
   },
   "activities.createVeridaIdentity.title": {
@@ -267,8 +291,12 @@
     "defaultMessage": "Get Referal Link",
     "description": "Label of the button to start the activity refer friend"
   },
-  "activities.referFriend.shortDescription": {
+  "activities.referFriend.longDescription": {
     "defaultMessage": "Invite a friend to join the Verida Incentivized Testnet",
+    "description": "Long description of the activity 'refer friend'"
+  },
+  "activities.referFriend.shortDescription": {
+    "defaultMessage": "Invite a friend to join the Verida Incentivized Testnet.",
     "description": "Short description of the activity 'refer friend'"
   },
   "activities.referFriend.title": {
@@ -283,6 +311,10 @@
     "defaultMessage": "Verify",
     "description": "Label of the button to start the activity update profile"
   },
+  "activities.updateProfile.longDescription": {
+    "defaultMessage": "Each Verida Identity has a public profile that anyone can read from but only the owner can write to. The profile includes name, country, description and avatar. Except the name, all other properties are optional. Although, for this activity, we ask you to fill them with whatever you want (you can stay anon).{newline}{newline}Step 1. Go to your profile in the Verida Wallet, and update your public name, avatar and description.{newline}{newline}Step 2. Once you've updated your profile, click the 'Verify' button below.",
+    "description": "Long description of the activity 'update profile'"
+  },
   "activities.updateProfile.resources.howToUpdateYourVeridaIdentityProfile.label": {
     "defaultMessage": "User Guide: How to update your Verida Identity profile",
     "description": "Label of the resource 'How to update your Verida Identity profile'"
@@ -296,7 +328,7 @@
     "description": "Label of the wallet guide blog post resource"
   },
   "activities.updateProfile.shortDescription": {
-    "defaultMessage": "Each Verida Identity has a public profile that anyone can read from but only the owner can write to. The profile includes name, country, description and avatar. Except the name, all other properties are optional. Although, for this activity, we ask you to fill them with whatever you want (you can stay anon).{newline}{newline}Step 1. Go to your profile in the Verida Wallet, and update your public name, avatar and description.{newline}{newline}Step 2. Once you've updated your profile, click the 'Verify' button below.",
+    "defaultMessage": "Each Verida Identity has a public profile that anyone can read from but only the owner can write to. The profile includes name, country, description and avatar. Except the name, all other properties are optional. Although, for this activity, we ask you to fill them with whatever you want (you can stay anon).",
     "description": "Short description of the activity 'update profile'"
   },
   "activities.updateProfile.title": {
@@ -315,6 +347,10 @@
     "defaultMessage": "Check",
     "description": "Label of the button to start the activity use markdown editor"
   },
+  "activities.useMarkdownEditor.longDescription": {
+    "defaultMessage": "With the Markdown Editor demo app, you can create notes with markdown formatting. Notes are encrypted and securely stored in your Verida self-sovereign datastore.{newline}Note: this app is for demonstration purposes only.{newline}{newline}Step 1. Connect to the Markdown Editor demo app (link in resources below) and create a new note.{newline}{newline}Step 2. Once you've created a note, click the 'Verify' button below.",
+    "description": "Long description of the activity 'use markdown editor'"
+  },
   "activities.useMarkdownEditor.resources.HowToUseTheMarkdownEditorDemoApp.label": {
     "defaultMessage": "User Guide: How to use the Markdown Editor demo app",
     "description": "Label of the resource 'How to use the Markdown Editor demo app'"
@@ -328,7 +364,7 @@
     "description": "Label of the resource 'Markdown Editor demo app'"
   },
   "activities.useMarkdownEditor.shortDescription": {
-    "defaultMessage": "With the Markdown Editor demo app, you can create notes with markdown formatting. Notes are encrypted and securely stored in your Verida self-sovereign datastore.{newline}Note: this app is for demonstration purposes only.{newline}{newline}Step 1. Connect to the Markdown Editor demo app (link in resources below) and create a new note.{newline}{newline}Step 2. Once you've created a note, click the 'Verify' button below.",
+    "defaultMessage": "With the Markdown Editor demo app, you can create notes with markdown formatting. Notes are encrypted and securely stored in your Verida self-sovereign datastore.{newline}Note: this app is for demonstration purposes only.",
     "description": "Short description of the activity 'use markdown editor'"
   },
   "activities.useMarkdownEditor.title": {
@@ -411,9 +447,9 @@
     "defaultMessage": "An activity is already being executed, please wait for it to finish",
     "description": "Notification message when user try to execute an activity while there's already one being executed"
   },
-  "useExecuteActivity.activityAlreadyExecutedNotificationMessage": {
-    "defaultMessage": "Activity already executed",
-    "description": "Notification message when user tries to execute an activity but the activity is already executed"
+  "useExecuteActivity.activityAlreadyCompletedNotificationMessage": {
+    "defaultMessage": "Activity already completed",
+    "description": "Notification message when user tries to execute an activity but the activity is already completed"
   },
   "useExecuteActivity.activityExecutionCompletedNotificationMessage": {
     "defaultMessage": "Congrats, you have completed the activity",

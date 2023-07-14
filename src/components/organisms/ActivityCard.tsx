@@ -31,7 +31,12 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
   props
 ) => {
   const { index, activity, status, ...sectionProps } = props;
-  const { title, shortDescription, enabled = false } = activity;
+  const {
+    title,
+    shortDescription,
+    longDescription,
+    enabled = false,
+  } = activity;
 
   const i18n = useIntl();
   const { isConnected } = useVerida();
@@ -89,6 +94,12 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
     { points: activity.points }
   );
 
+  const connectToCompleteMessage = i18n.formatMessage({
+    id: "ActivityCard.connectToCompleteMessage",
+    description: "Message to show when the user is not connected",
+    defaultMessage: "Connect for details",
+  });
+
   const backgroundClasses =
     enabled && status !== "completed"
       ? "bg-transparent-10"
@@ -119,16 +130,22 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
         </header>
         <div>
           <Typography className="text-muted-foreground">
-            {i18n.formatMessage(shortDescription, {
-              newline: (
-                <>
-                  <br />
-                </>
-              ),
-            })}
+            {i18n.formatMessage(
+              isConnected ? longDescription : shortDescription,
+              {
+                newline: (
+                  <>
+                    <br />
+                  </>
+                ),
+              }
+            )}
           </Typography>
         </div>
-        {enabled && activity.resources && activity.resources.length > 0 ? (
+        {isConnected &&
+        enabled &&
+        activity.resources &&
+        activity.resources.length > 0 ? (
           <aside className="text-muted-foreground">
             <Typography variant="subtitle">{resourcesSectionTitle}</Typography>
             <ul>
@@ -195,7 +212,11 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
                     {openTermsConditionsButtonLabel}
                   </Button>
                 )
-              ) : null}
+              ) : (
+                <Typography className="w-full text-left sm:text-right text-muted-foreground">
+                  {connectToCompleteMessage}
+                </Typography>
+              )}
             </>
           ) : null}
         </footer>
