@@ -5,7 +5,6 @@ import { useIntl } from "react-intl";
 
 import { useActivityQueries } from "~/features/activity/hooks/useActivityQueries";
 import { type Activity } from "~/features/activity/types";
-import { capturePlausibleEvent } from "~/features/plausible";
 import { Sentry } from "~/features/sentry";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
@@ -163,13 +162,6 @@ export function useExecuteActivity(
           toast.error(errorWhileSavingExecutionResultMessage);
           // No need to capture the error with Sentry as it has been captured by the mutation error handler ... normally
           return;
-        }
-
-        // Capture the completed activity in Plausible
-        if (executionResult.status === "completed") {
-          capturePlausibleEvent("Activity Completed", {
-            activityId,
-          });
         }
 
         // Notify about the result
