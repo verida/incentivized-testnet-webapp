@@ -5,9 +5,12 @@ import { useIntl } from "react-intl";
 
 import { useActivityQueries } from "~/features/activity/hooks/useActivityQueries";
 import { type Activity } from "~/features/activity/types";
+import { Logger } from "~/features/logger";
 import { Sentry } from "~/features/sentry";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
+
+const logger = new Logger("activity");
 
 export function useExecuteActivity(
   activities: Activity[],
@@ -38,13 +41,8 @@ export function useExecuteActivity(
 
       executingActivityRef.current = true;
       try {
-        Sentry.addBreadcrumb({
-          category: "activity",
-          level: "info",
-          message: "Executing activity",
-          data: {
-            activityId,
-          },
+        logger.info("Executing activity", {
+          activityId,
         });
 
         if (statusTermsConditions !== "accepted") {

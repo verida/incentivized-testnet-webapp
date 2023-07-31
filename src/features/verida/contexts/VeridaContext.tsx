@@ -9,11 +9,14 @@ import React, {
 } from "react";
 
 import { config } from "~/config";
+import { Logger } from "~/features/logger";
 import { Sentry } from "~/features/sentry";
 
 if (!config.verida.contextName) {
   throw new Error("Verida Context Name must be defined");
 }
+
+const logger = new Logger("verida");
 
 Sentry.setContext("verida", {
   environment: config.verida.environment,
@@ -85,24 +88,18 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
         setIsConnecting(false);
         setIsDisconnecting(false);
         setIsCheckingConnection(false);
-        Sentry.addBreadcrumb({
-          category: "verida",
-          level: "info",
-          message: newIsConnected
+        logger.info(
+          newIsConnected
             ? "User is connected to Verida"
-            : "User is not connected to Verida",
-        });
+            : "User is not connected to Verida"
+        );
       })
       .catch(() => {
         setIsConnected(false);
         setIsConnecting(false);
         setIsDisconnecting(false);
         setIsCheckingConnection(false);
-        Sentry.addBreadcrumb({
-          category: "verida",
-          level: "info",
-          message: "User is not connected to Verida",
-        });
+        logger.info("User is not connected to Verida");
       });
     webUserInstance
       .getDid()
@@ -127,11 +124,7 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
   }, [updateStates]);
 
   useEffect(() => {
-    Sentry.addBreadcrumb({
-      category: "verida",
-      level: "info",
-      message: "Initialising the Verida client",
-    });
+    logger.info("Initialising the Verida client");
     webUserInstance.addListener("connected", veridaEventListener);
     webUserInstance.addListener("profileChanged", veridaEventListener);
     webUserInstance.addListener("disconnected", veridaEventListener);
@@ -145,66 +138,43 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
     void autoConnect();
 
     return () => {
-      Sentry.addBreadcrumb({
-        category: "verida",
-        level: "info",
-        message: "Cleaning the Verida client",
-      });
+      logger.info("Cleaning the Verida client");
       webUserInstance.removeAllListeners();
     };
   }, [updateStates, veridaEventListener]);
 
   // Exposing common methods for easier access than through the ref
   const connect = useCallback(async () => {
-    Sentry.addBreadcrumb({
-      category: "verida",
-      level: "info",
-      message: "User connecting to Verida",
-    });
+    logger.info("User connecting to Verida");
 
     setIsConnecting(true);
     const connected = await webUserInstanceRef.current.connect();
     setIsConnecting(false);
 
-    Sentry.addBreadcrumb({
-      category: "verida",
-      level: "info",
-      message: connected
+    logger.info(
+      connected
         ? "Connection to Verida successful"
-        : "User did not connect to Verida",
-    });
+        : "User did not connect to Verida"
+    );
 
     return connected;
   }, [webUserInstanceRef]);
 
   const disconnect = useCallback(async () => {
-    Sentry.addBreadcrumb({
-      category: "verida",
-      level: "info",
-      message: "User disconnecting from Verida",
-    });
+    logger.info("User disconnecting from Verida");
 
     setIsDisconnecting(true);
     await webUserInstanceRef.current.disconnect();
     setIsDisconnecting(false);
 
-    Sentry.addBreadcrumb({
-      category: "verida",
-      level: "info",
-      message: "User successfully disconnected from Verida",
-    });
+    logger.info("User successfully disconnected from Verida");
   }, [webUserInstanceRef]);
 
   const openDatastore = useCallback(
     async (schemaUrl: string, config?: DatastoreOpenConfig) => {
-      Sentry.addBreadcrumb({
-        category: "verida",
-        level: "info",
-        message: "Opening Verida datastore",
-        data: {
-          schemaUrl,
-          config,
-        },
+      logger.info("Opening Verida datastore", {
+        schemaUrl,
+        config,
       });
 
       const datastore = await webUserInstanceRef.current.openDatastore(
@@ -212,14 +182,9 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
         config
       );
 
-      Sentry.addBreadcrumb({
-        category: "verida",
-        level: "info",
-        message: "Verida datastore succesfully opened",
-        data: {
-          schemaUrl,
-          config,
-        },
+      logger.info("Verida datastore succesfully opened", {
+        schemaUrl,
+        config,
       });
       return datastore;
     },

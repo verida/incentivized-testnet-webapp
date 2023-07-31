@@ -8,6 +8,7 @@ import type {
   ActivityOnExecute,
   ActivityOnInit,
 } from "~/features/activity/types";
+import { Logger } from "~/features/logger";
 import { Sentry } from "~/features/sentry";
 import {
   type ReceivedMessage,
@@ -18,6 +19,8 @@ import {
 import { GATEKEEPER_ADOPTER_VC_SCHEMA_URL } from "./constants";
 import { verifyReceivedMessage } from "./utils";
 
+const logger = new Logger("activity");
+
 const ACTIVITY_ID = "claim-gatekeeper-adopter-credential"; // Never change the id
 
 const handleInit: ActivityOnInit = async (
@@ -25,33 +28,21 @@ const handleInit: ActivityOnInit = async (
   userActivity,
   saveActivity
 ) => {
-  Sentry.addBreadcrumb({
-    category: "activity",
-    level: "info",
-    message: "Init activity",
-    data: { activityId: ACTIVITY_ID },
-  });
+  logger.info("Init activity", { activityId: ACTIVITY_ID });
 
   const checkMessage = async (message: ReceivedMessage<unknown>) => {
     try {
-      Sentry.addBreadcrumb({
-        category: "activity",
-        level: "info",
-        message: "Checking received message",
-        data: { activityId: ACTIVITY_ID },
-      });
+      logger.info("Checking received message", { activityId: ACTIVITY_ID });
 
       const verified = verifyReceivedMessage(message);
       if (!verified) {
         return;
       }
 
-      Sentry.addBreadcrumb({
-        category: "activity",
-        level: "info",
-        message: "Received message matched and verified, updating activity now",
-        data: { activityId: ACTIVITY_ID },
-      });
+      logger.info(
+        "Received message matched and verified, updating activity now",
+        { activityId: ACTIVITY_ID }
+      );
 
       await saveActivity({
         id: ACTIVITY_ID,
@@ -73,11 +64,8 @@ const handleInit: ActivityOnInit = async (
 
   let messaging: IMessaging | undefined;
   try {
-    Sentry.addBreadcrumb({
-      category: "activity",
-      level: "info",
-      message: "Getting Verida Context and Messaging",
-      data: { activityId: ACTIVITY_ID },
+    logger.info("Getting Verida Context and Messaging", {
+      activityId: ACTIVITY_ID,
     });
 
     const context = await veridaWebUser.current.getContext();
@@ -91,11 +79,8 @@ const handleInit: ActivityOnInit = async (
         | undefined;
 
       if (messages) {
-        Sentry.addBreadcrumb({
-          category: "activity",
-          level: "info",
-          message: "Checking existing messages for existing request id",
-          data: { activityId: ACTIVITY_ID },
+        logger.info("Checking existing messages for existing request id", {
+          activityId: ACTIVITY_ID,
         });
 
         void Promise.allSettled(
@@ -106,12 +91,7 @@ const handleInit: ActivityOnInit = async (
       }
     }
 
-    Sentry.addBreadcrumb({
-      category: "activity",
-      level: "info",
-      message: "Setting up onMessage handler",
-      data: { activityId: ACTIVITY_ID },
-    });
+    logger.info("Setting up onMessage handler", { activityId: ACTIVITY_ID });
 
     void messaging.onMessage(checkMessage);
   } catch (error: unknown) {
@@ -123,12 +103,7 @@ const handleInit: ActivityOnInit = async (
   }
   return async () => {
     try {
-      Sentry.addBreadcrumb({
-        category: "activity",
-        level: "info",
-        message: "Cleaning up onMessage handler",
-        data: { activityId: ACTIVITY_ID },
-      });
+      logger.info("Cleaning up onMessage handler", { activityId: ACTIVITY_ID });
 
       if (messaging) await messaging.offMessage(checkMessage);
     } catch (error: unknown) {
@@ -146,12 +121,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
     // TODO: Make a localised message of this message
     const message = "Please share a GateKeeper Adopter credential";
 
-    Sentry.addBreadcrumb({
-      category: "activity",
-      level: "info",
-      message: "Sending data request",
-      data: { activityId: ACTIVITY_ID },
-    });
+    logger.info("Sending data request", { activityId: ACTIVITY_ID });
 
     const sentMessage = await sendDataRequest(veridaWebUser.current, {
       messageSubject: message,
@@ -161,11 +131,9 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
       },
     });
 
-    Sentry.addBreadcrumb({
-      category: "activity",
-      level: "info",
-      message: "Data request sent",
-      data: { activityId: ACTIVITY_ID, hasRequestId: !!sentMessage?.id },
+    logger.info("Data request sent", {
+      activityId: ACTIVITY_ID,
+      hasRequestId: !!sentMessage?.id,
     });
 
     return {
