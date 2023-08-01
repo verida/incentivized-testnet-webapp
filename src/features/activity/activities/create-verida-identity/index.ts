@@ -1,3 +1,4 @@
+import { toast } from "react-hot-toast";
 import { defineMessage } from "react-intl";
 
 import { MISSION_01_ID } from "~/features/activity/missions";
@@ -16,7 +17,13 @@ const handleInit: ActivityOnInit = async (
   saveActivity
 ) => {
   const { status } = await handleExecute(veridaWebUser);
-  await saveActivity({ id: ACTIVITY_ID, status });
+  try {
+    await saveActivity({ id: ACTIVITY_ID, status });
+    // TODO: Find a way to localised this message (can't use useIntl as not in a hook, may have to pass the i18n object as arg)
+    toast.success("Congrats, you have completed the activity");
+  } catch (_error: unknown) {
+    // No need to capture the error with Sentry as it has been captured by the mutation error handler ... normally
+  }
   return () => Promise.resolve();
 };
 
