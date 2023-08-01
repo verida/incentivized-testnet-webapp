@@ -19,7 +19,9 @@ const sentryLevelMapping = {
  *
  * The environment variable `REACT_APP_DEV_MODE` set to `true` will log in the console.
  *
- * The environment variable `REACT_APP_SENTRY_ENABLED` set to `true` will add a breadcrumb. Note that errors are skip for Sentry, `Sentry.captureException` must be used when needed.
+ * The environment variable `REACT_APP_SENTRY_ENABLED` set to `true` will add a breadcrumb.
+ *
+ * Note that, for Sentry, only 'info' and 'warn' level are added as breadcrumb, 'debug' is skipped and `Sentry.captureException` must be used for errors.
  *
  * @todo Add the `Sentry.captureException` as part of this logger.
  */
@@ -39,18 +41,27 @@ export class Logger {
       return;
     }
 
-    if (config.devMode) {
-      // eslint-disable-next-line no-console
-      console[level](`[${this.category}] ${message}`, data);
-    }
-
-    if (config.sentry.enabled && level !== "error") {
+    if (config.sentry.enabled && (level === "warn" || level === "info")) {
       Sentry.addBreadcrumb({
         category: this.category,
         level: sentryLevelMapping[level],
         message,
         data,
       });
+    }
+
+    if (!config.devMode) {
+      // Simply skip `console` if not in dev mode
+      return;
+    }
+
+    // To avoid the 'undefined' being displayed in the console
+    if (data) {
+      // eslint-disable-next-line no-console
+      console[level](`[${this.category}] ${message}`, data);
+    } else {
+      // eslint-disable-next-line no-console
+      console[level](`[${this.category}] ${message}`);
     }
   }
 
