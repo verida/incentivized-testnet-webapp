@@ -7,8 +7,11 @@ import {
   saveActivityInDatastore,
 } from "~/features/activity";
 import { type UserActivity } from "~/features/activity/types";
+import { Logger } from "~/features/logger";
 import { Sentry } from "~/features/sentry";
 import { useVerida } from "~/features/verida";
+
+const logger = new Logger("activity");
 
 export function useActivityQueries(activitiesDatastore: IDatastore | null) {
   const { isConnected, did } = useVerida();
@@ -18,21 +21,11 @@ export function useActivityQueries(activitiesDatastore: IDatastore | null) {
   const { data: userActivities, isLoading: isLoadingActivities } = useQuery({
     queryKey: ["userActivities", did],
     queryFn: async () => {
-      Sentry.addBreadcrumb({
-        category: "activity",
-        level: "info",
-        message: "Getting all user activities",
-      });
-
+      logger.info("Getting all user activities");
       const userActivities = await getActivitiesFromDatastore(
         activitiesDatastore
       );
-
-      Sentry.addBreadcrumb({
-        category: "activity",
-        level: "info",
-        message: "All user activities fetched",
-      });
+      logger.info("All user activities fetched");
 
       return userActivities;
     },
@@ -43,21 +36,9 @@ export function useActivityQueries(activitiesDatastore: IDatastore | null) {
   const { mutateAsync: saveActivity, isLoading: isSavingActivity } =
     useMutation({
       mutationFn: async (userActivity: UserActivity) => {
-        Sentry.addBreadcrumb({
-          category: "activity",
-          level: "info",
-          message: "Saving user activity",
-          data: { userActivity },
-        });
-
+        logger.info("Saving user activity", { userActivity });
         await saveActivityInDatastore(activitiesDatastore, userActivity);
-
-        Sentry.addBreadcrumb({
-          category: "activity",
-          level: "info",
-          message: "User activity saved",
-          data: { userActivity },
-        });
+        logger.info("User activity saved", { userActivity });
       },
       onSuccess: async () => {
         // TODO: Optimise with an optimistic update
@@ -76,19 +57,9 @@ export function useActivityQueries(activitiesDatastore: IDatastore | null) {
   const { mutateAsync: deleteActivities, isLoading: isDeletingActivities } =
     useMutation({
       mutationFn: async () => {
-        Sentry.addBreadcrumb({
-          category: "activity",
-          level: "info",
-          message: "Deleting all user activities",
-        });
-
+        logger.info("Deleting all user activities");
         await deleteActivitiesInDatastore(activitiesDatastore);
-
-        Sentry.addBreadcrumb({
-          category: "activity",
-          level: "info",
-          message: "All user activities deleted",
-        });
+        logger.info("All user activities deleted");
       },
       onSuccess: async () => {
         // TODO: Optimise with an optimistic update

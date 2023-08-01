@@ -1,10 +1,21 @@
 import { EnvironmentType } from "@verida/types";
 
 import { APP_PACKAGE_NAME, VERIDA_CONTEXT_NAME } from "~/constants";
+import { LogLevel } from "~/features/logger";
 
 import { version } from "./version";
 
 const devMode = process.env.REACT_APP_DEV_MODE === "true" ? true : false;
+
+// TODO: Use Zod to validate the log level value
+const logLevel: LogLevel =
+  process.env.REACT_APP_LOG_LEVEL === "error"
+    ? "error"
+    : process.env.REACT_APP_LOG_LEVEL === "warn"
+    ? "warn"
+    : process.env.REACT_APP_LOG_LEVEL === "debug"
+    ? "debug"
+    : "info";
 
 // Verida variables
 const veridaContextName = VERIDA_CONTEXT_NAME;
@@ -23,6 +34,7 @@ const veridaRpcUrl = process.env.REACT_APP_VERIDA_RPC_URL || undefined;
 export const config = {
   appVersion: version,
   devMode,
+  logLevel,
   verida: {
     environment: veridaEnvironment,
     contextName: veridaContextName,

@@ -8,6 +8,7 @@ import { ActivityCard } from "~/components/organisms";
 import { config } from "~/config";
 import type { Mission } from "~/features/activity";
 import { useActivity } from "~/features/activity";
+import { useVerida } from "~/features/verida";
 
 export type MissionSectionProps = {
   mission: Mission;
@@ -17,8 +18,10 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
   props
 ) => {
   const { mission, ...articleProps } = props;
+  const { title, shortDescription, longDescription } = mission;
 
   const i18n = useIntl();
+  const { isConnected } = useVerida();
   const { activities: allActivities, getUserActivity } = useActivity();
 
   const activitiesSectionTitle = i18n.formatMessage({
@@ -65,16 +68,19 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
             ) : null}
           </div>
           <Typography variant="heading-m">
-            {i18n.formatMessage(mission.title)}
+            {i18n.formatMessage(title)}
           </Typography>
           <Typography className="text-muted-foreground">
-            {i18n.formatMessage(mission.shortDescription, {
-              newline: (
-                <>
-                  <br />
-                </>
-              ),
-            })}
+            {i18n.formatMessage(
+              isConnected ? longDescription : shortDescription,
+              {
+                newline: (
+                  <>
+                    <br />
+                  </>
+                ),
+              }
+            )}
           </Typography>
         </div>
         {isMissionComingSoon ? null : (

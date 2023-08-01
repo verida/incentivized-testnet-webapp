@@ -24,7 +24,7 @@ export type Mission = {
   order: number;
   title: MessageDescriptor;
   shortDescription: MessageDescriptor;
-  longDescription?: MessageDescriptor;
+  longDescription: MessageDescriptor;
 };
 
 // Activity

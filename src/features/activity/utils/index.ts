@@ -10,6 +10,7 @@ import type {
   UserActivity,
   UserActivityRecord,
 } from "~/features/activity/types";
+import { capturePlausibleEvent } from "~/features/plausible";
 import type { ReceivedMessage } from "~/features/verida";
 
 export async function getActivitiesFromDatastore(datastore: IDatastore | null) {
@@ -54,17 +55,24 @@ export async function saveActivityInDatastore(
     const records = await getActivitiesFromDatastore(datastore);
     const existingRecord =
       records?.find((record) => record.id === userActivity.id) || {};
-    await datastore.save(
-      {
-        ...existingRecord,
-        ...userActivity,
-        completionDate:
-          userActivity.completionDate || userActivity.status === "completed"
-            ? new Date().toISOString()
-            : undefined,
-      },
-      {}
-    );
+
+    const recordToSave = {
+      ...existingRecord,
+      ...userActivity,
+      completionDate:
+        userActivity.completionDate || userActivity.status === "completed"
+          ? new Date().toISOString()
+          : undefined,
+    };
+
+    await datastore.save(recordToSave, {});
+
+    // Capture the completed activity in Plausible
+    if (recordToSave.status === "completed") {
+      capturePlausibleEvent("Activity Completed", {
+        activityId: recordToSave.id,
+      });
+    }
   } catch (error: unknown) {
     throw new Error("Error saving user activity", { cause: error });
   }
