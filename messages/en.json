@@ -411,8 +411,12 @@
     "defaultMessage": "Mission 1",
     "description": "Label of the mission if 01"
   },
-  "missions.mission-01.shortDescription": {
+  "missions.mission-01.longDescription": {
     "defaultMessage": "This first mission guides you through the process of onboarding onto the Verida Network. It's designed to familiarize you with the Network's features, functionalities, and ecosystem, ensuring you have a smooth and seamless experience as a Verida user.",
+    "description": "Long description of the mission 01"
+  },
+  "missions.mission-01.shortDescription": {
+    "defaultMessage": "This first mission guides you through the process of onboarding onto the Verida Network. It's designed to familiarize you with the Network's features, functionalities, and ecosystem, ensuring you have a smooth and seamless experience as a Verida user.{newline}{newline}Get Started:{newline}1. Click the 'Connect' button above{newline}2. Depending on being on mobile or desktop, either click the button, or scan the QR code with your phone{newline}3. Follow the instructions to install the Wallet and create your Identity{newline}4. You may have to refresh this page and connect again",
     "description": "Short description of the mission 01"
   },
   "missions.mission-01.title": {
@@ -422,6 +426,10 @@
   "missions.mission-02.idLabel": {
     "defaultMessage": "Mission 2",
     "description": "Label of the mission id 02"
+  },
+  "missions.mission-02.longDescription": {
+    "defaultMessage": "The Verida Wallet supports Polygon ID for receiving and storing Verifiable Credentials (VC), which can be presented in a privacy-preserving way to third parties via Zero-Knowledge Proofs (ZKP). This mission will guide you through the flow of using the Verida Wallet with various issuers and verifiers in the Polygon ID ecosystem.",
+    "description": "Long description of the mission 02"
   },
   "missions.mission-02.shortDescription": {
     "defaultMessage": "The Verida Wallet supports Polygon ID for receiving and storing Verifiable Credentials (VC), which can be presented in a privacy-preserving way to third parties via Zero-Knowledge Proofs (ZKP). This mission will guide you through the flow of using the Verida Wallet with various issuers and verifiers in the Polygon ID ecosystem.",
@@ -434,6 +442,10 @@
   "missions.mission-03.idLabel": {
     "defaultMessage": "Mission 3",
     "description": "Label of the mission id 03"
+  },
+  "missions.mission-03.longDescription": {
+    "defaultMessage": "In Mission 3 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+    "description": "Long description of the mission 03"
   },
   "missions.mission-03.shortDescription": {
     "defaultMessage": "In Mission 3 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
