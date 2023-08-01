@@ -13,6 +13,7 @@ import { Sentry } from "~/features/sentry";
 import {
   type ReceivedMessage,
   VAULT_CREDENTIAL_SCHEMA_URL,
+  getMessaging,
   sendDataRequest,
 } from "~/features/verida";
 
@@ -68,8 +69,7 @@ const handleInit: ActivityOnInit = async (
       activityId: ACTIVITY_ID,
     });
 
-    const context = await veridaWebUser.current.getContext();
-    messaging = await context.getMessaging();
+    messaging = await getMessaging(veridaWebUser.current);
 
     const existingRequestId = userActivity?.data?.requestId;
 
@@ -101,6 +101,7 @@ const handleInit: ActivityOnInit = async (
       },
     });
   }
+
   return async () => {
     try {
       logger.info("Cleaning up onMessage handler", { activityId: ACTIVITY_ID });
