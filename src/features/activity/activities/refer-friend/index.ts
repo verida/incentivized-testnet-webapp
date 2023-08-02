@@ -2,7 +2,6 @@ import { IMessaging } from "@verida/types";
 import toast from "react-hot-toast";
 import { defineMessage } from "react-intl";
 
-import { VERIDA_CONTEXT_NAME } from "~/constants";
 import { MISSION_01_ID } from "~/features/activity/missions";
 import type {
   Activity,
@@ -11,20 +10,17 @@ import type {
 } from "~/features/activity/types";
 import { Logger } from "~/features/logger";
 import { Sentry } from "~/features/sentry";
-import {
-  ReceivedMessage,
-  getMessaging,
-  isValidVeridaDid,
-  sendMessage,
-} from "~/features/verida";
+import { ReceivedMessage, getMessaging } from "~/features/verida";
 import { wait } from "~/utils";
 
-import { REFERRAL_CONFIRMATION_MESSAGE, REFERRAL_PARAM } from "./constants";
-import { buildReferralUrl, verifyReceivedMessage } from "./utils";
+import { ACTIVITY_ID } from "./constants";
+import {
+  buildReferralUrl,
+  checkAndHandleReferralInUrl,
+  verifyReceivedMessage,
+} from "./utils";
 
 const logger = new Logger("activity");
-
-const ACTIVITY_ID = "refer-friend"; // Never change the id
 
 const handleInit: ActivityOnInit = async (
   veridaWebUser,
@@ -33,21 +29,20 @@ const handleInit: ActivityOnInit = async (
 ) => {
   logger.info("Init activity", { activityId: ACTIVITY_ID });
 
+  // Handle referral in URL
+  await checkAndHandleReferralInUrl(veridaWebUser.current);
+
   const did = await veridaWebUser.current.getDid();
 
   const checkMessage = async (message: ReceivedMessage<unknown>) => {
     try {
-      logger.info("Checking received message", { activityId: ACTIVITY_ID });
+      logger.info("Checking message", { activityId: ACTIVITY_ID });
       logger.debug("Checking message for referral", message);
 
       const verified = verifyReceivedMessage(message, did);
       if (!verified) {
-        return;
+        return false;
       }
-
-      logger.debug(
-        "Received message matched and verified, updating activity now"
-      );
 
       logger.info(
         "Received message matched and verified, updating activity now",
@@ -57,44 +52,24 @@ const handleInit: ActivityOnInit = async (
       await saveActivity({
         id: ACTIVITY_ID,
         status: "completed",
-        data: {},
+        data: {
+          // TODO: Save the referrer in the user activity, use the sentBy from the message
+        },
       });
 
       toast.success(
         "Congrats, you have completed the activity 'Refer a fried to join Verida Missions'"
       );
+      return true;
     } catch (error: unknown) {
       Sentry.captureException(error, {
         tags: {
           activityId: ACTIVITY_ID,
         },
       });
+      return false;
     }
   };
-
-  logger.info("Checking referral in URL", { activityId: ACTIVITY_ID });
-
-  const searchParams = new URLSearchParams(document.location.search);
-  const referrer = searchParams.get(REFERRAL_PARAM);
-
-  if (referrer && isValidVeridaDid(referrer)) {
-    logger.info("Referral found in URL, sending confirmation", {
-      activityId: ACTIVITY_ID,
-      referrer,
-    });
-
-    await sendMessage(veridaWebUser.current, {
-      message: REFERRAL_CONFIRMATION_MESSAGE,
-      subject: REFERRAL_CONFIRMATION_MESSAGE,
-      targetDid: referrer,
-      targetContext: VERIDA_CONTEXT_NAME, // This app context name
-    });
-
-    logger.info("Referral confirmation successfully sent", {
-      activityId: ACTIVITY_ID,
-      referrer,
-    });
-  }
 
   let messaging: IMessaging | undefined;
 
@@ -117,10 +92,6 @@ const handleInit: ActivityOnInit = async (
     return cleanUpFunction;
   }
 
-  logger.info("Checking existing messages and setting message listener", {
-    activityId: ACTIVITY_ID,
-  });
-
   try {
     logger.info("Getting Verida Context and Messaging", {
       activityId: ACTIVITY_ID,
@@ -128,18 +99,31 @@ const handleInit: ActivityOnInit = async (
 
     messaging = await getMessaging(veridaWebUser.current);
 
+    // Check existing messages for referral confirmation while the user was not connected.
+
     const messages = (await messaging.getMessages()) as
       | ReceivedMessage<unknown>[]
       | undefined;
 
-    if (messages) {
+    if (messages?.length) {
       logger.info("Checking existing messages", { activityId: ACTIVITY_ID });
 
-      void Promise.allSettled(messages.map(checkMessage));
+      logger.debug("start iterating over messages");
+      // Iterating over the messages and stopping on the first matching the condition to avoid saving the activity multiple times in case there are several valid messages
+      messages.some(async (message) => {
+        return await checkMessage(message);
+      });
+    } else {
+      logger.info("No existing messages to check", { activityId: ACTIVITY_ID });
     }
 
-    logger.info("Setting up onMessage handler", { activityId: ACTIVITY_ID });
+    logger.info("Setting up incoming message listener", {
+      activityId: ACTIVITY_ID,
+    });
 
+    // Listening to incoming messages and check them
+    // BTW, pretty strange an onEvent function is async and return a promise
+    // FIXME: Check why the listener is not trigger when a message is received
     void messaging.onMessage(checkMessage);
   } catch (error: unknown) {
     Sentry.captureException(error, {
@@ -161,7 +145,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
   const url = buildReferralUrl(did);
 
   // TODO: Implement displaying the URL to the user, show in console for now
-  console.debug(url);
+  logger.debug(url);
 
   return { status: "pending" };
 };
