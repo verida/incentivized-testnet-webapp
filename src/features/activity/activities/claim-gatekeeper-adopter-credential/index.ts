@@ -64,6 +64,26 @@ const handleInit: ActivityOnInit = async (
   };
 
   let messaging: IMessaging | undefined;
+
+  const cleanUpFunction = async () => {
+    try {
+      logger.info("Cleaning up onMessage handler", { activityId: ACTIVITY_ID });
+
+      if (messaging) await messaging.offMessage(checkMessage);
+    } catch (error: unknown) {
+      Sentry.captureException(error, {
+        tags: {
+          activityId: ACTIVITY_ID,
+        },
+      });
+    }
+  };
+
+  if (userActivity?.status === "completed") {
+    logger.debug("Activity already completed, not checking messages");
+    return cleanUpFunction;
+  }
+
   try {
     logger.info("Getting Verida Context and Messaging", {
       activityId: ACTIVITY_ID,
@@ -102,19 +122,7 @@ const handleInit: ActivityOnInit = async (
     });
   }
 
-  return async () => {
-    try {
-      logger.info("Cleaning up onMessage handler", { activityId: ACTIVITY_ID });
-
-      if (messaging) await messaging.offMessage(checkMessage);
-    } catch (error: unknown) {
-      Sentry.captureException(error, {
-        tags: {
-          activityId: ACTIVITY_ID,
-        },
-      });
-    }
-  };
+  return cleanUpFunction;
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
