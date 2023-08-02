@@ -43,6 +43,7 @@ export function useInitialiseActivities(
               activity.enabled &&
               (userActivity === undefined ||
                 userActivity?.status !== "completed")
+              // TODO: Argue about filtering out the completed activities. We could give this responsibility to the 'onInit' function itself as it receives the userActivity as argument anyway. If we do this, the init could do something even though it's been already completed. Best example is the 'refer-friend' activity, which mean there is no way to handle a referral url if the activity has been completed already.
             );
           })
           .map((activity) => {
@@ -71,6 +72,7 @@ export function useInitialiseActivities(
     initExecutedForDid.current = did;
 
     // Clean up activities by calling the unmount handlers
+    // TODO: Handle change of account, where we may want to clean up as well but it would not be at unmount.
     return () => {
       void Promise.allSettled(onUnmountHandlers);
       // Errors are handled in the unmount handler
