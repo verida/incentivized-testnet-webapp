@@ -12,14 +12,14 @@ import {
 import { useVerida } from "~/features/verida";
 
 export function useTermsConditionsQueries(termsDatastore: IDatastore | null) {
-  const { did } = useVerida();
+  const { webUserInstanceRef, did } = useVerida();
   const queryClient = useQueryClient();
 
   // TODO: Handle error state
   const { data: status, isLoading: isCheckingStatus } = useQuery({
     queryKey: ["terms", did],
     queryFn: () => {
-      return getStatusFromDatastore(termsDatastore);
+      return getStatusFromDatastore(termsDatastore, webUserInstanceRef.current);
     },
     enabled: !!termsDatastore,
     staleTime: 1000 * 60 * 60 * 24, // 1 day, as term status is not expected to change
@@ -28,7 +28,11 @@ export function useTermsConditionsQueries(termsDatastore: IDatastore | null) {
   const { mutateAsync: saveStatusMutate, isLoading: isUpdatingStatus } =
     useMutation({
       mutationFn: (status: TermsConditionsStatus) => {
-        return setStatusInDatastore(termsDatastore, status);
+        return setStatusInDatastore(
+          termsDatastore,
+          status,
+          webUserInstanceRef.current
+        );
       },
       onSuccess: async () => {
         // TODO: Optimise with an optimistic update
@@ -47,7 +51,10 @@ export function useTermsConditionsQueries(termsDatastore: IDatastore | null) {
   const { mutateAsync: deleteStatusMutate, isLoading: isDeletingStatus } =
     useMutation({
       mutationFn: () => {
-        return deleteStatusInDatastore(termsDatastore);
+        return deleteStatusInDatastore(
+          termsDatastore,
+          webUserInstanceRef.current
+        );
       },
       onSuccess: async () => {
         // TODO: Optimise with an optimistic update

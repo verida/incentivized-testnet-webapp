@@ -15,7 +15,7 @@ import { useVerida } from "~/features/verida";
 const logger = new Logger("activity");
 
 export function useActivityQueries(activitiesDatastore: IDatastore | null) {
-  const { isConnected, did } = useVerida();
+  const { webUserInstanceRef, isConnected, did } = useVerida();
   const queryClient = useQueryClient();
 
   // TODO: Handle error state
@@ -24,7 +24,8 @@ export function useActivityQueries(activitiesDatastore: IDatastore | null) {
     queryFn: async () => {
       logger.info("Getting all user activities");
       const userActivities = await getActivitiesFromDatastore(
-        activitiesDatastore
+        activitiesDatastore,
+        webUserInstanceRef.current
       );
       logger.info("All user activities fetched");
 
@@ -38,7 +39,11 @@ export function useActivityQueries(activitiesDatastore: IDatastore | null) {
     useMutation({
       mutationFn: async (userActivity: UserActivity) => {
         logger.info("Saving user activity", { userActivity });
-        await saveActivityInDatastore(activitiesDatastore, userActivity);
+        await saveActivityInDatastore(
+          activitiesDatastore,
+          userActivity,
+          webUserInstanceRef.current
+        );
         logger.info("User activity saved", { userActivity });
       },
       onSuccess: async () => {
@@ -66,7 +71,10 @@ export function useActivityQueries(activitiesDatastore: IDatastore | null) {
   } = useMutation({
     mutationFn: async () => {
       logger.info("Deleting all user activities");
-      await deleteActivitiesInDatastore(activitiesDatastore);
+      await deleteActivitiesInDatastore(
+        activitiesDatastore,
+        webUserInstanceRef.current
+      );
       logger.info("All user activities deleted");
     },
     onSuccess: async () => {
