@@ -16,15 +16,22 @@ export function useTermsDatastore() {
     }
 
     const getDatastore = async () => {
-      const datastore = await openDatastore(TERMS_SCHEMA_LATEST_URL);
-      setTermsDatastore(datastore);
+      try {
+        const datastore = await openDatastore(TERMS_SCHEMA_LATEST_URL);
+        setTermsDatastore(datastore);
+      } catch (error: unknown) {
+        if (
+          error instanceof Error &&
+          error.message === "Not connected to Verida network"
+          // TODO: Add a more resilient match on the error type
+        ) {
+          setTermsDatastore(null);
+        }
+        Sentry.captureException(error);
+      }
     };
 
-    try {
-      void getDatastore();
-    } catch (error: unknown) {
-      Sentry.captureException(error);
-    }
+    void getDatastore();
   }, [isConnected, openDatastore]);
 
   return { termsDatastore };
