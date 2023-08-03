@@ -26,6 +26,7 @@ export type Mission = {
   title: MessageDescriptor;
   shortDescription: MessageDescriptor;
   longDescription: MessageDescriptor;
+  resources?: Resource[];
 };
 
 // Activity
