@@ -1,6 +1,6 @@
-import type { UseMutateAsyncFunction } from "@tanstack/react-query";
-import type { IDatastore } from "@verida/types";
-import type { WebUser } from "@verida/web-helpers";
+import { type UseMutateAsyncFunction } from "@tanstack/react-query";
+import { type IDatastore } from "@verida/types";
+import { type WebUser } from "@verida/web-helpers";
 
 import {
   UserActivityRecordSchema,
@@ -13,10 +13,19 @@ import type {
 import { capturePlausibleEvent } from "~/features/plausible";
 import type { ReceivedMessage } from "~/features/verida";
 
-export async function getActivitiesFromDatastore(datastore: IDatastore | null) {
+export async function getActivitiesFromDatastore(
+  datastore: IDatastore | null,
+  veridaWebUser: WebUser
+) {
   if (!datastore) {
     throw new Error("Activities datastore must be defined");
   }
+
+  const isConnected = await veridaWebUser.isConnected();
+  if (!isConnected) {
+    throw new Error("Attempting to get user activies but user is disconnected");
+  }
+
   try {
     const records = await datastore.getMany({}, {});
 
@@ -41,18 +50,27 @@ export async function getActivitiesFromDatastore(datastore: IDatastore | null) {
 
 export async function saveActivityInDatastore(
   datastore: IDatastore | null,
-  userActivity: UserActivity
+  userActivity: UserActivity,
+  veridaWebUser: WebUser
 ) {
   if (!datastore) {
     throw new Error("Activities datastore must be defined");
   }
+
+  const isConnected = await veridaWebUser.isConnected();
+  if (!isConnected) {
+    throw new Error(
+      "Attempting to save a user activity but user is disconnected"
+    );
+  }
+
   try {
     const validationResult = UserActivitySchema.safeParse(userActivity);
     if (!validationResult.success) {
       throw new Error("Invalid user activity");
     }
 
-    const records = await getActivitiesFromDatastore(datastore);
+    const records = await getActivitiesFromDatastore(datastore, veridaWebUser);
     const existingRecord =
       records?.find((record) => record.id === userActivity.id) || {};
 
@@ -79,11 +97,20 @@ export async function saveActivityInDatastore(
 }
 
 export async function deleteActivitiesInDatastore(
-  datastore: IDatastore | null
+  datastore: IDatastore | null,
+  veridaWebUser: WebUser
 ) {
   if (!datastore) {
     throw new Error("Activities datastore must be defined");
   }
+
+  const isConnected = await veridaWebUser.isConnected();
+  if (!isConnected) {
+    throw new Error(
+      "Attempting to delete all user activities but user is disconnected"
+    );
+  }
+
   try {
     await datastore.deleteAll();
   } catch (error: unknown) {

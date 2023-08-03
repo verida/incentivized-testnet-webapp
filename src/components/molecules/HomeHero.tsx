@@ -1,6 +1,5 @@
 import React from "react";
 import { useIntl } from "react-intl";
-import { Balancer } from "react-wrap-balancer";
 
 import { Typography } from "~/components/atoms";
 
@@ -36,20 +35,12 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
       "Are you ready to ignite your journey? The countdown to the Verida mainnet begins now!",
   });
 
-  const balancerRatio = 0.7;
-
   return (
     <div {...props}>
-      <div className="flex flex-grow flex-col items-center justify-center text-center gap-2 text-muted-foreground">
-        <Typography>
-          <Balancer ratio={balancerRatio}>{descriptionPart1}</Balancer>
-        </Typography>
-        <Typography>
-          <Balancer ratio={balancerRatio}>{descriptionPart2}</Balancer>
-        </Typography>
-        <Typography>
-          <Balancer ratio={balancerRatio}>{descriptionPart3}</Balancer>
-        </Typography>
+      <div className="flex flex-grow flex-col items-center justify-center text-center gap-2 text-muted-foreground px-0 sm:px-16">
+        <Typography>{descriptionPart1}</Typography>
+        <Typography>{descriptionPart2}</Typography>
+        <Typography>{descriptionPart3}</Typography>
       </div>
     </div>
   );

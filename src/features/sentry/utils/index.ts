@@ -39,8 +39,6 @@ export function initSentry() {
     replaysSessionSampleRate: config.sentry.replaysSessionSampleRate,
     replaysOnErrorSampleRate: config.sentry.replaysOnErrorSampleRate,
     ignoreErrors: [
-      "ResizeObserver loop limit exceeded",
-      "ResizeObserver loop",
       "Failed to fetch", // TODO: Remove when we have a better solution
     ],
     denyUrls: [
