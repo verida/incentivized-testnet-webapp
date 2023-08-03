@@ -1,6 +1,5 @@
 import React from "react";
 import { HelmetProvider } from "react-helmet-async";
-import { Provider as TextBalancerProvider } from "react-wrap-balancer";
 
 import { ActivityProvider } from "~/features/activity";
 import { IntlProvider } from "~/features/i18n";
@@ -24,10 +23,8 @@ export const AppContextProviders: React.FunctionComponent<
           <TermsConditionsProvider>
             <ActivityProvider>
               <HelmetProvider>
-                <TextBalancerProvider>
-                  {props.children}
-                  <Notifications />
-                </TextBalancerProvider>
+                {props.children}
+                <Notifications />
               </HelmetProvider>
             </ActivityProvider>
           </TermsConditionsProvider>

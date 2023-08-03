@@ -1,5 +1,4 @@
 import React from "react";
-import { Balancer } from "react-wrap-balancer";
 
 import { Typography } from "~/components/atoms";
 import { APP_TITLE } from "~/constants";
@@ -23,8 +22,8 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = (props) => {
         </Typography>
         <Typography variant="heading-l" className="mt-3">
           {/* Had to surround by div because of style conflict with Typography, likely 'text-transparent' */}
-          <div className="bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/70">
-            <Balancer>{title}</Balancer>
+          <div className="bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/70 px-8 sm:px-14">
+            {title}
           </div>
         </Typography>
       </div>
