@@ -72,50 +72,6 @@ export const activity: Activity = {
     description:
       "Label of the button when the activity 'create Verida Identity' is being executed",
   }),
-  resources: [
-    // {
-    //   label: defineMessage({
-    //     id: "activities.createVeridaIdentity.resources.howToCreateVeridaIdentity.label",
-    //     defaultMessage: "User Guide: How to create a Verida Identity",
-    //     description: "Label of the resource 'How to create a Verida Identity'",
-    //   }),
-    //   url: "https://community.verida.io/user-guides/create-a-verida-identity-guide",
-    // },
-    // {
-    //   label: defineMessage({
-    //     id: "activities.createVeridaIdentity.resources.howToCreateVeridaIdentityVideo.label",
-    //     defaultMessage: "Video: How to create a Verida Identity",
-    //     description:
-    //       "Label of the resource 'How to create a Verida Identity' video",
-    //   }),
-    //   url: "https://youtu.be/Iav2TRzBiIs",
-    // },
-    {
-      label: defineMessage({
-        id: "activities.createVeridaIdentity.resources.walletGuideblogPost.label",
-        defaultMessage:
-          "Blog: Verida Wallet - The Ultimate Guide to Getting Started",
-        description: "Label of the wallet guide blog post resource",
-      }),
-      url: "https://news.verida.io/verida-wallet-the-ultimate-guide-to-getting-started-998a01cc68b7",
-    },
-    // {
-    //   label: defineMessage({
-    //     id: "activities.createVeridaIdentity.resources.walletInstallLink.label",
-    //     defaultMessage: "Install the Verida Wallet (iOS and Android)",
-    //     description: "Label of the wallet install url resource",
-    //   }),
-    //   url: "https://vault.verida.io/",
-    // },
-  ],
-  // video: {
-  //   label: defineMessage({
-  //     id: "activities.createVeridaIdentity.video.label",
-  //     defaultMessage: "How to create a Verida Identity",
-  //     description: "Label of the video 'How to create a Verida Identity'",
-  //   }),
-  //   url: "https://www.youtube.com/watch?v=Iav2TRzBiIs",
-  // },
   onInit: handleInit,
   onExecute: handleExecute,
 };
