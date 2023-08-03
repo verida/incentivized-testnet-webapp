@@ -44,7 +44,6 @@
     "react-hot-toast": "^2.4.1",
     "react-intl": "^6.4.4",
     "react-router-dom": "^6.14.1",
-    "react-wrap-balancer": "^1.0.0",
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.2.0",
     "tailwind-merge": "^1.13.2",
