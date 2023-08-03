@@ -1,6 +1,7 @@
 import { UseMutateAsyncFunction } from "@tanstack/react-query";
-import { WebUser } from "@verida/web-helpers";
-import { MutableRefObject, useEffect, useRef, useState } from "react";
+import { type WebUser } from "@verida/web-helpers";
+import { type MutableRefObject, useEffect, useRef, useState } from "react";
+import { type DebouncedState } from "use-debounce";
 
 import {
   Activity,
@@ -14,7 +15,9 @@ export function useInitialiseActivities(
   did: string | undefined,
   userActivities: UserActivity[] | undefined,
   webUserInstanceRef: MutableRefObject<WebUser>,
-  saveActivity: UseMutateAsyncFunction<void, unknown, UserActivity>
+  saveActivity: DebouncedState<
+    UseMutateAsyncFunction<void, unknown, UserActivity>
+  >
 ) {
   const initExecutedForDid = useRef<string>("");
   const [onUnmountHandlers, setOnUnmountHandlers] = useState<

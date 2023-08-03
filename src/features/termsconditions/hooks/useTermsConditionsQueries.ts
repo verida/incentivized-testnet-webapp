@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { type IDatastore } from "@verida/types";
+import { useDebouncedCallback } from "use-debounce";
 
 import { Sentry } from "~/features/sentry";
 import {
@@ -24,20 +25,26 @@ export function useTermsConditionsQueries(termsDatastore: IDatastore | null) {
     staleTime: 1000 * 60 * 60 * 24, // 1 day, as term status is not expected to change
   });
 
-  const { mutateAsync: saveStatus, isLoading: isUpdatingStatus } = useMutation({
-    mutationFn: (status: TermsConditionsStatus) => {
-      return setStatusInDatastore(termsDatastore, status);
-    },
-    onSuccess: async () => {
-      // TODO: Optimise with an optimistic update
-      await queryClient.invalidateQueries(["terms", did]);
-    },
-    onError(error) {
-      Sentry.captureException(error);
-    },
+  const { mutateAsync: saveStatusMutate, isLoading: isUpdatingStatus } =
+    useMutation({
+      mutationFn: (status: TermsConditionsStatus) => {
+        return setStatusInDatastore(termsDatastore, status);
+      },
+      onSuccess: async () => {
+        // TODO: Optimise with an optimistic update
+        await queryClient.invalidateQueries(["terms", did]);
+      },
+      onError(error) {
+        Sentry.captureException(error);
+      },
+    });
+
+  // Debouncing to avoid document update conflicts
+  const saveStatus = useDebouncedCallback(saveStatusMutate, 500, {
+    leading: true,
   });
 
-  const { mutateAsync: deleteStatus, isLoading: isDeletingStatus } =
+  const { mutateAsync: deleteStatusMutate, isLoading: isDeletingStatus } =
     useMutation({
       mutationFn: () => {
         return deleteStatusInDatastore(termsDatastore);
@@ -50,6 +57,10 @@ export function useTermsConditionsQueries(termsDatastore: IDatastore | null) {
         Sentry.captureException(error);
       },
     });
+
+  const deleteStatus = useDebouncedCallback(deleteStatusMutate, 500, {
+    leading: true,
+  });
 
   return {
     status,
