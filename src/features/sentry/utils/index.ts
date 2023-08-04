@@ -38,7 +38,24 @@ export function initSentry() {
     // Session Replay
     replaysSessionSampleRate: config.sentry.replaysSessionSampleRate,
     replaysOnErrorSampleRate: config.sentry.replaysOnErrorSampleRate,
+    beforeSend: (event, hint) => {
+      if (hint.originalException instanceof Error) {
+        return event;
+      }
+
+      // FIXME: We have a lot of events which are not instances of Error, they are not really helpful in Sentry. Analysis of these, reveals they are coming from extensions and/or third-party libs, so decided to not reporting them. We take the risk to miss our own wrong non-errors but it's worth it short term.
+      return null;
+    },
     ignoreErrors: [
+      /__SENTRY_LOADER__/i,
+      /firefoxSample/i,
+      /Talisman/i, // That's an extension
+      /coinbase/i, // That's an extension
+      /zaloJSV2/i,
+      /Can't find variable: msDiscoverChatAvailable/i, // That's an extension
+      /Failed to execute 'insertBefore' on 'Node'/i, // Coming from react itself
+      /Failed to execute 'removeChild' on 'Node'/i, // Coming from react itself
+      "window.ethereum.setConfig is not a function",
       "Failed to fetch", // TODO: Remove when we have a better solution
     ],
     denyUrls: [
