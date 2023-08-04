@@ -1,7 +1,8 @@
 import { UseMutateAsyncFunction } from "@tanstack/react-query";
 import { WebUser } from "@verida/web-helpers";
 import { MutableRefObject } from "react";
-import type { MessageDescriptor } from "react-intl";
+import { type MessageDescriptor } from "react-intl";
+import { type DebouncedState } from "use-debounce";
 import { z } from "zod";
 
 import {
@@ -26,6 +27,7 @@ export type Mission = {
   title: MessageDescriptor;
   shortDescription: MessageDescriptor;
   longDescription: MessageDescriptor;
+  resources?: Resource[];
 };
 
 // User activity
@@ -45,7 +47,9 @@ export type ActivityOnUnmount = () => Promise<void>;
 export type ActivityOnInit = (
   veridaWebUser: MutableRefObject<WebUser>,
   userActivity: UserActivity | null,
-  saveActivity: UseMutateAsyncFunction<void, unknown, UserActivity>
+  saveActivity: DebouncedState<
+    UseMutateAsyncFunction<void, unknown, UserActivity>
+  >
 ) => Promise<ActivityOnUnmount>;
 
 export type ActivityOnExecute = (
