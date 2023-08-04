@@ -1,0 +1,11 @@
+version: 2
+updates:
+  # Maintain dependencies for npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    target-branch: "develop"
+    ignore:
+      # Will make verida SDK updates manually
+      - dependency-name: "@verida/*"
