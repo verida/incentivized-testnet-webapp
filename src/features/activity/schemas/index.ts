@@ -4,6 +4,7 @@ import { VeridaBaseRecordSchema } from "~/features/verida";
 
 export const UserActivityDataSchema = z.object({
   requestId: z.string().optional(),
+  referralLink: z.string().url().optional(),
 });
 
 // To keep in sync with the schema.json

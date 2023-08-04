@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
+import { toast } from "react-hot-toast";
 import { useIntl } from "react-intl";
 import { twMerge } from "tailwind-merge";
 import { useDebouncedCallback } from "use-debounce";
@@ -11,10 +12,10 @@ import {
   Icon,
   Typography,
 } from "~/components/atoms";
-import { ActivityStatus } from "~/components/molecules";
+import { ActivityStatus, CopyToClipboardButton } from "~/components/molecules";
 import {
   type Activity,
-  type UserActivityStatus,
+  type UserActivity,
   useActivity,
 } from "~/features/activity";
 import { Sentry } from "~/features/sentry";
@@ -24,19 +25,20 @@ import { useVerida } from "~/features/verida";
 export type ActivityCardProps = {
   index: number;
   activity: Activity;
-  status: UserActivityStatus;
+  userActivity?: UserActivity;
 } & Omit<React.ComponentPropsWithRef<"section">, "children">;
 
 export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
   props
 ) => {
-  const { index, activity, status, ...sectionProps } = props;
+  const { index, activity, userActivity, ...sectionProps } = props;
   const {
     title,
     shortDescription,
     longDescription,
     enabled = false,
   } = activity;
+  const status = userActivity?.status || "todo";
 
   const i18n = useIntl();
   const { isConnected } = useVerida();
@@ -100,6 +102,17 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
     defaultMessage: "Connect for details",
   });
 
+  const referralLinkCopiedToClipboardToastMessage = i18n.formatMessage({
+    id: "ActivityCard.referralLinkCopiedToClipboardToastMessage",
+    description:
+      "Toast message displayed after successfully copying the referral link to the user's clipboard",
+    defaultMessage: "Your referral link has been copied to your clipboard",
+  });
+
+  const handleCopyToClipboard = useCallback(() => {
+    toast.success(referralLinkCopiedToClipboardToastMessage, { icon: null });
+  }, [referralLinkCopiedToClipboardToastMessage]);
+
   const backgroundClasses =
     enabled && status !== "completed"
       ? "bg-transparent-10"
@@ -158,6 +171,17 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
               ))}
             </ul>
           </aside>
+        ) : null}
+        {userActivity?.data?.referralLink ? (
+          <div className="flex items-center gap-2">
+            <Typography className="truncate">
+              {userActivity.data.referralLink}
+            </Typography>
+            <CopyToClipboardButton
+              value={userActivity.data.referralLink}
+              onCopy={handleCopyToClipboard}
+            />
+          </div>
         ) : null}
         <footer className="flex flex-col sm:flex-row items-start gap-4 justify-between sm:items-end">
           <div className="flex gap-2 items-center">
