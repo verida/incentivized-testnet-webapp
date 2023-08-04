@@ -50,6 +50,9 @@ export function initSentry() {
       /__SENTRY_LOADER__/i,
       /firefoxSample/i,
       /Talisman/i, // That's an extension
+      /coinbase/i, // That's an extension
+      /zaloJSV2/i,
+      /Can't find variable: msDiscoverChatAvailable/i, // That's an extension
       /Failed to execute 'insertBefore' on 'Node'/i, // Coming from react itself
       /Failed to execute 'removeChild' on 'Node'/i, // Coming from react itself
       "window.ethereum.setConfig is not a function",
