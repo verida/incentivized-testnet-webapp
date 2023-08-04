@@ -3,6 +3,7 @@ import {
   Check,
   CheckOne,
   Close,
+  Copy,
   LoadingOne,
   Logout,
   User,
@@ -20,6 +21,7 @@ import { ReactComponent as Youtube } from "~/assets/logos/platforms/youtube.svg"
 export type GenericIconType =
   | "user"
   | "close"
+  | "copy"
   | "loading"
   | "check"
   | "disconnect"
@@ -52,6 +54,8 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
       return <LoadingOne size={size} {...otherProps} />;
     case "check":
       return <Check size={size} {...otherProps} />;
+    case "copy":
+      return <Copy size={size} {...otherProps} />;
     case "disconnect":
       return <Logout size={size} {...otherProps} />;
     case "notification-success":

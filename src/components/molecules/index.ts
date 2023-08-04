@@ -1,5 +1,6 @@
 export * from "./ActivityStatus";
 export * from "./Alert";
+export * from "./CopyToClipboardButton";
 export * from "./ErrorFallbackCard";
 export * from "./HeaderMenu";
 export * from "./HomeHero";
