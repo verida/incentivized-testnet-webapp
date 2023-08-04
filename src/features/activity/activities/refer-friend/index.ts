@@ -8,6 +8,7 @@ import type {
   ActivityOnExecute,
   ActivityOnInit,
 } from "~/features/activity/types";
+import { copyToClipboard } from "~/features/clipboard";
 import { Logger } from "~/features/logger";
 import { Sentry } from "~/features/sentry";
 import { ReceivedMessage, getMessaging } from "~/features/verida";
@@ -143,11 +144,23 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
   const did = await veridaWebUser.current.getDid();
 
   const url = buildReferralUrl(did);
+  const isCopiedToClipboard = await copyToClipboard(url);
 
-  // TODO: Implement displaying the URL to the user, show in console for now
-  logger.debug(url);
+  const linkCopiedMessage = defineMessage({
+    id: "activities.referFriend.executionResult.message",
+    description:
+      "Toast message displayed after executing the 'Refer a friend activity'",
+    defaultMessage:
+      "Your referral link has been copied to your clipboard. Share it with friends",
+  });
 
-  return { status: "pending" };
+  return {
+    status: "pending",
+    message: isCopiedToClipboard ? linkCopiedMessage : undefined,
+    data: {
+      referralLink: url,
+    },
+  };
 };
 
 export const activity: Activity = {
