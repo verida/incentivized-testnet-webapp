@@ -1,4 +1,7 @@
-import { ReceivedMessage, VerifiableCredential } from "~/features/verida";
+import {
+  type ReceivedMessage,
+  type VeridaVerifiableCredentialRecord,
+} from "~/features/verida";
 
 import { POLYGON_ID_KYC_AGE_VC_SCHEMA_URL } from "./constants";
 
@@ -10,8 +13,10 @@ export function verifyReceivedMessage(
     return false;
   }
 
-  const vc = data as VerifiableCredential;
-  // TODO: Check the issuer DID?
+  const vc = data as VeridaVerifiableCredentialRecord;
+
+  // TODO: Look at the GateKeeper activity for the evolution of the verification
+
   return vc.credentialSchema === POLYGON_ID_KYC_AGE_VC_SCHEMA_URL
     ? true
     : false;
