@@ -4,11 +4,18 @@ import { VeridaBaseRecordSchema } from "~/features/verida";
 
 export type VeridaBaseRecord = z.infer<typeof VeridaBaseRecordSchema>;
 
-export type VerifiableCredential = {
-  credentialData: {
-    credentialSchema: { id: string };
-    issuer: string;
-  };
+export type VerifiableCredential<T = unknown> = {
+  id: string;
+  issuanceDate: string;
+  expirationDate: string;
+  credentialSchema: { id: string; type: string };
+  issuer: string;
+  credentialSubject: T;
+  type: string[];
+};
+
+export type VeridaVerifiableCredentialRecord<T = unknown> = VeridaBaseRecord & {
+  credentialData: VerifiableCredential<T>;
   credentialSchema: string;
 };
 
