@@ -16,7 +16,7 @@ import {
   sendDataRequest,
 } from "~/features/verida";
 
-import { GATEKEEPER_ADOPTER_VC_SCHEMA_URL } from "./constants";
+import { GATEKEEPER_ADOPTER_VC_SCHEMA_URLS } from "./constants";
 import { verifyReceivedMessage } from "./utils";
 
 const logger = new Logger("activity");
@@ -126,8 +126,11 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
     const sentMessage = await sendDataRequest(veridaWebUser.current, {
       messageSubject: message,
       requestSchema: VAULT_CREDENTIAL_SCHEMA_URL,
+      // TODO: Consider using the issuer DID and the type/credentialSubject.type instead of the schema
       filter: {
-        credentialSchema: GATEKEEPER_ADOPTER_VC_SCHEMA_URL,
+        $or: GATEKEEPER_ADOPTER_VC_SCHEMA_URLS.map((url) => ({
+          credentialSchema: url,
+        })),
       },
     });
 
