@@ -2,12 +2,17 @@ import React from "react";
 import { useIntl } from "react-intl";
 import { twMerge } from "tailwind-merge";
 
-import { MissionIdLabelChip, Typography } from "~/components/atoms";
+import {
+  ExternalLink,
+  MissionIdLabelChip,
+  Typography,
+} from "~/components/atoms";
 import { UpcomingActivitiesCTA } from "~/components/molecules";
 import { ActivityCard } from "~/components/organisms";
 import { config } from "~/config";
 import type { Mission } from "~/features/activity";
 import { useActivity } from "~/features/activity";
+import { useVerida } from "~/features/verida";
 
 export type MissionSectionProps = {
   mission: Mission;
@@ -17,8 +22,10 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
   props
 ) => {
   const { mission, ...articleProps } = props;
+  const { title, shortDescription, longDescription, resources } = mission;
 
   const i18n = useIntl();
+  const { isConnected } = useVerida();
   const { activities: allActivities, getUserActivity } = useActivity();
 
   const activitiesSectionTitle = i18n.formatMessage({
@@ -31,6 +38,12 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
     id: "MissionSection.comingSoonMessage",
     defaultMessage: "Coming Soon",
     description: "Message to display when a mission is not yet available",
+  });
+
+  const resourcesSectionTitle = i18n.formatMessage({
+    id: "MissionSection.resourcesSectionTitle",
+    description: "Title of the resources section in each mission section",
+    defaultMessage: "Resources",
   });
 
   const missionActivities = allActivities.filter(
@@ -65,17 +78,36 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
             ) : null}
           </div>
           <Typography variant="heading-m">
-            {i18n.formatMessage(mission.title)}
+            {i18n.formatMessage(title)}
           </Typography>
           <Typography className="text-muted-foreground">
-            {i18n.formatMessage(mission.shortDescription, {
-              newline: (
-                <>
-                  <br />
-                </>
-              ),
-            })}
+            {i18n.formatMessage(
+              isConnected ? longDescription : shortDescription,
+              {
+                newline: (
+                  <>
+                    <br />
+                  </>
+                ),
+              }
+            )}
           </Typography>
+          {resources && resources.length > 0 ? (
+            <aside className="text-muted-foreground">
+              <Typography variant="subtitle">
+                {resourcesSectionTitle}
+              </Typography>
+              <ul>
+                {resources.map((resource, index) => (
+                  <li key={index}>
+                    <ExternalLink href={resource.url} openInNewTab>
+                      {i18n.formatMessage(resource.label)}
+                    </ExternalLink>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          ) : null}
         </div>
         {isMissionComingSoon ? null : (
           <div className="mt-6">

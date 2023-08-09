@@ -30,7 +30,7 @@ export const QueryProvider: React.FunctionComponent<QueryContextProps> = (
   return (
     <QueryClientProvider client={queryClient}>
       {children}
-      <ReactQueryDevtools />
+      <ReactQueryDevtools position="bottom-right" />
     </QueryClientProvider>
   );
 };

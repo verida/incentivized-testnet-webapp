@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { type IDatastore } from "@verida/types";
+import { useDebouncedCallback } from "use-debounce";
 
 import {
   deleteActivitiesInDatastore,
@@ -7,32 +8,26 @@ import {
   saveActivityInDatastore,
 } from "~/features/activity";
 import { type UserActivity } from "~/features/activity/types";
+import { Logger } from "~/features/logger";
 import { Sentry } from "~/features/sentry";
 import { useVerida } from "~/features/verida";
 
+const logger = new Logger("activity");
+
 export function useActivityQueries(activitiesDatastore: IDatastore | null) {
-  const { isConnected, did } = useVerida();
+  const { webUserInstanceRef, isConnected, did } = useVerida();
   const queryClient = useQueryClient();
 
   // TODO: Handle error state
   const { data: userActivities, isLoading: isLoadingActivities } = useQuery({
     queryKey: ["userActivities", did],
     queryFn: async () => {
-      Sentry.addBreadcrumb({
-        category: "activity",
-        level: "info",
-        message: "Getting all user activities",
-      });
-
+      logger.info("Getting all user activities");
       const userActivities = await getActivitiesFromDatastore(
-        activitiesDatastore
+        activitiesDatastore,
+        webUserInstanceRef.current
       );
-
-      Sentry.addBreadcrumb({
-        category: "activity",
-        level: "info",
-        message: "All user activities fetched",
-      });
+      logger.info("All user activities fetched");
 
       return userActivities;
     },
@@ -40,24 +35,16 @@ export function useActivityQueries(activitiesDatastore: IDatastore | null) {
     staleTime: 1000 * 60, // 1 minutes
   });
 
-  const { mutateAsync: saveActivity, isLoading: isSavingActivity } =
+  const { mutateAsync: saveActivityMutate, isLoading: isSavingActivity } =
     useMutation({
       mutationFn: async (userActivity: UserActivity) => {
-        Sentry.addBreadcrumb({
-          category: "activity",
-          level: "info",
-          message: "Saving user activity",
-          data: { userActivity },
-        });
-
-        await saveActivityInDatastore(activitiesDatastore, userActivity);
-
-        Sentry.addBreadcrumb({
-          category: "activity",
-          level: "info",
-          message: "User activity saved",
-          data: { userActivity },
-        });
+        logger.info("Saving user activity", { userActivity });
+        await saveActivityInDatastore(
+          activitiesDatastore,
+          userActivity,
+          webUserInstanceRef.current
+        );
+        logger.info("User activity saved", { userActivity });
       },
       onSuccess: async () => {
         // TODO: Optimise with an optimistic update
@@ -73,31 +60,35 @@ export function useActivityQueries(activitiesDatastore: IDatastore | null) {
       },
     });
 
-  const { mutateAsync: deleteActivities, isLoading: isDeletingActivities } =
-    useMutation({
-      mutationFn: async () => {
-        Sentry.addBreadcrumb({
-          category: "activity",
-          level: "info",
-          message: "Deleting all user activities",
-        });
+  // Debouncing to avoid document update conflicts
+  const saveActivity = useDebouncedCallback(saveActivityMutate, 500, {
+    leading: true,
+  });
 
-        await deleteActivitiesInDatastore(activitiesDatastore);
+  const {
+    mutateAsync: deleteActivitiesMutate,
+    isLoading: isDeletingActivities,
+  } = useMutation({
+    mutationFn: async () => {
+      logger.info("Deleting all user activities");
+      await deleteActivitiesInDatastore(
+        activitiesDatastore,
+        webUserInstanceRef.current
+      );
+      logger.info("All user activities deleted");
+    },
+    onSuccess: async () => {
+      // TODO: Optimise with an optimistic update
+      await queryClient.invalidateQueries(["userActivities", did]);
+    },
+    onError(error) {
+      Sentry.captureException(error);
+    },
+  });
 
-        Sentry.addBreadcrumb({
-          category: "activity",
-          level: "info",
-          message: "All user activities deleted",
-        });
-      },
-      onSuccess: async () => {
-        // TODO: Optimise with an optimistic update
-        await queryClient.invalidateQueries(["userActivities", did]);
-      },
-      onError(error) {
-        Sentry.captureException(error);
-      },
-    });
+  const deleteActivities = useDebouncedCallback(deleteActivitiesMutate, 500, {
+    leading: true,
+  });
 
   return {
     isReady: !!activitiesDatastore,
