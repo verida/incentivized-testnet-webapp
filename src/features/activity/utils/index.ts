@@ -10,7 +10,7 @@ import type {
   UserActivity,
   UserActivityRecord,
 } from "~/features/activity/types";
-import { capturePlausibleEvent } from "~/features/plausible";
+import { PlausibleEvent, capturePlausibleEvent } from "~/features/plausible";
 import type { ReceivedMessage } from "~/features/verida";
 
 export async function getActivitiesFromDatastore(
@@ -87,7 +87,7 @@ export async function saveActivityInDatastore(
 
     // Capture the completed activity in Plausible
     if (recordToSave.status === "completed") {
-      capturePlausibleEvent("Activity Completed", {
+      capturePlausibleEvent(PlausibleEvent.ACTIVITY_COMPLETED, {
         activityId: recordToSave.id,
       });
     }
