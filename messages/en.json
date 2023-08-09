@@ -147,6 +147,10 @@
     "defaultMessage": "Resources",
     "description": "Title of the resources section in each mission section"
   },
+  "ReportIssueButton.reportIssueButtonLabel": {
+    "defaultMessage": "Report Issue",
+    "description": "Label of the button to access the form to report an issue"
+  },
   "TermsConditionsView.termsConditionsTitle": {
     "defaultMessage": "Terms of Use",
     "description": "Title for the terms and conditions page"
