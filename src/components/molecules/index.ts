@@ -6,4 +6,5 @@ export * from "./HeaderMenu";
 export * from "./HomeHero";
 export * from "./Modal";
 export * from "./PortalWrapper";
+export * from "./ReportIssueButton";
 export * from "./UpcomingActivitiesCTA";

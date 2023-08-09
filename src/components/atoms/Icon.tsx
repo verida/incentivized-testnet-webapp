@@ -1,5 +1,6 @@
 import {
   Attention,
+  Bug,
   Check,
   CheckOne,
   Close,
@@ -20,6 +21,7 @@ import { ReactComponent as Youtube } from "~/assets/logos/platforms/youtube.svg"
 
 export type GenericIconType =
   | "user"
+  | "bug"
   | "close"
   | "copy"
   | "loading"
@@ -48,6 +50,8 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
   switch (type) {
     case "user":
       return <User size={size} {...otherProps} />;
+    case "bug":
+      return <Bug size={size} {...otherProps} />;
     case "close":
       return <Close size={size} {...otherProps} />;
     case "loading":
