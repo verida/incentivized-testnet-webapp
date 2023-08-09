@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useIntl } from "react-intl";
 import { twMerge } from "tailwind-merge";
 
 import { ButtonLink, Icon } from "~/components/atoms";
 import { ISSUE_REPORTING_FORM_URL } from "~/constants";
+import { PlausibleEvent, capturePlausibleEvent } from "~/features/plausible";
 
 export type ReportIssueButtonProps = Omit<
   React.ComponentPropsWithRef<typeof ButtonLink>,
@@ -23,6 +24,10 @@ export const ReportIssueButton: React.FunctionComponent<
     defaultMessage: "Report Issue",
   });
 
+  const handleClickCapture = useCallback(() => {
+    capturePlausibleEvent(PlausibleEvent.REPORT_ISSUE_BUTTON_CLICKED);
+  }, []);
+
   return (
     <ButtonLink
       href={ISSUE_REPORTING_FORM_URL}
@@ -35,6 +40,7 @@ export const ReportIssueButton: React.FunctionComponent<
         "py-1.5 px-3 rounded-xl backdrop-blur-[5px] w-fit",
         className
       )}
+      onClickCapture={handleClickCapture}
       {...otherProps}
     >
       <Icon type="bug" size={20} />
