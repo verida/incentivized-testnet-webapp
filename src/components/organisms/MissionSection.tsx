@@ -121,7 +121,7 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
                   <ActivityCard
                     index={index + 1} // So that the first activity is 1 instead of 0
                     activity={activity}
-                    status={getUserActivity(activity.id)?.status || "todo"}
+                    userActivity={getUserActivity(activity.id)}
                   />
                 </li>
               ))}

@@ -6,6 +6,7 @@ import { type DebouncedState } from "use-debounce";
 import { z } from "zod";
 
 import {
+  UserActivityDataSchema,
   UserActivityRecordSchema,
   UserActivitySchema,
 } from "~/features/activity/schemas";
@@ -29,6 +30,16 @@ export type Mission = {
   resources?: Resource[];
 };
 
+// User activity
+
+export type UserActivity = z.infer<typeof UserActivitySchema>;
+
+export type UserActivityData = z.infer<typeof UserActivityDataSchema>;
+
+export type UserActivityRecord = z.infer<typeof UserActivityRecordSchema>;
+
+export type UserActivityStatus = "todo" | "pending" | "completed";
+
 // Activity
 
 export type ActivityOnUnmount = () => Promise<void>;
@@ -48,9 +59,7 @@ export type ActivityOnExecute = (
 export type ActivityOnExecuteResult = {
   status: UserActivityStatus;
   message?: MessageDescriptor;
-  data?: {
-    requestId?: string;
-  };
+  data?: UserActivityData;
 };
 
 export type Activity = {
@@ -73,11 +82,3 @@ export type Activity = {
   onInit: ActivityOnInit;
   onExecute: ActivityOnExecute;
 };
-
-// User activity
-
-export type UserActivity = z.infer<typeof UserActivitySchema>;
-
-export type UserActivityRecord = z.infer<typeof UserActivityRecordSchema>;
-
-export type UserActivityStatus = "todo" | "pending" | "completed";
