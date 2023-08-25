@@ -54,7 +54,7 @@ const handleInit: ActivityOnInit = async (
         id: ACTIVITY_ID,
         status: "completed",
         data: {
-          // TODO: Save the referrer in the user activity, use the sentBy from the message
+          // TODO: Save the referrer DID in the user activity, use the sentBy from the message
         },
       });
 
@@ -124,7 +124,6 @@ const handleInit: ActivityOnInit = async (
 
     // Listening to incoming messages and check them
     // BTW, pretty strange an onEvent function is async and return a promise
-    // FIXME: Check why the listener is not trigger when a message is received
     void messaging.onMessage(checkMessage);
   } catch (error: unknown) {
     Sentry.captureException(error, {
