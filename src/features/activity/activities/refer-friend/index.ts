@@ -54,7 +54,7 @@ const handleInit: ActivityOnInit = async (
         id: ACTIVITY_ID,
         status: "completed",
         data: {
-          // TODO: Save the referrer DID in the user activity, use the sentBy from the message
+          referredDids: [message.sentBy.did],
         },
       });
 
@@ -167,8 +167,8 @@ export const activity: Activity = {
   missionId: MISSION_01_ID,
   enabled: true,
   visible: true,
-  order: 2,
-  points: 50,
+  order: 4,
+  points: 100,
   title: defineMessage({
     id: "activities.referFriend.title",
     defaultMessage: "Refer a friend to join Verida Missions",
@@ -176,12 +176,14 @@ export const activity: Activity = {
   }),
   shortDescription: defineMessage({
     id: "activities.referFriend.shortDescription",
-    defaultMessage: "Invite a friend to join Verida Missions.",
+    defaultMessage:
+      "Invite a friend to create a Decentralized Identity and take control of their personal data.",
     description: "Short description of the activity 'refer friend'",
   }),
   longDescription: defineMessage({
     id: "activities.referFriend.longDescription",
-    defaultMessage: "Invite a friend to join Verida Missions",
+    defaultMessage:
+      "Invite a friend to create a Decentralized Identity and take control of their personal data.{newline}{newline}Step 1. Get your Verida Missions referral link below{newline}{newline}Step 2. Share your referral link with a friend{newline}{newline}Step 3. Your friend will have to create a Verida Identity and connect to Verida Missions with your referral link for your activity to be completed",
     description: "Long description of the activity 'refer friend'",
   }),
   actionLabel: defineMessage({
