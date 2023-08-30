@@ -54,7 +54,7 @@ const handleInit: ActivityOnInit = async (
         id: ACTIVITY_ID,
         status: "completed",
         data: {
-          // TODO: Save the referrer DID in the user activity, use the sentBy from the message
+          referredDids: [message.sentBy.did],
         },
       });
 
