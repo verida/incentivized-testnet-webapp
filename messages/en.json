@@ -19,6 +19,10 @@
     "defaultMessage": "Open Terms of Use",
     "description": "Label of the button to open the terms and conditions modal on each activity card"
   },
+  "ActivityCard.referralLinkCopiedToClipboardToastMessage": {
+    "defaultMessage": "Your referral link has been copied to your clipboard",
+    "description": "Toast message displayed after successfully copying the referral link to the user's clipboard"
+  },
   "ActivityCard.resourcesSectionTitle": {
     "defaultMessage": "Resources",
     "description": "Title of the resources section in each activity card"
@@ -272,23 +276,27 @@
     "description": "Title of the activity 'create identity'"
   },
   "activities.referFriend.actionExecutingLabel": {
-    "defaultMessage": "Preparing",
+    "defaultMessage": "Getting link",
     "description": "Label of the button when the activity 'refer friend' is being executed"
   },
   "activities.referFriend.actionLabel": {
-    "defaultMessage": "Get Referal Link",
+    "defaultMessage": "Get Referral Link",
     "description": "Label of the button to start the activity refer friend"
   },
+  "activities.referFriend.executionResult.message": {
+    "defaultMessage": "Your referral link has been copied to your clipboard. Share it with friends",
+    "description": "Toast message displayed after executing the 'Refer a friend activity'"
+  },
   "activities.referFriend.longDescription": {
-    "defaultMessage": "Invite a friend to join the Verida Incentivized Testnet",
+    "defaultMessage": "Invite a friend to create a Decentralized Identity and take control of their personal data.{newline}{newline}Step 1. Get your Verida Missions referral link below{newline}{newline}Step 2. Share your referral link with a friend{newline}{newline}Step 3. Your friend will have to create a Verida Identity and connect to Verida Missions with your referral link for your activity to be completed",
     "description": "Long description of the activity 'refer friend'"
   },
   "activities.referFriend.shortDescription": {
-    "defaultMessage": "Invite a friend to join the Verida Incentivized Testnet.",
+    "defaultMessage": "Invite a friend to create a Decentralized Identity and take control of their personal data.",
     "description": "Short description of the activity 'refer friend'"
   },
   "activities.referFriend.title": {
-    "defaultMessage": "Refer a friend",
+    "defaultMessage": "Refer a friend to join Verida Missions",
     "description": "Title of the activity 'refer friend'"
   },
   "activities.updateProfile.actionExecutingLabel": {

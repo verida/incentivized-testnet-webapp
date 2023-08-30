@@ -4,6 +4,7 @@ import {
   Check,
   CheckOne,
   Close,
+  Copy,
   LoadingOne,
   Logout,
   User,
@@ -22,6 +23,7 @@ export type GenericIconType =
   | "user"
   | "bug"
   | "close"
+  | "copy"
   | "loading"
   | "check"
   | "disconnect"
@@ -56,6 +58,8 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
       return <LoadingOne size={size} {...otherProps} />;
     case "check":
       return <Check size={size} {...otherProps} />;
+    case "copy":
+      return <Copy size={size} {...otherProps} />;
     case "disconnect":
       return <Logout size={size} {...otherProps} />;
     case "notification-success":

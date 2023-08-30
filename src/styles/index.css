@@ -31,7 +31,9 @@
       url("./images/bg_bottom.webp");
     background-position: top, bottom;
     background-repeat: no-repeat, no-repeat;
-    background-size: auto 500px, auto 500px;
+    background-size:
+      auto 500px,
+      auto 500px;
   }
 
   .bg-mission-section {

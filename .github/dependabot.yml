@@ -6,6 +6,11 @@ updates:
     schedule:
       interval: "weekly"
     target-branch: "develop"
-    ignore:
-      # Will make verida SDK updates manually
-      - dependency-name: "@verida/*"
+    groups:
+      verida:
+        patterns:
+          - "@verida/*"
+      production:
+        dependency-type: "production"
+      development:
+        dependency-type: "development"

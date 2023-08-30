@@ -10,8 +10,11 @@ import type {
   UserActivity,
   UserActivityRecord,
 } from "~/features/activity/types";
+import { Logger } from "~/features/logger";
 import { PlausibleEvent, capturePlausibleEvent } from "~/features/plausible";
 import type { ReceivedMessage } from "~/features/verida";
+
+const logger = new Logger("activity");
 
 export async function getActivitiesFromDatastore(
   datastore: IDatastore | null,
@@ -70,9 +73,18 @@ export async function saveActivityInDatastore(
       throw new Error("Invalid user activity");
     }
 
+    logger.debug("User activity to save", {
+      userActivity,
+    });
+
     const records = await getActivitiesFromDatastore(datastore, veridaWebUser);
-    const existingRecord =
-      records?.find((record) => record.id === userActivity.id) || {};
+    const existingRecord = records?.find(
+      (record) => record.id === userActivity.id
+    );
+
+    logger.debug("Existing user activity record", {
+      existingRecord,
+    });
 
     const recordToSave = {
       ...existingRecord,
@@ -81,7 +93,15 @@ export async function saveActivityInDatastore(
         userActivity.completionDate || userActivity.status === "completed"
           ? new Date().toISOString()
           : undefined,
+      data: {
+        ...existingRecord?.data,
+        ...userActivity.data,
+      },
     };
+
+    logger.debug("Record to save", {
+      recordToSave,
+    });
 
     await datastore.save(recordToSave, {});
 

@@ -25,7 +25,7 @@ export const activity: Activity = {
   missionId: MISSION_01_ID,
   enabled: false,
   visible: false,
-  order: 4,
+  order: 5,
   points: 50,
   title: defineMessage({
     id: "activities.claimSocialMediaData.title",
