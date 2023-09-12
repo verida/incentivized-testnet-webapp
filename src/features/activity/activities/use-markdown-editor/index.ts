@@ -22,8 +22,8 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
   await wait(2000);
 
   try {
-    const did = await veridaWebUser.current.getDid();
-    const client = await veridaWebUser.current.getClient();
+    const did = veridaWebUser.current.getDid();
+    const client = veridaWebUser.current.getClient();
     const didDocument = await client.didClient.get(did);
     const contextProof = didDocument.locateContextProof(
       MARKDOWN_EDITOR_CONTEXT_NAME
