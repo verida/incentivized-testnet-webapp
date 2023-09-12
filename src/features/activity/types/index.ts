@@ -1,5 +1,5 @@
 import { UseMutateAsyncFunction } from "@tanstack/react-query";
-import { WebUser } from "@verida/web-helpers";
+import { type WebUser } from "@verida/web-helpers";
 import { MutableRefObject } from "react";
 import { type MessageDescriptor } from "react-intl";
 import { type DebouncedState } from "use-debounce";

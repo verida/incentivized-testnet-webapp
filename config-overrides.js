@@ -11,6 +11,7 @@ module.exports = function override(config) {
     stream: require.resolve("stream-browserify"),
     url: require.resolve("url"),
     util: require.resolve("util"),
+    querystring: require.resolve("querystring-es3"),
   });
   config.resolve.fallback = fallback;
 
