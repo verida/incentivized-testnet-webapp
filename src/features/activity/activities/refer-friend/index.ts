@@ -33,7 +33,7 @@ const handleInit: ActivityOnInit = async (
   // Handle referral in URL
   await checkAndHandleReferralInUrl(veridaWebUser.current);
 
-  const did = await veridaWebUser.current.getDid();
+  const did = veridaWebUser.current.getDid();
 
   const checkMessage = async (message: ReceivedMessage<unknown>) => {
     try {
@@ -140,7 +140,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
   // Wait a bit for UX purposes
   await wait(500);
 
-  const did = await veridaWebUser.current.getDid();
+  const did = veridaWebUser.current.getDid();
 
   const url = buildReferralUrl(did);
   const isCopiedToClipboard = await copyToClipboard(url);

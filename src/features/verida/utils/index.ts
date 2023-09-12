@@ -1,4 +1,4 @@
-import { WebUser } from "@verida/web-helpers";
+import { type WebUser } from "@verida/web-helpers";
 
 import { Logger } from "~/features/logger";
 import {
@@ -33,8 +33,8 @@ export function isValidVeridaDid(maybeDid: string) {
   return VERIDA_DID_REGEXP.test(maybeDid);
 }
 
-export async function getMessaging(veridaWebUser: WebUser) {
-  const context = await veridaWebUser.getContext();
+export function getMessaging(veridaWebUser: WebUser) {
+  const context = veridaWebUser.getContext();
   return context.getMessaging();
 }
 
@@ -52,7 +52,7 @@ export async function sendDataRequest(
 
   logger.info("Getting the DID, Context and Messaging");
 
-  const did = await veridaWebUser.getDid();
+  const did = veridaWebUser.getDid();
   const messaging = await getMessaging(veridaWebUser);
 
   const messageType = VeridaMessageType.DATA_REQUEST;
@@ -89,7 +89,7 @@ export async function sendMessage(
 ) {
   logger.info("Getting the DID, Context and Messaging");
 
-  const userDid = await veridaWebUser.getDid();
+  const userDid = veridaWebUser.getDid();
   const messaging = await getMessaging(veridaWebUser);
 
   const messageType = VeridaMessageType.SIMPLE_MESSAGE;

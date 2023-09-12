@@ -80,43 +80,52 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
   const [did, setDid] = useState<string>();
   const [profile, setProfile] = useState<WebUserProfile>();
 
-  const updateStates = useCallback(() => {
-    webUserInstance
-      .isConnected()
-      .then((newIsConnected) => {
-        setIsConnected(newIsConnected);
-        setIsConnecting(false);
-        setIsDisconnecting(false);
-        setIsCheckingConnection(false);
-        logger.info(
-          newIsConnected
-            ? "User is connected to Verida"
-            : "User is not connected to Verida"
-        );
-      })
-      .catch(() => {
-        setIsConnected(false);
-        setIsConnecting(false);
-        setIsDisconnecting(false);
-        setIsCheckingConnection(false);
-        logger.info("User is not connected to Verida");
-      });
-    webUserInstance
-      .getDid()
-      .then((newDid) => {
-        setDid(newDid);
-        Sentry.setUser({ id: newDid });
-      })
-      .catch(() => {
-        setDid(undefined);
-        Sentry.setUser(null);
-      });
-    webUserInstance
-      .getPublicProfile(true)
-      .then(setProfile)
-      .catch(() => {
+  const updateStates = useCallback(async () => {
+    // isConnected
+    const newIsConnected = webUserInstance.isConnected();
+    setIsConnected(newIsConnected);
+    logger.info(
+      newIsConnected
+        ? "User is connected to Verida"
+        : "User is not connected to Verida"
+    );
+
+    setIsConnecting(false);
+    setIsDisconnecting(false);
+    setIsCheckingConnection(false);
+
+    // If not connected, no need to continue, just clear everything
+    if (!newIsConnected) {
+      Sentry.setUser(null);
+      setDid(undefined);
+      setProfile(undefined);
+      return;
+    }
+
+    try {
+      const newDid = webUserInstance.getDid();
+      setDid(newDid);
+      Sentry.setUser({ id: newDid });
+    } catch (_error: unknown) {
+      // Only error is if user not connected which is prevented by above check
+      Sentry.setUser(null);
+      setDid(undefined);
+    }
+
+    //getPublicProfile
+    try {
+      const newProfile = await webUserInstance.getPublicProfile(true);
+      setProfile(newProfile);
+    } catch (error: unknown) {
+      if (
+        error instanceof Error &&
+        error.message !== "Not connected to Verida Network"
+      ) {
         setProfile(undefined);
-      });
+      } else {
+        Sentry.captureException(error);
+      }
+    }
   }, []);
 
   const veridaEventListener = useCallback(() => {
@@ -131,7 +140,7 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
 
     const autoConnect = async () => {
       setIsCheckingConnection(true);
-      await webUserInstanceRef.current.isConnected();
+      await webUserInstanceRef.current.autoConnectExistingSession();
       // Will trigger a 'connected' event if already connected and therefore update the states
       setIsCheckingConnection(false);
     };

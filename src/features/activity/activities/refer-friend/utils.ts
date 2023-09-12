@@ -1,4 +1,4 @@
-import { WebUser } from "@verida/web-helpers";
+import { type WebUser } from "@verida/web-helpers";
 
 import { VERIDA_CONTEXT_NAME } from "~/constants";
 import { Logger } from "~/features/logger";

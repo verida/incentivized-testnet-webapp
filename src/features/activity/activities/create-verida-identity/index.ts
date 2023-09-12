@@ -28,7 +28,7 @@ const handleInit: ActivityOnInit = async (
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
-  const isConnected = await veridaWebUser.current.isConnected();
+  const isConnected = veridaWebUser.current.isConnected();
   if (isConnected) {
     return { status: "completed" };
   }
