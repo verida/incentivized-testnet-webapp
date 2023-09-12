@@ -24,7 +24,7 @@ export async function getActivitiesFromDatastore(
     throw new Error("Activities datastore must be defined");
   }
 
-  const isConnected = await veridaWebUser.isConnected();
+  const isConnected = veridaWebUser.isConnected();
   if (!isConnected) {
     throw new Error("Attempting to get user activies but user is disconnected");
   }
@@ -60,7 +60,7 @@ export async function saveActivityInDatastore(
     throw new Error("Activities datastore must be defined");
   }
 
-  const isConnected = await veridaWebUser.isConnected();
+  const isConnected = veridaWebUser.isConnected();
   if (!isConnected) {
     throw new Error(
       "Attempting to save a user activity but user is disconnected"
@@ -124,7 +124,7 @@ export async function deleteActivitiesInDatastore(
     throw new Error("Activities datastore must be defined");
   }
 
-  const isConnected = await veridaWebUser.isConnected();
+  const isConnected = veridaWebUser.isConnected();
   if (!isConnected) {
     throw new Error(
       "Attempting to delete all user activities but user is disconnected"

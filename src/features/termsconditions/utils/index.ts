@@ -11,7 +11,7 @@ export async function getTermsRecordFromDatastore(
     throw new Error("Terms datastore must be defined");
   }
 
-  const isConnected = await veridaWebUser.isConnected();
+  const isConnected = veridaWebUser.isConnected();
   if (!isConnected) {
     throw new Error("Attempting to get term status but user is disconnected");
   }
@@ -51,7 +51,7 @@ export async function setStatusInDatastore(
     throw new Error("Terms datastore must be defined");
   }
 
-  const isConnected = await veridaWebUser.isConnected();
+  const isConnected = veridaWebUser.isConnected();
   if (!isConnected) {
     throw new Error(
       "Attempting to save a term status but user is disconnected"
@@ -75,7 +75,7 @@ export async function deleteStatusInDatastore(
     throw new Error("Terms datastore must be defined");
   }
 
-  const isConnected = await veridaWebUser.isConnected();
+  const isConnected = veridaWebUser.isConnected();
   if (!isConnected) {
     throw new Error(
       "Attempting to delete all term status but user is disconnected"
