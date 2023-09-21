@@ -37,28 +37,16 @@ export function useInitialiseActivities(
 
     const initActivities = async () => {
       const results = await Promise.allSettled([
-        ...activities
-          .filter((activity) => {
-            const userActivity = userActivities.find(
-              (userActivity) => userActivity.id === activity.id
-            );
-            return (
-              activity.enabled &&
-              (userActivity === undefined ||
-                userActivity?.status !== "completed")
-              // TODO: Argue about filtering out the completed activities. We could give this responsibility to the 'onInit' function itself as it receives the userActivity as argument anyway. If we do this, the init could do something even though it's been already completed. Best example is the 'refer-friend' activity, which mean there is no way to handle a referral url if the activity has been completed already.
-            );
-          })
-          .map((activity) => {
-            const userActivity = userActivities.find(
-              (userActivity) => userActivity.id === activity.id
-            );
-            return activity.onInit(
-              webUserInstanceRef,
-              userActivity || null,
-              saveActivity
-            );
-          }),
+        ...activities.map((activity) => {
+          const userActivity = userActivities.find(
+            (userActivity) => userActivity.id === activity.id
+          );
+          return activity.onInit(
+            webUserInstanceRef,
+            userActivity || null,
+            saveActivity
+          );
+        }),
       ]);
 
       const unmountHandlers = results

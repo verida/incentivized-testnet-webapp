@@ -12,8 +12,16 @@ import { wait } from "~/utils";
 
 const ACTIVITY_ID = "update-profile"; // Never change the id
 
-const handleInit: ActivityOnInit = async (veridaWebUser, saveActivity) => {
-  // TODO: Uncomment this code when we have more activities
+const handleInit: ActivityOnInit = async (
+  _veridaWebUser,
+  _userActivity,
+  _saveActivity
+) => {
+  // TODO: Uncomment this code if we want to automate this activity
+  //
+  // if (userActivity?.status === "completed") {
+  //   return () => Promise.resolve();
+  // }
   // const checkAndUpdate = async () => {
   //   const { status } = await handleExecute(veridaWebUser);
   //   saveActivity({ id: ACTIVITY_ID, status });

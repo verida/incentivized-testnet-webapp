@@ -28,6 +28,10 @@ const handleInit: ActivityOnInit = async (
   userActivity,
   saveActivity
 ) => {
+  if (userActivity?.status === "completed") {
+    return () => Promise.resolve();
+  }
+
   logger.info("Init activity", { activityId: ACTIVITY_ID });
 
   // Handle referral in URL
@@ -87,11 +91,6 @@ const handleInit: ActivityOnInit = async (
       });
     }
   };
-
-  if (userActivity?.status === "completed") {
-    logger.debug("Activity already completed, not checking messages");
-    return cleanUpFunction;
-  }
 
   try {
     logger.info("Getting Verida Context and Messaging", {

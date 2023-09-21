@@ -29,6 +29,10 @@ const handleInit: ActivityOnInit = async (
   userActivity,
   saveActivity
 ) => {
+  if (userActivity?.status === "completed") {
+    return () => Promise.resolve();
+  }
+
   logger.info("Init activity", { activityId: ACTIVITY_ID });
 
   const checkMessage = async (message: ReceivedMessage<unknown>) => {
@@ -78,11 +82,6 @@ const handleInit: ActivityOnInit = async (
       });
     }
   };
-
-  if (userActivity?.status === "completed") {
-    logger.debug("Activity already completed, not checking messages");
-    return cleanUpFunction;
-  }
 
   try {
     logger.info("Getting Verida Context and Messaging", {

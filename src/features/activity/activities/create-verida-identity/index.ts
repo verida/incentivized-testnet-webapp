@@ -13,9 +13,13 @@ const ACTIVITY_ID = "create-verida-identity"; // Never change the id
 
 const handleInit: ActivityOnInit = async (
   veridaWebUser,
-  _userActivity,
+  userActivity,
   saveActivity
 ) => {
+  if (userActivity?.status === "completed") {
+    return () => Promise.resolve();
+  }
+
   const { status } = await handleExecute(veridaWebUser);
   try {
     await saveActivity({ id: ACTIVITY_ID, status });
