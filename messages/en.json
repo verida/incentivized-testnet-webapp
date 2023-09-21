@@ -207,54 +207,6 @@
     "defaultMessage": "Claim a GateKeeper Adopter credential",
     "description": "Title of the activity 'Claim Gatekeeper Adopter credential'"
   },
-  "activities.claimPolygonId.actionExecutingLabel": {
-    "defaultMessage": "Sending Request",
-    "description": "Label of the button when the activity 'claim Polygon ID' is being executed"
-  },
-  "activities.claimPolygonId.actionLabel": {
-    "defaultMessage": "Send Request",
-    "description": "Label of the button to start the activity claim polygon id"
-  },
-  "activities.claimPolygonId.executePendingMessage": {
-    "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a Polygon ID KYC Age credential.",
-    "description": "Message explaining a request has been sent to the their Wallet inbox"
-  },
-  "activities.claimPolygonId.longDescription": {
-    "defaultMessage": "Go to the Polygon ID issuer demo app and claim a KYC Age Credential, then share this credential by replying to the message you received in your inbox.",
-    "description": "Long description of the activity 'claim Polygon ID'"
-  },
-  "activities.claimPolygonId.resources.polygonIdDemoAppUrl.label": {
-    "defaultMessage": "Polygon ID demo app",
-    "description": "Label of the resource 'Polygon ID issuer demo app'"
-  },
-  "activities.claimPolygonId.shortDescription": {
-    "defaultMessage": "Go to the Polygon ID issuer demo app and claim a KYC Age Credential, then share this credential by replying to the message you received in your inbox.",
-    "description": "Short description of the activity 'claim Polygon ID'"
-  },
-  "activities.claimPolygonId.title": {
-    "defaultMessage": "Claim a Polygon ID Age credential",
-    "description": "Title of the activity 'claim Polygon ID'"
-  },
-  "activities.claimSocialMediaData.actionExecutingLabel": {
-    "defaultMessage": "Verifying",
-    "description": "Label of the button when the activity 'claim social media data' is being executed"
-  },
-  "activities.claimSocialMediaData.actionLabel": {
-    "defaultMessage": "Verify",
-    "description": "Label of the button to start the activity claim social media data"
-  },
-  "activities.claimSocialMediaData.longDescription": {
-    "defaultMessage": "Connect your Social Media account in the Verida Wallet and extract your data",
-    "description": "Long description of the activity 'claim social media data'"
-  },
-  "activities.claimSocialMediaData.shortDescription": {
-    "defaultMessage": "Connect your Social Media account in the Verida Wallet and extract your data.",
-    "description": "Short description of the activity 'claim social media data'"
-  },
-  "activities.claimSocialMediaData.title": {
-    "defaultMessage": "Claim your social media data",
-    "description": "Title of the activity 'claim social media data'"
-  },
   "activities.createVeridaIdentity.actionExecutingLabel": {
     "defaultMessage": "Verifying",
     "description": "Label of the button when the activity 'create Verida Identity' is being executed"
@@ -372,10 +324,6 @@
     "description": "Label of the video 'How to use the Markdown Editor demo app'"
   },
   "activity.claimGateKeperAdopter.gettingExecutionErrorMessage": {
-    "defaultMessage": "There was an error while sending you the credential request, please try again later",
-    "description": "Error message when we can't get the user profile"
-  },
-  "activity.claimPolygonId.gettingExecutionErrorMessage": {
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
   },
