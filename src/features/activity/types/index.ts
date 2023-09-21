@@ -23,6 +23,7 @@ export type Mission = {
   idLabel: MessageDescriptor;
   enabled: boolean;
   visible: boolean;
+  frozen: boolean;
   order: number;
   title: MessageDescriptor;
   shortDescription: MessageDescriptor;

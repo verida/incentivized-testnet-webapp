@@ -13,6 +13,7 @@ export const mission: Mission = {
   }),
   enabled: false,
   visible: true,
+  frozen: false,
   order: 3,
   title: defineMessage({
     id: "missions.mission-03.title",
