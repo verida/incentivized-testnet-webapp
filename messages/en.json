@@ -203,6 +203,42 @@
     "defaultMessage": "Claim a Gamer31 Clash Of Clans credential",
     "description": "Title of the activity 'Claim Gamer31 Clash Of Clans credential'"
   },
+  "activities.claimGamer31ClashRoyal.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'claim Gamer31 Clash Royal credential' is being executed"
+  },
+  "activities.claimGamer31ClashRoyal.actionLabel": {
+    "defaultMessage": "Send Request",
+    "description": "Label of the button to start the activity claim Gamer31 Clash Royal credential"
+  },
+  "activities.claimGamer31ClashRoyal.actionReExecuteLabel": {
+    "defaultMessage": "Re-send Request",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimGamer31ClashRoyal.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a Gamer31 Clash Royal credential.",
+    "description": "Message explaining a request has been sent to the their Wallet inbox"
+  },
+  "activities.claimGamer31ClashRoyal.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimGamer31ClashRoyal.longDescription": {
+    "defaultMessage": "Claim a Gamer31 Clash Royal credential",
+    "description": "Long description of the activity 'claim Gamer31 Clash Royal credential'"
+  },
+  "activities.claimGamer31ClashRoyal.resources.gamer31ClaimPageUrl.label": {
+    "defaultMessage": "Gamer31 claim page",
+    "description": "Label of the resource 'Gamer31 claim page'"
+  },
+  "activities.claimGamer31ClashRoyal.shortDescription": {
+    "defaultMessage": "Claim a Gamer31 Clash Royal credential",
+    "description": "Short description of the activity 'claim Gamer31 Clash Royal credential'"
+  },
+  "activities.claimGamer31ClashRoyal.title": {
+    "defaultMessage": "Claim a Gamer31 Clash Royal credential",
+    "description": "Title of the activity 'Claim Gamer31 Clash Royal credential'"
+  },
   "activities.claimGamer31Steam.actionExecutingLabel": {
     "defaultMessage": "Sending Request",
     "description": "Label of the button when the activity 'claim Gamer31 Steam credential' is being executed"
