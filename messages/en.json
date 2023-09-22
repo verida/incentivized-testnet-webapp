@@ -167,6 +167,42 @@
     "defaultMessage": "Next activity coming soon",
     "description": "Message to display in the upcoming activities CTA"
   },
+  "activities.claimGamer31BrawlStars.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'claim Gamer31 Brawl Stars credential' is being executed"
+  },
+  "activities.claimGamer31BrawlStars.actionLabel": {
+    "defaultMessage": "Send Request",
+    "description": "Label of the button to start the activity claim Gamer31 Brawl Stars credential"
+  },
+  "activities.claimGamer31BrawlStars.actionReExecuteLabel": {
+    "defaultMessage": "Re-send Request",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimGamer31BrawlStars.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a Gamer31 Brawl Stars credential.",
+    "description": "Message explaining a request has been sent to the their Wallet inbox"
+  },
+  "activities.claimGamer31BrawlStars.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimGamer31BrawlStars.longDescription": {
+    "defaultMessage": "Claim a Gamer31 Brawl Stars credential",
+    "description": "Long description of the activity 'claim Gamer31 Brawl Stars credential'"
+  },
+  "activities.claimGamer31BrawlStars.resources.gamer31ClaimPageUrl.label": {
+    "defaultMessage": "Gamer31 claim page",
+    "description": "Label of the resource 'Gamer31 claim page'"
+  },
+  "activities.claimGamer31BrawlStars.shortDescription": {
+    "defaultMessage": "Claim a Gamer31 Brawl Stars credential",
+    "description": "Short description of the activity 'claim Gamer31 Brawl Stars credential'"
+  },
+  "activities.claimGamer31BrawlStars.title": {
+    "defaultMessage": "Claim a Gamer31 Brawl Stars credential",
+    "description": "Title of the activity 'Claim Gamer31 Brawl Stars credential'"
+  },
   "activities.claimGamer31ClashOfClans.actionExecutingLabel": {
     "defaultMessage": "Sending Request",
     "description": "Label of the button when the activity 'claim Gamer31 Clash Of Clans credential' is being executed"

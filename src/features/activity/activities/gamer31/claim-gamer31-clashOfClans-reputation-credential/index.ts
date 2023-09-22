@@ -219,7 +219,7 @@ export const activity: Activity = {
   missionId: MISSION_03_ID,
   enabled: true,
   visible: true,
-  order: 2,
+  order: 3,
   points: 50,
   title: defineMessage({
     id: "activities.claimGamer31ClashOfClans.title",

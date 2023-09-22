@@ -17,12 +17,12 @@ import {
   sendDataRequest,
 } from "~/features/verida";
 
-import { GAMER31_CLASH_ROYAL_VC_SCHEMA_URLS } from "./constants";
+import { GAMER31_BRAWL_STARS_VC_SCHEMA_URLS } from "./constants";
 import { verifyReceivedMessage } from "./utils";
 
 const logger = new Logger("activity");
 
-const ACTIVITY_ID = "claim-gamer31-clashroyal-reputation-credential"; // Never change the id
+const ACTIVITY_ID = "claim-gamer31-brawlstars-reputation-credential"; // Never change the id
 
 const handleNewMessage: ActivityOnMessage = async (
   message,
@@ -54,7 +54,7 @@ const handleNewMessage: ActivityOnMessage = async (
     });
 
     toast.success(
-      "Congrats, you have completed the activity 'Claim a Gamer31 Clash Royal credential'"
+      "Congrats, you have completed the activity 'Claim a Gamer31 Brawl Stars credential'"
     );
   } catch (error: unknown) {
     Sentry.captureException(error, {
@@ -135,7 +135,7 @@ const handleInit: ActivityOnInit = async (
         });
 
         toast.success(
-          "Congrats, you have completed the activity 'Claim a Gamer31 Clash Royal credential'"
+          "Congrats, you have completed the activity 'Claim a Gamer31 Brawl Stars credential'"
         );
 
         return true;
@@ -164,7 +164,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
 
   try {
     // TODO: Make a localised message of this message
-    const message = "Please share a Gamer31 Clash Royal credential";
+    const message = "Please share a Gamer31 Brawl Stars credential";
 
     logger.info("Sending data request", { activityId: ACTIVITY_ID });
 
@@ -173,7 +173,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
       requestSchema: VAULT_CREDENTIAL_SCHEMA_URL,
       // TODO: Consider using the issuer DID and the type/credentialSubject.type instead of the schema
       filter: {
-        $or: GAMER31_CLASH_ROYAL_VC_SCHEMA_URLS.map((url) => ({
+        $or: GAMER31_BRAWL_STARS_VC_SCHEMA_URLS.map((url) => ({
           credentialSchema: url,
         })),
       },
@@ -190,9 +190,9 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
         requestId: sentMessage?.id,
       },
       message: defineMessage({
-        id: "activities.claimGamer31ClashRoyal.executePendingMessage",
+        id: "activities.claimGamer31BrawlStars.executePendingMessage",
         defaultMessage:
-          "A request has been sent to your Wallet inbox. Please check your inbox and share a Gamer31 Clash Royal credential.",
+          "A request has been sent to your Wallet inbox. Please check your inbox and share a Gamer31 Brawl Stars credential.",
         description:
           "Message explaining a request has been sent to the their Wallet inbox",
       }),
@@ -206,7 +206,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
     return {
       status: "todo",
       message: defineMessage({
-        id: "activities.claimGamer31ClashRoyal.gettingExecutionErrorMessage",
+        id: "activities.claimGamer31BrawlStars.gettingExecutionErrorMessage",
         defaultMessage: `There was an error while sending you the credential request, please try again later`,
         description: "Error message when we can't get the user profile",
       }),
@@ -219,41 +219,41 @@ export const activity: Activity = {
   missionId: MISSION_03_ID,
   enabled: true,
   visible: true,
-  order: 4,
+  order: 5,
   points: 50,
   title: defineMessage({
-    id: "activities.claimGamer31ClashRoyal.title",
-    defaultMessage: "Claim a Gamer31 Clash Royal credential",
-    description: "Title of the activity 'Claim Gamer31 Clash Royal credential'",
+    id: "activities.claimGamer31BrawlStars.title",
+    defaultMessage: "Claim a Gamer31 Brawl Stars credential",
+    description: "Title of the activity 'Claim Gamer31 Brawl Stars credential'",
   }),
   shortDescription: defineMessage({
-    id: "activities.claimGamer31ClashRoyal.shortDescription",
-    defaultMessage: `Claim a Gamer31 Clash Royal credential`,
+    id: "activities.claimGamer31BrawlStars.shortDescription",
+    defaultMessage: `Claim a Gamer31 Brawl Stars credential`,
     description:
-      "Short description of the activity 'claim Gamer31 Clash Royal credential'",
+      "Short description of the activity 'claim Gamer31 Brawl Stars credential'",
   }),
   longDescription: defineMessage({
-    id: "activities.claimGamer31ClashRoyal.longDescription",
-    defaultMessage: `Claim a Gamer31 Clash Royal credential`,
+    id: "activities.claimGamer31BrawlStars.longDescription",
+    defaultMessage: `Claim a Gamer31 Brawl Stars credential`,
     description:
-      "Long description of the activity 'claim Gamer31 Clash Royal credential'",
+      "Long description of the activity 'claim Gamer31 Brawl Stars credential'",
   }),
   actionLabel: defineMessage({
-    id: "activities.claimGamer31ClashRoyal.actionLabel",
+    id: "activities.claimGamer31BrawlStars.actionLabel",
     defaultMessage: "Send Request",
     description:
-      "Label of the button to start the activity claim Gamer31 Clash Royal credential",
+      "Label of the button to start the activity claim Gamer31 Brawl Stars credential",
   }),
   actionReExecuteLabel: defineMessage({
-    id: "activities.claimGamer31ClashRoyal.actionReExecuteLabel",
+    id: "activities.claimGamer31BrawlStars.actionReExecuteLabel",
     defaultMessage: "Re-send Request",
     description: "Label of the button to perform the activity again ",
   }),
   actionExecutingLabel: defineMessage({
-    id: "activities.claimGamer31ClashRoyal.actionExecutingLabel",
+    id: "activities.claimGamer31BrawlStars.actionExecutingLabel",
     defaultMessage: "Sending Request",
     description:
-      "Label of the button when the activity 'claim Gamer31 Clash Royal credential' is being executed",
+      "Label of the button when the activity 'claim Gamer31 Brawl Stars credential' is being executed",
   }),
   onInit: handleInit,
   onExecute: handleExecute,
@@ -261,7 +261,7 @@ export const activity: Activity = {
   resources: [
     {
       label: defineMessage({
-        id: "activities.claimGamer31ClashRoyal.resources.gamer31ClaimPageUrl.label",
+        id: "activities.claimGamer31BrawlStars.resources.gamer31ClaimPageUrl.label",
         defaultMessage: "Gamer31 claim page",
         description: "Label of the resource 'Gamer31 claim page'",
       }),
