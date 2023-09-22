@@ -167,6 +167,38 @@
     "defaultMessage": "Next activity coming soon",
     "description": "Message to display in the upcoming activities CTA"
   },
+  "activities.claimGamer31Steam.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'claim Gamer31 Steam credential' is being executed"
+  },
+  "activities.claimGamer31Steam.actionLabel": {
+    "defaultMessage": "Send Request",
+    "description": "Label of the button to start the activity claim Gamer31 Steam credential"
+  },
+  "activities.claimGamer31Steam.actionReExecuteLabel": {
+    "defaultMessage": "Re-send Request",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimGamer31Steam.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a Gamer31 Steam credential.",
+    "description": "Message explaining a request has been sent to the their Wallet inbox"
+  },
+  "activities.claimGamer31Steam.longDescription": {
+    "defaultMessage": "Claim a Gamer31 Steam credential",
+    "description": "Long description of the activity 'claim Gamer31 Steam credential'"
+  },
+  "activities.claimGamer31Steam.resources.gamer31ClaimPageUrl.label": {
+    "defaultMessage": "Gamer31 claim page",
+    "description": "Label of the resource 'Gamer31 claim page'"
+  },
+  "activities.claimGamer31Steam.shortDescription": {
+    "defaultMessage": "Claim a Gamer31 Steam credential",
+    "description": "Short description of the activity 'claim Gamer31 Steam credential'"
+  },
+  "activities.claimGamer31Steam.title": {
+    "defaultMessage": "Claim a Gamer31 Steam credential",
+    "description": "Title of the activity 'Claim Gamer31 Steam credential'"
+  },
   "activities.claimGateKeperAdopter.actionExecutingLabel": {
     "defaultMessage": "Sending Request",
     "description": "Label of the button when the activity 'claim GateKeeper Adopter credential' is being executed"
@@ -322,6 +354,10 @@
   "activities.useMarkdownEditor.video.label": {
     "defaultMessage": "How to use the Markdown Editor demo app",
     "description": "Label of the video 'How to use the Markdown Editor demo app'"
+  },
+  "activity.claimGamer31Steam.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
   },
   "activity.claimGateKeperAdopter.gettingExecutionErrorMessage": {
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
