@@ -42,6 +42,7 @@ export function useMessageListener(
 
             return activity.onMessage?.(
               message,
+              webUserInstanceRef,
               userActivity || null,
               saveActivity
             );

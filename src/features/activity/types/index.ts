@@ -66,6 +66,7 @@ export type ActivityOnExecuteResult = {
 
 export type ActivityOnMessage = (
   message: ReceivedMessage<unknown>,
+  veridaWebUser: MutableRefObject<WebUser>,
   userActivity: UserActivity | null,
   saveActivity: DebouncedState<
     UseMutateAsyncFunction<void, unknown, UserActivity>
