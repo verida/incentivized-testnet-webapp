@@ -7,8 +7,11 @@ import type {
   ActivityOnExecute,
   ActivityOnInit,
 } from "~/features/activity/types";
+import { Logger } from "~/features/logger";
 import { Sentry } from "~/features/sentry";
 import { wait } from "~/utils";
+
+const logger = new Logger("activity");
 
 const ACTIVITY_ID = "update-profile"; // Never change the id
 
@@ -17,6 +20,10 @@ const handleInit: ActivityOnInit = async (
   _userActivity,
   _saveActivity
 ) => {
+  logger.debug("No initialisation needed", {
+    activityId: ACTIVITY_ID,
+  });
+
   // TODO: Uncomment this code if we want to automate this activity
   //
   // if (userActivity?.status === "completed") {
@@ -42,10 +49,14 @@ const handleInit: ActivityOnInit = async (
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
+  logger.debug("Executing activity", { activityId: ACTIVITY_ID });
+
   // Wait a bit for UX purposes
   await wait(2000);
   let profile: WebUserProfile;
   try {
+    logger.debug("Getting user public profile", { activityId: ACTIVITY_ID });
+
     profile = await veridaWebUser.current.getPublicProfile(true);
   } catch (error: unknown) {
     Sentry.captureException(error);

@@ -6,18 +6,26 @@ import type {
   ActivityOnExecute,
   ActivityOnInit,
 } from "~/features/activity/types";
+import { Logger } from "~/features/logger";
 import { Sentry } from "~/features/sentry";
 import { wait } from "~/utils";
+
+const logger = new Logger("activity");
 
 const ACTIVITY_ID = "use-markdown-editor"; // Never change the id
 
 const MARKDOWN_EDITOR_CONTEXT_NAME = "Verida: Markdown Notes Demo";
 
 const handleInit: ActivityOnInit = () => {
+  logger.debug("No initialisation needed", {
+    activityId: ACTIVITY_ID,
+  });
   return Promise.resolve(() => Promise.resolve());
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
+  logger.debug("Executing activity", { activityId: ACTIVITY_ID });
+
   // Wait a bit for UX purposes
   await wait(2000);
 
