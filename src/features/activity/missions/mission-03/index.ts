@@ -11,7 +11,7 @@ export const mission: Mission = {
     defaultMessage: "Mission 3",
     description: "Label of the mission id 03",
   }),
-  enabled: false,
+  enabled: true,
   visible: true,
   frozen: false,
   order: 3,
