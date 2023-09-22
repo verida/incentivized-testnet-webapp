@@ -404,16 +404,32 @@
     "description": "Label of the mission id 03"
   },
   "missions.mission-03.longDescription": {
-    "defaultMessage": "In Mission 3 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+    "defaultMessage": "Gamer31",
     "description": "Long description of the mission 03"
   },
   "missions.mission-03.shortDescription": {
-    "defaultMessage": "In Mission 3 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+    "defaultMessage": "Gamer31",
     "description": "Short description of the mission 03"
   },
   "missions.mission-03.title": {
-    "defaultMessage": "Stress testing the network",
+    "defaultMessage": "Gamer31",
     "description": "Title of the mission 03"
+  },
+  "missions.mission-04.idLabel": {
+    "defaultMessage": "Mission 4",
+    "description": "Label of the mission id 04"
+  },
+  "missions.mission-04.longDescription": {
+    "defaultMessage": "In Mission 4 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+    "description": "Long description of the mission 04"
+  },
+  "missions.mission-04.shortDescription": {
+    "defaultMessage": "In Mission 4 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+    "description": "Short description of the mission 04"
+  },
+  "missions.mission-04.title": {
+    "defaultMessage": "Stress testing the network",
+    "description": "Title of the mission 04"
   },
   "useExecuteActivity.activityAlreadyBeingExecutedMessage": {
     "defaultMessage": "An activity is already being executed, please wait for it to finish",

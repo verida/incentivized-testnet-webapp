@@ -17,19 +17,17 @@ export const mission: Mission = {
   order: 3,
   title: defineMessage({
     id: "missions.mission-03.title",
-    defaultMessage: "Stress testing the network",
+    defaultMessage: "Gamer31",
     description: "Title of the mission 03",
   }),
   shortDescription: defineMessage({
     id: "missions.mission-03.shortDescription",
-    defaultMessage:
-      "In Mission 3 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+    defaultMessage: "Gamer31",
     description: "Short description of the mission 03",
   }),
   longDescription: defineMessage({
     id: "missions.mission-03.longDescription",
-    defaultMessage:
-      "In Mission 3 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+    defaultMessage: "Gamer31",
     description: "Long description of the mission 03",
   }),
 };
