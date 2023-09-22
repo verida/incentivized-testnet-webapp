@@ -62,7 +62,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
     Sentry.captureException(error);
 
     const gettingProfileErrorMessage = defineMessage({
-      id: "activity.updateProfile.gettingProfileErrorMessage",
+      id: "activities.updateProfile.gettingProfileErrorMessage",
       defaultMessage: `There was an error while getting your profile, please try again later`,
       description: "Error message when we can't get the user profile",
     });
@@ -95,7 +95,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
   await wait(2000);
 
   const missingFieldErrorMessage = defineMessage({
-    id: "activity.updateProfile.missingFieldsErrorMessage",
+    id: "activities.updateProfile.missingFieldsErrorMessage",
     defaultMessage: `Some information are missing, please fill your public name, description and set an avatar in your profile`,
     description:
       "Error message when the user didn't fill all the fields of their profile",

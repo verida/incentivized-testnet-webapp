@@ -42,7 +42,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
     }
 
     const markdownEditorNotUsedErrorMessage = defineMessage({
-      id: "activity.useMarkdownEditor.markdownEditorNotUsedErrorMessage",
+      id: "activities.useMarkdownEditor.markdownEditorNotUsedErrorMessage",
       defaultMessage: `Looks like you haven't used the Markdown Editor demo app yet, please use it and check this activity again`,
       description:
         "Error message when the user haven't used the Markdown Editor yet.",
@@ -55,7 +55,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
   } catch (error: unknown) {
     Sentry.captureException(error);
     const executionErrorMessage = defineMessage({
-      id: "activity.useMarkdownEditor.executionErrorMessage",
+      id: "activities.useMarkdownEditor.executionErrorMessage",
       defaultMessage: `There was an error while checking this activity, please try again later`,
       description: "Error message when we are not able to check the activity",
     });

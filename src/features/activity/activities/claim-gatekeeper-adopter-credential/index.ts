@@ -206,7 +206,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
     return {
       status: "todo",
       message: defineMessage({
-        id: "activity.claimGateKeperAdopter.gettingExecutionErrorMessage",
+        id: "activities.claimGateKeperAdopter.gettingExecutionErrorMessage",
         defaultMessage: `There was an error while sending you the credential request, please try again later`,
         description: "Error message when we can't get the user profile",
       }),
