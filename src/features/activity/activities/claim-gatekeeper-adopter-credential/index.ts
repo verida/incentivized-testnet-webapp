@@ -1,4 +1,3 @@
-import type { IMessaging } from "@verida/types";
 import toast from "react-hot-toast";
 import { defineMessage } from "react-intl";
 
@@ -7,6 +6,7 @@ import type {
   Activity,
   ActivityOnExecute,
   ActivityOnInit,
+  ActivityOnMessage,
 } from "~/features/activity/types";
 import { Logger } from "~/features/logger";
 import { Sentry } from "~/features/sentry";
@@ -24,95 +24,130 @@ const logger = new Logger("activity");
 
 const ACTIVITY_ID = "claim-gatekeeper-adopter-credential"; // Never change the id
 
+const handleNewMessage: ActivityOnMessage = async (
+  message,
+  _webUserRef,
+  userActivity,
+  saveActivity
+) => {
+  if (userActivity?.status === "completed") {
+    return;
+  }
+
+  try {
+    logger.info("Checking message", { activityId: ACTIVITY_ID });
+
+    const verified = verifyReceivedMessage(message);
+    if (!verified) {
+      return;
+    }
+
+    logger.info(
+      "Received message matched and verified, updating activity now",
+      { activityId: ACTIVITY_ID }
+    );
+
+    await saveActivity({
+      id: ACTIVITY_ID,
+      status: "completed",
+      data: {},
+    });
+
+    toast.success(
+      "Congrats, you have completed the activity 'Claim a GateKeeper Adopter credential'"
+    );
+  } catch (error: unknown) {
+    Sentry.captureException(error, {
+      tags: {
+        activityId: ACTIVITY_ID,
+      },
+    });
+  }
+};
+
 const handleInit: ActivityOnInit = async (
   veridaWebUser,
   userActivity,
   saveActivity
 ) => {
   if (userActivity?.status === "completed") {
+    logger.debug("Activity already completed, no initialisation needed", {
+      activityId: ACTIVITY_ID,
+    });
     return () => Promise.resolve();
   }
 
-  logger.info("Init activity", { activityId: ACTIVITY_ID });
+  logger.info("Initialising activity", { activityId: ACTIVITY_ID });
 
-  const checkMessage = async (message: ReceivedMessage<unknown>) => {
-    try {
-      logger.info("Checking received message", { activityId: ACTIVITY_ID });
-
-      const verified = verifyReceivedMessage(message);
-      if (!verified) {
-        return;
-      }
-
-      logger.info(
-        "Received message matched and verified, updating activity now",
-        { activityId: ACTIVITY_ID }
-      );
-
-      await saveActivity({
-        id: ACTIVITY_ID,
-        status: "completed",
-        data: {},
-      });
-
-      toast.success(
-        "Congrats, you have completed the activity 'Claim a GateKeeper Adopter credential'"
-      );
-    } catch (error: unknown) {
-      Sentry.captureException(error, {
-        tags: {
-          activityId: ACTIVITY_ID,
-        },
-      });
-    }
-  };
-
-  let messaging: IMessaging | undefined;
-
-  const cleanUpFunction = async () => {
-    try {
-      logger.info("Cleaning up onMessage handler", { activityId: ACTIVITY_ID });
-
-      if (messaging) await messaging.offMessage(checkMessage);
-    } catch (error: unknown) {
-      Sentry.captureException(error, {
-        tags: {
-          activityId: ACTIVITY_ID,
-        },
-      });
-    }
-  };
+  const existingRequestId = userActivity?.data?.requestId;
+  if (!existingRequestId) {
+    logger.info("No existing request id, skipping", {
+      activityId: ACTIVITY_ID,
+    });
+    return () => Promise.resolve();
+  }
 
   try {
     logger.info("Getting Verida Context and Messaging", {
       activityId: ACTIVITY_ID,
     });
 
-    messaging = await getMessaging(veridaWebUser.current);
+    const messaging = await getMessaging(veridaWebUser.current);
 
-    const existingRequestId = userActivity?.data?.requestId;
+    const messages = (await messaging.getMessages()) as
+      | ReceivedMessage<unknown>[]
+      | undefined;
 
-    if (existingRequestId) {
-      const messages = (await messaging.getMessages()) as
-        | ReceivedMessage<unknown>[]
-        | undefined;
+    const filteredMessages =
+      messages?.filter(
+        (message) => message.data.replyId === existingRequestId
+      ) || [];
 
-      if (messages) {
-        logger.info("Checking existing messages for existing request id", {
-          activityId: ACTIVITY_ID,
-        });
-
-        void Promise.allSettled(
-          messages
-            .filter((message) => message.data.replyId === existingRequestId)
-            .map(checkMessage)
-        );
-      }
+    if (filteredMessages.length === 0) {
+      logger.info("No messages found for existing request id", {
+        activityId: ACTIVITY_ID,
+      });
+      return () => Promise.resolve();
     }
 
-    logger.info("Setting up onMessage handler", { activityId: ACTIVITY_ID });
+    logger.info("Checking existing messages", {
+      activityId: ACTIVITY_ID,
+    });
 
-    void messaging.onMessage(checkMessage);
+    filteredMessages.some(async (message) => {
+      try {
+        logger.info("Checking message", { activityId: ACTIVITY_ID });
+
+        const verified = verifyReceivedMessage(message);
+        if (!verified) {
+          return false;
+        }
+
+        logger.info(
+          "Received message matched and verified, updating activity now",
+          { activityId: ACTIVITY_ID }
+        );
+
+        await saveActivity({
+          id: ACTIVITY_ID,
+          status: "completed",
+          data: {},
+        });
+
+        toast.success(
+          "Congrats, you have completed the activity 'Claim a GateKeeper Adopter credential'"
+        );
+
+        return true;
+      } catch (error: unknown) {
+        Sentry.captureException(error, {
+          tags: {
+            activityId: ACTIVITY_ID,
+          },
+        });
+        return false;
+      }
+    });
   } catch (error: unknown) {
     Sentry.captureException(error, {
       tags: {
@@ -121,10 +156,12 @@ const handleInit: ActivityOnInit = async (
     });
   }
 
-  return cleanUpFunction;
+  return () => Promise.resolve();
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
+  logger.debug("Executing activity", { activityId: ACTIVITY_ID });
+
   try {
     // TODO: Make a localised message of this message
     const message = "Please share a GateKeeper Adopter credential";
@@ -220,6 +257,7 @@ export const activity: Activity = {
   }),
   onInit: handleInit,
   onExecute: handleExecute,
+  onMessage: handleNewMessage,
   resources: [
     {
       label: defineMessage({

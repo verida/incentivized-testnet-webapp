@@ -1,4 +1,3 @@
-import { IMessaging } from "@verida/types";
 import toast from "react-hot-toast";
 import { defineMessage } from "react-intl";
 
@@ -7,6 +6,7 @@ import type {
   Activity,
   ActivityOnExecute,
   ActivityOnInit,
+  ActivityOnMessage,
 } from "~/features/activity/types";
 import { copyToClipboard } from "~/features/clipboard";
 import { Logger } from "~/features/logger";
@@ -23,81 +23,77 @@ import {
 
 const logger = new Logger("activity");
 
+const handleNewMessage: ActivityOnMessage = async (
+  message,
+  webUserRef,
+  userActivity,
+  saveActivity
+) => {
+  if (userActivity?.status === "completed") {
+    return;
+  }
+
+  try {
+    logger.info("Checking new message", { activityId: ACTIVITY_ID });
+    logger.debug("Checking message for referral", message);
+
+    const did = webUserRef.current.getDid();
+
+    const verified = verifyReceivedMessage(message, did);
+    if (!verified) {
+      return;
+    }
+
+    logger.info(
+      "Received message matched and verified, updating activity now",
+      { activityId: ACTIVITY_ID }
+    );
+
+    await saveActivity({
+      id: ACTIVITY_ID,
+      status: "completed",
+      data: {
+        referredDids: [message.sentBy.did],
+      },
+    });
+
+    toast.success(
+      "Congrats, you have completed the activity 'Refer a fried to join Verida Missions'"
+    );
+  } catch (error: unknown) {
+    Sentry.captureException(error, {
+      tags: {
+        activityId: ACTIVITY_ID,
+      },
+    });
+  }
+};
+
 const handleInit: ActivityOnInit = async (
   veridaWebUser,
   userActivity,
   saveActivity
 ) => {
-  if (userActivity?.status === "completed") {
-    return () => Promise.resolve();
-  }
-
-  logger.info("Init activity", { activityId: ACTIVITY_ID });
+  logger.info("Initialising activity", { activityId: ACTIVITY_ID });
 
   // Handle referral in URL
   await checkAndHandleReferralInUrl(veridaWebUser.current);
 
+  if (userActivity?.status === "completed") {
+    logger.debug("Activity already completed, no initialisation needed", {
+      activityId: ACTIVITY_ID,
+    });
+    return () => Promise.resolve();
+  }
+
   const did = veridaWebUser.current.getDid();
-
-  const checkMessage = async (message: ReceivedMessage<unknown>) => {
-    try {
-      logger.info("Checking message", { activityId: ACTIVITY_ID });
-      logger.debug("Checking message for referral", message);
-
-      const verified = verifyReceivedMessage(message, did);
-      if (!verified) {
-        return false;
-      }
-
-      logger.info(
-        "Received message matched and verified, updating activity now",
-        { activityId: ACTIVITY_ID }
-      );
-
-      await saveActivity({
-        id: ACTIVITY_ID,
-        status: "completed",
-        data: {
-          referredDids: [message.sentBy.did],
-        },
-      });
-
-      toast.success(
-        "Congrats, you have completed the activity 'Refer a fried to join Verida Missions'"
-      );
-      return true;
-    } catch (error: unknown) {
-      Sentry.captureException(error, {
-        tags: {
-          activityId: ACTIVITY_ID,
-        },
-      });
-      return false;
-    }
-  };
-
-  let messaging: IMessaging | undefined;
-
-  const cleanUpFunction = async () => {
-    try {
-      logger.info("Cleaning up onMessage handler", { activityId: ACTIVITY_ID });
-
-      if (messaging) await messaging.offMessage(checkMessage);
-    } catch (error: unknown) {
-      Sentry.captureException(error, {
-        tags: {
-          activityId: ACTIVITY_ID,
-        },
-      });
-    }
-  };
 
   try {
     logger.info("Getting Verida Context and Messaging", {
       activityId: ACTIVITY_ID,
     });
 
-    messaging = await getMessaging(veridaWebUser.current);
+    const messaging = await getMessaging(veridaWebUser.current);
 
     // Check existing messages for referral confirmation while the user was not connected.
 
@@ -111,19 +107,44 @@ const handleInit: ActivityOnInit = async (
       logger.debug("start iterating over messages");
       // Iterating over the messages and stopping on the first matching the condition to avoid saving the activity multiple times in case there are several valid messages
       messages.some(async (message) => {
-        return await checkMessage(message);
+        try {
+          logger.info("Checking message", { activityId: ACTIVITY_ID });
+          logger.debug("Checking message for referral", message);
+
+          const verified = verifyReceivedMessage(message, did);
+          if (!verified) {
+            return false;
+          }
+
+          logger.info(
+            "Received message matched and verified, updating activity now",
+            { activityId: ACTIVITY_ID }
+          );
+
+          await saveActivity({
+            id: ACTIVITY_ID,
+            status: "completed",
+            data: {
+              referredDids: [message.sentBy.did],
+            },
+          });
+
+          toast.success(
+            "Congrats, you have completed the activity 'Refer a fried to join Verida Missions'"
+          );
+          return true;
+        } catch (error: unknown) {
+          Sentry.captureException(error, {
+            tags: {
+              activityId: ACTIVITY_ID,
+            },
+          });
+          return false;
+        }
       });
     } else {
       logger.info("No existing messages to check", { activityId: ACTIVITY_ID });
     }
-
-    logger.info("Setting up incoming message listener", {
-      activityId: ACTIVITY_ID,
-    });
-
-    // Listening to incoming messages and check them
-    // BTW, pretty strange an onEvent function is async and return a promise
-    void messaging.onMessage(checkMessage);
   } catch (error: unknown) {
     Sentry.captureException(error, {
       tags: {
@@ -132,10 +153,12 @@ const handleInit: ActivityOnInit = async (
     });
   }
 
-  return cleanUpFunction;
+  return () => Promise.resolve();
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
+  logger.debug("Executing activity", { activityId: ACTIVITY_ID });
+
   // Wait a bit for UX purposes
   await wait(500);
 
@@ -198,4 +221,5 @@ export const activity: Activity = {
   }),
   onInit: handleInit,
   onExecute: handleExecute,
+  onMessage: handleNewMessage,
 };
