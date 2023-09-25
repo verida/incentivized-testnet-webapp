@@ -620,15 +620,15 @@
     "description": "Label of the mission id 03"
   },
   "missions.mission-03.longDescription": {
-    "defaultMessage": "Gamer31",
+    "defaultMessage": "Build your gaming identity for web3 with Verida and Gamer31. Gamer31 is on a mission to redefine how gamers establish their identities and reputation. Combined with Verida's web3 wallet and database storage network, claim your gaming ZK Polygon ID credentials and craft your private gaming identity for web3.",
     "description": "Long description of the mission 03"
   },
   "missions.mission-03.shortDescription": {
-    "defaultMessage": "Gamer31",
+    "defaultMessage": "Build your gaming identity for web3 with Verida and Gamer31. Gamer31 is on a mission to redefine how gamers establish their identities and reputation. Combined with Verida's web3 wallet and database storage network, claim your gaming ZK Polygon ID credentials and craft your private gaming identity for web3.",
     "description": "Short description of the mission 03"
   },
   "missions.mission-03.title": {
-    "defaultMessage": "Gamer31",
+    "defaultMessage": "Build your Web3 Gaming Identity with Gamer31",
     "description": "Title of the mission 03"
   },
   "missions.mission-04.idLabel": {
