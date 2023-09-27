@@ -3,8 +3,8 @@ import {
   type VeridaVerifiableCredentialRecord,
 } from "~/features/verida";
 
-import { GAMER31_CLASH_ROYAL_VC_SCHEMA_URLS } from "./constants";
-import { type Gamer31ClashRoyalCredentialSubject } from "./types";
+import { GAMER31_CLASH_ROYALE_VC_SCHEMA_URLS } from "./constants";
+import { type Gamer31ClashRoyaleCredentialSubject } from "./types";
 
 export function verifyReceivedMessage(
   message: ReceivedMessage<unknown>
@@ -15,13 +15,13 @@ export function verifyReceivedMessage(
   }
 
   const vc =
-    data as VeridaVerifiableCredentialRecord<Gamer31ClashRoyalCredentialSubject>;
+    data as VeridaVerifiableCredentialRecord<Gamer31ClashRoyaleCredentialSubject>;
 
   // TODO: Consider using zod to validate
 
   if (
     !vc.credentialSchema ||
-    !GAMER31_CLASH_ROYAL_VC_SCHEMA_URLS.includes(vc.credentialSchema)
+    !GAMER31_CLASH_ROYALE_VC_SCHEMA_URLS.includes(vc.credentialSchema)
   ) {
     return false;
   }

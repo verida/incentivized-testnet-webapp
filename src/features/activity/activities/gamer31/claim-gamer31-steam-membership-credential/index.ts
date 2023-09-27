@@ -228,13 +228,13 @@ export const activity: Activity = {
   }),
   shortDescription: defineMessage({
     id: "activities.claimGamer31Steam.shortDescription",
-    defaultMessage: `Claim the Gamer31 Steam proof of membership credential to prove you own a Steam account! The credential will be stored in your Verida Wallet, and can be securely shared and verified.`,
+    defaultMessage: `Demonstrate your ownership of a Steam account by claiming the Gamer31 Steam proof of membership credential. This credential will be securely stored in your Verida Wallet, enabling private sharing and verification.`,
     description:
       "Short description of the activity 'claim Gamer31 Steam credential'",
   }),
   longDescription: defineMessage({
     id: "activities.claimGamer31Steam.longDescription",
-    defaultMessage: `Claim the Gamer31 Steam proof of membership credential to prove you own a Steam account! The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the Gamer 31 claim page (link in the resources below) and click on the Steam 'Claim' button to start the process.{newline}{newline}Step 2. Follow the instructions to connect with your Steam account, then to claim the credential by scanning the two QR codes with your Verida Wallet.{newline}{newline}Step 3. Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.`,
+    defaultMessage: `Demonstrate your ownership of a Steam account by claiming the Gamer31 Steam proof of membership credential. This credential will be securely stored in your Verida Wallet, enabling private sharing and verification.{newline}{newline}Step 1. Go to the Gamer 31 claim page (link in the resources below) and click on the Steam 'Claim' button to start the process.{newline}{newline}Step 2. Follow the instructions to connect with your Steam account, then to claim the credential by scanning the two QR codes with your Verida Wallet.{newline}{newline}Step 3. Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.`,
     description:
       "Long description of the activity 'claim Gamer31 Steam credential'",
   }),
