@@ -10,6 +10,7 @@ import {
   UserActivityRecordSchema,
   UserActivitySchema,
 } from "~/features/activity/schemas";
+import { ReceivedMessage } from "~/features/verida";
 
 export type Resource = {
   label: MessageDescriptor;
@@ -23,6 +24,7 @@ export type Mission = {
   idLabel: MessageDescriptor;
   enabled: boolean;
   visible: boolean;
+  frozen: boolean;
   order: number;
   title: MessageDescriptor;
   shortDescription: MessageDescriptor;
@@ -62,6 +64,15 @@ export type ActivityOnExecuteResult = {
   data?: UserActivityData;
 };
 
+export type ActivityOnMessage = (
+  message: ReceivedMessage<unknown>,
+  veridaWebUser: MutableRefObject<WebUser>,
+  userActivity: UserActivity | null,
+  saveActivity: DebouncedState<
+    UseMutateAsyncFunction<void, unknown, UserActivity>
+  >
+) => Promise<void>;
+
 export type Activity = {
   id: string;
   missionId: string;
@@ -81,4 +92,5 @@ export type Activity = {
   actionExecutingLabel: MessageDescriptor;
   onInit: ActivityOnInit;
   onExecute: ActivityOnExecute;
+  onMessage?: ActivityOnMessage;
 };

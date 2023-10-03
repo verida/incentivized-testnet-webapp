@@ -11,24 +11,26 @@ export const mission: Mission = {
     defaultMessage: "Mission 3",
     description: "Label of the mission id 03",
   }),
-  enabled: false,
+  enabled: true,
   visible: true,
+  frozen: false,
   order: 3,
   title: defineMessage({
     id: "missions.mission-03.title",
-    defaultMessage: "Stress testing the network",
+    defaultMessage:
+      "Craft Your Unique Web3 Gaming Identity with Gamer31 ZK Credentials",
     description: "Title of the mission 03",
   }),
   shortDescription: defineMessage({
     id: "missions.mission-03.shortDescription",
     defaultMessage:
-      "In Mission 3 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+      "Gamer31 is on a mission to redefine how gamers establish their identities and reputation. Combined with Verida's web3 wallet and database storage network, don't miss this opportunity to claim your gaming ZK Polygon ID credentials and build your private gaming identity for web3.",
     description: "Short description of the mission 03",
   }),
   longDescription: defineMessage({
     id: "missions.mission-03.longDescription",
     defaultMessage:
-      "In Mission 3 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+      "Gamer31 is on a mission to redefine how gamers establish their identities and reputation. Combined with Verida's web3 wallet and database storage network, don't miss this opportunity to claim your gaming ZK Polygon ID credentials and build your private gaming identity for web3.",
     description: "Long description of the mission 03",
   }),
 };

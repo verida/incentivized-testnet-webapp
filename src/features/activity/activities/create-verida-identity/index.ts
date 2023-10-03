@@ -7,15 +7,25 @@ import type {
   ActivityOnExecute,
   ActivityOnInit,
 } from "~/features/activity/types";
+import { Logger } from "~/features/logger";
 import { wait } from "~/utils";
+
+const logger = new Logger("activity");
 
 const ACTIVITY_ID = "create-verida-identity"; // Never change the id
 
 const handleInit: ActivityOnInit = async (
   veridaWebUser,
-  _userActivity,
+  userActivity,
   saveActivity
 ) => {
+  if (userActivity?.status === "completed") {
+    logger.debug("Activity already completed, no initialisation needed", {
+      activityId: ACTIVITY_ID,
+    });
+    return () => Promise.resolve();
+  }
+
   const { status } = await handleExecute(veridaWebUser);
   try {
     await saveActivity({ id: ACTIVITY_ID, status });
@@ -28,6 +38,8 @@ const handleInit: ActivityOnInit = async (
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
+  logger.debug("Executing activity", { activityId: ACTIVITY_ID });
+
   const isConnected = veridaWebUser.current.isConnected();
   if (isConnected) {
     return { status: "completed" };

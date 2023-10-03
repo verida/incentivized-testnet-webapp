@@ -6,18 +6,26 @@ import type {
   ActivityOnExecute,
   ActivityOnInit,
 } from "~/features/activity/types";
+import { Logger } from "~/features/logger";
 import { Sentry } from "~/features/sentry";
 import { wait } from "~/utils";
+
+const logger = new Logger("activity");
 
 const ACTIVITY_ID = "use-markdown-editor"; // Never change the id
 
 const MARKDOWN_EDITOR_CONTEXT_NAME = "Verida: Markdown Notes Demo";
 
 const handleInit: ActivityOnInit = () => {
+  logger.debug("No initialisation needed", {
+    activityId: ACTIVITY_ID,
+  });
   return Promise.resolve(() => Promise.resolve());
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
+  logger.debug("Executing activity", { activityId: ACTIVITY_ID });
+
   // Wait a bit for UX purposes
   await wait(2000);
 
@@ -34,7 +42,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
     }
 
     const markdownEditorNotUsedErrorMessage = defineMessage({
-      id: "activity.useMarkdownEditor.markdownEditorNotUsedErrorMessage",
+      id: "activities.useMarkdownEditor.markdownEditorNotUsedErrorMessage",
       defaultMessage: `Looks like you haven't used the Markdown Editor demo app yet, please use it and check this activity again`,
       description:
         "Error message when the user haven't used the Markdown Editor yet.",
@@ -47,7 +55,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
   } catch (error: unknown) {
     Sentry.captureException(error);
     const executionErrorMessage = defineMessage({
-      id: "activity.useMarkdownEditor.executionErrorMessage",
+      id: "activities.useMarkdownEditor.executionErrorMessage",
       defaultMessage: `There was an error while checking this activity, please try again later`,
       description: "Error message when we are not able to check the activity",
     });

@@ -7,6 +7,7 @@ import {
   useActivityQueries,
   useExecuteActivity,
   useInitialiseActivities,
+  useMessageListener,
   useUserXpPoints,
 } from "~/features/activity/hooks";
 import { missions } from "~/features/activity/missions";
@@ -50,6 +51,15 @@ export const ActivityProvider: React.FunctionComponent<
   const { userXpPoints } = useUserXpPoints(activities, userActivities);
 
   useInitialiseActivities(
+    activities,
+    isQueriesReady,
+    did,
+    userActivities,
+    webUserInstanceRef,
+    saveActivity
+  );
+
+  useMessageListener(
     activities,
     isQueriesReady,
     did,
