@@ -52,7 +52,7 @@
     "tailwindcss-animate": "^1.0.7",
     "use-debounce": "^9.0.4",
     "util": "^0.12.5",
-    "zod": "^3.22.2"
+    "zod": "^3.22.3"
   },
   "devDependencies": {
     "@formatjs/cli": "^6.2.0",
