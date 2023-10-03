@@ -167,6 +167,222 @@
     "defaultMessage": "Next activity coming soon",
     "description": "Message to display in the upcoming activities CTA"
   },
+  "activities.claimGamer31BrawlStars.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'claim Gamer31 Brawl Stars credential' is being executed"
+  },
+  "activities.claimGamer31BrawlStars.actionLabel": {
+    "defaultMessage": "Send Request",
+    "description": "Label of the button to start the activity claim Gamer31 Brawl Stars credential"
+  },
+  "activities.claimGamer31BrawlStars.actionReExecuteLabel": {
+    "defaultMessage": "Re-send Request",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimGamer31BrawlStars.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a Gamer31 Brawl Stars credential.",
+    "description": "Message explaining a request has been sent to the their Wallet inbox"
+  },
+  "activities.claimGamer31BrawlStars.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimGamer31BrawlStars.longDescription": {
+    "defaultMessage": "Showcase your prowess in Brawl Stars with the Gamer31 Brawl Stars proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the Gamer 31 claim page (link in the resources below) and click on the Brawl Stars 'Claim' button to start the process.{newline}{newline}Step 2. Follow the instructions to connect with your Supercell account, then to claim the credential by scanning the two QR codes with your Verida Wallet.{newline}{newline}Step 3. Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
+    "description": "Long description of the activity 'claim Gamer31 Brawl Stars credential'"
+  },
+  "activities.claimGamer31BrawlStars.resources.gamer31ClaimPageUrl.label": {
+    "defaultMessage": "Gamer31 claim page",
+    "description": "Label of the resource 'Gamer31 claim page'"
+  },
+  "activities.claimGamer31BrawlStars.shortDescription": {
+    "defaultMessage": "Showcase your prowess in Brawl Stars with the Gamer31 Brawl Stars proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
+    "description": "Short description of the activity 'claim Gamer31 Brawl Stars credential'"
+  },
+  "activities.claimGamer31BrawlStars.title": {
+    "defaultMessage": "Claim a Gamer31 Brawl Stars credential",
+    "description": "Title of the activity 'Claim Gamer31 Brawl Stars credential'"
+  },
+  "activities.claimGamer31ClashOfClans.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'claim Gamer31 Clash Of Clans credential' is being executed"
+  },
+  "activities.claimGamer31ClashOfClans.actionLabel": {
+    "defaultMessage": "Send Request",
+    "description": "Label of the button to start the activity claim Gamer31 Clash Of Clans credential"
+  },
+  "activities.claimGamer31ClashOfClans.actionReExecuteLabel": {
+    "defaultMessage": "Re-send Request",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimGamer31ClashOfClans.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a Gamer31 Clash Of Clans credential.",
+    "description": "Message explaining a request has been sent to the their Wallet inbox"
+  },
+  "activities.claimGamer31ClashOfClans.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimGamer31ClashOfClans.longDescription": {
+    "defaultMessage": "Highlight your achievements in Clash of Clans by claiming the Gamer31 Clash of Clans proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the Gamer 31 claim page (link in the resources below) and click on the Clash of Clans 'Claim' button to start the process.{newline}{newline}Step 2. Follow the instructions to connect with your Supercell account, then to claim the credential by scanning the two QR codes with your Verida Wallet.{newline}{newline}Step 3. Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
+    "description": "Long description of the activity 'claim Gamer31 Clash Of Clans credential'"
+  },
+  "activities.claimGamer31ClashOfClans.resources.gamer31ClaimPageUrl.label": {
+    "defaultMessage": "Gamer31 claim page",
+    "description": "Label of the resource 'Gamer31 claim page'"
+  },
+  "activities.claimGamer31ClashOfClans.shortDescription": {
+    "defaultMessage": "Highlight your achievements in Clash of Clans by claiming the Gamer31 Clash of Clans proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
+    "description": "Short description of the activity 'claim Gamer31 Clash Of Clans credential'"
+  },
+  "activities.claimGamer31ClashOfClans.title": {
+    "defaultMessage": "Claim a Gamer31 Clash Of Clans credential",
+    "description": "Title of the activity 'Claim Gamer31 Clash Of Clans credential'"
+  },
+  "activities.claimGamer31ClashRoyale.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'claim Gamer31 Clash Royale credential' is being executed"
+  },
+  "activities.claimGamer31ClashRoyale.actionLabel": {
+    "defaultMessage": "Send Request",
+    "description": "Label of the button to start the activity claim Gamer31 Clash Royale credential"
+  },
+  "activities.claimGamer31ClashRoyale.actionReExecuteLabel": {
+    "defaultMessage": "Re-send Request",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimGamer31ClashRoyale.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a Gamer31 Clash Royale credential.",
+    "description": "Message explaining a request has been sent to the their Wallet inbox"
+  },
+  "activities.claimGamer31ClashRoyale.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimGamer31ClashRoyale.longDescription": {
+    "defaultMessage": "Celebrate your accomplishments in Clash Royale by claiming the Gamer31 Clash Royale proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the Gamer 31 claim page (link in the resources below) and click on the Clash Royale 'Claim' button to start the process.{newline}{newline}Step 2. Follow the instructions to connect with your Supercell account, then to claim the credential by scanning the two QR codes with your Verida Wallet.{newline}{newline}Step 3. Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
+    "description": "Long description of the activity 'claim Gamer31 Clash Royale credential'"
+  },
+  "activities.claimGamer31ClashRoyale.resources.gamer31ClaimPageUrl.label": {
+    "defaultMessage": "Gamer31 claim page",
+    "description": "Label of the resource 'Gamer31 claim page'"
+  },
+  "activities.claimGamer31ClashRoyale.shortDescription": {
+    "defaultMessage": "Celebrate your accomplishments in Clash Royale by claiming the Gamer31 Clash Royale proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
+    "description": "Short description of the activity 'claim Gamer31 Clash Royale credential'"
+  },
+  "activities.claimGamer31ClashRoyale.title": {
+    "defaultMessage": "Claim a Gamer31 Clash Royale credential",
+    "description": "Title of the activity 'Claim Gamer31 Clash Royale credential'"
+  },
+  "activities.claimGamer31Lichess.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'claim Gamer31 Lichess credential' is being executed"
+  },
+  "activities.claimGamer31Lichess.actionLabel": {
+    "defaultMessage": "Send Request",
+    "description": "Label of the button to start the activity claim Gamer31 Lichess credential"
+  },
+  "activities.claimGamer31Lichess.actionReExecuteLabel": {
+    "defaultMessage": "Re-send Request",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimGamer31Lichess.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a Gamer31 Lichess credential.",
+    "description": "Message explaining a request has been sent to the their Wallet inbox"
+  },
+  "activities.claimGamer31Lichess.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimGamer31Lichess.longDescription": {
+    "defaultMessage": "Secure your Lichess legacy with the Gamer31 Lichess proof of reputation credential! The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the Gamer 31 claim page (link in the resources below) and click on the Lichess 'Claim' button to start the process.{newline}{newline}Step 2. Follow the instructions to connect with your Lichess account, then to claim the credential by scanning the two QR codes with your Verida Wallet.{newline}{newline}Step 3. Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
+    "description": "Long description of the activity 'claim Gamer31 Lichess credential'"
+  },
+  "activities.claimGamer31Lichess.resources.gamer31ClaimPageUrl.label": {
+    "defaultMessage": "Gamer31 claim page",
+    "description": "Label of the resource 'Gamer31 claim page'"
+  },
+  "activities.claimGamer31Lichess.shortDescription": {
+    "defaultMessage": "Secure your Lichess legacy with the Gamer31 Lichess proof of reputation credential! The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
+    "description": "Short description of the activity 'claim Gamer31 Lichess credential'"
+  },
+  "activities.claimGamer31Lichess.title": {
+    "defaultMessage": "Claim a Gamer31 Lichess credential",
+    "description": "Title of the activity 'Claim Gamer31 Lichess credential'"
+  },
+  "activities.claimGamer31Steam.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'claim Gamer31 Steam credential' is being executed"
+  },
+  "activities.claimGamer31Steam.actionLabel": {
+    "defaultMessage": "Send Request",
+    "description": "Label of the button to start the activity claim Gamer31 Steam credential"
+  },
+  "activities.claimGamer31Steam.actionReExecuteLabel": {
+    "defaultMessage": "Re-send Request",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimGamer31Steam.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a Gamer31 Steam credential.",
+    "description": "Message explaining a request has been sent to the their Wallet inbox"
+  },
+  "activities.claimGamer31Steam.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimGamer31Steam.longDescription": {
+    "defaultMessage": "Demonstrate your ownership of a Steam account by claiming the Gamer31 Steam proof of membership credential. This credential will be securely stored in your Verida Wallet, enabling private sharing and verification.{newline}{newline}Step 1. Go to the Gamer 31 claim page (link in the resources below) and click on the Steam 'Claim' button to start the process.{newline}{newline}Step 2. Follow the instructions to connect with your Steam account, then to claim the credential by scanning the two QR codes with your Verida Wallet.{newline}{newline}Step 3. Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
+    "description": "Long description of the activity 'claim Gamer31 Steam credential'"
+  },
+  "activities.claimGamer31Steam.resources.gamer31ClaimPageUrl.label": {
+    "defaultMessage": "Gamer31 claim page",
+    "description": "Label of the resource 'Gamer31 claim page'"
+  },
+  "activities.claimGamer31Steam.shortDescription": {
+    "defaultMessage": "Demonstrate your ownership of a Steam account by claiming the Gamer31 Steam proof of membership credential. This credential will be securely stored in your Verida Wallet, enabling private sharing and verification.",
+    "description": "Short description of the activity 'claim Gamer31 Steam credential'"
+  },
+  "activities.claimGamer31Steam.title": {
+    "defaultMessage": "Claim a Gamer31 Steam credential",
+    "description": "Title of the activity 'Claim Gamer31 Steam credential'"
+  },
+  "activities.claimGamer31Twitch.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'claim Gamer31 Twitch credential' is being executed"
+  },
+  "activities.claimGamer31Twitch.actionLabel": {
+    "defaultMessage": "Send Request",
+    "description": "Label of the button to start the activity claim Gamer31 Twitch credential"
+  },
+  "activities.claimGamer31Twitch.actionReExecuteLabel": {
+    "defaultMessage": "Re-send Request",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimGamer31Twitch.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a Gamer31 Twitch credential.",
+    "description": "Message explaining a request has been sent to the their Wallet inbox"
+  },
+  "activities.claimGamer31Twitch.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimGamer31Twitch.longDescription": {
+    "defaultMessage": "Establish your Twitch account ownership by claiming the Gamer31 Twitch proof of membership credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the Gamer 31 claim page (link in the resources below) and click on the Twitch 'Claim' button to start the process.{newline}{newline}Step 2. Follow the instructions to connect with your Twitch account, then to claim the credential by scanning the two QR codes with your Verida Wallet.{newline}{newline}Step 3. Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
+    "description": "Long description of the activity 'claim Gamer31 Twitch credential'"
+  },
+  "activities.claimGamer31Twitch.resources.gamer31ClaimPageUrl.label": {
+    "defaultMessage": "Gamer31 claim page",
+    "description": "Label of the resource 'Gamer31 claim page'"
+  },
+  "activities.claimGamer31Twitch.shortDescription": {
+    "defaultMessage": "Establish your Twitch account ownership by claiming the Gamer31 Twitch proof of membership credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
+    "description": "Short description of the activity 'claim Gamer31 Twitch credential'"
+  },
+  "activities.claimGamer31Twitch.title": {
+    "defaultMessage": "Claim a Gamer31 Twitch credential",
+    "description": "Title of the activity 'Claim Gamer31 Twitch credential'"
+  },
   "activities.claimGateKeperAdopter.actionExecutingLabel": {
     "defaultMessage": "Sending Request",
     "description": "Label of the button when the activity 'claim GateKeeper Adopter credential' is being executed"
@@ -182,6 +398,10 @@
   "activities.claimGateKeperAdopter.executePendingMessage": {
     "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a GateKeeper Adopter credential.",
     "description": "Message explaining a request has been sent to the their Wallet inbox"
+  },
+  "activities.claimGateKeperAdopter.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
   },
   "activities.claimGateKeperAdopter.longDescription": {
     "defaultMessage": "Claim the GateKeeper Adopter credential to prove you were an early pioneer of GateKeeper! The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the GateKeeper claim page to start the process (link in resources below).{newline}{newline}Step 2. Select the Verida Wallet and follow the prompts to claim the credential and save it in your Wallet.{newline}{newline}Step 3. Click on the 'Send Request' button below and share the credential by replying to the message you received in your Wallet inbox.",
@@ -206,54 +426,6 @@
   "activities.claimGateKeperAdopter.title": {
     "defaultMessage": "Claim a GateKeeper Adopter credential",
     "description": "Title of the activity 'Claim Gatekeeper Adopter credential'"
-  },
-  "activities.claimPolygonId.actionExecutingLabel": {
-    "defaultMessage": "Sending Request",
-    "description": "Label of the button when the activity 'claim Polygon ID' is being executed"
-  },
-  "activities.claimPolygonId.actionLabel": {
-    "defaultMessage": "Send Request",
-    "description": "Label of the button to start the activity claim polygon id"
-  },
-  "activities.claimPolygonId.executePendingMessage": {
-    "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a Polygon ID KYC Age credential.",
-    "description": "Message explaining a request has been sent to the their Wallet inbox"
-  },
-  "activities.claimPolygonId.longDescription": {
-    "defaultMessage": "Go to the Polygon ID issuer demo app and claim a KYC Age Credential, then share this credential by replying to the message you received in your inbox.",
-    "description": "Long description of the activity 'claim Polygon ID'"
-  },
-  "activities.claimPolygonId.resources.polygonIdDemoAppUrl.label": {
-    "defaultMessage": "Polygon ID demo app",
-    "description": "Label of the resource 'Polygon ID issuer demo app'"
-  },
-  "activities.claimPolygonId.shortDescription": {
-    "defaultMessage": "Go to the Polygon ID issuer demo app and claim a KYC Age Credential, then share this credential by replying to the message you received in your inbox.",
-    "description": "Short description of the activity 'claim Polygon ID'"
-  },
-  "activities.claimPolygonId.title": {
-    "defaultMessage": "Claim a Polygon ID Age credential",
-    "description": "Title of the activity 'claim Polygon ID'"
-  },
-  "activities.claimSocialMediaData.actionExecutingLabel": {
-    "defaultMessage": "Verifying",
-    "description": "Label of the button when the activity 'claim social media data' is being executed"
-  },
-  "activities.claimSocialMediaData.actionLabel": {
-    "defaultMessage": "Verify",
-    "description": "Label of the button to start the activity claim social media data"
-  },
-  "activities.claimSocialMediaData.longDescription": {
-    "defaultMessage": "Connect your Social Media account in the Verida Wallet and extract your data",
-    "description": "Long description of the activity 'claim social media data'"
-  },
-  "activities.claimSocialMediaData.shortDescription": {
-    "defaultMessage": "Connect your Social Media account in the Verida Wallet and extract your data.",
-    "description": "Short description of the activity 'claim social media data'"
-  },
-  "activities.claimSocialMediaData.title": {
-    "defaultMessage": "Claim your social media data",
-    "description": "Title of the activity 'claim social media data'"
   },
   "activities.createVeridaIdentity.actionExecutingLabel": {
     "defaultMessage": "Verifying",
@@ -307,9 +479,17 @@
     "defaultMessage": "Verify",
     "description": "Label of the button to start the activity update profile"
   },
+  "activities.updateProfile.gettingProfileErrorMessage": {
+    "defaultMessage": "There was an error while getting your profile, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
   "activities.updateProfile.longDescription": {
     "defaultMessage": "Each Verida Identity has a public profile that anyone can read from but only the owner can write to. The profile includes name, country, description and avatar. Except the name, all other properties are optional. Although, for this activity, we ask you to fill them with whatever you want (you can stay anon).{newline}{newline}Step 1. Go to your profile in the Verida Wallet, and update your public name, avatar and description.{newline}{newline}Step 2. Once you've updated your profile, click the 'Verify' button below.",
     "description": "Long description of the activity 'update profile'"
+  },
+  "activities.updateProfile.missingFieldsErrorMessage": {
+    "defaultMessage": "Some information are missing, please fill your public name, description and set an avatar in your profile",
+    "description": "Error message when the user didn't fill all the fields of their profile"
   },
   "activities.updateProfile.resources.howToUpdateYourVeridaIdentityProfile.label": {
     "defaultMessage": "User Guide: How to update your Verida Identity profile",
@@ -343,9 +523,17 @@
     "defaultMessage": "Check",
     "description": "Label of the button to start the activity use markdown editor"
   },
+  "activities.useMarkdownEditor.executionErrorMessage": {
+    "defaultMessage": "There was an error while checking this activity, please try again later",
+    "description": "Error message when we are not able to check the activity"
+  },
   "activities.useMarkdownEditor.longDescription": {
     "defaultMessage": "With the Markdown Editor demo app, you can create notes with markdown formatting. Notes are encrypted and securely stored in your Verida self-sovereign datastore.{newline}Note: this app is for demonstration purposes only.{newline}{newline}Step 1. Connect to the Markdown Editor demo app (link in resources below) and create a new note.{newline}{newline}Step 2. Once you've created a note, click the 'Verify' button below.",
     "description": "Long description of the activity 'use markdown editor'"
+  },
+  "activities.useMarkdownEditor.markdownEditorNotUsedErrorMessage": {
+    "defaultMessage": "Looks like you haven't used the Markdown Editor demo app yet, please use it and check this activity again",
+    "description": "Error message when the user haven't used the Markdown Editor yet."
   },
   "activities.useMarkdownEditor.resources.HowToUseTheMarkdownEditorDemoApp.label": {
     "defaultMessage": "User Guide: How to use the Markdown Editor demo app",
@@ -370,30 +558,6 @@
   "activities.useMarkdownEditor.video.label": {
     "defaultMessage": "How to use the Markdown Editor demo app",
     "description": "Label of the video 'How to use the Markdown Editor demo app'"
-  },
-  "activity.claimGateKeperAdopter.gettingExecutionErrorMessage": {
-    "defaultMessage": "There was an error while sending you the credential request, please try again later",
-    "description": "Error message when we can't get the user profile"
-  },
-  "activity.claimPolygonId.gettingExecutionErrorMessage": {
-    "defaultMessage": "There was an error while sending you the credential request, please try again later",
-    "description": "Error message when we can't get the user profile"
-  },
-  "activity.updateProfile.gettingProfileErrorMessage": {
-    "defaultMessage": "There was an error while getting your profile, please try again later",
-    "description": "Error message when we can't get the user profile"
-  },
-  "activity.updateProfile.missingFieldsErrorMessage": {
-    "defaultMessage": "Some information are missing, please fill your public name, description and set an avatar in your profile",
-    "description": "Error message when the user didn't fill all the fields of their profile"
-  },
-  "activity.useMarkdownEditor.executionErrorMessage": {
-    "defaultMessage": "There was an error while checking this activity, please try again later",
-    "description": "Error message when we are not able to check the activity"
-  },
-  "activity.useMarkdownEditor.markdownEditorNotUsedErrorMessage": {
-    "defaultMessage": "Looks like you haven't used the Markdown Editor demo app yet, please use it and check this activity again",
-    "description": "Error message when the user haven't used the Markdown Editor yet."
   },
   "app.meta.defaultDescription": {
     "defaultMessage": "Discover the future of web3 on the Verida Network. Join the incentivized testnet and experience secure decentralized data storage, zero-knowledge credentials, and more.",
@@ -456,16 +620,32 @@
     "description": "Label of the mission id 03"
   },
   "missions.mission-03.longDescription": {
-    "defaultMessage": "In Mission 3 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+    "defaultMessage": "Gamer31 is on a mission to redefine how gamers establish their identities and reputation. Combined with Verida's web3 wallet and database storage network, don't miss this opportunity to claim your gaming ZK Polygon ID credentials and build your private gaming identity for web3.",
     "description": "Long description of the mission 03"
   },
   "missions.mission-03.shortDescription": {
-    "defaultMessage": "In Mission 3 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+    "defaultMessage": "Gamer31 is on a mission to redefine how gamers establish their identities and reputation. Combined with Verida's web3 wallet and database storage network, don't miss this opportunity to claim your gaming ZK Polygon ID credentials and build your private gaming identity for web3.",
     "description": "Short description of the mission 03"
   },
   "missions.mission-03.title": {
-    "defaultMessage": "Stress testing the network",
+    "defaultMessage": "Craft Your Unique Web3 Gaming Identity with Gamer31 ZK Credentials",
     "description": "Title of the mission 03"
+  },
+  "missions.mission-04.idLabel": {
+    "defaultMessage": "Mission 4",
+    "description": "Label of the mission id 04"
+  },
+  "missions.mission-04.longDescription": {
+    "defaultMessage": "In Mission 4 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+    "description": "Long description of the mission 04"
+  },
+  "missions.mission-04.shortDescription": {
+    "defaultMessage": "In Mission 4 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+    "description": "Short description of the mission 04"
+  },
+  "missions.mission-04.title": {
+    "defaultMessage": "Stress testing the network",
+    "description": "Title of the mission 04"
   },
   "useExecuteActivity.activityAlreadyBeingExecutedMessage": {
     "defaultMessage": "An activity is already being executed, please wait for it to finish",

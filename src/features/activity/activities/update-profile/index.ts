@@ -7,13 +7,28 @@ import type {
   ActivityOnExecute,
   ActivityOnInit,
 } from "~/features/activity/types";
+import { Logger } from "~/features/logger";
 import { Sentry } from "~/features/sentry";
 import { wait } from "~/utils";
 
+const logger = new Logger("activity");
+
 const ACTIVITY_ID = "update-profile"; // Never change the id
 
-const handleInit: ActivityOnInit = async (veridaWebUser, saveActivity) => {
-  // TODO: Uncomment this code when we have more activities
+const handleInit: ActivityOnInit = async (
+  _veridaWebUser,
+  _userActivity,
+  _saveActivity
+) => {
+  logger.debug("No initialisation needed", {
+    activityId: ACTIVITY_ID,
+  });
+
+  // TODO: Uncomment this code if we want to automate this activity
+  //
+  // if (userActivity?.status === "completed") {
+  //   return () => Promise.resolve();
+  // }
   // const checkAndUpdate = async () => {
   //   const { status } = await handleExecute(veridaWebUser);
   //   saveActivity({ id: ACTIVITY_ID, status });
@@ -34,16 +49,20 @@ const handleInit: ActivityOnInit = async (veridaWebUser, saveActivity) => {
 };
 
 const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
+  logger.debug("Executing activity", { activityId: ACTIVITY_ID });
+
   // Wait a bit for UX purposes
   await wait(2000);
   let profile: WebUserProfile;
   try {
+    logger.debug("Getting user public profile", { activityId: ACTIVITY_ID });
+
     profile = await veridaWebUser.current.getPublicProfile(true);
   } catch (error: unknown) {
     Sentry.captureException(error);
 
     const gettingProfileErrorMessage = defineMessage({
-      id: "activity.updateProfile.gettingProfileErrorMessage",
+      id: "activities.updateProfile.gettingProfileErrorMessage",
       defaultMessage: `There was an error while getting your profile, please try again later`,
       description: "Error message when we can't get the user profile",
     });
@@ -76,7 +95,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
   await wait(2000);
 
   const missingFieldErrorMessage = defineMessage({
-    id: "activity.updateProfile.missingFieldsErrorMessage",
+    id: "activities.updateProfile.missingFieldsErrorMessage",
     defaultMessage: `Some information are missing, please fill your public name, description and set an avatar in your profile`,
     description:
       "Error message when the user didn't fill all the fields of their profile",

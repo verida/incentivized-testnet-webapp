@@ -54,9 +54,6 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
     config.devMode ? true : a.visible
   );
 
-  const hasUpcomingActivities =
-    missionActivities.length > displayedActivities.length;
-
   const isMissionComingSoon =
     !mission.enabled || displayedActivities.length === 0;
 
@@ -126,7 +123,7 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
                 </li>
               ))}
             </ul>
-            {hasUpcomingActivities ? (
+            {!mission.frozen ? (
               <UpcomingActivitiesCTA
                 index={displayedActivities.length + 1}
                 className="mt-4"
