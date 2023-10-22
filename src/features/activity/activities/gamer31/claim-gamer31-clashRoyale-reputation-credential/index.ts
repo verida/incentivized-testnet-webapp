@@ -229,19 +229,19 @@ export const activity: Activity = {
   }),
   shortDescription: defineMessage({
     id: "activities.claimGamer31ClashRoyale.shortDescription",
-    defaultMessage: `Temporary disabled, will come back soon.{newline}{newline}Celebrate your accomplishments in Clash Royale by claiming the Gamer31 Clash Royale proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.`,
+    defaultMessage: `Temporary disabled, please check the Verida Discord for more information.{newline}{newline}Celebrate your accomplishments in Clash Royale by claiming the Gamer31 Clash Royale proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.`,
     description:
       "Short description of the activity 'claim Gamer31 Clash Royale credential'",
   }),
   longDescription: defineMessage({
     id: "activities.claimGamer31ClashRoyale.longDescription",
-    defaultMessage: `Temporary disabled, will come back soon.{newline}{newline}Celebrate your accomplishments in Clash Royale by claiming the Gamer31 Clash Royale proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.`,
+    defaultMessage: `Temporary disabled, please check the Verida Discord for more information.{newline}{newline}Celebrate your accomplishments in Clash Royale by claiming the Gamer31 Clash Royale proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.`,
     description:
       "Long description of the activity 'claim Gamer31 Clash Royale credential'",
   }),
   // longDescription: defineMessage({
   //   id: "activities.claimGamer31ClashRoyale.longDescription",
-  //   defaultMessage: `Temporary disabled, will come back soon.{newline}{newline}Celebrate your accomplishments in Clash Royale by claiming the Gamer31 Clash Royale proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the Gamer 31 claim page (link in the resources below) and click on the Clash Royale 'Claim' button to start the process.{newline}{newline}Step 2. Follow the instructions to connect with your Supercell account, then to claim the credential by scanning the two QR codes with your Verida Wallet.{newline}{newline}Step 3. Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.`,
+  //   defaultMessage: `Celebrate your accomplishments in Clash Royale by claiming the Gamer31 Clash Royale proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the Gamer 31 claim page (link in the resources below) and click on the Clash Royale 'Claim' button to start the process.{newline}{newline}Step 2. Follow the instructions to connect with your Supercell account, then to claim the credential by scanning the two QR codes with your Verida Wallet.{newline}{newline}Step 3. Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.`,
   //   description:
   //     "Long description of the activity 'claim Gamer31 Clash Royale credential'",
   // }),

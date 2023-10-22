@@ -188,7 +188,7 @@
     "description": "Error message when we can't get the user profile"
   },
   "activities.claimGamer31BrawlStars.longDescription": {
-    "defaultMessage": "Temporary disabled, will come back soon.{newline}{newline}Showcase your prowess in Brawl Stars with the Gamer31 Brawl Stars proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
+    "defaultMessage": "Temporary disabled, please check the Verida Discord for more information.{newline}{newline}Showcase your prowess in Brawl Stars with the Gamer31 Brawl Stars proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
     "description": "Long description of the activity 'claim Gamer31 Brawl Stars credential'"
   },
   "activities.claimGamer31BrawlStars.resources.gamer31ClaimPageUrl.label": {
@@ -196,7 +196,7 @@
     "description": "Label of the resource 'Gamer31 claim page'"
   },
   "activities.claimGamer31BrawlStars.shortDescription": {
-    "defaultMessage": "Temporary disabled, will come back soon.{newline}{newline}Showcase your prowess in Brawl Stars with the Gamer31 Brawl Stars proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
+    "defaultMessage": "Temporary disabled, please check the Verida Discord for more information.{newline}{newline}Showcase your prowess in Brawl Stars with the Gamer31 Brawl Stars proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
     "description": "Short description of the activity 'claim Gamer31 Brawl Stars credential'"
   },
   "activities.claimGamer31BrawlStars.title": {
@@ -224,7 +224,7 @@
     "description": "Error message when we can't get the user profile"
   },
   "activities.claimGamer31ClashOfClans.longDescription": {
-    "defaultMessage": "Temporary disabled, will come back soon.{newline}{newline}Highlight your achievements in Clash of Clans by claiming the Gamer31 Clash of Clans proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
+    "defaultMessage": "Temporary disabled, please check the Verida Discord for more information.{newline}{newline}Highlight your achievements in Clash of Clans by claiming the Gamer31 Clash of Clans proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
     "description": "Long description of the activity 'claim Gamer31 Clash Of Clans credential'"
   },
   "activities.claimGamer31ClashOfClans.resources.gamer31ClaimPageUrl.label": {
@@ -232,7 +232,7 @@
     "description": "Label of the resource 'Gamer31 claim page'"
   },
   "activities.claimGamer31ClashOfClans.shortDescription": {
-    "defaultMessage": "Temporary disabled, will come back soon.{newline}{newline}Highlight your achievements in Clash of Clans by claiming the Gamer31 Clash of Clans proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
+    "defaultMessage": "Temporary disabled, please check the Verida Discord for more information.{newline}{newline}Highlight your achievements in Clash of Clans by claiming the Gamer31 Clash of Clans proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
     "description": "Short description of the activity 'claim Gamer31 Clash Of Clans credential'"
   },
   "activities.claimGamer31ClashOfClans.title": {
@@ -260,7 +260,7 @@
     "description": "Error message when we can't get the user profile"
   },
   "activities.claimGamer31ClashRoyale.longDescription": {
-    "defaultMessage": "Temporary disabled, will come back soon.{newline}{newline}Celebrate your accomplishments in Clash Royale by claiming the Gamer31 Clash Royale proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
+    "defaultMessage": "Temporary disabled, please check the Verida Discord for more information.{newline}{newline}Celebrate your accomplishments in Clash Royale by claiming the Gamer31 Clash Royale proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
     "description": "Long description of the activity 'claim Gamer31 Clash Royale credential'"
   },
   "activities.claimGamer31ClashRoyale.resources.gamer31ClaimPageUrl.label": {
@@ -268,7 +268,7 @@
     "description": "Label of the resource 'Gamer31 claim page'"
   },
   "activities.claimGamer31ClashRoyale.shortDescription": {
-    "defaultMessage": "Temporary disabled, will come back soon.{newline}{newline}Celebrate your accomplishments in Clash Royale by claiming the Gamer31 Clash Royale proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
+    "defaultMessage": "Temporary disabled, please check the Verida Discord for more information.{newline}{newline}Celebrate your accomplishments in Clash Royale by claiming the Gamer31 Clash Royale proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
     "description": "Short description of the activity 'claim Gamer31 Clash Royale credential'"
   },
   "activities.claimGamer31ClashRoyale.title": {
