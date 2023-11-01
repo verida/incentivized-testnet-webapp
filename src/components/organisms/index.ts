@@ -6,5 +6,5 @@ export * from "./GetSupportSection";
 export * from "./Header";
 export * from "./LearnMoreSection";
 export * from "./MissionSection";
-export * from "./SideNavigation";
+export * from "./MissionsSideNavigation";
 export * from "./TermsAndConditions";

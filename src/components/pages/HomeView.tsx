@@ -5,7 +5,7 @@ import { Alert, HomeHero } from "~/components/molecules";
 import {
   ConnectVeridaButton,
   MissionSection,
-  SideNavigation,
+  MissionsSideNavigation,
 } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { useActivity } from "~/features/activity";
@@ -61,9 +61,9 @@ export const HomeView: React.FunctionComponent = () => {
         />
       )}
       <div className="mt-16 relative">
-        <div className="hidden lg:block absolute top-0 bottom-0 -right-6 translate-x-full w-36">
+        <div className="hidden lg:block absolute top-0 bottom-0 -right-6 translate-x-full w-36 xl:w-64">
           <aside className="sticky top-24">
-            <SideNavigation />
+            <MissionsSideNavigation />
           </aside>
         </div>
         {missions.map((mission) => (

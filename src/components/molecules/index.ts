@@ -8,5 +8,5 @@ export * from "./MissionProgressBar";
 export * from "./Modal";
 export * from "./PortalWrapper";
 export * from "./ReportIssueButton";
-export * from "./SideNavigationItem";
+export * from "./SideNavigation";
 export * from "./UpcomingActivitiesCTA";
