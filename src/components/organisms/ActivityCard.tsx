@@ -122,7 +122,9 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
       ? "text-foreground"
       : "text-muted-foreground";
   const borderClasses = enabled
-    ? undefined
+    ? status !== "completed"
+      ? "border border-solid border-transparent hover:border-primary"
+      : "border border-solid border-transparent"
     : "border border-dashed border-border";
 
   return (
