@@ -10,7 +10,7 @@ const typographyVariants = cva("", {
       "heading-s": "text-heading-s sm:text-desktop-heading-s",
       "base": "text-base sm:text-desktop-base",
       "base-s": "text-base-s sm:text-desktop-base-s",
-      "subtitle": "text-subtitle sm:text-desktop-subtitle",
+      "subtitle": "text-subtitle",
     },
     component: {
       h1: "",

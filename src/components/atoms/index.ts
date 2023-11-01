@@ -11,5 +11,6 @@ export * from "./IconButton";
 export * from "./IconButtonLink";
 export * from "./InternalLink";
 export * from "./MissionIdLabelChip";
+export * from "./MissionProgessBarIndicator";
 export * from "./SkeletonBase";
 export * from "./Typography";
