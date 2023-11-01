@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import { useIntl } from "react-intl";
 import { twMerge } from "tailwind-merge";
 
@@ -9,7 +9,10 @@ import {
   MissionIdLabelChip,
   Typography,
 } from "~/components/atoms";
-import { UpcomingActivitiesCTA } from "~/components/molecules";
+import {
+  MissionProgressBar,
+  UpcomingActivitiesCTA,
+} from "~/components/molecules";
 import { ActivityCard } from "~/components/organisms";
 import { config } from "~/config";
 import type { Mission } from "~/features/activity";
@@ -58,9 +61,16 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
     (activity) => activity.missionId === mission.id
   );
 
-  const displayedActivities = missionActivities.filter((a) =>
-    config.devMode ? true : a.visible
-  );
+  const displayedActivities = useMemo(() => {
+    return missionActivities.filter((a) => (config.devMode ? true : a.visible));
+  }, [missionActivities]);
+
+  const activityStatuses = useMemo(() => {
+    return displayedActivities.map((activity) => {
+      const userActivity = getUserActivity(activity.id);
+      return userActivity?.status ?? "todo";
+    });
+  }, [displayedActivities, getUserActivity]);
 
   const isMissionComingSoon =
     !mission.enabled || displayedActivities.length === 0;
@@ -83,7 +93,7 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
     <article {...articleProps}>
       <div
         className={twMerge(
-          "border border-solid border-border p-4 sm:p-6 rounded-xl bg-mission-section backdrop-blur-4xl",
+          "border border-solid border-border p-4 sm:p-6 rounded-xl bg-mission-section backdrop-blur-4xl flex flex-col gap-6",
           isMissionComingSoon
             ? "text-muted-foreground border-dashed"
             : undefined
@@ -149,7 +159,7 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
           )}
         </div>
         {isCollapsed || isMissionComingSoon ? null : (
-          <div className="mt-6">
+          <div>
             <Typography variant="heading-s">
               {/* FIXME: Update style */}
               {activitiesSectionTitle}
@@ -172,6 +182,12 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
               />
             ) : null}
           </div>
+        )}
+        {!isConnected || isMissionComingSoon ? null : (
+          <MissionProgressBar
+            isLoading={isLoadingUserActivities}
+            statuses={activityStatuses}
+          />
         )}
       </div>
     </article>
