@@ -1,3 +1,4 @@
+import { activity as activityClaimAnimaPoL } from "./claim-anima-pol-credential";
 import { activity as activityClaimGateKeeperAdopter } from "./claim-gatekeeper-adopter-credential";
 import { activity as activityCreateVeridaIdentity } from "./create-verida-identity";
 import { gamer31Activities } from "./gamer31";
@@ -11,5 +12,6 @@ export const activities = [
   activityReferFriend,
   activityUseMarkdownEditor,
   activityClaimGateKeeperAdopter,
+  activityClaimAnimaPoL,
   ...gamer31Activities,
 ].sort((a, b) => a.order - b.order);
