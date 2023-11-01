@@ -159,6 +159,10 @@
     "defaultMessage": "Toggle mission section",
     "description": "Aria label for the button to toggle the mission section"
   },
+  "MissionsSideNavigation.title": {
+    "defaultMessage": "Missions",
+    "description": "Title of the side navigation"
+  },
   "ReportIssueButton.reportIssueButtonLabel": {
     "defaultMessage": "Report Issue",
     "description": "Label of the button to access the form to report an issue"
