@@ -57,6 +57,12 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
     defaultMessage: "Resources",
   });
 
+  const toggleCollapseButtonLabel = i18n.formatMessage({
+    id: "MissionSection.toggleCollapseButtonLabel",
+    defaultMessage: "Toggle mission section",
+    description: "Aria label for the button to toggle the mission section",
+  });
+
   const missionActivities = allActivities.filter(
     (activity) => activity.missionId === mission.id
   );
@@ -112,6 +118,7 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
             <IconButton
               size="small"
               variant="text"
+              aria-label={toggleCollapseButtonLabel}
               icon={
                 <Icon
                   type={isCollapsed ? "chevron-down" : "chevron-up"}
