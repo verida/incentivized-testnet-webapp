@@ -5,8 +5,10 @@ import {
   CheckOne,
   Close,
   Copy,
+  Down,
   LoadingOne,
   Logout,
+  Up,
   User,
 } from "@icon-park/react";
 import React from "react";
@@ -20,6 +22,8 @@ import { ReactComponent as Twitter } from "~/assets/logos/platforms/twitter.svg"
 import { ReactComponent as Youtube } from "~/assets/logos/platforms/youtube.svg";
 
 export type GenericIconType =
+  | "chevron-up"
+  | "chevron-down"
   | "user"
   | "bug"
   | "close"
@@ -48,6 +52,10 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
   const { type, size = 20, ...otherProps } = props;
 
   switch (type) {
+    case "chevron-down":
+      return <Down size={size} {...otherProps} />;
+    case "chevron-up":
+      return <Up size={size} {...otherProps} />;
     case "user":
       return <User size={size} {...otherProps} />;
     case "bug":
