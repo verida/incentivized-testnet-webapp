@@ -91,6 +91,7 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
 
   return (
     <article {...articleProps}>
+      <div id={mission.id} className="relative -top-24 h-0" />
       <div
         className={twMerge(
           "border border-solid border-border p-4 sm:p-6 rounded-xl bg-mission-section backdrop-blur-4xl flex flex-col gap-6",
