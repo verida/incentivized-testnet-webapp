@@ -139,6 +139,10 @@
     "defaultMessage": "Learn More",
     "description": "Title of the 'Learn More' section"
   },
+  "MissionProgressBar.missionProgressMessage": {
+    "defaultMessage": "{nbCompletedActivities, number} of {nbActivities, number} {nbActivities, plural, one {activity} other {activities} } completed",
+    "description": "Message for the mission progress bar"
+  },
   "MissionSection.activitiesSectionTitle": {
     "defaultMessage": "Activities",
     "description": "Title for the activities section"
@@ -150,6 +154,14 @@
   "MissionSection.resourcesSectionTitle": {
     "defaultMessage": "Resources",
     "description": "Title of the resources section in each mission section"
+  },
+  "MissionSection.toggleCollapseButtonLabel": {
+    "defaultMessage": "Toggle mission section",
+    "description": "Aria label for the button to toggle the mission section"
+  },
+  "MissionsSideNavigation.title": {
+    "defaultMessage": "Missions",
+    "description": "Title of the side navigation"
   },
   "ReportIssueButton.reportIssueButtonLabel": {
     "defaultMessage": "Report Issue",
