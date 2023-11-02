@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { ErrorInfo, useCallback } from "react";
 import { ErrorBoundary as ReactErrorBoundary } from "react-error-boundary";
 
 import {
@@ -39,7 +39,7 @@ export const ErrorBoundary: React.FunctionComponent<ErrorBoundaryProps> = (
   } = props;
 
   const handleError = useCallback(
-    (error: Error, info: { componentStack: string }) => {
+    (error: Error, info: ErrorInfo) => {
       Sentry.captureException(error);
       onError && onError(error, info);
     },
