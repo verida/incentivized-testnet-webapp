@@ -11,25 +11,26 @@ export const mission: Mission = {
     defaultMessage: "Mission 4",
     description: "Label of the mission id 04",
   }),
-  enabled: false,
+  enabled: true,
   visible: true,
   frozen: false,
   order: 4,
   title: defineMessage({
     id: "missions.mission-04.title",
-    defaultMessage: "Stress testing the network",
+    defaultMessage:
+      "Prove Your Humanity and Build Trusted Online Communities with Synaps Proof of Life Credential",
     description: "Title of the mission 04",
   }),
   shortDescription: defineMessage({
     id: "missions.mission-04.shortDescription",
     defaultMessage:
-      "In Mission 4 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+      "Embrace the future of secure and authentic online interactions by claiming your Proof of Life with Polygon ID. This mission, in partnership with Synaps, empowers individuals to assert their humanity while upholding their privacy.",
     description: "Short description of the mission 04",
   }),
   longDescription: defineMessage({
     id: "missions.mission-04.longDescription",
     defaultMessage:
-      "In Mission 4 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+      "Embrace the future of secure and authentic online interactions by claiming your Proof of Life with Polygon ID. This mission, in partnership with Synaps, empowers individuals to assert their humanity while upholding their privacy.",
     description: "Long description of the mission 04",
   }),
 };
