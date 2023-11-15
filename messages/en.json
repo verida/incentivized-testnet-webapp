@@ -139,6 +139,10 @@
     "defaultMessage": "Learn More",
     "description": "Title of the 'Learn More' section"
   },
+  "MissionProgressBar.missionProgressMessage": {
+    "defaultMessage": "{nbCompletedActivities, number} of {nbActivities, number} {nbActivities, plural, one {activity} other {activities} } completed",
+    "description": "Message for the mission progress bar"
+  },
   "MissionSection.activitiesSectionTitle": {
     "defaultMessage": "Activities",
     "description": "Title for the activities section"
@@ -150,6 +154,14 @@
   "MissionSection.resourcesSectionTitle": {
     "defaultMessage": "Resources",
     "description": "Title of the resources section in each mission section"
+  },
+  "MissionSection.toggleCollapseButtonLabel": {
+    "defaultMessage": "Toggle mission section",
+    "description": "Aria label for the button to toggle the mission section"
+  },
+  "MissionsSideNavigation.title": {
+    "defaultMessage": "Missions",
+    "description": "Title of the side navigation"
   },
   "ReportIssueButton.reportIssueButtonLabel": {
     "defaultMessage": "Report Issue",
@@ -166,6 +178,54 @@
   "UpcomingActivitiesCTA.title": {
     "defaultMessage": "Next activity coming soon",
     "description": "Message to display in the upcoming activities CTA"
+  },
+  "activities.claimAnimaPoLCredential.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'Claim Synaps/Anima Proof of Life credential' is being executed"
+  },
+  "activities.claimAnimaPoLCredential.actionLabel": {
+    "defaultMessage": "Send Request",
+    "description": "Label of the button to start the activity Claim Synaps/Anima Proof of Life credential"
+  },
+  "activities.claimAnimaPoLCredential.actionReExecuteLabel": {
+    "defaultMessage": "Re-send Request",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimAnimaPoLCredential.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share the credential.",
+    "description": "Message explaining a request has been sent to the their Wallet inbox"
+  },
+  "activities.claimAnimaPoLCredential.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimAnimaPoLCredential.longDescription": {
+    "defaultMessage": "Claim your Proof of Life with Polygon ID and join the Sybil resistance. The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the Synaps Proof of Life claim page to start the process (link in resources below).{newline}{newline}Step 2. Connect with your MetaMask wallet and follow the prompts to complete your proof of life check.{newline}{newline}Step 3. Claim your Proof of Life credential on Polygon ID. Use your Verida Wallet to connect and save the credential in your wallet.{newline}{newline}Step 4. Go back to Verida Missions. Click on the 'Send Request' button below and share the credential by replying to the message you received in your Wallet inbox.",
+    "description": "Long description of the activity 'Claim Synaps/Anima Proof of Life credential'"
+  },
+  "activities.claimAnimaPoLCredential.resources.blog.label": {
+    "defaultMessage": "Blog: Verida and Synaps Partnership Announcement",
+    "description": "Label of the resource 'blog announcement'"
+  },
+  "activities.claimAnimaPoLCredential.resources.claimPageUrl.label": {
+    "defaultMessage": "Synaps Proof of Life claim page",
+    "description": "Label of the resource 'Synaps Proof of Life claim page'"
+  },
+  "activities.claimAnimaPoLCredential.resources.userGuide.label": {
+    "defaultMessage": "User Guide: How to claim your Synaps Proof of Life credential",
+    "description": "Label of the resource 'user guide'"
+  },
+  "activities.claimAnimaPoLCredential.resources.videoUserGuide.label": {
+    "defaultMessage": "Video: Synaps - Claim a Proof of Life (PoL) Polygon ID Credential / Verida Network",
+    "description": "Label of the resource 'video user guide'"
+  },
+  "activities.claimAnimaPoLCredential.shortDescription": {
+    "defaultMessage": "Claim your Proof of Life with Polygon ID and join the Sybil resistance. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
+    "description": "Short description of the activity 'Claim Synaps/Anima Proof of Life credential'"
+  },
+  "activities.claimAnimaPoLCredential.title": {
+    "defaultMessage": "Synaps - Claim a Proof of Life (PoL) Polygon ID credential",
+    "description": "Title of the activity 'Claim Synaps/Anima Proof of Life credential'"
   },
   "activities.claimGamer31BrawlStars.actionExecutingLabel": {
     "defaultMessage": "Sending Request",
@@ -636,16 +696,32 @@
     "description": "Label of the mission id 04"
   },
   "missions.mission-04.longDescription": {
-    "defaultMessage": "In Mission 4 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+    "defaultMessage": "Embrace the future of secure and authentic online interactions by claiming your Proof of Life with Polygon ID. This mission, in partnership with Synaps, empowers individuals to assert their humanity while upholding their privacy.",
     "description": "Long description of the mission 04"
   },
   "missions.mission-04.shortDescription": {
-    "defaultMessage": "In Mission 4 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+    "defaultMessage": "Embrace the future of secure and authentic online interactions by claiming your Proof of Life with Polygon ID. This mission, in partnership with Synaps, empowers individuals to assert their humanity while upholding their privacy.",
     "description": "Short description of the mission 04"
   },
   "missions.mission-04.title": {
-    "defaultMessage": "Stress testing the network",
+    "defaultMessage": "Prove Your Humanity and Build Trusted Online Communities with Synaps Proof of Life Credential",
     "description": "Title of the mission 04"
+  },
+  "missions.mission-05.idLabel": {
+    "defaultMessage": "Mission 5",
+    "description": "Label of the mission id 05"
+  },
+  "missions.mission-05.longDescription": {
+    "defaultMessage": "In Mission 5 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+    "description": "Long description of the mission 05"
+  },
+  "missions.mission-05.shortDescription": {
+    "defaultMessage": "In Mission 5 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
+    "description": "Short description of the mission 05"
+  },
+  "missions.mission-05.title": {
+    "defaultMessage": "Stress testing the network",
+    "description": "Title of the mission 05"
   },
   "useExecuteActivity.activityAlreadyBeingExecutedMessage": {
     "defaultMessage": "An activity is already being executed, please wait for it to finish",
