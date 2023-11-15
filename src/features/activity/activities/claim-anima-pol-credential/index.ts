@@ -269,5 +269,23 @@ export const activity: Activity = {
       }),
       url: "https://pol.claim.anima.io/",
     },
+    {
+      label: defineMessage({
+        id: "activities.claimAnimaPoLCredential.resources.userGuide.label",
+        defaultMessage:
+          "User Guide: How to claim your Synaps Proof of Life credential",
+        description: "Label of the resource 'user guide'",
+      }),
+      url: "https://community.verida.io/user-guides/how-to-claim-a-proof-of-life-pol-polygon-id-credential",
+    },
+    {
+      label: defineMessage({
+        id: "activities.claimAnimaPoLCredential.resources.videoUserGuide.label",
+        defaultMessage:
+          "Video: Synaps - Claim a Proof of Life (PoL) Polygon ID Credential / Verida Network",
+        description: "Label of the resource 'video user guide'",
+      }),
+      url: "https://youtu.be/YQCqeziLdZg",
+    },
   ],
 };

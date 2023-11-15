@@ -207,6 +207,14 @@
     "defaultMessage": "Synaps Proof of Life claim page",
     "description": "Label of the resource 'Synaps Proof of Life claim page'"
   },
+  "activities.claimAnimaPoLCredential.resources.userGuide.label": {
+    "defaultMessage": "User Guide: How to claim your Synaps Proof of Life credential",
+    "description": "Label of the resource 'user guide'"
+  },
+  "activities.claimAnimaPoLCredential.resources.videoUserGuide.label": {
+    "defaultMessage": "Video: Synaps - Claim a Proof of Life (PoL) Polygon ID Credential / Verida Network",
+    "description": "Label of the resource 'video user guide'"
+  },
   "activities.claimAnimaPoLCredential.shortDescription": {
     "defaultMessage": "Claim your Proof of Life with Polygon ID and join the Sybil resistance. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
     "description": "Short description of the activity 'Claim Synaps/Anima Proof of Life credential'"
