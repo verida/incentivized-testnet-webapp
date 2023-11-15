@@ -287,5 +287,13 @@ export const activity: Activity = {
       }),
       url: "https://youtu.be/YQCqeziLdZg",
     },
+    {
+      label: defineMessage({
+        id: "activities.claimAnimaPoLCredential.resources.blog.label",
+        defaultMessage: "Blog: Verida and Synaps Partnership Announcement",
+        description: "Label of the resource 'blog announcement'",
+      }),
+      url: "https://news.verida.io/verida-and-synaps-partner-to-bring-private-identity-verification-to-web3-8ebd5a2f78b3",
+    },
   ],
 };
