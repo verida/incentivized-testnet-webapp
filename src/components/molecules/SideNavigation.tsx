@@ -21,7 +21,7 @@ export const SideNavigation: React.FunctionComponent<SideNavigationProps> = (
       <nav className="flex flex-col gap-3">
         {title ? <Typography variant="subtitle">{title}</Typography> : null}
         {items.map((item) => (
-          <SideNavigationItem {...item} />
+          <SideNavigationItem key={item.href} {...item} />
         ))}
       </nav>
     </div>
