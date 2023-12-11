@@ -218,6 +218,7 @@ export const activity: Activity = {
   id: ACTIVITY_ID,
   missionId: MISSION_02_ID,
   enabled: true,
+  ended: true,
   visible: true,
   order: 2,
   points: 100,

@@ -77,6 +77,7 @@ export type Activity = {
   id: string;
   missionId: string;
   enabled: boolean;
+  ended: boolean;
   visible: boolean;
   order: number;
   points: number;
