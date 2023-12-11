@@ -217,7 +217,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
 export const activity: Activity = {
   id: ACTIVITY_ID,
   missionId: MISSION_03_ID,
-  enabled: true,
+  enabled: false,
   ended: false,
   visible: true,
   order: 6,
@@ -229,13 +229,13 @@ export const activity: Activity = {
   }),
   shortDescription: defineMessage({
     id: "activities.claimGamer31Lichess.shortDescription",
-    defaultMessage: `Secure your Lichess legacy with the Gamer31 Lichess proof of reputation credential! The credential will be stored in your Verida Wallet, and can be securely shared and verified.`,
+    defaultMessage: `Temporary disabled, please check the Verida Discord for more information.{newline}{newline}Secure your Lichess legacy with the Gamer31 Lichess proof of reputation credential! The credential will be stored in your Verida Wallet, and can be securely shared and verified.`,
     description:
       "Short description of the activity 'claim Gamer31 Lichess credential'",
   }),
   longDescription: defineMessage({
     id: "activities.claimGamer31Lichess.longDescription",
-    defaultMessage: `Secure your Lichess legacy with the Gamer31 Lichess proof of reputation credential! The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the Gamer 31 claim page (link in the resources below) and click on the Lichess 'Claim' button to start the process.{newline}{newline}Step 2. Follow the instructions to connect with your Lichess account, then to claim the credential by scanning the two QR codes with your Verida Wallet.{newline}{newline}Step 3. Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.`,
+    defaultMessage: `Temporary disabled, please check the Verida Discord for more information.{newline}{newline}Secure your Lichess legacy with the Gamer31 Lichess proof of reputation credential! The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the Gamer 31 claim page (link in the resources below) and click on the Lichess 'Claim' button to start the process.{newline}{newline}Step 2. Follow the instructions to connect with your Lichess account, then to claim the credential by scanning the two QR codes with your Verida Wallet.{newline}{newline}Step 3. Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.`,
     description:
       "Long description of the activity 'claim Gamer31 Lichess credential'",
   }),
