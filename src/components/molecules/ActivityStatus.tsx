@@ -5,7 +5,7 @@ import { Chip, ChipVariants, Icon } from "~/components/atoms";
 import type { UserActivityStatus } from "~/features/activity";
 
 export type ActivityStatusProps = {
-  status: UserActivityStatus | "disabled" | "checking";
+  status: UserActivityStatus | "ended" | "disabled" | "checking";
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
@@ -45,6 +45,12 @@ export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
     defaultMessage: "Coming Soon",
   });
 
+  const activityEndedLabel = i18n.formatMessage({
+    id: "ActivityStatus.activityEndedLabel",
+    description: "Label of the status for a ended activity",
+    defaultMessage: "Ended",
+  });
+
   const label =
     status === "completed"
       ? activityCompletedStatusLabel
@@ -54,6 +60,8 @@ export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
       ? activityTodoStatusLabel
       : status === "checking"
       ? activityCheckingLabel
+      : status === "ended"
+      ? activityEndedLabel
       : activityDisabledLabel;
 
   const iconType =
@@ -69,7 +77,7 @@ export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
         ? "success"
         : status === "pending"
         ? "pending"
-        : status === "disabled" || status === "checking"
+        : status === "ended" || status === "disabled" || status === "checking"
         ? "muted"
         : status === "todo"
         ? "muted"

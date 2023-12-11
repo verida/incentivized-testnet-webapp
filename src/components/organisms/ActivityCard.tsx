@@ -37,6 +37,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
     shortDescription,
     longDescription,
     enabled = false,
+    ended = false,
   } = activity;
   const status = userActivity?.status || "todo";
 
@@ -114,13 +115,15 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
   }, [referralLinkCopiedToClipboardToastMessage]);
 
   const backgroundClasses =
-    enabled && status !== "completed"
-      ? "bg-transparent-10"
-      : "bg-transparent-3";
+    !enabled || status === "completed" || ended
+      ? "bg-transparent-3"
+      : "bg-transparent-10";
+
   const textColorClasses =
-    enabled && status !== "completed"
-      ? "text-foreground"
-      : "text-muted-foreground";
+    !enabled || status === "completed" || ended
+      ? "text-muted-foreground"
+      : "text-foreground";
+
   const borderClasses = enabled
     ? "border border-solid border-transparent hover:border-primary"
     : "border border-dashed border-border";
@@ -144,7 +147,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
         <div>
           <Typography className="text-muted-foreground">
             {i18n.formatMessage(
-              isConnected ? longDescription : shortDescription,
+              isConnected && !ended ? longDescription : shortDescription,
               {
                 newline: (
                   <>
@@ -157,6 +160,7 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
         </div>
         {isConnected &&
         enabled &&
+        !ended &&
         activity.resources &&
         activity.resources.length > 0 ? (
           <aside className="text-muted-foreground">
@@ -187,19 +191,25 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
           <div className="flex gap-2 items-center">
             {enabled ? (
               <>
-                <Chip variant="primary">{xpPointsChipLabel}</Chip>
                 {isConnected &&
                 (isLoadingUserActivities || status !== "todo") ? (
-                  <ActivityStatus
-                    status={isLoadingUserActivities ? "checking" : status}
-                  />
-                ) : null}
+                  <>
+                    <Chip variant="primary">{xpPointsChipLabel}</Chip>
+                    <ActivityStatus
+                      status={isLoadingUserActivities ? "checking" : status}
+                    />
+                  </>
+                ) : ended ? (
+                  <ActivityStatus status="ended" />
+                ) : (
+                  <Chip variant="primary">{xpPointsChipLabel}</Chip>
+                )}
               </>
             ) : (
               <ActivityStatus status="disabled" />
             )}
           </div>
-          {enabled ? (
+          {enabled && !ended ? (
             <>
               {isConnected ? (
                 isChecking ? null : statusTermsConditions === "accepted" ? (
