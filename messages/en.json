@@ -624,11 +624,11 @@
     "description": "Label of the video 'How to use the Markdown Editor demo app'"
   },
   "app.meta.defaultDescription": {
-    "defaultMessage": "Discover the future of web3 on the Verida Network. Join the incentivized testnet and experience secure decentralized data storage, zero-knowledge credentials, and more.",
+    "defaultMessage": "Explore a new paradigm shift for managing your personal data with self-sovereign technology. Experience Verida Wallet, with zero-knowledge credentials, decentralized identity and access to a private data storage network designed for web3.",
     "description": "Default application description for the meta tags"
   },
   "app.meta.defaultTitle": {
-    "defaultMessage": "Verida Missions: Explore Decentralized Identity and Private Data Storage",
+    "defaultMessage": "Verida Missions: Discover the future of personal data control and ownership.",
     "description": "Default application title for the meta tags"
   },
   "missions.mission-01.idLabel": {
