@@ -39,10 +39,8 @@ const webUserInstance = new WebUser({
   accountConfig: {
     request: {
       logoUrl: config.verida.connectLogoUrl,
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      /* @ts-ignore because the type has not been updated yet*/
-      environment: config.verida.environment,
     },
+    environment: config.verida.environment,
   },
 });
 
