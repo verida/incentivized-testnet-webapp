@@ -40,6 +40,7 @@ const webUserInstance = new WebUser({
     request: {
       logoUrl: config.verida.connectLogoUrl,
     },
+    environment: config.verida.environment,
   },
 });
 
