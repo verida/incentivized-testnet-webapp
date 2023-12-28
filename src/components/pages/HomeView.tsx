@@ -25,7 +25,7 @@ export const HomeView: React.FunctionComponent = () => {
   const tagline = i18n.formatMessage({
     id: "HomeView.tagline",
     description: "Tag line displayed at the top of the Home page",
-    defaultMessage: "Participate, learn, test and get rewarded",
+    defaultMessage: "Explore a new era of data ownership",
   });
 
   const displayTermsConditionsAlert =

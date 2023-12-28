@@ -8,6 +8,7 @@ import {
   Header,
   HeaderOffset,
   LearnMoreSection,
+  MainnetUpgradeModal,
 } from "~/components/organisms";
 import { ErrorBoundary } from "~/features/errors";
 import { MetaTags } from "~/features/metatags";
@@ -43,6 +44,7 @@ export const AppLayout: React.FunctionComponent = () => {
           </div>
         </div>
         <ScrollRestoration />
+        <MainnetUpgradeModal />
       </ErrorBoundary>
     </>
   );
