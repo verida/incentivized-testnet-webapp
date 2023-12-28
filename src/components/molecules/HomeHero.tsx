@@ -1,7 +1,8 @@
 import React from "react";
 import { useIntl } from "react-intl";
 
-import { Typography } from "~/components/atoms";
+import { ExternalLink, Typography } from "~/components/atoms";
+import { VERIDA_WALLET_DOWNLOAD_URL } from "~/constants";
 
 export type HomeHeroProps = Omit<
   React.ComponentPropsWithRef<"div">,
@@ -13,10 +14,9 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
 
   const descriptionPart1 = i18n.formatMessage({
     id: "HomeHero.descriptionPart1",
-    description:
-      "Description (part 1) of the Verida incentivized testnet program",
+    description: "Description (part 1) of Verida Missions",
     defaultMessage:
-      "The purpose of Verida Missions incentivized testnet is to stress-test network infrastructure, Verida applications and prepare storage node operations for the Verida mainnet.",
+      "Verida Missions is a platform designed as the first step to help you take back control of your data.",
   });
 
   const descriptionPart2 = i18n.formatMessage({
@@ -24,15 +24,39 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
     description:
       "Description (part 2) of the Verida incentivized testnet program",
     defaultMessage:
-      "By undertaking the following activities, you'll play a vital role in preparing the Verida network for mainnet.",
+      "Complete activities to learn about self-sovereign technology, build up your XP, and earn storage credits for secure and private data management on Verida Network.",
   });
 
-  const descriptionPart3 = i18n.formatMessage({
-    id: "HomeHero.descriptionPart3",
-    description:
-      "Description (part 3) of the Verida incentivized testnet program",
+  const newUserTitle = i18n.formatMessage({
+    id: "HomeHero.newUserTitle",
+    description: "Title for new users",
+    defaultMessage: "New to Verida Missions?",
+  });
+
+  const newUserCta = i18n.formatMessage({
+    id: "HomeHero.newUserCta",
+    description: "CTA for new users",
+    defaultMessage: "Download the Verida Wallet",
+  });
+
+  const newUserMessage = i18n.formatMessage({
+    id: "HomeHero.newUserMessage",
+    description: "Message for new users",
     defaultMessage:
-      "Are you ready to ignite your journey? The countdown to the Verida mainnet begins now!",
+      ", create your Identity and connect to Verida Missions to get started.",
+  });
+
+  const existingUserTitle = i18n.formatMessage({
+    id: "HomeHero.existingUserTitle",
+    description: "Title for existing users",
+    defaultMessage: "Existing Verida Missions users: Make the move to Mainnet!",
+  });
+
+  const existingUserMessage = i18n.formatMessage({
+    id: "HomeHero.existingUserMessage",
+    description: "Message for existing users",
+    defaultMessage:
+      "Verida Missions is now using the Verida Mainnet. Update your Verida Wallet to start the process for migrating to Mainnet, and ensure your completed activities and XP are transferred to Verida Missions.",
   });
 
   return (
@@ -40,7 +64,19 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
       <div className="flex flex-grow flex-col items-center justify-center text-center gap-2 text-muted-foreground px-0 sm:px-16">
         <Typography>{descriptionPart1}</Typography>
         <Typography>{descriptionPart2}</Typography>
-        <Typography>{descriptionPart3}</Typography>
+        <Typography variant="heading-s" className="mt-4">
+          {newUserTitle}
+        </Typography>
+        <Typography>
+          <ExternalLink href={VERIDA_WALLET_DOWNLOAD_URL}>
+            {newUserCta}
+          </ExternalLink>
+          {newUserMessage}
+        </Typography>
+        <Typography variant="heading-s" className="mt-4">
+          {existingUserTitle}
+        </Typography>
+        <Typography>{existingUserMessage}</Typography>
       </div>
     </div>
   );

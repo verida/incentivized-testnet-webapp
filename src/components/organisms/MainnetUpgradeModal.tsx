@@ -6,6 +6,7 @@ import { useIntl } from "react-intl";
 import { ExternalLink, Typography } from "~/components/atoms";
 import { Modal } from "~/components/molecules";
 import { config } from "~/config";
+import { VERIDA_MISSIONS_FAQ_URL } from "~/constants";
 import { MAINNET_UPGRADE_HIDE_MODAL_LOCAL_STORAGE_KEY } from "~/features/mainnetUpgrade";
 
 export const MainnetUpgradeModal: React.FunctionComponent = () => {
@@ -38,11 +39,39 @@ export const MainnetUpgradeModal: React.FunctionComponent = () => {
     description: "Title for the mainnet upgrade modal",
   });
 
-  const contentMessage = i18n.formatMessage(
+  const existingUserTitle = i18n.formatMessage({
+    id: "MainnetUpgradeModal.existingUserTitle",
+    defaultMessage: "Existing users: Make the move to Mainnet!",
+    description:
+      "Title for existing users paragraph in the mainnet upgrade modal",
+  });
+
+  const existingUserMessage = i18n.formatMessage(
     {
-      id: "MainnetUpgradeModal.contentMessage",
-      defaultMessage: `Verida Missions is now using the Verida Mainnet.{newline}{newline}If you already participated in Verida Missions, update your Verida Wallet to migrate your Verida Identity to Mainnet. Your completed activities and XP points will be transferred over to Verida Missions as part of the migration.{newline}{newline}Reconnect to Missions after migrating your identity to see your completed activities and continue earning XP.`,
-      description: "New to mission paragraphe for the mainnet upgrade modal",
+      id: "MainnetUpgradeModal.existingUserMessage",
+      defaultMessage: `Verida Missions is now using the Verida Mainnet. Update your Verida Wallet to start the process for migrating your Verida Identity to Mainnet, and ensure your completed activities and XP points are transferred.`,
+      description: "Message for existing users in the mainnet upgrade modal",
+    },
+    {
+      newline: (
+        <>
+          <br />
+        </>
+      ),
+    }
+  );
+
+  const newUserTitle = i18n.formatMessage({
+    id: "MainnetUpgradeModal.newUserTitle",
+    defaultMessage: "New here?",
+    description: "Title for new users paragraph in the mainnet upgrade modal",
+  });
+
+  const newUserMessage = i18n.formatMessage(
+    {
+      id: "MainnetUpgradeModal.newUserMessage",
+      defaultMessage: `Begin your journey towards having control over your own data and personal information with Verida Missions.`,
+      description: "Message for new users in the mainnet upgrade modal",
     },
     {
       newline: (
@@ -59,6 +88,18 @@ export const MainnetUpgradeModal: React.FunctionComponent = () => {
     description: "Label for the close button in the mainnet upgrade modal",
   });
 
+  const blogLinkLabel = i18n.formatMessage({
+    id: "MainnetUpgradeModal.blogLinkLabel",
+    defaultMessage: "Read our blog announcement",
+    description: "Label for the blog link in the mainnet upgrade modal",
+  });
+
+  const faqLinkLabel = i18n.formatMessage({
+    id: "MainnetUpgradeModal.faqLinkLabel",
+    defaultMessage: "Learn more in our Missions FAQs",
+    description: "Label for the faq link in the mainnet upgrade modal",
+  });
+
   return (
     <Modal
       open={open}
@@ -73,13 +114,22 @@ export const MainnetUpgradeModal: React.FunctionComponent = () => {
         },
       ]}
     >
-      <Typography>{contentMessage}</Typography>
+      <div>
+        <Typography variant="heading-s" component="h3" className="mt-6 mb-2">
+          {existingUserTitle}
+        </Typography>
+        <Typography>{existingUserMessage}</Typography>
+        <Typography variant="heading-s" component="h3" className="mt-6 mb-2">
+          {newUserTitle}
+        </Typography>
+        <Typography>{newUserMessage}</Typography>
+      </div>
       <div className="mt-6 flex flex-col">
         <ExternalLink href="https://news.verida.io/verida-mainnet-is-launching-soon-e3b6cb95408c">
-          Read our blog announcement
+          {blogLinkLabel}
         </ExternalLink>
-        <ExternalLink href="https://community.verida.io/network-faq#c297834af96b4bde946832e5660ce164">
-          Learn more in our Missions FAQs
+        <ExternalLink href={VERIDA_MISSIONS_FAQ_URL}>
+          {faqLinkLabel}
         </ExternalLink>
       </div>
     </Modal>
