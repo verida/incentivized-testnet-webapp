@@ -2,6 +2,7 @@ import React from "react";
 import { useIntl } from "react-intl";
 
 import { ExternalLink, Typography } from "~/components/atoms";
+import { VERIDA_MISSIONS_FAQ_URL } from "~/constants";
 
 type Link = {
   label: string;
@@ -15,7 +16,7 @@ const links: Link[] = [
   },
   {
     label: "Verida Missions FAQs",
-    url: "https://community.verida.io/network-faq#c297834af96b4bde946832e5660ce164",
+    url: VERIDA_MISSIONS_FAQ_URL,
   },
 ];
 
