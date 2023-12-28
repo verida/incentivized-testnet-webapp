@@ -1,8 +1,11 @@
+/* eslint-disable formatjs/no-literal-string-in-jsx */
+import { EnvironmentType } from "@verida/types";
 import React, { useCallback, useEffect, useState } from "react";
 import { useIntl } from "react-intl";
 
-import { Typography } from "~/components/atoms";
+import { ExternalLink, Typography } from "~/components/atoms";
 import { Modal } from "~/components/molecules";
+import { config } from "~/config";
 import { MAINNET_UPGRADE_HIDE_MODAL_LOCAL_STORAGE_KEY } from "~/features/mainnetUpgrade";
 
 export const MainnetUpgradeModal: React.FunctionComponent = () => {
@@ -19,7 +22,10 @@ export const MainnetUpgradeModal: React.FunctionComponent = () => {
     const hideModal = localStorage.getItem(
       MAINNET_UPGRADE_HIDE_MODAL_LOCAL_STORAGE_KEY
     );
-    if (hideModal && hideModal === "true") {
+    if (
+      config.verida.environment !== EnvironmentType.MAINNET ||
+      (hideModal && hideModal === "true")
+    ) {
       setOpen(false);
     } else {
       setOpen(true);
@@ -28,15 +34,15 @@ export const MainnetUpgradeModal: React.FunctionComponent = () => {
 
   const modalTitle = i18n.formatMessage({
     id: "MainnetUpgradeModal.modalTitle",
-    defaultMessage: "Verida Missions is on Mainnet",
+    defaultMessage: "Verida Missions has launched on Mainnet",
     description: "Title for the mainnet upgrade modal",
   });
 
-  const content = i18n.formatMessage(
+  const contentMessage = i18n.formatMessage(
     {
-      id: "MainnetUpgradeModal.content",
-      defaultMessage: `Verida Missions is now using the Verida Mainnet.{newline}{newline}If you were using Verida Missions on Testnet, please update your Verida Wallet and migrate your Testnet identity. Your completed activities and XP points will be migrated to the Mainnet.{newline}{newline}If you have any questions, please join our Discord channel.`,
-      description: "Content for the mainnet upgrade modal",
+      id: "MainnetUpgradeModal.contentMessage",
+      defaultMessage: `Verida Missions is now using the Verida Mainnet.{newline}{newline}If you already participated in Verida Missions, update your Verida Wallet to migrate your Verida Identity to Mainnet. Your completed activities and XP points will be transferred over to Verida Missions as part of the migration.{newline}{newline}Reconnect to Missions after migrating your identity to see your completed activities and continue earning XP.`,
+      description: "New to mission paragraphe for the mainnet upgrade modal",
     },
     {
       newline: (
@@ -49,7 +55,7 @@ export const MainnetUpgradeModal: React.FunctionComponent = () => {
 
   const closeButtonLabel = i18n.formatMessage({
     id: "MainnetUpgradeModal.closeButtonLabel",
-    defaultMessage: "Close",
+    defaultMessage: "Start Exploring",
     description: "Label for the close button in the mainnet upgrade modal",
   });
 
@@ -63,10 +69,19 @@ export const MainnetUpgradeModal: React.FunctionComponent = () => {
           label: closeButtonLabel,
           onClick: handleClose,
           variant: "contained",
+          color: "primary",
         },
       ]}
     >
-      <Typography>{content}</Typography>
+      <Typography>{contentMessage}</Typography>
+      <div className="mt-6 flex flex-col">
+        <ExternalLink href="https://news.verida.io/verida-mainnet-is-launching-soon-e3b6cb95408c">
+          Read our blog announcement
+        </ExternalLink>
+        <ExternalLink href="https://community.verida.io/network-faq#c297834af96b4bde946832e5660ce164">
+          Learn more in our Missions FAQs
+        </ExternalLink>
+      </div>
     </Modal>
   );
 };

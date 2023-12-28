@@ -144,15 +144,15 @@
     "description": "Title of the 'Learn More' section"
   },
   "MainnetUpgradeModal.closeButtonLabel": {
-    "defaultMessage": "Close",
+    "defaultMessage": "Start Exploring",
     "description": "Label for the close button in the mainnet upgrade modal"
   },
-  "MainnetUpgradeModal.content": {
-    "defaultMessage": "Verida Missions is now using the Verida Mainnet.{newline}{newline}If you were using Verida Missions on Testnet, please update your Verida Wallet and migrate your Testnet identity. Your completed activities and XP points will be migrated to the Mainnet.{newline}{newline}If you have any questions, please join our Discord channel.",
-    "description": "Content for the mainnet upgrade modal"
+  "MainnetUpgradeModal.contentMessage": {
+    "defaultMessage": "Verida Missions is now using the Verida Mainnet.{newline}{newline}If you already participated in Verida Missions, update your Verida Wallet to migrate your Verida Identity to Mainnet. Your completed activities and XP points will be transferred over to Verida Missions as part of the migration.{newline}{newline}Reconnect to Missions after migrating your identity to see your completed activities and continue earning XP.",
+    "description": "New to mission paragraphe for the mainnet upgrade modal"
   },
   "MainnetUpgradeModal.modalTitle": {
-    "defaultMessage": "Verida Missions is on Mainnet",
+    "defaultMessage": "Verida Missions has launched on Mainnet",
     "description": "Title for the mainnet upgrade modal"
   },
   "MissionProgressBar.missionProgressMessage": {
