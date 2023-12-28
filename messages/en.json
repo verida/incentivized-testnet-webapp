@@ -116,19 +116,15 @@
     "description": "Display of the user total XP points"
   },
   "HomeHero.descriptionPart1": {
-    "defaultMessage": "Verida Missions is a platform designed as the first step to help you take back control of your data.",
+    "defaultMessage": "Begin your journey towards having control over your own data and personal information with Verida Missions.{newline}{newline}Complete the activities, build up your XP, and earn storage credits for the secure data management on Verida Network.",
     "description": "Description (part 1) of Verida Missions"
-  },
-  "HomeHero.descriptionPart2": {
-    "defaultMessage": "Complete activities to learn about self-sovereign technology, build up your XP, and earn storage credits for secure and private data management on Verida Network.",
-    "description": "Description (part 2) of the Verida incentivized testnet program"
   },
   "HomeHero.existingUserMessage": {
     "defaultMessage": "Verida Missions is now using the Verida Mainnet. Update your Verida Wallet to start the process for migrating to Mainnet, and ensure your completed activities and XP are transferred to Verida Missions.",
     "description": "Message for existing users"
   },
   "HomeHero.existingUserTitle": {
-    "defaultMessage": "Existing Verida Missions users: Make the move to Mainnet!",
+    "defaultMessage": "Testnet users: Make the move to Mainnet!",
     "description": "Title for existing users"
   },
   "HomeHero.newUserCta": {
@@ -138,10 +134,6 @@
   "HomeHero.newUserMessage": {
     "defaultMessage": ", create your Identity and connect to Verida Missions to get started.",
     "description": "Message for new users"
-  },
-  "HomeHero.newUserTitle": {
-    "defaultMessage": "New to Verida Missions?",
-    "description": "Title for new users"
   },
   "HomeView.tagline": {
     "defaultMessage": "Explore a new era of data ownership",
@@ -159,10 +151,6 @@
     "defaultMessage": "Learn More",
     "description": "Title of the 'Learn More' section"
   },
-  "MainnetUpgradeModal.blogLinkLabel": {
-    "defaultMessage": "Read our blog announcement",
-    "description": "Label for the blog link in the mainnet upgrade modal"
-  },
   "MainnetUpgradeModal.closeButtonLabel": {
     "defaultMessage": "Start Exploring",
     "description": "Label for the close button in the mainnet upgrade modal"
@@ -172,24 +160,16 @@
     "description": "Message for existing users in the mainnet upgrade modal"
   },
   "MainnetUpgradeModal.existingUserTitle": {
-    "defaultMessage": "Existing users: Make the move to Mainnet!",
+    "defaultMessage": "Testnet users: Make the move to Mainnet!",
     "description": "Title for existing users paragraph in the mainnet upgrade modal"
   },
   "MainnetUpgradeModal.faqLinkLabel": {
-    "defaultMessage": "Learn more in our Missions FAQs",
+    "defaultMessage": "Learn more in the FAQs",
     "description": "Label for the faq link in the mainnet upgrade modal"
   },
   "MainnetUpgradeModal.modalTitle": {
     "defaultMessage": "Verida Missions has launched on Mainnet",
     "description": "Title for the mainnet upgrade modal"
-  },
-  "MainnetUpgradeModal.newUserMessage": {
-    "defaultMessage": "Begin your journey towards having control over your own data and personal information with Verida Missions.",
-    "description": "Message for new users in the mainnet upgrade modal"
-  },
-  "MainnetUpgradeModal.newUserTitle": {
-    "defaultMessage": "New here?",
-    "description": "Title for new users paragraph in the mainnet upgrade modal"
   },
   "MissionProgressBar.missionProgressMessage": {
     "defaultMessage": "{nbCompletedActivities, number} of {nbActivities, number} {nbActivities, plural, one {activity} other {activities} } completed",
