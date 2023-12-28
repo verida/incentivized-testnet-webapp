@@ -528,11 +528,11 @@
     "description": "Label of the button to start the activity create identity"
   },
   "activities.createVeridaIdentity.longDescription": {
-    "defaultMessage": "Verida identities are an implementation of the Decentralized Identifier (DID) Standard from the W3C. A DID has a unique address (e.g. did:vda:testnet:0x6B2...a6F) that is controlled by an end user with a private key or seed phrase. A user can verify themselves to another user, entity or application by sharing their unique DID address.",
+    "defaultMessage": "Verida identities are an implementation of the Decentralized Identifier (DID) Standard from the W3C. A DID has a unique address (e.g. did:vda:mainnet:0x6B2...a6F) that is controlled by an end user with a private key or seed phrase. A user can verify themselves to another user, entity or application by sharing their unique DID address.",
     "description": "Long description of the activity 'create identity'"
   },
   "activities.createVeridaIdentity.shortDescription": {
-    "defaultMessage": "Verida identities are an implementation of the Decentralized Identifier (DID) Standard from the W3C. A DID has a unique address (e.g. did:vda:testnet:0x6B2...a6F) that is controlled by an end user with a private key or seed phrase. A user can verify themselves to another user, entity or application by sharing their unique DID address.",
+    "defaultMessage": "Verida identities are an implementation of the Decentralized Identifier (DID) Standard from the W3C. A DID has a unique address (e.g. did:vda:mainnet:0x6B2...a6F) that is controlled by an end user with a private key or seed phrase. A user can verify themselves to another user, entity or application by sharing their unique DID address.",
     "description": "Short description of the activity 'create identity'"
   },
   "activities.createVeridaIdentity.title": {
@@ -664,7 +664,7 @@
     "description": "Label of the mission if 01"
   },
   "missions.mission-01.longDescription": {
-    "defaultMessage": "This first mission guides you through the process of onboarding onto the Verida Network. It's designed to familiarize you with the Network's features, functionalities, and ecosystem, ensuring you have a smooth and seamless experience as a Verida user.",
+    "defaultMessage": "This first mission guides you through setting up your identity, exploring demo apps, and introducing you to the Verida Network.",
     "description": "Long description of the mission 01"
   },
   "missions.mission-01.resources.howToCreateVeridaIdentity.label": {
@@ -684,7 +684,7 @@
     "description": "Label of the wallet install url resource"
   },
   "missions.mission-01.shortDescription": {
-    "defaultMessage": "This first mission guides you through the process of onboarding onto the Verida Network. It's designed to familiarize you with the Network's features, functionalities, and ecosystem, ensuring you have a smooth and seamless experience as a Verida user.{newline}{newline}Get Started:{newline}1. Click the 'Connect' button above{newline}2. Depending on being on mobile or desktop, either click the button, or scan the QR code with your phone{newline}3. Follow the instructions to install the Wallet and create your Identity{newline}4. You may have to refresh this page and connect again",
+    "defaultMessage": "This first mission guides you through setting up your identity, exploring demo apps, and introducing you to the Verida Network.{newline}{newline}Get Started:{newline}1. Click the 'Connect' button above{newline}2. Depending on being on mobile or desktop, either click the button, or scan the QR code with your phone{newline}3. Follow the instructions to install the Wallet and create your Identity{newline}4. You may have to refresh this page and connect again",
     "description": "Short description of the mission 01"
   },
   "missions.mission-01.title": {
