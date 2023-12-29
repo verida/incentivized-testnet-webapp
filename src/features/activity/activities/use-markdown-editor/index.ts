@@ -112,7 +112,7 @@ export const activity: Activity = {
         defaultMessage: "Markdown Editor demo app",
         description: "Label of the resource 'Markdown Editor demo app'",
       }),
-      url: "https://markdown-editor.demos.testnet.verida.io/",
+      url: "https://markdown-editor.demos.verida.io",
     },
     {
       label: defineMessage({
