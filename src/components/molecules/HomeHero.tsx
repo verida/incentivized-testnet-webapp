@@ -1,8 +1,14 @@
+import { EnvironmentType } from "@verida/types";
 import React from "react";
 import { useIntl } from "react-intl";
 
 import { ExternalLink, Typography } from "~/components/atoms";
-import { VERIDA_WALLET_DOWNLOAD_URL } from "~/constants";
+import { config } from "~/config";
+import {
+  VERIDA_MISSIONS_MAINNET_URL,
+  VERIDA_MISSIONS_TESTNET_URL,
+  VERIDA_WALLET_DOWNLOAD_URL,
+} from "~/constants";
 
 export type HomeHeroProps = Omit<
   React.ComponentPropsWithRef<"div">,
@@ -54,6 +60,24 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
       "Verida Missions is now using the Verida Mainnet. Update your Verida Wallet to start the process for migrating to Mainnet, and ensure your completed activities and XP are transferred to Verida Missions.",
   });
 
+  const testnetMissionsLinkLabel = i18n.formatMessage({
+    id: "HomeHero.testnetMissionsLinkLabel",
+    defaultMessage: "Go back to Verida Missions on Testnet",
+    description: "Label for link to Verida Missions on Testnet",
+  });
+
+  const nonMainnetWarning = i18n.formatMessage({
+    id: "HomeHero.nonMainnetWarning",
+    defaultMessage: "This is a Testnet version of Verida Missions.",
+    description: "Warning for non-mainnet environments",
+  });
+
+  const mainnetMissionsLinkLabel = i18n.formatMessage({
+    id: "HomeHero.mainnetMissionsLinkLabel",
+    defaultMessage: "Visit the Mainnet version",
+    description: "Label for link to Verida Missions on Mainnet",
+  });
+
   return (
     <div {...props}>
       <div className="flex flex-grow flex-col items-center justify-center text-center gap-2 text-muted-foreground px-0 sm:px-16">
@@ -64,10 +88,26 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
           </ExternalLink>
           {newUserMessage}
         </Typography>
-        <Typography variant="heading-s" className="mt-4">
-          {existingUserTitle}
-        </Typography>
-        <Typography>{existingUserMessage}</Typography>
+        {config.verida.environment === EnvironmentType.MAINNET ? (
+          <>
+            <Typography variant="heading-s" className="mt-4">
+              {existingUserTitle}
+            </Typography>
+            <Typography>
+              {existingUserMessage}
+              <ExternalLink href={VERIDA_MISSIONS_TESTNET_URL} className="ml-1">
+                {testnetMissionsLinkLabel}
+              </ExternalLink>
+            </Typography>
+          </>
+        ) : (
+          <Typography>
+            {nonMainnetWarning}
+            <ExternalLink href={VERIDA_MISSIONS_MAINNET_URL} className="ml-1">
+              {mainnetMissionsLinkLabel}
+            </ExternalLink>
+          </Typography>
+        )}
       </div>
     </div>
   );

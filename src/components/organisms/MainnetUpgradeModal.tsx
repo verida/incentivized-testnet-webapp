@@ -6,7 +6,10 @@ import { useIntl } from "react-intl";
 import { ExternalLink, Typography } from "~/components/atoms";
 import { Modal } from "~/components/molecules";
 import { config } from "~/config";
-import { VERIDA_MISSIONS_FAQ_URL } from "~/constants";
+import {
+  VERIDA_MISSIONS_FAQ_URL,
+  VERIDA_MISSIONS_TESTNET_URL,
+} from "~/constants";
 import { MAINNET_UPGRADE_HIDE_MODAL_LOCAL_STORAGE_KEY } from "~/features/mainnetUpgrade";
 
 export const MainnetUpgradeModal: React.FunctionComponent = () => {
@@ -67,6 +70,13 @@ export const MainnetUpgradeModal: React.FunctionComponent = () => {
     description: "Label for the faq link in the mainnet upgrade modal",
   });
 
+  const testnetMissionsLinkLabel = i18n.formatMessage({
+    id: "MainnetUpgradeModal.testnetMissionsLinkLabel",
+    defaultMessage: "Verida Missions on Testnet",
+    description:
+      "Label for the testnet missions link in the mainnet upgrade modal",
+  });
+
   const closeButtonLabel = i18n.formatMessage({
     id: "MainnetUpgradeModal.closeButtonLabel",
     defaultMessage: "Start Exploring",
@@ -87,15 +97,18 @@ export const MainnetUpgradeModal: React.FunctionComponent = () => {
         },
       ]}
     >
-      <div>
-        <Typography variant="heading-s" component="h3" className="mt-6 mb-2">
+      <div className="flex flex-col gap-2">
+        <Typography variant="heading-s" component="h3">
           {existingUserTitle}
         </Typography>
         <Typography>{existingUserMessage}</Typography>
       </div>
       <div className="mt-6 flex flex-col">
-        <ExternalLink href={VERIDA_MISSIONS_FAQ_URL}>
+        <ExternalLink href={VERIDA_MISSIONS_FAQ_URL} openInNewTab>
           {faqLinkLabel}
+        </ExternalLink>
+        <ExternalLink href={VERIDA_MISSIONS_TESTNET_URL}>
+          {testnetMissionsLinkLabel}
         </ExternalLink>
       </div>
     </Modal>
