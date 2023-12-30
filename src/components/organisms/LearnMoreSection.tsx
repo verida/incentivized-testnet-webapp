@@ -2,16 +2,21 @@ import React from "react";
 import { useIntl } from "react-intl";
 
 import { ExternalLink, Typography } from "~/components/atoms";
+import { VERIDA_MISSIONS_FAQ_URL } from "~/constants";
 
-const links = [
+type Link = {
+  label: string;
+  url: string;
+};
+
+const links: Link[] = [
   {
-    label: "The Verida Acacia Testnet is Live",
-    url: "https://news.verida.io/the-decentralized-verida-acacia-testnet-is-live-81503c119d9f",
+    label: "Verida Mainnet is Live!",
+    url: "https://news.verida.io/verida-mainnet-is-launching-soon-e3b6cb95408c",
   },
   {
-    label:
-      "Join Verida's Incentivized Testnet and Earn Tokens for Reclaiming Your Data",
-    url: "https://news.verida.io/join-veridas-incentivized-testnet-and-earn-tokens-for-reclaiming-your-data-66607dd8d4f3",
+    label: "Verida Missions FAQs",
+    url: VERIDA_MISSIONS_FAQ_URL,
   },
 ];
 

@@ -1,4 +1,4 @@
-import type { DatastoreOpenConfig, IDatastore } from "@verida/types";
+import { type DatastoreOpenConfig, type IDatastore } from "@verida/types";
 import { WebUser, type WebUserProfile } from "@verida/web-helpers";
 import React, {
   useCallback,
@@ -11,6 +11,10 @@ import React, {
 import { config } from "~/config";
 import { Logger } from "~/features/logger";
 import { Sentry } from "~/features/sentry";
+import {
+  CLEAR_SESSION_AFTER_MAINNET_UPGRADE_LOCAL_STORAGE_KEY,
+  VERIDA_CONNECT_SESSION_LOCAL_STORAGE_KEY,
+} from "~/features/verida";
 
 if (!config.verida.contextName) {
   throw new Error("Verida Context Name must be defined");
@@ -40,6 +44,7 @@ const webUserInstance = new WebUser({
     request: {
       logoUrl: config.verida.connectLogoUrl,
     },
+    environment: config.verida.environment,
   },
 });
 
@@ -139,6 +144,18 @@ export const VeridaProvider: React.FunctionComponent<VeridaProviderProps> = (
     webUserInstance.addListener("disconnected", veridaEventListener);
 
     const autoConnect = async () => {
+      // Clear the potential Testnet sessions after the Mainnet upgrade
+      const clearedSession = localStorage.getItem(
+        CLEAR_SESSION_AFTER_MAINNET_UPGRADE_LOCAL_STORAGE_KEY
+      );
+      if (!clearedSession || clearedSession !== "true") {
+        localStorage.removeItem(VERIDA_CONNECT_SESSION_LOCAL_STORAGE_KEY);
+        localStorage.setItem(
+          CLEAR_SESSION_AFTER_MAINNET_UPGRADE_LOCAL_STORAGE_KEY,
+          "true"
+        );
+      }
+
       setIsCheckingConnection(true);
       await webUserInstanceRef.current.autoConnectExistingSession();
       // Will trigger a 'connected' event if already connected and therefore update the states
