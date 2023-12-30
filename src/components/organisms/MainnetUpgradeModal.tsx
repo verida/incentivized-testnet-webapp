@@ -6,7 +6,10 @@ import { useIntl } from "react-intl";
 import { ExternalLink, Typography } from "~/components/atoms";
 import { Modal } from "~/components/molecules";
 import { config } from "~/config";
-import { VERIDA_MISSIONS_FAQ_URL } from "~/constants";
+import {
+  VERIDA_MISSIONS_FAQ_URL,
+  VERIDA_MISSIONS_TESTNET_URL,
+} from "~/constants";
 import { MAINNET_UPGRADE_HIDE_MODAL_LOCAL_STORAGE_KEY } from "~/features/mainnetUpgrade";
 
 export const MainnetUpgradeModal: React.FunctionComponent = () => {
@@ -41,7 +44,7 @@ export const MainnetUpgradeModal: React.FunctionComponent = () => {
 
   const existingUserTitle = i18n.formatMessage({
     id: "MainnetUpgradeModal.existingUserTitle",
-    defaultMessage: "Existing users: Make the move to Mainnet!",
+    defaultMessage: "Testnet users: Make the move to Mainnet!",
     description:
       "Title for existing users paragraph in the mainnet upgrade modal",
   });
@@ -61,43 +64,23 @@ export const MainnetUpgradeModal: React.FunctionComponent = () => {
     }
   );
 
-  const newUserTitle = i18n.formatMessage({
-    id: "MainnetUpgradeModal.newUserTitle",
-    defaultMessage: "New here?",
-    description: "Title for new users paragraph in the mainnet upgrade modal",
+  const faqLinkLabel = i18n.formatMessage({
+    id: "MainnetUpgradeModal.faqLinkLabel",
+    defaultMessage: "Learn more in the FAQs",
+    description: "Label for the faq link in the mainnet upgrade modal",
   });
 
-  const newUserMessage = i18n.formatMessage(
-    {
-      id: "MainnetUpgradeModal.newUserMessage",
-      defaultMessage: `Begin your journey towards having control over your own data and personal information with Verida Missions.`,
-      description: "Message for new users in the mainnet upgrade modal",
-    },
-    {
-      newline: (
-        <>
-          <br />
-        </>
-      ),
-    }
-  );
+  const testnetMissionsLinkLabel = i18n.formatMessage({
+    id: "MainnetUpgradeModal.testnetMissionsLinkLabel",
+    defaultMessage: "Verida Missions on Testnet",
+    description:
+      "Label for the testnet missions link in the mainnet upgrade modal",
+  });
 
   const closeButtonLabel = i18n.formatMessage({
     id: "MainnetUpgradeModal.closeButtonLabel",
     defaultMessage: "Start Exploring",
     description: "Label for the close button in the mainnet upgrade modal",
-  });
-
-  const blogLinkLabel = i18n.formatMessage({
-    id: "MainnetUpgradeModal.blogLinkLabel",
-    defaultMessage: "Read our blog announcement",
-    description: "Label for the blog link in the mainnet upgrade modal",
-  });
-
-  const faqLinkLabel = i18n.formatMessage({
-    id: "MainnetUpgradeModal.faqLinkLabel",
-    defaultMessage: "Learn more in our Missions FAQs",
-    description: "Label for the faq link in the mainnet upgrade modal",
   });
 
   return (
@@ -114,22 +97,18 @@ export const MainnetUpgradeModal: React.FunctionComponent = () => {
         },
       ]}
     >
-      <div>
-        <Typography variant="heading-s" component="h3" className="mt-6 mb-2">
+      <div className="flex flex-col gap-2">
+        <Typography variant="heading-s" component="h3">
           {existingUserTitle}
         </Typography>
         <Typography>{existingUserMessage}</Typography>
-        <Typography variant="heading-s" component="h3" className="mt-6 mb-2">
-          {newUserTitle}
-        </Typography>
-        <Typography>{newUserMessage}</Typography>
       </div>
       <div className="mt-6 flex flex-col">
-        <ExternalLink href="https://news.verida.io/verida-mainnet-is-launching-soon-e3b6cb95408c">
-          {blogLinkLabel}
-        </ExternalLink>
-        <ExternalLink href={VERIDA_MISSIONS_FAQ_URL}>
+        <ExternalLink href={VERIDA_MISSIONS_FAQ_URL} openInNewTab>
           {faqLinkLabel}
+        </ExternalLink>
+        <ExternalLink href={VERIDA_MISSIONS_TESTNET_URL}>
+          {testnetMissionsLinkLabel}
         </ExternalLink>
       </div>
     </Modal>
