@@ -55,33 +55,33 @@ export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
     status === "completed"
       ? activityCompletedStatusLabel
       : status === "pending"
-      ? activityPendingStatusLabel
-      : status === "todo"
-      ? activityTodoStatusLabel
-      : status === "checking"
-      ? activityCheckingLabel
-      : status === "ended"
-      ? activityEndedLabel
-      : activityDisabledLabel;
+        ? activityPendingStatusLabel
+        : status === "todo"
+          ? activityTodoStatusLabel
+          : status === "checking"
+            ? activityCheckingLabel
+            : status === "ended"
+              ? activityEndedLabel
+              : activityDisabledLabel;
 
   const iconType =
     status === "pending" || status === "checking"
       ? "loading"
       : status === "completed"
-      ? "check"
-      : undefined;
+        ? "check"
+        : undefined;
 
   const chipVariants: ChipVariants = {
     variant:
       status === "completed"
         ? "success"
         : status === "pending"
-        ? "pending"
-        : status === "ended" || status === "disabled" || status === "checking"
-        ? "muted"
-        : status === "todo"
-        ? "muted"
-        : "primary",
+          ? "pending"
+          : status === "ended" || status === "disabled" || status === "checking"
+            ? "muted"
+            : status === "todo"
+              ? "muted"
+              : "primary",
   };
 
   return (
