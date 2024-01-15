@@ -12,10 +12,10 @@ const logLevel: LogLevel =
   process.env.REACT_APP_LOG_LEVEL === "error"
     ? "error"
     : process.env.REACT_APP_LOG_LEVEL === "warn"
-    ? "warn"
-    : process.env.REACT_APP_LOG_LEVEL === "debug"
-    ? "debug"
-    : "info";
+      ? "warn"
+      : process.env.REACT_APP_LOG_LEVEL === "debug"
+        ? "debug"
+        : "info";
 
 // Verida variables
 const veridaContextName = VERIDA_CONTEXT_NAME;
@@ -26,8 +26,8 @@ const veridaEnvironment: EnvironmentType =
   process.env.REACT_APP_VERIDA_ENV === "local"
     ? EnvironmentType.LOCAL
     : process.env.REACT_APP_VERIDA_ENV === "mainnet"
-    ? EnvironmentType.MAINNET
-    : EnvironmentType.TESTNET;
+      ? EnvironmentType.MAINNET
+      : EnvironmentType.TESTNET;
 
 const veridaRpcUrl = process.env.REACT_APP_VERIDA_RPC_URL || undefined;
 
