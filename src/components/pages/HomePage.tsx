@@ -12,7 +12,7 @@ import { useActivity } from "~/features/activity";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
-export const HomeView: React.FunctionComponent = () => {
+export const HomePage: React.FunctionComponent = () => {
   const i18n = useIntl();
   const { isConnected } = useVerida();
   const {
@@ -23,7 +23,7 @@ export const HomeView: React.FunctionComponent = () => {
   const { missions } = useActivity();
 
   const tagline = i18n.formatMessage({
-    id: "HomeView.tagline",
+    id: "HomePage.tagline",
     description: "Tag line displayed at the top of the Home page",
     defaultMessage: "Explore a new era of data ownership",
   });
@@ -32,13 +32,13 @@ export const HomeView: React.FunctionComponent = () => {
     isConnected && status !== "accepted" && !isCheckingTermsConditions;
 
   const termsConditionsAlertMessage = i18n.formatMessage({
-    id: "HomeView.termsConditionsAlertMessage",
+    id: "HomePage.termsConditionsAlertMessage",
     defaultMessage: "You must accept the Terms of Use",
     description: "Message for the terms and conditions alert",
   });
 
   const termsConditionsAlertAcceptButtonLabel = i18n.formatMessage({
-    id: "HomeView.termsConditionsAlertAcceptButtonLabel",
+    id: "HomePage.termsConditionsAlertAcceptButtonLabel",
     defaultMessage: "Open Terms of Use",
     description: "Label for the accept button",
   });

@@ -7,7 +7,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 
-import { HomeView } from "~/components/pages";
+import { HomePage } from "~/components/pages";
 import { AppLayout } from "~/components/templates";
 import { AppContextProviders } from "~/contexts";
 import { ErrorBoundary, RouterErrorHandler } from "~/features/errors";
@@ -23,7 +23,7 @@ const router = sentryCreateBrowserRouter(
       element={<AppLayout />}
       errorElement={<RouterErrorHandler />}
     >
-      <Route index element={<HomeView />} />
+      <Route index element={<HomePage />} />
       {/* <Route path="terms-and-conditions" element={<TermsConditionsView />} /> */}
       <Route path="*" element={<Navigate replace to="/" />} />
     </Route>

@@ -1,40 +1,18 @@
-/* eslint-disable formatjs/no-literal-string-in-jsx */
-import { EnvironmentType } from "@verida/types";
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import { useIntl } from "react-intl";
 
 import { ExternalLink, Typography } from "~/components/atoms";
-import { Modal } from "~/components/molecules";
-import { config } from "~/config";
+import { Modal } from "~/components/templates";
 import {
   VERIDA_MISSIONS_FAQ_URL,
   VERIDA_MISSIONS_TESTNET_URL,
 } from "~/constants";
-import { MAINNET_UPGRADE_HIDE_MODAL_LOCAL_STORAGE_KEY } from "~/features/mainnetUpgrade";
+import { useMainnetUpgrade } from "~/features/mainnetUpgrade";
 
 export const MainnetUpgradeModal: React.FunctionComponent = () => {
-  const [open, setOpen] = useState(false);
+  const { acknowledgeUpgrade, isModalOpen } = useMainnetUpgrade();
 
   const i18n = useIntl();
-
-  const handleClose = useCallback(() => {
-    localStorage.setItem(MAINNET_UPGRADE_HIDE_MODAL_LOCAL_STORAGE_KEY, "true");
-    setOpen(false);
-  }, []);
-
-  useEffect(() => {
-    const hideModal = localStorage.getItem(
-      MAINNET_UPGRADE_HIDE_MODAL_LOCAL_STORAGE_KEY
-    );
-    if (
-      config.verida.environment !== EnvironmentType.MAINNET ||
-      (hideModal && hideModal === "true")
-    ) {
-      setOpen(false);
-    } else {
-      setOpen(true);
-    }
-  }, []);
 
   const modalTitle = i18n.formatMessage({
     id: "MainnetUpgradeModal.modalTitle",
@@ -85,13 +63,13 @@ export const MainnetUpgradeModal: React.FunctionComponent = () => {
 
   return (
     <Modal
-      open={open}
-      onClose={handleClose}
+      open={isModalOpen}
+      onClose={acknowledgeUpgrade}
       title={modalTitle}
       actions={[
         {
           label: closeButtonLabel,
-          onClick: handleClose,
+          onClick: acknowledgeUpgrade,
           variant: "contained",
           color: "primary",
         },

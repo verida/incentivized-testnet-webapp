@@ -111,6 +111,10 @@
     "defaultMessage": "'<Anon>'",
     "description": "Fallback name for the profile name in the Header"
   },
+  "Header.submitWalletButtonLabel": {
+    "defaultMessage": "Submit Wallet",
+    "description": "Label for the submit wallet button in the Header"
+  },
   "Header.xpPointsChipLabel": {
     "defaultMessage": "{points} XP",
     "description": "Display of the user total XP points"
@@ -147,15 +151,15 @@
     "defaultMessage": "Go back to Verida Missions on Testnet",
     "description": "Label for link to Verida Missions on Testnet"
   },
-  "HomeView.tagline": {
+  "HomePage.tagline": {
     "defaultMessage": "Explore a new era of data ownership",
     "description": "Tag line displayed at the top of the Home page"
   },
-  "HomeView.termsConditionsAlertAcceptButtonLabel": {
+  "HomePage.termsConditionsAlertAcceptButtonLabel": {
     "defaultMessage": "Open Terms of Use",
     "description": "Label for the accept button"
   },
-  "HomeView.termsConditionsAlertMessage": {
+  "HomePage.termsConditionsAlertMessage": {
     "defaultMessage": "You must accept the Terms of Use",
     "description": "Message for the terms and conditions alert"
   },
@@ -215,7 +219,7 @@
     "defaultMessage": "Report Issue",
     "description": "Label of the button to access the form to report an issue"
   },
-  "TermsConditionsView.termsConditionsTitle": {
+  "TermsConditionsPage.termsConditionsTitle": {
     "defaultMessage": "Terms of Use",
     "description": "Title for the terms and conditions page"
   },

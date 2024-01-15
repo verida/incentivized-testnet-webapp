@@ -8,9 +8,8 @@ import {
 import React, { useCallback, useId } from "react";
 import { useEffect } from "react";
 
+import { PortalWrapper } from "~/components/molecules";
 import { EVENT_TYPE_KEYDOWN, KEY_NAME_ESC } from "~/constants";
-
-import { PortalWrapper } from "./PortalWrapper";
 
 export type ModalAction = {
   label: string;
