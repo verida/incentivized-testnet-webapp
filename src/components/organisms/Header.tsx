@@ -10,6 +10,7 @@ import { HeaderMenu } from "~/components/molecules";
 import { ConnectVeridaButton } from "~/components/organisms";
 import { config } from "~/config";
 import { useActivity } from "~/features/activity";
+import { useRewards } from "~/features/rewards";
 import { useTermsConditions } from "~/features/termsconditions";
 import { truncateDid, useVerida } from "~/features/verida";
 
@@ -24,6 +25,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const { deleteTermsStatus } = useTermsConditions();
   const { deleteUserActivities, userXpPoints, isLoadingUserActivities } =
     useActivity();
+  const { submitWallet } = useRewards();
 
   const handleOpenMenu = useCallback(() => {
     setOpenMenu(true);
@@ -37,6 +39,10 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     handleCloseMenu();
     void disconnect();
   }, [handleCloseMenu, disconnect]);
+
+  const handleSubmitWallet = useCallback(() => {
+    void submitWallet();
+  }, [submitWallet]);
 
   const homeLinkAriaLabel = i18n.formatMessage({
     id: "Header.homeLinkAriaLabel",
@@ -58,6 +64,12 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     },
     { points: userXpPoints }
   );
+
+  const submitWalletButtonLabel = i18n.formatMessage({
+    id: "Header.submitWalletButtonLabel",
+    description: "Label for the submit wallet button in the Header",
+    defaultMessage: "Submit Wallet",
+  });
 
   const disconnectButtonLabel = i18n.formatMessage({
     id: "Header.disconnectButtonLabel",
@@ -113,6 +125,16 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
       ),
       disabled: true,
       replaceButton: true,
+    },
+    {
+      key: "submit-wallet",
+      label: (
+        <div className="flex flex-row gap-2 items-center">
+          <Icon type="wallet" size={20} />
+          {submitWalletButtonLabel}
+        </div>
+      ),
+      action: handleSubmitWallet,
     },
     {
       key: "disconnect",

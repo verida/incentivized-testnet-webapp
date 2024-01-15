@@ -10,6 +10,7 @@ import {
   Logout,
   Up,
   User,
+  Wallet,
 } from "@icon-park/react";
 import React from "react";
 
@@ -31,6 +32,7 @@ export type GenericIconType =
   | "loading"
   | "check"
   | "disconnect"
+  | "wallet"
   | "notification-success"
   | "notification-error";
 export type PlatformIconType =
@@ -74,6 +76,8 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
       return <CheckOne size={size} {...otherProps} />;
     case "notification-error":
       return <Attention size={size} {...otherProps} />;
+    case "wallet":
+      return <Wallet size={size} {...otherProps} />;
     case "platform-discord":
       return (
         <IconContainer {...otherProps}>

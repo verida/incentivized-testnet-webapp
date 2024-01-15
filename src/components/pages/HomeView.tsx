@@ -1,7 +1,6 @@
 import React from "react";
 import { useIntl } from "react-intl";
 
-import { Button } from "~/components/atoms";
 import { Alert, HomeHero } from "~/components/molecules";
 import {
   ConnectVeridaButton,
@@ -15,13 +14,13 @@ import { useVerida } from "~/features/verida";
 
 export const HomeView: React.FunctionComponent = () => {
   const i18n = useIntl();
-  const { isConnected, did, profile } = useVerida();
+  const { isConnected } = useVerida();
   const {
     status,
     isCheckingStatus: isCheckingTermsConditions,
     openAcceptModal,
   } = useTermsConditions();
-  const { missions, userActivities, userXpPoints } = useActivity();
+  const { missions } = useActivity();
 
   const tagline = i18n.formatMessage({
     id: "HomeView.tagline",
@@ -44,64 +43,8 @@ export const HomeView: React.FunctionComponent = () => {
     description: "Label for the accept button",
   });
 
-  const submitWalletLabel = i18n.formatMessage({
-    id: "SubmitWalletButton.submitWalletButtonLabel",
-    description: "",
-    defaultMessage: "Submit Wallet",
-  });
-
-  const handleSubmitWallet = async (): Promise<void> => {
-    const airdropAPI = "http://localhost:8182/add";
-    if (userXpPoints < 200) {
-      throw new Error("Insufficient XP points");
-    }
-
-    if (!userActivities.length) {
-      throw new Error(
-        "No activities completed, so unable to submit airdrop claim"
-      );
-    }
-
-    // @todo: Prompt the user for this (or obtain from Verida Wallet??)
-    const userWalletAddress = "0x2e6F96d19bA666509eD9B2d65CbaD2Ff541Cc826";
-
-    const payload = {
-      did,
-      userWalletAddress,
-      activityProofs: userActivities,
-      profile: {
-        name: profile ? profile.name : "",
-        country: profile ? profile.country : "",
-      },
-    };
-
-    console.log(payload);
-
-    try {
-      const result = await fetch(airdropAPI, {
-        method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      console.log(result);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   return (
     <PageLayout title={tagline}>
-      <Button
-        onClick={() => void handleSubmitWallet()}
-        color="primary"
-        size="medium"
-      >
-        {submitWalletLabel}
-      </Button>
       <HomeHero className="mt-4" />
       {isConnected ? null : (
         <div className="mt-6 flex justify-center">

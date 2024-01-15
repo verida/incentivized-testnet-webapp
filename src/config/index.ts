@@ -41,6 +41,10 @@ export const config = {
     connectLogoUrl: veridaConnectLogoUrl,
     rpcUrl: veridaRpcUrl,
   },
+  claim: {
+    minPoints: Number(process.env.REACT_APP_MIN_XP_POINT_TO_CLAIM || 0),
+    apiUrl: process.env.REACT_APP_XP_POINT_CLAIM_API_URL,
+  },
   sentry: {
     enabled: process.env.REACT_APP_SENTRY_ENABLED === "false" ? false : true,
     dsn: process.env.REACT_APP_SENTRY_DSN,
