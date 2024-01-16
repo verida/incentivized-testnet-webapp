@@ -25,7 +25,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const { deleteTermsStatus } = useTermsConditions();
   const { deleteUserActivities, userXpPoints, isLoadingUserActivities } =
     useActivity();
-  const { submitWallet } = useRewards();
+  const { openModal: openRewardsModal } = useRewards();
 
   const handleOpenMenu = useCallback(() => {
     setOpenMenu(true);
@@ -40,9 +40,9 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     void disconnect();
   }, [handleCloseMenu, disconnect]);
 
-  const handleSubmitWallet = useCallback(() => {
-    void submitWallet();
-  }, [submitWallet]);
+  const handleClaimRewards = useCallback(() => {
+    openRewardsModal();
+  }, [openRewardsModal]);
 
   const homeLinkAriaLabel = i18n.formatMessage({
     id: "Header.homeLinkAriaLabel",
@@ -65,10 +65,10 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     { points: userXpPoints }
   );
 
-  const submitWalletButtonLabel = i18n.formatMessage({
-    id: "Header.submitWalletButtonLabel",
-    description: "Label for the submit wallet button in the Header",
-    defaultMessage: "Submit Wallet",
+  const claimRewardsButtonLabel = i18n.formatMessage({
+    id: "Header.claimRewardsButtonLabel",
+    description: "Label for the claim rewards button in the Header",
+    defaultMessage: "Clain your rewards",
   });
 
   const disconnectButtonLabel = i18n.formatMessage({
@@ -131,10 +131,10 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
       label: (
         <div className="flex flex-row gap-2 items-center">
           <Icon type="wallet" size={20} />
-          {submitWalletButtonLabel}
+          {claimRewardsButtonLabel}
         </div>
       ),
-      action: handleSubmitWallet,
+      action: handleClaimRewards,
     },
     {
       key: "disconnect",

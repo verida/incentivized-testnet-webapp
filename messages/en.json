@@ -99,6 +99,10 @@
     "defaultMessage": "Get Support",
     "description": "Title of the 'Get Support' section"
   },
+  "Header.claimRewardsButtonLabel": {
+    "defaultMessage": "Clain your rewards",
+    "description": "Label for the claim rewards button in the Header"
+  },
   "Header.disconnectButtonLabel": {
     "defaultMessage": "Disconnect",
     "description": "Label for the disconnect button in the Header"
@@ -110,10 +114,6 @@
   "Header.profileNameFallback": {
     "defaultMessage": "'<Anon>'",
     "description": "Fallback name for the profile name in the Header"
-  },
-  "Header.submitWalletButtonLabel": {
-    "defaultMessage": "Submit Wallet",
-    "description": "Label for the submit wallet button in the Header"
   },
   "Header.xpPointsChipLabel": {
     "defaultMessage": "{points} XP",
@@ -218,6 +218,18 @@
   "ReportIssueButton.reportIssueButtonLabel": {
     "defaultMessage": "Report Issue",
     "description": "Label of the button to access the form to report an issue"
+  },
+  "RewardsModal.closeButtonLabel": {
+    "defaultMessage": "Close",
+    "description": "Label for the close button in the rewards modal"
+  },
+  "RewardsModal.modalTitle": {
+    "defaultMessage": "Claim your rewards",
+    "description": "Title for the rewards modal"
+  },
+  "RewardsModal.submitWalletButtonLabel": {
+    "defaultMessage": "Submit",
+    "description": "Label for the submit wallet button in the rewards modal"
   },
   "TermsConditionsPage.termsConditionsTitle": {
     "defaultMessage": "Terms of Use",

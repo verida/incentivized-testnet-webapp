@@ -1,5 +1,6 @@
-import React, { createContext, useCallback, useMemo } from "react";
+import React, { createContext, useCallback, useMemo, useState } from "react";
 
+import { RewardsModal } from "~/components/modals";
 import { config } from "~/config";
 import { useActivity } from "~/features/activity";
 import { Logger } from "~/features/logger";
@@ -11,6 +12,9 @@ const userWalletAddress = "0x2e6F96d19bA666509eD9B2d65CbaD2Ff541Cc826";
 const logger = new Logger("Rewards");
 
 type RewardsContextType = {
+  isModalOpen: boolean;
+  openModal: () => void;
+  closeModal: () => void;
   submitWallet: () => Promise<void>;
 };
 
@@ -27,6 +31,17 @@ export const RewardsProvider: React.FunctionComponent<RewardsContextProps> = (
 
   const { isConnected, did, profile } = useVerida();
   const { userActivities, userXpPoints } = useActivity();
+
+  // TODO: Turn to url param
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = useCallback(() => {
+    setIsModalOpen(true);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setIsModalOpen(false);
+  }, []);
 
   const submitWallet = useCallback(async () => {
     if (!isConnected) {
@@ -78,14 +93,18 @@ export const RewardsProvider: React.FunctionComponent<RewardsContextProps> = (
 
   const contextValue = useMemo(
     () => ({
+      isModalOpen,
+      openModal,
+      closeModal,
       submitWallet,
     }),
-    [submitWallet]
+    [isModalOpen, openModal, closeModal, submitWallet]
   );
 
   return (
     <RewardsContext.Provider value={contextValue}>
       {children}
+      <RewardsModal />
     </RewardsContext.Provider>
   );
 };

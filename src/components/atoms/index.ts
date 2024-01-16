@@ -9,6 +9,7 @@ export * from "./ExternalLink";
 export * from "./Icon";
 export * from "./IconButton";
 export * from "./IconButtonLink";
+export * from "./Input";
 export * from "./InternalLink";
 export * from "./MissionIdLabelChip";
 export * from "./MissionProgessBarIndicator";
