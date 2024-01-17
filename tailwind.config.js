@@ -30,6 +30,7 @@ module.exports = {
         primary: {
           "DEFAULT": "hsl(var(--primary))",
           "background": "hsla(var(--primary) / 0.2)",
+          "border": "hsla(var(--primary) / 0.4)",
           "background-hover": "hsl(var(--primary-bg-hover))",
           "background-disabled": "hsl(var(--primary-bg-disabled))",
           "foreground": "hsl(var(--background))",
@@ -37,12 +38,17 @@ module.exports = {
         success: {
           DEFAULT: "hsl(var(--success))",
           background: "hsla(var(--success) / 0.2)",
+          border: "hsla(var(--success) / 0.4)",
         },
         warning: {
           DEFAULT: "hsl(var(--warning))",
+          background: "hsla(var(--warning) / 0.2)",
+          border: "hsla(var(--warning) / 0.4)",
         },
         error: {
           DEFAULT: "hsl(var(--error))",
+          background: "hsla(var(--error) / 0.2)",
+          border: "hsla(var(--error) / 0.4)",
         },
         pending: {
           DEFAULT: "hsl(var(--pending))",
