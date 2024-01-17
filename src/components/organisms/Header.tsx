@@ -40,7 +40,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     void disconnect();
   }, [handleCloseMenu, disconnect]);
 
-  const handleClaimRewards = useCallback(() => {
+  const handleSubmitWalletClick = useCallback(() => {
     openRewardsModal();
   }, [openRewardsModal]);
 
@@ -65,10 +65,10 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     { points: userXpPoints }
   );
 
-  const claimRewardsButtonLabel = i18n.formatMessage({
-    id: "Header.claimRewardsButtonLabel",
-    description: "Label for the claim rewards button in the Header",
-    defaultMessage: "Clain your rewards",
+  const submitWalletButtonLabel = i18n.formatMessage({
+    id: "Header.submitWalletButtonLabel",
+    description: "Label for the submit wallet button in the Header",
+    defaultMessage: "Submit your wallet",
   });
 
   const disconnectButtonLabel = i18n.formatMessage({
@@ -131,10 +131,10 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
       label: (
         <div className="flex flex-row gap-2 items-center">
           <Icon type="wallet" size={20} />
-          {claimRewardsButtonLabel}
+          {submitWalletButtonLabel}
         </div>
       ),
-      action: handleClaimRewards,
+      action: handleSubmitWalletClick,
     },
     {
       key: "disconnect",
