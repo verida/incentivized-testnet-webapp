@@ -9,6 +9,7 @@ import {
 } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { useActivity } from "~/features/activity";
+import { useRewards } from "~/features/rewards";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
@@ -21,6 +22,11 @@ export const HomePage: React.FunctionComponent = () => {
     openAcceptModal,
   } = useTermsConditions();
   const { missions } = useActivity();
+  const {
+    openModal: openRewardsModal,
+    isClaimExists,
+    isCheckingClaimExists,
+  } = useRewards();
 
   const tagline = i18n.formatMessage({
     id: "HomePage.tagline",
@@ -40,7 +46,20 @@ export const HomePage: React.FunctionComponent = () => {
   const termsConditionsAlertAcceptButtonLabel = i18n.formatMessage({
     id: "HomePage.termsConditionsAlertAcceptButtonLabel",
     defaultMessage: "Open Terms of Use",
-    description: "Label for the accept button",
+    description: "Label for the terms and conditions alert button",
+  });
+
+  const rewardsAlertMessage = i18n.formatMessage({
+    id: "HomePage.rewardsAlertMessage",
+    defaultMessage:
+      "Submit your wallet address to claim rewards with your XP points!",
+    description: "Message for the rewards alert",
+  });
+
+  const rewardsAlertAcceptButtonLabel = i18n.formatMessage({
+    id: "HomePage.rewardsAlertAcceptButtonLabel",
+    defaultMessage: "More",
+    description: "Label for the rewards alert button",
   });
 
   return (
@@ -58,6 +77,15 @@ export const HomePage: React.FunctionComponent = () => {
           actionLabel={termsConditionsAlertAcceptButtonLabel}
           action={openAcceptModal}
           type="warning"
+        />
+      )}
+      {isConnected && !isClaimExists && !isCheckingClaimExists && (
+        <Alert
+          className="mt-6"
+          message={rewardsAlertMessage}
+          actionLabel={rewardsAlertAcceptButtonLabel}
+          action={openRewardsModal}
+          type="info"
         />
       )}
       <div className="mt-16 relative">
