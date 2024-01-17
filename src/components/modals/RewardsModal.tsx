@@ -1,12 +1,12 @@
 import React from "react";
 import { useIntl } from "react-intl";
 
-import { Button, Input } from "~/components/atoms";
+import { Button, Input, Typography } from "~/components/atoms";
 import { Modal } from "~/components/templates";
 import { useRewards } from "~/features/rewards";
 
 export const RewardsModal: React.FunctionComponent = () => {
-  const { isModalOpen, closeModal } = useRewards();
+  const { isModalOpen, closeModal, isClaimExists, submitClaim } = useRewards();
 
   const i18n = useIntl();
 
@@ -28,6 +28,12 @@ export const RewardsModal: React.FunctionComponent = () => {
     description: "Label for the submit wallet button in the rewards modal",
   });
 
+  const claimAlreadyExists = i18n.formatMessage({
+    id: "RewardsModal.claimAlreadyExists",
+    defaultMessage: "Claim already exists",
+    description: "",
+  });
+
   return (
     <Modal
       open={isModalOpen}
@@ -42,11 +48,18 @@ export const RewardsModal: React.FunctionComponent = () => {
         },
       ]}
     >
+      {isClaimExists ? (
+        <div>
+          <Typography variant="base">{claimAlreadyExists}</Typography>
+        </div>
+      ) : null}
       <div className="flex flex-row gap-2">
         <div className="flex-grow">
           <Input />
         </div>
-        <Button variant="contained">{submitWalletButtonLabel}</Button>
+        <Button variant="contained" onClick={() => void submitClaim("0x")}>
+          {submitWalletButtonLabel}
+        </Button>
       </div>
     </Modal>
   );

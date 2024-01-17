@@ -43,7 +43,7 @@ export const config = {
   },
   claim: {
     minPoints: Number(process.env.REACT_APP_MIN_XP_POINT_TO_CLAIM || 0),
-    apiUrl: process.env.REACT_APP_XP_POINT_CLAIM_API_URL,
+    apiBaseUrl: process.env.REACT_APP_XP_POINT_CLAIM_API_BASE_URL,
   },
   sentry: {
     enabled: process.env.REACT_APP_SENTRY_ENABLED === "false" ? false : true,
