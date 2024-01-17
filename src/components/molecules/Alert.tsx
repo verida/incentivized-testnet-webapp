@@ -8,10 +8,10 @@ const alertVariants = cva(
   {
     variants: {
       type: {
-        error: "bg-error-background text-error border-error-border",
-        warning: "bg-warning-background text-warning border-warning-border",
-        info: "bg-primary-background text-primary border-primary-border",
-        success: "bg-success-background text-success border-success-border",
+        error: "bg-error-background text-error border-error/20",
+        warning: "bg-warning-background text-warning border-warning/20",
+        info: "bg-primary-background text-primary border-primary/20",
+        success: "bg-success-background text-success border-success/20",
       },
     },
     defaultVariants: {
@@ -21,8 +21,6 @@ const alertVariants = cva(
 );
 
 export type AlertVariants = VariantProps<typeof alertVariants>;
-
-export type AlertType = "error" | "warning" | "info" | "success";
 
 export type AlertProps = AlertVariants & {
   message: string;

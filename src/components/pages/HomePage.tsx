@@ -51,8 +51,7 @@ export const HomePage: React.FunctionComponent = () => {
 
   const rewardsAlertMessage = i18n.formatMessage({
     id: "HomePage.rewardsAlertMessage",
-    defaultMessage:
-      "Submit your wallet address to claim rewards with your XP points!",
+    defaultMessage: "Submit your wallet address to convert your XP points!",
     description: "Message for the rewards alert",
   });
 
