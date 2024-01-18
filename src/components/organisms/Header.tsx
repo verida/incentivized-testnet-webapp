@@ -142,6 +142,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
       disabled: true,
       replaceButton: true,
     },
+    ...rewardsMenuItems,
     {
       key: "disconnect",
       label: (
@@ -152,7 +153,6 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
       ),
       action: handleDisconnect,
     },
-    ...rewardsMenuItems,
     ...devModeMenuItems,
   ];
 
