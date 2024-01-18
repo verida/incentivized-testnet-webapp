@@ -65,7 +65,7 @@ export const Modal: React.FunctionComponent<ModalProps> = (props) => {
         role="dialog"
         aria-modal="true"
       >
-        <div className="relative px-4 pt-6 pb-8 sm:pb-4 sm:p-8 max-h-[90Vh] sm:max-h-[80vh] flex flex-col">
+        <div className="relative px-4 sm:p-8 pt-6 pb-8  max-h-[90Vh] sm:max-h-[80vh] flex flex-col">
           <div className="mb-5 flex items-center justify-between sm:mb-8">
             <div className="flex-grow basis-0" />
             <Typography
