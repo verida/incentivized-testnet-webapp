@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
 
 import { Button, Icon, Input, Typography } from "~/components/atoms";
+import { Alert } from "~/components/molecules";
 import { Modal } from "~/components/templates";
 import { config } from "~/config";
 import { useActivity } from "~/features/activity";
@@ -19,10 +20,24 @@ export const RewardsModal: React.FunctionComponent = () => {
   } = useRewards();
 
   const [address, setAddress] = useState("");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const handleClose = useCallback(() => {
+    setErrorMessage(null);
+    closeModal();
+  }, [closeModal]);
 
   const handleSubmit = useCallback(() => {
-    void submitClaim(address);
-    setAddress("");
+    const execute = async () => {
+      const result = await submitClaim(address);
+      if (result.status === "error") {
+        setErrorMessage(result.message || null);
+      } else {
+        setErrorMessage(null);
+      }
+      setAddress("");
+    };
+    void execute();
   }, [submitClaim, address]);
 
   const hasEnoughPoints = userXpPoints >= config.claim.minPoints;
@@ -70,7 +85,7 @@ export const RewardsModal: React.FunctionComponent = () => {
   );
 
   return (
-    <Modal open={isModalOpen} onClose={closeModal} title={modalTitle}>
+    <Modal open={isModalOpen} onClose={handleClose} title={modalTitle}>
       {isClaimExists ? (
         <div>
           <Typography variant="base">{claimAlreadyExistsMessage}</Typography>
@@ -127,6 +142,9 @@ export const RewardsModal: React.FunctionComponent = () => {
               <Typography variant="base">{notEnoughPointsMessage}</Typography>
             </div>
           )}
+          {errorMessage ? (
+            <Alert type="error" message={errorMessage} className="mt-4" />
+          ) : null}
         </>
       )}
     </Modal>

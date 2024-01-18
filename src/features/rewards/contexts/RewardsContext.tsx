@@ -10,7 +10,15 @@ type RewardsContextType = {
   isCheckingClaimExists: boolean;
   isClaimExists: boolean;
   isSubmittingClaim: boolean;
-  submitClaim: (walletAddress: string) => Promise<void>;
+  submitClaim: (walletAddress: string) => Promise<
+    | {
+        status: "success";
+      }
+    | {
+        status: "error";
+        message?: string | undefined;
+      }
+  >;
 };
 
 export const RewardsContext = createContext<RewardsContextType | null>(null);

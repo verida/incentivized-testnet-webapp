@@ -31,41 +31,46 @@ export function useRewardsQueries() {
     },
   });
 
-  const { mutateAsync: submitClaim, isLoading: isSubmittingClaim } =
-    useMutation({
-      mutationFn: async (walletAddress: string) => {
-        if (!isConnected || !did) {
-          throw new Error("Cannot submit claim when not connected");
-        }
-        logger.info("Submitting claim", { did });
+  const {
+    mutateAsync: submitClaim,
+    isLoading: isSubmittingClaim,
+    error: errorSubmittingClaim,
+  } = useMutation({
+    mutationFn: async (walletAddress: string) => {
+      if (!isConnected || !did) {
+        throw new Error("Cannot submit claim when not connected");
+      }
+      logger.info("Submitting claim", { did });
 
-        checkClaimConditions(userActivities, userXpPoints);
+      checkClaimConditions(userActivities, userXpPoints);
 
-        const payload: SubmitClaimRequestPayload = {
-          did,
-          userWalletAddress: walletAddress,
-          activityProofs: userActivities,
-          profile: {
-            name: profile?.name || "",
-            country: profile?.country || "",
-          },
-        };
+      const payload: SubmitClaimRequestPayload = {
+        did,
+        userWalletAddress: walletAddress,
+        activityProofs: userActivities,
+        profile: {
+          name: profile?.name || "",
+          country: profile?.country || "",
+        },
+      };
 
-        await submitClaimRequest(payload);
-      },
-      onSuccess: async () => {
-        // TODO: Optimise with an optimistic update
-        await queryClient.invalidateQueries(["claimExists", did]);
-      },
-      onError(error) {
-        Sentry.captureException(error);
-      },
-    });
+      return submitClaimRequest(payload);
+    },
+    onSuccess: async () => {
+      // TODO: Optimise with an optimistic update
+      await queryClient.invalidateQueries(["claimExists", did]);
+    },
+    onError(error) {
+      Sentry.captureException(error);
+    },
+  });
 
   return {
-    isClaimExists: !!claimExistsData?.exists,
+    isClaimExists:
+      claimExistsData?.status === "success" && !!claimExistsData?.exists,
     isCheckingClaimExists,
     submitClaim,
     isSubmittingClaim,
+    errorSubmittingClaim,
   };
 }
