@@ -98,14 +98,14 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const rewardsMenuItems: MenuItem[] = isRewardsEnabled
     ? [
         {
-          key: "disconnect",
+          key: "submit-wallet",
           label: (
             <div className="flex flex-row gap-2 items-center">
-              <Icon type="disconnect" size={20} />
-              {disconnectButtonLabel}
+              <Icon type="wallet" size={20} />
+              {submitWalletButtonLabel}
             </div>
           ),
-          action: handleDisconnect,
+          action: handleSubmitWalletClick,
         },
       ]
     : [];
@@ -143,14 +143,14 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
       replaceButton: true,
     },
     {
-      key: "submit-wallet",
+      key: "disconnect",
       label: (
         <div className="flex flex-row gap-2 items-center">
-          <Icon type="wallet" size={20} />
-          {submitWalletButtonLabel}
+          <Icon type="disconnect" size={20} />
+          {disconnectButtonLabel}
         </div>
       ),
-      action: handleSubmitWalletClick,
+      action: handleDisconnect,
     },
     ...rewardsMenuItems,
     ...devModeMenuItems,
