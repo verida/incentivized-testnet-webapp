@@ -1,25 +1,32 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
 
-import { Button, Input, Typography } from "~/components/atoms";
+import { Button, Icon, Input, Typography } from "~/components/atoms";
 import { Modal } from "~/components/templates";
 import { useRewards } from "~/features/rewards";
 
 export const RewardsModal: React.FunctionComponent = () => {
-  const { isModalOpen, closeModal, isClaimExists, submitClaim } = useRewards();
+  const {
+    isModalOpen,
+    closeModal,
+    isClaimExists,
+    isCheckingClaimExists,
+    submitClaim,
+    isSubmittingClaim,
+  } = useRewards();
+
+  const [address, setAddress] = useState("");
+
+  const handleSubmit = useCallback(() => {
+    void submitClaim(address);
+  }, [submitClaim, address]);
 
   const i18n = useIntl();
 
   const modalTitle = i18n.formatMessage({
     id: "RewardsModal.modalTitle",
-    defaultMessage: "Claim your rewards",
+    defaultMessage: "Submit your wallet address",
     description: "Title for the rewards modal",
-  });
-
-  const closeButtonLabel = i18n.formatMessage({
-    id: "RewardsModal.closeButtonLabel",
-    defaultMessage: "Close",
-    description: "Label for the close button in the rewards modal",
   });
 
   const submitWalletButtonLabel = i18n.formatMessage({
@@ -28,39 +35,67 @@ export const RewardsModal: React.FunctionComponent = () => {
     description: "Label for the submit wallet button in the rewards modal",
   });
 
-  const claimAlreadyExists = i18n.formatMessage({
-    id: "RewardsModal.claimAlreadyExists",
-    defaultMessage: "Claim already exists",
-    description: "",
+  const claimAlreadyExistsMessage = i18n.formatMessage({
+    id: "RewardsModal.claimAlreadyExistsMessage",
+    defaultMessage: "Congratulation! You already provided your wallet address.",
+    description:
+      "Message displayed in the rewards modal when the claim has already been submitted",
+  });
+
+  const submitWalletMessage = i18n.formatMessage({
+    id: "RewardsModal.submitWalletMessage",
+    defaultMessage:
+      "Provide a Polygon blockchain address to receive your rewards.",
+    description:
+      "Message displayed in the rewards modal when before submitting the claim",
   });
 
   return (
-    <Modal
-      open={isModalOpen}
-      onClose={closeModal}
-      title={modalTitle}
-      actions={[
-        {
-          label: closeButtonLabel,
-          onClick: closeModal,
-          variant: "text",
-          color: "primary",
-        },
-      ]}
-    >
+    <Modal open={isModalOpen} onClose={closeModal} title={modalTitle}>
       {isClaimExists ? (
         <div>
-          <Typography variant="base">{claimAlreadyExists}</Typography>
+          <Typography variant="base">{claimAlreadyExistsMessage}</Typography>
         </div>
-      ) : null}
-      <div className="flex flex-row gap-2">
-        <div className="flex-grow">
-          <Input />
+      ) : (
+        <div className="flex flex-col gap-4">
+          <Typography variant="base">{submitWalletMessage}</Typography>
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-2">
+            <div className="flex-grow">
+              <Input
+                placeholder="0xQwerty1234567890..."
+                value={address}
+                onChange={(e) => {
+                  e.preventDefault();
+                  setAddress(e.target.value);
+                }}
+                disabled={
+                  isClaimExists || isCheckingClaimExists || isSubmittingClaim
+                }
+              />
+            </div>
+            <Button
+              variant="contained"
+              onClick={handleSubmit}
+              disabled={
+                isClaimExists || isCheckingClaimExists || isSubmittingClaim
+              }
+            >
+              {isCheckingClaimExists || isSubmittingClaim ? (
+                <>
+                  <Icon
+                    size={20}
+                    type="loading"
+                    className="animate-spin-slow"
+                  />
+                  {submitWalletButtonLabel}
+                </>
+              ) : (
+                <>{submitWalletButtonLabel}</>
+              )}
+            </Button>
+          </div>
         </div>
-        <Button variant="contained" onClick={() => void submitClaim("0x")}>
-          {submitWalletButtonLabel}
-        </Button>
-      </div>
+      )}
     </Modal>
   );
 };

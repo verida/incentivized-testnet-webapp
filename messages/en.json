@@ -99,10 +99,6 @@
     "defaultMessage": "Get Support",
     "description": "Title of the 'Get Support' section"
   },
-  "Header.claimRewardsButtonLabel": {
-    "defaultMessage": "Clain your rewards",
-    "description": "Label for the claim rewards button in the Header"
-  },
   "Header.disconnectButtonLabel": {
     "defaultMessage": "Disconnect",
     "description": "Label for the disconnect button in the Header"
@@ -114,6 +110,10 @@
   "Header.profileNameFallback": {
     "defaultMessage": "'<Anon>'",
     "description": "Fallback name for the profile name in the Header"
+  },
+  "Header.submitWalletButtonLabel": {
+    "defaultMessage": "Submit your wallet",
+    "description": "Label for the submit wallet button in the Header"
   },
   "Header.xpPointsChipLabel": {
     "defaultMessage": "{points} XP",
@@ -151,13 +151,21 @@
     "defaultMessage": "Go back to Verida Missions on Testnet",
     "description": "Label for link to Verida Missions on Testnet"
   },
+  "HomePage.rewardsAlertAcceptButtonLabel": {
+    "defaultMessage": "More",
+    "description": "Label for the rewards alert button"
+  },
+  "HomePage.rewardsAlertMessage": {
+    "defaultMessage": "Submit your wallet address to convert your XP points!",
+    "description": "Message for the rewards alert"
+  },
   "HomePage.tagline": {
     "defaultMessage": "Explore a new era of data ownership",
     "description": "Tag line displayed at the top of the Home page"
   },
   "HomePage.termsConditionsAlertAcceptButtonLabel": {
     "defaultMessage": "Open Terms of Use",
-    "description": "Label for the accept button"
+    "description": "Label for the terms and conditions alert button"
   },
   "HomePage.termsConditionsAlertMessage": {
     "defaultMessage": "You must accept the Terms of Use",
@@ -219,17 +227,21 @@
     "defaultMessage": "Report Issue",
     "description": "Label of the button to access the form to report an issue"
   },
-  "RewardsModal.closeButtonLabel": {
-    "defaultMessage": "Close",
-    "description": "Label for the close button in the rewards modal"
+  "RewardsModal.claimAlreadyExistsMessage": {
+    "defaultMessage": "Congratulation! You already provided your wallet address.",
+    "description": "Message displayed in the rewards modal when the claim has already been submitted"
   },
   "RewardsModal.modalTitle": {
-    "defaultMessage": "Claim your rewards",
+    "defaultMessage": "Submit your wallet address",
     "description": "Title for the rewards modal"
   },
   "RewardsModal.submitWalletButtonLabel": {
     "defaultMessage": "Submit",
     "description": "Label for the submit wallet button in the rewards modal"
+  },
+  "RewardsModal.submitWalletMessage": {
+    "defaultMessage": "Provide a Polygon blockchain address to receive your rewards.",
+    "description": "Message displayed in the rewards modal when before submitting the claim"
   },
   "TermsConditionsPage.termsConditionsTitle": {
     "defaultMessage": "Terms of Use",
