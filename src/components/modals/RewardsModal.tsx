@@ -3,9 +3,12 @@ import { useIntl } from "react-intl";
 
 import { Button, Icon, Input, Typography } from "~/components/atoms";
 import { Modal } from "~/components/templates";
+import { config } from "~/config";
+import { useActivity } from "~/features/activity";
 import { useRewards } from "~/features/rewards";
 
 export const RewardsModal: React.FunctionComponent = () => {
+  const { userXpPoints } = useActivity();
   const {
     isModalOpen,
     closeModal,
@@ -19,7 +22,10 @@ export const RewardsModal: React.FunctionComponent = () => {
 
   const handleSubmit = useCallback(() => {
     void submitClaim(address);
+    setAddress("");
   }, [submitClaim, address]);
+
+  const hasEnoughPoints = userXpPoints >= config.claim.minPoints;
 
   const i18n = useIntl();
 
@@ -50,6 +56,19 @@ export const RewardsModal: React.FunctionComponent = () => {
       "Message displayed in the rewards modal when before submitting the claim",
   });
 
+  const notEnoughPointsMessage = i18n.formatMessage(
+    {
+      id: "RewardsModal.notEnoughPointsMessage",
+      defaultMessage:
+        "You do not have enough XP points to submit your wallet address. Complete some activities to reach at least {minPoints} XP points and try again.",
+      description:
+        "Message displayed in the rewards modal when the user doesn't have enough XP points",
+    },
+    {
+      minPoints: config.claim.minPoints,
+    }
+  );
+
   return (
     <Modal open={isModalOpen} onClose={closeModal} title={modalTitle}>
       {isClaimExists ? (
@@ -57,44 +76,58 @@ export const RewardsModal: React.FunctionComponent = () => {
           <Typography variant="base">{claimAlreadyExistsMessage}</Typography>
         </div>
       ) : (
-        <div className="flex flex-col gap-4">
-          <Typography variant="base">{submitWalletMessage}</Typography>
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-2">
-            <div className="flex-grow">
-              <Input
-                placeholder="0xQwerty1234567890..."
-                value={address}
-                onChange={(e) => {
-                  e.preventDefault();
-                  setAddress(e.target.value);
-                }}
-                disabled={
-                  isClaimExists || isCheckingClaimExists || isSubmittingClaim
-                }
-              />
-            </div>
-            <Button
-              variant="contained"
-              onClick={handleSubmit}
-              disabled={
-                isClaimExists || isCheckingClaimExists || isSubmittingClaim
-              }
-            >
-              {isCheckingClaimExists || isSubmittingClaim ? (
-                <>
-                  <Icon
-                    size={20}
-                    type="loading"
-                    className="animate-spin-slow"
+        <>
+          {hasEnoughPoints ? (
+            <div className="flex flex-col gap-4">
+              <Typography variant="base">{submitWalletMessage}</Typography>
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-2">
+                <div className="flex-grow">
+                  <Input
+                    placeholder="0xQwerty1234567890..."
+                    value={address}
+                    onChange={(e) => {
+                      e.preventDefault();
+                      setAddress(e.target.value);
+                    }}
+                    disabled={
+                      !hasEnoughPoints ||
+                      isClaimExists ||
+                      isCheckingClaimExists ||
+                      isSubmittingClaim
+                    }
                   />
-                  {submitWalletButtonLabel}
-                </>
-              ) : (
-                <>{submitWalletButtonLabel}</>
-              )}
-            </Button>
-          </div>
-        </div>
+                </div>
+                <Button
+                  variant="contained"
+                  onClick={handleSubmit}
+                  disabled={
+                    !hasEnoughPoints ||
+                    isClaimExists ||
+                    isCheckingClaimExists ||
+                    isSubmittingClaim
+                  }
+                >
+                  {isCheckingClaimExists || isSubmittingClaim ? (
+                    <>
+                      <Icon
+                        size={20}
+                        type="loading"
+                        className="animate-spin-slow"
+                      />
+                      {submitWalletButtonLabel}
+                    </>
+                  ) : (
+                    <>{submitWalletButtonLabel}</>
+                  )}
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <Typography variant="base">{notEnoughPointsMessage}</Typography>
+            </div>
+          )}
+        </>
       )}
     </Modal>
   );

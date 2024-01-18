@@ -235,6 +235,10 @@
     "defaultMessage": "Submit your wallet address",
     "description": "Title for the rewards modal"
   },
+  "RewardsModal.notEnoughPointsMessage": {
+    "defaultMessage": "You do not have enough XP points to submit your wallet address. Complete some activities to reach at least {minPoints} XP points and try again.",
+    "description": "Message displayed in the rewards modal when the user doesn't have enough XP points"
+  },
   "RewardsModal.submitWalletButtonLabel": {
     "defaultMessage": "Submit",
     "description": "Label for the submit wallet button in the rewards modal"
