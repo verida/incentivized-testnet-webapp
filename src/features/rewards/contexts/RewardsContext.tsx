@@ -2,8 +2,10 @@ import React, { createContext, useCallback, useMemo, useState } from "react";
 
 import { RewardsModal } from "~/components/modals";
 import { useRewardsQueries } from "~/features/rewards/hooks";
+import { isRewardsEnabled } from "~/features/rewards/utils";
 
 type RewardsContextType = {
+  isEnabled: boolean;
   isModalOpen: boolean;
   openModal: () => void;
   closeModal: () => void;
@@ -32,6 +34,8 @@ export const RewardsProvider: React.FunctionComponent<RewardsContextProps> = (
 ) => {
   const { children } = props;
 
+  const isEnabled = isRewardsEnabled();
+
   const {
     isCheckingClaimExists,
     isClaimExists,
@@ -52,6 +56,7 @@ export const RewardsProvider: React.FunctionComponent<RewardsContextProps> = (
 
   const contextValue = useMemo(
     () => ({
+      isEnabled,
       isModalOpen,
       openModal,
       closeModal,
@@ -61,6 +66,7 @@ export const RewardsProvider: React.FunctionComponent<RewardsContextProps> = (
       submitClaim,
     }),
     [
+      isEnabled,
       isModalOpen,
       openModal,
       closeModal,
@@ -74,7 +80,7 @@ export const RewardsProvider: React.FunctionComponent<RewardsContextProps> = (
   return (
     <RewardsContext.Provider value={contextValue}>
       {children}
-      <RewardsModal />
+      {isEnabled ? <RewardsModal /> : null}
     </RewardsContext.Provider>
   );
 };

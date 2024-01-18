@@ -23,6 +23,7 @@ export const HomePage: React.FunctionComponent = () => {
   } = useTermsConditions();
   const { missions } = useActivity();
   const {
+    isEnabled: isRewardsEnabled,
     openModal: openRewardsModal,
     isClaimExists,
     isCheckingClaimExists,
@@ -78,15 +79,18 @@ export const HomePage: React.FunctionComponent = () => {
           type="warning"
         />
       )}
-      {isConnected && !isClaimExists && !isCheckingClaimExists && (
-        <Alert
-          className="mt-6"
-          message={rewardsAlertMessage}
-          actionLabel={rewardsAlertAcceptButtonLabel}
-          action={openRewardsModal}
-          type="info"
-        />
-      )}
+      {isRewardsEnabled &&
+        isConnected &&
+        !isClaimExists &&
+        !isCheckingClaimExists && (
+          <Alert
+            className="mt-6"
+            message={rewardsAlertMessage}
+            actionLabel={rewardsAlertAcceptButtonLabel}
+            action={openRewardsModal}
+            type="info"
+          />
+        )}
       <div className="mt-16 relative">
         <div className="hidden lg:block absolute top-0 bottom-0 -right-6 translate-x-full w-36 xl:w-64">
           <aside className="sticky top-24">

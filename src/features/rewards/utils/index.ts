@@ -1,9 +1,15 @@
+import { EnvironmentType } from "@verida/types";
+
 import { config } from "~/config";
 import { UserActivityRecord } from "~/features/activity";
 import { Logger } from "~/features/logger";
 import { SubmitClaimRequestPayload } from "~/features/rewards/types";
 
 const logger = new Logger("rewards");
+
+export function isRewardsEnabled() {
+  return config.verida.environment === EnvironmentType.MAINNET;
+}
 
 export function checkClaimConditions(
   userActivities: UserActivityRecord[],

@@ -25,7 +25,8 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const { deleteTermsStatus } = useTermsConditions();
   const { deleteUserActivities, userXpPoints, isLoadingUserActivities } =
     useActivity();
-  const { openModal: openRewardsModal } = useRewards();
+  const { isEnabled: isRewardsEnabled, openModal: openRewardsModal } =
+    useRewards();
 
   const handleOpenMenu = useCallback(() => {
     setOpenMenu(true);
@@ -94,6 +95,21 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
       ]
     : [];
 
+  const rewardsMenuItems: MenuItem[] = isRewardsEnabled
+    ? [
+        {
+          key: "disconnect",
+          label: (
+            <div className="flex flex-row gap-2 items-center">
+              <Icon type="disconnect" size={20} />
+              {disconnectButtonLabel}
+            </div>
+          ),
+          action: handleDisconnect,
+        },
+      ]
+    : [];
+
   const menuItems: MenuItem[] = [
     {
       key: "profile-info",
@@ -136,16 +152,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
       ),
       action: handleSubmitWalletClick,
     },
-    {
-      key: "disconnect",
-      label: (
-        <div className="flex flex-row gap-2 items-center">
-          <Icon type="disconnect" size={20} />
-          {disconnectButtonLabel}
-        </div>
-      ),
-      action: handleDisconnect,
-    },
+    ...rewardsMenuItems,
     ...devModeMenuItems,
   ];
 
