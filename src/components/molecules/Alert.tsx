@@ -37,13 +37,15 @@ export const Alert: React.FunctionComponent<AlertProps> = (props) => {
     <div {...divProps}>
       <div className={classes}>
         <Typography>{message}</Typography>
-        <Button
-          onClick={action}
-          color={type === "info" ? "primary" : "default"}
-          className="whitespace-nowrap"
-        >
-          {actionLabel}
-        </Button>
+        {action && actionLabel ? (
+          <Button
+            onClick={action}
+            color={type === "info" ? "primary" : "default"}
+            className="whitespace-nowrap"
+          >
+            {actionLabel}
+          </Button>
+        ) : null}
       </div>
     </div>
   );
