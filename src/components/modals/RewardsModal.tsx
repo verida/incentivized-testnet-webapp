@@ -98,7 +98,7 @@ export const RewardsModal: React.FunctionComponent = () => {
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-2">
                 <div className="flex-grow">
                   <Input
-                    placeholder="0xQwerty1234567890..."
+                    placeholder="0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
                     value={address}
                     onChange={(e) => {
                       e.preventDefault();
