@@ -74,7 +74,7 @@
     "eslint-plugin-formatjs": "^4.11.3",
     "eslint-plugin-functional": "^6.0.0",
     "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsdoc": "^47.0.1",
+    "eslint-plugin-jsdoc": "^48.0.2",
     "eslint-plugin-no-loops": "^0.3.0",
     "eslint-plugin-no-relative-import-paths": "^1.5.3",
     "eslint-plugin-prettier": "^5.1.3",
