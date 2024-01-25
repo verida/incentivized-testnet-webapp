@@ -787,22 +787,6 @@
     "defaultMessage": "Prove Your Humanity and Build Trusted Online Communities with Synaps Proof of Life Credential",
     "description": "Title of the mission 04"
   },
-  "missions.mission-05.idLabel": {
-    "defaultMessage": "Mission 5",
-    "description": "Label of the mission id 05"
-  },
-  "missions.mission-05.longDescription": {
-    "defaultMessage": "In Mission 5 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
-    "description": "Long description of the mission 05"
-  },
-  "missions.mission-05.shortDescription": {
-    "defaultMessage": "In Mission 5 we need your help to stress-test the Network infrastructure. By performing various activities and pushing the limits of the testnet, you will play a crucial role in identifying and resolving any potential bottlenecks or vulnerabilities. Your efforts will ensure that the Verida mainnet operates at its full potential, providing a reliable and efficient decentralized storage solution.",
-    "description": "Short description of the mission 05"
-  },
-  "missions.mission-05.title": {
-    "defaultMessage": "Stress testing the network",
-    "description": "Title of the mission 05"
-  },
   "useExecuteActivity.activityAlreadyBeingExecutedMessage": {
     "defaultMessage": "An activity is already being executed, please wait for it to finish",
     "description": "Notification message when user try to execute an activity while there's already one being executed"
