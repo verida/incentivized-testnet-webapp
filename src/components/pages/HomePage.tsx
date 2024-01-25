@@ -52,13 +52,13 @@ export const HomePage: React.FunctionComponent = () => {
 
   const rewardsAlertMessage = i18n.formatMessage({
     id: "HomePage.rewardsAlertMessage",
-    defaultMessage: "Submit your wallet address to convert your XP points!",
+    defaultMessage: "Submit your Polygon wallet address now",
     description: "Message for the rewards alert",
   });
 
   const rewardsAlertAcceptButtonLabel = i18n.formatMessage({
     id: "HomePage.rewardsAlertAcceptButtonLabel",
-    defaultMessage: "More",
+    defaultMessage: "Add",
     description: "Label for the rewards alert button",
   });
 

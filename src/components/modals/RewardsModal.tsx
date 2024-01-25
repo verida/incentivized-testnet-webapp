@@ -58,7 +58,7 @@ export const RewardsModal: React.FunctionComponent = () => {
 
   const claimAlreadyExistsMessage = i18n.formatMessage({
     id: "RewardsModal.claimAlreadyExistsMessage",
-    defaultMessage: "Congratulation! You already provided your wallet address.",
+    defaultMessage: "Congratulations! Your wallet address has been submitted.",
     description:
       "Message displayed in the rewards modal when the claim has already been submitted",
   });
@@ -66,7 +66,7 @@ export const RewardsModal: React.FunctionComponent = () => {
   const submitWalletMessage = i18n.formatMessage({
     id: "RewardsModal.submitWalletMessage",
     defaultMessage:
-      "Provide a Polygon blockchain address to receive your rewards.",
+      "Provide a Polygon blockchain address for exclusive benefits.",
     description:
       "Message displayed in the rewards modal when before submitting the claim",
   });
@@ -98,7 +98,7 @@ export const RewardsModal: React.FunctionComponent = () => {
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-2">
                 <div className="flex-grow">
                   <Input
-                    placeholder="0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
+                    placeholder="0x000..."
                     value={address}
                     onChange={(e) => {
                       e.preventDefault();

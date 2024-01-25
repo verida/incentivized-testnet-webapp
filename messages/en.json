@@ -152,11 +152,11 @@
     "description": "Label for link to Verida Missions on Testnet"
   },
   "HomePage.rewardsAlertAcceptButtonLabel": {
-    "defaultMessage": "More",
+    "defaultMessage": "Add",
     "description": "Label for the rewards alert button"
   },
   "HomePage.rewardsAlertMessage": {
-    "defaultMessage": "Submit your wallet address to convert your XP points!",
+    "defaultMessage": "Submit your Polygon wallet address now",
     "description": "Message for the rewards alert"
   },
   "HomePage.tagline": {
@@ -228,7 +228,7 @@
     "description": "Label of the button to access the form to report an issue"
   },
   "RewardsModal.claimAlreadyExistsMessage": {
-    "defaultMessage": "Congratulation! You already provided your wallet address.",
+    "defaultMessage": "Congratulations! Your wallet address has been submitted.",
     "description": "Message displayed in the rewards modal when the claim has already been submitted"
   },
   "RewardsModal.modalTitle": {
@@ -244,7 +244,7 @@
     "description": "Label for the submit wallet button in the rewards modal"
   },
   "RewardsModal.submitWalletMessage": {
-    "defaultMessage": "Provide a Polygon blockchain address to receive your rewards.",
+    "defaultMessage": "Provide a Polygon blockchain address for exclusive benefits.",
     "description": "Message displayed in the rewards modal when before submitting the claim"
   },
   "TermsConditionsPage.termsConditionsTitle": {
