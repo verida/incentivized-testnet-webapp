@@ -9,10 +9,11 @@ import {
 } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { useActivity } from "~/features/activity";
+import { useRewards } from "~/features/rewards";
 import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
-export const HomeView: React.FunctionComponent = () => {
+export const HomePage: React.FunctionComponent = () => {
   const i18n = useIntl();
   const { isConnected } = useVerida();
   const {
@@ -21,9 +22,15 @@ export const HomeView: React.FunctionComponent = () => {
     openAcceptModal,
   } = useTermsConditions();
   const { missions } = useActivity();
+  const {
+    isEnabled: isRewardsEnabled,
+    openModal: openRewardsModal,
+    isClaimExists,
+    isCheckingClaimExists,
+  } = useRewards();
 
   const tagline = i18n.formatMessage({
-    id: "HomeView.tagline",
+    id: "HomePage.tagline",
     description: "Tag line displayed at the top of the Home page",
     defaultMessage: "Explore a new era of data ownership",
   });
@@ -32,15 +39,27 @@ export const HomeView: React.FunctionComponent = () => {
     isConnected && status !== "accepted" && !isCheckingTermsConditions;
 
   const termsConditionsAlertMessage = i18n.formatMessage({
-    id: "HomeView.termsConditionsAlertMessage",
+    id: "HomePage.termsConditionsAlertMessage",
     defaultMessage: "You must accept the Terms of Use",
     description: "Message for the terms and conditions alert",
   });
 
   const termsConditionsAlertAcceptButtonLabel = i18n.formatMessage({
-    id: "HomeView.termsConditionsAlertAcceptButtonLabel",
+    id: "HomePage.termsConditionsAlertAcceptButtonLabel",
     defaultMessage: "Open Terms of Use",
-    description: "Label for the accept button",
+    description: "Label for the terms and conditions alert button",
+  });
+
+  const rewardsAlertMessage = i18n.formatMessage({
+    id: "HomePage.rewardsAlertMessage",
+    defaultMessage: "Submit your Polygon wallet address now",
+    description: "Message for the rewards alert",
+  });
+
+  const rewardsAlertAcceptButtonLabel = i18n.formatMessage({
+    id: "HomePage.rewardsAlertAcceptButtonLabel",
+    defaultMessage: "Add",
+    description: "Label for the rewards alert button",
   });
 
   return (
@@ -60,6 +79,18 @@ export const HomeView: React.FunctionComponent = () => {
           type="warning"
         />
       )}
+      {isRewardsEnabled &&
+        isConnected &&
+        !isClaimExists &&
+        !isCheckingClaimExists && (
+          <Alert
+            className="mt-6"
+            message={rewardsAlertMessage}
+            actionLabel={rewardsAlertAcceptButtonLabel}
+            action={openRewardsModal}
+            type="info"
+          />
+        )}
       <div className="mt-16 relative">
         <div className="hidden lg:block absolute top-0 bottom-0 -right-6 translate-x-full w-36 xl:w-64">
           <aside className="sticky top-24">

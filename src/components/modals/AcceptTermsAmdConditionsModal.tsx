@@ -1,8 +1,8 @@
 import React, { useCallback } from "react";
 import { useIntl } from "react-intl";
 
-import { Modal } from "~/components/molecules";
 import { TermsAndConditions } from "~/components/organisms";
+import { Modal } from "~/components/templates";
 import { useTermsConditions } from "~/features/termsconditions";
 
 export type AcceptTermsAmdConditionsModalProps = {

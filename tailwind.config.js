@@ -40,9 +40,11 @@ module.exports = {
         },
         warning: {
           DEFAULT: "hsl(var(--warning))",
+          background: "hsla(var(--warning) / 0.2)",
         },
         error: {
           DEFAULT: "hsl(var(--error))",
+          background: "hsla(var(--error) / 0.2)",
         },
         pending: {
           DEFAULT: "hsl(var(--pending))",

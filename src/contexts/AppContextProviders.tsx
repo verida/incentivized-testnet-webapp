@@ -3,7 +3,9 @@ import { HelmetProvider } from "react-helmet-async";
 
 import { ActivityProvider } from "~/features/activity";
 import { IntlProvider } from "~/features/i18n";
+import { MainnetUpgradeProvider } from "~/features/mainnetUpgrade";
 import { Notifications } from "~/features/notifications";
+import { RewardsProvider } from "~/features/rewards";
 import { TermsConditionsProvider } from "~/features/termsconditions";
 import { VeridaProvider } from "~/features/verida";
 
@@ -19,16 +21,20 @@ export const AppContextProviders: React.FunctionComponent<
   return (
     <QueryProvider>
       <IntlProvider>
-        <VeridaProvider>
-          <TermsConditionsProvider>
-            <ActivityProvider>
-              <HelmetProvider>
-                {props.children}
-                <Notifications />
-              </HelmetProvider>
-            </ActivityProvider>
-          </TermsConditionsProvider>
-        </VeridaProvider>
+        <MainnetUpgradeProvider>
+          <VeridaProvider>
+            <TermsConditionsProvider>
+              <ActivityProvider>
+                <RewardsProvider>
+                  <HelmetProvider>
+                    {props.children}
+                    <Notifications />
+                  </HelmetProvider>
+                </RewardsProvider>
+              </ActivityProvider>
+            </TermsConditionsProvider>
+          </VeridaProvider>
+        </MainnetUpgradeProvider>
       </IntlProvider>
     </QueryProvider>
   );

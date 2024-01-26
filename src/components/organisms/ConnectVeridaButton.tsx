@@ -59,10 +59,10 @@ export const ConnectVeridaButton: React.FunctionComponent<
       {isCheckingConnection
         ? checkingConnectionButtonLabel
         : isConnecting
-        ? connectingButtonLabel
-        : longLabel
-        ? connectButtonLongLabel
-        : connectButtonLabel}
+          ? connectingButtonLabel
+          : longLabel
+            ? connectButtonLongLabel
+            : connectButtonLabel}
     </Button>
   );
 };

@@ -1,2 +1,2 @@
-export * from "./HomeView";
-export * from "./TermsConditionsView";
+export * from "./HomePage";
+export * from "./TermsConditionsPage";
