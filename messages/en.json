@@ -111,6 +111,10 @@
     "defaultMessage": "'<Anon>'",
     "description": "Fallback name for the profile name in the Header"
   },
+  "Header.submitWalletButtonLabel": {
+    "defaultMessage": "Submit your wallet",
+    "description": "Label for the submit wallet button in the Header"
+  },
   "Header.xpPointsChipLabel": {
     "defaultMessage": "{points} XP",
     "description": "Display of the user total XP points"
@@ -147,15 +151,23 @@
     "defaultMessage": "Go back to Verida Missions on Testnet",
     "description": "Label for link to Verida Missions on Testnet"
   },
-  "HomeView.tagline": {
+  "HomePage.rewardsAlertAcceptButtonLabel": {
+    "defaultMessage": "Add",
+    "description": "Label for the rewards alert button"
+  },
+  "HomePage.rewardsAlertMessage": {
+    "defaultMessage": "Submit your Polygon wallet address now",
+    "description": "Message for the rewards alert"
+  },
+  "HomePage.tagline": {
     "defaultMessage": "Explore a new era of data ownership",
     "description": "Tag line displayed at the top of the Home page"
   },
-  "HomeView.termsConditionsAlertAcceptButtonLabel": {
+  "HomePage.termsConditionsAlertAcceptButtonLabel": {
     "defaultMessage": "Open Terms of Use",
-    "description": "Label for the accept button"
+    "description": "Label for the terms and conditions alert button"
   },
-  "HomeView.termsConditionsAlertMessage": {
+  "HomePage.termsConditionsAlertMessage": {
     "defaultMessage": "You must accept the Terms of Use",
     "description": "Message for the terms and conditions alert"
   },
@@ -215,7 +227,27 @@
     "defaultMessage": "Report Issue",
     "description": "Label of the button to access the form to report an issue"
   },
-  "TermsConditionsView.termsConditionsTitle": {
+  "RewardsModal.claimAlreadyExistsMessage": {
+    "defaultMessage": "Congratulations! Your wallet address has been submitted.",
+    "description": "Message displayed in the rewards modal when the claim has already been submitted"
+  },
+  "RewardsModal.modalTitle": {
+    "defaultMessage": "Submit your wallet address",
+    "description": "Title for the rewards modal"
+  },
+  "RewardsModal.notEnoughPointsMessage": {
+    "defaultMessage": "You do not have enough XP points to submit your wallet address. Complete some activities to reach at least {minPoints} XP points and try again.",
+    "description": "Message displayed in the rewards modal when the user doesn't have enough XP points"
+  },
+  "RewardsModal.submitWalletButtonLabel": {
+    "defaultMessage": "Submit",
+    "description": "Label for the submit wallet button in the rewards modal"
+  },
+  "RewardsModal.submitWalletMessage": {
+    "defaultMessage": "Provide a Polygon blockchain address for exclusive benefits.",
+    "description": "Message displayed in the rewards modal when before submitting the claim"
+  },
+  "TermsConditionsPage.termsConditionsTitle": {
     "defaultMessage": "Terms of Use",
     "description": "Title for the terms and conditions page"
   },

@@ -8,9 +8,8 @@ import {
 import React, { useCallback, useId } from "react";
 import { useEffect } from "react";
 
+import { PortalWrapper } from "~/components/molecules";
 import { EVENT_TYPE_KEYDOWN, KEY_NAME_ESC } from "~/constants";
-
-import { PortalWrapper } from "./PortalWrapper";
 
 export type ModalAction = {
   label: string;
@@ -66,7 +65,7 @@ export const Modal: React.FunctionComponent<ModalProps> = (props) => {
         role="dialog"
         aria-modal="true"
       >
-        <div className="relative p-4 pt-6 sm:p-8 max-h-[90Vh] sm:max-h-[80vh] flex flex-col">
+        <div className="relative px-4 sm:p-8 pt-6 pb-8  max-h-[90Vh] sm:max-h-[80vh] flex flex-col">
           <div className="mb-5 flex items-center justify-between sm:mb-8">
             <div className="flex-grow basis-0" />
             <Typography
@@ -86,7 +85,7 @@ export const Modal: React.FunctionComponent<ModalProps> = (props) => {
               />
             </div>
           </div>
-          <div className="overflow-auto pr-2">{children}</div>
+          <div className="overflow-auto">{children}</div>
           {actions && actions.length > 0 ? (
             <div className="mt-5 sm:mt-8">
               <div className="flex flex-row-reverse gap-2">
