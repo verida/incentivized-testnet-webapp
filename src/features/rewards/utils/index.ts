@@ -108,3 +108,7 @@ export async function submitClaimRequest(
     };
   }
 }
+
+export function buildXShareUrl(text: string, inReplyTo: string) {
+  return `https://twitter.com/intent/tweet?text=${encodeURI(text)}&in_reply_to=${inReplyTo}`;
+}

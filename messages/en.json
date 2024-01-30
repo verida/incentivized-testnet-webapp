@@ -271,13 +271,21 @@
     "defaultMessage": "Next activity coming soon",
     "description": "Message to display in the upcoming activities CTA"
   },
-  "WalletSubmitShareOnSocial.sharedDataTitle": {
-    "defaultMessage": "I just completed Verida Missions, come join the community",
-    "description": "Title of the share data"
-  },
-  "WalletSubmitShareOnSocial.title": {
-    "defaultMessage": "Share it on social media!",
+  "WalletSubmitShareOnSocial.linkLabel": {
+    "defaultMessage": "Verida Storage Credit Community Pre-Sale",
     "description": "Section title for the share on social media"
+  },
+  "WalletSubmitShareOnSocial.message": {
+    "defaultMessage": "Share your identity on social media to be eligible for the",
+    "description": "Section title for the share on social media"
+  },
+  "WalletSubmitShareOnSocial.shareOnX": {
+    "defaultMessage": "Share on",
+    "description": "Label of the Share on X. The X is a logo appended after this message"
+  },
+  "WalletSubmitShareOnSocial.sharedDataText": {
+    "defaultMessage": "I just submitted my wallet address for my DID: {did}",
+    "description": "Text of the shared data"
   },
   "activities.claimAnimaPoLCredential.actionExecutingLabel": {
     "defaultMessage": "Sending Request",
