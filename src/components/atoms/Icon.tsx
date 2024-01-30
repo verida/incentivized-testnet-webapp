@@ -8,10 +8,12 @@ import {
   Down,
   LoadingOne,
   Logout,
+  ShareOne,
   Up,
   User,
   Wallet,
 } from "@icon-park/react";
+import { ReactComponent as Whatsapp } from "assets/logos/platforms/whatsapp.svg";
 import React from "react";
 
 import { ReactComponent as Discord } from "~/assets/logos/platforms/discord.svg";
@@ -20,6 +22,7 @@ import { ReactComponent as Medium } from "~/assets/logos/platforms/medium.svg";
 import { ReactComponent as Reddit } from "~/assets/logos/platforms/reddit.svg";
 import { ReactComponent as Telegram } from "~/assets/logos/platforms/telegram.svg";
 import { ReactComponent as Twitter } from "~/assets/logos/platforms/twitter.svg";
+import { ReactComponent as X } from "~/assets/logos/platforms/x.svg";
 import { ReactComponent as Youtube } from "~/assets/logos/platforms/youtube.svg";
 
 export type GenericIconType =
@@ -32,6 +35,7 @@ export type GenericIconType =
   | "loading"
   | "check"
   | "disconnect"
+  | "share"
   | "wallet"
   | "notification-success"
   | "notification-error";
@@ -42,6 +46,8 @@ export type PlatformIconType =
   | "platform-reddit"
   | "platform-telegram"
   | "platform-twitter"
+  | "platform-x"
+  | "platform-whatsapp"
   | "platform-youtube";
 export type IconType = GenericIconType | PlatformIconType;
 
@@ -72,6 +78,8 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
       return <Copy size={size} {...otherProps} />;
     case "disconnect":
       return <Logout size={size} {...otherProps} />;
+    case "share":
+      return <ShareOne size={size} {...otherProps} />;
     case "notification-success":
       return <CheckOne size={size} {...otherProps} />;
     case "notification-error":
@@ -112,6 +120,18 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
       return (
         <IconContainer {...otherProps}>
           <Twitter height={size} width={size} />
+        </IconContainer>
+      );
+    case "platform-x":
+      return (
+        <IconContainer {...otherProps}>
+          <X height={size} width={size} />
+        </IconContainer>
+      );
+    case "platform-whatsapp":
+      return (
+        <IconContainer {...otherProps}>
+          <Whatsapp height={size} width={size} />
         </IconContainer>
       );
     case "platform-youtube":
