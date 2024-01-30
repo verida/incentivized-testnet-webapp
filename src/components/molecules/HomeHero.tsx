@@ -5,6 +5,7 @@ import { useIntl } from "react-intl";
 import { ExternalLink, Typography } from "~/components/atoms";
 import { config } from "~/config";
 import {
+  VERIDA_BLOG_POST_VDA_WHITELIST,
   VERIDA_MISSIONS_MAINNET_URL,
   VERIDA_MISSIONS_TESTNET_URL,
   VERIDA_WALLET_DOWNLOAD_URL,
@@ -23,7 +24,7 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
       id: "HomeHero.descriptionPart1",
       description: "Description (part 1) of Verida Missions",
       defaultMessage:
-        "Begin your journey towards having control over your own data and personal information with Verida Missions.{newline}{newline}Complete the activities, build up your XP, and earn storage credits for the secure data management on Verida Network.",
+        "Take control over your own personal data. Join Verida Missions, build up your XP, and earn storage credits for secure data management on Verida Network.",
     },
     {
       newline: (
@@ -47,6 +48,25 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
       ", create your Identity and connect to Verida Missions to get started.",
   });
 
+  const vdaWhitelistTitle = i18n.formatMessage({
+    id: "HomeHero.vdaWhitelistTitle",
+    description: "Title for the VDA whitelist",
+    defaultMessage: "VDA Whitelist now open",
+  });
+
+  const vdaWhitelistMessage = i18n.formatMessage({
+    id: "HomeHero.vdaWhitelistMessage",
+    description: "Message abou tthe VDA whitelist",
+    defaultMessage:
+      "Verida Storage Credit Token (VDA) pre-sale whitelist is open! Join now for priority access.",
+  });
+
+  const vdaWhitelistLinkLabel = i18n.formatMessage({
+    id: "HomeHero.vdaWhitelistLinkLabel",
+    description: "Label for link to know more about the VDA whitelist",
+    defaultMessage: "Read more",
+  });
+
   const existingUserTitle = i18n.formatMessage({
     id: "HomeHero.existingUserTitle",
     description: "Title for existing users",
@@ -57,25 +77,25 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
     id: "HomeHero.existingUserMessage",
     description: "Message for existing users",
     defaultMessage:
-      "Verida Missions is now using the Verida Mainnet. Update your Verida Wallet to start the process for migrating to Mainnet, and ensure your completed activities and XP are transferred to Verida Missions.",
+      "Update your Verida Wallet to migrate your completed activities and XP to Mainnet.",
   });
 
   const testnetMissionsLinkLabel = i18n.formatMessage({
     id: "HomeHero.testnetMissionsLinkLabel",
-    defaultMessage: "Go back to Verida Missions on Testnet",
     description: "Label for link to Verida Missions on Testnet",
+    defaultMessage: "Go back to Verida Missions on Testnet",
   });
 
   const nonMainnetWarning = i18n.formatMessage({
     id: "HomeHero.nonMainnetWarning",
-    defaultMessage: "This is a Testnet version of Verida Missions.",
     description: "Warning for non-mainnet environments",
+    defaultMessage: "This is a Testnet version of Verida Missions.",
   });
 
   const mainnetMissionsLinkLabel = i18n.formatMessage({
     id: "HomeHero.mainnetMissionsLinkLabel",
-    defaultMessage: "Visit the Mainnet version",
     description: "Label for link to Verida Missions on Mainnet",
+    defaultMessage: "Visit the Mainnet version",
   });
 
   return (
@@ -87,6 +107,19 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
             {newUserCta}
           </ExternalLink>
           {newUserMessage}
+        </Typography>
+        <Typography variant="heading-s" className="mt-4">
+          {vdaWhitelistTitle}
+        </Typography>
+        <Typography>
+          {vdaWhitelistMessage}
+          <ExternalLink
+            href={VERIDA_BLOG_POST_VDA_WHITELIST}
+            openInNewTab
+            className="ml-1"
+          >
+            {vdaWhitelistLinkLabel}
+          </ExternalLink>
         </Typography>
         {config.verida.environment === EnvironmentType.MAINNET ? (
           <>
