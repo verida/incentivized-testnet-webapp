@@ -120,11 +120,11 @@
     "description": "Display of the user total XP points"
   },
   "HomeHero.descriptionPart1": {
-    "defaultMessage": "Begin your journey towards having control over your own data and personal information with Verida Missions.{newline}{newline}Complete the activities, build up your XP, and earn storage credits for the secure data management on Verida Network.",
+    "defaultMessage": "Take control over your own personal data. Join Verida Missions, build up your XP, and earn storage credits for secure data management on Verida Network.",
     "description": "Description (part 1) of Verida Missions"
   },
   "HomeHero.existingUserMessage": {
-    "defaultMessage": "Verida Missions is now using the Verida Mainnet. Update your Verida Wallet to start the process for migrating to Mainnet, and ensure your completed activities and XP are transferred to Verida Missions.",
+    "defaultMessage": "Update your Verida Wallet to migrate your completed activities and XP to Mainnet.",
     "description": "Message for existing users"
   },
   "HomeHero.existingUserTitle": {
@@ -150,6 +150,18 @@
   "HomeHero.testnetMissionsLinkLabel": {
     "defaultMessage": "Go back to Verida Missions on Testnet",
     "description": "Label for link to Verida Missions on Testnet"
+  },
+  "HomeHero.vdaWhitelistLinkLabel": {
+    "defaultMessage": "Read more",
+    "description": "Label for link to know more about the VDA whitelist"
+  },
+  "HomeHero.vdaWhitelistMessage": {
+    "defaultMessage": "Verida Storage Credit Token (VDA) pre-sale whitelist is open! Join now for priority access.",
+    "description": "Message abou tthe VDA whitelist"
+  },
+  "HomeHero.vdaWhitelistTitle": {
+    "defaultMessage": "VDA Whitelist now open",
+    "description": "Title for the VDA whitelist"
   },
   "HomePage.rewardsAlertAcceptButtonLabel": {
     "defaultMessage": "Add",
@@ -258,6 +270,22 @@
   "UpcomingActivitiesCTA.title": {
     "defaultMessage": "Next activity coming soon",
     "description": "Message to display in the upcoming activities CTA"
+  },
+  "WalletSubmitShareOnSocial.linkLabel": {
+    "defaultMessage": "Verida Storage Credit Community Pre-Sale",
+    "description": "Section title for the share on social media"
+  },
+  "WalletSubmitShareOnSocial.message": {
+    "defaultMessage": "Share your identity on social media to be eligible for the",
+    "description": "Section title for the share on social media"
+  },
+  "WalletSubmitShareOnSocial.shareOnX": {
+    "defaultMessage": "Share on",
+    "description": "Label of the Share on X. The X is a logo appended after this message"
+  },
+  "WalletSubmitShareOnSocial.sharedDataText": {
+    "defaultMessage": "I just submitted my wallet address for my DID: {did}",
+    "description": "Text of the shared data"
   },
   "activities.claimAnimaPoLCredential.actionExecutingLabel": {
     "defaultMessage": "Sending Request",

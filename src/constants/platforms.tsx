@@ -6,10 +6,10 @@ export const veridaSupportPlatforms = {
     url: "https://discord.verida.io/",
     icon: <Icon type="platform-discord" />,
   },
-  twitter: {
-    label: "Twitter",
+  x: {
+    label: "X (Twitter)",
     url: "https://twitter.com/verida_io",
-    icon: <Icon type="platform-twitter" />,
+    icon: <Icon type="platform-x" />,
   },
   telegram: {
     label: "Telegram",

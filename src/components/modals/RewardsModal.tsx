@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
 
 import { Button, Icon, Input, Typography } from "~/components/atoms";
-import { Alert } from "~/components/molecules";
+import { Alert, WalletSubmitShareOnSocial } from "~/components/molecules";
 import { Modal } from "~/components/templates";
 import { config } from "~/config";
 import { useActivity } from "~/features/activity";
@@ -89,6 +89,7 @@ export const RewardsModal: React.FunctionComponent = () => {
       {isClaimExists ? (
         <div>
           <Typography variant="base">{claimAlreadyExistsMessage}</Typography>
+          <WalletSubmitShareOnSocial className="mt-8" />
         </div>
       ) : (
         <>
