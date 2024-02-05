@@ -56,7 +56,7 @@ export const activity: Activity = {
   ended: false,
   visible: true,
   order: 1,
-  points: 50,
+  points: 100,
   title: defineMessage({
     id: "activities.createVeridaIdentity.title",
     defaultMessage: "Create a Verida Identity",
