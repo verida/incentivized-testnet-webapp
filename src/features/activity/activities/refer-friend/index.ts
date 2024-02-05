@@ -188,7 +188,7 @@ export const activity: Activity = {
   id: ACTIVITY_ID,
   missionId: MISSION_01_ID,
   enabled: true,
-  ended: false,
+  ended: true,
   visible: true,
   order: 4,
   points: 100,
@@ -200,13 +200,13 @@ export const activity: Activity = {
   shortDescription: defineMessage({
     id: "activities.referFriend.shortDescription",
     defaultMessage:
-      "Invite a friend to create a Decentralized Identity and take control of their personal data.",
+      "This activity is temporarily closed.{newline}{newline}Invite a friend to create a Decentralized Identity and take control of their personal data.",
     description: "Short description of the activity 'refer friend'",
   }),
   longDescription: defineMessage({
     id: "activities.referFriend.longDescription",
     defaultMessage:
-      "Invite a friend to create a Decentralized Identity and take control of their personal data.{newline}{newline}Step 1. Get your Verida Missions referral link below{newline}{newline}Step 2. Share your referral link with a friend{newline}{newline}Step 3. Your friend will have to create a Verida Identity and connect to Verida Missions with your referral link for your activity to be completed",
+      "This activity is temporarily closed.{newline}{newline}Invite a friend to create a Decentralized Identity and take control of their personal data.{newline}{newline}Step 1. Get your Verida Missions referral link below{newline}{newline}Step 2. Share your referral link with a friend{newline}{newline}Step 3. Your friend will have to create a Verida Identity and connect to Verida Missions with your referral link for your activity to be completed",
     description: "Long description of the activity 'refer friend'",
   }),
   actionLabel: defineMessage({
