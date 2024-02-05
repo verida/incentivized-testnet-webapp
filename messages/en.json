@@ -628,11 +628,11 @@
     "description": "Toast message displayed after executing the 'Refer a friend activity'"
   },
   "activities.referFriend.longDescription": {
-    "defaultMessage": "Invite a friend to create a Decentralized Identity and take control of their personal data.{newline}{newline}Step 1. Get your Verida Missions referral link below{newline}{newline}Step 2. Share your referral link with a friend{newline}{newline}Step 3. Your friend will have to create a Verida Identity and connect to Verida Missions with your referral link for your activity to be completed",
+    "defaultMessage": "This activity is temporarily closed.{newline}{newline}Invite a friend to create a Decentralized Identity and take control of their personal data.{newline}{newline}Step 1. Get your Verida Missions referral link below{newline}{newline}Step 2. Share your referral link with a friend{newline}{newline}Step 3. Your friend will have to create a Verida Identity and connect to Verida Missions with your referral link for your activity to be completed",
     "description": "Long description of the activity 'refer friend'"
   },
   "activities.referFriend.shortDescription": {
-    "defaultMessage": "Invite a friend to create a Decentralized Identity and take control of their personal data.",
+    "defaultMessage": "This activity is temporarily closed.{newline}{newline}Invite a friend to create a Decentralized Identity and take control of their personal data.",
     "description": "Short description of the activity 'refer friend'"
   },
   "activities.referFriend.title": {
