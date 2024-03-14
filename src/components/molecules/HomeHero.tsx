@@ -5,7 +5,6 @@ import { useIntl } from "react-intl";
 import { ExternalLink, Typography } from "~/components/atoms";
 import { config } from "~/config";
 import {
-  VERIDA_BLOG_POST_VDA_WHITELIST,
   VERIDA_MISSIONS_MAINNET_URL,
   VERIDA_MISSIONS_TESTNET_URL,
   VERIDA_WALLET_DOWNLOAD_URL,
@@ -48,25 +47,6 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
       ", create your Identity and connect to Verida Missions to get started.",
   });
 
-  const vdaWhitelistTitle = i18n.formatMessage({
-    id: "HomeHero.vdaWhitelistTitle",
-    description: "Title for the VDA whitelist",
-    defaultMessage: "VDA Whitelist now open",
-  });
-
-  const vdaWhitelistMessage = i18n.formatMessage({
-    id: "HomeHero.vdaWhitelistMessage",
-    description: "Message abou tthe VDA whitelist",
-    defaultMessage:
-      "Verida Storage Credit Token (VDA) pre-sale whitelist is open! Join now for priority access.",
-  });
-
-  const vdaWhitelistLinkLabel = i18n.formatMessage({
-    id: "HomeHero.vdaWhitelistLinkLabel",
-    description: "Label for link to know more about the VDA whitelist",
-    defaultMessage: "Read more",
-  });
-
   const existingUserTitle = i18n.formatMessage({
     id: "HomeHero.existingUserTitle",
     description: "Title for existing users",
@@ -107,19 +87,6 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
             {newUserCta}
           </ExternalLink>
           {newUserMessage}
-        </Typography>
-        <Typography variant="heading-s" className="mt-4">
-          {vdaWhitelistTitle}
-        </Typography>
-        <Typography>
-          {vdaWhitelistMessage}
-          <ExternalLink
-            href={VERIDA_BLOG_POST_VDA_WHITELIST}
-            openInNewTab
-            className="ml-1"
-          >
-            {vdaWhitelistLinkLabel}
-          </ExternalLink>
         </Typography>
         {config.verida.environment === EnvironmentType.MAINNET ? (
           <>
