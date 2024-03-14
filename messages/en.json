@@ -151,18 +151,6 @@
     "defaultMessage": "Go back to Verida Missions on Testnet",
     "description": "Label for link to Verida Missions on Testnet"
   },
-  "HomeHero.vdaWhitelistLinkLabel": {
-    "defaultMessage": "Read more",
-    "description": "Label for link to know more about the VDA whitelist"
-  },
-  "HomeHero.vdaWhitelistMessage": {
-    "defaultMessage": "Verida Storage Credit Token (VDA) pre-sale whitelist is open! Join now for priority access.",
-    "description": "Message abou tthe VDA whitelist"
-  },
-  "HomeHero.vdaWhitelistTitle": {
-    "defaultMessage": "VDA Whitelist now open",
-    "description": "Title for the VDA whitelist"
-  },
   "HomePage.rewardsAlertAcceptButtonLabel": {
     "defaultMessage": "Add",
     "description": "Label for the rewards alert button"
