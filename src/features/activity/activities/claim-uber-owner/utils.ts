@@ -1,7 +1,4 @@
-import {
-  type ReceivedMessage,
-  type VeridaVerifiableCredentialRecord,
-} from "~/features/verida";
+import { type ReceivedMessage } from "~/features/verida";
 
 export function verifyReceivedMessage(
   message: ReceivedMessage<unknown>
