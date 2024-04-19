@@ -1,6 +1,7 @@
 import toast from "react-hot-toast";
 import { defineMessage } from "react-intl";
 
+import { config } from "~/config";
 import { MISSION_05_ID } from "~/features/activity/missions";
 import type {
   Activity,
@@ -16,14 +17,16 @@ import {
   getMessaging,
   sendDataRequest,
 } from "~/features/verida";
-import { wait } from "~/utils";
 
-import { RECLAIM_PROTOCOL_UBER_OWNER_SCHEMA_ID, ZK_HOST } from "./constants";
+import {
+  RECLAIM_PROTOCOL_UBER_OWNER_SCHEMA_ID,
+  VERIDA_CREDENTIAL_ZK_SCHEMA_URLS,
+} from "./constants";
 import { verifyReceivedMessage } from "./utils";
 
 const logger = new Logger("activity");
 
-const ACTIVITY_ID = "prove-uber-owner"; // Never change the id
+const ACTIVITY_ID = "claim-uber-owner-reclaim"; // Never change the id
 
 const handleNewMessage: ActivityOnMessage = async (
   message,
@@ -55,7 +58,7 @@ const handleNewMessage: ActivityOnMessage = async (
     });
 
     toast.success(
-      "Congrats, you have completed the activity 'Claim a Synaps Proof of Life credential'"
+      "Congrats, you have completed the activity 'Claim an Uber credential/Prove ownership'"
     );
   } catch (error: unknown) {
     Sentry.captureException(error, {
@@ -136,7 +139,7 @@ const handleInit: ActivityOnInit = async (
         });
 
         toast.success(
-          "Congrats, you have completed the activity 'Verify you are Uber owner'"
+          "Congrats, you have completed the activity 'Claim an Uber credential/Prove ownership'"
         );
 
         return true;
@@ -165,20 +168,36 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
 
   try {
     const did = veridaWebUser.current.getDid();
+    if (!config.proof.connector_base_url) {
+      logger.error("");
+      return {
+        status: "todo",
+        message: defineMessage({
+          id: "activities.claimUberOwner.gettingExecutionErrorMessage",
+          defaultMessage: `Proof-dapp-connector url is empty, please try again after set variable`,
+          description: "Error message when we can't open proof-dapp-connector",
+        }),
+      };
+    }
+
     window.open(
-      `${ZK_HOST}?veridaDid=${did}&schemaId=${RECLAIM_PROTOCOL_UBER_OWNER_SCHEMA_ID}`
+      `${config.proof.connector_base_url}?veridaDid=${did}&schemaId=${RECLAIM_PROTOCOL_UBER_OWNER_SCHEMA_ID}`
     );
 
-    await wait(2000);
-
     // TODO: Make a localised message of this message
-    const message = "Please verify that you are uber owner";
+    const message = "Please share a Uber account credential";
 
     logger.info("Sending data request", { activityId: ACTIVITY_ID });
 
     const sentMessage = await sendDataRequest(veridaWebUser.current, {
       messageSubject: message,
       requestSchema: VAULT_CREDENTIAL_SCHEMA_URL,
+      // TODO: Consider using the issuer DID and the type/credentialSubject.type instead of the schema
+      filter: {
+        $or: VERIDA_CREDENTIAL_ZK_SCHEMA_URLS.map((url) => ({
+          credentialSchema: url,
+        })),
+      },
     });
 
     logger.info("Data request sent", {
@@ -188,11 +207,15 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
 
     return {
       status: "pending",
+      data: {
+        requestId: sentMessage?.id,
+      },
       message: defineMessage({
         id: "activities.claimUberOwner.executePendingMessage",
-        defaultMessage: "Please wait while you verify",
+        defaultMessage:
+          "A request has been sent to your wallet inbox. Please check your Verida Wallet Inbox and share the credentials.",
         description:
-          "Message credentials were sent to your verida wallet inbox",
+          "Message explaining a request has been sent to your verida wallet inbox",
       }),
     };
   } catch (error: unknown) {
@@ -223,17 +246,21 @@ export const activity: Activity = {
   title: defineMessage({
     id: "activities.claimUberOwner.title",
     defaultMessage: "Claim an Uber credential/Prove ownership",
-    description: "Claim an Uber credential/Prove ownership",
+    description:
+      "Title of the activity 'Claim an Uber credential/Prove ownership'",
   }),
   shortDescription: defineMessage({
     id: "activities.claimUberOwner.shortDescription",
-    defaultMessage: `Claim an Uber credential/Prove ownership`,
-    description: "Claim an Uber credential/Prove ownership",
+    defaultMessage: `Claim an Uber credential/Prove ownership using Reclaim protocol. The credentails should be stored in your verida wallet.`,
+    description:
+      "Short description of the activity 'Claim an Uber credential/Prove ownership'",
   }),
   longDescription: defineMessage({
     id: "activities.claimUberOwner.longDescription",
-    defaultMessage: `Claim an Uber credential/Prove ownership`,
-    description: "Claim an Uber credential/Prove ownership",
+    defaultMessage: `Claim an Uber credential/Prove ownership. The credentails will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step1. Go to proof-dapp-connector app and complete verification process for uber account.{newline}{newline}Step2. Open your Verida Wallet inbox and accept message from dapp-connector. {newline}{newline}Step3. Accept request from verida mission to share credentials.{newline}{newline}Step4. Select and share credentials.
+      `,
+    description:
+      "Long description of the activity 'Claim an Uber credential/Prove ownership'",
   }),
   actionLabel: defineMessage({
     id: "activities.claimUberOwner.actionLabel",
@@ -243,7 +270,7 @@ export const activity: Activity = {
   }),
   actionReExecuteLabel: defineMessage({
     id: "activities.claimUberOwner.actionReExecuteLabel",
-    defaultMessage: "Re-verify",
+    defaultMessage: "Re-send Request",
     description: "Label of the button to perform the activity again ",
   }),
   actionExecutingLabel: defineMessage({
@@ -255,5 +282,14 @@ export const activity: Activity = {
   onInit: handleInit,
   onExecute: handleExecute,
   onMessage: handleNewMessage,
-  resources: [],
+  resources: [
+    {
+      label: defineMessage({
+        id: "activities.claimUberOwner.resources.reclaimPageUrl.label",
+        defaultMessage: "Whitepaper of Reclaim protocol",
+        description: "Label of the resource 'Whitepaper of Reclaim protocol'",
+      }),
+      url: "https://www.reclaimprotocol.org/whitepaper/",
+    },
+  ],
 };

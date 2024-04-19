@@ -1,4 +1,10 @@
-import { type ReceivedMessage } from "~/features/verida";
+import {
+  type ReceivedMessage,
+  VeridaVerifiableCredentialRecord,
+} from "~/features/verida";
+
+import { VERIDA_CREDENTIAL_ZK_SCHEMA_URLS } from "./constants";
+import { ReclaimProofOfUberCredentialSubject } from "./types";
 
 export function verifyReceivedMessage(
   message: ReceivedMessage<unknown>
@@ -8,7 +14,16 @@ export function verifyReceivedMessage(
     return false;
   }
 
-  // TODO: Consider using the issuer DID and the type instead of the schema
+  const vc =
+    data as VeridaVerifiableCredentialRecord<ReclaimProofOfUberCredentialSubject>;
+
+  // TODO: Consider using zod to validate
+  if (
+    !vc.credentialSchema ||
+    !VERIDA_CREDENTIAL_ZK_SCHEMA_URLS.includes(vc.credentialSchema)
+  ) {
+    return false;
+  }
 
   return true;
 }

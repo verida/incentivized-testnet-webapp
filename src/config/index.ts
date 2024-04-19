@@ -60,4 +60,7 @@ export const config = {
       process.env.REACT_APP_SENTRY_REPLAYS_ON_ERROR_SAMPLE_RATE || 1.0
     ),
   },
+  proof: {
+    connector_base_url: process.env.REACT_APP_ZK_DAPP_CONNECTOR_BASE_URL,
+  },
 };
