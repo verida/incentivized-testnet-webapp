@@ -173,7 +173,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
       return {
         status: "todo",
         message: defineMessage({
-          id: "activities.claimUberOwner.gettingExecutionErrorMessage",
+          id: "activities.claimUberOwner.gettingExecutionErrorMessage2",
           defaultMessage: `Proof-dapp-connector url is empty, please try again after set variable`,
           description: "Error message when we can't open proof-dapp-connector",
         }),

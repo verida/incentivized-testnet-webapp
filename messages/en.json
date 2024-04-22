@@ -583,6 +583,46 @@
     "defaultMessage": "Claim a GateKeeper Adopter credential",
     "description": "Title of the activity 'Claim Gatekeeper Adopter credential'"
   },
+  "activities.claimUberOwner.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'Claim Uber ownership' is being executed"
+  },
+  "activities.claimUberOwner.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity Claim Uber ownership"
+  },
+  "activities.claimUberOwner.actionReExecuteLabel": {
+    "defaultMessage": "Re-send Request",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimUberOwner.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your wallet inbox. Please check your Verida Wallet Inbox and share the credentials.",
+    "description": "Message explaining a request has been sent to your verida wallet inbox"
+  },
+  "activities.claimUberOwner.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimUberOwner.gettingExecutionErrorMessage2": {
+    "defaultMessage": "Proof-dapp-connector url is empty, please try again after set variable",
+    "description": "Error message when we can't open proof-dapp-connector"
+  },
+  "activities.claimUberOwner.longDescription": {
+    "defaultMessage": "Claim an Uber credential/Prove ownership. The credentails will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step1. Go to proof-dapp-connector app and complete verification process for uber account.{newline}{newline}Step2. Open your Verida Wallet inbox and accept message from dapp-connector. {newline}{newline}Step3. Accept request from verida mission to share credentials.{newline}{newline}Step4. Select and share credentials.",
+    "description": "Long description of the activity 'Claim an Uber credential/Prove ownership'"
+  },
+  "activities.claimUberOwner.resources.reclaimPageUrl.label": {
+    "defaultMessage": "Whitepaper of Reclaim protocol",
+    "description": "Label of the resource 'Whitepaper of Reclaim protocol'"
+  },
+  "activities.claimUberOwner.shortDescription": {
+    "defaultMessage": "Claim an Uber credential/Prove ownership using Reclaim protocol. The credentails should be stored in your verida wallet.",
+    "description": "Short description of the activity 'Claim an Uber credential/Prove ownership'"
+  },
+  "activities.claimUberOwner.title": {
+    "defaultMessage": "Claim an Uber credential/Prove ownership",
+    "description": "Title of the activity 'Claim an Uber credential/Prove ownership'"
+  },
   "activities.createVeridaIdentity.actionExecutingLabel": {
     "defaultMessage": "Verifying",
     "description": "Label of the button when the activity 'create Verida Identity' is being executed"
@@ -802,6 +842,22 @@
   "missions.mission-04.title": {
     "defaultMessage": "Prove Your Humanity and Build Trusted Online Communities with Synaps Proof of Life Credential",
     "description": "Title of the mission 04"
+  },
+  "missions.mission_05.idLabel": {
+    "defaultMessage": "Mission 5",
+    "description": "Label of the mission id 05"
+  },
+  "missions.mission_05.longDescription": {
+    "defaultMessage": "Reclaim protocol allows you to proof information about yourself from any website, without disclosing your personal data",
+    "description": "Long description of the mission 05"
+  },
+  "missions.mission_05.shortDescription": {
+    "defaultMessage": "Reclaim protocol allows you to proof information about yourself from any website, without disclosing your personal data",
+    "description": "Short description of the mission 05"
+  },
+  "missions.mission_05.title": {
+    "defaultMessage": "Generate proofs with Reclaim Protocol",
+    "description": "Title of the mission 05"
   },
   "useExecuteActivity.activityAlreadyBeingExecutedMessage": {
     "defaultMessage": "An activity is already being executed, please wait for it to finish",
