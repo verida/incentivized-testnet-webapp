@@ -3,7 +3,7 @@ import {
   VeridaVerifiableCredentialRecord,
 } from "~/features/verida";
 
-import { VERIDA_CREDENTIAL_ZK_SCHEMA_URLS } from "./constants";
+import { VERIDA_CREDENTIAL_RECLAIM_SCHEMA_URLS } from "./constants";
 import { ReclaimProofOfUberCredentialSubject } from "./types";
 
 export function verifyReceivedMessage(
@@ -20,7 +20,7 @@ export function verifyReceivedMessage(
   // TODO: Consider using zod to validate
   if (
     !vc.credentialSchema ||
-    !VERIDA_CREDENTIAL_ZK_SCHEMA_URLS.includes(vc.credentialSchema)
+    !VERIDA_CREDENTIAL_RECLAIM_SCHEMA_URLS.includes(vc.credentialSchema)
   ) {
     return false;
   }

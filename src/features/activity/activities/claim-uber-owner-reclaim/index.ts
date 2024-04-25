@@ -20,7 +20,7 @@ import {
 
 import {
   RECLAIM_PROTOCOL_UBER_OWNER_SCHEMA_ID,
-  VERIDA_CREDENTIAL_ZK_SCHEMA_URLS,
+  VERIDA_CREDENTIAL_RECLAIM_SCHEMA_URLS,
 } from "./constants";
 import { verifyReceivedMessage } from "./utils";
 
@@ -168,24 +168,13 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
 
   try {
     const did = veridaWebUser.current.getDid();
-    if (!config.proof.connector_base_url) {
-      logger.error("");
-      return {
-        status: "todo",
-        message: defineMessage({
-          id: "activities.claimUberOwner.gettingExecutionErrorMessage",
-          defaultMessage: `Proof-dapp-connector url is empty, please try again after set variable`,
-          description: "Error message when we can't open proof-dapp-connector",
-        }),
-      };
-    }
-
     window.open(
-      `${config.proof.connector_base_url}?veridaDid=${did}&schemaId=${RECLAIM_PROTOCOL_UBER_OWNER_SCHEMA_ID}`
+      `${config.proof.connectorBaseUrl}?veridaDid=${did}&schemaId=${RECLAIM_PROTOCOL_UBER_OWNER_SCHEMA_ID}`
     );
 
     // TODO: Make a localised message of this message
-    const message = "Please share a Uber account credential";
+    const message =
+      "Please share a Uber account credential from Reclaim protocol";
 
     logger.info("Sending data request", { activityId: ACTIVITY_ID });
 
@@ -194,9 +183,11 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
       requestSchema: VAULT_CREDENTIAL_SCHEMA_URL,
       // TODO: Consider using the issuer DID and the type/credentialSubject.type instead of the schema
       filter: {
-        $or: VERIDA_CREDENTIAL_ZK_SCHEMA_URLS.map((url) => ({
+        "$or": VERIDA_CREDENTIAL_RECLAIM_SCHEMA_URLS.map((url) => ({
           credentialSchema: url,
         })),
+        "credentialSubject.reclaimProviderId":
+          RECLAIM_PROTOCOL_UBER_OWNER_SCHEMA_ID,
       },
     });
 

@@ -1,6 +1,6 @@
 import { activity as activityClaimAnimaPoL } from "./claim-anima-pol-credential";
 import { activity as activityClaimGateKeeperAdopter } from "./claim-gatekeeper-adopter-credential";
-import { activity as activityUberOwner } from "./claim-uber-owner";
+import { activity as activityUberOwner } from "./claim-uber-owner-reclaim";
 import { activity as activityCreateVeridaIdentity } from "./create-verida-identity";
 import { gamer31Activities } from "./gamer31";
 import { activity as activityReferFriend } from "./refer-friend";
