@@ -19,7 +19,7 @@ import {
 } from "~/features/verida";
 
 import {
-  RECLAIM_PROTOCOL_UBER_OWNER_SCHEMA_ID,
+  RECLAIM_PROTOCOL_UBER_OWNER_PROVIDER_ID,
   VERIDA_CREDENTIAL_RECLAIM_SCHEMA_URLS,
 } from "./constants";
 import { verifyReceivedMessage } from "./utils";
@@ -169,7 +169,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
   try {
     const did = veridaWebUser.current.getDid();
     window.open(
-      `${config.proof.connectorBaseUrl}?veridaDid=${did}&schemaId=${RECLAIM_PROTOCOL_UBER_OWNER_SCHEMA_ID}`
+      `${config.proof.connectorBaseUrl}?veridaDid=${did}&schemaId=${RECLAIM_PROTOCOL_UBER_OWNER_PROVIDER_ID}`
     );
 
     // TODO: Make a localised message of this message
@@ -186,7 +186,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
           credentialSchema: url,
         })),
         "credentialSubject.reclaimProviderId":
-          RECLAIM_PROTOCOL_UBER_OWNER_SCHEMA_ID,
+          RECLAIM_PROTOCOL_UBER_OWNER_PROVIDER_ID,
       },
     });
 

@@ -4,7 +4,7 @@ import {
 } from "~/features/verida";
 
 import {
-  RECLAIM_PROTOCOL_UBER_OWNER_SCHEMA_ID,
+  RECLAIM_PROTOCOL_UBER_OWNER_PROVIDER_ID,
   VERIDA_CREDENTIAL_RECLAIM_SCHEMA_URLS,
 } from "./constants";
 import { ReclaimProofOfUberCredentialSubject } from "./types";
@@ -22,13 +22,13 @@ export function verifyReceivedMessage(
 
   // TODO: Consider using zod to validate
   if (
-    !vc.credentialSchema ||
-    !VERIDA_CREDENTIAL_RECLAIM_SCHEMA_URLS.includes(vc.credentialSchema) ||
-    vc.credentialData?.credentialSubject?.reclaimProviderId !==
-      RECLAIM_PROTOCOL_UBER_OWNER_SCHEMA_ID
+    vc.credentialSchema &&
+    VERIDA_CREDENTIAL_RECLAIM_SCHEMA_URLS.includes(vc.credentialSchema) &&
+    vc.credentialData?.credentialSubject?.reclaimProviderId ===
+      RECLAIM_PROTOCOL_UBER_OWNER_PROVIDER_ID
   ) {
-    return false;
+    return true;
   }
 
-  return true;
+  return false;
 }
