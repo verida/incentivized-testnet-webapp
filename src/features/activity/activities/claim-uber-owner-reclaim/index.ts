@@ -181,7 +181,6 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
     const sentMessage = await sendDataRequest(veridaWebUser.current, {
       messageSubject: message,
       requestSchema: VAULT_CREDENTIAL_SCHEMA_URL,
-      // TODO: Consider using the issuer DID and the type/credentialSubject.type instead of the schema
       filter: {
         "$or": VERIDA_CREDENTIAL_RECLAIM_SCHEMA_URLS.map((url) => ({
           credentialSchema: url,
