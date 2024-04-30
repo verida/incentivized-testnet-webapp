@@ -96,6 +96,7 @@ export const Modal: React.FunctionComponent<ModalProps> = (props) => {
                     onClick={action.onClick}
                     variant={action.variant}
                     disabled={action.disabled}
+                    color={action.color || undefined}
                   >
                     {action.label}
                   </Button>

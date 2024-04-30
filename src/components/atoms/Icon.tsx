@@ -1,4 +1,5 @@
 import {
+  Agreement,
   Attention,
   Bug,
   Check,
@@ -38,7 +39,8 @@ export type GenericIconType =
   | "share"
   | "wallet"
   | "notification-success"
-  | "notification-error";
+  | "notification-error"
+  | "agreement";
 export type PlatformIconType =
   | "platform-discord"
   | "platform-linkedin"
@@ -84,6 +86,8 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
       return <CheckOne size={size} {...otherProps} />;
     case "notification-error":
       return <Attention size={size} {...otherProps} />;
+    case "agreement":
+      return <Agreement size={size} {...otherProps} />;
     case "wallet":
       return <Wallet size={size} {...otherProps} />;
     case "platform-discord":

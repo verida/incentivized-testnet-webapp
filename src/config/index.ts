@@ -45,13 +45,6 @@ export const config = {
   api: {
     baseUrl: process.env.REACT_APP_API_BASE_URL,
   },
-  /**
-   * @deprecated
-   */
-  claim: {
-    minPoints: Number(process.env.REACT_APP_MIN_XP_POINT_TO_CLAIM || 0),
-    apiBaseUrl: process.env.REACT_APP_XP_POINT_CLAIM_API_BASE_URL,
-  },
   airdrops: {
     airdrop1: {
       isEnabled: true,
