@@ -14,6 +14,7 @@ import { EVENT_TYPE_KEYDOWN, KEY_NAME_ESC } from "~/constants";
 export type ModalAction = {
   label: string;
   onClick: () => void;
+  disabled?: boolean;
 } & ButtonBaseVariants;
 
 export type ModalProps = {
@@ -94,6 +95,7 @@ export const Modal: React.FunctionComponent<ModalProps> = (props) => {
                     key={action.label}
                     onClick={action.onClick}
                     variant={action.variant}
+                    disabled={action.disabled}
                   >
                     {action.label}
                   </Button>
