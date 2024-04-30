@@ -1,11 +1,15 @@
 import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
 
-import { Icon, Typography } from "~/components/atoms";
+import { ExternalLink, Icon, Typography } from "~/components/atoms";
 import { Alert } from "~/components/molecules";
 import { Modal } from "~/components/templates";
 import { useActivity } from "~/features/activity";
-import { AIRDROP_1_MIN_XP_POINTS, useAirdrops } from "~/features/airdrops";
+import {
+  AIRDROPS_TERMS_URL,
+  AIRDROP_1_MIN_XP_POINTS,
+  useAirdrops,
+} from "~/features/airdrops";
 
 export const Airdrop1Modal: React.FunctionComponent = () => {
   const { userXpPoints, isLoadingUserActivities } = useActivity();
@@ -26,6 +30,7 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
   const handleClose = useCallback(() => {
     setHasProofSubmitError(false);
     setProofSubmitError(null);
+    setIsTermsAccepted(false);
     closeAirdrop1Modal();
   }, [closeAirdrop1Modal]);
 
@@ -88,10 +93,16 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
 
   const acceptTermsMessage = i18n.formatMessage({
     id: "Airdrop1Modal.acceptTermsMessage",
-    defaultMessage:
-      "Please read and accept the terms and conditions of the Early Adopters Airdrop.",
+    defaultMessage: "Please read and accept the ",
     description:
       "Message displayed in the airdrop 1 modal when asking the user to accept the terms and conditions of the airdrop.",
+  });
+
+  const termsUrlLabel = i18n.formatMessage({
+    id: "Airdrop1Modal.termsUrlLabel",
+    defaultMessage: "Terms and Conditions",
+    description:
+      "Label of the Airdrops Terms and Conditions link displayed in the airdrop 1 modal.",
   });
 
   const acceptTermsButtonLabel = i18n.formatMessage({
@@ -178,17 +189,24 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
             <Icon type="notification-error" size={40} className="text-error" />
           ) : null}
           <Typography variant="base">
-            {isCheckingAirdrop1ProofSubmitted || isLoadingUserActivities
-              ? checkingSubmittedProofMessage
-              : isAirdrop1ProofSubmitted
-                ? proofAlreadySubmittedMessage
-                : !hasEnoughPoints
-                  ? notEnoughPointsMessage
-                  : !isTermsAccepted
-                    ? acceptTermsMessage
-                    : hasProofSubmitError
-                      ? proofSubmitErrorMessage
-                      : submitProofMessage}
+            {isCheckingAirdrop1ProofSubmitted || isLoadingUserActivities ? (
+              checkingSubmittedProofMessage
+            ) : isAirdrop1ProofSubmitted ? (
+              proofAlreadySubmittedMessage
+            ) : !hasEnoughPoints ? (
+              notEnoughPointsMessage
+            ) : !isTermsAccepted ? (
+              <>
+                {acceptTermsMessage}
+                <ExternalLink href={AIRDROPS_TERMS_URL} openInNewTab>
+                  {termsUrlLabel}
+                </ExternalLink>
+              </>
+            ) : hasProofSubmitError ? (
+              proofSubmitErrorMessage
+            ) : (
+              submitProofMessage
+            )}
           </Typography>
         </div>
         {hasProofSubmitError ? (
