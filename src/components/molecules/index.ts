@@ -9,4 +9,3 @@ export * from "./PortalWrapper";
 export * from "./ReportIssueButton";
 export * from "./SideNavigation";
 export * from "./UpcomingActivitiesCTA";
-export * from "./WalletSubmitShareOnSocial";
