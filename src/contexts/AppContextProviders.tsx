@@ -2,10 +2,10 @@ import React from "react";
 import { HelmetProvider } from "react-helmet-async";
 
 import { ActivityProvider } from "~/features/activity";
+import { AirdropsProvider } from "~/features/airdrops";
 import { IntlProvider } from "~/features/i18n";
 import { MainnetUpgradeProvider } from "~/features/mainnetUpgrade";
 import { Notifications } from "~/features/notifications";
-import { RewardsProvider } from "~/features/rewards";
 import { TermsConditionsProvider } from "~/features/termsconditions";
 import { VeridaProvider } from "~/features/verida";
 
@@ -25,12 +25,12 @@ export const AppContextProviders: React.FunctionComponent<
           <VeridaProvider>
             <TermsConditionsProvider>
               <ActivityProvider>
-                <RewardsProvider>
+                <AirdropsProvider>
                   <HelmetProvider>
                     {props.children}
                     <Notifications />
                   </HelmetProvider>
-                </RewardsProvider>
+                </AirdropsProvider>
               </ActivityProvider>
             </TermsConditionsProvider>
           </VeridaProvider>

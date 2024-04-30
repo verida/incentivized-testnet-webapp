@@ -7,7 +7,8 @@ import { version } from "./version";
 
 const devMode = process.env.REACT_APP_DEV_MODE === "true" ? true : false;
 
-// TODO: Use Zod to validate the log level value
+// TODO: Use Zod to validate the environment variables
+
 const logLevel: LogLevel =
   process.env.REACT_APP_LOG_LEVEL === "error"
     ? "error"
@@ -41,9 +42,20 @@ export const config = {
     connectLogoUrl: veridaConnectLogoUrl,
     rpcUrl: veridaRpcUrl,
   },
+  api: {
+    baseUrl: process.env.REACT_APP_API_BASE_URL,
+  },
+  /**
+   * @deprecated
+   */
   claim: {
     minPoints: Number(process.env.REACT_APP_MIN_XP_POINT_TO_CLAIM || 0),
     apiBaseUrl: process.env.REACT_APP_XP_POINT_CLAIM_API_BASE_URL,
+  },
+  airdrops: {
+    airdrop1: {
+      isEnabled: true,
+    },
   },
   sentry: {
     enabled: process.env.REACT_APP_SENTRY_ENABLED === "false" ? false : true,
