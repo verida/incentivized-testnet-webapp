@@ -5,7 +5,6 @@ import { UserActivityRecord } from "~/features/activity";
 import { AIRDROP_1_MIN_XP_POINTS } from "~/features/airdrops/constants";
 import { SubmitAirdrop1ProofPayload } from "~/features/airdrops/types";
 import { Logger } from "~/features/logger";
-import { Sentry } from "~/features/sentry";
 
 const logger = new Logger("Airdrops");
 
@@ -114,29 +113,5 @@ export async function submitAirdrop1Proof(
     return {
       status: "error",
     };
-  }
-}
-
-export async function getLocation(): Promise<string | undefined> {
-  const url =
-    "http://ip-api.com/json/?fields=status,message,country,countryCode";
-
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      return undefined;
-    }
-
-    const data = (await response.json()) as { status: string; country: string };
-
-    if (data.status !== "success") {
-      return undefined;
-    }
-
-    return data.country;
-  } catch (error) {
-    logger.error("Error getting location", { error });
-    Sentry.captureException(error);
-    return undefined;
   }
 }

@@ -5,7 +5,6 @@ import { SubmitAirdrop1ProofPayload } from "~/features/airdrops/types";
 import {
   checkAirdrop1Conditions,
   checkAirdrop1ProofSubmitted,
-  getLocation,
   submitAirdrop1Proof,
 } from "~/features/airdrops/utils";
 import { Logger } from "~/features/logger";
@@ -46,15 +45,12 @@ export function useAirdrop1Queries() {
 
       checkAirdrop1Conditions(userActivities, userXpPoints);
 
-      const location = await getLocation();
-
       const payload: SubmitAirdrop1ProofPayload = {
         did,
         activityProofs: userActivities,
         profile: {
           country: profile?.country,
         },
-        location,
         termsAccepted,
       };
 

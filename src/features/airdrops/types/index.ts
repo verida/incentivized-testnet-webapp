@@ -7,6 +7,5 @@ export type SubmitAirdrop1ProofPayload = {
     name?: string;
     country?: string;
   };
-  location?: string;
   termsAccepted?: boolean;
 };
