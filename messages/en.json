@@ -163,14 +163,6 @@
     "defaultMessage": "Take control over your own personal data. Join Verida Missions, build up your XP, and earn storage credits for secure data management on Verida Network.",
     "description": "Description (part 1) of Verida Missions"
   },
-  "HomeHero.existingUserMessage": {
-    "defaultMessage": "Update your Verida Wallet to migrate your completed activities and XP to Mainnet.",
-    "description": "Message for existing users"
-  },
-  "HomeHero.existingUserTitle": {
-    "defaultMessage": "Testnet users: Make the move to Mainnet!",
-    "description": "Title for existing users"
-  },
   "HomeHero.mainnetMissionsLinkLabel": {
     "defaultMessage": "Visit the Mainnet version",
     "description": "Label for link to Verida Missions on Mainnet"
@@ -186,10 +178,6 @@
   "HomeHero.nonMainnetWarning": {
     "defaultMessage": "This is a Testnet version of Verida Missions.",
     "description": "Warning for non-mainnet environments"
-  },
-  "HomeHero.testnetMissionsLinkLabel": {
-    "defaultMessage": "Go back to Verida Missions on Testnet",
-    "description": "Label for link to Verida Missions on Testnet"
   },
   "HomePage.airdrop1AlertLearnActionButtonLabel": {
     "defaultMessage": "Learn more",
