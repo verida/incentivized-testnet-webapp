@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { PortalWrapper } from "~/components/molecules";
 import { EVENT_TYPE_KEYDOWN, KEY_NAME_ESC } from "~/constants";
 
+// TODO: Implement similar to the Alert component
 export type ModalAction = {
   label: string;
   onClick: () => void;

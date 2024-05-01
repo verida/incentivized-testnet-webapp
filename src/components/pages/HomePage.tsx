@@ -9,18 +9,12 @@ import {
 } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { useActivity } from "~/features/activity";
-import { useAirdrops } from "~/features/airdrops";
-import { useTermsConditions } from "~/features/termsconditions";
+import { AIRDROPS_FAQ_URL, useAirdrops } from "~/features/airdrops";
 import { useVerida } from "~/features/verida";
 
 export const HomePage: React.FunctionComponent = () => {
   const i18n = useIntl();
   const { isConnected } = useVerida();
-  const {
-    status,
-    isCheckingStatus: isCheckingTermsConditions,
-    openAcceptModal,
-  } = useTermsConditions();
   const { missions } = useActivity();
   const {
     isAidrop1Enabled,
@@ -35,31 +29,23 @@ export const HomePage: React.FunctionComponent = () => {
     defaultMessage: "Explore a new era of data ownership",
   });
 
-  const displayTermsConditionsAlert =
-    isConnected && status !== "accepted" && !isCheckingTermsConditions;
-
-  const termsConditionsAlertMessage = i18n.formatMessage({
-    id: "HomePage.termsConditionsAlertMessage",
-    defaultMessage: "You must accept the Terms of Use",
-    description: "Message for the terms and conditions alert",
-  });
-
-  const termsConditionsAlertAcceptButtonLabel = i18n.formatMessage({
-    id: "HomePage.termsConditionsAlertAcceptButtonLabel",
-    defaultMessage: "Open Terms of Use",
-    description: "Label for the terms and conditions alert button",
-  });
-
   const airdrop1AlertMessage = i18n.formatMessage({
     id: "HomePage.airdrop1AlertMessage",
     defaultMessage: "Prove your eligibility for the Early Adopters Airdrop",
     description: "Message for the airdrop alert on the home page",
   });
 
-  const airdrop1AlertActionButtonLabel = i18n.formatMessage({
-    id: "HomePage.airdrop1AlertActionButtonLabel",
+  const airdrop1AlertProveActionButtonLabel = i18n.formatMessage({
+    id: "HomePage.airdrop1AlertProveActionButtonLabel",
     defaultMessage: "Prove",
-    description: "Label for the airdrop alert button on the home page",
+    description: "Label for the airdrop 'Prove' alert button on the home page",
+  });
+
+  const airdrop1AlertLearnActionButtonLabel = i18n.formatMessage({
+    id: "HomePage.airdrop1AlertLearnActionButtonLabel",
+    defaultMessage: "Learn more",
+    description:
+      "Label for the airdrop 'Learn more' alert button on the home page",
   });
 
   return (
@@ -70,25 +56,28 @@ export const HomePage: React.FunctionComponent = () => {
           <ConnectVeridaButton longLabel />
         </div>
       )}
-      {displayTermsConditionsAlert && (
-        <Alert
-          className="mt-6"
-          message={termsConditionsAlertMessage}
-          actionLabel={termsConditionsAlertAcceptButtonLabel}
-          action={openAcceptModal}
-          type="warning"
-        />
-      )}
       {isAidrop1Enabled &&
         isConnected &&
         !isAirdrop1ProofSubmitted &&
         !isCheckingAirdrop1ProofSubmitted && (
           <Alert
-            className="mt-6"
-            message={airdrop1AlertMessage}
-            actionLabel={airdrop1AlertActionButtonLabel}
-            action={openAirdrop1Modal}
             type="info"
+            actions={[
+              {
+                type: "button",
+                label: airdrop1AlertProveActionButtonLabel,
+                onClick: openAirdrop1Modal,
+              },
+              {
+                type: "link",
+                label: airdrop1AlertLearnActionButtonLabel,
+                href: AIRDROPS_FAQ_URL,
+                openInNewTab: true,
+                color: "default",
+              },
+            ]}
+            message={airdrop1AlertMessage}
+            className="mt-6"
           />
         )}
       <div className="mt-16 relative">
