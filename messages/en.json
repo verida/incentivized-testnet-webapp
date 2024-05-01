@@ -191,25 +191,21 @@
     "defaultMessage": "Go back to Verida Missions on Testnet",
     "description": "Label for link to Verida Missions on Testnet"
   },
-  "HomePage.airdrop1AlertActionButtonLabel": {
-    "defaultMessage": "Prove",
-    "description": "Label for the airdrop alert button on the home page"
+  "HomePage.airdrop1AlertLearnActionButtonLabel": {
+    "defaultMessage": "Learn more",
+    "description": "Label for the airdrop 'Learn more' alert button on the home page"
   },
   "HomePage.airdrop1AlertMessage": {
     "defaultMessage": "Prove your eligibility for the Early Adopters Airdrop",
     "description": "Message for the airdrop alert on the home page"
   },
+  "HomePage.airdrop1AlertProveActionButtonLabel": {
+    "defaultMessage": "Prove",
+    "description": "Label for the airdrop 'Prove' alert button on the home page"
+  },
   "HomePage.tagline": {
     "defaultMessage": "Explore a new era of data ownership",
     "description": "Tag line displayed at the top of the Home page"
-  },
-  "HomePage.termsConditionsAlertAcceptButtonLabel": {
-    "defaultMessage": "Open Terms of Use",
-    "description": "Label for the terms and conditions alert button"
-  },
-  "HomePage.termsConditionsAlertMessage": {
-    "defaultMessage": "You must accept the Terms of Use",
-    "description": "Message for the terms and conditions alert"
   },
   "LearnMoreSection.sectionTitle": {
     "defaultMessage": "Learn More",
