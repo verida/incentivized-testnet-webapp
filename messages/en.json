@@ -76,23 +76,19 @@
     "description": "Message displayed in the airdrop 1 modal when the user doesn't have enough XP points"
   },
   "Airdrop1Modal.proofAlreadySubmittedMessage": {
-    "defaultMessage": "Congratulations! You submitted your proof of Early Adopter and are eligible for the airdrop.",
+    "defaultMessage": "Congratulations! You are eligible for the Early Adopters Airdrop and have been registered.{newline}{newline}Check our socials to be notified when the claim window opens.",
     "description": "Message displayed in the airdrop 1 modal when the proof has already been submitted"
   },
-  "Airdrop1Modal.proofSubmitErrorFallbackJustificationMessage": {
-    "defaultMessage": "Something went wrong on our side",
-    "description": "Message displayed in the airdrop 1 modal when the proof submission fails"
-  },
   "Airdrop1Modal.proofSubmitErrorMessage": {
-    "defaultMessage": "Unfortunately, your proof of Early Adopter has not been accepted.",
+    "defaultMessage": "Unfortunately, you are not eligible for the Early Adopters Airdrop. To confirm the criteria, please check the",
     "description": "Message displayed in the airdrop 1 modal when the proof submission fails"
   },
   "Airdrop1Modal.submitButtonLabel": {
-    "defaultMessage": "Prove",
+    "defaultMessage": "Submit Proofs",
     "description": "Label for the submit button in the airdrop 1 modal"
   },
   "Airdrop1Modal.submitProofMessage": {
-    "defaultMessage": "As a decentralised application, Verida Missions needs to send a proof of your completed activities to confirm your early adopter eligibility.",
+    "defaultMessage": "As a decentralised application, Verida Missions needs to verify your completed activities meet the Early Adopters Airdrop criteria. Please submit your XP points proofs to our server for verification.",
     "description": "Message displayed in the rewards modal when before submitting the claim"
   },
   "Airdrop1Modal.termsUrlLabel": {

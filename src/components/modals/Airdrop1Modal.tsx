@@ -70,13 +70,22 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
       "Message displayed in the airdrop 1 modal when checking if the proof has already been submitted",
   });
 
-  const proofAlreadySubmittedMessage = i18n.formatMessage({
-    id: "Airdrop1Modal.proofAlreadySubmittedMessage",
-    defaultMessage:
-      "Congratulations! You submitted your proof of Early Adopter and are eligible for the airdrop.",
-    description:
-      "Message displayed in the airdrop 1 modal when the proof has already been submitted",
-  });
+  const proofAlreadySubmittedMessage = i18n.formatMessage(
+    {
+      id: "Airdrop1Modal.proofAlreadySubmittedMessage",
+      defaultMessage:
+        "Congratulations! You are eligible for the Early Adopters Airdrop and have been registered.{newline}{newline}Check our socials to be notified when the claim window opens.",
+      description:
+        "Message displayed in the airdrop 1 modal when the proof has already been submitted",
+    },
+    {
+      newline: (
+        <>
+          <br />
+        </>
+      ),
+    }
+  );
 
   const notEnoughPointsMessage = i18n.formatMessage(
     {
@@ -93,7 +102,7 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
 
   const acceptTermsMessage = i18n.formatMessage({
     id: "Airdrop1Modal.acceptTermsMessage",
-    defaultMessage: "Please read and accept the ",
+    defaultMessage: "Please read and accept the",
     description:
       "Message displayed in the airdrop 1 modal when asking the user to accept the terms and conditions of the airdrop.",
   });
@@ -115,28 +124,21 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
   const submitProofMessage = i18n.formatMessage({
     id: "Airdrop1Modal.submitProofMessage",
     defaultMessage:
-      "As a decentralised application, Verida Missions needs to send a proof of your completed activities to confirm your early adopter eligibility.",
+      "As a decentralised application, Verida Missions needs to verify your completed activities meet the Early Adopters Airdrop criteria. Please submit your XP points proofs to our server for verification.",
     description:
       "Message displayed in the rewards modal when before submitting the claim",
   });
 
   const submitButtonLabel = i18n.formatMessage({
     id: "Airdrop1Modal.submitButtonLabel",
-    defaultMessage: "Prove",
+    defaultMessage: "Submit Proofs",
     description: "Label for the submit button in the airdrop 1 modal",
   });
 
   const proofSubmitErrorMessage = i18n.formatMessage({
     id: "Airdrop1Modal.proofSubmitErrorMessage",
     defaultMessage:
-      "Unfortunately, your proof of Early Adopter has not been accepted.",
-    description:
-      "Message displayed in the airdrop 1 modal when the proof submission fails",
-  });
-
-  const proofSubmitErrorFallbackJustificationMessage = i18n.formatMessage({
-    id: "Airdrop1Modal.proofSubmitErrorFallbackJustificationMessage",
-    defaultMessage: "Something went wrong on our side",
+      "Unfortunately, you are not eligible for the Early Adopters Airdrop. To confirm the criteria, please check the",
     description:
       "Message displayed in the airdrop 1 modal when the proof submission fails",
   });
@@ -197,26 +199,25 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
               notEnoughPointsMessage
             ) : !isTermsAccepted ? (
               <>
-                {acceptTermsMessage}
+                {acceptTermsMessage}{" "}
                 <ExternalLink href={AIRDROPS_TERMS_URL} openInNewTab>
                   {termsUrlLabel}
                 </ExternalLink>
               </>
             ) : hasProofSubmitError ? (
-              proofSubmitErrorMessage
+              <>
+                {proofSubmitErrorMessage}{" "}
+                <ExternalLink href={AIRDROPS_TERMS_URL} openInNewTab>
+                  {termsUrlLabel}
+                </ExternalLink>
+              </>
             ) : (
               submitProofMessage
             )}
           </Typography>
         </div>
-        {hasProofSubmitError ? (
-          <Alert
-            type="error"
-            message={
-              proofSubmitError || proofSubmitErrorFallbackJustificationMessage
-            }
-            className="mt-4"
-          />
+        {hasProofSubmitError && proofSubmitError ? (
+          <Alert type="error" message={proofSubmitError} className="mt-4" />
         ) : null}
       </div>
     </Modal>
