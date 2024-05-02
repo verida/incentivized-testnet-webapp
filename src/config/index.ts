@@ -31,6 +31,10 @@ const veridaEnvironment: EnvironmentType =
 
 const veridaRpcUrl = process.env.REACT_APP_VERIDA_RPC_URL || undefined;
 
+if (!process.env.REACT_APP_ZK_DAPP_CONNECTOR_BASE_URL) {
+  throw Error("Proof Connector Dapp Base Url is not set");
+}
+
 export const config = {
   appVersion: version,
   devMode,
@@ -59,5 +63,8 @@ export const config = {
     replaysOnErrorSampleRate: Number(
       process.env.REACT_APP_SENTRY_REPLAYS_ON_ERROR_SAMPLE_RATE || 1.0
     ),
+  },
+  proof: {
+    connectorBaseUrl: process.env.REACT_APP_ZK_DAPP_CONNECTOR_BASE_URL,
   },
 };
