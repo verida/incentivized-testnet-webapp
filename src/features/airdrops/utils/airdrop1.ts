@@ -2,29 +2,20 @@ import { EnvironmentType } from "@verida/types";
 
 import { config } from "~/config";
 import { UserActivityRecord } from "~/features/activity";
+import { AIRDROP_1_MIN_XP_POINTS } from "~/features/airdrops/constants";
+import { SubmitAirdrop1ProofPayload } from "~/features/airdrops/types";
 import { Logger } from "~/features/logger";
-import { SubmitClaimRequestPayload } from "~/features/rewards/types";
 
-const logger = new Logger("rewards");
+const logger = new Logger("Airdrops");
 
-export function isRewardsEnabled() {
-  return config.verida.environment === EnvironmentType.MAINNET;
+export function isAirdrop1Enabled() {
+  return (
+    config.airdrops.airdrop1.isEnabled &&
+    config.verida.environment === EnvironmentType.MAINNET
+  );
 }
 
-export function checkClaimConditions(
-  userActivities: UserActivityRecord[],
-  userXpPoints: number
-) {
-  if (!userActivities.length) {
-    throw new Error("No activities completed, unable to claim rewards");
-  }
-
-  if (userXpPoints < config.claim.minPoints) {
-    throw new Error("Insufficient XP points, unable to claim rewards");
-  }
-}
-
-export async function checkClaimExists(did: string): Promise<
+export async function checkAirdrop1ProofSubmitted(did: string): Promise<
   | {
       status: "success";
       exists: boolean;
@@ -34,10 +25,10 @@ export async function checkClaimExists(did: string): Promise<
       message?: string;
     }
 > {
-  if (!config.claim.apiBaseUrl) {
+  if (!config.api.baseUrl) {
     throw new Error("No API URL set");
   }
-  const apiUrl = `${config.claim.apiBaseUrl}/api/rest/v1/claims/${did}`;
+  const apiUrl = `${config.api.baseUrl}/api/rest/v1/airdrops/1/proofs/${did}`;
 
   try {
     const result = await fetch(apiUrl, {
@@ -67,8 +58,25 @@ export async function checkClaimExists(did: string): Promise<
   }
 }
 
-export async function submitClaimRequest(
-  payload: SubmitClaimRequestPayload
+export function checkAirdrop1Conditions(
+  userActivities: UserActivityRecord[],
+  userXpPoints: number
+) {
+  if (!userActivities.length) {
+    throw new Error(
+      "No activities completed, unable to submit proof for Airdop 1"
+    );
+  }
+
+  if (userXpPoints < AIRDROP_1_MIN_XP_POINTS) {
+    throw new Error(
+      "Insufficient XP points, unable to submit proof for Airdop 1"
+    );
+  }
+}
+
+export async function submitAirdrop1Proof(
+  payload: SubmitAirdrop1ProofPayload
 ): Promise<
   | { status: "success" }
   | {
@@ -76,12 +84,10 @@ export async function submitClaimRequest(
       message?: string;
     }
 > {
-  logger.debug("Payload", payload);
-
-  if (!config.claim.apiBaseUrl) {
+  if (!config.api.baseUrl) {
     throw new Error("No API URL set");
   }
-  const apiUrl = `${config.claim.apiBaseUrl}/api/rest/v1/claims`;
+  const apiUrl = `${config.api.baseUrl}/api/rest/v1/airdrops/1/proofs`;
 
   try {
     const result = await fetch(apiUrl, {
@@ -97,18 +103,15 @@ export async function submitClaimRequest(
       | { status: "success" }
       | {
           status: "error";
-          message?: string;
+          errorMessage?: string;
+          errorUserMessage?: string;
         };
-    logger.debug("Submit claim result", { data });
+    logger.debug("Submit airdrop 1 proof result", { data });
     return data;
   } catch (error) {
-    logger.error("Error submitting claim", { error });
+    logger.error("Error submitting airdrop 1 proof", { error });
     return {
       status: "error",
     };
   }
-}
-
-export function buildXShareUrl(text: string, inReplyTo: string) {
-  return `https://twitter.com/intent/tweet?text=${encodeURI(text)}&in_reply_to=${inReplyTo}`;
 }

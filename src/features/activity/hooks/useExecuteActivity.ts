@@ -7,7 +7,6 @@ import { useActivityQueries } from "~/features/activity/hooks/useActivityQueries
 import { type Activity } from "~/features/activity/types";
 import { Logger } from "~/features/logger";
 import { Sentry } from "~/features/sentry";
-import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
 const logger = new Logger("activity");
@@ -19,7 +18,6 @@ export function useExecuteActivity(
   const i18n = useIntl();
   const executingActivityRef = useRef(false);
   const { webUserInstanceRef } = useVerida();
-  const { status: statusTermsConditions } = useTermsConditions();
   const { userActivities, saveActivity } =
     useActivityQueries(activitiesDatastore);
 
@@ -44,26 +42,6 @@ export function useExecuteActivity(
         logger.info("Executing activity", {
           activityId,
         });
-
-        if (statusTermsConditions !== "accepted") {
-          // Should be avoided by the UI but just in case
-          const termsNotAcceptedNotificationMessage = i18n.formatMessage({
-            id: "useExecuteActivity.termsNotAcceptedNotificationMessage",
-            defaultMessage: "Please accept the terms and conditions",
-            description:
-              "Notification message when user tries to execute an activity but the terms and conditions are not accepted",
-          });
-          toast.error(termsNotAcceptedNotificationMessage);
-          Sentry.captureException(
-            new Error("Trying to execute an activity without terms accepted"),
-            {
-              tags: {
-                activityId,
-              },
-            }
-          );
-          return;
-        }
 
         const activity = activities.find((a) => a.id === activityId);
 
@@ -237,14 +215,7 @@ export function useExecuteActivity(
         executingActivityRef.current = false;
       }
     },
-    [
-      activities,
-      i18n,
-      statusTermsConditions,
-      userActivities,
-      webUserInstanceRef,
-      saveActivity,
-    ]
+    [activities, i18n, userActivities, webUserInstanceRef, saveActivity]
   );
 
   return {

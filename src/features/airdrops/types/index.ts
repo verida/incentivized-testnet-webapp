@@ -1,11 +1,11 @@
 import { UserActivityRecord } from "~/features/activity";
 
-export type SubmitClaimRequestPayload = {
+export type SubmitAirdrop1ProofPayload = {
   did: string;
-  userWalletAddress: string;
   activityProofs: UserActivityRecord[];
   profile: {
-    name: string;
-    country: string;
+    name?: string;
+    country?: string;
   };
+  termsAccepted?: boolean;
 };

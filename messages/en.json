@@ -1,23 +1,7 @@
 {
-  "AcceptTermsAmdConditionsModal.acceptButtonLabel": {
-    "defaultMessage": "Accept",
-    "description": "Label for the accept button in the Terms & Conditions modal"
-  },
-  "AcceptTermsAmdConditionsModal.rejectButtonLabel": {
-    "defaultMessage": "Reject",
-    "description": "Label for the reject button in the Terms & Conditions modal"
-  },
-  "AcceptTermsAmdConditionsModal.termsConditionsTitle": {
-    "defaultMessage": "Please read and accept the Terms of Use",
-    "description": "Title for the terms and conditions modal"
-  },
   "ActivityCard.connectToCompleteMessage": {
     "defaultMessage": "Connect for details",
     "description": "Message to show when the user is not connected"
-  },
-  "ActivityCard.openTermsConditionsButtonLabel": {
-    "defaultMessage": "Open Terms of Use",
-    "description": "Label of the button to open the terms and conditions modal on each activity card"
   },
   "ActivityCard.referralLinkCopiedToClipboardToastMessage": {
     "defaultMessage": "Your referral link has been copied to your clipboard",
@@ -54,6 +38,50 @@
   "ActivityStatus.activityTodoStatusLabel": {
     "defaultMessage": "To do",
     "description": "Label of the status for an activity to perform"
+  },
+  "Airdrop1Modal.acceptTermsButtonLabel": {
+    "defaultMessage": "Accept",
+    "description": "Label for the button to accept the terms and conditions in the airdrop 1 modal"
+  },
+  "Airdrop1Modal.acceptTermsMessage": {
+    "defaultMessage": "Please read and accept the",
+    "description": "Message displayed in the airdrop 1 modal when asking the user to accept the terms and conditions of the airdrop."
+  },
+  "Airdrop1Modal.checkingSubmittedProofMessage": {
+    "defaultMessage": "Checking existing proof of early adopter eligibility...",
+    "description": "Message displayed in the airdrop 1 modal when checking if the proof has already been submitted"
+  },
+  "Airdrop1Modal.modalTitle": {
+    "defaultMessage": "Early Adopters Airdrop",
+    "description": "Title for the airdrop 1 modal"
+  },
+  "Airdrop1Modal.notEnoughPointsMessage": {
+    "defaultMessage": "You do not have enough XP points to submit your proof of eligibility. Complete some activities to reach at least {minPoints} XP points and try again.",
+    "description": "Message displayed in the airdrop 1 modal when the user doesn't have enough XP points"
+  },
+  "Airdrop1Modal.proofAlreadySubmittedMessage": {
+    "defaultMessage": "Congratulations! You are eligible for the Early Adopters Airdrop and have been registered.{newline}{newline}Check our socials to be notified when the claim window opens.",
+    "description": "Message displayed in the airdrop 1 modal when the proof has already been submitted"
+  },
+  "Airdrop1Modal.proofSubmitErrorMessage": {
+    "defaultMessage": "Unfortunately, you are not eligible for the Early Adopters Airdrop. To confirm the criteria, please check the",
+    "description": "Message displayed in the airdrop 1 modal when the proof submission fails"
+  },
+  "Airdrop1Modal.sharedMessageOnSocialsText": {
+    "defaultMessage": "I have successfully registered for @verida_io Airdrop 1 at https://missions.verida.network/",
+    "description": "Message shared on social after submitted the proof"
+  },
+  "Airdrop1Modal.submitButtonLabel": {
+    "defaultMessage": "Submit Proofs",
+    "description": "Label for the submit button in the airdrop 1 modal"
+  },
+  "Airdrop1Modal.submitProofMessage": {
+    "defaultMessage": "As a decentralised application, Verida Missions needs to verify your completed activities meet the Early Adopters Airdrop criteria. Please submit your XP points proofs to our server for verification.",
+    "description": "Message displayed in the rewards modal when before submitting the claim"
+  },
+  "Airdrop1Modal.termsUrlLabel": {
+    "defaultMessage": "Terms and Conditions",
+    "description": "Label of the Airdrops Terms and Conditions link displayed in the airdrop 1 modal."
   },
   "ConnectVeridaButton.checkingConnectionButtonLabel": {
     "defaultMessage": "Checking",
@@ -99,6 +127,10 @@
     "defaultMessage": "Get Support",
     "description": "Title of the 'Get Support' section"
   },
+  "Header.airdropsEligibilityButtonLabel": {
+    "defaultMessage": "Airdrops eligibility",
+    "description": "Label for the button in the Header menu to check eligibility to airdrops"
+  },
   "Header.disconnectButtonLabel": {
     "defaultMessage": "Disconnect",
     "description": "Label for the disconnect button in the Header"
@@ -111,10 +143,6 @@
     "defaultMessage": "'<Anon>'",
     "description": "Fallback name for the profile name in the Header"
   },
-  "Header.submitWalletButtonLabel": {
-    "defaultMessage": "Submit your wallet",
-    "description": "Label for the submit wallet button in the Header"
-  },
   "Header.xpPointsChipLabel": {
     "defaultMessage": "{points} XP",
     "description": "Display of the user total XP points"
@@ -122,14 +150,6 @@
   "HomeHero.descriptionPart1": {
     "defaultMessage": "Take control over your own personal data. Join Verida Missions, build up your XP, and earn storage credits for secure data management on Verida Network.",
     "description": "Description (part 1) of Verida Missions"
-  },
-  "HomeHero.existingUserMessage": {
-    "defaultMessage": "Update your Verida Wallet to migrate your completed activities and XP to Mainnet.",
-    "description": "Message for existing users"
-  },
-  "HomeHero.existingUserTitle": {
-    "defaultMessage": "Testnet users: Make the move to Mainnet!",
-    "description": "Title for existing users"
   },
   "HomeHero.mainnetMissionsLinkLabel": {
     "defaultMessage": "Visit the Mainnet version",
@@ -147,57 +167,25 @@
     "defaultMessage": "This is a Testnet version of Verida Missions.",
     "description": "Warning for non-mainnet environments"
   },
-  "HomeHero.testnetMissionsLinkLabel": {
-    "defaultMessage": "Go back to Verida Missions on Testnet",
-    "description": "Label for link to Verida Missions on Testnet"
+  "HomePage.airdrop1AlertLearnActionButtonLabel": {
+    "defaultMessage": "Learn more",
+    "description": "Label for the airdrop 'Learn more' alert button on the home page"
   },
-  "HomePage.rewardsAlertAcceptButtonLabel": {
-    "defaultMessage": "Add",
-    "description": "Label for the rewards alert button"
+  "HomePage.airdrop1AlertMessage": {
+    "defaultMessage": "Prove your eligibility for the Early Adopters Airdrop",
+    "description": "Message for the airdrop alert on the home page"
   },
-  "HomePage.rewardsAlertMessage": {
-    "defaultMessage": "Submit your Polygon wallet address now",
-    "description": "Message for the rewards alert"
+  "HomePage.airdrop1AlertProveActionButtonLabel": {
+    "defaultMessage": "Prove",
+    "description": "Label for the airdrop 'Prove' alert button on the home page"
   },
   "HomePage.tagline": {
     "defaultMessage": "Explore a new era of data ownership",
     "description": "Tag line displayed at the top of the Home page"
   },
-  "HomePage.termsConditionsAlertAcceptButtonLabel": {
-    "defaultMessage": "Open Terms of Use",
-    "description": "Label for the terms and conditions alert button"
-  },
-  "HomePage.termsConditionsAlertMessage": {
-    "defaultMessage": "You must accept the Terms of Use",
-    "description": "Message for the terms and conditions alert"
-  },
   "LearnMoreSection.sectionTitle": {
     "defaultMessage": "Learn More",
     "description": "Title of the 'Learn More' section"
-  },
-  "MainnetUpgradeModal.closeButtonLabel": {
-    "defaultMessage": "Start Exploring",
-    "description": "Label for the close button in the mainnet upgrade modal"
-  },
-  "MainnetUpgradeModal.existingUserMessage": {
-    "defaultMessage": "Verida Missions is now using the Verida Mainnet. Update your Verida Wallet to start the process for migrating your Verida Identity to Mainnet, and ensure your completed activities and XP points are transferred.",
-    "description": "Message for existing users in the mainnet upgrade modal"
-  },
-  "MainnetUpgradeModal.existingUserTitle": {
-    "defaultMessage": "Testnet users: Make the move to Mainnet!",
-    "description": "Title for existing users paragraph in the mainnet upgrade modal"
-  },
-  "MainnetUpgradeModal.faqLinkLabel": {
-    "defaultMessage": "Learn more in the FAQs",
-    "description": "Label for the faq link in the mainnet upgrade modal"
-  },
-  "MainnetUpgradeModal.modalTitle": {
-    "defaultMessage": "Verida Missions has launched on Mainnet",
-    "description": "Title for the mainnet upgrade modal"
-  },
-  "MainnetUpgradeModal.testnetMissionsLinkLabel": {
-    "defaultMessage": "Verida Missions on Testnet",
-    "description": "Label for the testnet missions link in the mainnet upgrade modal"
   },
   "MissionProgressBar.missionProgressMessage": {
     "defaultMessage": "{nbCompletedActivities, number} of {nbActivities, number} {nbActivities, plural, one {activity} other {activities} } completed",
@@ -227,25 +215,9 @@
     "defaultMessage": "Report Issue",
     "description": "Label of the button to access the form to report an issue"
   },
-  "RewardsModal.claimAlreadyExistsMessage": {
-    "defaultMessage": "Congratulations! Your wallet address has been submitted.",
-    "description": "Message displayed in the rewards modal when the claim has already been submitted"
-  },
-  "RewardsModal.modalTitle": {
-    "defaultMessage": "Submit your wallet address",
-    "description": "Title for the rewards modal"
-  },
-  "RewardsModal.notEnoughPointsMessage": {
-    "defaultMessage": "You do not have enough XP points to submit your wallet address. Complete some activities to reach at least {minPoints} XP points and try again.",
-    "description": "Message displayed in the rewards modal when the user doesn't have enough XP points"
-  },
-  "RewardsModal.submitWalletButtonLabel": {
-    "defaultMessage": "Submit",
-    "description": "Label for the submit wallet button in the rewards modal"
-  },
-  "RewardsModal.submitWalletMessage": {
-    "defaultMessage": "Provide a Polygon blockchain address for exclusive benefits.",
-    "description": "Message displayed in the rewards modal when before submitting the claim"
+  "ShareOnSocials.shareOnX": {
+    "defaultMessage": "Share on",
+    "description": "Label of the Share on X. The X is a logo appended after this message"
   },
   "TermsConditionsPage.termsConditionsTitle": {
     "defaultMessage": "Terms of Use",
@@ -258,22 +230,6 @@
   "UpcomingActivitiesCTA.title": {
     "defaultMessage": "Next activity coming soon",
     "description": "Message to display in the upcoming activities CTA"
-  },
-  "WalletSubmitShareOnSocial.linkLabel": {
-    "defaultMessage": "Verida Storage Credit Community Pre-Sale",
-    "description": "Section title for the share on social media"
-  },
-  "WalletSubmitShareOnSocial.message": {
-    "defaultMessage": "Share your identity on social media to be eligible for the",
-    "description": "Section title for the share on social media"
-  },
-  "WalletSubmitShareOnSocial.shareOnX": {
-    "defaultMessage": "Share on",
-    "description": "Label of the Share on X. The X is a logo appended after this message"
-  },
-  "WalletSubmitShareOnSocial.sharedDataText": {
-    "defaultMessage": "I just submitted my wallet address for my DID: {did}",
-    "description": "Text of the shared data"
   },
   "activities.claimAnimaPoLCredential.actionExecutingLabel": {
     "defaultMessage": "Sending Request",
@@ -838,9 +794,5 @@
   "useExecuteActivity.nonSupportedExecutionResultMessage": {
     "defaultMessage": "Hmm, Something went wrong, please wait a moment and try again",
     "description": "Notification message when the execution activity resulted in an unknown status"
-  },
-  "useExecuteActivity.termsNotAcceptedNotificationMessage": {
-    "defaultMessage": "Please accept the terms and conditions",
-    "description": "Notification message when user tries to execute an activity but the terms and conditions are not accepted"
   }
 }
