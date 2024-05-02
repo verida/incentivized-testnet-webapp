@@ -7,5 +7,6 @@ export * from "./HomeHero";
 export * from "./MissionProgressBar";
 export * from "./PortalWrapper";
 export * from "./ReportIssueButton";
+export * from "./ShareOnSocials";
 export * from "./SideNavigation";
 export * from "./UpcomingActivitiesCTA";

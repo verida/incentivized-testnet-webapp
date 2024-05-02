@@ -67,6 +67,10 @@
     "defaultMessage": "Unfortunately, you are not eligible for the Early Adopters Airdrop. To confirm the criteria, please check the",
     "description": "Message displayed in the airdrop 1 modal when the proof submission fails"
   },
+  "Airdrop1Modal.sharedMessageOnSocialsText": {
+    "defaultMessage": "I have successfully registered for @verida_io Airdrop 1 at https://missions.verida.network/",
+    "description": "Message shared on social after submitted the proof"
+  },
   "Airdrop1Modal.submitButtonLabel": {
     "defaultMessage": "Submit Proofs",
     "description": "Label for the submit button in the airdrop 1 modal"
@@ -210,6 +214,10 @@
   "ReportIssueButton.reportIssueButtonLabel": {
     "defaultMessage": "Report Issue",
     "description": "Label of the button to access the form to report an issue"
+  },
+  "ShareOnSocials.shareOnX": {
+    "defaultMessage": "Share on",
+    "description": "Label of the Share on X. The X is a logo appended after this message"
   },
   "TermsConditionsPage.termsConditionsTitle": {
     "defaultMessage": "Terms of Use",

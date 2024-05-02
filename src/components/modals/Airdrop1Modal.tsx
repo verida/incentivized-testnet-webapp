@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
 
 import { ExternalLink, Icon, Typography } from "~/components/atoms";
-import { Alert } from "~/components/molecules";
+import { Alert, ShareOnSocials } from "~/components/molecules";
 import { Modal } from "~/components/templates";
 import { useActivity } from "~/features/activity";
 import {
@@ -86,6 +86,13 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
       ),
     }
   );
+
+  const sharedMessageOnSocialsText = i18n.formatMessage({
+    id: "Airdrop1Modal.sharedMessageOnSocialsText",
+    description: "Message shared on social after submitted the proof",
+    defaultMessage:
+      "I have successfully registered for @verida_io Airdrop 1 at https://missions.verida.network/",
+  });
 
   const notEnoughPointsMessage = i18n.formatMessage(
     {
@@ -175,7 +182,7 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
                     ]
       }
     >
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-6">
         <div className="flex flex-col sm:flex-row gap-4 items-center">
           {isCheckingAirdrop1ProofSubmitted ||
           isLoadingUserActivities ||
@@ -218,6 +225,14 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
         </div>
         {hasProofSubmitError && proofSubmitError ? (
           <Alert type="error" message={proofSubmitError} className="mt-4" />
+        ) : null}
+        {!isCheckingAirdrop1ProofSubmitted &&
+        !isLoadingUserActivities &&
+        isAirdrop1ProofSubmitted ? (
+          <ShareOnSocials
+            sharedMessage={sharedMessageOnSocialsText}
+            className="flex flex-col sm:flex-row justify-end"
+          />
         ) : null}
       </div>
     </Modal>
