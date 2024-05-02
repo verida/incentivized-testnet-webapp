@@ -1,23 +1,7 @@
 {
-  "AcceptTermsAmdConditionsModal.acceptButtonLabel": {
-    "defaultMessage": "Accept",
-    "description": "Label for the accept button in the Terms & Conditions modal"
-  },
-  "AcceptTermsAmdConditionsModal.rejectButtonLabel": {
-    "defaultMessage": "Reject",
-    "description": "Label for the reject button in the Terms & Conditions modal"
-  },
-  "AcceptTermsAmdConditionsModal.termsConditionsTitle": {
-    "defaultMessage": "Please read and accept the Terms of Use",
-    "description": "Title for the terms and conditions modal"
-  },
   "ActivityCard.connectToCompleteMessage": {
     "defaultMessage": "Connect for details",
     "description": "Message to show when the user is not connected"
-  },
-  "ActivityCard.openTermsConditionsButtonLabel": {
-    "defaultMessage": "Open Terms of Use",
-    "description": "Label of the button to open the terms and conditions modal on each activity card"
   },
   "ActivityCard.referralLinkCopiedToClipboardToastMessage": {
     "defaultMessage": "Your referral link has been copied to your clipboard",
@@ -802,9 +786,5 @@
   "useExecuteActivity.nonSupportedExecutionResultMessage": {
     "defaultMessage": "Hmm, Something went wrong, please wait a moment and try again",
     "description": "Notification message when the execution activity resulted in an unknown status"
-  },
-  "useExecuteActivity.termsNotAcceptedNotificationMessage": {
-    "defaultMessage": "Please accept the terms and conditions",
-    "description": "Notification message when user tries to execute an activity but the terms and conditions are not accepted"
   }
 }

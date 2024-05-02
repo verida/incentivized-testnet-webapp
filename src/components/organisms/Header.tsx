@@ -11,7 +11,6 @@ import { ConnectVeridaButton } from "~/components/organisms";
 import { config } from "~/config";
 import { useActivity } from "~/features/activity";
 import { useAirdrops } from "~/features/airdrops";
-import { useTermsConditions } from "~/features/termsconditions";
 import { truncateDid, useVerida } from "~/features/verida";
 
 export type HeaderProps = React.ComponentPropsWithRef<"header">;
@@ -22,7 +21,6 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const i18n = useIntl();
   const [openMenu, setOpenMenu] = useState(false);
   const { disconnect, isConnected, profile, did } = useVerida();
-  const { deleteTermsStatus } = useTermsConditions();
   const { deleteUserActivities, userXpPoints, isLoadingUserActivities } =
     useActivity();
   const { isAidrop1Enabled, openAirdrop1Modal } = useAirdrops();
@@ -82,11 +80,6 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
 
   const devModeMenuItems: MenuItem[] = config.devMode
     ? [
-        {
-          key: "delete-terms",
-          label: "Delete Terms",
-          action: deleteTermsStatus,
-        },
         {
           key: "delete-user-activities",
           label: "Delete User Activities",
