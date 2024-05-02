@@ -6,7 +6,6 @@ import { ExternalLink, Typography } from "~/components/atoms";
 import { config } from "~/config";
 import {
   VERIDA_MISSIONS_MAINNET_URL,
-  VERIDA_MISSIONS_TESTNET_URL,
   VERIDA_WALLET_DOWNLOAD_URL,
 } from "~/constants";
 
@@ -47,25 +46,6 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
       ", create your Identity and connect to Verida Missions to get started.",
   });
 
-  const existingUserTitle = i18n.formatMessage({
-    id: "HomeHero.existingUserTitle",
-    description: "Title for existing users",
-    defaultMessage: "Testnet users: Make the move to Mainnet!",
-  });
-
-  const existingUserMessage = i18n.formatMessage({
-    id: "HomeHero.existingUserMessage",
-    description: "Message for existing users",
-    defaultMessage:
-      "Update your Verida Wallet to migrate your completed activities and XP to Mainnet.",
-  });
-
-  const testnetMissionsLinkLabel = i18n.formatMessage({
-    id: "HomeHero.testnetMissionsLinkLabel",
-    description: "Label for link to Verida Missions on Testnet",
-    defaultMessage: "Go back to Verida Missions on Testnet",
-  });
-
   const nonMainnetWarning = i18n.formatMessage({
     id: "HomeHero.nonMainnetWarning",
     description: "Warning for non-mainnet environments",
@@ -88,26 +68,14 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
           </ExternalLink>
           {newUserMessage}
         </Typography>
-        {config.verida.environment === EnvironmentType.MAINNET ? (
-          <>
-            <Typography variant="heading-s" className="mt-4">
-              {existingUserTitle}
-            </Typography>
-            <Typography>
-              {existingUserMessage}
-              <ExternalLink href={VERIDA_MISSIONS_TESTNET_URL} className="ml-1">
-                {testnetMissionsLinkLabel}
-              </ExternalLink>
-            </Typography>
-          </>
-        ) : (
+        {config.verida.environment !== EnvironmentType.MAINNET ? (
           <Typography>
             {nonMainnetWarning}
             <ExternalLink href={VERIDA_MISSIONS_MAINNET_URL} className="ml-1">
               {mainnetMissionsLinkLabel}
             </ExternalLink>
           </Typography>
-        )}
+        ) : null}
       </div>
     </div>
   );

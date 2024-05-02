@@ -1,23 +1,7 @@
 {
-  "AcceptTermsAmdConditionsModal.acceptButtonLabel": {
-    "defaultMessage": "Accept",
-    "description": "Label for the accept button in the Terms & Conditions modal"
-  },
-  "AcceptTermsAmdConditionsModal.rejectButtonLabel": {
-    "defaultMessage": "Reject",
-    "description": "Label for the reject button in the Terms & Conditions modal"
-  },
-  "AcceptTermsAmdConditionsModal.termsConditionsTitle": {
-    "defaultMessage": "Please read and accept the Terms of Use",
-    "description": "Title for the terms and conditions modal"
-  },
   "ActivityCard.connectToCompleteMessage": {
     "defaultMessage": "Connect for details",
     "description": "Message to show when the user is not connected"
-  },
-  "ActivityCard.openTermsConditionsButtonLabel": {
-    "defaultMessage": "Open Terms of Use",
-    "description": "Label of the button to open the terms and conditions modal on each activity card"
   },
   "ActivityCard.referralLinkCopiedToClipboardToastMessage": {
     "defaultMessage": "Your referral link has been copied to your clipboard",
@@ -167,14 +151,6 @@
     "defaultMessage": "Take control over your own personal data. Join Verida Missions, build up your XP, and earn storage credits for secure data management on Verida Network.",
     "description": "Description (part 1) of Verida Missions"
   },
-  "HomeHero.existingUserMessage": {
-    "defaultMessage": "Update your Verida Wallet to migrate your completed activities and XP to Mainnet.",
-    "description": "Message for existing users"
-  },
-  "HomeHero.existingUserTitle": {
-    "defaultMessage": "Testnet users: Make the move to Mainnet!",
-    "description": "Title for existing users"
-  },
   "HomeHero.mainnetMissionsLinkLabel": {
     "defaultMessage": "Visit the Mainnet version",
     "description": "Label for link to Verida Missions on Mainnet"
@@ -190,10 +166,6 @@
   "HomeHero.nonMainnetWarning": {
     "defaultMessage": "This is a Testnet version of Verida Missions.",
     "description": "Warning for non-mainnet environments"
-  },
-  "HomeHero.testnetMissionsLinkLabel": {
-    "defaultMessage": "Go back to Verida Missions on Testnet",
-    "description": "Label for link to Verida Missions on Testnet"
   },
   "HomePage.airdrop1AlertLearnActionButtonLabel": {
     "defaultMessage": "Learn more",
@@ -214,30 +186,6 @@
   "LearnMoreSection.sectionTitle": {
     "defaultMessage": "Learn More",
     "description": "Title of the 'Learn More' section"
-  },
-  "MainnetUpgradeModal.closeButtonLabel": {
-    "defaultMessage": "Start Exploring",
-    "description": "Label for the close button in the mainnet upgrade modal"
-  },
-  "MainnetUpgradeModal.existingUserMessage": {
-    "defaultMessage": "Verida Missions is now using the Verida Mainnet. Update your Verida Wallet to start the process for migrating your Verida Identity to Mainnet, and ensure your completed activities and XP points are transferred.",
-    "description": "Message for existing users in the mainnet upgrade modal"
-  },
-  "MainnetUpgradeModal.existingUserTitle": {
-    "defaultMessage": "Testnet users: Make the move to Mainnet!",
-    "description": "Title for existing users paragraph in the mainnet upgrade modal"
-  },
-  "MainnetUpgradeModal.faqLinkLabel": {
-    "defaultMessage": "Learn more in the FAQs",
-    "description": "Label for the faq link in the mainnet upgrade modal"
-  },
-  "MainnetUpgradeModal.modalTitle": {
-    "defaultMessage": "Verida Missions has launched on Mainnet",
-    "description": "Title for the mainnet upgrade modal"
-  },
-  "MainnetUpgradeModal.testnetMissionsLinkLabel": {
-    "defaultMessage": "Verida Missions on Testnet",
-    "description": "Label for the testnet missions link in the mainnet upgrade modal"
   },
   "MissionProgressBar.missionProgressMessage": {
     "defaultMessage": "{nbCompletedActivities, number} of {nbActivities, number} {nbActivities, plural, one {activity} other {activities} } completed",
@@ -846,9 +794,5 @@
   "useExecuteActivity.nonSupportedExecutionResultMessage": {
     "defaultMessage": "Hmm, Something went wrong, please wait a moment and try again",
     "description": "Notification message when the execution activity resulted in an unknown status"
-  },
-  "useExecuteActivity.termsNotAcceptedNotificationMessage": {
-    "defaultMessage": "Please accept the terms and conditions",
-    "description": "Notification message when user tries to execute an activity but the terms and conditions are not accepted"
   }
 }
