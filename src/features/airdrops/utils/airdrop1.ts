@@ -81,7 +81,8 @@ export async function submitAirdrop1Proof(
   | { status: "success" }
   | {
       status: "error";
-      message?: string;
+      errorMessage?: string;
+      errorUserMessage?: string;
     }
 > {
   if (!config.api.baseUrl) {

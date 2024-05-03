@@ -127,8 +127,8 @@
     "defaultMessage": "Get Support",
     "description": "Title of the 'Get Support' section"
   },
-  "Header.airdropsEligibilityButtonLabel": {
-    "defaultMessage": "Airdrops eligibility",
+  "Header.airdrop1ButtonLabel": {
+    "defaultMessage": "Early Adopters Airdrop",
     "description": "Label for the button in the Header menu to check eligibility to airdrops"
   },
   "Header.disconnectButtonLabel": {

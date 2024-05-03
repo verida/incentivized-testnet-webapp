@@ -47,6 +47,7 @@ export const config = {
   },
   airdrops: {
     airdrop1: {
+      // Airdrop 1: Early Adopters Airdrop
       isEnabled: true,
     },
   },

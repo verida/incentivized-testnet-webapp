@@ -9,19 +9,23 @@ import {
 } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { useActivity } from "~/features/activity";
-import { AIRDROPS_FAQ_URL, useAirdrops } from "~/features/airdrops";
+import {
+  AIRDROPS_FAQ_URL,
+  useAirdrop1,
+  useAirdrop1Queries,
+} from "~/features/airdrops";
 import { useVerida } from "~/features/verida";
 
 export const HomePage: React.FunctionComponent = () => {
   const i18n = useIntl();
   const { isConnected } = useVerida();
   const { missions } = useActivity();
+  const { isEnabled: isAirdrop1Enabled, openModal: openAirdrop1Modal } =
+    useAirdrop1();
   const {
-    isAidrop1Enabled,
-    openAirdrop1Modal,
-    isAirdrop1ProofSubmitted,
-    isCheckingAirdrop1ProofSubmitted,
-  } = useAirdrops();
+    isProofSubmitted: isAirdrop1ProofSubmitted,
+    isCheckingProofSubmitted: isCheckingAirdrop1ProofSubmitted,
+  } = useAirdrop1Queries();
 
   const tagline = i18n.formatMessage({
     id: "HomePage.tagline",
@@ -56,7 +60,7 @@ export const HomePage: React.FunctionComponent = () => {
           <ConnectVeridaButton longLabel />
         </div>
       )}
-      {isAidrop1Enabled &&
+      {isAirdrop1Enabled &&
         isConnected &&
         !isAirdrop1ProofSubmitted &&
         !isCheckingAirdrop1ProofSubmitted && (

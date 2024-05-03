@@ -2,10 +2,10 @@ import { useContext } from "react";
 
 import { airdropsContext } from "~/features/airdrops/contexts";
 
-export function useAirdrops() {
+export function useAirdrop1() {
   const context = useContext(airdropsContext);
   if (!context) {
-    throw new Error("useAirdrops must be used within a AirdropsProvider");
+    throw new Error("useAirdrop1 must be used within a AirdropsProvider");
   }
-  return context;
+  return context.airdrop1;
 }

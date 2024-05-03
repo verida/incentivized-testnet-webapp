@@ -10,7 +10,7 @@ import { HeaderMenu } from "~/components/molecules";
 import { ConnectVeridaButton } from "~/components/organisms";
 import { config } from "~/config";
 import { useActivity } from "~/features/activity";
-import { useAirdrops } from "~/features/airdrops";
+import { useAirdrop1 } from "~/features/airdrops";
 import { truncateDid, useVerida } from "~/features/verida";
 
 export type HeaderProps = React.ComponentPropsWithRef<"header">;
@@ -23,7 +23,8 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const { disconnect, isConnected, profile, did } = useVerida();
   const { deleteUserActivities, userXpPoints, isLoadingUserActivities } =
     useActivity();
-  const { isAidrop1Enabled, openAirdrop1Modal } = useAirdrops();
+  const { isEnabled: isAirdrop1Enabled, openModal: openAirdrop1Modal } =
+    useAirdrop1();
 
   const handleOpenMenu = useCallback(() => {
     setOpenMenu(true);
@@ -38,7 +39,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     void disconnect();
   }, [handleCloseMenu, disconnect]);
 
-  const handleAirdropsEligibilityClick = useCallback(() => {
+  const handleAirdrop1Click = useCallback(() => {
     openAirdrop1Modal();
   }, [openAirdrop1Modal]);
 
@@ -63,11 +64,11 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     { points: userXpPoints }
   );
 
-  const airdropsEligibilityButtonLabel = i18n.formatMessage({
-    id: "Header.airdropsEligibilityButtonLabel",
+  const airdrop1ButtonLabel = i18n.formatMessage({
+    id: "Header.airdrop1ButtonLabel",
     description:
       "Label for the button in the Header menu to check eligibility to airdrops",
-    defaultMessage: "Airdrops eligibility",
+    defaultMessage: "Early Adopters Airdrop",
   });
 
   const disconnectButtonLabel = i18n.formatMessage({
@@ -78,27 +79,27 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
 
   const contentHeight = "h-10";
 
+  const airdropsMenuItems: MenuItem[] = [];
+
+  if (isAirdrop1Enabled) {
+    airdropsMenuItems.push({
+      key: "airdrop1",
+      label: (
+        <div className="flex flex-row gap-2 items-center">
+          <Icon type="wallet" size={20} />
+          {airdrop1ButtonLabel}
+        </div>
+      ),
+      action: handleAirdrop1Click,
+    });
+  }
+
   const devModeMenuItems: MenuItem[] = config.devMode
     ? [
         {
           key: "delete-user-activities",
           label: "Delete User Activities",
           action: deleteUserActivities,
-        },
-      ]
-    : [];
-
-  const airdropsMenuItems: MenuItem[] = isAidrop1Enabled
-    ? [
-        {
-          key: "airdrops-eligibility",
-          label: (
-            <div className="flex flex-row gap-2 items-center">
-              <Icon type="wallet" size={20} />
-              {airdropsEligibilityButtonLabel}
-            </div>
-          ),
-          action: handleAirdropsEligibilityClick,
         },
       ]
     : [];
