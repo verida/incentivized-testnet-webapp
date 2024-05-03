@@ -83,6 +83,10 @@
     "defaultMessage": "Terms and Conditions",
     "description": "Label of the Airdrops Terms and Conditions link displayed in the airdrop 1 modal."
   },
+  "Airdrop2Modal.modalTitle": {
+    "defaultMessage": "Galxe and Zearly participants Airdrop",
+    "description": "Title for the airdrop 2 modal"
+  },
   "ConnectVeridaButton.checkingConnectionButtonLabel": {
     "defaultMessage": "Checking",
     "description": "Label of the Connect to Verida button when checking if already conencted. Note, the button has a spinner next to this label"
@@ -129,6 +133,10 @@
   },
   "Header.airdrop1ButtonLabel": {
     "defaultMessage": "Early Adopters Airdrop",
+    "description": "Label for the button in the Header menu to check eligibility to airdrops"
+  },
+  "Header.airdrop2ButtonLabel": {
+    "defaultMessage": "Galxe and Zealy Airdrop",
     "description": "Label for the button in the Header menu to check eligibility to airdrops"
   },
   "Header.disconnectButtonLabel": {
@@ -678,6 +686,10 @@
   "app.meta.defaultTitle": {
     "defaultMessage": "Verida Missions: Discover the future of personal data control and ownership.",
     "description": "Default application title for the meta tags"
+  },
+  "message.message": {
+    "defaultMessage": "Check your eligibility to the Airdrop",
+    "description": ""
   },
   "missions.mission-01.idLabel": {
     "defaultMessage": "Mission 1",

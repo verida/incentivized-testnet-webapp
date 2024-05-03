@@ -10,7 +10,7 @@ import { HeaderMenu } from "~/components/molecules";
 import { ConnectVeridaButton } from "~/components/organisms";
 import { config } from "~/config";
 import { useActivity } from "~/features/activity";
-import { useAirdrop1 } from "~/features/airdrops";
+import { useAirdrop1, useAirdrop2 } from "~/features/airdrops";
 import { truncateDid, useVerida } from "~/features/verida";
 
 export type HeaderProps = React.ComponentPropsWithRef<"header">;
@@ -25,6 +25,8 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     useActivity();
   const { isEnabled: isAirdrop1Enabled, openModal: openAirdrop1Modal } =
     useAirdrop1();
+  const { openModal: openAirdrop2Modal, isEnabled: isAirdrop2Enabled } =
+    useAirdrop2();
 
   const handleOpenMenu = useCallback(() => {
     setOpenMenu(true);
@@ -42,6 +44,10 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const handleAirdrop1Click = useCallback(() => {
     openAirdrop1Modal();
   }, [openAirdrop1Modal]);
+
+  const handleAirdrop2Click = useCallback(() => {
+    openAirdrop2Modal();
+  }, [openAirdrop2Modal]);
 
   const homeLinkAriaLabel = i18n.formatMessage({
     id: "Header.homeLinkAriaLabel",
@@ -71,6 +77,13 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     defaultMessage: "Early Adopters Airdrop",
   });
 
+  const airdrop2ButtonLabel = i18n.formatMessage({
+    id: "Header.airdrop2ButtonLabel",
+    description:
+      "Label for the button in the Header menu to check eligibility to airdrops",
+    defaultMessage: "Galxe and Zealy Airdrop",
+  });
+
   const disconnectButtonLabel = i18n.formatMessage({
     id: "Header.disconnectButtonLabel",
     description: "Label for the disconnect button in the Header",
@@ -91,6 +104,19 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
         </div>
       ),
       action: handleAirdrop1Click,
+    });
+  }
+
+  if (isAirdrop2Enabled) {
+    airdropsMenuItems.push({
+      key: "airdrop2",
+      label: (
+        <div className="flex flex-row gap-2 items-center">
+          <Icon type="wallet" size={20} />
+          {airdrop2ButtonLabel}
+        </div>
+      ),
+      action: handleAirdrop2Click,
     });
   }
 

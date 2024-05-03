@@ -6,11 +6,20 @@ import React, {
   useState,
 } from "react";
 
-import { Airdrop1Modal } from "~/components/modals";
-import { isAirdrop1Enabled as isAirdrop1EnabledFunc } from "~/features/airdrops/utils";
+import { Airdrop1Modal, Airdrop2Modal } from "~/components/modals";
+import {
+  isAirdrop1Enabled as isAirdrop1EnabledFunc,
+  isAirdrop2Enabled as isAirdrop2EnabledFunc,
+} from "~/features/airdrops/utils";
 
 export type AirdropsContextType = {
   airdrop1: {
+    isEnabled: boolean;
+    isModalOpen: boolean;
+    openModal: () => void;
+    closeModal: () => void;
+  };
+  airdrop2: {
     isEnabled: boolean;
     isModalOpen: boolean;
     openModal: () => void;
@@ -38,6 +47,19 @@ export const AirdropsProvider: React.FC<AirdropsProviderProps> = (props) => {
     setIsAirdrop1ModalOpen(false);
   }, []);
 
+  // Airdrop 2
+
+  const isAirdrop2Enabled = isAirdrop2EnabledFunc();
+  const [isAirdrop2ModalOpen, setIsAirdrop2ModalOpen] = useState(false);
+
+  const openAirdrop2Modal = useCallback(() => {
+    setIsAirdrop2ModalOpen(true);
+  }, []);
+
+  const closeAirdrop2Modal = useCallback(() => {
+    setIsAirdrop2ModalOpen(false);
+  }, []);
+
   const contextValue: AirdropsContextType = useMemo(
     () => ({
       airdrop1: {
@@ -46,12 +68,22 @@ export const AirdropsProvider: React.FC<AirdropsProviderProps> = (props) => {
         openModal: openAirdrop1Modal,
         closeModal: closeAirdrop1Modal,
       },
+      airdrop2: {
+        isEnabled: isAirdrop2Enabled,
+        isModalOpen: isAirdrop2ModalOpen,
+        openModal: openAirdrop2Modal,
+        closeModal: closeAirdrop2Modal,
+      },
     }),
     [
       isAirdrop1Enabled,
       isAirdrop1ModalOpen,
       openAirdrop1Modal,
       closeAirdrop1Modal,
+      isAirdrop2Enabled,
+      isAirdrop2ModalOpen,
+      openAirdrop2Modal,
+      closeAirdrop2Modal,
     ]
   );
 
@@ -59,6 +91,7 @@ export const AirdropsProvider: React.FC<AirdropsProviderProps> = (props) => {
     <airdropsContext.Provider value={contextValue}>
       {children}
       {isAirdrop1Enabled ? <Airdrop1Modal /> : null}
+      {isAirdrop2Enabled ? <Airdrop2Modal /> : null}
     </airdropsContext.Provider>
   );
 };

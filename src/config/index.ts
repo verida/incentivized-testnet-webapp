@@ -50,6 +50,10 @@ export const config = {
       // Airdrop 1: Early Adopters Airdrop
       isEnabled: true,
     },
+    airdrop2: {
+      // Airdrop 1: Galxe and Zealy Airdrop
+      isEnabled: true,
+    },
   },
   sentry: {
     enabled: process.env.REACT_APP_SENTRY_ENABLED === "false" ? false : true,
