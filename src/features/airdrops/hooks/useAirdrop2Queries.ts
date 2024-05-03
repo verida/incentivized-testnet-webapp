@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { checkAirdrop2Eligibility } from "~/features/airdrops/utils";
+import { airdrop2CheckEligibility } from "~/features/api";
 import { Logger } from "~/features/logger";
+import { Sentry } from "~/features/sentry";
 import { useVerida } from "~/features/verida";
 
 const logger = new Logger("Airdrops");
@@ -16,10 +17,15 @@ export function useAirdrop2Queries() {
       staleTime: 1000 * 60 * 10, // 10 minutes
       queryFn: async () => {
         if (!isConnected || !did) {
-          throw new Error("Cannot check eligibility when not connected");
+          throw new Error("User not connected");
         }
-        logger.info("Checking eligibility", { did });
-        return checkAirdrop2Eligibility(did);
+
+        logger.info("Checking airdrop 2 eligibility", { did });
+        return airdrop2CheckEligibility(did);
+      },
+      onError(error) {
+        logger.error("Error checking airdrop 2 eligibility", { error });
+        Sentry.captureException(error);
       },
     });
 
