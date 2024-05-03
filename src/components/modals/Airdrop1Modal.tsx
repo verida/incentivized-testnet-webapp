@@ -14,7 +14,7 @@ import {
 
 export const Airdrop1Modal: React.FunctionComponent = () => {
   const { userXpPoints, isLoadingUserActivities } = useActivity();
-  const { closeModal, isEnabled, isModalOpen } = useAirdrop1();
+  const { metadata, closeModal, isEnabled, isModalOpen } = useAirdrop1();
   const {
     isCheckingProofSubmitted,
     isProofSubmitted,
@@ -56,11 +56,7 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
 
   const i18n = useIntl();
 
-  const modalTitle = i18n.formatMessage({
-    id: "Airdrop1Modal.modalTitle",
-    defaultMessage: "Early Adopters Airdrop",
-    description: "Title for the airdrop 1 modal",
-  });
+  const modalTitle = i18n.formatMessage(metadata.longTitle);
 
   const checkingSubmittedProofMessage = i18n.formatMessage({
     id: "Airdrop1Modal.checkingSubmittedProofMessage",

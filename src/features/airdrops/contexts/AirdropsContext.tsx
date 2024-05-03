@@ -8,18 +8,25 @@ import React, {
 
 import { Airdrop1Modal, Airdrop2Modal } from "~/components/modals";
 import {
+  AIRDROP_1_DEFINITION,
+  AIRDROP_2_DEFINITION,
+} from "~/features/airdrops/constants";
+import { AirdropDefinition } from "~/features/airdrops/types";
+import {
   isAirdrop1Enabled as isAirdrop1EnabledFunc,
   isAirdrop2Enabled as isAirdrop2EnabledFunc,
 } from "~/features/airdrops/utils";
 
 export type AirdropsContextType = {
   airdrop1: {
+    metadata: AirdropDefinition;
     isEnabled: boolean;
     isModalOpen: boolean;
     openModal: () => void;
     closeModal: () => void;
   };
   airdrop2: {
+    metadata: AirdropDefinition;
     isEnabled: boolean;
     isModalOpen: boolean;
     openModal: () => void;
@@ -63,12 +70,14 @@ export const AirdropsProvider: React.FC<AirdropsProviderProps> = (props) => {
   const contextValue: AirdropsContextType = useMemo(
     () => ({
       airdrop1: {
+        metadata: AIRDROP_1_DEFINITION,
         isEnabled: isAirdrop1Enabled,
         isModalOpen: isAirdrop1ModalOpen,
         openModal: openAirdrop1Modal,
         closeModal: closeAirdrop1Modal,
       },
       airdrop2: {
+        metadata: AIRDROP_2_DEFINITION,
         isEnabled: isAirdrop2Enabled,
         isModalOpen: isAirdrop2ModalOpen,
         openModal: openAirdrop2Modal,

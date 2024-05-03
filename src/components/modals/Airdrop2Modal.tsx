@@ -6,15 +6,11 @@ import { Modal } from "~/components/templates";
 import { useAirdrop2 } from "~/features/airdrops";
 
 export const Airdrop2Modal: React.FunctionComponent = () => {
-  const { isEnabled, isModalOpen, closeModal } = useAirdrop2();
+  const { metadata, isEnabled, isModalOpen, closeModal } = useAirdrop2();
 
   const i18n = useIntl();
 
-  const modalTitle = i18n.formatMessage({
-    id: "Airdrop2Modal.modalTitle",
-    defaultMessage: "Galxe and Zearly participants Airdrop",
-    description: "Title for the airdrop 2 modal",
-  });
+  const modalTitle = i18n.formatMessage(metadata.longTitle);
 
   const message = i18n.formatMessage({
     id: "message.message",

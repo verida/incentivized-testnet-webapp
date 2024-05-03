@@ -51,10 +51,6 @@
     "defaultMessage": "Checking existing proof of early adopter eligibility...",
     "description": "Message displayed in the airdrop 1 modal when checking if the proof has already been submitted"
   },
-  "Airdrop1Modal.modalTitle": {
-    "defaultMessage": "Early Adopters Airdrop",
-    "description": "Title for the airdrop 1 modal"
-  },
   "Airdrop1Modal.notEnoughPointsMessage": {
     "defaultMessage": "You do not have enough XP points to submit your proof of eligibility. Complete some activities to reach at least {minPoints} XP points and try again.",
     "description": "Message displayed in the airdrop 1 modal when the user doesn't have enough XP points"
@@ -82,10 +78,6 @@
   "Airdrop1Modal.termsUrlLabel": {
     "defaultMessage": "Terms and Conditions",
     "description": "Label of the Airdrops Terms and Conditions link displayed in the airdrop 1 modal."
-  },
-  "Airdrop2Modal.modalTitle": {
-    "defaultMessage": "Galxe and Zearly participants Airdrop",
-    "description": "Title for the airdrop 2 modal"
   },
   "ConnectVeridaButton.checkingConnectionButtonLabel": {
     "defaultMessage": "Checking",
@@ -130,14 +122,6 @@
   "GetSupportSection.sectionTitle": {
     "defaultMessage": "Get Support",
     "description": "Title of the 'Get Support' section"
-  },
-  "Header.airdrop1ButtonLabel": {
-    "defaultMessage": "Early Adopters Airdrop",
-    "description": "Label for the button in the Header menu to check eligibility to airdrops"
-  },
-  "Header.airdrop2ButtonLabel": {
-    "defaultMessage": "Galxe and Zealy Airdrop",
-    "description": "Label for the button in the Header menu to check eligibility to airdrops"
   },
   "Header.disconnectButtonLabel": {
     "defaultMessage": "Disconnect",
@@ -678,6 +662,22 @@
   "activities.useMarkdownEditor.video.label": {
     "defaultMessage": "How to use the Markdown Editor demo app",
     "description": "Label of the video 'How to use the Markdown Editor demo app'"
+  },
+  "airdrops.airdrop1.longTitle": {
+    "defaultMessage": "Early Adopters Airdrop",
+    "description": "Long title of the airdrop 1"
+  },
+  "airdrops.airdrop1.shortTitle": {
+    "defaultMessage": "Early Adopters Airdrop",
+    "description": "Short title of the airdrop 1"
+  },
+  "airdrops.airdrop2.longTitle": {
+    "defaultMessage": "Galxe and Zealy participants Airdrop",
+    "description": "Long title of the airdrop 2"
+  },
+  "airdrops.airdrop2.shortTitle": {
+    "defaultMessage": "Galxe and Zealy Airdrop",
+    "description": "Short title of the airdrop 2"
   },
   "app.meta.defaultDescription": {
     "defaultMessage": "Explore a new paradigm shift for managing your personal data with self-sovereign technology. Experience Verida Wallet, with zero-knowledge credentials, decentralized identity and access to a private data storage network designed for web3.",

@@ -23,10 +23,16 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const { disconnect, isConnected, profile, did } = useVerida();
   const { deleteUserActivities, userXpPoints, isLoadingUserActivities } =
     useActivity();
-  const { isEnabled: isAirdrop1Enabled, openModal: openAirdrop1Modal } =
-    useAirdrop1();
-  const { openModal: openAirdrop2Modal, isEnabled: isAirdrop2Enabled } =
-    useAirdrop2();
+  const {
+    metadata: airdrop1Metadata,
+    isEnabled: isAirdrop1Enabled,
+    openModal: openAirdrop1Modal,
+  } = useAirdrop1();
+  const {
+    metadata: airdrop2Metadata,
+    openModal: openAirdrop2Modal,
+    isEnabled: isAirdrop2Enabled,
+  } = useAirdrop2();
 
   const handleOpenMenu = useCallback(() => {
     setOpenMenu(true);
@@ -70,19 +76,9 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     { points: userXpPoints }
   );
 
-  const airdrop1ButtonLabel = i18n.formatMessage({
-    id: "Header.airdrop1ButtonLabel",
-    description:
-      "Label for the button in the Header menu to check eligibility to airdrops",
-    defaultMessage: "Early Adopters Airdrop",
-  });
+  const airdrop1ButtonLabel = i18n.formatMessage(airdrop1Metadata.shortTitle);
 
-  const airdrop2ButtonLabel = i18n.formatMessage({
-    id: "Header.airdrop2ButtonLabel",
-    description:
-      "Label for the button in the Header menu to check eligibility to airdrops",
-    defaultMessage: "Galxe and Zealy Airdrop",
-  });
+  const airdrop2ButtonLabel = i18n.formatMessage(airdrop2Metadata.shortTitle);
 
   const disconnectButtonLabel = i18n.formatMessage({
     id: "Header.disconnectButtonLabel",
