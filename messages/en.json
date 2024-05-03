@@ -79,6 +79,18 @@
     "defaultMessage": "Terms and Conditions",
     "description": "Label of the Airdrops Terms and Conditions link displayed in the airdrop 1 modal."
   },
+  "Airdrop2Modal.checkingEligibilityMessage": {
+    "defaultMessage": "Checking your eligibility to the airdrop...",
+    "description": "Message displayed in the airdrop 2 modal when checking if eligible"
+  },
+  "Airdrop2Modal.notEligibleMessage": {
+    "defaultMessage": "Unfortunately, you are not eligible for the Galxe and Zealy participants Airdrop.",
+    "description": "Message displayed in the airdrop 2 modal when the user is not eligible"
+  },
+  "Airdrop2Modal.succesfullyEligibleMessage": {
+    "defaultMessage": "Congratulations! You are eligible for the Galxe and Zealy participants Airdrop.{newline}{newline}Check our socials to be notified when the claim window opens.",
+    "description": "Message displayed in the airdrop 2 modal when the user is eligible"
+  },
   "ConnectVeridaButton.checkingConnectionButtonLabel": {
     "defaultMessage": "Checking",
     "description": "Label of the Connect to Verida button when checking if already conencted. Note, the button has a spinner next to this label"
@@ -686,10 +698,6 @@
   "app.meta.defaultTitle": {
     "defaultMessage": "Verida Missions: Discover the future of personal data control and ownership.",
     "description": "Default application title for the meta tags"
-  },
-  "message.message": {
-    "defaultMessage": "Check your eligibility to the Airdrop",
-    "description": ""
   },
   "missions.mission-01.idLabel": {
     "defaultMessage": "Mission 1",
