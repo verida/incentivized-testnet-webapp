@@ -43,7 +43,7 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
       const result = await submitProof(isTermsAccepted);
       if (result.status === "error") {
         setHasProofSubmitError(true);
-        setProofSubmitError(result.errorUserMessage || null);
+        setProofSubmitError(result.errorUserMessage || null); // Not ideal as not localised but enough for now
       } else {
         setHasProofSubmitError(false);
         setProofSubmitError(null);

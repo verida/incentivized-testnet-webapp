@@ -1,17 +1,66 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
 
-import { Icon, Typography } from "~/components/atoms";
+import { Icon, Input, Typography } from "~/components/atoms";
+import { Alert } from "~/components/molecules";
 import { Modal } from "~/components/templates";
-import { useAirdrop2, useAirdrop2Queries } from "~/features/airdrops";
+import { useAirdrop2, useAirdrop2CheckEligibility } from "~/features/airdrops";
 
 export const Airdrop2Modal: React.FunctionComponent = () => {
   const { metadata, isEnabled, isModalOpen, closeModal } = useAirdrop2();
-  const { isEligible, isCheckingEligibility } = useAirdrop2Queries();
+  const { checkEligbility, isChecking } = useAirdrop2CheckEligibility();
+
+  const [walletAddress, setWalletAddress] = useState("");
+  const [eligilibilityStatus, setEligibilityStatus] = useState<
+    "eligible" | "notEligible" | "error" | "unknown"
+  >("unknown");
+  const [eligibilityCheckError, setEligibilityCheckError] = useState<
+    string | null
+  >(null);
+
+  const handleWalletAddressInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      e.preventDefault();
+      setWalletAddress(e.target.value);
+      setEligibilityStatus("unknown");
+      setEligibilityCheckError(null);
+    },
+    []
+  );
+
+  const handleCheckEligibility = useCallback(() => {
+    const execute = async () => {
+      const response = await checkEligbility(walletAddress);
+
+      if (response.status === "success") {
+        setEligibilityStatus(response.isEligible ? "eligible" : "notEligible");
+        setEligibilityCheckError(null);
+        return;
+      } else {
+        setEligibilityStatus("error");
+        setEligibilityCheckError(response.errorUserMessage || null); // Not the ideal as not localised but enough for now.
+      }
+    };
+
+    void execute();
+  }, [checkEligbility, walletAddress]);
+
+  const handleClose = useCallback(() => {
+    setWalletAddress("");
+    setEligibilityStatus("unknown");
+    setEligibilityCheckError(null);
+    closeModal();
+  }, [closeModal]);
 
   const i18n = useIntl();
 
   const modalTitle = i18n.formatMessage(metadata.longTitle);
+
+  const welcome = i18n.formatMessage({
+    id: "Airdrop2Modal.welcome",
+    defaultMessage: "Welcome to the Galxe and Zealy participants Airdrop!",
+    description: "Welcome message in the airdrop 2 modal",
+  });
 
   const checkingEligibilityMessage = i18n.formatMessage({
     id: "Airdrop2Modal.checkingEligibilityMessage",
@@ -45,29 +94,59 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
       "Message displayed in the airdrop 2 modal when the user is not eligible",
   });
 
+  const checkEligibilityButtonLabel = i18n.formatMessage({
+    id: "Airdrop2Modal.checkEligibilityButtonLabel",
+    defaultMessage: "Check eligibility",
+    description: "Button label to check eligibility in the airdrop 2 modal",
+  });
+
   return (
     <Modal
       open={isEnabled && isModalOpen}
-      onClose={closeModal}
+      onClose={handleClose}
       title={modalTitle}
+      actions={[
+        {
+          label: checkEligibilityButtonLabel,
+          onClick: handleCheckEligibility,
+          disabled: isChecking,
+        },
+      ]}
     >
       <div className="flex flex-col gap-6">
         <div className="flex flex-col sm:flex-row gap-4 items-center">
-          {isCheckingEligibility ? (
+          {isChecking ? (
             <Icon type="loading" size={40} className="animate-spin-slow" />
-          ) : isEligible ? (
+          ) : eligilibilityStatus === "unknown" ||
+            eligilibilityStatus === "error" ? null : eligilibilityStatus ===
+            "eligible" ? (
             <Icon type="check" size={40} className="text-success" />
           ) : (
             <Icon type="notification-error" size={40} className="text-error" />
           )}
           <Typography variant="base">
-            {isCheckingEligibility
+            {isChecking
               ? checkingEligibilityMessage
-              : isEligible
-                ? succesfullyEligibleMessage
-                : notEligibleMessage}
+              : eligilibilityStatus === "unknown" ||
+                  eligilibilityStatus === "error"
+                ? welcome
+                : eligilibilityStatus === "eligible"
+                  ? succesfullyEligibleMessage
+                  : notEligibleMessage}
           </Typography>
         </div>
+        <Input
+          placeholder="0x..."
+          value={walletAddress}
+          onChange={handleWalletAddressInputChange}
+        />
+        {eligilibilityStatus === "error" && eligibilityCheckError ? (
+          <Alert
+            type="error"
+            message={eligibilityCheckError}
+            className="mt-4"
+          />
+        ) : null}
       </div>
     </Modal>
   );
