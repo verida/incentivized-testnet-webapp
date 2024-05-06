@@ -108,6 +108,13 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
     description: "Button label to check eligibility in the airdrop 2 modal",
   });
 
+  const somethingWentWrongMessage = i18n.formatMessage({
+    id: "Airdrop2Modal.somethingWentWrongMessage",
+    defaultMessage: "Something went wrong. Please try again later.",
+    description:
+      "Message displayed in the airdrop 2 modal when something went wrong",
+  });
+
   return (
     <Modal
       open={isEnabled && isModalOpen}
@@ -161,10 +168,10 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
             onChange={handleWalletAddressInputChange}
           />
         ) : null}
-        {eligilibilityStatus === "error" && eligibilityCheckError ? (
+        {eligilibilityStatus === "error" ? (
           <Alert
             type="error"
-            message={eligibilityCheckError}
+            message={eligibilityCheckError || somethingWentWrongMessage}
             className="mt-4"
           />
         ) : null}
