@@ -79,8 +79,16 @@
     "defaultMessage": "Terms and Conditions",
     "description": "Label of the Airdrops Terms and Conditions link displayed in the airdrop 1 modal."
   },
+  "Airdrop2Modal.checkEligibilityButtonLabel": {
+    "defaultMessage": "Check eligibility",
+    "description": "Button label to check eligibility in the airdrop 2 modal"
+  },
+  "Airdrop2Modal.checkYourEligibilityMessage": {
+    "defaultMessage": "Check your eligibility for the Galxe and Zealy Participants Airdrop!",
+    "description": "Welcome message in the airdrop 2 modal"
+  },
   "Airdrop2Modal.checkingEligibilityMessage": {
-    "defaultMessage": "Checking your eligibility to the airdrop...",
+    "defaultMessage": "Checking your eligibility...",
     "description": "Message displayed in the airdrop 2 modal when checking if eligible"
   },
   "Airdrop2Modal.notEligibleMessage": {
@@ -173,15 +181,27 @@
   },
   "HomePage.airdrop1AlertLearnActionButtonLabel": {
     "defaultMessage": "Learn more",
-    "description": "Label for the airdrop 'Learn more' alert button on the home page"
+    "description": "Label for the airdrop 1 'Learn more' alert button on the home page"
   },
   "HomePage.airdrop1AlertMessage": {
     "defaultMessage": "Prove your eligibility for the Early Adopters Airdrop",
-    "description": "Message for the airdrop alert on the home page"
+    "description": "Message for the airdrop 1 alert on the home page"
   },
   "HomePage.airdrop1AlertProveActionButtonLabel": {
     "defaultMessage": "Prove",
-    "description": "Label for the airdrop 'Prove' alert button on the home page"
+    "description": "Label for the airdrop 1 'Prove' alert button on the home page"
+  },
+  "HomePage.airdrop2AlertCheckActionButtonLabel": {
+    "defaultMessage": "Check",
+    "description": "Label for the airdrop 2 'Check' alert button on the home page"
+  },
+  "HomePage.airdrop2AlertLearnActionButtonLabel": {
+    "defaultMessage": "Learn more",
+    "description": "Label for the airdrop 2 'Learn more' alert button on the home page"
+  },
+  "HomePage.airdrop2AlertMessage": {
+    "defaultMessage": "Check your eligibility for the Galxe and Zealy Participants Airdrop",
+    "description": "Message for the airdrop 2 alert on the home page"
   },
   "HomePage.tagline": {
     "defaultMessage": "Explore a new era of data ownership",
@@ -684,7 +704,7 @@
     "description": "Short title of the airdrop 1"
   },
   "airdrops.airdrop2.longTitle": {
-    "defaultMessage": "Galxe and Zealy participants Airdrop",
+    "defaultMessage": "Galxe and Zealy Participants Airdrop",
     "description": "Long title of the airdrop 2"
   },
   "airdrops.airdrop2.shortTitle": {

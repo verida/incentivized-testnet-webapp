@@ -31,7 +31,7 @@ export const AIRDROP_2_DEFINITION: AirdropDefinition = {
   }),
   longTitle: defineMessage({
     id: "airdrops.airdrop2.longTitle",
-    defaultMessage: "Galxe and Zealy participants Airdrop",
+    defaultMessage: "Galxe and Zealy Participants Airdrop",
     description: "Long title of the airdrop 2",
   }),
 };

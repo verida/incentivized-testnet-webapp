@@ -56,15 +56,16 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
 
   const modalTitle = i18n.formatMessage(metadata.longTitle);
 
-  const welcome = i18n.formatMessage({
-    id: "Airdrop2Modal.welcome",
-    defaultMessage: "Welcome to the Galxe and Zealy participants Airdrop!",
+  const checkYourEligibilityMessage = i18n.formatMessage({
+    id: "Airdrop2Modal.checkYourEligibilityMessage",
+    defaultMessage:
+      "Check your eligibility for the Galxe and Zealy Participants Airdrop!",
     description: "Welcome message in the airdrop 2 modal",
   });
 
   const checkingEligibilityMessage = i18n.formatMessage({
     id: "Airdrop2Modal.checkingEligibilityMessage",
-    defaultMessage: "Checking your eligibility to the airdrop...",
+    defaultMessage: "Checking your eligibility...",
     description:
       "Message displayed in the airdrop 2 modal when checking if eligible",
   });
@@ -129,7 +130,7 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
               ? checkingEligibilityMessage
               : eligilibilityStatus === "unknown" ||
                   eligilibilityStatus === "error"
-                ? welcome
+                ? checkYourEligibilityMessage
                 : eligilibilityStatus === "eligible"
                   ? succesfullyEligibleMessage
                   : notEligibleMessage}
