@@ -1,13 +1,11 @@
+import { VERIDA_CREDENTIAL_RECLAIM_SCHEMA_URLS } from "~/features/activity/activities/reclaim/constants";
+import { ReclaimProofOfUberCredentialSubject } from "~/features/activity/activities/reclaim/types";
 import {
   type ReceivedMessage,
   VeridaVerifiableCredentialRecord,
 } from "~/features/verida";
 
-import {
-  RECLAIM_PROTOCOL_UBER_OWNER_PROVIDER_ID,
-  VERIDA_CREDENTIAL_RECLAIM_SCHEMA_URLS,
-} from "./constants";
-import { ReclaimProofOfUberCredentialSubject } from "./types";
+import { RECLAIM_PROTOCOL_UBER_OWNER_PROVIDER_ID } from "./constants";
 
 export function verifyReceivedMessage(
   message: ReceivedMessage<unknown>

@@ -1,0 +1,1 @@
+export const ZKPASS_GATE_OWNER_SCHEMA_ID = "a3b6bf7a231e45a582ffd0e50245c849";

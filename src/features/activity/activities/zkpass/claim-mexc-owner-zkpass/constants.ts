@@ -1,0 +1,1 @@
+export const ZKPASS_MEXC_OWNER_SCHEMA_ID = "d73e2c2227f642dcbade873ff2b09173";

@@ -2,7 +2,8 @@ import toast from "react-hot-toast";
 import { defineMessage } from "react-intl";
 
 import { config } from "~/config";
-import { MISSION_05_ID } from "~/features/activity/missions";
+import { VERIDA_CREDENTIAL_ZKPASS_SCHEMA_URLS } from "~/features/activity/activities/zkpass/constants";
+import { MISSION_06_ID } from "~/features/activity/missions";
 import type {
   Activity,
   ActivityOnExecute,
@@ -18,15 +19,12 @@ import {
   sendDataRequest,
 } from "~/features/verida";
 
-import {
-  RECLAIM_PROTOCOL_UBER_OWNER_PROVIDER_ID,
-  VERIDA_CREDENTIAL_RECLAIM_SCHEMA_URLS,
-} from "./constants";
+import { ZKPASS_BYBIT_OWNER_SCHEMA_ID } from "./constants";
 import { verifyReceivedMessage } from "./utils";
 
 const logger = new Logger("activity");
 
-const ACTIVITY_ID = "claim-uber-owner-reclaim"; // Never change the id
+const ACTIVITY_ID = "claim-bybit-owner-zkpass"; // Never change the id
 
 const handleNewMessage: ActivityOnMessage = async (
   message,
@@ -58,7 +56,7 @@ const handleNewMessage: ActivityOnMessage = async (
     });
 
     toast.success(
-      "Congrats, you have completed the activity 'Claim an Uber credential/Prove ownership'"
+      "Congrats, you have completed the activity 'Claim a Bybit credential/Prove ownership'"
     );
   } catch (error: unknown) {
     Sentry.captureException(error, {
@@ -139,7 +137,7 @@ const handleInit: ActivityOnInit = async (
         });
 
         toast.success(
-          "Congrats, you have completed the activity 'Claim an Uber credential/Prove ownership'"
+          "Congrats, you have completed the activity 'Claim a Bybit credential/Prove ownership'"
         );
 
         return true;
@@ -169,12 +167,12 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
   try {
     const did = veridaWebUser.current.getDid();
     window.open(
-      `${config.proof.connectorBaseUrl}?veridaDid=${did}&schemaId=${RECLAIM_PROTOCOL_UBER_OWNER_PROVIDER_ID}`
+      `${config.proof.connectorBaseUrl}?veridaDid=${did}&schemaId=${ZKPASS_BYBIT_OWNER_SCHEMA_ID}`
     );
 
     // TODO: Make a localised message of this message
     const message =
-      "Please share a Uber account credential from Reclaim protocol";
+      "Please share a Bybit account credential from ZkPass protocol";
 
     logger.info("Sending data request", { activityId: ACTIVITY_ID });
 
@@ -182,11 +180,11 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
       messageSubject: message,
       requestSchema: VAULT_CREDENTIAL_SCHEMA_URL,
       filter: {
-        "$or": VERIDA_CREDENTIAL_RECLAIM_SCHEMA_URLS.map((url) => ({
+        "$or": VERIDA_CREDENTIAL_ZKPASS_SCHEMA_URLS.map((url) => ({
           credentialSchema: url,
         })),
-        "credentialSubject.reclaimProviderId":
-          RECLAIM_PROTOCOL_UBER_OWNER_PROVIDER_ID,
+        "credentialData.credentialSubject.zkPassSchemaId":
+          ZKPASS_BYBIT_OWNER_SCHEMA_ID,
       },
     });
 
@@ -201,7 +199,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
         requestId: sentMessage?.id,
       },
       message: defineMessage({
-        id: "activities.claimUberOwner.executePendingMessage",
+        id: "activities.claimBybitOwner.executePendingMessage",
         defaultMessage:
           "A request has been sent to your wallet inbox. Please check your Verida Wallet Inbox and share the credentials.",
         description:
@@ -217,7 +215,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
     return {
       status: "todo",
       message: defineMessage({
-        id: "activities.claimUberOwner.gettingExecutionErrorMessage",
+        id: "activities.claimBybitOwner.gettingExecutionErrorMessage",
         defaultMessage: `There was an error while sending you the credential request, please try again later`,
         description: "Error message when we can't get the user profile",
       }),
@@ -227,47 +225,47 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
 
 export const activity: Activity = {
   id: ACTIVITY_ID,
-  missionId: MISSION_05_ID,
+  missionId: MISSION_06_ID,
   enabled: true,
   ended: false,
   visible: true,
-  order: 5,
-  points: 100,
+  order: 1,
+  points: 50,
   title: defineMessage({
-    id: "activities.claimUberOwner.title",
-    defaultMessage: "Claim an Uber credential/Prove ownership",
+    id: "activities.claimBybitOwner.title",
+    defaultMessage: "Claim a Bybit credential/Prove ownership",
     description:
-      "Title of the activity 'Claim an Uber credential/Prove ownership'",
+      "Title of the activity 'Claim a Bybit credential/Prove ownership'",
   }),
   shortDescription: defineMessage({
-    id: "activities.claimUberOwner.shortDescription",
-    defaultMessage: `Claim an Uber credential/Prove ownership using Reclaim protocol. The credentails should be stored in your verida wallet.`,
+    id: "activities.claimBybitOwner.shortDescription",
+    defaultMessage: `Claim a Bybit credential/Prove ownership using ZkPass protocol. The credentails should be stored in your verida wallet.`,
     description:
-      "Short description of the activity 'Claim an Uber credential/Prove ownership'",
+      "Short description of the activity 'Claim a Bybit credential/Prove ownership'",
   }),
   longDescription: defineMessage({
-    id: "activities.claimUberOwner.longDescription",
-    defaultMessage: `Claim an Uber credential/Prove ownership. The credentails will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step1. Go to proof-dapp-connector app and complete verification process for uber account.{newline}{newline}Step2. Open your Verida Wallet inbox and accept message from dapp-connector. {newline}{newline}Step3. Accept request from verida mission to share credentials.{newline}{newline}Step4. Select and share credentials.
+    id: "activities.claimBybitOwner.longDescription",
+    defaultMessage: `Claim a Bybit credential/Prove ownership. The credentails will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step1. Go to proof-dapp-connector app and complete verification process for Bybit account.{newline}{newline}Step2. Open your Verida Wallet inbox and accept message from dapp-connector. {newline}{newline}Step3. Accept request from verida mission to share credentials.{newline}{newline}Step4. Select and share credentials.
       `,
     description:
-      "Long description of the activity 'Claim an Uber credential/Prove ownership'",
+      "Long description of the activity 'Claim a Bybit credential/Prove ownership'",
   }),
   actionLabel: defineMessage({
-    id: "activities.claimUberOwner.actionLabel",
+    id: "activities.claimBybitOwner.actionLabel",
     defaultMessage: "Verify",
     description:
-      "Label of the button to start the activity Claim Uber ownership",
+      "Label of the button to start the activity Claim Bybit ownership",
   }),
   actionReExecuteLabel: defineMessage({
-    id: "activities.claimUberOwner.actionReExecuteLabel",
+    id: "activities.claimBybitOwner.actionReExecuteLabel",
     defaultMessage: "Re-send Request",
     description: "Label of the button to perform the activity again ",
   }),
   actionExecutingLabel: defineMessage({
-    id: "activities.claimUberOwner.actionExecutingLabel",
+    id: "activities.claimBybitOwner.actionExecutingLabel",
     defaultMessage: "Sending Request",
     description:
-      "Label of the button when the activity 'Claim Uber ownership' is being executed",
+      "Label of the button when the activity 'Claim Bybit ownership' is being executed",
   }),
   onInit: handleInit,
   onExecute: handleExecute,
@@ -275,11 +273,11 @@ export const activity: Activity = {
   resources: [
     {
       label: defineMessage({
-        id: "activities.claimUberOwner.resources.reclaimPageUrl.label",
-        defaultMessage: "Whitepaper of Reclaim protocol",
-        description: "Label of the resource 'Whitepaper of Reclaim protocol'",
+        id: "activities.claimBybitOwner.resources.ZkPassPageUrl.label",
+        defaultMessage: "User guide of ZkPass protocol",
+        description: "Label of the resource 'User guide of ZkPass protocol'",
       }),
-      url: "https://www.reclaimprotocol.org/whitepaper/",
+      url: "https://zkpass.gitbook.io/zkpass/user-guides/overview",
     },
   ],
 };
