@@ -95,6 +95,10 @@
     "defaultMessage": "Unfortunately, you are not eligible for the Galxe and Zealy participants Airdrop.",
     "description": "Message displayed in the airdrop 2 modal when the user is not eligible"
   },
+  "Airdrop2Modal.sharedMessageOnSocialsText": {
+    "defaultMessage": "I am eligible for the @verida_io Airdrop 2 at https://missions.verida.network/",
+    "description": "Message shared on social if eligible to airdrop 2"
+  },
   "Airdrop2Modal.succesfullyEligibleMessage": {
     "defaultMessage": "Congratulations! You are eligible for the Galxe and Zealy participants Airdrop.{newline}{newline}Check our socials to be notified when the claim window opens.",
     "description": "Message displayed in the airdrop 2 modal when the user is eligible"

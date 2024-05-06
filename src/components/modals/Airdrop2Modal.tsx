@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
 
 import { Icon, Input, Typography } from "~/components/atoms";
-import { Alert } from "~/components/molecules";
+import { Alert, ShareOnSocials } from "~/components/molecules";
 import { Modal } from "~/components/templates";
 import { useAirdrop2, useAirdrop2CheckEligibility } from "~/features/airdrops";
 
@@ -87,6 +87,13 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
     }
   );
 
+  const sharedMessageOnSocialsText = i18n.formatMessage({
+    id: "Airdrop2Modal.sharedMessageOnSocialsText",
+    description: "Message shared on social if eligible to airdrop 2",
+    defaultMessage:
+      "I am eligible for the @verida_io Airdrop 2 at https://missions.verida.network/",
+  });
+
   const notEligibleMessage = i18n.formatMessage({
     id: "Airdrop2Modal.notEligibleMessage",
     defaultMessage:
@@ -106,13 +113,17 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
       open={isEnabled && isModalOpen}
       onClose={handleClose}
       title={modalTitle}
-      actions={[
-        {
-          label: checkEligibilityButtonLabel,
-          onClick: handleCheckEligibility,
-          disabled: isChecking,
-        },
-      ]}
+      actions={
+        eligilibilityStatus === "unknown" || eligilibilityStatus === "error"
+          ? [
+              {
+                label: checkEligibilityButtonLabel,
+                onClick: handleCheckEligibility,
+                disabled: isChecking,
+              },
+            ]
+          : []
+      }
     >
       <div className="flex flex-col gap-6">
         <div className="flex flex-col sm:flex-row gap-4 items-center">
@@ -136,11 +147,20 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
                   : notEligibleMessage}
           </Typography>
         </div>
-        <Input
-          placeholder="0x..."
-          value={walletAddress}
-          onChange={handleWalletAddressInputChange}
-        />
+        {eligilibilityStatus === "eligible" ? (
+          <ShareOnSocials
+            sharedMessage={sharedMessageOnSocialsText}
+            className="flex flex-col sm:flex-row justify-end"
+          />
+        ) : null}
+        {eligilibilityStatus === "unknown" ||
+        eligilibilityStatus === "error" ? (
+          <Input
+            placeholder="0x..."
+            value={walletAddress}
+            onChange={handleWalletAddressInputChange}
+          />
+        ) : null}
         {eligilibilityStatus === "error" && eligibilityCheckError ? (
           <Alert
             type="error"
