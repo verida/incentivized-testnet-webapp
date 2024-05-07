@@ -1,3 +1,1 @@
-export * from "./AcceptTermsAmdConditionsModal";
-export * from "./MainnetUpgradeModal";
-export * from "./RewardsModal";
+export * from "./Airdrop1Modal";

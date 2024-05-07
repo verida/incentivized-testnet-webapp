@@ -19,7 +19,6 @@ import {
   useActivity,
 } from "~/features/activity";
 import { Sentry } from "~/features/sentry";
-import { useTermsConditions } from "~/features/termsconditions";
 import { useVerida } from "~/features/verida";
 
 export type ActivityCardProps = {
@@ -43,15 +42,10 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
 
   const i18n = useIntl();
   const { isConnected } = useVerida();
-  const {
-    status: statusTermsConditions,
-    isCheckingStatus: isCheckingTermsConditions,
-    openAcceptModal,
-  } = useTermsConditions();
   const { executeActivity, isLoadingUserActivities } = useActivity();
   const [executing, setExecuting] = useState(false);
 
-  const isChecking = isCheckingTermsConditions || isLoadingUserActivities;
+  const isChecking = isLoadingUserActivities;
 
   const handleExecuteActivity = useDebouncedCallback(
     async () => {
@@ -79,13 +73,6 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
     id: "ActivityCard.resourcesSectionTitle",
     description: "Title of the resources section in each activity card",
     defaultMessage: "Resources",
-  });
-
-  const openTermsConditionsButtonLabel = i18n.formatMessage({
-    id: "ActivityCard.openTermsConditionsButtonLabel",
-    description:
-      "Label of the button to open the terms and conditions modal on each activity card",
-    defaultMessage: "Open Terms of Use",
   });
 
   const xpPointsChipLabel = i18n.formatMessage(
@@ -212,40 +199,31 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
           {enabled && !ended ? (
             <>
               {isConnected ? (
-                isChecking ? null : statusTermsConditions === "accepted" ? (
-                  status === "todo" || status === "pending" ? (
-                    <Button
-                      size="medium"
-                      onClick={() => void handleExecuteActivity()}
-                      disabled={executing}
-                      className="w-full sm:w-fit"
-                    >
-                      {executing ? (
-                        <>
-                          <Icon
-                            size={20}
-                            type="loading"
-                            className="animate-spin-slow"
-                          />
-                          {i18n.formatMessage(activity.actionExecutingLabel)}
-                        </>
-                      ) : status === "pending" &&
-                        activity.actionReExecuteLabel ? (
-                        i18n.formatMessage(activity.actionReExecuteLabel)
-                      ) : (
-                        i18n.formatMessage(activity.actionLabel)
-                      )}
-                    </Button>
-                  ) : null
-                ) : (
+                isChecking ? null : status === "todo" ||
+                  status === "pending" ? (
                   <Button
-                    onClick={openAcceptModal}
                     size="medium"
+                    onClick={() => void handleExecuteActivity()}
+                    disabled={executing}
                     className="w-full sm:w-fit"
                   >
-                    {openTermsConditionsButtonLabel}
+                    {executing ? (
+                      <>
+                        <Icon
+                          size={20}
+                          type="loading"
+                          className="animate-spin-slow"
+                        />
+                        {i18n.formatMessage(activity.actionExecutingLabel)}
+                      </>
+                    ) : status === "pending" &&
+                      activity.actionReExecuteLabel ? (
+                      i18n.formatMessage(activity.actionReExecuteLabel)
+                    ) : (
+                      i18n.formatMessage(activity.actionLabel)
+                    )}
                   </Button>
-                )
+                ) : null
               ) : (
                 <Typography className="w-full text-left sm:text-right text-muted-foreground">
                   {connectToCompleteMessage}
