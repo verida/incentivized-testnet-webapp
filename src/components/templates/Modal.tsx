@@ -11,9 +11,11 @@ import { useEffect } from "react";
 import { PortalWrapper } from "~/components/molecules";
 import { EVENT_TYPE_KEYDOWN, KEY_NAME_ESC } from "~/constants";
 
+// TODO: Implement similar to the Alert component
 export type ModalAction = {
   label: string;
   onClick: () => void;
+  disabled?: boolean;
 } & ButtonBaseVariants;
 
 export type ModalProps = {
@@ -94,6 +96,8 @@ export const Modal: React.FunctionComponent<ModalProps> = (props) => {
                     key={action.label}
                     onClick={action.onClick}
                     variant={action.variant}
+                    disabled={action.disabled}
+                    color={action.color || undefined}
                   >
                     {action.label}
                   </Button>

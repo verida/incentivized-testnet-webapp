@@ -1,7 +1,13 @@
 import { VariantProps, cva } from "class-variance-authority";
 import React from "react";
 
-import { Button, Typography } from "~/components/atoms";
+import {
+  Button,
+  ButtonLink,
+  ButtonLinkProps,
+  ButtonProps,
+  Typography,
+} from "~/components/atoms";
 
 const alertVariants = cva(
   "flex flex-row justify-between items-center rounded-2xl p-4 gap-4 border border-solid",
@@ -22,14 +28,22 @@ const alertVariants = cva(
 
 export type AlertVariants = VariantProps<typeof alertVariants>;
 
+type AlertAction = { label: string } & (
+  | ({
+      type: "button";
+    } & ButtonProps)
+  | ({
+      type: "link";
+    } & ButtonLinkProps)
+);
+
 export type AlertProps = AlertVariants & {
   message: string;
-  actionLabel?: string;
-  action?: () => void;
+  actions?: AlertAction[];
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const Alert: React.FunctionComponent<AlertProps> = (props) => {
-  const { type, message, actionLabel, action, ...divProps } = props;
+  const { type, message, actions, ...divProps } = props;
 
   const classes = alertVariants({ type });
 
@@ -37,14 +51,47 @@ export const Alert: React.FunctionComponent<AlertProps> = (props) => {
     <div {...divProps}>
       <div className={classes}>
         <Typography>{message}</Typography>
-        {action && actionLabel ? (
-          <Button
-            onClick={action}
-            color={type === "info" ? "primary" : "default"}
-            className="whitespace-nowrap"
-          >
-            {actionLabel}
-          </Button>
+        {actions && actions.length > 0 ? (
+          <div className="flex flex-col gap-4 sm:flex-row">
+            {actions.map((action) => {
+              if (action.type === "button") {
+                const { type: actionType, ...buttonProps } = action;
+                return (
+                  <Button
+                    {...buttonProps}
+                    color={
+                      action.color
+                        ? action.color
+                        : type === "info"
+                          ? "primary"
+                          : "default"
+                    }
+                    className="whitespace-nowrap"
+                  >
+                    {action.label}
+                  </Button>
+                );
+              } else if (action.type === "link") {
+                const { type: actionType, ...linkProps } = action;
+                return (
+                  <ButtonLink
+                    {...linkProps}
+                    color={
+                      action.color
+                        ? action.color
+                        : type === "info"
+                          ? "primary"
+                          : "default"
+                    }
+                    className="whitespace-nowrap"
+                  >
+                    {action.label}
+                  </ButtonLink>
+                );
+              }
+              return null;
+            })}
+          </div>
         ) : null}
       </div>
     </div>

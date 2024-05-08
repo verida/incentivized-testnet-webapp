@@ -10,8 +10,7 @@ import { HeaderMenu } from "~/components/molecules";
 import { ConnectVeridaButton } from "~/components/organisms";
 import { config } from "~/config";
 import { useActivity } from "~/features/activity";
-import { useRewards } from "~/features/rewards";
-import { useTermsConditions } from "~/features/termsconditions";
+import { useAirdrops } from "~/features/airdrops";
 import { truncateDid, useVerida } from "~/features/verida";
 
 export type HeaderProps = React.ComponentPropsWithRef<"header">;
@@ -22,11 +21,9 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const i18n = useIntl();
   const [openMenu, setOpenMenu] = useState(false);
   const { disconnect, isConnected, profile, did } = useVerida();
-  const { deleteTermsStatus } = useTermsConditions();
   const { deleteUserActivities, userXpPoints, isLoadingUserActivities } =
     useActivity();
-  const { isEnabled: isRewardsEnabled, openModal: openRewardsModal } =
-    useRewards();
+  const { isAidrop1Enabled, openAirdrop1Modal } = useAirdrops();
 
   const handleOpenMenu = useCallback(() => {
     setOpenMenu(true);
@@ -41,9 +38,9 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     void disconnect();
   }, [handleCloseMenu, disconnect]);
 
-  const handleSubmitWalletClick = useCallback(() => {
-    openRewardsModal();
-  }, [openRewardsModal]);
+  const handleAirdropsEligibilityClick = useCallback(() => {
+    openAirdrop1Modal();
+  }, [openAirdrop1Modal]);
 
   const homeLinkAriaLabel = i18n.formatMessage({
     id: "Header.homeLinkAriaLabel",
@@ -66,10 +63,11 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     { points: userXpPoints }
   );
 
-  const submitWalletButtonLabel = i18n.formatMessage({
-    id: "Header.submitWalletButtonLabel",
-    description: "Label for the submit wallet button in the Header",
-    defaultMessage: "Submit your wallet",
+  const airdropsEligibilityButtonLabel = i18n.formatMessage({
+    id: "Header.airdropsEligibilityButtonLabel",
+    description:
+      "Label for the button in the Header menu to check eligibility to airdrops",
+    defaultMessage: "Airdrops eligibility",
   });
 
   const disconnectButtonLabel = i18n.formatMessage({
@@ -83,11 +81,6 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const devModeMenuItems: MenuItem[] = config.devMode
     ? [
         {
-          key: "delete-terms",
-          label: "Delete Terms",
-          action: deleteTermsStatus,
-        },
-        {
           key: "delete-user-activities",
           label: "Delete User Activities",
           action: deleteUserActivities,
@@ -95,17 +88,17 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
       ]
     : [];
 
-  const rewardsMenuItems: MenuItem[] = isRewardsEnabled
+  const airdropsMenuItems: MenuItem[] = isAidrop1Enabled
     ? [
         {
-          key: "submit-wallet",
+          key: "airdrops-eligibility",
           label: (
             <div className="flex flex-row gap-2 items-center">
               <Icon type="wallet" size={20} />
-              {submitWalletButtonLabel}
+              {airdropsEligibilityButtonLabel}
             </div>
           ),
-          action: handleSubmitWalletClick,
+          action: handleAirdropsEligibilityClick,
         },
       ]
     : [];
@@ -142,7 +135,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
       disabled: true,
       replaceButton: true,
     },
-    ...rewardsMenuItems,
+    ...airdropsMenuItems,
     {
       key: "disconnect",
       label: (
