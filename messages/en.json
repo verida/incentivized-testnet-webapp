@@ -48,7 +48,7 @@
     "description": "Message displayed in the airdrop 1 modal when asking the user to accept the terms and conditions of the airdrop."
   },
   "Airdrop1Modal.checkingSubmittedProofMessage": {
-    "defaultMessage": "Checking existing proof of early adopter eligibility...",
+    "defaultMessage": "Checking existing proof of eligibility...",
     "description": "Message displayed in the airdrop 1 modal when checking if the proof has already been submitted"
   },
   "Airdrop1Modal.notEnoughPointsMessage": {
@@ -56,11 +56,11 @@
     "description": "Message displayed in the airdrop 1 modal when the user doesn't have enough XP points"
   },
   "Airdrop1Modal.proofAlreadySubmittedMessage": {
-    "defaultMessage": "Congratulations! You are eligible for the Early Adopters Airdrop and have been registered.{newline}{newline}Check our socials to be notified when the claim window opens.",
+    "defaultMessage": "Congratulations! You are eligible for the {airdropTitle} and have been registered.{newline}{newline}Check our socials to be notified when the claim window opens.",
     "description": "Message displayed in the airdrop 1 modal when the proof has already been submitted"
   },
   "Airdrop1Modal.proofSubmitErrorMessage": {
-    "defaultMessage": "Unfortunately, you are not eligible for the Early Adopters Airdrop. To confirm the criteria, please check the",
+    "defaultMessage": "Unfortunately, you are not eligible for the {airdropTitle}. To confirm the criteria, please check the",
     "description": "Message displayed in the airdrop 1 modal when the proof submission fails"
   },
   "Airdrop1Modal.sharedMessageOnSocialsText": {
@@ -72,7 +72,7 @@
     "description": "Label for the submit button in the airdrop 1 modal"
   },
   "Airdrop1Modal.submitProofMessage": {
-    "defaultMessage": "As a decentralised application, Verida Missions needs to verify your completed activities meet the Early Adopters Airdrop criteria. Please submit your XP points proofs to our server for verification.",
+    "defaultMessage": "As a decentralised application, Verida Missions needs to verify your completed activities meet the {airdropTitle} criteria. Please submit your XP points proofs to our server for verification.",
     "description": "Message displayed in the rewards modal when before submitting the claim"
   },
   "Airdrop1Modal.termsUrlLabel": {
@@ -84,7 +84,7 @@
     "description": "Button label to check eligibility in the airdrop 2 modal"
   },
   "Airdrop2Modal.checkYourEligibilityMessage": {
-    "defaultMessage": "Check your eligibility for the Galxe and Zealy Participants Airdrop!",
+    "defaultMessage": "Check your eligibility for the {airdropTitle}!",
     "description": "Welcome message in the airdrop 2 modal"
   },
   "Airdrop2Modal.checkingEligibilityMessage": {
@@ -92,7 +92,7 @@
     "description": "Message displayed in the airdrop 2 modal when checking if eligible"
   },
   "Airdrop2Modal.notEligibleMessage": {
-    "defaultMessage": "Unfortunately, you are not eligible for the Galxe and Zealy participants Airdrop.",
+    "defaultMessage": "Unfortunately, you are not eligible for the {airdropTitle}.",
     "description": "Message displayed in the airdrop 2 modal when the user is not eligible"
   },
   "Airdrop2Modal.sharedMessageOnSocialsText": {
@@ -104,7 +104,7 @@
     "description": "Message displayed in the airdrop 2 modal when something went wrong"
   },
   "Airdrop2Modal.succesfullyEligibleMessage": {
-    "defaultMessage": "Congratulations! You are eligible for the Galxe and Zealy participants Airdrop.{newline}{newline}Check our socials to be notified when the claim window opens.",
+    "defaultMessage": "Congratulations! You are eligible for the {airdropTitle}.{newline}{newline}Check our socials to be notified when the claim window opens.",
     "description": "Message displayed in the airdrop 2 modal when the user is eligible"
   },
   "ConnectVeridaButton.checkingConnectionButtonLabel": {
@@ -192,7 +192,7 @@
     "description": "Label for the airdrop 1 'Learn more' alert button on the home page"
   },
   "HomePage.airdrop1AlertMessage": {
-    "defaultMessage": "Prove your eligibility for the Early Adopters Airdrop",
+    "defaultMessage": "Prove your eligibility for the {airdropTitle}",
     "description": "Message for the airdrop 1 alert on the home page"
   },
   "HomePage.airdrop1AlertProveActionButtonLabel": {
@@ -208,7 +208,7 @@
     "description": "Label for the airdrop 2 'Learn more' alert button on the home page"
   },
   "HomePage.airdrop2AlertMessage": {
-    "defaultMessage": "Check your eligibility for the Galxe and Zealy Participants Airdrop",
+    "defaultMessage": "Check your eligibility for the {airdropTitle}",
     "description": "Message for the airdrop 2 alert on the home page"
   },
   "HomePage.tagline": {
@@ -704,19 +704,19 @@
     "description": "Label of the video 'How to use the Markdown Editor demo app'"
   },
   "airdrops.airdrop1.longTitle": {
-    "defaultMessage": "Early Adopters Airdrop",
+    "defaultMessage": "Airdrop 1: Early Adopters",
     "description": "Long title of the airdrop 1"
   },
   "airdrops.airdrop1.shortTitle": {
-    "defaultMessage": "Early Adopters Airdrop",
+    "defaultMessage": "Airdrop 1: Early Adopters",
     "description": "Short title of the airdrop 1"
   },
   "airdrops.airdrop2.longTitle": {
-    "defaultMessage": "Galxe and Zealy Participants Airdrop",
+    "defaultMessage": "Airdrop2: Galxe and Zealy Participants",
     "description": "Long title of the airdrop 2"
   },
   "airdrops.airdrop2.shortTitle": {
-    "defaultMessage": "Galxe and Zealy Airdrop",
+    "defaultMessage": "Airdrop 2: Galxe and Zealy",
     "description": "Short title of the airdrop 2"
   },
   "app.meta.defaultDescription": {

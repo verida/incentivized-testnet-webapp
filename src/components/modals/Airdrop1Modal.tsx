@@ -60,7 +60,7 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
 
   const checkingSubmittedProofMessage = i18n.formatMessage({
     id: "Airdrop1Modal.checkingSubmittedProofMessage",
-    defaultMessage: "Checking existing proof of early adopter eligibility...",
+    defaultMessage: "Checking existing proof of eligibility...",
     description:
       "Message displayed in the airdrop 1 modal when checking if the proof has already been submitted",
   });
@@ -69,11 +69,12 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
     {
       id: "Airdrop1Modal.proofAlreadySubmittedMessage",
       defaultMessage:
-        "Congratulations! You are eligible for the Early Adopters Airdrop and have been registered.{newline}{newline}Check our socials to be notified when the claim window opens.",
+        "Congratulations! You are eligible for the {airdropTitle} and have been registered.{newline}{newline}Check our socials to be notified when the claim window opens.",
       description:
         "Message displayed in the airdrop 1 modal when the proof has already been submitted",
     },
     {
+      airdropTitle: i18n.formatMessage(metadata.longTitle),
       newline: (
         <>
           <br />
@@ -123,13 +124,18 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
       "Label for the button to accept the terms and conditions in the airdrop 1 modal",
   });
 
-  const submitProofMessage = i18n.formatMessage({
-    id: "Airdrop1Modal.submitProofMessage",
-    defaultMessage:
-      "As a decentralised application, Verida Missions needs to verify your completed activities meet the Early Adopters Airdrop criteria. Please submit your XP points proofs to our server for verification.",
-    description:
-      "Message displayed in the rewards modal when before submitting the claim",
-  });
+  const submitProofMessage = i18n.formatMessage(
+    {
+      id: "Airdrop1Modal.submitProofMessage",
+      defaultMessage:
+        "As a decentralised application, Verida Missions needs to verify your completed activities meet the {airdropTitle} criteria. Please submit your XP points proofs to our server for verification.",
+      description:
+        "Message displayed in the rewards modal when before submitting the claim",
+    },
+    {
+      airdropTitle: i18n.formatMessage(metadata.longTitle),
+    }
+  );
 
   const submitButtonLabel = i18n.formatMessage({
     id: "Airdrop1Modal.submitButtonLabel",
@@ -137,13 +143,18 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
     description: "Label for the submit button in the airdrop 1 modal",
   });
 
-  const proofSubmitErrorMessage = i18n.formatMessage({
-    id: "Airdrop1Modal.proofSubmitErrorMessage",
-    defaultMessage:
-      "Unfortunately, you are not eligible for the Early Adopters Airdrop. To confirm the criteria, please check the",
-    description:
-      "Message displayed in the airdrop 1 modal when the proof submission fails",
-  });
+  const proofSubmitErrorMessage = i18n.formatMessage(
+    {
+      id: "Airdrop1Modal.proofSubmitErrorMessage",
+      defaultMessage:
+        "Unfortunately, you are not eligible for the {airdropTitle}. To confirm the criteria, please check the",
+      description:
+        "Message displayed in the airdrop 1 modal when the proof submission fails",
+    },
+    {
+      airdropTitle: i18n.formatMessage(metadata.longTitle),
+    }
+  );
 
   return (
     <Modal

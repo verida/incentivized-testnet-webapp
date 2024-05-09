@@ -56,12 +56,16 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
 
   const modalTitle = i18n.formatMessage(metadata.longTitle);
 
-  const checkYourEligibilityMessage = i18n.formatMessage({
-    id: "Airdrop2Modal.checkYourEligibilityMessage",
-    defaultMessage:
-      "Check your eligibility for the Galxe and Zealy Participants Airdrop!",
-    description: "Welcome message in the airdrop 2 modal",
-  });
+  const checkYourEligibilityMessage = i18n.formatMessage(
+    {
+      id: "Airdrop2Modal.checkYourEligibilityMessage",
+      defaultMessage: "Check your eligibility for the {airdropTitle}!",
+      description: "Welcome message in the airdrop 2 modal",
+    },
+    {
+      airdropTitle: i18n.formatMessage(metadata.longTitle),
+    }
+  );
 
   const checkingEligibilityMessage = i18n.formatMessage({
     id: "Airdrop2Modal.checkingEligibilityMessage",
@@ -74,11 +78,12 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
     {
       id: "Airdrop2Modal.succesfullyEligibleMessage",
       defaultMessage:
-        "Congratulations! You are eligible for the Galxe and Zealy participants Airdrop.{newline}{newline}Check our socials to be notified when the claim window opens.",
+        "Congratulations! You are eligible for the {airdropTitle}.{newline}{newline}Check our socials to be notified when the claim window opens.",
       description:
         "Message displayed in the airdrop 2 modal when the user is eligible",
     },
     {
+      airdropTitle: i18n.formatMessage(metadata.longTitle),
       newline: (
         <>
           <br />
@@ -89,18 +94,23 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
 
   const sharedMessageOnSocialsText = i18n.formatMessage({
     id: "Airdrop2Modal.sharedMessageOnSocialsText",
-    description: "Message shared on social if eligible to airdrop 2",
     defaultMessage:
       "I am eligible for the @verida_io Airdrop 2 at https://missions.verida.network/",
+    description: "Message shared on social if eligible to airdrop 2",
   });
 
-  const notEligibleMessage = i18n.formatMessage({
-    id: "Airdrop2Modal.notEligibleMessage",
-    defaultMessage:
-      "Unfortunately, you are not eligible for the Galxe and Zealy participants Airdrop.",
-    description:
-      "Message displayed in the airdrop 2 modal when the user is not eligible",
-  });
+  const notEligibleMessage = i18n.formatMessage(
+    {
+      id: "Airdrop2Modal.notEligibleMessage",
+      defaultMessage:
+        "Unfortunately, you are not eligible for the {airdropTitle}.",
+      description:
+        "Message displayed in the airdrop 2 modal when the user is not eligible",
+    },
+    {
+      airdropTitle: i18n.formatMessage(metadata.longTitle),
+    }
+  );
 
   const checkEligibilityButtonLabel = i18n.formatMessage({
     id: "Airdrop2Modal.checkEligibilityButtonLabel",
