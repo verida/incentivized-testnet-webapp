@@ -1,10 +1,14 @@
 import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
 
-import { Icon, Input, Typography } from "~/components/atoms";
+import { ExternalLink, Icon, Input, Typography } from "~/components/atoms";
 import { Alert, ShareOnSocials } from "~/components/molecules";
 import { Modal } from "~/components/templates";
-import { useAirdrop2, useAirdrop2CheckEligibility } from "~/features/airdrops";
+import {
+  AIRDROPS_TERMS_URL,
+  useAirdrop2,
+  useAirdrop2CheckEligibility,
+} from "~/features/airdrops";
 
 export const Airdrop2Modal: React.FunctionComponent = () => {
   const { metadata, isEnabled, isModalOpen, closeModal } = useAirdrop2();
@@ -56,29 +60,46 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
 
   const modalTitle = i18n.formatMessage(metadata.longTitle);
 
-  const checkYourEligibilityMessage = i18n.formatMessage({
-    id: "Airdrop2Modal.checkYourEligibilityMessage",
-    defaultMessage:
-      "Check your eligibility for the Galxe and Zealy Participants Airdrop!",
-    description: "Welcome message in the airdrop 2 modal",
+  const checkYourEligibilityMessage = i18n.formatMessage(
+    {
+      id: "Airdrop2Modal.checkYourEligibilityMessage",
+      defaultMessage:
+        "Check if your blockchain wallet address used for the Galxe and Zealy campaigns is included in the {airdropTitle}*{newline}{newline}*This does not guarantee your eligibility to claim airdrop rewards. All Verida Airdrops will be subject to the Airdrop",
+      description: "Welcome message in the airdrop 2 modal",
+    },
+    {
+      airdropTitle: i18n.formatMessage(metadata.longTitle),
+      newline: (
+        <>
+          <br />
+        </>
+      ),
+    }
+  );
+
+  const termsUrlLabel = i18n.formatMessage({
+    id: "Airdrop2Modal.termsUrlLabel",
+    defaultMessage: "Terms and Conditions",
+    description: "Label of the Airdrops Terms and Conditions link.",
   });
 
   const checkingEligibilityMessage = i18n.formatMessage({
     id: "Airdrop2Modal.checkingEligibilityMessage",
-    defaultMessage: "Checking your eligibility...",
+    defaultMessage: "Checking...",
     description:
-      "Message displayed in the airdrop 2 modal when checking if eligible",
+      "Message displayed in the airdrop 2 modal when checking if included in the list",
   });
 
   const succesfullyEligibleMessage = i18n.formatMessage(
     {
       id: "Airdrop2Modal.succesfullyEligibleMessage",
       defaultMessage:
-        "Congratulations! You are eligible for the Galxe and Zealy participants Airdrop.{newline}{newline}Check our socials to be notified when the claim window opens.",
+        "Congratulations! You are included in the {airdropTitle}*.{newline}{newline}Check our socials to be notified when the claim window opens.{newline}{newline}*This does not guarantee your eligibility to claim airdrop rewards. All Verida Airdrops will be subject to the Airdrop",
       description:
-        "Message displayed in the airdrop 2 modal when the user is eligible",
+        "Message displayed in the airdrop 2 modal when the user is included",
     },
     {
+      airdropTitle: i18n.formatMessage(metadata.longTitle),
       newline: (
         <>
           <br />
@@ -89,23 +110,40 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
 
   const sharedMessageOnSocialsText = i18n.formatMessage({
     id: "Airdrop2Modal.sharedMessageOnSocialsText",
-    description: "Message shared on social if eligible to airdrop 2",
     defaultMessage:
-      "I am eligible for the @verida_io Airdrop 2 at https://missions.verida.network/",
+      "I am included in the @verida_io Airdrop 2 at https://missions.verida.network/",
+    description: "Message shared on social if eligible to airdrop 2",
   });
 
-  const notEligibleMessage = i18n.formatMessage({
-    id: "Airdrop2Modal.notEligibleMessage",
-    defaultMessage:
-      "Unfortunately, you are not eligible for the Galxe and Zealy participants Airdrop.",
-    description:
-      "Message displayed in the airdrop 2 modal when the user is not eligible",
+  const notEligibleMessage = i18n.formatMessage(
+    {
+      id: "Airdrop2Modal.notEligibleMessage",
+      defaultMessage:
+        "Unfortunately, you are not included in the {airdropTitle}{newline}{newline}Read the criteria in the",
+      description:
+        "Message displayed in the airdrop 2 modal when the user is not included",
+    },
+    {
+      airdropTitle: i18n.formatMessage(metadata.longTitle),
+      newline: (
+        <>
+          <br />
+        </>
+      ),
+    }
+  );
+
+  const announcementArticleUrlLabel = i18n.formatMessage({
+    id: "Airdrop2Modal.announcementArticleUrlLabel",
+    defaultMessage: "announcement article",
+    description: "Label of the Airdrop 2 announcement article link.",
   });
 
   const checkEligibilityButtonLabel = i18n.formatMessage({
     id: "Airdrop2Modal.checkEligibilityButtonLabel",
-    defaultMessage: "Check eligibility",
-    description: "Button label to check eligibility in the airdrop 2 modal",
+    defaultMessage: "Check",
+    description:
+      "Button label to check a user is included in the airdrop 2 modal",
   });
 
   const somethingWentWrongMessage = i18n.formatMessage({
@@ -144,14 +182,31 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
             <Icon type="notification-error" size={40} className="text-error" />
           )}
           <Typography variant="base">
-            {isChecking
-              ? checkingEligibilityMessage
-              : eligilibilityStatus === "unknown" ||
-                  eligilibilityStatus === "error"
-                ? checkYourEligibilityMessage
-                : eligilibilityStatus === "eligible"
-                  ? succesfullyEligibleMessage
-                  : notEligibleMessage}
+            {isChecking ? (
+              checkingEligibilityMessage
+            ) : eligilibilityStatus === "unknown" ||
+              eligilibilityStatus === "error" ? (
+              <>
+                {checkYourEligibilityMessage}{" "}
+                <ExternalLink href={AIRDROPS_TERMS_URL} openInNewTab>
+                  {termsUrlLabel}
+                </ExternalLink>
+              </>
+            ) : eligilibilityStatus === "eligible" ? (
+              <>
+                {succesfullyEligibleMessage}{" "}
+                <ExternalLink href={AIRDROPS_TERMS_URL} openInNewTab>
+                  {termsUrlLabel}
+                </ExternalLink>
+              </>
+            ) : (
+              <>
+                {notEligibleMessage}{" "}
+                <ExternalLink href={metadata.articleUrl} openInNewTab>
+                  {announcementArticleUrlLabel}
+                </ExternalLink>
+              </>
+            )}
           </Typography>
         </div>
         {eligilibilityStatus === "eligible" ? (

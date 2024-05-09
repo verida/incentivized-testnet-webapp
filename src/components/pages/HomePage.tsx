@@ -10,7 +10,6 @@ import {
 import { PageLayout } from "~/components/templates";
 import { useActivity } from "~/features/activity";
 import {
-  AIRDROPS_FAQ_URL,
   useAirdrop1,
   useAirdrop1Queries,
   useAirdrop2,
@@ -21,14 +20,20 @@ export const HomePage: React.FunctionComponent = () => {
   const i18n = useIntl();
   const { isConnected } = useVerida();
   const { missions } = useActivity();
-  const { isEnabled: isAirdrop1Enabled, openModal: openAirdrop1Modal } =
-    useAirdrop1();
+  const {
+    metadata: airdrop1Metadata,
+    isEnabled: isAirdrop1Enabled,
+    openModal: openAirdrop1Modal,
+  } = useAirdrop1();
   const {
     isProofSubmitted: isAirdrop1ProofSubmitted,
     isCheckingProofSubmitted: isCheckingAirdrop1ProofSubmitted,
   } = useAirdrop1Queries();
-  const { isEnabled: isAirdrop2Enabled, openModal: openAirdrop2Modal } =
-    useAirdrop2();
+  const {
+    metadata: airdrop2Metadata,
+    isEnabled: isAirdrop2Enabled,
+    openModal: openAirdrop2Modal,
+  } = useAirdrop2();
 
   const tagline = i18n.formatMessage({
     id: "HomePage.tagline",
@@ -36,11 +41,16 @@ export const HomePage: React.FunctionComponent = () => {
     defaultMessage: "Explore a new era of data ownership",
   });
 
-  const airdrop1AlertMessage = i18n.formatMessage({
-    id: "HomePage.airdrop1AlertMessage",
-    defaultMessage: "Prove your eligibility for the Early Adopters Airdrop",
-    description: "Message for the airdrop 1 alert on the home page",
-  });
+  const airdrop1AlertMessage = i18n.formatMessage(
+    {
+      id: "HomePage.airdrop1AlertMessage",
+      defaultMessage: "Prove your eligibility for the {airdropTitle}",
+      description: "Message for the airdrop 1 alert on the home page",
+    },
+    {
+      airdropTitle: i18n.formatMessage(airdrop1Metadata.longTitle),
+    }
+  );
 
   const airdrop1AlertProveActionButtonLabel = i18n.formatMessage({
     id: "HomePage.airdrop1AlertProveActionButtonLabel",
@@ -56,12 +66,16 @@ export const HomePage: React.FunctionComponent = () => {
       "Label for the airdrop 1 'Learn more' alert button on the home page",
   });
 
-  const airdrop2AlertMessage = i18n.formatMessage({
-    id: "HomePage.airdrop2AlertMessage",
-    defaultMessage:
-      "Check your eligibility for the Galxe and Zealy Participants Airdrop",
-    description: "Message for the airdrop 2 alert on the home page",
-  });
+  const airdrop2AlertMessage = i18n.formatMessage(
+    {
+      id: "HomePage.airdrop2AlertMessage",
+      defaultMessage: "Check if you are included in the {airdropTitle}",
+      description: "Message for the airdrop 2 alert on the home page",
+    },
+    {
+      airdropTitle: i18n.formatMessage(airdrop2Metadata.longTitle),
+    }
+  );
 
   const airdrop2AlertCheckActionButtonLabel = i18n.formatMessage({
     id: "HomePage.airdrop2AlertCheckActionButtonLabel",
@@ -100,7 +114,7 @@ export const HomePage: React.FunctionComponent = () => {
               {
                 type: "link",
                 label: airdrop1AlertLearnActionButtonLabel,
-                href: AIRDROPS_FAQ_URL,
+                href: airdrop1Metadata.articleUrl,
                 openInNewTab: true,
                 color: "default",
               },
@@ -121,7 +135,7 @@ export const HomePage: React.FunctionComponent = () => {
             {
               type: "link",
               label: airdrop2AlertLearnActionButtonLabel,
-              href: AIRDROPS_FAQ_URL,
+              href: airdrop2Metadata.articleUrl,
               openInNewTab: true,
               color: "default",
             },
