@@ -10,7 +10,7 @@ import { HeaderMenu } from "~/components/molecules";
 import { ConnectVeridaButton } from "~/components/organisms";
 import { config } from "~/config";
 import { useActivity } from "~/features/activity";
-import { useAirdrops } from "~/features/airdrops";
+import { useAirdrop1, useAirdrop2 } from "~/features/airdrops";
 import { truncateDid, useVerida } from "~/features/verida";
 
 export type HeaderProps = React.ComponentPropsWithRef<"header">;
@@ -23,7 +23,16 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const { disconnect, isConnected, profile, did } = useVerida();
   const { deleteUserActivities, userXpPoints, isLoadingUserActivities } =
     useActivity();
-  const { isAidrop1Enabled, openAirdrop1Modal } = useAirdrops();
+  const {
+    metadata: airdrop1Metadata,
+    isEnabled: isAirdrop1Enabled,
+    openModal: openAirdrop1Modal,
+  } = useAirdrop1();
+  const {
+    metadata: airdrop2Metadata,
+    openModal: openAirdrop2Modal,
+    isEnabled: isAirdrop2Enabled,
+  } = useAirdrop2();
 
   const handleOpenMenu = useCallback(() => {
     setOpenMenu(true);
@@ -38,9 +47,13 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     void disconnect();
   }, [handleCloseMenu, disconnect]);
 
-  const handleAirdropsEligibilityClick = useCallback(() => {
+  const handleAirdrop1Click = useCallback(() => {
     openAirdrop1Modal();
   }, [openAirdrop1Modal]);
+
+  const handleAirdrop2Click = useCallback(() => {
+    openAirdrop2Modal();
+  }, [openAirdrop2Modal]);
 
   const homeLinkAriaLabel = i18n.formatMessage({
     id: "Header.homeLinkAriaLabel",
@@ -63,12 +76,9 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     { points: userXpPoints }
   );
 
-  const airdropsEligibilityButtonLabel = i18n.formatMessage({
-    id: "Header.airdropsEligibilityButtonLabel",
-    description:
-      "Label for the button in the Header menu to check eligibility to airdrops",
-    defaultMessage: "Airdrops eligibility",
-  });
+  const airdrop1ButtonLabel = i18n.formatMessage(airdrop1Metadata.shortTitle);
+
+  const airdrop2ButtonLabel = i18n.formatMessage(airdrop2Metadata.shortTitle);
 
   const disconnectButtonLabel = i18n.formatMessage({
     id: "Header.disconnectButtonLabel",
@@ -78,27 +88,40 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
 
   const contentHeight = "h-10";
 
+  const airdropsMenuItems: MenuItem[] = [];
+
+  if (isAirdrop1Enabled) {
+    airdropsMenuItems.push({
+      key: "airdrop1",
+      label: (
+        <div className="flex flex-row gap-2 items-center">
+          <Icon type="wallet" size={20} />
+          {airdrop1ButtonLabel}
+        </div>
+      ),
+      action: handleAirdrop1Click,
+    });
+  }
+
+  if (isAirdrop2Enabled) {
+    airdropsMenuItems.push({
+      key: "airdrop2",
+      label: (
+        <div className="flex flex-row gap-2 items-center">
+          <Icon type="wallet" size={20} />
+          {airdrop2ButtonLabel}
+        </div>
+      ),
+      action: handleAirdrop2Click,
+    });
+  }
+
   const devModeMenuItems: MenuItem[] = config.devMode
     ? [
         {
           key: "delete-user-activities",
           label: "Delete User Activities",
           action: deleteUserActivities,
-        },
-      ]
-    : [];
-
-  const airdropsMenuItems: MenuItem[] = isAidrop1Enabled
-    ? [
-        {
-          key: "airdrops-eligibility",
-          label: (
-            <div className="flex flex-row gap-2 items-center">
-              <Icon type="wallet" size={20} />
-              {airdropsEligibilityButtonLabel}
-            </div>
-          ),
-          action: handleAirdropsEligibilityClick,
         },
       ]
     : [];
