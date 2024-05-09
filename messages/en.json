@@ -51,10 +51,6 @@
     "defaultMessage": "Checking existing proof of early adopter eligibility...",
     "description": "Message displayed in the airdrop 1 modal when checking if the proof has already been submitted"
   },
-  "Airdrop1Modal.modalTitle": {
-    "defaultMessage": "Early Adopters Airdrop",
-    "description": "Title for the airdrop 1 modal"
-  },
   "Airdrop1Modal.notEnoughPointsMessage": {
     "defaultMessage": "You do not have enough XP points to submit your proof of eligibility. Complete some activities to reach at least {minPoints} XP points and try again.",
     "description": "Message displayed in the airdrop 1 modal when the user doesn't have enough XP points"
@@ -82,6 +78,34 @@
   "Airdrop1Modal.termsUrlLabel": {
     "defaultMessage": "Terms and Conditions",
     "description": "Label of the Airdrops Terms and Conditions link displayed in the airdrop 1 modal."
+  },
+  "Airdrop2Modal.checkEligibilityButtonLabel": {
+    "defaultMessage": "Check eligibility",
+    "description": "Button label to check eligibility in the airdrop 2 modal"
+  },
+  "Airdrop2Modal.checkYourEligibilityMessage": {
+    "defaultMessage": "Check your eligibility for the Galxe and Zealy Participants Airdrop!",
+    "description": "Welcome message in the airdrop 2 modal"
+  },
+  "Airdrop2Modal.checkingEligibilityMessage": {
+    "defaultMessage": "Checking your eligibility...",
+    "description": "Message displayed in the airdrop 2 modal when checking if eligible"
+  },
+  "Airdrop2Modal.notEligibleMessage": {
+    "defaultMessage": "Unfortunately, you are not eligible for the Galxe and Zealy participants Airdrop.",
+    "description": "Message displayed in the airdrop 2 modal when the user is not eligible"
+  },
+  "Airdrop2Modal.sharedMessageOnSocialsText": {
+    "defaultMessage": "I am eligible for the @verida_io Airdrop 2 at https://missions.verida.network/",
+    "description": "Message shared on social if eligible to airdrop 2"
+  },
+  "Airdrop2Modal.somethingWentWrongMessage": {
+    "defaultMessage": "Something went wrong. Please try again later.",
+    "description": "Message displayed in the airdrop 2 modal when something went wrong"
+  },
+  "Airdrop2Modal.succesfullyEligibleMessage": {
+    "defaultMessage": "Congratulations! You are eligible for the Galxe and Zealy participants Airdrop.{newline}{newline}Check our socials to be notified when the claim window opens.",
+    "description": "Message displayed in the airdrop 2 modal when the user is eligible"
   },
   "ConnectVeridaButton.checkingConnectionButtonLabel": {
     "defaultMessage": "Checking",
@@ -127,10 +151,6 @@
     "defaultMessage": "Get Support",
     "description": "Title of the 'Get Support' section"
   },
-  "Header.airdropsEligibilityButtonLabel": {
-    "defaultMessage": "Airdrops eligibility",
-    "description": "Label for the button in the Header menu to check eligibility to airdrops"
-  },
   "Header.disconnectButtonLabel": {
     "defaultMessage": "Disconnect",
     "description": "Label for the disconnect button in the Header"
@@ -169,15 +189,27 @@
   },
   "HomePage.airdrop1AlertLearnActionButtonLabel": {
     "defaultMessage": "Learn more",
-    "description": "Label for the airdrop 'Learn more' alert button on the home page"
+    "description": "Label for the airdrop 1 'Learn more' alert button on the home page"
   },
   "HomePage.airdrop1AlertMessage": {
     "defaultMessage": "Prove your eligibility for the Early Adopters Airdrop",
-    "description": "Message for the airdrop alert on the home page"
+    "description": "Message for the airdrop 1 alert on the home page"
   },
   "HomePage.airdrop1AlertProveActionButtonLabel": {
     "defaultMessage": "Prove",
-    "description": "Label for the airdrop 'Prove' alert button on the home page"
+    "description": "Label for the airdrop 1 'Prove' alert button on the home page"
+  },
+  "HomePage.airdrop2AlertCheckActionButtonLabel": {
+    "defaultMessage": "Check",
+    "description": "Label for the airdrop 2 'Check' alert button on the home page"
+  },
+  "HomePage.airdrop2AlertLearnActionButtonLabel": {
+    "defaultMessage": "Learn more",
+    "description": "Label for the airdrop 2 'Learn more' alert button on the home page"
+  },
+  "HomePage.airdrop2AlertMessage": {
+    "defaultMessage": "Check your eligibility for the Galxe and Zealy Participants Airdrop",
+    "description": "Message for the airdrop 2 alert on the home page"
   },
   "HomePage.tagline": {
     "defaultMessage": "Explore a new era of data ownership",
@@ -706,6 +738,22 @@
   "activities.useMarkdownEditor.video.label": {
     "defaultMessage": "How to use the Markdown Editor demo app",
     "description": "Label of the video 'How to use the Markdown Editor demo app'"
+  },
+  "airdrops.airdrop1.longTitle": {
+    "defaultMessage": "Early Adopters Airdrop",
+    "description": "Long title of the airdrop 1"
+  },
+  "airdrops.airdrop1.shortTitle": {
+    "defaultMessage": "Early Adopters Airdrop",
+    "description": "Short title of the airdrop 1"
+  },
+  "airdrops.airdrop2.longTitle": {
+    "defaultMessage": "Galxe and Zealy Participants Airdrop",
+    "description": "Long title of the airdrop 2"
+  },
+  "airdrops.airdrop2.shortTitle": {
+    "defaultMessage": "Galxe and Zealy Airdrop",
+    "description": "Short title of the airdrop 2"
   },
   "app.meta.defaultDescription": {
     "defaultMessage": "Explore a new paradigm shift for managing your personal data with self-sovereign technology. Experience Verida Wallet, with zero-knowledge credentials, decentralized identity and access to a private data storage network designed for web3.",

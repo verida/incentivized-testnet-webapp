@@ -1,12 +1,12 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { useActivity } from "~/features/activity";
-import { SubmitAirdrop1ProofPayload } from "~/features/airdrops/types";
+import { checkAirdrop1Conditions } from "~/features/airdrops/utils";
 import {
-  checkAirdrop1Conditions,
-  checkAirdrop1ProofSubmitted,
-  submitAirdrop1Proof,
-} from "~/features/airdrops/utils";
+  SubmitAirdrop1ProofPayload,
+  airdrop1CheckProofSubmitted,
+} from "~/features/api";
+import { airdrop1SubmitProof } from "~/features/api";
 import { Logger } from "~/features/logger";
 import { Sentry } from "~/features/sentry";
 import { useVerida } from "~/features/verida";
@@ -25,10 +25,15 @@ export function useAirdrop1Queries() {
       staleTime: 1000 * 60 * 10, // 10 minutes
       queryFn: async () => {
         if (!isConnected || !did) {
-          throw new Error("Cannot check existing claim when not connected");
+          throw new Error("User not connected");
         }
-        logger.info("Checking claim exists", { did });
-        return checkAirdrop1ProofSubmitted(did);
+
+        logger.info("Checking airdrop 1 proof exists", { did });
+        return airdrop1CheckProofSubmitted(did);
+      },
+      onError(error) {
+        logger.error("Error checking airdrop 1 proof exists", { error });
+        Sentry.captureException(error);
       },
     });
 
@@ -54,12 +59,14 @@ export function useAirdrop1Queries() {
         termsAccepted,
       };
 
-      return submitAirdrop1Proof(payload);
+      logger.info("Submitting airdrop 1 proof", { did });
+      return airdrop1SubmitProof(payload);
     },
     onSuccess: async () => {
       await queryClient.invalidateQueries(["airdrop1", did]);
     },
     onError(error) {
+      logger.error("Error submitting airdrop 1 proof", { error });
       Sentry.captureException(error);
     },
   });
