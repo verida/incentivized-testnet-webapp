@@ -10,7 +10,6 @@ import {
 import { PageLayout } from "~/components/templates";
 import { useActivity } from "~/features/activity";
 import {
-  AIRDROPS_FAQ_URL,
   useAirdrop1,
   useAirdrop1Queries,
   useAirdrop2,
@@ -115,7 +114,7 @@ export const HomePage: React.FunctionComponent = () => {
               {
                 type: "link",
                 label: airdrop1AlertLearnActionButtonLabel,
-                href: AIRDROPS_FAQ_URL,
+                href: airdrop1Metadata.articleUrl,
                 openInNewTab: true,
                 color: "default",
               },
@@ -136,7 +135,7 @@ export const HomePage: React.FunctionComponent = () => {
             {
               type: "link",
               label: airdrop2AlertLearnActionButtonLabel,
-              href: AIRDROPS_FAQ_URL,
+              href: airdrop2Metadata.articleUrl,
               openInNewTab: true,
               color: "default",
             },

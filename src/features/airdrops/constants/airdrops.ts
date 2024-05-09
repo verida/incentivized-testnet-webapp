@@ -16,6 +16,8 @@ export const AIRDROP_1_DEFINITION: AirdropDefinition = {
     defaultMessage: "Airdrop 1: Early Adopters",
     description: "Long title of the airdrop 1",
   }),
+  articleUrl:
+    "https://news.verida.io/verida-announces-inaugural-early-adopters-airdrop-f1e42399fe91",
 };
 
 export const AIRDROP_1_MIN_XP_POINTS = 50;
@@ -34,4 +36,6 @@ export const AIRDROP_2_DEFINITION: AirdropDefinition = {
     defaultMessage: "Airdrop2: Galxe and Zealy Participants",
     description: "Long title of the airdrop 2",
   }),
+  articleUrl:
+    "https://news.verida.io/verida-announces-2-200-000-vda-airdrop-2-for-early-galxe-and-zealy-campaign-participants-977b99b40459",
 };
