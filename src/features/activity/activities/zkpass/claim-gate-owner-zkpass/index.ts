@@ -56,7 +56,7 @@ const handleNewMessage: ActivityOnMessage = async (
     });
 
     toast.success(
-      "Congrats, you have completed the activity 'Claim a Gate credential/Prove ownership'"
+      "Congrats, you have completed the activity 'Prove ownership and claim a Gate credential'"
     );
   } catch (error: unknown) {
     Sentry.captureException(error, {
@@ -137,7 +137,7 @@ const handleInit: ActivityOnInit = async (
         });
 
         toast.success(
-          "Congrats, you have completed the activity 'Claim a Gate credential/Prove ownership'"
+          "Congrats, you have completed the activity 'Prove ownership and claim a Gate credential'"
         );
 
         return true;
@@ -172,7 +172,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
 
     // TODO: Make a localised message of this message
     const message =
-      "Please share a Gate account credential from ZkPass protocol";
+      "Please share a Gate account credential from zkPass protocol";
 
     logger.info("Sending data request", { activityId: ACTIVITY_ID });
 
@@ -233,22 +233,22 @@ export const activity: Activity = {
   points: 50,
   title: defineMessage({
     id: "activities.claimGateOwner.title",
-    defaultMessage: "Claim a Gate credential/Prove ownership",
+    defaultMessage: "Prove ownership and claim a Gate credential",
     description:
-      "Title of the activity 'Claim a Gate credential/Prove ownership'",
+      "Title of the activity 'Prove ownership and claim a Gate credential'",
   }),
   shortDescription: defineMessage({
     id: "activities.claimGateOwner.shortDescription",
-    defaultMessage: `Claim a Gate credential/Prove ownership using ZkPass protocol. The credentails should be stored in your verida wallet.`,
+    defaultMessage: `Prove ownership and claim a Gate credential using zkPass protocol. The credentails should be stored in your verida wallet.`,
     description:
-      "Short description of the activity 'Claim a Gate credential/Prove ownership'",
+      "Short description of the activity 'Prove ownership and claim a Gate credential'",
   }),
   longDescription: defineMessage({
     id: "activities.claimGateOwner.longDescription",
-    defaultMessage: `Claim a Gate credential/Prove ownership. The credentails will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step1. Go to proof-dapp-connector app and complete verification process for Gate account.{newline}{newline}Step2. Open your Verida Wallet inbox and accept message from dapp-connector. {newline}{newline}Step3. Accept request from verida mission to share credentials.{newline}{newline}Step4. Select and share credentials.
+    defaultMessage: `Prove ownership and claim a Gate credential. The credentails will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to proof-connector app and complete verification process for Gate account.{newline}{newline}Step 2. Open your Verida Wallet inbox and accept message from proof-connector. {newline}{newline}Step 3. Accept request from verida mission to share credentials.{newline}{newline}Step 4. Select and share credentials.
       `,
     description:
-      "Long description of the activity 'Claim a Gate credential/Prove ownership'",
+      "Long description of the activity 'Prove ownership and claim a Gate credential'",
   }),
   actionLabel: defineMessage({
     id: "activities.claimGateOwner.actionLabel",
@@ -274,8 +274,8 @@ export const activity: Activity = {
     {
       label: defineMessage({
         id: "activities.claimGateOwner.resources.ZkPassPageUrl.label",
-        defaultMessage: "User guide of ZkPass protocol",
-        description: "Label of the resource 'User guide of ZkPass protocol'",
+        defaultMessage: "User guide of zkPass protocol",
+        description: "Label of the resource 'User guide of zkPass protocol'",
       }),
       url: "https://zkpass.gitbook.io/zkpass/user-guides/overview",
     },

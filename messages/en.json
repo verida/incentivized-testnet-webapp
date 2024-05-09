@@ -592,7 +592,7 @@
     "description": "Error message when we can't get the user profile"
   },
   "activities.claimUberOwner.longDescription": {
-    "defaultMessage": "Claim an Uber credential/Prove ownership. The credentails will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step1. Go to proof-dapp-connector app and complete verification process for uber account.{newline}{newline}Step2. Open your Verida Wallet inbox and accept message from dapp-connector. {newline}{newline}Step3. Accept request from verida mission to share credentials.{newline}{newline}Step4. Select and share credentials.",
+    "defaultMessage": "Claim an Uber credential/Prove ownership. The credentails will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to proof-connector app and complete verification process for uber account.{newline}{newline}Step 2. Open your Verida Wallet inbox and accept message from proof-connector. {newline}{newline}Step 3. Accept request from verida mission to share credentials.{newline}{newline}Step 4. Select and share credentials.",
     "description": "Long description of the activity 'Claim an Uber credential/Prove ownership'"
   },
   "activities.claimUberOwner.resources.reclaimPageUrl.label": {

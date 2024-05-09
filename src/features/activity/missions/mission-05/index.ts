@@ -12,7 +12,7 @@ export const mission: Mission = {
     description: "Label of the mission id 05",
   }),
   enabled: true,
-  visible: true,
+  visible: false,
   frozen: false,
   order: 5,
   title: defineMessage({
