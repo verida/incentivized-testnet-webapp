@@ -9,19 +9,26 @@ import {
 } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { useActivity } from "~/features/activity";
-import { AIRDROPS_FAQ_URL, useAirdrops } from "~/features/airdrops";
+import {
+  AIRDROPS_FAQ_URL,
+  useAirdrop1,
+  useAirdrop1Queries,
+  useAirdrop2,
+} from "~/features/airdrops";
 import { useVerida } from "~/features/verida";
 
 export const HomePage: React.FunctionComponent = () => {
   const i18n = useIntl();
   const { isConnected } = useVerida();
   const { missions } = useActivity();
+  const { isEnabled: isAirdrop1Enabled, openModal: openAirdrop1Modal } =
+    useAirdrop1();
   const {
-    isAidrop1Enabled,
-    openAirdrop1Modal,
-    isAirdrop1ProofSubmitted,
-    isCheckingAirdrop1ProofSubmitted,
-  } = useAirdrops();
+    isProofSubmitted: isAirdrop1ProofSubmitted,
+    isCheckingProofSubmitted: isCheckingAirdrop1ProofSubmitted,
+  } = useAirdrop1Queries();
+  const { isEnabled: isAirdrop2Enabled, openModal: openAirdrop2Modal } =
+    useAirdrop2();
 
   const tagline = i18n.formatMessage({
     id: "HomePage.tagline",
@@ -32,20 +39,42 @@ export const HomePage: React.FunctionComponent = () => {
   const airdrop1AlertMessage = i18n.formatMessage({
     id: "HomePage.airdrop1AlertMessage",
     defaultMessage: "Prove your eligibility for the Early Adopters Airdrop",
-    description: "Message for the airdrop alert on the home page",
+    description: "Message for the airdrop 1 alert on the home page",
   });
 
   const airdrop1AlertProveActionButtonLabel = i18n.formatMessage({
     id: "HomePage.airdrop1AlertProveActionButtonLabel",
     defaultMessage: "Prove",
-    description: "Label for the airdrop 'Prove' alert button on the home page",
+    description:
+      "Label for the airdrop 1 'Prove' alert button on the home page",
   });
 
   const airdrop1AlertLearnActionButtonLabel = i18n.formatMessage({
     id: "HomePage.airdrop1AlertLearnActionButtonLabel",
     defaultMessage: "Learn more",
     description:
-      "Label for the airdrop 'Learn more' alert button on the home page",
+      "Label for the airdrop 1 'Learn more' alert button on the home page",
+  });
+
+  const airdrop2AlertMessage = i18n.formatMessage({
+    id: "HomePage.airdrop2AlertMessage",
+    defaultMessage:
+      "Check your eligibility for the Galxe and Zealy Participants Airdrop",
+    description: "Message for the airdrop 2 alert on the home page",
+  });
+
+  const airdrop2AlertCheckActionButtonLabel = i18n.formatMessage({
+    id: "HomePage.airdrop2AlertCheckActionButtonLabel",
+    defaultMessage: "Check",
+    description:
+      "Label for the airdrop 2 'Check' alert button on the home page",
+  });
+
+  const airdrop2AlertLearnActionButtonLabel = i18n.formatMessage({
+    id: "HomePage.airdrop2AlertLearnActionButtonLabel",
+    defaultMessage: "Learn more",
+    description:
+      "Label for the airdrop 2 'Learn more' alert button on the home page",
   });
 
   return (
@@ -56,7 +85,7 @@ export const HomePage: React.FunctionComponent = () => {
           <ConnectVeridaButton longLabel />
         </div>
       )}
-      {isAidrop1Enabled &&
+      {isAirdrop1Enabled &&
         isConnected &&
         !isAirdrop1ProofSubmitted &&
         !isCheckingAirdrop1ProofSubmitted && (
@@ -80,6 +109,27 @@ export const HomePage: React.FunctionComponent = () => {
             className="mt-6"
           />
         )}
+      {isAirdrop2Enabled && isConnected && (
+        <Alert
+          type="info"
+          actions={[
+            {
+              type: "button",
+              label: airdrop2AlertCheckActionButtonLabel,
+              onClick: openAirdrop2Modal,
+            },
+            {
+              type: "link",
+              label: airdrop2AlertLearnActionButtonLabel,
+              href: AIRDROPS_FAQ_URL,
+              openInNewTab: true,
+              color: "default",
+            },
+          ]}
+          message={airdrop2AlertMessage}
+          className="mt-6"
+        />
+      )}
       <div className="mt-16 relative">
         <div className="hidden lg:block absolute top-0 bottom-0 -right-6 translate-x-full w-36 xl:w-64">
           <aside className="sticky top-24">

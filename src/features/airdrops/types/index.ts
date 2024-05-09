@@ -1,11 +1,7 @@
-import { UserActivityRecord } from "~/features/activity";
+import { type MessageDescriptor } from "react-intl";
 
-export type SubmitAirdrop1ProofPayload = {
-  did: string;
-  activityProofs: UserActivityRecord[];
-  profile: {
-    name?: string;
-    country?: string;
-  };
-  termsAccepted?: boolean;
+export type AirdropDefinition = {
+  id: number;
+  shortTitle: MessageDescriptor;
+  longTitle: MessageDescriptor;
 };

@@ -8,20 +8,19 @@ import { useActivity } from "~/features/activity";
 import {
   AIRDROPS_TERMS_URL,
   AIRDROP_1_MIN_XP_POINTS,
-  useAirdrops,
+  useAirdrop1,
+  useAirdrop1Queries,
 } from "~/features/airdrops";
 
 export const Airdrop1Modal: React.FunctionComponent = () => {
   const { userXpPoints, isLoadingUserActivities } = useActivity();
+  const { metadata, closeModal, isEnabled, isModalOpen } = useAirdrop1();
   const {
-    isAirdrop1ModalOpen,
-    closeAirdrop1Modal,
-    isCheckingAirdrop1ProofSubmitted,
-    isAirdrop1ProofSubmitted,
-    isAidrop1Enabled,
-    isSubmittingAirdrop1Proof,
-    submitAirdrop1Proof,
-  } = useAirdrops();
+    isCheckingProofSubmitted,
+    isProofSubmitted,
+    isSubmittingProof,
+    submitProof,
+  } = useAirdrop1Queries();
 
   const [hasProofSubmitError, setHasProofSubmitError] = useState(false);
   const [proofSubmitError, setProofSubmitError] = useState<string | null>(null);
@@ -31,8 +30,8 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
     setHasProofSubmitError(false);
     setProofSubmitError(null);
     setIsTermsAccepted(false);
-    closeAirdrop1Modal();
-  }, [closeAirdrop1Modal]);
+    closeModal();
+  }, [closeModal]);
 
   const handleAcceptTerms = useCallback(() => {
     setIsTermsAccepted(true);
@@ -41,27 +40,23 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
   const handleSubmit = useCallback(() => {
     const execute = async () => {
       setHasProofSubmitError(false);
-      const result = await submitAirdrop1Proof(isTermsAccepted);
+      const result = await submitProof(isTermsAccepted);
       if (result.status === "error") {
         setHasProofSubmitError(true);
-        setProofSubmitError(result.errorUserMessage || null);
+        setProofSubmitError(result.errorUserMessage || null); // Not ideal as not localised but enough for now
       } else {
         setHasProofSubmitError(false);
         setProofSubmitError(null);
       }
     };
     void execute();
-  }, [isTermsAccepted, submitAirdrop1Proof]);
+  }, [isTermsAccepted, submitProof]);
 
   const hasEnoughPoints = userXpPoints >= AIRDROP_1_MIN_XP_POINTS;
 
   const i18n = useIntl();
 
-  const modalTitle = i18n.formatMessage({
-    id: "Airdrop1Modal.modalTitle",
-    defaultMessage: "Early Adopters Airdrop",
-    description: "Title for the airdrop 1 modal",
-  });
+  const modalTitle = i18n.formatMessage(metadata.longTitle);
 
   const checkingSubmittedProofMessage = i18n.formatMessage({
     id: "Airdrop1Modal.checkingSubmittedProofMessage",
@@ -152,13 +147,13 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
 
   return (
     <Modal
-      open={isAidrop1Enabled && isAirdrop1ModalOpen}
+      open={isEnabled && isModalOpen}
       onClose={handleClose}
       title={modalTitle}
       actions={
-        isCheckingAirdrop1ProofSubmitted || isLoadingUserActivities
+        isCheckingProofSubmitted || isLoadingUserActivities
           ? []
-          : isAirdrop1ProofSubmitted
+          : isProofSubmitted
             ? []
             : !hasEnoughPoints
               ? []
@@ -177,18 +172,18 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
                         onClick: handleSubmit,
                         variant: "contained",
                         color: "primary",
-                        disabled: isSubmittingAirdrop1Proof,
+                        disabled: isSubmittingProof,
                       },
                     ]
       }
     >
       <div className="flex flex-col gap-6">
         <div className="flex flex-col sm:flex-row gap-4 items-center">
-          {isCheckingAirdrop1ProofSubmitted ||
+          {isCheckingProofSubmitted ||
           isLoadingUserActivities ||
-          isSubmittingAirdrop1Proof ? (
+          isSubmittingProof ? (
             <Icon type="loading" size={40} className="animate-spin-slow" />
-          ) : isAirdrop1ProofSubmitted ? (
+          ) : isProofSubmitted ? (
             <Icon type="check" size={40} className="text-success" />
           ) : !hasEnoughPoints ? (
             <Icon type="notification-error" size={40} className="text-error" />
@@ -198,9 +193,9 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
             <Icon type="notification-error" size={40} className="text-error" />
           ) : null}
           <Typography variant="base">
-            {isCheckingAirdrop1ProofSubmitted || isLoadingUserActivities ? (
+            {isCheckingProofSubmitted || isLoadingUserActivities ? (
               checkingSubmittedProofMessage
-            ) : isAirdrop1ProofSubmitted ? (
+            ) : isProofSubmitted ? (
               proofAlreadySubmittedMessage
             ) : !hasEnoughPoints ? (
               notEnoughPointsMessage
@@ -226,9 +221,9 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
         {hasProofSubmitError && proofSubmitError ? (
           <Alert type="error" message={proofSubmitError} className="mt-4" />
         ) : null}
-        {!isCheckingAirdrop1ProofSubmitted &&
+        {!isCheckingProofSubmitted &&
         !isLoadingUserActivities &&
-        isAirdrop1ProofSubmitted ? (
+        isProofSubmitted ? (
           <ShareOnSocials
             sharedMessage={sharedMessageOnSocialsText}
             className="flex flex-col sm:flex-row justify-end"
