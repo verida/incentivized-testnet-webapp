@@ -94,12 +94,17 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
     {
       id: "Airdrop1Modal.notEnoughPointsMessage",
       defaultMessage:
-        "You do not have enough XP points to submit your proof of eligibility. Complete some activities to reach at least {minPoints} XP points and try again.",
+        "You do not have enough XP points to submit your proof of eligibility.{newline}{newline}Complete some activities to reach at least {minPoints} XP points and try again.",
       description:
         "Message displayed in the airdrop 1 modal when the user doesn't have enough XP points",
     },
     {
       minPoints: AIRDROP_1_MIN_XP_POINTS,
+      newline: (
+        <>
+          <br />
+        </>
+      ),
     }
   );
 
@@ -128,12 +133,17 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
     {
       id: "Airdrop1Modal.submitProofMessage",
       defaultMessage:
-        "As a decentralised application, Verida Missions needs to verify your completed activities meet the {airdropTitle} criteria. Please submit your XP points proofs to our server for verification.",
+        "As a decentralised application, Verida Missions needs to verify your completed activities meet the {airdropTitle} criteria.{newline}{newline}Please submit your XP points proofs to our server for verification.",
       description:
         "Message displayed in the rewards modal when before submitting the claim",
     },
     {
       airdropTitle: i18n.formatMessage(metadata.longTitle),
+      newline: (
+        <>
+          <br />
+        </>
+      ),
     }
   );
 
@@ -147,12 +157,17 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
     {
       id: "Airdrop1Modal.proofSubmitErrorMessage",
       defaultMessage:
-        "Unfortunately, you are not eligible for the {airdropTitle}. To confirm the criteria, please check the",
+        "Unfortunately, you are not eligible for the {airdropTitle}.{newline}To confirm the criteria, please check the",
       description:
         "Message displayed in the airdrop 1 modal when the proof submission fails",
     },
     {
       airdropTitle: i18n.formatMessage(metadata.longTitle),
+      newline: (
+        <>
+          <br />
+        </>
+      ),
     }
   );
 

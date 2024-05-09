@@ -28,12 +28,12 @@ export const AIRDROP_2_DEFINITION: AirdropDefinition = {
   id: 2,
   shortTitle: defineMessage({
     id: "airdrops.airdrop2.shortTitle",
-    defaultMessage: "Airdrop 2: Galxe and Zealy",
+    defaultMessage: "Airdrop 2: Early Galxe and Zealy",
     description: "Short title of the airdrop 2",
   }),
   longTitle: defineMessage({
     id: "airdrops.airdrop2.longTitle",
-    defaultMessage: "Airdrop2: Galxe and Zealy Participants",
+    defaultMessage: "Airdrop 2: Early Galxe and Zealy Participants",
     description: "Long title of the airdrop 2",
   }),
   articleUrl:

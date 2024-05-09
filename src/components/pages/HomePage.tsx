@@ -69,7 +69,7 @@ export const HomePage: React.FunctionComponent = () => {
   const airdrop2AlertMessage = i18n.formatMessage(
     {
       id: "HomePage.airdrop2AlertMessage",
-      defaultMessage: "Check your eligibility for the {airdropTitle}",
+      defaultMessage: "Check if you are included in the {airdropTitle}",
       description: "Message for the airdrop 2 alert on the home page",
     },
     {
