@@ -203,7 +203,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
         defaultMessage:
           "A request has been sent to your wallet inbox. Please check your Verida Wallet Inbox and share the credentials.",
         description:
-          "Message explaining a request has been sent to your verida wallet inbox",
+          "Message explaining a request has been sent to your Verida Wallet inbox",
       }),
     };
   } catch (error: unknown) {
@@ -239,13 +239,13 @@ export const activity: Activity = {
   }),
   shortDescription: defineMessage({
     id: "activities.claimBinanceOwner.shortDescription",
-    defaultMessage: `Prove ownership and claim a credential of your Binance account using zkPass protocol. The credentails should be stored in your verida wallet.`,
+    defaultMessage: `Prove ownership and claim a credential of your Binance account using zkPass protocol. The credentials should be stored in your Verida Wallet.`,
     description:
       "Short description of the activity 'Prove ownership and claim a credential of your Binance account'",
   }),
   longDescription: defineMessage({
     id: "activities.claimBinanceOwner.longDescription",
-    defaultMessage: `Prove ownership and claim a credential of your Binance account. The credentails will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to proof-connector app and complete verification process for Binance account.{newline}{newline}Step 2. Open your Verida Wallet inbox and accept message from proof-connector. {newline}{newline}Step 3. Accept request from verida mission to share credentials.{newline}{newline}Step 4. Select and share credentials.
+    defaultMessage: `Prove ownership and claim a credential of your Binance account. The credentials will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to proof-connector app and complete verification process for Binance account.{newline}{newline}Step 2. Open your Verida Wallet inbox and accept message from proof-connector. {newline}{newline}Step 3. Accept request from verida mission to share credentials.{newline}{newline}Step 4. Select and share credentials.
       `,
     description:
       "Long description of the activity 'Prove ownership and claim a credential of your Binance account'",

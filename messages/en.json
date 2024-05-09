@@ -585,14 +585,14 @@
   },
   "activities.claimUberOwner.executePendingMessage": {
     "defaultMessage": "A request has been sent to your wallet inbox. Please check your Verida Wallet Inbox and share the credentials.",
-    "description": "Message explaining a request has been sent to your verida wallet inbox"
+    "description": "Message explaining a request has been sent to your Verida Wallet inbox"
   },
   "activities.claimUberOwner.gettingExecutionErrorMessage": {
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
   },
   "activities.claimUberOwner.longDescription": {
-    "defaultMessage": "Claim an Uber credential/Prove ownership. The credentails will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to proof-connector app and complete verification process for uber account.{newline}{newline}Step 2. Open your Verida Wallet inbox and accept message from proof-connector. {newline}{newline}Step 3. Accept request from verida mission to share credentials.{newline}{newline}Step 4. Select and share credentials.",
+    "defaultMessage": "Claim an Uber credential/Prove ownership. The credentials will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to proof-connector app and complete verification process for uber account.{newline}{newline}Step 2. Open your Verida Wallet inbox and accept message from proof-connector. {newline}{newline}Step 3. Accept request from verida mission to share credentials.{newline}{newline}Step 4. Select and share credentials.",
     "description": "Long description of the activity 'Claim an Uber credential/Prove ownership'"
   },
   "activities.claimUberOwner.resources.reclaimPageUrl.label": {
@@ -600,7 +600,7 @@
     "description": "Label of the resource 'Whitepaper of Reclaim protocol'"
   },
   "activities.claimUberOwner.shortDescription": {
-    "defaultMessage": "Claim an Uber credential/Prove ownership using Reclaim protocol. The credentails should be stored in your verida wallet.",
+    "defaultMessage": "Claim an Uber credential/Prove ownership using Reclaim protocol. The credentials should be stored in your Verida Wallet.",
     "description": "Short description of the activity 'Claim an Uber credential/Prove ownership'"
   },
   "activities.claimUberOwner.title": {

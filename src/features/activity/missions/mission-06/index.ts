@@ -22,8 +22,11 @@ export const mission: Mission = {
   }),
   shortDescription: defineMessage({
     id: "missions.mission_06.shortDescription",
-    defaultMessage:
-      "zkPass protocol allows you to proof information about yourself from any website, without disclosing your personal data",
+    defaultMessage: `zkPass is a private data protocol that enables privacy-preserving verification. It is built on the foundation of Multi-Party Computation (MPC), Zero-Knowledge Proofs (ZKP), and three-party Transport Layer Security (3P-TLS).
+
+      zkPass protocol allows you to prove information about yourself from any supported service without disclosing personal data.
+      
+      If you have an existing account on centralized exchanges (CEX), you can prove ownership and claim a credential`,
     description: "Short description of the mission 06",
   }),
   longDescription: defineMessage({
