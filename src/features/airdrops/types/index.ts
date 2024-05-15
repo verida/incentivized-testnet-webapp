@@ -4,4 +4,5 @@ export type AirdropDefinition = {
   id: number;
   shortTitle: MessageDescriptor;
   longTitle: MessageDescriptor;
+  articleUrl: string;
 };
