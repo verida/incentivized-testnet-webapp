@@ -3,6 +3,7 @@ import { useIntl } from "react-intl";
 
 import { ExternalLink, Typography } from "~/components/atoms";
 import { VERIDA_MISSIONS_FAQ_URL } from "~/constants";
+import { AIRDROPS_FAQ_URL } from "~/features/airdrops";
 
 type Link = {
   label: string;
@@ -17,6 +18,10 @@ const links: Link[] = [
   {
     label: "Verida Missions FAQs",
     url: VERIDA_MISSIONS_FAQ_URL,
+  },
+  {
+    label: "Verida Airdrops FAQs",
+    url: AIRDROPS_FAQ_URL,
   },
 ];
 
