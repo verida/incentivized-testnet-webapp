@@ -3,7 +3,7 @@ import { defineMessage } from "react-intl";
 
 import { config } from "~/config";
 import { VERIDA_CREDENTIAL_ZKPASS_SCHEMA_URLS } from "~/features/activity/activities/zkpass/constants";
-import { MISSION_06_ID } from "~/features/activity/missions";
+import { MISSION_05_ID } from "~/features/activity/missions";
 import type {
   Activity,
   ActivityOnExecute,
@@ -225,7 +225,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
 
 export const activity: Activity = {
   id: ACTIVITY_ID,
-  missionId: MISSION_06_ID,
+  missionId: MISSION_05_ID,
   enabled: true,
   ended: false,
   visible: true,
@@ -245,8 +245,7 @@ export const activity: Activity = {
   }),
   longDescription: defineMessage({
     id: "activities.claimMEXCOwner.longDescription",
-    defaultMessage: `Prove ownership and claim a MEXC credential. The credentials will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to proof-connector app and complete verification process for MEXC account.{newline}{newline}Step 2. Open your Verida Wallet inbox and accept message from proof-connector. {newline}{newline}Step 3. Accept request from verida mission to share credentials.{newline}{newline}Step 4. Select and share credentials.
-      `,
+    defaultMessage: `Prove ownership and claim a credential of your Binance account. The credentials will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida missions to share your new credential .{newline}{newline}`,
     description:
       "Long description of the activity 'Prove ownership and claim a MEXC credential'",
   }),
@@ -258,7 +257,7 @@ export const activity: Activity = {
   }),
   actionReExecuteLabel: defineMessage({
     id: "activities.claimMEXCOwner.actionReExecuteLabel",
-    defaultMessage: "Re-send Request",
+    defaultMessage: "Verify again",
     description: "Label of the button to perform the activity again ",
   }),
   actionExecutingLabel: defineMessage({
