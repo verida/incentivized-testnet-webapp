@@ -56,7 +56,7 @@ const handleNewMessage: ActivityOnMessage = async (
     });
 
     toast.success(
-      "Congrats, you have completed the activity 'Prove ownership and claim a KuCoin credential'"
+      "Congrats, you have completed the activity 'Prove KYC verified and claim a KuCoin credential'"
     );
   } catch (error: unknown) {
     Sentry.captureException(error, {
@@ -137,7 +137,7 @@ const handleInit: ActivityOnInit = async (
         });
 
         toast.success(
-          "Congrats, you have completed the activity 'Prove ownership and claim a KuCoin credential'"
+          "Congrats, you have completed the activity 'Prove KYC verified and claim a KuCoin credential'"
         );
 
         return true;
@@ -233,21 +233,21 @@ export const activity: Activity = {
   points: 50,
   title: defineMessage({
     id: "activities.claimKuCoinOwner.title",
-    defaultMessage: "Prove ownership and claim a KuCoin credential",
+    defaultMessage: "Prove KYC verified and claim a KuCoin credential",
     description:
-      "Title of the activity 'Prove ownership and claim a KuCoin credential'",
+      "Title of the activity 'Prove KYC verified and claim a KuCoin credential'",
   }),
   shortDescription: defineMessage({
     id: "activities.claimKuCoinOwner.shortDescription",
-    defaultMessage: `Prove ownership and claim a KuCoin credential using zkPass protocol. The credentials should be stored in your Verida Wallet.`,
+    defaultMessage: `Prove KYC verified and claim a KuCoin credential using zkPass protocol. The credentials should be stored in your Verida Wallet.`,
     description:
-      "Short description of the activity 'Prove ownership and claim a KuCoin credential'",
+      "Short description of the activity 'Prove KYC verified and claim a KuCoin credential'",
   }),
   longDescription: defineMessage({
     id: "activities.claimKuCoinOwner.longDescription",
-    defaultMessage: `Prove ownership and claim a credential of your Binance account. The credentials will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida missions to share your new credential .{newline}{newline}`,
+    defaultMessage: `Prove KYC verified and claim a credential of your KuCoin account. The credentials will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida missions to share your new credential .{newline}{newline}`,
     description:
-      "Long description of the activity 'Prove ownership and claim a KuCoin credential'",
+      "Long description of the activity 'Prove KYC verified and claim a KuCoin credential'",
   }),
   actionLabel: defineMessage({
     id: "activities.claimKuCoinOwner.actionLabel",

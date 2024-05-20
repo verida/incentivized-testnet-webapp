@@ -56,7 +56,7 @@ const handleNewMessage: ActivityOnMessage = async (
     });
 
     toast.success(
-      "Congrats, you have completed the activity 'Prove ownership and claim a credential of your Binance account'"
+      "Congrats, you have completed the activity 'Prove KYC verified and claim a credential of your Binance account'"
     );
   } catch (error: unknown) {
     Sentry.captureException(error, {
@@ -137,7 +137,7 @@ const handleInit: ActivityOnInit = async (
         });
 
         toast.success(
-          "Congrats, you have completed the activity 'Prove ownership and claim a credential of your Binance account'"
+          "Congrats, you have completed the activity 'Prove KYC verified and claim a credential of your Binance account'"
         );
 
         return true;
@@ -233,27 +233,27 @@ export const activity: Activity = {
   points: 50,
   title: defineMessage({
     id: "activities.claimBinanceOwner.title",
-    defaultMessage: "Prove ownership and claim a Binance credential",
+    defaultMessage: "Prove KYC verified and claim a Binance credential",
     description:
-      "Title of the activity 'Prove ownership and claim a credential of your Binance account'",
+      "Title of the activity 'Prove KYC verified and claim a credential of your Binance account'",
   }),
   shortDescription: defineMessage({
     id: "activities.claimBinanceOwner.shortDescription",
-    defaultMessage: `Prove ownership and claim a credential of your Binance account using zkPass protocol. The credentials should be stored in your Verida Wallet.`,
+    defaultMessage: `Prove KYC verified and claim a credential of your Binance account using zkPass protocol. The credentials should be stored in your Verida Wallet.`,
     description:
-      "Short description of the activity 'Prove ownership and claim a credential of your Binance account'",
+      "Short description of the activity 'Prove KYC verified and claim a credential of your Binance account'",
   }),
   longDescription: defineMessage({
     id: "activities.claimBinanceOwner.longDescription",
-    defaultMessage: `Prove ownership and claim a credential of your Binance account. The credentials will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida missions to share your new credential .{newline}{newline}`,
+    defaultMessage: `Prove KYC verified and claim a credential of your Binance account. The credentials will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida missions to share your new credential .{newline}{newline}`,
     description:
-      "Long description of the activity 'Prove ownership and claim a credential of your Binance account'",
+      "Long description of the activity 'Prove KYC verified and claim a credential of your Binance account'",
   }),
   actionLabel: defineMessage({
     id: "activities.claimBinanceOwner.actionLabel",
     defaultMessage: "Verify",
     description:
-      "Label of the button to start the activity Claim Binance ownership",
+      "Label of the button to start the activity Claim Binance KYC verified",
   }),
   actionReExecuteLabel: defineMessage({
     id: "activities.claimBinanceOwner.actionReExecuteLabel",
@@ -264,7 +264,7 @@ export const activity: Activity = {
     id: "activities.claimBinanceOwner.actionExecutingLabel",
     defaultMessage: "Sending Request",
     description:
-      "Label of the button when the activity 'Claim Binance ownership' is being executed",
+      "Label of the button when the activity 'Claim Binance KYC verified' is being executed",
   }),
   onInit: handleInit,
   onExecute: handleExecute,
