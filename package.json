@@ -55,7 +55,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@formatjs/cli": "^6.2.10",
+    "@formatjs/cli": "^6.2.12",
     "@sentry/cli": "^2.31.2",
     "@tanstack/react-query-devtools": "^4.36.1",
     "@testing-library/jest-dom": "^6.4.5",
@@ -71,7 +71,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-react": "^1.1.7",
     "eslint-config-react-app": "^7.0.1",
-    "eslint-plugin-formatjs": "^4.13.1",
+    "eslint-plugin-formatjs": "^4.13.3",
     "eslint-plugin-functional": "^6.1.1",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsdoc": "^47.0.2",
