@@ -91,7 +91,21 @@ export type Activity = {
   actionLabel: MessageDescriptor;
   actionReExecuteLabel?: MessageDescriptor;
   actionExecutingLabel: MessageDescriptor;
+  partner: string;
   onInit: ActivityOnInit;
   onExecute: ActivityOnExecute;
   onMessage?: ActivityOnMessage;
+};
+
+export type Partner = {
+  id: string;
+  idLabel: MessageDescriptor;
+  enabled: boolean;
+  visible: boolean;
+  frozen: boolean;
+  order: number;
+  title: MessageDescriptor;
+  shortDescription: MessageDescriptor;
+  longDescription: MessageDescriptor;
+  resources?: Resource[];
 };
