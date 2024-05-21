@@ -197,9 +197,9 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
         requestId: sentMessage?.id,
       },
       message: defineMessage({
-        id: "activities.claimBinanceOwner.executePendingMessage",
+        id: "activities.claimBinanceKYCzkPass.executePendingMessage",
         defaultMessage:
-          "A request has been sent to your wallet inbox. Please check your Verida Wallet Inbox and share the credentials.",
+          "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
         description:
           "Message explaining a request has been sent to your Verida Wallet inbox",
       }),
@@ -213,7 +213,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
     return {
       status: "todo",
       message: defineMessage({
-        id: "activities.claimBinanceOwner.gettingExecutionErrorMessage",
+        id: "activities.claimBinanceKYCzkPass.gettingExecutionErrorMessage",
         defaultMessage: `There was an error while sending you the credential request, please try again later`,
         description: "Error message when we can't get the user profile",
       }),
@@ -230,36 +230,36 @@ export const activity: Activity = {
   order: 1,
   points: 50,
   title: defineMessage({
-    id: "activities.claimBinanceOwner.title",
+    id: "activities.claimBinanceKYCzkPass.title",
     defaultMessage: "Prove KYC level and claim a Binance credential",
     description:
       "Title of the activity 'Prove KYC level and claim a credential of your Binance account'",
   }),
   shortDescription: defineMessage({
-    id: "activities.claimBinanceOwner.shortDescription",
-    defaultMessage: `Prove KYC level and claim a credential of your Binance account using zkPass protocol. The credentials should be stored in your Verida Wallet.`,
+    id: "activities.claimBinanceKYCzkPass.shortDescription",
+    defaultMessage: `Prove KYC level and claim a credential of your Binance account. The credentials will be stored in the Verida Network, and can be securely shared and verified.`,
     description:
       "Short description of the activity 'Prove KYC level and claim a credential of your Binance account'",
   }),
   longDescription: defineMessage({
-    id: "activities.claimBinanceOwner.longDescription",
-    defaultMessage: `Prove KYC level and claim a credential of your Binance account. The credentials will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida missions to share your new credential .{newline}{newline}`,
+    id: "activities.claimBinanceKYCzkPass.longDescription",
+    defaultMessage: `Prove KYC level and claim a credential of your Binance account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.`,
     description:
       "Long description of the activity 'Prove KYC level and claim a credential of your Binance account'",
   }),
   actionLabel: defineMessage({
-    id: "activities.claimBinanceOwner.actionLabel",
+    id: "activities.claimBinanceKYCzkPass.actionLabel",
     defaultMessage: "Verify",
     description:
       "Label of the button to start the activity Claim Binance KYC level",
   }),
   actionReExecuteLabel: defineMessage({
-    id: "activities.claimBinanceOwner.actionReExecuteLabel",
+    id: "activities.claimBinanceKYCzkPass.actionReExecuteLabel",
     defaultMessage: "Verify again",
     description: "Label of the button to perform the activity again ",
   }),
   actionExecutingLabel: defineMessage({
-    id: "activities.claimBinanceOwner.actionExecutingLabel",
+    id: "activities.claimBinanceKYCzkPass.actionExecutingLabel",
     defaultMessage: "Sending Request",
     description:
       "Label of the button when the activity 'Claim Binance KYC level' is being executed",
@@ -270,7 +270,7 @@ export const activity: Activity = {
   resources: [
     {
       label: defineMessage({
-        id: "activities.claimBinanceOwner.resources.zkPassPageUrl.label",
+        id: "activities.claimBinanceKYCzkPass.resources.zkPassPageUrl.label",
         defaultMessage: "User guide of zkPass protocol",
         description: "Label of the resource 'User guide of zkPass protocol'",
       }),

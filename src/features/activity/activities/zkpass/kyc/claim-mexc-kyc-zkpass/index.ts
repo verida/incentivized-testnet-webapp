@@ -197,9 +197,9 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
         requestId: sentMessage?.id,
       },
       message: defineMessage({
-        id: "activities.claimMEXCOwner.executePendingMessage",
+        id: "activities.claimMEXCKYCzkPass.executePendingMessage",
         defaultMessage:
-          "A request has been sent to your wallet inbox. Please check your Verida Wallet Inbox and share the credentials.",
+          "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
         description:
           "Message explaining a request has been sent to your Verida Wallet inbox",
       }),
@@ -213,7 +213,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
     return {
       status: "todo",
       message: defineMessage({
-        id: "activities.claimMEXCOwner.gettingExecutionErrorMessage",
+        id: "activities.claimMEXCKYCzkPass.gettingExecutionErrorMessage",
         defaultMessage: `There was an error while sending you the credential request, please try again later`,
         description: "Error message when we can't get the user profile",
       }),
@@ -230,36 +230,36 @@ export const activity: Activity = {
   order: 1,
   points: 50,
   title: defineMessage({
-    id: "activities.claimMEXCOwner.title",
+    id: "activities.claimMEXCKYCzkPass.title",
     defaultMessage: "Prove KYC level and claim a MEXC credential",
     description:
       "Title of the activity 'Prove KYC level and claim a MEXC credential'",
   }),
   shortDescription: defineMessage({
-    id: "activities.claimMEXCOwner.shortDescription",
+    id: "activities.claimMEXCKYCzkPass.shortDescription",
     defaultMessage: `Prove KYC level and claim a MEXC credential using zkPass protocol. The credentials should be stored in your Verida Wallet.`,
     description:
       "Short description of the activity 'Prove KYC level and claim a MEXC credential'",
   }),
   longDescription: defineMessage({
-    id: "activities.claimMEXCOwner.longDescription",
-    defaultMessage: `Prove KYC level and claim a credential of your MEXC account. The credentials will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida missions to share your new credential .{newline}{newline}`,
+    id: "activities.claimMEXCKYCzkPass.longDescription",
+    defaultMessage: `Prove KYC level and claim a credential of your MEXC account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.`,
     description:
       "Long description of the activity 'Prove KYC level and claim a MEXC credential'",
   }),
   actionLabel: defineMessage({
-    id: "activities.claimMEXCOwner.actionLabel",
+    id: "activities.claimMEXCKYCzkPass.actionLabel",
     defaultMessage: "Verify",
     description:
       "Label of the button to start the activity Claim MEXC KYC level",
   }),
   actionReExecuteLabel: defineMessage({
-    id: "activities.claimMEXCOwner.actionReExecuteLabel",
+    id: "activities.claimMEXCKYCzkPass.actionReExecuteLabel",
     defaultMessage: "Verify again",
     description: "Label of the button to perform the activity again ",
   }),
   actionExecutingLabel: defineMessage({
-    id: "activities.claimMEXCOwner.actionExecutingLabel",
+    id: "activities.claimMEXCKYCzkPass.actionExecutingLabel",
     defaultMessage: "Sending Request",
     description:
       "Label of the button when the activity 'Claim MEXC KYC level' is being executed",
@@ -270,7 +270,7 @@ export const activity: Activity = {
   resources: [
     {
       label: defineMessage({
-        id: "activities.claimMEXCOwner.resources.ZkPassPageUrl.label",
+        id: "activities.claimMEXCKYCzkPass.resources.ZkPassPageUrl.label",
         defaultMessage: "User guide of zkPass protocol",
         description: "Label of the resource 'User guide of zkPass protocol'",
       }),
