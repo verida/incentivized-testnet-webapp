@@ -19,12 +19,10 @@ import {
   sendDataRequest,
 } from "~/features/verida";
 
-import { ZKPASS_KUCOIN_OWNER_SCHEMA_ID } from "./constants";
+import { ACTIVITY_ID, ZKPASS_BINANCE_KYC_SCHEMA_ID } from "./constants";
 import { verifyReceivedMessage } from "./utils";
 
 const logger = new Logger("activity");
-
-const ACTIVITY_ID = "claim-kucoin-owner-zkpass"; // Never change the id
 
 const handleNewMessage: ActivityOnMessage = async (
   message,
@@ -56,7 +54,7 @@ const handleNewMessage: ActivityOnMessage = async (
     });
 
     toast.success(
-      "Congrats, you have completed the activity 'Prove KYC verified and claim a KuCoin credential'"
+      "Congrats, you have completed the activity 'Prove KYC level and claim a credential of your Binance account'"
     );
   } catch (error: unknown) {
     Sentry.captureException(error, {
@@ -137,7 +135,7 @@ const handleInit: ActivityOnInit = async (
         });
 
         toast.success(
-          "Congrats, you have completed the activity 'Prove KYC verified and claim a KuCoin credential'"
+          "Congrats, you have completed the activity 'Prove KYC level and claim a credential of your Binance account'"
         );
 
         return true;
@@ -167,12 +165,12 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
   try {
     const did = veridaWebUser.current.getDid();
     window.open(
-      `${config.proof.connectorBaseUrl}?veridaDid=${did}&schemaId=${ZKPASS_KUCOIN_OWNER_SCHEMA_ID}`
+      `${config.proof.connectorBaseUrl}?veridaDid=${did}&schemaId=${ZKPASS_BINANCE_KYC_SCHEMA_ID}`
     );
 
     // TODO: Make a localised message of this message
     const message =
-      "Please share a KuCoin account credential from zkPass protocol";
+      "Please share a Binance account KYC credential from zkPass protocol";
 
     logger.info("Sending data request", { activityId: ACTIVITY_ID });
 
@@ -184,7 +182,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
           credentialSchema: url,
         })),
         "credentialData.credentialSubject.zkPassSchemaId":
-          ZKPASS_KUCOIN_OWNER_SCHEMA_ID,
+          ZKPASS_BINANCE_KYC_SCHEMA_ID,
       },
     });
 
@@ -199,7 +197,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
         requestId: sentMessage?.id,
       },
       message: defineMessage({
-        id: "activities.claimKuCoinOwner.executePendingMessage",
+        id: "activities.claimBinanceOwner.executePendingMessage",
         defaultMessage:
           "A request has been sent to your wallet inbox. Please check your Verida Wallet Inbox and share the credentials.",
         description:
@@ -215,7 +213,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
     return {
       status: "todo",
       message: defineMessage({
-        id: "activities.claimKuCoinOwner.gettingExecutionErrorMessage",
+        id: "activities.claimBinanceOwner.gettingExecutionErrorMessage",
         defaultMessage: `There was an error while sending you the credential request, please try again later`,
         description: "Error message when we can't get the user profile",
       }),
@@ -232,39 +230,39 @@ export const activity: Activity = {
   order: 1,
   points: 50,
   title: defineMessage({
-    id: "activities.claimKuCoinOwner.title",
-    defaultMessage: "Prove KYC verified and claim a KuCoin credential",
+    id: "activities.claimBinanceOwner.title",
+    defaultMessage: "Prove KYC level and claim a Binance credential",
     description:
-      "Title of the activity 'Prove KYC verified and claim a KuCoin credential'",
+      "Title of the activity 'Prove KYC level and claim a credential of your Binance account'",
   }),
   shortDescription: defineMessage({
-    id: "activities.claimKuCoinOwner.shortDescription",
-    defaultMessage: `Prove KYC verified and claim a KuCoin credential using zkPass protocol. The credentials should be stored in your Verida Wallet.`,
+    id: "activities.claimBinanceOwner.shortDescription",
+    defaultMessage: `Prove KYC level and claim a credential of your Binance account using zkPass protocol. The credentials should be stored in your Verida Wallet.`,
     description:
-      "Short description of the activity 'Prove KYC verified and claim a KuCoin credential'",
+      "Short description of the activity 'Prove KYC level and claim a credential of your Binance account'",
   }),
   longDescription: defineMessage({
-    id: "activities.claimKuCoinOwner.longDescription",
-    defaultMessage: `Prove KYC verified and claim a credential of your KuCoin account. The credentials will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida missions to share your new credential .{newline}{newline}`,
+    id: "activities.claimBinanceOwner.longDescription",
+    defaultMessage: `Prove KYC level and claim a credential of your Binance account. The credentials will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida missions to share your new credential .{newline}{newline}`,
     description:
-      "Long description of the activity 'Prove KYC verified and claim a KuCoin credential'",
+      "Long description of the activity 'Prove KYC level and claim a credential of your Binance account'",
   }),
   actionLabel: defineMessage({
-    id: "activities.claimKuCoinOwner.actionLabel",
+    id: "activities.claimBinanceOwner.actionLabel",
     defaultMessage: "Verify",
     description:
-      "Label of the button to start the activity Claim KuCoin ownership",
+      "Label of the button to start the activity Claim Binance KYC level",
   }),
   actionReExecuteLabel: defineMessage({
-    id: "activities.claimKuCoinOwner.actionReExecuteLabel",
+    id: "activities.claimBinanceOwner.actionReExecuteLabel",
     defaultMessage: "Verify again",
     description: "Label of the button to perform the activity again ",
   }),
   actionExecutingLabel: defineMessage({
-    id: "activities.claimKuCoinOwner.actionExecutingLabel",
+    id: "activities.claimBinanceOwner.actionExecutingLabel",
     defaultMessage: "Sending Request",
     description:
-      "Label of the button when the activity 'Claim KuCoin ownership' is being executed",
+      "Label of the button when the activity 'Claim Binance KYC level' is being executed",
   }),
   onInit: handleInit,
   onExecute: handleExecute,
@@ -272,7 +270,7 @@ export const activity: Activity = {
   resources: [
     {
       label: defineMessage({
-        id: "activities.claimKuCoinOwner.resources.ZkPassPageUrl.label",
+        id: "activities.claimBinanceOwner.resources.zkPassPageUrl.label",
         defaultMessage: "User guide of zkPass protocol",
         description: "Label of the resource 'User guide of zkPass protocol'",
       }),

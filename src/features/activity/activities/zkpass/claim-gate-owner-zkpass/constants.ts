@@ -1,1 +1,0 @@
-export const ZKPASS_GATE_OWNER_SCHEMA_ID = "8dd0e65d44c74ff8a405bc5a35e68387";

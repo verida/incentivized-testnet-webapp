@@ -19,12 +19,10 @@ import {
   sendDataRequest,
 } from "~/features/verida";
 
-import { ZKPASS_GATE_OWNER_SCHEMA_ID } from "./constants";
+import { ACTIVITY_ID, ZKPASS_BYBIT_KYC_SCHEMA_ID } from "./constants";
 import { verifyReceivedMessage } from "./utils";
 
 const logger = new Logger("activity");
-
-const ACTIVITY_ID = "claim-gate-owner-zkpass"; // Never change the id
 
 const handleNewMessage: ActivityOnMessage = async (
   message,
@@ -56,7 +54,7 @@ const handleNewMessage: ActivityOnMessage = async (
     });
 
     toast.success(
-      "Congrats, you have completed the activity 'Prove KYC verified and claim a Gate credential'"
+      "Congrats, you have completed the activity 'Prove KYC level and claim a Bybit credential'"
     );
   } catch (error: unknown) {
     Sentry.captureException(error, {
@@ -137,7 +135,7 @@ const handleInit: ActivityOnInit = async (
         });
 
         toast.success(
-          "Congrats, you have completed the activity 'Prove KYC verified and claim a Gate credential'"
+          "Congrats, you have completed the activity 'Prove KYC level and claim a Bybit credential'"
         );
 
         return true;
@@ -167,12 +165,12 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
   try {
     const did = veridaWebUser.current.getDid();
     window.open(
-      `${config.proof.connectorBaseUrl}?veridaDid=${did}&schemaId=${ZKPASS_GATE_OWNER_SCHEMA_ID}`
+      `${config.proof.connectorBaseUrl}?veridaDid=${did}&schemaId=${ZKPASS_BYBIT_KYC_SCHEMA_ID}`
     );
 
     // TODO: Make a localised message of this message
     const message =
-      "Please share a Gate account credential from zkPass protocol";
+      "Please share a Bybit account KYC credential from zkPass protocol";
 
     logger.info("Sending data request", { activityId: ACTIVITY_ID });
 
@@ -184,7 +182,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
           credentialSchema: url,
         })),
         "credentialData.credentialSubject.zkPassSchemaId":
-          ZKPASS_GATE_OWNER_SCHEMA_ID,
+          ZKPASS_BYBIT_KYC_SCHEMA_ID,
       },
     });
 
@@ -199,7 +197,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
         requestId: sentMessage?.id,
       },
       message: defineMessage({
-        id: "activities.claimGateOwner.executePendingMessage",
+        id: "activities.claimBybitOwner.executePendingMessage",
         defaultMessage:
           "A request has been sent to your wallet inbox. Please check your Verida Wallet Inbox and share the credentials.",
         description:
@@ -215,7 +213,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
     return {
       status: "todo",
       message: defineMessage({
-        id: "activities.claimGateOwner.gettingExecutionErrorMessage",
+        id: "activities.claimBybitOwner.gettingExecutionErrorMessage",
         defaultMessage: `There was an error while sending you the credential request, please try again later`,
         description: "Error message when we can't get the user profile",
       }),
@@ -232,39 +230,39 @@ export const activity: Activity = {
   order: 1,
   points: 50,
   title: defineMessage({
-    id: "activities.claimGateOwner.title",
-    defaultMessage: "Prove KYC verified and claim a Gate credential",
+    id: "activities.claimBybitOwner.title",
+    defaultMessage: "Prove KYC level and claim a Bybit credential",
     description:
-      "Title of the activity 'Prove KYC verified and claim a Gate credential'",
+      "Title of the activity 'Prove KYC level and claim a Bybit credential'",
   }),
   shortDescription: defineMessage({
-    id: "activities.claimGateOwner.shortDescription",
-    defaultMessage: `Prove KYC verified and claim a Gate credential using zkPass protocol. The credentials should be stored in your Verida Wallet.`,
+    id: "activities.claimBybitOwner.shortDescription",
+    defaultMessage: `Prove KYC level and claim a Bybit credential using zkPass protocol. The credentials should be stored in your Verida Wallet.`,
     description:
-      "Short description of the activity 'Prove KYC verified and claim a Gate credential'",
+      "Short description of the activity 'Prove KYC level and claim a Bybit credential'",
   }),
   longDescription: defineMessage({
-    id: "activities.claimGateOwner.longDescription",
-    defaultMessage: `Prove KYC verified and claim a credential of your Gate account. The credentials will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida missions to share your new credential .{newline}{newline}`,
+    id: "activities.claimBybitOwner.longDescription",
+    defaultMessage: `Prove KYC level and claim a credential of your Bybit account. The credentials will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida missions to share your new credential .{newline}{newline}`,
     description:
-      "Long description of the activity 'Prove KYC verified and claim a Gate credential'",
+      "Long description of the activity 'Prove KYC level and claim a Bybit credential'",
   }),
   actionLabel: defineMessage({
-    id: "activities.claimGateOwner.actionLabel",
+    id: "activities.claimBybitOwner.actionLabel",
     defaultMessage: "Verify",
     description:
-      "Label of the button to start the activity Claim Gate ownership",
+      "Label of the button to start the activity Claim Bybit KYC level",
   }),
   actionReExecuteLabel: defineMessage({
-    id: "activities.claimGateOwner.actionReExecuteLabel",
+    id: "activities.claimBybitOwner.actionReExecuteLabel",
     defaultMessage: "Verify again",
     description: "Label of the button to perform the activity again ",
   }),
   actionExecutingLabel: defineMessage({
-    id: "activities.claimGateOwner.actionExecutingLabel",
+    id: "activities.claimBybitOwner.actionExecutingLabel",
     defaultMessage: "Sending Request",
     description:
-      "Label of the button when the activity 'Claim Gate ownership' is being executed",
+      "Label of the button when the activity 'Claim Bybit KYC level' is being executed",
   }),
   onInit: handleInit,
   onExecute: handleExecute,
@@ -272,7 +270,7 @@ export const activity: Activity = {
   resources: [
     {
       label: defineMessage({
-        id: "activities.claimGateOwner.resources.ZkPassPageUrl.label",
+        id: "activities.claimBybitOwner.resources.ZkPassPageUrl.label",
         defaultMessage: "User guide of zkPass protocol",
         description: "Label of the resource 'User guide of zkPass protocol'",
       }),

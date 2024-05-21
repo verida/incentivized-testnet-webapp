@@ -1,1 +1,0 @@
-export const ZKPASS_KUCOIN_OWNER_SCHEMA_ID = "01c1439e852f47aaa4f697cef14d3e94";
