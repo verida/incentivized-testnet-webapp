@@ -30,7 +30,7 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
   const { title, shortDescription, longDescription, resources } = mission;
 
   const isInitialCollapseRef = useRef(true);
-  const [isCollapsed, setIsCollapsed] = React.useState(false);
+  const [isCollapsed, setIsCollapsed] = React.useState(true);
   const i18n = useIntl();
   const { isConnected } = useVerida();
   const {
@@ -91,7 +91,9 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
     const hasIncompleteActivity = displayedActivities.some(
       (activity) => getUserActivity(activity.id)?.status !== "completed"
     );
-    setIsCollapsed(!hasIncompleteActivity);
+    if (!hasIncompleteActivity) {
+      setIsCollapsed(true);
+    }
     isInitialCollapseRef.current = false;
   }, [isLoadingUserActivities, displayedActivities, getUserActivity]);
 
@@ -100,14 +102,19 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
       <div id={mission.id} className="relative -top-24 h-0" />
       <div
         className={twMerge(
-          "border border-solid border-border p-4 sm:p-6 rounded-xl bg-mission-section backdrop-blur-4xl flex flex-col gap-6",
+          "border border-solid border-border p-4 sm:p-6 pt-0 sm:pt-0 rounded-xl bg-mission-section backdrop-blur-4xl flex flex-col gap-6",
           isMissionComingSoon
             ? "text-muted-foreground border-dashed"
             : undefined
         )}
       >
         <div className="flex flex-col gap-3">
-          <div className="flex justify-between">
+          <div
+            className="flex justify-between pt-4 sm:pt-6 cursor-pointer"
+            onClick={() => {
+              setIsCollapsed((prevState) => !prevState);
+            }}
+          >
             <div className="flex gap-2">
               <MissionIdLabelChip label={i18n.formatMessage(mission.idLabel)} />
               {isMissionComingSoon ? (
@@ -123,9 +130,6 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
                 <Icon
                   type={isCollapsed ? "chevron-down" : "chevron-up"}
                   size={20}
-                  onClick={() => {
-                    setIsCollapsed((prevState) => !prevState);
-                  }}
                 />
               }
             />
