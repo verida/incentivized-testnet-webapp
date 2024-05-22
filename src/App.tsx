@@ -7,7 +7,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 
-import { HomePage, PartnerPage } from "~/components/pages";
+import { HomePage, PartnerPage, PartnersPage } from "~/components/pages";
 import { AppLayout } from "~/components/templates";
 import { AppContextProviders } from "~/contexts";
 import { ErrorBoundary, RouterErrorHandler } from "~/features/errors";
@@ -24,7 +24,8 @@ const router = sentryCreateBrowserRouter(
       errorElement={<RouterErrorHandler />}
     >
       <Route index element={<HomePage />} />
-      <Route path="/partners/:partnerId" element={<PartnerPage />} />
+      <Route path="/partner/:partnerId" element={<PartnerPage />} />
+      <Route path="/partners" element={<PartnersPage />} />
       {/* <Route path="terms-and-conditions" element={<TermsConditionsView />} /> */}
       <Route path="*" element={<Navigate replace to="/" />} />
     </Route>

@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { twJoin, twMerge } from "tailwind-merge";
 
 import { ReactComponent as VeridaNetworkLogoWithText } from "~/assets/images/verida_network_logo_with_text.svg";
@@ -23,6 +23,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const { disconnect, isConnected, profile, did } = useVerida();
   const { deleteUserActivities, userXpPoints, isLoadingUserActivities } =
     useActivity();
+  const navigate = useNavigate();
   const {
     metadata: airdrop1Metadata,
     isEnabled: isAirdrop1Enabled,
@@ -55,6 +56,11 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     openAirdrop2Modal();
   }, [openAirdrop2Modal]);
 
+  const handlePartners = useCallback(() => {
+    // partner logic
+    navigate("/partners");
+  }, [navigate]);
+
   const homeLinkAriaLabel = i18n.formatMessage({
     id: "Header.homeLinkAriaLabel",
     description: "Aria label for the home link in the Header",
@@ -84,6 +90,12 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     id: "Header.disconnectButtonLabel",
     description: "Label for the disconnect button in the Header",
     defaultMessage: "Disconnect",
+  });
+
+  const partnerButtonLabel = i18n.formatMessage({
+    id: "Header.partnerButtonLabel",
+    description: "Label for partners button in the Header",
+    defaultMessage: "Partners",
   });
 
   const contentHeight = "h-10";
@@ -159,6 +171,16 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
       replaceButton: true,
     },
     ...airdropsMenuItems,
+    {
+      key: "partners",
+      label: (
+        <div className="flex flex-row gap-2 items-center">
+          <Icon type="partner" size={20} />
+          {partnerButtonLabel}
+        </div>
+      ),
+      action: handlePartners,
+    },
     {
       key: "disconnect",
       label: (

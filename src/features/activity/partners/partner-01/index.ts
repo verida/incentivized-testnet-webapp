@@ -17,20 +17,17 @@ export const partner: Partner = {
   order: 1,
   title: defineMessage({
     id: "partners.partner-01.title",
-    defaultMessage:
-      "Prove Your Humanity and Build Trusted Online Communities with Synaps Proof of Life Credential",
+    defaultMessage: "Polygon",
     description: "Title of the partner 01",
   }),
   shortDescription: defineMessage({
     id: "partners.partner-01.shortDescription",
-    defaultMessage:
-      "Embrace the future of secure and authentic online interactions by claiming your Proof of Life with Polygon ID. This mission, in partnership with Synaps, empowers individuals to assert their humanity while upholding their privacy.",
+    defaultMessage: "Activities from Polygon",
     description: "Short description of the partner 01",
   }),
   longDescription: defineMessage({
     id: "partners.partner-01.longDescription",
-    defaultMessage:
-      "Embrace the future of secure and authentic online interactions by claiming your Proof of Life with Polygon ID. This mission, in partnership with Synaps, empowers individuals to assert their humanity while upholding their privacy.",
+    defaultMessage: "Activities from Polygon",
     description: "Long description of the partner 01",
   }),
 };
