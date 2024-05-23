@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useCallback, useMemo } from "react";
 import { useIntl } from "react-intl";
 import { twMerge } from "tailwind-merge";
 
@@ -29,7 +29,6 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
   const { mission, ...articleProps } = props;
   const { title, shortDescription, longDescription, resources } = mission;
 
-  const isInitialCollapseRef = useRef(true);
   const [isCollapsed, setIsCollapsed] = React.useState(true);
   const i18n = useIntl();
   const { isConnected } = useVerida();
@@ -38,6 +37,10 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
     isLoadingUserActivities,
     getUserActivity,
   } = useActivity();
+
+  const handleMissionHeaderClick = useCallback(() => {
+    setIsCollapsed((prevState) => !prevState);
+  }, []);
 
   const activitiesSectionTitle = i18n.formatMessage({
     id: "MissionSection.activitiesSectionTitle",
@@ -81,28 +84,12 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
   const isMissionComingSoon =
     !mission.enabled || displayedActivities.length === 0;
 
-  // Set the initial collapse state. Wait for the user activities to be loaded before doing so. If all activities are completed, collapse the section.
-  // Unfortunately, the latency before getting the user activities make the section starting as expanded and a few seconds later, may change the state depending on the check described above.
-  useEffect(() => {
-    if (isLoadingUserActivities || !isInitialCollapseRef.current) {
-      return;
-    }
-
-    const hasIncompleteActivity = displayedActivities.some(
-      (activity) => getUserActivity(activity.id)?.status !== "completed"
-    );
-    if (!hasIncompleteActivity) {
-      setIsCollapsed(true);
-    }
-    isInitialCollapseRef.current = false;
-  }, [isLoadingUserActivities, displayedActivities, getUserActivity]);
-
   return (
     <article {...articleProps}>
       <div id={mission.id} className="relative -top-24 h-0" />
       <div
         className={twMerge(
-          "border border-solid border-border p-4 sm:p-6 pt-0 sm:pt-0 rounded-xl bg-mission-section backdrop-blur-4xl flex flex-col gap-6",
+          "border border-solid border-border p-4 sm:p-6 rounded-xl bg-mission-section backdrop-blur-4xl flex flex-col gap-6",
           isMissionComingSoon
             ? "text-muted-foreground border-dashed"
             : undefined
@@ -110,33 +97,37 @@ export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
       >
         <div className="flex flex-col gap-3">
           <div
-            className="flex justify-between pt-4 sm:pt-6 cursor-pointer"
-            onClick={() => {
-              setIsCollapsed((prevState) => !prevState);
-            }}
+            className="flex flex-col gap-3 cursor-pointer"
+            onClick={handleMissionHeaderClick}
+            // TODO: Fix accessibility as this div act as a button
           >
-            <div className="flex gap-2">
-              <MissionIdLabelChip label={i18n.formatMessage(mission.idLabel)} />
-              {isMissionComingSoon ? (
-                <MissionIdLabelChip label={comingSoonMessage} />
-              ) : null}
-            </div>
-
-            <IconButton
-              size="small"
-              variant="text"
-              aria-label={toggleCollapseButtonLabel}
-              icon={
-                <Icon
-                  type={isCollapsed ? "chevron-down" : "chevron-up"}
-                  size={20}
+            <div className="flex justify-between">
+              <div className="flex gap-2">
+                <MissionIdLabelChip
+                  label={i18n.formatMessage(mission.idLabel)}
                 />
-              }
-            />
+                {isMissionComingSoon ? (
+                  <MissionIdLabelChip label={comingSoonMessage} />
+                ) : null}
+              </div>
+
+              <IconButton
+                size="small"
+                variant="text"
+                aria-label={toggleCollapseButtonLabel}
+                // TODO: Fix accessibility as this button doesn't do anything now that the div capture the click event
+                icon={
+                  <Icon
+                    type={isCollapsed ? "chevron-down" : "chevron-up"}
+                    size={20}
+                  />
+                }
+              />
+            </div>
+            <Typography variant="heading-m">
+              {i18n.formatMessage(title)}
+            </Typography>
           </div>
-          <Typography variant="heading-m">
-            {i18n.formatMessage(title)}
-          </Typography>
           {isCollapsed ? null : (
             <>
               <Typography className="text-muted-foreground">
