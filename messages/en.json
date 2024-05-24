@@ -319,6 +319,150 @@
     "defaultMessage": "Synaps - Claim a Proof of Life (PoL) Polygon ID credential",
     "description": "Title of the activity 'Claim Synaps/Anima Proof of Life credential'"
   },
+  "activities.claimBinanceKYCzkPass.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'Claim Binance KYC level' is being executed"
+  },
+  "activities.claimBinanceKYCzkPass.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity Claim Binance KYC level"
+  },
+  "activities.claimBinanceKYCzkPass.actionReExecuteLabel": {
+    "defaultMessage": "Verify again",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimBinanceKYCzkPass.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
+    "description": "Message explaining a request has been sent to your Verida Wallet inbox"
+  },
+  "activities.claimBinanceKYCzkPass.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimBinanceKYCzkPass.longDescription": {
+    "defaultMessage": "Prove KYC level and claim a credential of your Binance account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Long description of the activity 'Prove KYC level and claim a credential of your Binance account'"
+  },
+  "activities.claimBinanceKYCzkPass.resources.zkPassPageUrl.label": {
+    "defaultMessage": "User guide of zkPass protocol",
+    "description": "Label of the resource 'User guide of zkPass protocol'"
+  },
+  "activities.claimBinanceKYCzkPass.shortDescription": {
+    "defaultMessage": "Prove KYC level and claim a credential of your Binance account. The credentials will be stored in the Verida Network, and can be securely shared and verified.",
+    "description": "Short description of the activity 'Prove KYC level and claim a credential of your Binance account'"
+  },
+  "activities.claimBinanceKYCzkPass.title": {
+    "defaultMessage": "Prove KYC level and claim a Binance credential",
+    "description": "Title of the activity 'Prove KYC level and claim a credential of your Binance account'"
+  },
+  "activities.claimBinanceOwnerzkPass.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'Claim Binance ownership' is being executed"
+  },
+  "activities.claimBinanceOwnerzkPass.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity Claim Binance ownership"
+  },
+  "activities.claimBinanceOwnerzkPass.actionReExecuteLabel": {
+    "defaultMessage": "Verify again",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimBinanceOwnerzkPass.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
+    "description": "Message explaining a request has been sent to your Verida Wallet inbox"
+  },
+  "activities.claimBinanceOwnerzkPass.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimBinanceOwnerzkPass.longDescription": {
+    "defaultMessage": "Prove ownership and claim a credential of your Binance account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Long description of the activity 'Prove ownership and claim a credential of your Binance account'"
+  },
+  "activities.claimBinanceOwnerzkPass.resources.zkPassPageUrl.label": {
+    "defaultMessage": "User guide of zkPass protocol",
+    "description": "Label of the resource 'User guide of zkPass protocol'"
+  },
+  "activities.claimBinanceOwnerzkPass.shortDescription": {
+    "defaultMessage": "Prove ownership and claim a credential of your Binance account. The credentials will be securely stored on the Verida Network, and can be shared and verified.",
+    "description": "Short description of the activity 'Prove ownership and claim a credential of your Binance account'"
+  },
+  "activities.claimBinanceOwnerzkPass.title": {
+    "defaultMessage": "Prove ownership and claim a Binance credential",
+    "description": "Title of the activity 'Prove ownership and claim a credential of your Binance account'"
+  },
+  "activities.claimBybitKYCzkPass.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'Claim Bybit KYC level' is being executed"
+  },
+  "activities.claimBybitKYCzkPass.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity Claim Bybit KYC level"
+  },
+  "activities.claimBybitKYCzkPass.actionReExecuteLabel": {
+    "defaultMessage": "Verify again",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimBybitKYCzkPass.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
+    "description": "Message explaining a request has been sent to your Verida Wallet inbox"
+  },
+  "activities.claimBybitKYCzkPass.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimBybitKYCzkPass.longDescription": {
+    "defaultMessage": "Prove KYC level and claim a credential of your Bybit account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Long description of the activity 'Prove KYC level and claim a Bybit credential'"
+  },
+  "activities.claimBybitKYCzkPass.resources.ZkPassPageUrl.label": {
+    "defaultMessage": "User guide of zkPass protocol",
+    "description": "Label of the resource 'User guide of zkPass protocol'"
+  },
+  "activities.claimBybitKYCzkPass.shortDescription": {
+    "defaultMessage": "Prove KYC level and claim a credential of your Bybit account. The credentials will be securely stored on the Verida Network, and can be shared and verified.",
+    "description": "Short description of the activity 'Prove KYC level and claim a Bybit credential'"
+  },
+  "activities.claimBybitKYCzkPass.title": {
+    "defaultMessage": "Prove KYC level and claim a Bybit credential",
+    "description": "Title of the activity 'Prove KYC level and claim a Bybit credential'"
+  },
+  "activities.claimBybitOwnerzkPass.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'Claim Bybit ownership' is being executed"
+  },
+  "activities.claimBybitOwnerzkPass.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity Claim Bybit ownership"
+  },
+  "activities.claimBybitOwnerzkPass.actionReExecuteLabel": {
+    "defaultMessage": "Verify again",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimBybitOwnerzkPass.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
+    "description": "Message explaining a request has been sent to your Verida Wallet inbox"
+  },
+  "activities.claimBybitOwnerzkPass.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimBybitOwnerzkPass.longDescription": {
+    "defaultMessage": "Prove ownership and claim a credential of your Bybit account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Long description of the activity 'Prove ownership and claim a Bybit credential'"
+  },
+  "activities.claimBybitOwnerzkPass.resources.ZkPassPageUrl.label": {
+    "defaultMessage": "User guide of zkPass protocol",
+    "description": "Label of the resource 'User guide of zkPass protocol'"
+  },
+  "activities.claimBybitOwnerzkPass.shortDescription": {
+    "defaultMessage": "Prove ownership and claim a credential of your Bybit account. The credentials will be securely stored on the Verida Network, and can be shared and verified.",
+    "description": "Short description of the activity 'Prove ownership and claim a Bybit credential'"
+  },
+  "activities.claimBybitOwnerzkPass.title": {
+    "defaultMessage": "Prove ownership and claim a Bybit credential",
+    "description": "Title of the activity 'Prove ownership and claim a Bybit credential'"
+  },
   "activities.claimGamer31BrawlStars.actionExecutingLabel": {
     "defaultMessage": "Sending Request",
     "description": "Label of the button when the activity 'claim Gamer31 Brawl Stars credential' is being executed"
@@ -535,6 +679,42 @@
     "defaultMessage": "Claim a Gamer31 Twitch credential",
     "description": "Title of the activity 'Claim Gamer31 Twitch credential'"
   },
+  "activities.claimGateKYCzkPass.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'Claim Gate KYC level' is being executed"
+  },
+  "activities.claimGateKYCzkPass.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity Claim Gate KYC level"
+  },
+  "activities.claimGateKYCzkPass.actionReExecuteLabel": {
+    "defaultMessage": "Verify again",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimGateKYCzkPass.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
+    "description": "Message explaining a request has been sent to your Verida Wallet inbox"
+  },
+  "activities.claimGateKYCzkPass.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimGateKYCzkPass.longDescription": {
+    "defaultMessage": "Prove KYC level and claim a credential of your Gate account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Long description of the activity 'Prove KYC level and claim a Gate credential'"
+  },
+  "activities.claimGateKYCzkPass.resources.ZkPassPageUrl.label": {
+    "defaultMessage": "User guide of zkPass protocol",
+    "description": "Label of the resource 'User guide of zkPass protocol'"
+  },
+  "activities.claimGateKYCzkPass.shortDescription": {
+    "defaultMessage": "Prove KYC level and claim a Gate credential using zkPass protocol. The credentials should be stored in your Verida Wallet.",
+    "description": "Short description of the activity 'Prove KYC level and claim a Gate credential'"
+  },
+  "activities.claimGateKYCzkPass.title": {
+    "defaultMessage": "Prove KYC level and claim a Gate credential",
+    "description": "Title of the activity 'Prove KYC level and claim a Gate credential'"
+  },
   "activities.claimGateKeperAdopter.actionExecutingLabel": {
     "defaultMessage": "Sending Request",
     "description": "Label of the button when the activity 'claim GateKeeper Adopter credential' is being executed"
@@ -578,6 +758,222 @@
   "activities.claimGateKeperAdopter.title": {
     "defaultMessage": "Claim a GateKeeper Adopter credential",
     "description": "Title of the activity 'Claim Gatekeeper Adopter credential'"
+  },
+  "activities.claimGateOwnerzkPass.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'Claim Gate ownership' is being executed"
+  },
+  "activities.claimGateOwnerzkPass.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity Claim Gate ownership"
+  },
+  "activities.claimGateOwnerzkPass.actionReExecuteLabel": {
+    "defaultMessage": "Verify again",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimGateOwnerzkPass.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
+    "description": "Message explaining a request has been sent to your Verida Wallet inbox"
+  },
+  "activities.claimGateOwnerzkPass.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimGateOwnerzkPass.longDescription": {
+    "defaultMessage": "Prove ownership and claim a credential of your Gate account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Long description of the activity 'Prove ownership and claim a Gate credential'"
+  },
+  "activities.claimGateOwnerzkPass.resources.ZkPassPageUrl.label": {
+    "defaultMessage": "User guide of zkPass protocol",
+    "description": "Label of the resource 'User guide of zkPass protocol'"
+  },
+  "activities.claimGateOwnerzkPass.shortDescription": {
+    "defaultMessage": "Prove ownership and claim a Gate credential using zkPass protocol. The credentials should be stored in your Verida Wallet.",
+    "description": "Short description of the activity 'Prove ownership and claim a Gate credential'"
+  },
+  "activities.claimGateOwnerzkPass.title": {
+    "defaultMessage": "Prove ownership and claim a Gate credential",
+    "description": "Title of the activity 'Prove ownership and claim a Gate credential'"
+  },
+  "activities.claimKuCoinKYCzkPass.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'Claim KuCoin KYC level' is being executed"
+  },
+  "activities.claimKuCoinKYCzkPass.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity Claim KuCoin KYC level"
+  },
+  "activities.claimKuCoinKYCzkPass.actionReExecuteLabel": {
+    "defaultMessage": "Verify again",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimKuCoinKYCzkPass.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
+    "description": "Message explaining a request has been sent to your Verida Wallet inbox"
+  },
+  "activities.claimKuCoinKYCzkPass.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimKuCoinKYCzkPass.longDescription": {
+    "defaultMessage": "Prove KYC level and claim a credential of your KuCoin account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Long description of the activity 'Prove KYC level and claim a KuCoin credential'"
+  },
+  "activities.claimKuCoinKYCzkPass.resources.ZkPassPageUrl.label": {
+    "defaultMessage": "User guide of zkPass protocol",
+    "description": "Label of the resource 'User guide of zkPass protocol'"
+  },
+  "activities.claimKuCoinKYCzkPass.shortDescription": {
+    "defaultMessage": "Prove KYC level and claim a KuCoin credential using zkPass protocol. The credentials should be stored in your Verida Wallet.",
+    "description": "Short description of the activity 'Prove KYC level and claim a KuCoin credential'"
+  },
+  "activities.claimKuCoinKYCzkPass.title": {
+    "defaultMessage": "Prove KYC level and claim a KuCoin credential",
+    "description": "Title of the activity 'Prove KYC level and claim a KuCoin credential'"
+  },
+  "activities.claimKuCoinOwnerzkPass.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'Claim KuCoin ownership' is being executed"
+  },
+  "activities.claimKuCoinOwnerzkPass.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity Claim KuCoin ownership"
+  },
+  "activities.claimKuCoinOwnerzkPass.actionReExecuteLabel": {
+    "defaultMessage": "Verify again",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimKuCoinOwnerzkPass.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
+    "description": "Message explaining a request has been sent to your Verida Wallet inbox"
+  },
+  "activities.claimKuCoinOwnerzkPass.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimKuCoinOwnerzkPass.longDescription": {
+    "defaultMessage": "Prove ownership and claim a credential of your KuCoin account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Long description of the activity 'Prove ownership and claim a KuCoin credential'"
+  },
+  "activities.claimKuCoinOwnerzkPass.resources.ZkPassPageUrl.label": {
+    "defaultMessage": "User guide of zkPass protocol",
+    "description": "Label of the resource 'User guide of zkPass protocol'"
+  },
+  "activities.claimKuCoinOwnerzkPass.shortDescription": {
+    "defaultMessage": "Prove ownership and claim a credential of your KuCoin account. The credentials will be securely stored on the Verida Network, and can be shared and verified.",
+    "description": "Short description of the activity 'Prove ownership and claim a KuCoin credential'"
+  },
+  "activities.claimKuCoinOwnerzkPass.title": {
+    "defaultMessage": "Prove ownership and claim a KuCoin credential",
+    "description": "Title of the activity 'Prove ownership and claim a KuCoin credential'"
+  },
+  "activities.claimMEXCKYCzkPass.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'Claim MEXC KYC level' is being executed"
+  },
+  "activities.claimMEXCKYCzkPass.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity Claim MEXC KYC level"
+  },
+  "activities.claimMEXCKYCzkPass.actionReExecuteLabel": {
+    "defaultMessage": "Verify again",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimMEXCKYCzkPass.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
+    "description": "Message explaining a request has been sent to your Verida Wallet inbox"
+  },
+  "activities.claimMEXCKYCzkPass.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimMEXCKYCzkPass.longDescription": {
+    "defaultMessage": "Prove KYC level and claim a credential of your MEXC account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Long description of the activity 'Prove KYC level and claim a MEXC credential'"
+  },
+  "activities.claimMEXCKYCzkPass.resources.ZkPassPageUrl.label": {
+    "defaultMessage": "User guide of zkPass protocol",
+    "description": "Label of the resource 'User guide of zkPass protocol'"
+  },
+  "activities.claimMEXCKYCzkPass.shortDescription": {
+    "defaultMessage": "Prove KYC level and claim a MEXC credential using zkPass protocol. The credentials should be stored in your Verida Wallet.",
+    "description": "Short description of the activity 'Prove KYC level and claim a MEXC credential'"
+  },
+  "activities.claimMEXCKYCzkPass.title": {
+    "defaultMessage": "Prove KYC level and claim a MEXC credential",
+    "description": "Title of the activity 'Prove KYC level and claim a MEXC credential'"
+  },
+  "activities.claimMEXCOwnerzkPass.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'Claim MEXC ownership' is being executed"
+  },
+  "activities.claimMEXCOwnerzkPass.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity Claim MEXC ownership"
+  },
+  "activities.claimMEXCOwnerzkPass.actionReExecuteLabel": {
+    "defaultMessage": "Verify again",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimMEXCOwnerzkPass.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
+    "description": "Message explaining a request has been sent to your Verida Wallet inbox"
+  },
+  "activities.claimMEXCOwnerzkPass.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimMEXCOwnerzkPass.longDescription": {
+    "defaultMessage": "Prove ownership and claim a credential of your MEXC account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Long description of the activity 'Prove ownership and claim a MEXC credential'"
+  },
+  "activities.claimMEXCOwnerzkPass.resources.ZkPassPageUrl.label": {
+    "defaultMessage": "User guide of zkPass protocol",
+    "description": "Label of the resource 'User guide of zkPass protocol'"
+  },
+  "activities.claimMEXCOwnerzkPass.shortDescription": {
+    "defaultMessage": "Prove ownership and claim a credential of your MEXC account. The credentials will be securely stored on the Verida Network, and can be shared and verified.",
+    "description": "Short description of the activity 'Prove ownership and claim a MEXC credential'"
+  },
+  "activities.claimMEXCOwnerzkPass.title": {
+    "defaultMessage": "Prove ownership and claim a MEXC credential",
+    "description": "Title of the activity 'Prove ownership and claim a MEXC credential'"
+  },
+  "activities.claimUberOwnerReclaim.actionExecutingLabel": {
+    "defaultMessage": "Sending Request",
+    "description": "Label of the button when the activity 'Claim Uber ownership' is being executed"
+  },
+  "activities.claimUberOwnerReclaim.actionLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label of the button to start the activity Claim Uber ownership"
+  },
+  "activities.claimUberOwnerReclaim.actionReExecuteLabel": {
+    "defaultMessage": "Verify again",
+    "description": "Label of the button to perform the activity again "
+  },
+  "activities.claimUberOwnerReclaim.executePendingMessage": {
+    "defaultMessage": "A request has been sent to your wallet inbox. Please check your Verida Wallet Inbox and share the credentials.",
+    "description": "Message explaining a request has been sent to your Verida Wallet inbox"
+  },
+  "activities.claimUberOwnerReclaim.gettingExecutionErrorMessage": {
+    "defaultMessage": "There was an error while sending you the credential request, please try again later",
+    "description": "Error message when we can't get the user profile"
+  },
+  "activities.claimUberOwnerReclaim.longDescription": {
+    "defaultMessage": "Prove ownership and claim a credential of your Uber account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Long description of the activity 'Claim an Uber credential/Prove ownership'"
+  },
+  "activities.claimUberOwnerReclaim.resources.reclaimPageUrl.label": {
+    "defaultMessage": "Whitepaper of Reclaim protocol",
+    "description": "Label of the resource 'Whitepaper of Reclaim protocol'"
+  },
+  "activities.claimUberOwnerReclaim.shortDescription": {
+    "defaultMessage": "Prove ownership and claim a credential of your Uber account. The credentials will be securely stored on the Verida Network, and can be shared and verified.",
+    "description": "Short description of the activity 'Claim an Uber credential/Prove ownership'"
+  },
+  "activities.claimUberOwnerReclaim.title": {
+    "defaultMessage": "Claim an Uber credential/Prove ownership",
+    "description": "Title of the activity 'Claim an Uber credential/Prove ownership'"
   },
   "activities.createVeridaIdentity.actionExecutingLabel": {
     "defaultMessage": "Verifying",
@@ -814,6 +1210,38 @@
   "missions.mission-04.title": {
     "defaultMessage": "Prove Your Humanity and Build Trusted Online Communities with Synaps Proof of Life Credential",
     "description": "Title of the mission 04"
+  },
+  "missions.mission-05.idLabel": {
+    "defaultMessage": "Mission 5",
+    "description": "Label of the mission id 05"
+  },
+  "missions.mission-05.longDescription": {
+    "defaultMessage": "zkPass is a private data protocol that enables privacy-preserving verification.{newline}{newline}It is built on the foundation of Multi-Party Computation (MPC), Zero-Knowledge Proofs (ZKP), and three-party Transport Layer Security (3P-TLS).{newline}{newline}zkPass protocol allows you to prove information about yourself from any supported service without disclosing personal data.{newline}{newline}If you have an existing account on centralized exchanges (CEX), you can prove ownership/KYC and claim a credential.{newline}{newline}*No KYC information is captured or stored through this process.",
+    "description": "Long description of the mission 05"
+  },
+  "missions.mission-05.shortDescription": {
+    "defaultMessage": "zkPass is a private data protocol that enables privacy-preserving verification.{newline}{newline}It is built on the foundation of Multi-Party Computation (MPC), Zero-Knowledge Proofs (ZKP), and three-party Transport Layer Security (3P-TLS).{newline}{newline}zkPass protocol allows you to prove information about yourself from any supported service without disclosing personal data.{newline}{newline}If you have an existing account on centralized exchanges (CEX), you can prove ownership/KYC and claim a credential.{newline}{newline}*No KYC information is captured or stored through this process.",
+    "description": "Short description of the mission 05"
+  },
+  "missions.mission-05.title": {
+    "defaultMessage": "Generate CEX proofs with zkPass protocol",
+    "description": "Title of the mission 05"
+  },
+  "missions.mission-06.idLabel": {
+    "defaultMessage": "Mission 6",
+    "description": "Label of the mission id 06"
+  },
+  "missions.mission-06.longDescription": {
+    "defaultMessage": "Reclaim protocol allows you to proof information about yourself from any website, without disclosing your personal data",
+    "description": "Long description of the mission 06"
+  },
+  "missions.mission-06.shortDescription": {
+    "defaultMessage": "Reclaim protocol allows you to proof information about yourself from any website, without disclosing your personal data",
+    "description": "Short description of the mission 06"
+  },
+  "missions.mission-06.title": {
+    "defaultMessage": "Generate proofs with Reclaim Protocol",
+    "description": "Title of the mission 06"
   },
   "useExecuteActivity.activityAlreadyBeingExecutedMessage": {
     "defaultMessage": "An activity is already being executed, please wait for it to finish",
