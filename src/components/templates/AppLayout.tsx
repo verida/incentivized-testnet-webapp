@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet, ScrollRestoration } from "react-router-dom";
 
 import { ReportIssueButton } from "~/components/molecules";
+import { VDABanner } from "~/components/molecules";
 import {
   Footer,
   GetSupportSection,
@@ -22,7 +23,8 @@ export const AppLayout: React.FunctionComponent = () => {
       </MetaTags>
       <ErrorBoundary defaultFallbackCardClassName="h-screen w-screen flex flex-col items-center justify-center">
         <div className="relative flex h-full w-full flex-col">
-          <Header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-[6px]" />
+          <VDABanner classNames="left-0" />
+          <Header className="sticky top-0 left-0 right-0 z-50 backdrop-blur-[6px]" />
           <div className="flex min-h-screen flex-col bg-app">
             <HeaderOffset />
             <div className="flex-grow">

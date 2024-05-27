@@ -20,3 +20,5 @@ export const VERIDA_MISSIONS_FAQ_URL =
 
 export const VERIDA_BLOG_POST_VDA_WHITELIST =
   "https://news.verida.io/announcing-the-verida-storage-credit-community-pre-sale-and-whitelist-d7f92e78b91c";
+
+export const VDA_LINK = "https://www.verida.network/vda-token";

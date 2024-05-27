@@ -70,6 +70,7 @@ module.exports = {
           DEFAULT: "hsla(var(--menu) / 0.8)",
           foreground: "hsl(var(--foreground))",
         },
+        bannerBackgroundColor: "#4F1D74",
       },
       fontSize: {
         "heading-l": [

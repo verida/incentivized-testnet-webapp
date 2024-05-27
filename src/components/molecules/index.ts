@@ -10,3 +10,4 @@ export * from "./ReportIssueButton";
 export * from "./ShareOnSocials";
 export * from "./SideNavigation";
 export * from "./UpcomingActivitiesCTA";
+export * from "./VDABanner";
