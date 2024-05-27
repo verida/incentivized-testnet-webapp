@@ -2,6 +2,7 @@ import toast from "react-hot-toast";
 import { defineMessage } from "react-intl";
 
 import { MISSION_04_ID } from "~/features/activity/missions";
+import { PARTNER_01_ID } from "~/features/activity/partners";
 import type {
   Activity,
   ActivityOnExecute,
@@ -17,7 +18,6 @@ import {
   sendDataRequest,
 } from "~/features/verida";
 
-import { PARTNER_01_ID } from "../../partners";
 import { ANIMA_PROOF_OF_LIFE_VC_SCHEMA_URLS } from "./constants";
 import { verifyReceivedMessage } from "./utils";
 

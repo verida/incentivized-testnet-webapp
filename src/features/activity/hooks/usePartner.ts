@@ -27,7 +27,7 @@ export default function usePartner(partner_id: string) {
         const mission = wholeMissions.find((item) => item.id === currentValue);
         // Get partner ids for activities of this mission
         const _partnerIds = _activities
-          .filter((activity) => activity.id === currentValue)
+          .filter((activity) => activity.missionId === currentValue)
           .map((activity) => activity.partner);
 
         if (mission) {

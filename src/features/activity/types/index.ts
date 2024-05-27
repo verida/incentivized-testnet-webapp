@@ -114,7 +114,7 @@ export type Social = {
   title: MessageDescriptor;
   type: SocialType;
   link: string;
-  icon?: React.ReactNode;
+  icon?: JSX.Element;
 };
 
 export type Partner = {

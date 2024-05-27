@@ -1,5 +1,6 @@
 import { useIntl } from "react-intl";
 import { useLocation } from "react-router-dom";
+import { twMerge } from "tailwind-merge";
 
 import usePartner from "~/features/activity/hooks/usePartner";
 
@@ -20,17 +21,23 @@ export const PartnerPage = () => {
 
   // Extract partner and activities from partner id
   const { partner, activities, missions } = usePartner(partnerId);
-  console.log("partnerId: ", partnerId, partner, activities);
 
   return partner ? (
-    <div className="flex pt-5 gap-2">
+    <div className="flex pt-5 gap-5 md:gap-10 w-full justify-center max-w-screen-xl">
       <PartnerOverviewCard
         partner={partner}
         missions={missions}
         activities={activities}
       />
-      <div className="">
-        <PartnerMissionCard mission={missions[0]} />
+      <div
+        className={twMerge(
+          "grid gap-2",
+          missions.length > 1 ? "grid-cols-2" : "grid-cols-1"
+        )}
+      >
+        {missions.map((mission, index) => (
+          <PartnerMissionCard mission={mission} key={index} />
+        ))}
       </div>
     </div>
   ) : (

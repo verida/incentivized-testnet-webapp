@@ -93,70 +93,72 @@ export const HomePage: React.FunctionComponent = () => {
 
   return (
     <PageLayout title={tagline}>
-      <HomeHero className="mt-4" />
-      {isConnected ? null : (
-        <div className="mt-6 flex justify-center">
-          <ConnectVeridaButton longLabel />
-        </div>
-      )}
-      {isAirdrop1Enabled &&
-        isConnected &&
-        !isAirdrop1ProofSubmitted &&
-        !isCheckingAirdrop1ProofSubmitted && (
+      <div className="flex flex-col max-w-screen-sm justify-center mx-auto">
+        <HomeHero className="mt-4" />
+        {isConnected ? null : (
+          <div className="mt-6 flex justify-center">
+            <ConnectVeridaButton longLabel />
+          </div>
+        )}
+        {isAirdrop1Enabled &&
+          isConnected &&
+          !isAirdrop1ProofSubmitted &&
+          !isCheckingAirdrop1ProofSubmitted && (
+            <Alert
+              type="info"
+              actions={[
+                {
+                  type: "button",
+                  label: airdrop1AlertProveActionButtonLabel,
+                  onClick: openAirdrop1Modal,
+                },
+                {
+                  type: "link",
+                  label: airdrop1AlertLearnActionButtonLabel,
+                  href: airdrop1Metadata.articleUrl,
+                  openInNewTab: true,
+                  color: "default",
+                },
+              ]}
+              message={airdrop1AlertMessage}
+              className="mt-6"
+            />
+          )}
+        {isAirdrop2Enabled && isConnected && (
           <Alert
             type="info"
             actions={[
               {
                 type: "button",
-                label: airdrop1AlertProveActionButtonLabel,
-                onClick: openAirdrop1Modal,
+                label: airdrop2AlertCheckActionButtonLabel,
+                onClick: openAirdrop2Modal,
               },
               {
                 type: "link",
-                label: airdrop1AlertLearnActionButtonLabel,
-                href: airdrop1Metadata.articleUrl,
+                label: airdrop2AlertLearnActionButtonLabel,
+                href: airdrop2Metadata.articleUrl,
                 openInNewTab: true,
                 color: "default",
               },
             ]}
-            message={airdrop1AlertMessage}
+            message={airdrop2AlertMessage}
             className="mt-6"
           />
         )}
-      {isAirdrop2Enabled && isConnected && (
-        <Alert
-          type="info"
-          actions={[
-            {
-              type: "button",
-              label: airdrop2AlertCheckActionButtonLabel,
-              onClick: openAirdrop2Modal,
-            },
-            {
-              type: "link",
-              label: airdrop2AlertLearnActionButtonLabel,
-              href: airdrop2Metadata.articleUrl,
-              openInNewTab: true,
-              color: "default",
-            },
-          ]}
-          message={airdrop2AlertMessage}
-          className="mt-6"
-        />
-      )}
-      <div className="mt-16 relative">
-        <div className="hidden lg:block absolute top-0 bottom-0 -right-6 translate-x-full w-36 xl:w-64">
-          <aside className="sticky top-24">
-            <MissionsSideNavigation />
-          </aside>
+        <div className="mt-16 relative">
+          <div className="hidden lg:block absolute top-0 bottom-0 -right-6 translate-x-full w-36 xl:w-64">
+            <aside className="sticky top-24">
+              <MissionsSideNavigation />
+            </aside>
+          </div>
+          {missions.map((mission) => (
+            <MissionSection
+              key={mission.id}
+              mission={mission}
+              className="mt-16"
+            />
+          ))}
         </div>
-        {missions.map((mission) => (
-          <MissionSection
-            key={mission.id}
-            mission={mission}
-            className="mt-16"
-          />
-        ))}
       </div>
     </PageLayout>
   );

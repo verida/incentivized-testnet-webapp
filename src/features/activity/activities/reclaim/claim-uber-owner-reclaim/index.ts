@@ -4,6 +4,8 @@ import { defineMessage } from "react-intl";
 import { config } from "~/config";
 import { VERIDA_CREDENTIAL_RECLAIM_SCHEMA_URLS } from "~/features/activity/activities/reclaim/constants";
 import { MISSION_06_ID } from "~/features/activity/missions";
+// Never change the id
+import { PARTNER_01_ID } from "~/features/activity/partners";
 import type {
   Activity,
   ActivityOnExecute,
@@ -230,6 +232,7 @@ export const activity: Activity = {
   ended: false,
   visible: true,
   order: 5,
+  partner: PARTNER_01_ID,
   points: 100,
   title: defineMessage({
     id: "activities.claimUberOwnerReclaim.title",

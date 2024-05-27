@@ -1,7 +1,12 @@
 import { useIntl } from "react-intl";
+import { twMerge } from "tailwind-merge";
 
 import { MissionProgessBarIndicator } from "~/components/atoms/MissionProgessBarIndicator";
-import { PartnerMission, UserActivityStatus } from "~/features/activity";
+import {
+  Partner,
+  PartnerMission,
+  UserActivityStatus,
+} from "~/features/activity";
 import { activities } from "~/features/activity/activities";
 import { partners as wholePartners } from "~/features/activity/partners";
 
@@ -44,13 +49,16 @@ export default function PartnerMissionCard({
     return acc + cur.points;
   }, 0);
 
-  const partners = wholePartners.filter(
-    (partner) =>
-      mission.partners.find((partnerId) => partnerId === partner.id) != null
-  );
+  const partners = mission.partners.reduce((acc: Partner[], partnerId) => {
+    const partner = wholePartners.find((item) => item.id === partnerId);
+    if (partner) {
+      acc.push(partner);
+    }
+    return acc;
+  }, []);
 
   return (
-    <div className="min-w-[384px] rounded-md flex flex-col h-[400px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+    <div className="max-w-[384px] rounded-md flex flex-col h-[400px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
       <div className="text-[18px] relative flex justify-center mt-5 mb-1 h-[150px]">
         <img src="/images/bg_point.png" className="w-[160px] h-" alt={alt} />
         <span className="absolute top-[45%] justify-center flex w-full pl-[2px]">
@@ -89,7 +97,10 @@ export default function PartnerMissionCard({
               <img
                 src={partner.image}
                 alt=""
-                className="rounded-full w-[32px] h-[32px] ml-[-10px]"
+                className={twMerge(
+                  "rounded-full w-[32px] h-[32px]",
+                  partners.length > 1 ? "ml-[-10px]" : "ml-0"
+                )}
               />
             ))}
           </div>

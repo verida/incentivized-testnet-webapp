@@ -1,5 +1,6 @@
 import { defineMessage } from "react-intl";
 
+import { Icon } from "~/components/atoms";
 import { type Partner, SocialType } from "~/features/activity/types";
 
 export const PARTNER_01_ID = "partner-01";
