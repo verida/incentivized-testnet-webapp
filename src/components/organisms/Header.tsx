@@ -61,6 +61,19 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     defaultMessage: "Return to Home page",
   });
 
+  const vdaLinkAriaLabel = i18n.formatMessage({
+    id: "Header.vdaLinkAriaLabel",
+    description: "Aria label for the VDA link in the Header",
+    defaultMessage: "https://www.verida.network/vda-token",
+  });
+
+  const vdaLinkLabel = i18n.formatMessage({
+    id: "Header.vdaLinkLabel",
+    description: "Label for the VDA link in the Header",
+    defaultMessage:
+      "The Verida Storage Credit Token (VDA) is now live. Learn more",
+  });
+
   const profileNameFallback = i18n.formatMessage({
     id: "Header.profileNameFallback",
     description: "Fallback name for the profile name in the Header",
@@ -174,6 +187,15 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
 
   return (
     <header {...headerProps}>
+      <Link
+        to={"https://www.verida.network/vda-token"}
+        area-label={vdaLinkAriaLabel}
+        target="_blank"
+        className="bg-[#4F1D74] w-full p-4 flex gap-2 items-center justify-center hover:underline underline-offset-1"
+      >
+        {vdaLinkLabel}
+        <Icon type="arrow-right" size={20} />
+      </Link>
       <div className="flex flex-row justify-between border-b border-solid border-divider bg-translucent px-4 pt-3 pb-[calc(0.75rem_-_1px)] backdrop-blur-[5px] sm:px-6">
         <div className="justify-self-start">
           <Link to="/" aria-label={homeLinkAriaLabel}>
