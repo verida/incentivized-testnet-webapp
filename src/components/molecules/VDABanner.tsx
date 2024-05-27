@@ -21,7 +21,7 @@ export const VDABanner = ({ classNames }: { classNames?: string }) => {
   return (
     <div
       className={twMerge(
-        "w-full bg-bannerBackgroundColor p-3 flex items-center justify-center",
+        "w-full bg-gradient-to-r from-topBanner-grad1 to-topBanner-grad2 text-topBanner-foreground p-3 flex items-center justify-center",
         classNames
       )}
     >
