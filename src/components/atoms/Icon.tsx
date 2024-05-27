@@ -10,6 +10,7 @@ import {
   Down,
   LoadingOne,
   Logout,
+  Share,
   ShareOne,
   Up,
   User,
@@ -42,7 +43,8 @@ export type GenericIconType =
   | "notification-success"
   | "notification-error"
   | "agreement"
-  | "partner";
+  | "partner"
+  | "external-link";
 
 export type PlatformIconType =
   | "platform-discord"
@@ -95,6 +97,8 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
       return <Wallet size={size} {...otherProps} />;
     case "partner":
       return <CooperativeHandshake size={size} {...otherProps} />;
+    case "external-link":
+      return <Share size={size} {...otherProps} />;
     case "platform-discord":
       return (
         <IconContainer {...otherProps}>

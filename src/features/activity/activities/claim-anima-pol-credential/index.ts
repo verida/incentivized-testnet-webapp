@@ -17,6 +17,7 @@ import {
   sendDataRequest,
 } from "~/features/verida";
 
+import { PARTNER_01_ID } from "../../partners";
 import { ANIMA_PROOF_OF_LIFE_VC_SCHEMA_URLS } from "./constants";
 import { verifyReceivedMessage } from "./utils";
 
@@ -222,6 +223,7 @@ export const activity: Activity = {
   visible: true,
   order: 1,
   points: 100,
+  partner: PARTNER_01_ID,
   title: defineMessage({
     id: "activities.claimAnimaPoLCredential.title",
     defaultMessage:

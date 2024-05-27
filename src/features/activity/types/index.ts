@@ -97,6 +97,26 @@ export type Activity = {
   onMessage?: ActivityOnMessage;
 };
 
+// Partner
+
+export enum SocialType {
+  LINKEDIN = "linkedin",
+  YOUTUBE = "youtube",
+  X = "x",
+  TELEGRAM = "telegram",
+  DISCORD = "discord",
+  TICKTOCK = "ticktok",
+  MEDIUM = "medium",
+}
+
+export type Social = {
+  id: string;
+  title: MessageDescriptor;
+  type: SocialType;
+  link: string;
+  icon?: React.ReactNode;
+};
+
 export type Partner = {
   id: string;
   idLabel: MessageDescriptor;
@@ -108,4 +128,10 @@ export type Partner = {
   shortDescription: MessageDescriptor;
   longDescription: MessageDescriptor;
   resources?: Resource[];
+  socials?: Social[];
+  image?: string;
+};
+
+export type PartnerMission = Mission & {
+  partners: string[];
 };

@@ -14,7 +14,7 @@ export const partner: Partner = {
   enabled: true,
   visible: true,
   frozen: false,
-  order: 1,
+  order: 2,
   title: defineMessage({
     id: "partners.partner-02.title",
     defaultMessage: "zkPass",
