@@ -1,5 +1,6 @@
 import {
   Agreement,
+  ArrowRight,
   Attention,
   Bug,
   Check,
@@ -44,8 +45,8 @@ export type GenericIconType =
   | "notification-error"
   | "agreement"
   | "partner"
-  | "external-link";
-
+  | "external-link"
+  | "arrow-right";
 export type PlatformIconType =
   | "platform-discord"
   | "platform-linkedin"
@@ -99,6 +100,8 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
       return <CooperativeHandshake size={size} {...otherProps} />;
     case "external-link":
       return <Share size={size} {...otherProps} />;
+    case "arrow-right":
+      return <ArrowRight size={size} {...otherProps} />;
     case "platform-discord":
       return (
         <IconContainer {...otherProps}>
