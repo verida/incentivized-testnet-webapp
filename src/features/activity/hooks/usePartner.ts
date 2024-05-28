@@ -13,7 +13,7 @@ export default function usePartner(partner_id: string) {
   useEffect(() => {
     setPartner(partners.find((item) => item.id === partner_id));
     const _activities = wholeActivities.filter(
-      (item) => item.partner === partner_id
+      (item) => item.enabled && item.visible && item.partner === partner_id
     );
     setActivities(_activities);
 
@@ -26,9 +26,10 @@ export default function usePartner(partner_id: string) {
         // Get regular mission
         const mission = wholeMissions.find((item) => item.id === currentValue);
         // Get partner ids for activities of this mission
-        const _partnerIds = _activities
+        let _partnerIds = _activities
           .filter((activity) => activity.missionId === currentValue)
           .map((activity) => activity.partner);
+        _partnerIds = [...new Set(_partnerIds)];
 
         if (mission) {
           const partnerIds = _partnerIds.reduce<string[]>((array, value) => {

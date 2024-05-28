@@ -232,7 +232,6 @@ export const activity: Activity = {
   ended: false,
   visible: true,
   order: 5,
-  partner: PARTNER_01_ID,
   points: 100,
   title: defineMessage({
     id: "activities.claimUberOwnerReclaim.title",

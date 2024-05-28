@@ -42,7 +42,8 @@ export default function PartnerMissionCard({
   const missionLabel = i18n.formatMessage(mission.title);
 
   const missionActivities = activities.filter(
-    (activity) => activity.missionId === mission.id
+    (activity) =>
+      activity.enabled && activity.visible && activity.missionId === mission.id
   );
 
   const totalPoints = missionActivities?.reduce((acc, cur) => {
