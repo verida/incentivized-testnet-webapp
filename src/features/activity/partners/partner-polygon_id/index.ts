@@ -2,39 +2,39 @@ import { defineMessage } from "react-intl";
 
 import { type Partner, SocialType } from "~/features/activity/types";
 
-export const PARTNER_01_ID = "partner-01";
+export const PARTNER_ID_POLYGONID = "partner-polygonid";
 
 export const partner: Partner = {
-  id: PARTNER_01_ID,
+  id: PARTNER_ID_POLYGONID,
   idLabel: defineMessage({
-    id: "partners.partner-01.idLabel",
+    id: "partners.partner-polygonid.idLabel",
     defaultMessage: "Polygon",
-    description: "Label of the partner id 01",
+    description: "Label of the partner polygon_id",
   }),
   enabled: true,
   visible: true,
   frozen: false,
   order: 1,
   title: defineMessage({
-    id: "partners.partner-01.title",
+    id: "partners.partner-polygonid.title",
     defaultMessage: "Polygon",
-    description: "Title of the partner 01",
+    description: "Title of the partner polygon_id",
   }),
   shortDescription: defineMessage({
-    id: "partners.partner-01.shortDescription",
+    id: "partners.partner-polygonid.shortDescription",
     defaultMessage: "Activities from Polygon",
-    description: "Short description of the partner 01",
+    description: "Short description of the partner polygon_id",
   }),
   longDescription: defineMessage({
-    id: "partners.partner-01.longDescription",
+    id: "partners.partner-polygonid.longDescription",
     defaultMessage: "Activities from Polygon",
-    description: "Long description of the partner 01",
+    description: "Long description of the partner polygon_id",
   }),
   image: "/images/partners/polygon.png",
   resources: [
     {
       label: defineMessage({
-        id: "partners.partner-01.resource.verida.title",
+        id: "partners.partner-polygonid.resource.verida.title",
         description: "Description of resource",
         defaultMessage: "verida.network",
       }),
@@ -42,7 +42,7 @@ export const partner: Partner = {
     },
     {
       label: defineMessage({
-        id: "partners.partner-01.resource.polygon.title",
+        id: "partners.partner-polygonid.resource.polygon.title",
         description: "Description of resource",
         defaultMessage: "polygonscan.io",
       }),
@@ -51,9 +51,9 @@ export const partner: Partner = {
   ],
   socials: [
     {
-      id: "01",
+      id: "polygon_id",
       title: defineMessage({
-        id: "partners.partner-01.social.linkedin.title",
+        id: "partners.partner-polygonid.social.linkedin.title",
         description: "Description of social",
         defaultMessage: "Linkdin",
       }),
@@ -63,7 +63,7 @@ export const partner: Partner = {
     {
       id: "02",
       title: defineMessage({
-        id: "partners.partner-01.social.youtube.title",
+        id: "partners.partner-polygonid.social.youtube.title",
         description: "Description of social",
         defaultMessage: "Youtube",
       }),
@@ -73,7 +73,7 @@ export const partner: Partner = {
     {
       id: "03",
       title: defineMessage({
-        id: "partners.partner-01.social.medium.title",
+        id: "partners.partner-polygonid.social.medium.title",
         description: "Description of social",
         defaultMessage: "medium",
       }),
@@ -83,7 +83,7 @@ export const partner: Partner = {
     {
       id: "04",
       title: defineMessage({
-        id: "partners.partner-01.social.x.title",
+        id: "partners.partner-polygonid.social.x.title",
         description: "Description of social",
         defaultMessage: "X",
       }),
@@ -93,7 +93,7 @@ export const partner: Partner = {
     {
       id: "05",
       title: defineMessage({
-        id: "partners.partner-01.social.telegram.title",
+        id: "partners.partner-polygonid.social.telegram.title",
         description: "Description of social",
         defaultMessage: "Telegram",
       }),
@@ -103,7 +103,7 @@ export const partner: Partner = {
     {
       id: "06",
       title: defineMessage({
-        id: "partners.partner-01.social.discord.title",
+        id: "partners.partner-polygonid.social.discord.title",
         description: "Description of social",
         defaultMessage: "Discord",
       }),

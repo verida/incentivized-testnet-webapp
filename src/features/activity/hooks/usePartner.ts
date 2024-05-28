@@ -5,15 +5,18 @@ import { missions as wholeMissions } from "~/features/activity/missions";
 import { partners } from "~/features/activity/partners";
 import { Activity, Partner, PartnerMission } from "~/features/activity/types";
 
-export default function usePartner(partner_id: string) {
-  const [partner, setPartner] = useState<Partner>();
+export function usePartner(partner_id: string) {
+  const [partner, setPartner] = useState<Partner | undefined>();
   const [activities, setActivities] = useState<Activity[]>([]);
   const [missions, setMissions] = useState<PartnerMission[]>([]);
 
   useEffect(() => {
     setPartner(partners.find((item) => item.id === partner_id));
     const _activities = wholeActivities.filter(
-      (item) => item.enabled && item.visible && item.partner === partner_id
+      (item) =>
+        item.enabled &&
+        item.visible &&
+        item.partners?.find((_partnerId) => _partnerId === partner_id)
     );
     setActivities(_activities);
 
@@ -26,9 +29,15 @@ export default function usePartner(partner_id: string) {
         // Get regular mission
         const mission = wholeMissions.find((item) => item.id === currentValue);
         // Get partner ids for activities of this mission
-        let _partnerIds = _activities
+        let _partnerIds: string[] = [];
+        _activities
           .filter((activity) => activity.missionId === currentValue)
-          .map((activity) => activity.partner);
+          .map((activity) => {
+            if (activity.partners) {
+              _partnerIds = _partnerIds.concat(activity.partners);
+            }
+            return true;
+          });
         _partnerIds = [...new Set(_partnerIds)];
 
         if (mission) {

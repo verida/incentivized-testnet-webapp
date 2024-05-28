@@ -91,7 +91,7 @@ export type Activity = {
   actionLabel: MessageDescriptor;
   actionReExecuteLabel?: MessageDescriptor;
   actionExecutingLabel: MessageDescriptor;
-  partner?: string;
+  partners?: string[];
   onInit: ActivityOnInit;
   onExecute: ActivityOnExecute;
   onMessage?: ActivityOnMessage;

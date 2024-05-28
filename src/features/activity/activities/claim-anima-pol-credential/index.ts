@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import { defineMessage } from "react-intl";
 
 import { MISSION_04_ID } from "~/features/activity/missions";
-import { PARTNER_01_ID } from "~/features/activity/partners";
+import { PARTNER_ID_POLYGONID } from "~/features/activity/partners";
 import type {
   Activity,
   ActivityOnExecute,
@@ -218,12 +218,12 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
 export const activity: Activity = {
   id: ACTIVITY_ID,
   missionId: MISSION_04_ID,
+  partners: [PARTNER_ID_POLYGONID],
   enabled: true,
   ended: false,
   visible: true,
   order: 1,
   points: 100,
-  partner: PARTNER_01_ID,
   title: defineMessage({
     id: "activities.claimAnimaPoLCredential.title",
     defaultMessage:

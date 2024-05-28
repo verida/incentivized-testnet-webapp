@@ -1,9 +1,9 @@
-import { partner as partner01 } from "./partner-01";
-import { partner as partner02 } from "./partner-02";
+import { partner as partnerPolygonId } from "./partner-polygon_id";
+import { partner as partnerzkPass } from "./partner-zkpass";
 
-export { PARTNER_01_ID } from "./partner-01";
-export { PARTNER_02_ID } from "./partner-02";
+export { PARTNER_ID_POLYGONID } from "./partner-polygon_id";
+export { PARTNER_ID_ZKPASS } from "./partner-zkpass";
 
-export const partners = [partner01, partner02].sort(
+export const partners = [partnerPolygonId, partnerzkPass].sort(
   (a, b) => a.order - b.order
 );

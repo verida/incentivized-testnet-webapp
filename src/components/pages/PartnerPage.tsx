@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 
 import { PartnerMissionCard } from "~/components/organisms";
 import { PartnerOverviewCard } from "~/components/organisms";
-import usePartner from "~/features/activity/hooks/usePartner";
+import { usePartner } from "~/features/activity";
 
 export const PartnerPage = () => {
   const i18n = useIntl();

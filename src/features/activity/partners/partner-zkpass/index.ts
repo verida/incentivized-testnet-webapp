@@ -2,39 +2,39 @@ import { defineMessage } from "react-intl";
 
 import { type Partner, SocialType } from "~/features/activity/types";
 
-export const PARTNER_02_ID = "partner-02";
+export const PARTNER_ID_ZKPASS = "partner-id-zkpass";
 
 export const partner: Partner = {
-  id: PARTNER_02_ID,
+  id: PARTNER_ID_ZKPASS,
   idLabel: defineMessage({
-    id: "partners.partner-02.idLabel",
+    id: "partners.partner-id-zkpass.idLabel",
     defaultMessage: "zkPass",
-    description: "Label of the partner id 02",
+    description: "Label of the partner id partnerid-zk-pass",
   }),
   enabled: true,
   visible: true,
   frozen: false,
   order: 1,
   title: defineMessage({
-    id: "partners.partner-02.title",
+    id: "partners.partner-id-zkpass.title",
     defaultMessage: "zkPass",
-    description: "Title of the partner 02",
+    description: "Title of the zkPass",
   }),
   shortDescription: defineMessage({
-    id: "partners.partner-02.shortDescription",
+    id: "partners.partner-id-zkpass.shortDescription",
     defaultMessage: "Activities from zkPass",
-    description: "Short description of the partner 02",
+    description: "Short description of the partner zkPass",
   }),
   longDescription: defineMessage({
-    id: "partners.partner-02.longDescription",
+    id: "partners.partner-id-zkpass.longDescription",
     defaultMessage: "Activities from zkPass",
-    description: "Long description of the partner 02",
+    description: "Long description of the partner zkPass",
   }),
   image: "/images/partners/zkPass.png",
   resources: [
     {
       label: defineMessage({
-        id: "partners.partner-02.resource.verida.title",
+        id: "partners.partner-id-zkpass.resource.verida.title",
         description: "Description of resource",
         defaultMessage: "verida.network",
       }),
@@ -42,7 +42,7 @@ export const partner: Partner = {
     },
     {
       label: defineMessage({
-        id: "partners.partner-02.resource.zkPass.title",
+        id: "partners.partner-id-zkpass.resource.zkPass.title",
         description: "Description of resource",
         defaultMessage: "zkpass.org",
       }),
@@ -51,9 +51,9 @@ export const partner: Partner = {
   ],
   socials: [
     {
-      id: "02",
+      id: "partnerid-zk-pass",
       title: defineMessage({
-        id: "partners.partner-02.social.linkedin.title",
+        id: "partners.partner-id-zkpass.social.linkedin.title",
         description: "Description of social",
         defaultMessage: "Linkdin",
       }),
@@ -61,9 +61,9 @@ export const partner: Partner = {
       type: SocialType.LINKEDIN,
     },
     {
-      id: "02",
+      id: "partnerid-zk-pass",
       title: defineMessage({
-        id: "partners.partner-02.social.youtube.title",
+        id: "partners.partner-id-zkpass.social.youtube.title",
         description: "Description of social",
         defaultMessage: "Youtube",
       }),
@@ -73,7 +73,7 @@ export const partner: Partner = {
     {
       id: "03",
       title: defineMessage({
-        id: "partners.partner-02.social.medium.title",
+        id: "partners.partner-id-zkpass.social.medium.title",
         description: "Description of social",
         defaultMessage: "medium",
       }),
@@ -83,7 +83,7 @@ export const partner: Partner = {
     {
       id: "04",
       title: defineMessage({
-        id: "partners.partner-02.social.x.title",
+        id: "partners.partner-id-zkpass.social.x.title",
         description: "Description of social",
         defaultMessage: "X",
       }),
@@ -93,7 +93,7 @@ export const partner: Partner = {
     {
       id: "05",
       title: defineMessage({
-        id: "partners.partner-02.social.telegram.title",
+        id: "partners.partner-id-zkpass.social.telegram.title",
         description: "Description of social",
         defaultMessage: "Telegram",
       }),
@@ -103,7 +103,7 @@ export const partner: Partner = {
     {
       id: "06",
       title: defineMessage({
-        id: "partners.partner-02.social.discord.title",
+        id: "partners.partner-id-zkpass.social.discord.title",
         description: "Description of social",
         defaultMessage: "Discord",
       }),

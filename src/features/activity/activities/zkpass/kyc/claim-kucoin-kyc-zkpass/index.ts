@@ -4,7 +4,7 @@ import { defineMessage } from "react-intl";
 import { config } from "~/config";
 import { VERIDA_CREDENTIAL_ZKPASS_SCHEMA_URLS } from "~/features/activity/activities/zkpass/constants";
 import { MISSION_05_ID } from "~/features/activity/missions";
-import { PARTNER_02_ID } from "~/features/activity/partners";
+import { PARTNER_ID_ZKPASS } from "~/features/activity/partners";
 import type {
   Activity,
   ActivityOnExecute,
@@ -225,7 +225,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
 export const activity: Activity = {
   id: ACTIVITY_ID,
   missionId: MISSION_05_ID,
-  partner: PARTNER_02_ID,
+  partners: [PARTNER_ID_ZKPASS],
   enabled: true,
   ended: false,
   visible: true,

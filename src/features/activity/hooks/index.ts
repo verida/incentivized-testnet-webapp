@@ -5,3 +5,4 @@ export * from "./useExecuteActivity";
 export * from "./useInitialiseActivities";
 export * from "./useMessageListener";
 export * from "./useUserXpPoints";
+export * from "./usePartner";
