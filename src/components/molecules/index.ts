@@ -9,4 +9,5 @@ export * from "./PortalWrapper";
 export * from "./ReportIssueButton";
 export * from "./ShareOnSocials";
 export * from "./SideNavigation";
+export * from "./TopBanner";
 export * from "./UpcomingActivitiesCTA";
