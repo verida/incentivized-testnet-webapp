@@ -1,5 +1,6 @@
 import {
   Agreement,
+  ArrowRight,
   Attention,
   Bug,
   Check,
@@ -40,7 +41,8 @@ export type GenericIconType =
   | "wallet"
   | "notification-success"
   | "notification-error"
-  | "agreement";
+  | "agreement"
+  | "arrow-right";
 export type PlatformIconType =
   | "platform-discord"
   | "platform-linkedin"
@@ -90,6 +92,8 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
       return <Agreement size={size} {...otherProps} />;
     case "wallet":
       return <Wallet size={size} {...otherProps} />;
+    case "arrow-right":
+      return <ArrowRight size={size} {...otherProps} />;
     case "platform-discord":
       return (
         <IconContainer {...otherProps}>
