@@ -1243,6 +1243,10 @@
     "defaultMessage": "Generate proofs with Reclaim Protocol",
     "description": "Title of the mission 06"
   },
+  "topBanner.vdaTokenMessage": {
+    "defaultMessage": "The Verida Storage Credit Token (VDA) is now live. Learn more",
+    "description": "Content displayed in the top banner for the VDA token"
+  },
   "useExecuteActivity.activityAlreadyBeingExecutedMessage": {
     "defaultMessage": "An activity is already being executed, please wait for it to finish",
     "description": "Notification message when user try to execute an activity while there's already one being executed"
