@@ -2,10 +2,9 @@ import { useIntl } from "react-intl";
 import { useLocation } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
+import { PartnerMissionCard } from "~/components/organisms";
+import { PartnerOverviewCard } from "~/components/organisms";
 import usePartner from "~/features/activity/hooks/usePartner";
-
-import PartnerMissionCard from "../organisms/PartnerMissionCard";
-import PartnerOverviewCard from "../organisms/PartnerOverviewCard";
 
 export const PartnerPage = () => {
   const i18n = useIntl();

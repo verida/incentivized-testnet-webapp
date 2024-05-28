@@ -10,11 +10,7 @@ import {
 import { activities } from "~/features/activity/activities";
 import { partners as wholePartners } from "~/features/activity/partners";
 
-export default function PartnerMissionCard({
-  mission,
-}: {
-  mission: PartnerMission;
-}) {
+export function PartnerMissionCard({ mission }: { mission: PartnerMission }) {
   const i18n = useIntl();
 
   const xpText = i18n.formatMessage({

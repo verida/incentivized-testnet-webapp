@@ -10,7 +10,7 @@ import {
   SocialType,
 } from "~/features/activity/types";
 
-const PartnerOverviewCard = ({
+export const PartnerOverviewCard = ({
   partner,
   activities,
   missions,
@@ -100,5 +100,3 @@ const PartnerOverviewCard = ({
     </div>
   );
 };
-
-export default PartnerOverviewCard;
