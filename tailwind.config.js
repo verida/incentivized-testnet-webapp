@@ -76,6 +76,8 @@ module.exports = {
           grad2: "hsl(var(--banner-grad-2))",
           foreground: "hsl(var(--foreground))",
         },
+        backButtonBackground: "#2C285E",
+        partnerListItemBackground: "#2c285ed9",
       },
       fontSize: {
         "heading-l": [

@@ -11,3 +11,4 @@ export * from "./ShareOnSocials";
 export * from "./SideNavigation";
 export * from "./TopBanner";
 export * from "./UpcomingActivitiesCTA";
+export * from "./PartnerListItem";

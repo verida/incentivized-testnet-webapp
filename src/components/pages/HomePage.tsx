@@ -4,6 +4,7 @@ import { useIntl } from "react-intl";
 import { Alert, HomeHero } from "~/components/molecules";
 import {
   ConnectVeridaButton,
+  HeaderOffset,
   MissionSection,
   MissionsSideNavigation,
 } from "~/components/organisms";
@@ -92,7 +93,8 @@ export const HomePage: React.FunctionComponent = () => {
   });
 
   return (
-    <PageLayout title={tagline}>
+    <PageLayout title={tagline} className="mt-24">
+      <HeaderOffset />
       <div className="flex flex-col max-w-screen-sm justify-center mx-auto">
         <HomeHero className="mt-4" />
         {isConnected ? null : (

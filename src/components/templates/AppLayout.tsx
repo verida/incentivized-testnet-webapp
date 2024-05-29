@@ -6,7 +6,6 @@ import {
   Footer,
   GetSupportSection,
   Header,
-  HeaderOffset,
   LearnMoreSection,
 } from "~/components/organisms";
 import { ErrorBoundary } from "~/features/errors";
@@ -25,9 +24,8 @@ export const AppLayout: React.FunctionComponent = () => {
           <TopBanner />
           <Header className="sticky top-0 left-0 right-0 z-50 backdrop-blur-[6px]" />
           <div className="flex min-h-screen flex-col bg-app">
-            <HeaderOffset />
             <div className="flex-grow">
-              <main className="mx-auto flex w-full flex-grow flex-col px-10 pt-4 mb-8 items-center">
+              <main className="mx-auto flex w-full flex-grow flex-col px-5 md:px-10 pt-4 mb-8 items-center">
                 <ErrorBoundary defaultFallbackCardClassName="flex flex-col flex-grow justify-center">
                   <Outlet />
                 </ErrorBoundary>

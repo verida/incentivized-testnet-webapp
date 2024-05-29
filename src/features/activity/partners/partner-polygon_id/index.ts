@@ -8,7 +8,7 @@ export const partner: Partner = {
   id: PARTNER_ID_POLYGONID,
   idLabel: defineMessage({
     id: "partners.partner-polygonid.idLabel",
-    defaultMessage: "Polygon",
+    defaultMessage: "Polygon ID",
     description: "Label of the partner polygon_id",
   }),
   enabled: true,
