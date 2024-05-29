@@ -6,6 +6,12 @@ module.exports = {
       sans: ["Sora", "sans-serif"],
     },
     extend: {
+      backgroundImage: {
+        customGradient:
+          "linear-gradient(138deg, rgba(255, 255, 255, .9), rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, .9))",
+        reverseCustomGradient:
+          "linear-gradient(138deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.1))",
+      },
       colors: {
         white: "hsl(var(--white))",
         black: "hsl(var(--black))",
@@ -77,7 +83,7 @@ module.exports = {
           foreground: "hsl(var(--foreground))",
         },
         backButtonBackground: "#2C285E",
-        partnerListItemBackground: "#2c285ed9",
+        partnerListItemBackgroundColor: "#2c285eff",
       },
       fontSize: {
         "heading-l": [

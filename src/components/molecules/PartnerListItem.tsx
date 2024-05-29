@@ -43,19 +43,21 @@ export const PartnerListItem = ({
     }
   }, [size]);
   return (
-    <div
-      className={twMerge(
-        "rounded-lg md:rounded-[16px]  flex flex-col items-center justify-center border-2 bg-partnerListItemBackground border-white/30 cursor-pointer hover:border-primary",
-        wrapperClasses
-      )}
-      onClick={() => navigate(`/partner/${partner.id}`)}
-    >
-      <img
-        src={partner.image}
-        alt={alt}
-        className={twMerge("bg-white rounded-md p-1 ", imageClasses)}
-      />
-      <h4 className={twMerge("font-bold", textClasses)}>{title}</h4>
+    <div className="bg-customGradient hover:bg-reverseCustomGradient p-[1px] overflow-hidden rounded-lg md:rounded-[16px]">
+      <div
+        className={twMerge(
+          "rounded-lg md:rounded-[16px] flex flex-col items-center justify-center bg-partnerListItemBackgroundColor cursor-pointer",
+          wrapperClasses
+        )}
+        onClick={() => navigate(`/partner/${partner.id}`)}
+      >
+        <img
+          src={partner.image}
+          alt={alt}
+          className={twMerge("bg-white rounded-md p-1 ", imageClasses)}
+        />
+        <h4 className={twMerge("font-bold", textClasses)}>{title}</h4>
+      </div>
     </div>
   );
 };
