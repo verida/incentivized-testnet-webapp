@@ -2,7 +2,10 @@ import toast from "react-hot-toast";
 import { defineMessage } from "react-intl";
 
 import { config } from "~/config";
-import { VERIDA_CREDENTIAL_ZKPASS_SCHEMA_URLS } from "~/features/activity/activities/zkpass/constants";
+import {
+  VERIDA_CREDENTIAL_ZKPASS_SCHEMA_URLS,
+  ZKPASS_INTRODUCTION_URL,
+} from "~/features/activity/activities/zkpass/constants";
 import { MISSION_05_ID } from "~/features/activity/missions";
 import type {
   Activity,
@@ -274,7 +277,7 @@ export const activity: Activity = {
         defaultMessage: "User guide of zkPass protocol",
         description: "Label of the resource 'User guide of zkPass protocol'",
       }),
-      url: "https://zkpass.gitbook.io/zkpass/user-guides/overview",
+      url: ZKPASS_INTRODUCTION_URL,
     },
   ],
 };
