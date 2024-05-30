@@ -46,9 +46,9 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = (props) => {
         )}
         <div className="flex flex-col w-full">
           {title && (
-            <Typography variant="heading-l" className="mx-auto">
+            <Typography variant="heading-l" className="mx-auto mt-3">
               {/* Had to surround by div because of style conflict with Typography, likely 'text-transparent' */}
-              <div className="bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/70 px-8 sm:px-14">
+              <div className="bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/70 px-8 sm:px-14 text-center">
                 {title}
               </div>
             </Typography>

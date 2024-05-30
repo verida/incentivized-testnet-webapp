@@ -93,9 +93,8 @@ export const HomePage: React.FunctionComponent = () => {
   });
 
   return (
-    <PageLayout title={tagline} className="mt-24">
-      <HeaderOffset />
-      <div className="flex flex-col max-w-screen-sm justify-center mx-auto">
+    <PageLayout title={tagline} className="mt-40 max-w-screen-sm px-4">
+      <div className="flex flex-col justify-center mx-auto">
         <HomeHero className="mt-4" />
         {isConnected ? null : (
           <div className="mt-6 flex justify-center">
@@ -153,11 +152,11 @@ export const HomePage: React.FunctionComponent = () => {
               <MissionsSideNavigation />
             </aside>
           </div>
-          {missions.map((mission) => (
+          {missions.map((mission, index) => (
             <MissionSection
               key={mission.id}
               mission={mission}
-              className="mt-16"
+              className={index > 0 ? "mt-16" : ""}
             />
           ))}
         </div>
