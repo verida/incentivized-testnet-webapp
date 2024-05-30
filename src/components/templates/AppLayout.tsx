@@ -1,5 +1,6 @@
 import React from "react";
-import { Outlet, ScrollRestoration } from "react-router-dom";
+import { Outlet, ScrollRestoration, useLocation } from "react-router-dom";
+import { twMerge } from "tailwind-merge";
 
 import { ReportIssueButton, TopBanner } from "~/components/molecules";
 import {
@@ -12,6 +13,9 @@ import { ErrorBoundary } from "~/features/errors";
 import { MetaTags } from "~/features/metatags";
 
 export const AppLayout: React.FunctionComponent = () => {
+  const location = useLocation();
+  const path = location.pathname;
+
   return (
     <>
       <MetaTags>
@@ -23,7 +27,12 @@ export const AppLayout: React.FunctionComponent = () => {
         <div className="relative flex h-full w-full flex-col">
           <TopBanner />
           <Header className="sticky top-0 left-0 right-0 z-50 backdrop-blur-[6px]" />
-          <div className="flex min-h-screen flex-col bg-app">
+          <div
+            className={twMerge(
+              "flex min-h-screen flex-col",
+              path === "/" ? "bg-app" : ""
+            )}
+          >
             <div className="flex-grow">
               <main className="mx-auto flex w-full flex-grow flex-col px-5 md:px-10 pt-4 mb-8 items-center">
                 <ErrorBoundary defaultFallbackCardClassName="flex flex-col flex-grow justify-center">
