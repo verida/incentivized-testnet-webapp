@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Icon, Typography } from "~/components/atoms";
+import { ReactComponent as BackIcon } from "~/assets/icons/arrow-left.svg";
+import { Typography } from "~/components/atoms";
 import { APP_TITLE } from "~/constants";
 
 export type PageLayoutProps = {
@@ -37,12 +38,12 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = (props) => {
       </div>
       <div className="flex gap-2 flex-col md:flex-row">
         {showBackButton && (
-          <Icon
-            type="arrow-left"
-            size={20}
-            className="p-2 bg-backButtonBackground rounded-lg border-2 border-white/20 font-bold cursor-pointer hover:bg-backButtonBackground/50 w-10 h-10"
+          <div
+            className="w-[32px] h-[32px] flex justify-center items-center p-[8px] bg-backButtonBackground rounded-lg border-[1px] border-white/20 font-bold cursor-pointer hover:bg-backButtonBackground-HOVER backdrop-blur-md"
             onClick={() => navigate(-1)}
-          />
+          >
+            <BackIcon />
+          </div>
         )}
         <div className="flex flex-col w-full">
           {title && (

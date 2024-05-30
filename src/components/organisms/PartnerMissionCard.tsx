@@ -55,15 +55,15 @@ export function PartnerMissionCard({ mission }: { mission: PartnerMission }) {
   }, []);
 
   return (
-    <div className="max-w-[384px] rounded-md flex flex-col h-[400px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+    <div className="max-w-[384px] rounded-[12px] flex flex-col h-[400px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
       <div className="text-[18px] relative flex justify-center mt-5 mb-1 h-[150px]">
         <img src="/images/bg_point.png" className="w-[160px] h-" alt={alt} />
-        <span className="absolute top-[45%] justify-center flex w-full pl-[2px]">
+        <span className="absolute top-[45%] justify-center flex w-full pl-[2px] font-bold">
           {totalPoints} {xpText}
         </span>
       </div>
-      <div className="w-full px-3">
-        <span className="">{progressLabel}</span>
+      <div className="w-full px-[16px]">
+        <span className="text-[12px]">{progressLabel}</span>
         <div className="flex gap-1">
           {activityStatus.map((status, index) => (
             <MissionProgessBarIndicator
@@ -74,18 +74,18 @@ export function PartnerMissionCard({ mission }: { mission: PartnerMission }) {
           ))}
         </div>
       </div>
-      <div className="rounded-tl-md rounded-tr-md bg-[#19193D]/70 flex-1 p-3 mt-3 flex flex-col w-full">
+      <div className="rounded-tl-md rounded-tr-md bg-[#19193D]/70 flex-1 px-[16px] py-[24px] mt-[16px] flex flex-col w-full">
         <h3 className="text-[16px] md:text-[20px] font-bold leading-6">
           {missionLabel}
         </h3>
         <div className="flex justify-between items-center space-x-2  mt-auto">
-          <div className="rounded-3xl p-2 flex gap-2 border-[1px] border-[#a683ff99]">
+          <div className="rounded-3xl py-[6px] px-[12px] flex gap-2 border-[1px] border-border-component items-center">
             <img
               src="/images/point-star.png"
               alt=""
               className="w-[18px] h-[20px]"
             />
-            <span className="flex">
+            <span className="flex text-[14px]">
               {totalPoints} {xpText}
             </span>
           </div>

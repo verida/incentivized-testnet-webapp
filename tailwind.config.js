@@ -64,6 +64,7 @@ module.exports = {
           DEFAULT: "hsla(var(--white) / 0.15)",
           30: "hsla(var(--white) / 0.3)",
           60: "hsla(var(--white) / 0.6)",
+          component: "#a683ff99",
         },
         divider: {
           DEFAULT: "hsla(var(--white) / 0.15)",
@@ -82,7 +83,10 @@ module.exports = {
           grad2: "hsl(var(--banner-grad-2))",
           foreground: "hsl(var(--foreground))",
         },
-        backButtonBackground: "#2C285E",
+        backButtonBackground: {
+          DEFAULT: "#2C285E",
+          HOVER: "#484389",
+        },
         partnerListItemBackgroundColor: "#2c285eff",
       },
       fontSize: {

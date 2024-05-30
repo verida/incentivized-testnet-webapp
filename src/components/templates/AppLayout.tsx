@@ -34,7 +34,7 @@ export const AppLayout: React.FunctionComponent = () => {
             )}
           >
             <div className="flex-grow">
-              <main className="mx-auto flex w-full flex-grow flex-col px-5 md:px-10 pt-4 mb-8 items-center">
+              <main className="mx-auto flex w-full flex-grow flex-col px-4 md:px-10 pt-4 mb-8 items-center">
                 <ErrorBoundary defaultFallbackCardClassName="flex flex-col flex-grow justify-center">
                   <Outlet />
                 </ErrorBoundary>

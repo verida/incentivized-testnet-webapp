@@ -23,9 +23,13 @@ export const PartnerPage = () => {
   const { partner, activities, missions } = usePartner(partnerId);
 
   return (
-    <PageLayout hideAppTitle={true} showBackButton={true} className="w-full">
+    <PageLayout
+      hideAppTitle={true}
+      showBackButton={true}
+      className="w-full mt-8"
+    >
       {partner ? (
-        <div className="flex pt-5 gap-5 md:gap-10 w-full justify-center max-w-screen-xl">
+        <div className="flex flex-col md:flex-row gap-5 md:gap-10 w-full justify-center max-w-screen-xl mt-10 md:mt-0">
           <PartnerOverviewCard
             partner={partner}
             missions={missions}
