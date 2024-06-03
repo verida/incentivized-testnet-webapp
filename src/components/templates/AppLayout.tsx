@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet, ScrollRestoration, useLocation } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
+import { ReactComponent as BgImage } from "~/assets/images/bg_bottom.svg";
 import { ReportIssueButton, TopBanner } from "~/components/molecules";
 import {
   Footer,
@@ -34,7 +35,7 @@ export const AppLayout: React.FunctionComponent = () => {
             )}
           >
             <div className="flex-grow">
-              <main className="mx-auto flex w-full flex-grow flex-col px-4 md:px-10 pt-4 mb-8 items-center">
+              <main className="mx-auto flex w-full flex-grow flex-col px-4 md:px-10 pt-4 mb-8 items-center max-w-screen-sm md:max-w-full">
                 <ErrorBoundary defaultFallbackCardClassName="flex flex-col flex-grow justify-center">
                   <Outlet />
                 </ErrorBoundary>
@@ -49,6 +50,11 @@ export const AppLayout: React.FunctionComponent = () => {
               <Footer />
             </div>
           </div>
+          {path !== "/" && (
+            <div className="absolute bottom-0 w-full flex justify-center blur-[100px] -z-10">
+              <BgImage />
+            </div>
+          )}
         </div>
         <ScrollRestoration />
       </ErrorBoundary>

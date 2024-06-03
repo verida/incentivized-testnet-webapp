@@ -18,10 +18,12 @@ export const PartnersPage = () => {
       showBackButton={true}
       className="w-full"
     >
-      <div className="mt-8 md:mt-16 flex gap-[15px] md:gap-8 flex-wrap max-w-[1200px] mx-auto w-full">
-        {partners.map((partner, index) => (
-          <PartnerListItem partner={partner} key={index} />
-        ))}
+      <div className="mt-11 md:mt-16 grid gap-[15px] lg:gap-8 grid-cols-2 md:grid-cols-3 xl:grid-cols-4 max-w-[327px] sm:max-w-[450px] md:max-w-[700px] lg:max-w-[1000px] xl:max-w-[1216px] mx-auto w-full text-center">
+        {[...partners, ...partners, ...partners, ...partners].map(
+          (partner, index) => (
+            <PartnerListItem partner={partner} key={index} />
+          )
+        )}
       </div>
     </PageLayout>
   );

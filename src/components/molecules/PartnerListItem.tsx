@@ -29,34 +29,39 @@ export const PartnerListItem = ({
   useEffect(() => {
     const _size = size || "Large";
     if (_size === "Large") {
-      setWrapperClasses(
-        "w-[160px] h-[165px] md:w-[280px] md:h-[290px] gap-4 md:gap-10"
+      setWrapperClasses("gap-6 md:gap-10");
+      setImageClasses("w-20 md:w-[120px]");
+      setTextClasses(
+        "text-[20px] md:text-[28px] leading-[120%] font-semibold md:font-bold"
       );
-      setImageClasses("w-[80px] md:w-[120px]");
-      setTextClasses("text-[20px] md:text-[28px]");
     } else {
-      setWrapperClasses(
-        "w-[160px] h-[165px] md:w-[176px] md:h-[192px] gap-2 md:gap-5"
-      );
+      setWrapperClasses("w-[176px] h-[192px] gap-2 md:gap-5");
       setImageClasses("w-[80px]");
-      setTextClasses("text-[20px]");
+      setTextClasses("text-[20px] leading-[120%] ");
     }
   }, [size]);
   return (
-    <div className="bg-customGradient p-[1px] overflow-hidden rounded-[24px] md:rounded-[40px] hover:rounded-[16px] md:hover:rounded-[24px]">
+    <div
+      className={twMerge(
+        "bg-customGradient p-0.25 overflow-hidden rounded-3xl md:rounded-10 hover:bg-white/60 w-full lg:max-w-[280px] lg:max-h-[290px]"
+      )}
+    >
       <div
         className={twMerge(
-          "rounded-[24px] md:rounded-[40px] hover:rounded-[16px] md:hover:rounded-[24px] flex flex-col items-center justify-center bg-partnerListItemBackgroundColor cursor-pointer",
+          "rounded-3xl md:rounded-10 flex flex-col items-center py-8 md:py-8 lg:py-12 h-full w-full justify-center bg-partnerListItemBackgroundColor hover:bg-partnerListItemBackgroundColor-HOVER cursor-pointer",
           wrapperClasses
         )}
-        onClick={() => navigate(`/partner/${partner.id}`)}
+        onClick={() => navigate(`/partners/${partner.id}`)}
       >
         <img
           src={partner.image}
           alt={alt}
-          className={twMerge("bg-white rounded-[18px] p-1 ", imageClasses)}
+          className={twMerge(
+            "bg-white rounded-[16px] md:rounded-[24px] p-[16px] md:p-[24px]",
+            imageClasses
+          )}
         />
-        <h4 className={twMerge("font-bold", textClasses)}>{title}</h4>
+        <h4 className={twMerge("", textClasses)}>{title}</h4>
       </div>
     </div>
   );

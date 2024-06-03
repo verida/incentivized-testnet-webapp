@@ -84,10 +84,12 @@ module.exports = {
           foreground: "hsl(var(--foreground))",
         },
         backButtonBackground: {
-          DEFAULT: "#2C285E",
-          HOVER: "#484389",
+          DEFAULT: "rgba(255,255,255,0.08)",
         },
-        partnerListItemBackgroundColor: "#2c285eff",
+        partnerListItemBackgroundColor: {
+          DEFAULT: "#242250", // design
+          HOVER: "#312F5B", // design
+        },
       },
       fontSize: {
         "heading-l": [
@@ -183,6 +185,12 @@ module.exports = {
       },
       lineHeight: {
         3.5: "0.875rem",
+      },
+      borderRadius: {
+        10: "2.5rem",
+      },
+      padding: {
+        0.25: "1px",
       },
     },
   },
