@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@icon-park/react": "^1.4.2",
-    "@sentry/react": "^7.113.0",
+    "@sentry/react": "^7.116.0",
     "@tanstack/react-query": "^4.36.1",
     "@uidotdev/usehooks": "^2.4.1",
     "@verida/types": "^3.0.1",
