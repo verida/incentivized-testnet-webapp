@@ -20,8 +20,19 @@ export const PartnerPage = () => {
   const partnerId = location.pathname?.split("/")?.[2];
 
   // Extract partner and activities from partner id
-  const { partner, activities, missions } = usePartner(partnerId);
+  const {
+    partner,
+    activities,
+    missions: partnerMissions,
+  } = usePartner(partnerId);
 
+  // This is mock up
+  const missions = [
+    ...partnerMissions,
+    ...partnerMissions,
+    ...partnerMissions,
+    ...partnerMissions,
+  ];
   return (
     <PageLayout
       hideAppTitle={true}
@@ -29,17 +40,14 @@ export const PartnerPage = () => {
       className="w-full mt-8"
     >
       {partner ? (
-        <div className="flex flex-col md:flex-row gap-5 md:gap-10 w-full justify-center max-w-screen-xl mt-10 md:mt-0">
+        <div className="flex flex-col md:flex-row gap-10 lg:gap-[35px] w-full justify-center xl:max-w-partner-page-xl mt-10 md:mt-0">
           <PartnerOverviewCard
             partner={partner}
             missions={missions}
             activities={activities}
           />
           <div
-            className={twMerge(
-              "grid gap-2",
-              missions.length > 1 ? "grid-cols-2" : "grid-cols-1"
-            )}
+            className={"grid grid-cols-1 lg:grid-cols-2 gap-[15px] lg:gap-8"}
           >
             {missions.map((mission, index) => (
               <PartnerMissionCard mission={mission} key={index} />

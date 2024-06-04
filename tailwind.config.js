@@ -11,12 +11,16 @@ module.exports = {
           "linear-gradient(138deg, rgba(255, 255, 255, .9), rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, .9))",
         reverseCustomGradient:
           "linear-gradient(138deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.1))",
+        partnerOverviewBg:
+          "linear-gradient(129deg, #220F41 1.09%, #19193D 98.84%)",
+        partnerMissionCardBg:
+          "linear-gradient(180deg, #733BD6 0.5%, rgba(115, 59, 214, 0.00) 100%)",
       },
       colors: {
-        white: "hsl(var(--white))",
-        black: "hsl(var(--black))",
-        translucent: "rgba(17, 17, 17, 0.01)",
-        transparent: {
+        "white": "hsl(var(--white))",
+        "black": "hsl(var(--black))",
+        "translucent": "rgba(17, 17, 17, 0.01)",
+        "transparent": {
           DEFAULT: "hsla(var(--white) / 0)",
           3: "hsla(var(--white) / 0.03)",
           5: "hsla(var(--white) / 0.05)",
@@ -26,70 +30,73 @@ module.exports = {
           30: "hsla(var(--white) / 0.3)",
         },
 
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        muted: {
+        "background": "hsl(var(--background))",
+        "foreground": "hsl(var(--foreground))",
+        "muted": {
           DEFAULT: "hsla(var(--background) / 0.2)",
           foreground: "hsla(var(--foreground) / 0.7)",
         },
 
-        primary: {
+        "primary": {
           "DEFAULT": "hsl(var(--primary))",
           "background": "hsla(var(--primary) / 0.2)",
           "background-hover": "hsl(var(--primary-bg-hover))",
           "background-disabled": "hsl(var(--primary-bg-disabled))",
           "foreground": "hsl(var(--background))",
         },
-        success: {
+        "success": {
           DEFAULT: "hsl(var(--success))",
           background: "hsla(var(--success) / 0.2)",
         },
-        warning: {
+        "warning": {
           DEFAULT: "hsl(var(--warning))",
           background: "hsla(var(--warning) / 0.2)",
         },
-        error: {
+        "error": {
           DEFAULT: "hsl(var(--error))",
           background: "hsla(var(--error) / 0.2)",
         },
-        pending: {
+        "pending": {
           DEFAULT: "hsl(var(--pending))",
           background: "hsla(var(--pending) / 0.2)",
         },
-        gray: {
+        "gray": {
           DEFAULT: "hsl(var(--gray))",
         },
 
-        border: {
+        "border": {
           DEFAULT: "hsla(var(--white) / 0.15)",
           30: "hsla(var(--white) / 0.3)",
           60: "hsla(var(--white) / 0.6)",
           component: "#a683ff99",
         },
-        divider: {
+        "divider": {
           DEFAULT: "hsla(var(--white) / 0.15)",
         },
-        notification: {
+        "notification": {
           DEFAULT: "hsl(var(--notification) / 0.8)",
           foreground: "hsl(var(--foreground))",
         },
-        menu: {
+        "menu": {
           DEFAULT: "hsla(var(--menu) / 0.8)",
           foreground: "hsl(var(--foreground))",
         },
-        topBanner: {
+        "topBanner": {
           DEFAULT: "hsl(var(--banner-grad-1))",
           grad1: "hsl(var(--banner-grad-1))",
           grad2: "hsl(var(--banner-grad-2))",
           foreground: "hsl(var(--foreground))",
         },
-        backButtonBackground: {
+        "backButtonBackground": {
           DEFAULT: "rgba(255,255,255,0.08)",
         },
-        partnerListItemBackgroundColor: {
+        "partnerListItemBackgroundColor": {
           DEFAULT: "#242250", // design
           HOVER: "#312F5B", // design
         },
+        "partner-overview-primary": "#733BD6",
+        "link-color": "#A683FF",
+        "partnerMissionContentBg": "rgba(36, 32, 81, 0.80)",
       },
       fontSize: {
         "heading-l": [
@@ -194,20 +201,18 @@ module.exports = {
         0.25: "1px",
         backButton: "10px",
       },
-      gap: {
-        "partnersLayout-sm": "15px",
-        "partnersLayout-lg": "2rem",
-      },
       maxWidth: {
-        "partners": "327px",
-        "partners-sm": "450px",
-        "partners-md": "700px",
+        "partners-default": "500px",
         "partners-lg": "1000px",
         "partners-xl": "1216px",
-        "partner-item": "280px",
+        "partner-overview-card": "384px",
+        "partner-page-xl": "1219px",
       },
-      maxHeight: {
-        "partner-item": "290px",
+      minWidth: {
+        "partner-overview": "327px",
+      },
+      height: {
+        "partner-mission-card": "405px",
       },
       width: {
         30: "120px",

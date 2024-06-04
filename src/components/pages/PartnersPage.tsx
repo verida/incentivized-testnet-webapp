@@ -18,7 +18,7 @@ export const PartnersPage = () => {
       showBackButton={true}
       className="w-full"
     >
-      <div className="mt-11 md:mt-16 grid gap-partnersLayout-sm lg:gap-partnersLayout-lg grid-cols-2 md:grid-cols-3 xl:grid-cols-4 max-w-partners sm:max-w-partners-sm md:max-w-partners-md lg:max-w-partners-lg xl:max-w-partners-xl mx-auto w-full text-center">
+      <div className="mt-11 md:mt-16 px-2 grid gap-4 lg:gap-8 grid-cols-2 max-w-partners-default sm:max-w-full sm:grid-cols-3 xl:grid-cols-4 lg:max-w-partners-lg xl:max-w-partners-xl mx-auto w-full text-center">
         {[...partners, ...partners, ...partners, ...partners].map(
           (partner, index) => (
             <PartnerListItem partner={partner} key={index} />

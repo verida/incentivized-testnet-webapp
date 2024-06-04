@@ -23,7 +23,7 @@ export const PartnerListItem = ({
   return (
     <div
       className={
-        "bg-customGradient p-0.25 overflow-hidden rounded-3xl md:rounded-10 hover:bg-white/60 w-full lg:max-w-partner-item lg:max-h-partner-item"
+        "bg-customGradient p-0.25 overflow-hidden rounded-3xl md:rounded-10 hover:bg-white/60 w-full"
       }
     >
       <div

@@ -44,4 +44,10 @@
     background-repeat: no-repeat;
     background-size: auto auto;
   }
+
+  .bg-partner-mission-overlay {
+    background-image: url("./images/partner-mission-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }

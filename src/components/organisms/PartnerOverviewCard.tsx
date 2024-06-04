@@ -2,6 +2,7 @@ import React from "react";
 import { useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 
+import { ReactComponent as ExternalIcon } from "~/assets/icons/link-external.svg";
 import { Icon } from "~/components/atoms";
 import {
   Activity,
@@ -32,70 +33,70 @@ export const PartnerOverviewCard = ({
     defaultMessage: "Mission",
   });
   return (
-    <div className="w-full md:w-[384px] h-fit bg-transparent-3 relative">
-      <div className="absolute bottom-[calc(100%_-_5px)] left-0 bg-[#733BD6] text-white text-[12px] font-semibold px-3 py-1 rounded-tr-lg rounded-tl-lg border-[1px] border-[#733BD6] z-[0]">
+    <div className="max-w-partner-overview-card min-w-partner-overview h-fit bg-transparent-3 relative">
+      <div className="absolute bottom-[calc(100%_-_10px)] left-0 bg-partner-overview-primary text-white font-semibold px-4 pt-1 pb-[14px] rounded-tr-lg rounded-tl-lg border border-partner-overview-primary z-0 text-base-s">
         {badgeText}
       </div>
-      <div className="bg-[#220F41] p-6 rounded-[12px] relative border-[#733BD6] border-[1px] z-[1]">
-        <div className="flex items-center mb-4 ">
+      <div className="bg-partnerOverviewBg backdrop-blur-4xl px-4 py-6 md:p-6 rounded-xl relative border-partner-overview-primary border z-10 flex flex-col gap-6">
+        <div className="flex items-center h-16">
           <img
             src={partner.image || "/images/partners/default.png"}
             alt={partner.id}
-            className="w-16 h-16 rounded-full"
+            className="h-full w-auto rounded-full bg-white p-3"
           />
-          <div className="ml-auto bg-white/10 hover: text-white px-3 py-1 rounded-lg text-center">
-            <span className="block text-[16px] font-bold">
+          <div className="flex flex-col ml-auto h-full bg-backButtonBackground hover:text-white gap-1 px-2 py-1.5 rounded-lg text-center">
+            <span className="block text-desktop-base font-semibold">
               {missions.length}
             </span>
-            <span className="block text-[12px">{missionText}</span>
+            <span className="block text-base-s">{missionText}</span>
           </div>
         </div>
         <div className="flex flex-col w-full gap-2">
-          <h3 className="text-white text-[20px] md: font-bold">
+          <h3 className="text-white text-desktop-heading-s">
             {i18n.formatMessage(partner.title)}
           </h3>
-          <span className="text-white text-[14px]">
+          <span className="text-white text-base">
             {i18n.formatMessage(partner.shortDescription)}
           </span>
         </div>
-        <div className="flex gap-3 flex-wrap mt-4">
+        <div className="flex gap-6 flex-wrap">
           {partner.resources?.map((resource, index) => (
             <Link
               to={resource.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex gap-2 items-center text-purple-400 hover:text-white transition text-[12px]"
+              className="flex gap-2 items-center text-link-color hover:text-white transition text-base-s"
               key={index}
             >
-              <Icon type="external-link" size={16} />
+              <ExternalIcon width={16} height={16} />
               {i18n.formatMessage(resource.label)}
             </Link>
           ))}
         </div>
-        <div className="flex justify-between items-center gap-1 text-purple-400 mt-5">
+        <div className="flex justify-start items-center gap-3 text-link-color flex-wrap">
           {partner.socials?.map((social, index) => (
             <Link
               to={social.link}
-              className="rounded-full p-[10px] bg-white/15 hover:bg-white/30"
+              className="rounded-full p-3 bg-white/10 hover:bg-white/30"
               key={index}
             >
               {social.type === SocialType.DISCORD && (
-                <Icon type="platform-discord" size={12} />
+                <Icon type="platform-discord" size={16} />
               )}
               {social.type === SocialType.LINKEDIN && (
-                <Icon type="platform-linkedin" size={12} />
+                <Icon type="platform-linkedin" size={16} />
               )}
               {social.type === SocialType.MEDIUM && (
-                <Icon type="platform-medium" size={12} />
+                <Icon type="platform-medium" size={16} />
               )}
               {social.type === SocialType.TELEGRAM && (
-                <Icon type="platform-telegram" size={12} />
+                <Icon type="platform-telegram" size={16} />
               )}
               {social.type === SocialType.X && (
-                <Icon type="platform-x" size={12} />
+                <Icon type="platform-x" size={16} />
               )}
               {social.type === SocialType.YOUTUBE && (
-                <Icon type="platform-youtube" size={12} />
+                <Icon type="platform-youtube" size={16} />
               )}
             </Link>
           ))}

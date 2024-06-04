@@ -55,9 +55,10 @@ export function PartnerMissionCard({ mission }: { mission: PartnerMission }) {
   }, []);
 
   return (
-    <div className="max-w-[384px] rounded-[12px] flex flex-col h-[400px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+    <div className="relative bg-partnerMissionCardBg max-w-partner-overview-card w-[382px] rounded-xl flex flex-col border border-white overflow-hidden h-partner-mission-card backdrop-blur-4xl">
+      <div className="bg-partner-mission-overlay w-full h-full absolute -z-10"></div>
       <div className="text-[18px] relative flex justify-center mt-5 mb-1 h-[150px]">
-        <img src="/images/bg_point.png" className="w-[160px] h-" alt={alt} />
+        <img src="/images/bg_point.png" className="w-[160px]" alt={alt} />
         <span className="absolute top-[45%] justify-center flex w-full pl-[2px] font-bold">
           {totalPoints} {xpText}
         </span>
@@ -74,7 +75,7 @@ export function PartnerMissionCard({ mission }: { mission: PartnerMission }) {
           ))}
         </div>
       </div>
-      <div className="rounded-tl-md rounded-tr-md bg-[#19193D]/70 flex-1 px-[16px] py-[24px] mt-[16px] flex flex-col w-full">
+      <div className="rounded-tl-md rounded-tr-md overflow-hidden mt-3 bg-partnerMissionContentBg flex-1 px-[16px] py-[24px] flex flex-col w-full gap-6">
         <h3 className="text-[16px] md:text-[20px] font-bold leading-6">
           {missionLabel}
         </h3>
