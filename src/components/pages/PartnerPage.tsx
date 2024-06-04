@@ -1,6 +1,5 @@
 import { useIntl } from "react-intl";
 import { useLocation } from "react-router-dom";
-import { twMerge } from "tailwind-merge";
 
 import { PartnerMissionCard } from "~/components/organisms";
 import { PartnerOverviewCard } from "~/components/organisms";
