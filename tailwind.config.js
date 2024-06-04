@@ -181,6 +181,7 @@ module.exports = {
       },
       backdropBlur: {
         "xs": "3px",
+        "sm": "4.5px",
         "4xl": "100px",
       },
       lineHeight: {
@@ -191,6 +192,25 @@ module.exports = {
       },
       padding: {
         0.25: "1px",
+        backButton: "10px",
+      },
+      gap: {
+        "partnersLayout-sm": "15px",
+        "partnersLayout-lg": "2rem",
+      },
+      maxWidth: {
+        "partners": "327px",
+        "partners-sm": "450px",
+        "partners-md": "700px",
+        "partners-lg": "1000px",
+        "partners-xl": "1216px",
+        "partner-item": "280px",
+      },
+      maxHeight: {
+        "partner-item": "290px",
+      },
+      width: {
+        30: "120px",
       },
     },
   },

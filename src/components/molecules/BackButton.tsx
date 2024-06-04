@@ -13,7 +13,7 @@ export const BackButton: React.FunctionComponent<ButtonProps> = (props) => {
     <button
       {...btnProps}
       className={twMerge(
-        "w-10 h-10 flex justify-center items-center p-[10px] bg-backButtonBackground rounded-[12px] border border-white/10 font-bold cursor-pointer backdrop-blur-[4.5px] opacity-50 hover:opacity-100",
+        "w-10 h-10 flex justify-center items-center p-backButton bg-backButtonBackground rounded-xl border border-white/10 font-bold cursor-pointer backdrop-blur-sm opacity-50 hover:opacity-100",
         className
       )}
       onClick={() => navigate(-1)}
