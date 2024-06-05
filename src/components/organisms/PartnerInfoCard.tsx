@@ -11,7 +11,7 @@ import {
   SocialType,
 } from "~/features/activity/types";
 
-export const PartnerOverviewCard = ({
+export const PartnerInfoCard = ({
   partner,
   activities,
   missions,
@@ -33,11 +33,11 @@ export const PartnerOverviewCard = ({
     defaultMessage: "Mission",
   });
   return (
-    <div className="max-w-partner-overview-card min-w-partner-overview h-fit bg-transparent-3 relative">
-      <div className="absolute bottom-[calc(100%_-_10px)] left-0 bg-partner-overview-primary text-white font-semibold px-4 pt-1 pb-[14px] rounded-tr-lg rounded-tl-lg border border-partner-overview-primary z-0 text-base-s">
+    <div className="max-w-partner-info-card min-w-partner-info h-fit bg-transparent-3 relative">
+      <div className="absolute bottom-[calc(100%_-_10px)] left-0 bg-partner-info-primary text-white font-semibold px-4 pt-1 pb-[14px] rounded-tr-lg rounded-tl-lg border border-partner-info-primary z-0 text-base-s">
         {badgeText}
       </div>
-      <div className="bg-partnerOverviewBg backdrop-blur-4xl px-4 py-6 md:p-6 rounded-xl relative border-partner-overview-primary border z-10 flex flex-col gap-6">
+      <div className="bg-partnerInfoBg backdrop-blur-4xl px-4 py-6 md:p-6 rounded-xl relative border-partner-info-primary border z-10 flex flex-col gap-6">
         <div className="flex items-center h-16">
           <img
             src={partner.image || "/images/partners/default.png"}

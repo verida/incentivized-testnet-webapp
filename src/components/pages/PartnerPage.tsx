@@ -2,7 +2,7 @@ import { useIntl } from "react-intl";
 import { useLocation } from "react-router-dom";
 
 import { PartnerMissionCard } from "~/components/organisms";
-import { PartnerOverviewCard } from "~/components/organisms";
+import { PartnerInfoCard } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { usePartner } from "~/features/activity";
 
@@ -40,7 +40,7 @@ export const PartnerPage = () => {
     >
       {partner ? (
         <div className="flex flex-col md:flex-row gap-10 lg:gap-[35px] w-full justify-center xl:max-w-partner-page-xl mt-10 md:mt-0">
-          <PartnerOverviewCard
+          <PartnerInfoCard
             partner={partner}
             missions={missions}
             activities={activities}

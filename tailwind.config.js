@@ -11,8 +11,7 @@ module.exports = {
           "linear-gradient(138deg, rgba(255, 255, 255, .9), rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, .9))",
         reverseCustomGradient:
           "linear-gradient(138deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.1))",
-        partnerOverviewBg:
-          "linear-gradient(129deg, #220F41 1.09%, #19193D 98.84%)",
+        partnerInfoBg: "linear-gradient(129deg, #220F41 1.09%, #19193D 98.84%)",
         partnerMissionCardBg:
           "linear-gradient(180deg, #733BD6 0.5%, rgba(115, 59, 214, 0.00) 100%)",
       },
@@ -94,7 +93,7 @@ module.exports = {
           DEFAULT: "#242250", // design
           HOVER: "#312F5B", // design
         },
-        "partner-overview-primary": "#733BD6",
+        "partner-info-primary": "#733BD6",
         "link-color": "#A683FF",
         "partnerMissionContentBg": "rgba(36, 32, 81, 0.80)",
       },
@@ -176,6 +175,20 @@ module.exports = {
             fontWeight: "400",
           },
         ],
+        "mission-title": [
+          "1.25rem",
+          {
+            lineHeight: "140%",
+            fontWeight: "700",
+          },
+        ],
+        "point-title": [
+          "18px",
+          {
+            lineHeight: "140%",
+            fontWeight: "800",
+          },
+        ],
       },
       animation: {
         "spin-slow": "spin 5s linear infinite",
@@ -205,17 +218,17 @@ module.exports = {
         "partners-default": "500px",
         "partners-lg": "1000px",
         "partners-xl": "1216px",
-        "partner-overview-card": "384px",
+        "partner-info-card": "384px",
         "partner-page-xl": "1219px",
       },
       minWidth: {
-        "partner-overview": "327px",
-      },
-      height: {
-        "partner-mission-card": "405px",
+        "partner-info": "327px",
       },
       width: {
         30: "120px",
+      },
+      boxShadow: {
+        "partner-mission": "16px 32px 80px 0px #0F0F25",
       },
     },
   },

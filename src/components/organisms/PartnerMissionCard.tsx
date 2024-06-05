@@ -1,6 +1,8 @@
 import { useIntl } from "react-intl";
 import { twMerge } from "tailwind-merge";
 
+import { ReactComponent as BgPoint } from "~/assets/images/bg_point.svg";
+import { ReactComponent as PointStar } from "~/assets/images/point_star.svg";
 import { MissionProgessBarIndicator } from "~/components/atoms/MissionProgessBarIndicator";
 import {
   Partner,
@@ -18,7 +20,6 @@ export function PartnerMissionCard({ mission }: { mission: PartnerMission }) {
     description: "Description of xp label",
     defaultMessage: "XP",
   });
-  const alt = "bg_point";
 
   // dummy
   const activityStatus: UserActivityStatus[] = [
@@ -55,52 +56,53 @@ export function PartnerMissionCard({ mission }: { mission: PartnerMission }) {
   }, []);
 
   return (
-    <div className="relative bg-partnerMissionCardBg max-w-partner-overview-card w-[382px] rounded-xl flex flex-col border border-white overflow-hidden h-partner-mission-card backdrop-blur-4xl">
-      <div className="bg-partner-mission-overlay w-full h-full absolute -z-10"></div>
-      <div className="text-[18px] relative flex justify-center mt-5 mb-1 h-[150px]">
-        <img src="/images/bg_point.png" className="w-[160px]" alt={alt} />
-        <span className="absolute top-[45%] justify-center flex w-full pl-[2px] font-bold">
-          {totalPoints} {xpText}
-        </span>
-      </div>
-      <div className="w-full px-[16px]">
-        <span className="text-[12px]">{progressLabel}</span>
-        <div className="flex gap-1">
-          {activityStatus.map((status, index) => (
-            <MissionProgessBarIndicator
-              key={index}
-              variant={status}
-              className="flex-grow"
-            />
-          ))}
-        </div>
-      </div>
-      <div className="rounded-tl-md rounded-tr-md overflow-hidden mt-3 bg-partnerMissionContentBg flex-1 px-[16px] py-[24px] flex flex-col w-full gap-6">
-        <h3 className="text-[16px] md:text-[20px] font-bold leading-6">
-          {missionLabel}
-        </h3>
-        <div className="flex justify-between items-center space-x-2  mt-auto">
-          <div className="rounded-3xl py-[6px] px-[12px] flex gap-2 border-[1px] border-border-component items-center">
-            <img
-              src="/images/point-star.png"
-              alt=""
-              className="w-[18px] h-[20px]"
-            />
-            <span className="flex text-[14px]">
+    <div className="bg-partnerMissionCardBg border border-white/30 backdrop-blur-4xl shadow-partner-mission overflow-hidden rounded-xl max-w-partner-info-card">
+      <div className="relative rounded-xl flex flex-col overflow-hidden backdrop-blur-4xl">
+        <div className="bg-partner-mission-overlay w-full h-full absolute -z-10"></div>
+        <div className="p-4">
+          <div className="relative flex justify-center">
+            <BgPoint />
+            <span className="absolute top-[45%] justify-center flex w-full font-bold text-point-title">
               {totalPoints} {xpText}
             </span>
           </div>
-          <div className="flex">
-            {partners.map((partner) => (
-              <img
-                src={partner.image}
-                alt=""
-                className={twMerge(
-                  "rounded-full w-[32px] h-[32px]",
-                  partners.length > 1 ? "ml-[-10px]" : "ml-0"
-                )}
-              />
-            ))}
+          <div className="w-full">
+            <span className="text-base-s font-semibold">{progressLabel}</span>
+            <div className="flex gap-1">
+              {activityStatus.map((status, index) => (
+                <MissionProgessBarIndicator
+                  key={index}
+                  variant={status}
+                  className="flex-grow"
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="rounded-tl-xl rounded-tr-xl overflow-hidden bg-partnerMissionContentBg flex-1 px-4 py-6 flex flex-col w-full gap-6">
+          <h3 className="text-desktop-base md:text-mission-title">
+            {missionLabel}
+          </h3>
+          <div className="flex justify-between items-center">
+            <div className="flex rounded-[53px] py-1.5 px-3 gap-1.5 border border-border-component items-center">
+              <img src="/images/point-star.png" alt="" className="w-5 h-5" />
+              <span className="flex text-base font-semibold">
+                {totalPoints} {xpText}
+              </span>
+            </div>
+            <div className="flex">
+              {partners.map((partner) => (
+                <img
+                  src={partner.image}
+                  alt=""
+                  className={twMerge(
+                    "rounded-full w-8 h-8 bg-white p-1",
+                    partners.length > 1 ? "-ml-3" : "ml-0"
+                  )}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
