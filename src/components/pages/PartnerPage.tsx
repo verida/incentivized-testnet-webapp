@@ -19,19 +19,8 @@ export const PartnerPage = () => {
   const partnerId = location.pathname?.split("/")?.[2];
 
   // Extract partner and activities from partner id
-  const {
-    partner,
-    activities,
-    missions: partnerMissions,
-  } = usePartner(partnerId);
+  const { partner, activities, missions } = usePartner(partnerId);
 
-  // This is mock up
-  const missions = [
-    ...partnerMissions,
-    ...partnerMissions,
-    ...partnerMissions,
-    ...partnerMissions,
-  ];
   return (
     <PageLayout
       hideAppTitle={true}

@@ -2,7 +2,6 @@ import { useIntl } from "react-intl";
 import { twMerge } from "tailwind-merge";
 
 import { ReactComponent as BgPoint } from "~/assets/images/bg_point.svg";
-import { ReactComponent as PointStar } from "~/assets/images/point_star.svg";
 import { MissionProgessBarIndicator } from "~/components/atoms/MissionProgessBarIndicator";
 import {
   Partner,
@@ -19,6 +18,12 @@ export function PartnerMissionCard({ mission }: { mission: PartnerMission }) {
     id: "partnermission.xplabel",
     description: "Description of xp label",
     defaultMessage: "XP",
+  });
+
+  const altText = i18n.formatMessage({
+    id: "partnermission.alt",
+    description: "Description of image",
+    defaultMessage: "point-alt",
   });
 
   // dummy
@@ -86,7 +91,11 @@ export function PartnerMissionCard({ mission }: { mission: PartnerMission }) {
           </h3>
           <div className="flex justify-between items-center">
             <div className="flex rounded-[53px] py-1.5 px-3 gap-1.5 border border-border-component items-center">
-              <img src="/images/point-star.png" alt="" className="w-5 h-5" />
+              <img
+                src="/images/point-star.png"
+                alt={altText}
+                className="w-5 h-5"
+              />
               <span className="flex text-base font-semibold">
                 {totalPoints} {xpText}
               </span>
@@ -95,7 +104,7 @@ export function PartnerMissionCard({ mission }: { mission: PartnerMission }) {
               {partners.map((partner) => (
                 <img
                   src={partner.image}
-                  alt=""
+                  alt={altText}
                   className={twMerge(
                     "rounded-full w-8 h-8 bg-white p-1",
                     partners.length > 1 ? "-ml-3" : "ml-0"
