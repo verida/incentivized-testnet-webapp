@@ -1,7 +1,7 @@
 import { useIntl } from "react-intl";
 import { useLocation } from "react-router-dom";
 
-import { PartnerMissionInfoCard } from "~/components/organisms";
+import { MissionCard } from "~/components/organisms";
 import { PartnerInfoCard } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { usePartner } from "~/features/activity";
@@ -32,9 +32,8 @@ export const PartnerPage = () => {
           />
           <div className={"grid grid-cols-1 lg:gap-8"}>
             {missions.map((mission, index) => (
-              <PartnerMissionInfoCard
+              <MissionCard
                 mission={mission}
-                partner={partner}
                 activities={activities.filter(
                   (activity) => activity.missionId === mission.id
                 )}

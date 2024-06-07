@@ -2,16 +2,14 @@ import { useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
 
 import { Button } from "~/components/atoms";
-import { Activity, Partner, PartnerMission } from "~/features/activity";
+import { Activity, PartnerMission } from "~/features/activity";
 
-import { PartnerMissionInfoActivityRow } from "./PartnerMissionInfoActivityRow";
+import { MissionActivityCard } from "./MissionActivityCard";
 
-export const PartnerMissionInfoCard = ({
-  partner,
+export const MissionCard = ({
   mission,
   activities,
 }: {
-  partner: Partner;
   mission: PartnerMission;
   activities: Activity[];
 }) => {
@@ -46,7 +44,7 @@ export const PartnerMissionInfoCard = ({
         <h5 className="text-desktop-base font-semibold">{activityText}</h5>
         <div className="flex flex-col w-full gap-6">
           {activities.map((activity, index) => (
-            <PartnerMissionInfoActivityRow
+            <MissionActivityCard
               activity={activity}
               no={index + 1}
               key={index}

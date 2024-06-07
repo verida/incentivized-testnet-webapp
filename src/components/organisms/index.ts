@@ -9,5 +9,5 @@ export * from "./MissionsSideNavigation";
 export * from "./TermsAndConditions";
 export * from "./PartnerMissionCard";
 export * from "./PartnerInfoCard";
-export * from "./PartnerMissionInfoCard";
-export * from "./PartnerMissionInfoActivityRow";
+export * from "./MissionCard";
+export * from "./MissionActivityCard";
