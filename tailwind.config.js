@@ -14,6 +14,8 @@ module.exports = {
         partnerInfoBg: "linear-gradient(129deg, #220F41 1.09%, #19193D 98.84%)",
         partnerMissionCardBg:
           "linear-gradient(180deg, #733BD6 0.5%, rgba(115, 59, 214, 0.00) 100%)",
+        pointBg:
+          "linear-gradient(0deg, rgba(138, 98, 237, 0.20) 0%, rgba(138, 98, 237, 0.20) 100%, #19193D)",
       },
       colors: {
         "white": "hsl(var(--white))",
@@ -23,6 +25,7 @@ module.exports = {
           DEFAULT: "hsla(var(--white) / 0)",
           3: "hsla(var(--white) / 0.03)",
           5: "hsla(var(--white) / 0.05)",
+          6: "hsla(var(--white) / 0.06)",
           10: "hsla(var(--white) / 0.10)",
           15: "hsla(var(--white) / 0.15)",
           20: "hsla(var(--white) / 0.2)",
@@ -96,6 +99,8 @@ module.exports = {
         "partner-info-primary": "#733BD6",
         "link-color": "#A683FF",
         "partnerMissionContentBg": "rgba(36, 32, 81, 0.80)",
+        "partnerMissionInfoContentBg": "rgba(25, 25, 61, 0.88)",
+        "partnerMissionInfoButtonColor": "#19193D",
       },
       fontSize: {
         "heading-l": [
@@ -209,6 +214,7 @@ module.exports = {
       },
       borderRadius: {
         10: "2.5rem",
+        badge: "53px",
       },
       padding: {
         0.25: "1px",
@@ -219,10 +225,6 @@ module.exports = {
         "partners-lg": "1000px",
         "partners-xl": "1216px",
         "partner-info-card": "384px",
-        "partner-page-xl": "1219px",
-      },
-      minWidth: {
-        "partner-info": "327px",
       },
       width: {
         30: "120px",

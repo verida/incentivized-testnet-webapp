@@ -10,8 +10,10 @@ import {
   CooperativeHandshake,
   Copy,
   Down,
+  Left,
   LoadingOne,
   Logout,
+  Right,
   Share,
   ShareOne,
   Up,
@@ -33,6 +35,8 @@ import { ReactComponent as Youtube } from "~/assets/logos/platforms/youtube.svg"
 export type GenericIconType =
   | "chevron-up"
   | "chevron-down"
+  | "chevron-right"
+  | "chevron-left"
   | "user"
   | "bug"
   | "close"
@@ -74,6 +78,10 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
       return <Down size={size} {...otherProps} />;
     case "chevron-up":
       return <Up size={size} {...otherProps} />;
+    case "chevron-right":
+      return <Right size={size} {...otherProps} />;
+    case "chevron-left":
+      return <Left size={size} {...otherProps} />;
     case "user":
       return <User size={size} {...otherProps} />;
     case "bug":

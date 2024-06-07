@@ -90,7 +90,7 @@ export function PartnerMissionCard({ mission }: { mission: PartnerMission }) {
             {missionLabel}
           </h3>
           <div className="flex justify-between items-center">
-            <div className="flex rounded-[53px] py-1.5 px-3 gap-1.5 border border-border-component items-center">
+            <div className="flex rounded-badge py-1.5 px-3 gap-1.5 border border-border-component items-center">
               <img
                 src="/images/point-star.png"
                 alt={altText}

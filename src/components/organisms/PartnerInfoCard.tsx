@@ -22,17 +22,17 @@ export const PartnerInfoCard = ({
   const i18n = useIntl();
 
   const badgeText = i18n.formatMessage({
-    id: "partners.badge",
+    id: "partner.info.badge",
     description: "Description of partner badge",
     defaultMessage: "Partner",
   });
-  const missionText = i18n.formatMessage({
-    id: "missions.title",
-    description: "Description of missions title",
-    defaultMessage: "Mission",
+  const activityText = i18n.formatMessage({
+    id: "partner.info.activity.title",
+    description: "Description of activities title",
+    defaultMessage: "Activities",
   });
   return (
-    <div className="max-w-partner-info-card min-w-partner-info h-fit bg-transparent-3 relative">
+    <div className="max-w-full lg:max-w-partner-info-card h-fit bg-transparent-3 relative">
       <div className="absolute bottom-[calc(100%_-_10px)] left-0 bg-partner-info-primary text-white font-semibold px-4 pt-1 pb-[14px] rounded-tr-lg rounded-tl-lg border border-partner-info-primary z-0 text-base-s">
         {badgeText}
       </div>
@@ -45,9 +45,9 @@ export const PartnerInfoCard = ({
           />
           <div className="flex flex-col ml-auto h-full bg-backButtonBackground hover:text-white gap-1 px-2 py-1.5 rounded-lg text-center">
             <span className="block text-desktop-base font-semibold">
-              {missions.length}
+              {activities.length}
             </span>
-            <span className="block text-base-s">{missionText}</span>
+            <span className="block text-base-s">{activityText}</span>
           </div>
         </div>
         <div className="flex flex-col w-full gap-2">

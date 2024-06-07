@@ -1,7 +1,7 @@
 import { useIntl } from "react-intl";
 import { useLocation } from "react-router-dom";
 
-import { PartnerMissionCard } from "~/components/organisms";
+import { PartnerMissionInfoCard } from "~/components/organisms";
 import { PartnerInfoCard } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { usePartner } from "~/features/activity";
@@ -22,23 +22,24 @@ export const PartnerPage = () => {
   const { partner, activities, missions } = usePartner(partnerId);
 
   return (
-    <PageLayout
-      hideAppTitle={true}
-      showBackButton={true}
-      className="w-full mt-8"
-    >
+    <PageLayout hideAppTitle={true} showBackButton={true} className="w-full">
       {partner ? (
-        <div className="flex flex-col md:flex-row gap-10 lg:gap-[35px] w-full justify-center xl:max-w-partner-page-xl mt-10 md:mt-0">
+        <div className="flex flex-col lg:flex-row gap-10 w-full justify-center mt-10 lg:mt-0">
           <PartnerInfoCard
             partner={partner}
             missions={missions}
             activities={activities}
           />
-          <div
-            className={"grid grid-cols-1 lg:grid-cols-2 gap-[15px] lg:gap-8"}
-          >
+          <div className={"grid grid-cols-1 lg:gap-8"}>
             {missions.map((mission, index) => (
-              <PartnerMissionCard mission={mission} key={index} />
+              <PartnerMissionInfoCard
+                mission={mission}
+                partner={partner}
+                activities={activities.filter(
+                  (activity) => activity.missionId === mission.id
+                )}
+                key={index}
+              />
             ))}
           </div>
         </div>
