@@ -1,5 +1,6 @@
 export * from "./ActivityIndex";
 export * from "./Avatar";
+export * from "./BackButton";
 export * from "./Button";
 export * from "./ButtonBase";
 export * from "./ButtonLink";

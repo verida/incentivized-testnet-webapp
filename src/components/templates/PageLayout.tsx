@@ -1,8 +1,8 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-import { Typography } from "~/components/atoms";
-import { BackButton, ReportIssueButton } from "~/components/molecules";
+import { BackButton, Typography } from "~/components/atoms";
+import { ReportIssueButton } from "~/components/molecules";
 import { GetSupportSection, LearnMoreSection } from "~/components/organisms";
 
 export type PageLayoutProps = {
