@@ -12,13 +12,8 @@ export const PartnersPage = () => {
     defaultMessage: "Partners",
   });
   return (
-    <PageLayout
-      hideAppTitle={true}
-      title={title}
-      showBackButton={true}
-      className="w-full"
-    >
-      <div className="mt-11 md:mt-16 px-2 grid gap-4 lg:gap-8 grid-cols-2 max-w-partners-default sm:max-w-full sm:grid-cols-3 xl:grid-cols-4 lg:max-w-partners-lg xl:max-w-partners-xl mx-auto w-full text-center">
+    <PageLayout title={title}>
+      <div className="grid gap-4 lg:gap-8 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
         {[...partners, ...partners, ...partners, ...partners].map(
           (partner, index) => (
             <PartnerListItem partner={partner} key={index} />
