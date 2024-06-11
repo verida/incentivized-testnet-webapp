@@ -9,6 +9,7 @@ type ButtonProps = React.ComponentPropsWithRef<"button">;
 export const BackButton: React.FunctionComponent<ButtonProps> = (props) => {
   const { className, ...btnProps } = props;
   const navigate = useNavigate();
+
   return (
     <button
       {...btnProps}
