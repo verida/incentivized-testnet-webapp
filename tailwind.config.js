@@ -200,6 +200,7 @@ module.exports = {
       },
       screens: {
         sm: "696px",
+        xl: "1264px"
       },
       spacing: {
         4.5: "1.125rem",

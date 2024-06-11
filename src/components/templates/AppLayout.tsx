@@ -1,22 +1,12 @@
 import React from "react";
-import { Outlet, ScrollRestoration, useLocation } from "react-router-dom";
-import { twMerge } from "tailwind-merge";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 
-import { ReactComponent as BgImage } from "~/assets/images/bg_bottom.svg";
-import { ReportIssueButton, TopBanner } from "~/components/molecules";
-import {
-  Footer,
-  GetSupportSection,
-  Header,
-  LearnMoreSection,
-} from "~/components/organisms";
+import { TopBanner } from "~/components/molecules";
+import { Footer, Header } from "~/components/organisms";
 import { ErrorBoundary } from "~/features/errors";
 import { MetaTags } from "~/features/metatags";
 
-export const AppLayout: React.FunctionComponent = () => {
-  const location = useLocation();
-  const path = location.pathname;
-
+export const AppLayout: React.FC = () => {
   return (
     <>
       <MetaTags>
@@ -25,36 +15,17 @@ export const AppLayout: React.FunctionComponent = () => {
         <meta property="twitter:url" content={window.location.href} />
       </MetaTags>
       <ErrorBoundary defaultFallbackCardClassName="h-screen w-screen flex flex-col items-center justify-center">
-        <div className="relative flex h-full w-full flex-col">
+        <div className="relative flex flex-col h-full w-full">
           <TopBanner />
           <Header className="sticky top-0 left-0 right-0 z-50 backdrop-blur-[6px]" />
-          <div
-            className={twMerge(
-              "flex min-h-screen flex-col",
-              path === "/" ? "bg-app" : ""
-            )}
-          >
-            <div className="flex-grow">
-              <main className="mx-auto flex w-full flex-grow flex-col px-4 md:px-10 pt-4 mb-8 items-center max-w-screen-sm md:max-w-full">
-                <ErrorBoundary defaultFallbackCardClassName="flex flex-col flex-grow justify-center">
-                  <Outlet />
-                </ErrorBoundary>
-              </main>
-              <div className="sticky bottom-4 sm:bottom-6 left-4 sm:left-6 w-fit">
-                <ReportIssueButton />
-              </div>
+          <div className="flex flex-col min-h-screen bg-app">
+            <div className="flex-grow flex flex-col">
+              <ErrorBoundary defaultFallbackCardClassName="flex flex-col flex-grow justify-center">
+                <Outlet />
+              </ErrorBoundary>
             </div>
-            <div className="mt-8">
-              <GetSupportSection />
-              <LearnMoreSection />
-              <Footer />
-            </div>
+            <Footer className="mt-4 sm:mt-6" />
           </div>
-          {path !== "/" && (
-            <div className="absolute bottom-0 w-full flex justify-center blur-[100px] -z-10">
-              <BgImage />
-            </div>
-          )}
         </div>
         <ScrollRestoration />
       </ErrorBoundary>

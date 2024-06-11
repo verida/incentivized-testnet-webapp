@@ -13,7 +13,10 @@ import { useActivity } from "~/features/activity";
 import { useAirdrop1, useAirdrop2 } from "~/features/airdrops";
 import { truncateDid, useVerida } from "~/features/verida";
 
-export type HeaderProps = React.ComponentPropsWithRef<"header">;
+export type HeaderProps = Omit<
+  React.ComponentPropsWithRef<"header">,
+  "children"
+>;
 
 export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const { ...headerProps } = props;

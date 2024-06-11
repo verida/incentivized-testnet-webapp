@@ -1,11 +1,19 @@
 import { ReactComponent as VeridaNetworkLogo } from "assets/images/verida_network_logo_with_text_white.svg";
 import React from "react";
 import { useIntl } from "react-intl";
+import { twMerge } from "tailwind-merge";
 
 import { ExternalLink, Typography } from "~/components/atoms";
 import { VERIDA_NETWORK_URL } from "~/constants";
 
-export const Footer: React.FunctionComponent = () => {
+export type FooterProps = Omit<
+  React.ComponentPropsWithRef<"footer">,
+  "children"
+>;
+
+export const Footer: React.FC<FooterProps> = (props) => {
+  const { className, ...footerProps } = props;
+
   const i18n = useIntl();
   const copyrightYear = `${new Date().getFullYear()}`;
 
@@ -39,7 +47,13 @@ export const Footer: React.FunctionComponent = () => {
   );
 
   return (
-    <footer className="flex flex-col items-center justify-center space-y-3 border-t border-solid border-divider py-4 px-6 sm:flex-row sm:justify-between">
+    <footer
+      {...footerProps}
+      className={twMerge(
+        "flex flex-col items-center justify-center space-y-3 border-t border-solid border-divider py-4 px-6 sm:flex-row sm:justify-between",
+        className
+      )}
+    >
       <div className="flex flex-col justify-center sm:order-2">
         <ExternalLink
           href={VERIDA_NETWORK_URL}
