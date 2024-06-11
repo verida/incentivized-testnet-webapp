@@ -6,7 +6,7 @@ import { PartnerInfoCard } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { usePartner } from "~/features/activity";
 
-export const PartnerPage = () => {
+export const PartnerPage: React.FC = () => {
   const i18n = useIntl();
   const emptry = i18n.formatMessage({
     id: "PartnerPage.empty",
@@ -22,9 +22,9 @@ export const PartnerPage = () => {
   const { partner, activities, missions } = usePartner(partnerId);
 
   return (
-    <PageLayout hideAppTitle={true} showBackButton={true} className="w-full">
+    <PageLayout>
       {partner ? (
-        <div className="flex flex-col lg:flex-row gap-10 w-full justify-center mt-10 lg:mt-0">
+        <div className="flex flex-col lg:flex-row gap-10 w-full justify-center">
           <PartnerInfoCard
             partner={partner}
             missions={missions}
