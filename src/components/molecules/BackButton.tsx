@@ -1,25 +1,31 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
-import { ReactComponent as BackIcon } from "~/assets/icons/arrow-left.svg";
+import { Icon, IconButton } from "~/components/atoms";
 
-type ButtonProps = React.ComponentPropsWithRef<"button">;
+export type BackButtonProps = Omit<
+  React.ComponentPropsWithRef<typeof IconButton>,
+  "variant" | "icon" | "color" | "onClick"
+>;
 
-export const BackButton: React.FunctionComponent<ButtonProps> = (props) => {
-  const { className, ...btnProps } = props;
+export const BackButton: React.FC<BackButtonProps> = (props) => {
+  const { className, ...iconButtonProps } = props;
+
   const navigate = useNavigate();
 
+  const handleBack = useCallback(() => {
+    navigate(-1);
+  }, [navigate]);
+
   return (
-    <button
-      {...btnProps}
-      className={twMerge(
-        "w-10 h-10 flex justify-center items-center p-backButton bg-backButtonBackground rounded-xl border border-white/10 font-bold cursor-pointer backdrop-blur-sm opacity-50 hover:opacity-100",
-        className
-      )}
-      onClick={() => navigate(-1)}
-    >
-      <BackIcon />
-    </button>
+    <IconButton
+      {...iconButtonProps}
+      variant="outlined"
+      color="default"
+      className={twMerge("backdrop-blur-sm", className)}
+      icon={<Icon type="arrow-left" size={18} />}
+      onClick={handleBack}
+    />
   );
 };
