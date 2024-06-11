@@ -1,6 +1,7 @@
 import React from "react";
 import { useIntl } from "react-intl";
 
+import { Typography } from "~/components/atoms";
 import { Alert, HomeHero } from "~/components/molecules";
 import {
   ConnectVeridaButton,
@@ -8,6 +9,7 @@ import {
   MissionsSideNavigation,
 } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
+import { APP_TITLE } from "~/constants";
 import { useActivity } from "~/features/activity";
 import {
   useAirdrop1,
@@ -92,8 +94,28 @@ export const HomePage: React.FunctionComponent = () => {
   });
 
   return (
-    <PageLayout title={tagline} className="mt-40 max-w-screen-sm px-0 md:px-4">
-      <div className="flex flex-col justify-center mx-auto">
+    <PageLayout
+      hideBackButton
+      displayGetSupportSection
+      displayLearnMoreSection
+      containerClassName="bg-homepage"
+      contentClassName="max-w-screen-sm sm:px-4 pt-16"
+    >
+      <div className="flex flex-col justify-center">
+        <div className="flex flex-col items-center justify-center text-center w-full mt-28">
+          <Typography
+            variant="base"
+            className="leading-[120%] font-semibold text-primary uppercase tracking-[0.07rem] sm:tracking-[0.08rem]"
+          >
+            {APP_TITLE}
+          </Typography>
+          <Typography variant="heading-l" className="mt-3">
+            {/* Had to surround by div because of style conflict with Typography, likely 'text-transparent' */}
+            <div className="bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/70 px-8 sm:px-14 text-center">
+              {tagline}
+            </div>
+          </Typography>
+        </div>
         <HomeHero className="mt-4" />
         {isConnected ? null : (
           <div className="mt-6 flex justify-center">
