@@ -1,12 +1,20 @@
 import React from "react";
 import { useIntl } from "react-intl";
+import { twMerge } from "tailwind-merge";
 
 import { ButtonLink, Typography } from "~/components/atoms";
 import { veridaSupportPlatforms } from "~/constants";
 
 const links = Object.values(veridaSupportPlatforms);
 
-export const GetSupportSection: React.FunctionComponent = () => {
+export type GetSupportSectionProps = Omit<
+  React.ComponentPropsWithRef<"aside">,
+  "children"
+>;
+
+export const GetSupportSection: React.FC<GetSupportSectionProps> = (props) => {
+  const { className, ...asideProps } = props;
+
   const i18n = useIntl();
 
   const sectionTitle = i18n.formatMessage({
@@ -16,11 +24,17 @@ export const GetSupportSection: React.FunctionComponent = () => {
   });
 
   return (
-    <aside className="p-4 flex flex-col justify-center items-center gap-4">
+    <aside
+      {...asideProps}
+      className={twMerge(
+        "p-4 flex flex-col justify-center items-center gap-4",
+        className
+      )}
+    >
       <Typography variant="heading-s" component="p">
         {sectionTitle}
       </Typography>
-      <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6 max-w-5xl w-full">
+      <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6 w-full">
         {links.map((link, index) => (
           <li key={index}>
             <ButtonLink href={link.url} openInNewTab>

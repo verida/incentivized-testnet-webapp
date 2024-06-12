@@ -9,6 +9,7 @@ const buttonBaseVariants = cva(
       variant: {
         text: "bg-transparent disabled:bg-transparent",
         contained: "",
+        outlined: "",
       },
       color: {
         default: "",
@@ -54,6 +55,12 @@ const buttonBaseVariants = cva(
           "text-foreground bg-transparent-15 hover:bg-transparent-30 disabled:opacity-30 disabled:bg-transparent-15",
       },
       {
+        variant: "outlined",
+        color: "default",
+        className:
+          "text-foreground bg-transparent-8 hover:bg-transparent-12 border border-transparent-10 hover:border-transparent-20 disabled:opacity-30 disabled:bg-transparent-8",
+      },
+      {
         variant: "text",
         color: "default",
         className: "hover:bg-transparent-10 disabled:text-muted-foreground",
@@ -63,6 +70,13 @@ const buttonBaseVariants = cva(
         color: "primary",
         className:
           "text-primary-foreground bg-primary hover:bg-primary-background-hover disabled:bg-primary-background-disabled",
+      },
+      {
+        variant: "outlined",
+        color: "primary",
+        // TODO: Properly rework the style of this coumpound variant when needed
+        className:
+          "text-primary bg-transparent-8 hover:bg-transparent-12 border-primary hover:border-primary disabled:opacity-30 disabled:bg-transparent-8",
       },
       {
         variant: "text",

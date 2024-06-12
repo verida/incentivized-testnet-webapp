@@ -26,19 +26,19 @@ module.exports = {
           3: "hsla(var(--white) / 0.03)",
           5: "hsla(var(--white) / 0.05)",
           6: "hsla(var(--white) / 0.06)",
+          8: "hsla(var(--white) / 0.08)",
           10: "hsla(var(--white) / 0.10)",
+          12: "hsla(var(--white) / 0.12)",
           15: "hsla(var(--white) / 0.15)",
           20: "hsla(var(--white) / 0.2)",
           30: "hsla(var(--white) / 0.3)",
         },
-
         "background": "hsl(var(--background))",
         "foreground": "hsl(var(--foreground))",
         "muted": {
           DEFAULT: "hsla(var(--background) / 0.2)",
           foreground: "hsla(var(--foreground) / 0.7)",
         },
-
         "primary": {
           "DEFAULT": "hsl(var(--primary))",
           "background": "hsla(var(--primary) / 0.2)",
@@ -88,9 +88,6 @@ module.exports = {
           grad1: "hsl(var(--banner-grad-1))",
           grad2: "hsl(var(--banner-grad-2))",
           foreground: "hsl(var(--foreground))",
-        },
-        "backButtonBackground": {
-          DEFAULT: "rgba(255,255,255,0.08)",
         },
         "partnerListItemBackgroundColor": {
           DEFAULT: "#242250", // design
@@ -200,6 +197,7 @@ module.exports = {
       },
       screens: {
         sm: "696px",
+        xl: "1264px",
       },
       spacing: {
         4.5: "1.125rem",
@@ -218,7 +216,6 @@ module.exports = {
       },
       padding: {
         0.25: "1px",
-        backButton: "10px",
       },
       maxWidth: {
         "partners-default": "500px",
