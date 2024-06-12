@@ -13,28 +13,31 @@ export const PartnerListItem: React.FC<PartnersListItemProps> = (props) => {
 
   const i18n = useIntl();
 
-  const alt = i18n.formatMessage({
-    id: "PartnersPage.alt",
-    description: "Description of alt",
-    defaultMessage: "partner avatar",
-  });
-
   const title = i18n.formatMessage(partner.title);
+  const partnerLogoAlt = i18n.formatMessage(
+    {
+      id: "PartnerListItem.partnerLogoAlt",
+      description: "Alt for the logo of a partner",
+      defaultMessage: "Logo of {partnerName}",
+    },
+    {
+      partnerName: title,
+    }
+  );
 
+  // TODO: Use container query rather than media query to adapt the content based on the container size for smoother transitions
   return (
     <article {...articleProps}>
       <Link to={`/partners/${partner.id}`}>
-        <div className="bg-customGradient p-0.25 overflow-hidden rounded-3xl md:rounded-10 hover:bg-white/60 w-full">
-          <div className="rounded-3xl md:rounded-10 flex flex-col items-center py-8 md:py-8 lg:py-12 h-full w-full justify-center bg-partnerListItemBackgroundColor hover:bg-partnerListItemBackgroundColor-HOVER gap-6 md:gap-10">
-            <img
-              src={partner.image}
-              alt={alt}
-              className="bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 w-20 md:w-30"
-            />
-            <Typography variant="heading-m" component="p">
-              {title}
-            </Typography>
-          </div>
+        <div className="border border-border hover:border-border-30 bg-background-light hover:bg-background-extra-light rounded-3xl md:rounded-10 flex flex-col items-center justify-center py-8 lg:py-12 gap-6 md:gap-10">
+          <img
+            src={partner.image}
+            alt={partnerLogoAlt}
+            className="bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 w-20 md:w-30"
+          />
+          <Typography variant="heading-m" component="p">
+            {title}
+          </Typography>
         </div>
       </Link>
     </article>

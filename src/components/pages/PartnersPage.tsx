@@ -7,9 +7,10 @@ import { partners } from "~/features/partners";
 
 export const PartnersPage: React.FC = () => {
   const i18n = useIntl();
+
   const title = i18n.formatMessage({
     id: "PartnersPage.title",
-    description: "Description of title",
+    description: "Title of the Partners page",
     defaultMessage: "Partners",
   });
 
