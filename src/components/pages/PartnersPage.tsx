@@ -18,7 +18,10 @@ export const PartnersPage: React.FC = () => {
       <div className="grid gap-4 lg:gap-8 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
         {[...partners, ...partners, ...partners, ...partners].map(
           (partner, index) => (
-            <PartnerListItem partner={partner} key={index} />
+            <PartnerListItem
+              partner={partner}
+              key={index} // TODO: Use the partner.id once the list has no duplicates
+            />
           )
         )}
       </div>
