@@ -24,8 +24,8 @@ const router = sentryCreateBrowserRouter(
       errorElement={<RouterErrorHandler />}
     >
       <Route index element={<HomePage />} />
-      <Route path="/partners/:partnerId" element={<PartnerPage />} />
       <Route path="/partners" element={<PartnersPage />} />
+      <Route path="/partners/:partnerId" element={<PartnerPage />} />
       {/* <Route path="terms-and-conditions" element={<TermsConditionsView />} /> */}
       <Route path="*" element={<Navigate replace to="/" />} />
     </Route>

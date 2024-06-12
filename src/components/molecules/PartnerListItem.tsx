@@ -1,7 +1,7 @@
 import { useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
 
-import { Partner } from "~/features/activity";
+import { Partner } from "~/features/partners";
 
 export const PartnerListItem = ({
   partner,

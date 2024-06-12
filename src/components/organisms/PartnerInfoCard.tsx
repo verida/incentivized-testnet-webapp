@@ -3,12 +3,8 @@ import { Link } from "react-router-dom";
 
 import { ReactComponent as ExternalIcon } from "~/assets/icons/link-external.svg";
 import { Icon } from "~/components/atoms";
-import {
-  Activity,
-  Partner,
-  PartnerMission,
-  SocialType,
-} from "~/features/activity/types";
+import { Activity } from "~/features/activity";
+import { Partner, PartnerMission, SocialType } from "~/features/partners";
 
 export const PartnerInfoCard = ({
   partner,

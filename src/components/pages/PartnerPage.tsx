@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { MissionCard } from "~/components/organisms";
 import { PartnerInfoCard } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
-import { usePartner } from "~/features/activity";
+import { usePartner } from "~/features/partners";
 
 export const PartnerPage: React.FC = () => {
   const i18n = useIntl();

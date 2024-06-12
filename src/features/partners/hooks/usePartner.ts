@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 
-import { activities as wholeActivities } from "~/features/activity/activities";
-import { missions as wholeMissions } from "~/features/activity/missions";
-import { partners } from "~/features/activity/partners";
-import { Activity, Partner, PartnerMission } from "~/features/activity/types";
+import {
+  Activity,
+  activities as wholeActivities,
+  missions as wholeMissions,
+} from "~/features/activity";
+import { partners } from "~/features/partners/constants";
+import { Partner, PartnerMission } from "~/features/partners/types";
 
 export function usePartner(partner_id: string) {
   const [partner, setPartner] = useState<Partner | undefined>();

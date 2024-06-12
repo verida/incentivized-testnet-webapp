@@ -3,7 +3,7 @@ import { useIntl } from "react-intl";
 
 import { PartnerListItem } from "~/components/molecules";
 import { PageLayout } from "~/components/templates";
-import { partners } from "~/features/activity/partners";
+import { partners } from "~/features/partners";
 
 export const PartnersPage: React.FC = () => {
   const i18n = useIntl();

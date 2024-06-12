@@ -3,13 +3,13 @@ import { twMerge } from "tailwind-merge";
 
 import { ReactComponent as BgPoint } from "~/assets/images/bg_point.svg";
 import { MissionProgessBarIndicator } from "~/components/atoms/MissionProgessBarIndicator";
+import { UserActivityStatus } from "~/features/activity";
+import { activities } from "~/features/activity/activities";
 import {
   Partner,
   PartnerMission,
-  UserActivityStatus,
-} from "~/features/activity";
-import { activities } from "~/features/activity/activities";
-import { partners as wholePartners } from "~/features/activity/partners";
+  partners as wholePartners,
+} from "~/features/partners";
 
 export function PartnerMissionCard({ mission }: { mission: PartnerMission }) {
   const i18n = useIntl();
