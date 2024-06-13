@@ -14,3 +14,6 @@ export * from "./UpcomingActivitiesCTA";
 export * from "./PartnerListItem";
 export * from "./PointCard";
 export * from "./TimeleftCard";
+export * from "./PointCard";
+export * from "./XPCard";
+export * from "./StackedImg";

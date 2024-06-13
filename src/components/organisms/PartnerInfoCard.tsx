@@ -2,18 +2,16 @@ import { useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as ExternalIcon } from "~/assets/icons/link-external.svg";
-import { Icon } from "~/components/atoms";
+import { Icon, Typography } from "~/components/atoms";
 import { Activity } from "~/features/activity";
-import { Partner, PartnerMission, SocialType } from "~/features/partners";
+import { Partner, SocialType } from "~/features/partners";
 
 export const PartnerInfoCard = ({
   partner,
   activities,
-  missions,
 }: {
   partner: Partner;
   activities: Activity[];
-  missions: PartnerMission[];
 }) => {
   const i18n = useIntl();
 
@@ -39,20 +37,28 @@ export const PartnerInfoCard = ({
             alt={partner.id}
             className="h-full w-auto rounded-full bg-white p-3"
           />
-          <div className="flex flex-col ml-auto h-full bg-backButtonBackground hover:text-white gap-1 px-2 py-1.5 rounded-lg text-center">
-            <span className="block text-desktop-base font-semibold">
+          <div className="flex flex-col ml-auto h-full bg-transparent-8 hover:text-white gap-1 px-2 py-1.5 rounded-lg text-center">
+            <Typography
+              component={"span"}
+              className="block !text-desktop-base !font-semibold"
+            >
               {activities.length}
-            </span>
-            <span className="block text-base-s">{activityText}</span>
+            </Typography>
+            <Typography component={"span"} className="block !text-base-s">
+              {activityText}
+            </Typography>
           </div>
         </div>
         <div className="flex flex-col w-full gap-2">
-          <h3 className="text-white text-desktop-heading-s">
+          <Typography
+            component={"h3"}
+            className="text-white !text-desktop-heading-s"
+          >
             {i18n.formatMessage(partner.title)}
-          </h3>
-          <span className="text-white text-base">
+          </Typography>
+          <Typography component={"span"} className="text-white !text-base">
             {i18n.formatMessage(partner.shortDescription)}
-          </span>
+          </Typography>
         </div>
         <div className="flex gap-6 flex-wrap">
           {partner.resources?.map((resource, index) => (

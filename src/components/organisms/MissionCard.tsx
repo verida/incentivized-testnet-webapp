@@ -1,8 +1,9 @@
 import { useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
 
-import { Button } from "~/components/atoms";
-import { Activity } from "~/features/activity";
+import { Button, Typography } from "~/components/atoms";
+import { XPCard } from "~/components/molecules";
+import { Activity, Mission } from "~/features/activity";
 import { PartnerMission } from "~/features/partners";
 
 import { MissionActivityCard } from "./MissionActivityCard";
@@ -10,9 +11,17 @@ import { MissionActivityCard } from "./MissionActivityCard";
 export const MissionCard = ({
   mission,
   activities,
+  showDetails,
+  showPoints,
+  showStartButton,
+  showPartners,
 }: {
-  mission: PartnerMission;
+  mission: PartnerMission | Mission;
   activities: Activity[];
+  showDetails?: boolean;
+  showPoints?: boolean;
+  showStartButton?: boolean;
+  showPartners?: boolean;
 }) => {
   const navigate = useNavigate();
 
@@ -29,26 +38,51 @@ export const MissionCard = ({
   });
   return (
     <div className="border border-white/50 bg-partnerMissionCardBg backdrop-blur-4xl rounded-2xl w-full overflow-hidden">
-      <div className="bg-partner-mission-overlay w-full h-full absolute -z-10 rounded-2xl"></div>
-      <div className="flex flex-col py-6 px-4 lg:p-6 gap-6">
-        <h4 className="text-desktop-heading-m leading-[140%]">
-          {i18n.formatMessage(mission.title)}
-        </h4>
-        <Button
-          className="py-2.5 px-8 bg-white rounded-xl text-desktop-base-s font-semibold text-partnerMissionInfoButtonColor w-fit hover:bg-white/90"
-          onClick={() => navigate(`/missions/${mission.id}`)}
-        >
-          {startMissionText}
-        </Button>
+      <div className="bg-partner-mission-overlay w-full h-full absolute -z-10"></div>
+      <div className="flex py-6 px-4 lg:p-6 gap-6 items-center">
+        <div className="flex gap-6 flex-1 flex-col">
+          <Typography
+            component={"h4"}
+            className="!text-mobile-heading lg:!text-desktop-heading-m lg:!leading-[140%]"
+          >
+            {i18n.formatMessage(mission.title)}
+          </Typography>
+          {showDetails && (
+            <Typography component={"span"} className="!text-desktop-base">
+              {i18n.formatMessage(mission.shortDescription, {
+                newline: <></>,
+              })}
+            </Typography>
+          )}
+          {showStartButton && (
+            <Button
+              className="py-2.5 px-8 bg-white rounded-xl text-desktop-base-s font-semibold text-partnerMissionInfoButtonColor w-fit hover:bg-white/90"
+              onClick={() => navigate(`/missions/${mission.id}`)}
+            >
+              {startMissionText}
+            </Button>
+          )}
+        </div>
+        {showPoints && (
+          <div className="hidden lg:flex">
+            <XPCard point={100} classNames="h-full" />
+          </div>
+        )}
       </div>
       <div className="flex flex-col py-6 px-4 lg:py-8 lg:px-6 gap-6 rounded-2xl bg-partnerMissionInfoContentBg w-full backdrop-blur-[30px]">
-        <h5 className="text-desktop-base font-semibold">{activityText}</h5>
+        <Typography
+          component={"span"}
+          className="!text-desktop-base !font-semibold"
+        >
+          {activityText}
+        </Typography>
         <div className="flex flex-col w-full gap-6">
           {activities.map((activity, index) => (
             <MissionActivityCard
               activity={activity}
               no={index + 1}
               key={index}
+              showPartners={showPartners}
             />
           ))}
         </div>

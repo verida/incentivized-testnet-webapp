@@ -25,11 +25,7 @@ export const PartnerPage: React.FC = () => {
     <PageLayout>
       {partner ? (
         <div className="flex flex-col lg:flex-row gap-10 w-full justify-center">
-          <PartnerInfoCard
-            partner={partner}
-            missions={missions}
-            activities={activities}
-          />
+          <PartnerInfoCard partner={partner} activities={activities} />
           <div className={"grid grid-cols-1 lg:gap-8"}>
             {missions.map((mission, index) => (
               <MissionCard
@@ -37,6 +33,8 @@ export const PartnerPage: React.FC = () => {
                 activities={activities.filter(
                   (activity) => activity.missionId === mission.id
                 )}
+                showStartButton={true}
+                showPartners={false}
                 key={index}
               />
             ))}

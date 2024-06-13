@@ -2,6 +2,15 @@ import { type VariantProps, cva } from "class-variance-authority";
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
+export type Variants =
+  | "base"
+  | "heading-l"
+  | "heading-m"
+  | "heading-s"
+  | "base-s"
+  | "subtitle"
+  | "base-l";
+
 const typographyVariants = cva("", {
   variants: {
     variant: {
@@ -11,6 +20,7 @@ const typographyVariants = cva("", {
       "base": "text-base sm:text-desktop-base",
       "base-s": "text-base-s sm:text-desktop-base-s",
       "subtitle": "text-subtitle",
+      "base-l": "lg:text-desktop-base-l text-heading-s",
     },
     component: {
       h1: "",
@@ -43,6 +53,7 @@ const mapping = {
   "base": "p",
   "base-s": "p",
   "subtitle": "p",
+  "base-l": "p",
 };
 
 export const Typography: React.FunctionComponent<TypographyProps> = (props) => {

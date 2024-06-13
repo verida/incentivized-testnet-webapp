@@ -1,5 +1,7 @@
 import { useIntl } from "react-intl";
 
+import { Typography } from "../atoms";
+
 export const PointCard = ({ point }: { point: number }) => {
   const i18n = useIntl();
   const altText = i18n.formatMessage({
@@ -16,7 +18,12 @@ export const PointCard = ({ point }: { point: number }) => {
   return (
     <div className="flex rounded-badge h-fit py-1.5 px-3 gap-2 border border-border-component bg-pointBg items-center">
       <img src="/images/point-star.png" alt={altText} className="w-5 h-5" />
-      <span className="flex text-base font-semibold text-nowrap">{xpText}</span>
+      <Typography
+        component={"span"}
+        className="flex !text-base !font-semibold text-nowrap"
+      >
+        {xpText}
+      </Typography>
     </div>
   );
 };

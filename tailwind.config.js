@@ -16,6 +16,8 @@ module.exports = {
           "linear-gradient(180deg, #733BD6 0.5%, rgba(115, 59, 214, 0.00) 100%)",
         pointBg:
           "linear-gradient(0deg, rgba(138, 98, 237, 0.20) 0%, rgba(138, 98, 237, 0.20) 100%, #19193D)",
+        progressBg:
+          "linear-gradient(91deg, rgba(166, 131, 255, 0.24) 0%, rgba(166, 131, 255, 0.10) 100%)",
       },
       colors: {
         "white": "hsl(var(--white))",
@@ -71,6 +73,7 @@ module.exports = {
           30: "hsla(var(--white) / 0.3)",
           60: "hsla(var(--white) / 0.6)",
           component: "#a683ff99",
+          progress: "#A683FF",
         },
         "divider": {
           DEFAULT: "hsla(var(--white) / 0.15)",
@@ -177,6 +180,20 @@ module.exports = {
             fontWeight: "400",
           },
         ],
+        "desktop-base-l": [
+          "1.5rem",
+          {
+            lineHeight: "120%",
+            fontWeight: "700",
+          },
+        ],
+        "mobile-heading": [
+          "22px",
+          {
+            lineHeight: "150%",
+            fontWeight: "700",
+          },
+        ],
         "mission-title": [
           "1.25rem",
           {
@@ -222,6 +239,9 @@ module.exports = {
         "partners-lg": "1000px",
         "partners-xl": "1216px",
         "partner-info-card": "384px",
+        "mission": "1008px",
+        "mission-page": "1216px",
+        "mission-page-progress": "1072px",
       },
       width: {
         30: "120px",
