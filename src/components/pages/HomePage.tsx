@@ -18,7 +18,7 @@ import {
 } from "~/features/airdrops";
 import { useVerida } from "~/features/verida";
 
-export const HomePage: React.FunctionComponent = () => {
+export const HomePage: React.FC = () => {
   const i18n = useIntl();
   const { isConnected } = useVerida();
   const { missions } = useActivity();
