@@ -11,3 +11,4 @@ export * from "./MissionsSideNavigation";
 export * from "./TermsAndConditions";
 export * from "./MissionInfoCard";
 export * from "./PartnerInfoCard";
+export * from "./MissionActivityComingSoonCard";

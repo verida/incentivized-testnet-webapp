@@ -6,6 +6,7 @@ import { XPCard } from "~/components/molecules";
 import { Activity, Mission } from "~/features/activity";
 
 import { MissionActivityCard } from "./MissionActivityCard";
+import { MissionActivityComingSoonCard } from "./MissionActivityComingSoonCard";
 
 export const MissionCard = ({
   mission,
@@ -84,6 +85,7 @@ export const MissionCard = ({
               showPartners={showPartners}
             />
           ))}
+          <MissionActivityComingSoonCard no={activities.length + 1} />
         </div>
       </div>
     </div>

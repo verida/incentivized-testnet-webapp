@@ -65,7 +65,7 @@ export function MissionPage() {
               showPartners={true}
             />
           </div>
-          <div className="max-w-mission-page-progress mx-auto w-full mt-11 p-4 lg:px-6 lg:py-4 rounded-2xl gap-4 backdrop-blur-xl border-border-progress border bg-progressBg">
+          <div className="sticky bottom-6 left-0 right-0 z-50 max-w-mission-page-progress mx-auto w-full mt-11 p-4 lg:px-6 lg:py-4 rounded-2xl gap-4 backdrop-blur-xl border-border-progress border bg-progressBg">
             <MissionProgressBar
               variant="base-l"
               className="gap-3 lg:gap-6 flex flex-col w-full"
