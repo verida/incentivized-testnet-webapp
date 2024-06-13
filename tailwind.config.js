@@ -7,15 +7,14 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        partnerInfoBg: "linear-gradient(129deg, #220F41 1.09%, #19193D 98.84%)", // TODO: To rework
         partnerMissionCardBg:
           "linear-gradient(180deg, #733BD6 0.5%, rgba(115, 59, 214, 0.00) 100%)", // TODO: To rework
       },
       colors: {
-        "white": "hsl(var(--white))",
-        "black": "hsl(var(--black))",
-        "translucent": "rgba(17, 17, 17, 0.01)",
-        "transparent": {
+        white: "hsl(var(--white))",
+        black: "hsl(var(--black))",
+        translucent: "rgba(17, 17, 17, 0.01)",
+        transparent: {
           DEFAULT: "hsla(var(--white) / 0)",
           3: "hsla(var(--white) / 0.03)",
           5: "hsla(var(--white) / 0.05)",
@@ -27,69 +26,66 @@ module.exports = {
           20: "hsla(var(--white) / 0.2)",
           30: "hsla(var(--white) / 0.3)",
         },
-        "background": {
+        background: {
           "DEFAULT": "hsl(var(--background))",
           "light": "hsl(var(--background-light))",
           "extra-light": "hsl(var(--background-extra-light))",
         },
-        "foreground": "hsl(var(--foreground))",
-        "muted": {
+        foreground: "hsl(var(--foreground))",
+        muted: {
           DEFAULT: "hsla(var(--background) / 0.2)",
           foreground: "hsla(var(--foreground) / 0.7)",
         },
-        "primary": {
+        primary: {
           "DEFAULT": "hsl(var(--primary))",
           "background": "hsla(var(--primary) / 0.2)",
           "background-hover": "hsl(var(--primary-bg-hover))",
           "background-disabled": "hsl(var(--primary-bg-disabled))",
           "foreground": "hsl(var(--background))",
         },
-        "success": {
+        success: {
           DEFAULT: "hsl(var(--success))",
           background: "hsla(var(--success) / 0.2)",
         },
-        "warning": {
+        warning: {
           DEFAULT: "hsl(var(--warning))",
           background: "hsla(var(--warning) / 0.2)",
         },
-        "error": {
+        error: {
           DEFAULT: "hsl(var(--error))",
           background: "hsla(var(--error) / 0.2)",
         },
-        "pending": {
+        pending: {
           DEFAULT: "hsl(var(--pending))",
           background: "hsla(var(--pending) / 0.2)",
         },
-        "gray": {
+        gray: {
           DEFAULT: "hsl(var(--gray))",
         },
-        "border": {
+        border: {
           DEFAULT: "hsla(var(--white) / 0.15)", // TODO: To remove, use transparent-15 instead
           30: "hsla(var(--white) / 0.3)", // TODO: To remove, use transparent-30 instead
           60: "hsla(var(--white) / 0.6)", // TODO: To remove, use transparent-60 instead
         },
-        "divider": {
+        divider: {
           DEFAULT: "hsla(var(--white) / 0.15)",
         },
-        "notification": {
+        notification: {
           DEFAULT: "hsl(var(--notification) / 0.8)",
           foreground: "hsl(var(--foreground))",
         },
-        "menu": {
+        menu: {
           DEFAULT: "hsla(var(--menu) / 0.8)",
           foreground: "hsl(var(--foreground))",
         },
-        "topBanner": {
+        topBanner: {
           DEFAULT: "hsl(var(--banner-grad-1))",
           grad1: "hsl(var(--banner-grad-1))",
           grad2: "hsl(var(--banner-grad-2))",
           foreground: "hsl(var(--foreground))",
         },
-        "partner-info-primary": "#733BD6", // TODO: To rework
-        "link-color": "#A683FF", // TODO: To rework
-        "partnerMissionContentBg": "rgba(36, 32, 81, 0.80)", // TODO: To rework
-        "partnerMissionInfoContentBg": "rgba(25, 25, 61, 0.88)", // TODO: To rework
-        "partnerMissionInfoButtonColor": "#19193D", // TODO: To rework
+        partnerMissionInfoContentBg: "rgba(25, 25, 61, 0.88)", // TODO: To rework
+        partnerMissionInfoButtonColor: "#19193D", // TODO: To rework
       },
       fontSize: {
         "heading-l": [
@@ -169,22 +165,6 @@ module.exports = {
             fontWeight: "400",
           },
         ],
-        "mission-title": [
-          // TODO: To rework
-          "1.25rem",
-          {
-            lineHeight: "140%",
-            fontWeight: "700",
-          },
-        ],
-        "point-title": [
-          // TODO: To rework
-          "18px",
-          {
-            lineHeight: "140%",
-            fontWeight: "800",
-          },
-        ],
       },
       animation: {
         "spin-slow": "spin 5s linear infinite",
@@ -210,17 +190,8 @@ module.exports = {
       padding: {
         0.25: "1px",
       },
-      maxWidth: {
-        "partners-default": "500px", // TODO: To rework
-        "partners-lg": "1000px", // TODO: To rework
-        "partners-xl": "1216px", // TODO: To rework
-        "partner-info-card": "384px", // TODO: To rework
-      },
       width: {
         30: "120px",
-      },
-      boxShadow: {
-        "partner-mission": "16px 32px 80px 0px #0F0F25", // TODO: To rework
       },
     },
   },

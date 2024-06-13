@@ -1,7 +1,12 @@
 import { useIntl } from "react-intl";
-import { Link } from "react-router-dom";
+import { twMerge } from "tailwind-merge";
 
-import { Icon } from "~/components/atoms";
+import {
+  ExternalLink,
+  Icon,
+  IconButtonLink,
+  Typography,
+} from "~/components/atoms";
 import { Partner, SocialType } from "~/features/partners";
 
 export type PartnerInfoCardProps = {
@@ -10,7 +15,7 @@ export type PartnerInfoCardProps = {
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const PartnerInfoCard: React.FC<PartnerInfoCardProps> = (props) => {
-  const { partner, nbActivities, ...divProps } = props;
+  const { partner, nbActivities, className, ...divProps } = props;
 
   const i18n = useIntl();
 
@@ -35,76 +40,114 @@ export const PartnerInfoCard: React.FC<PartnerInfoCardProps> = (props) => {
     }
   );
 
+  // TODO: Get that color from the partner definition
+  // const partnerColor = "#733BD6";
+  const partnerColor = "#E6007A";
+
   return (
-    <div {...divProps}>
-      <div className="max-w-full lg:max-w-partner-info-card h-fit bg-transparent-3 relative">
-        <div className="absolute bottom-[calc(100%_-_10px)] left-0 bg-partner-info-primary text-white font-semibold px-4 pt-1 pb-[14px] rounded-tr-lg rounded-tl-lg border border-partner-info-primary z-0 text-base-s">
-          {cardBadgeLabel}
+    <div
+      {...divProps}
+      // Min width is the width of this component with 6 social links, so:
+      // 2 * 1px (border) + 2 * 1.5rem (padding) + 6 * 16px (icon size) +
+      // 6 * 0.75rem(icon padding) + 5 * 0.75(gap between icons)
+      // = 98px + 15.75 rem
+      className={twMerge("min-w-[calc(98px_+_15.75rem)]", className)}
+    >
+      <div className="relative">
+        <div
+          className="absolute bottom-[calc(100%_-_0.75rem)] left-0 pb-3 rounded-t-lg"
+          // bottom-[calc(100%_-_0.75rem)] is the negative value of the border-radius of the card
+          // pb-3 has same height as the border-radius of the card
+          style={{
+            backgroundColor: partnerColor,
+          }}
+        >
+          <div className="px-4 py-1">
+            <Typography variant="base-s">{cardBadgeLabel}</Typography>
+          </div>
         </div>
-        <div className="bg-partnerInfoBg backdrop-blur-4xl px-4 py-6 md:p-6 rounded-xl relative border-partner-info-primary border z-10 flex flex-col gap-6">
-          <div className="flex items-center h-16">
-            <img
-              src={partner.image || "/images/partners/default.png"}
-              alt={partner.id}
-              className="h-full w-auto rounded-full bg-white p-3"
-            />
-            <div className="flex flex-col ml-auto h-full bg-backButtonBackground hover:text-white gap-1 px-2 py-1.5 rounded-lg text-center">
-              <span className="block text-desktop-base font-semibold">
-                {nbActivities}
-              </span>
-              <span className="block text-base-s">{activityCounterLabel}</span>
+        <div
+          className="rounded-xl p-px backdrop-blur-0"
+          // Use the backdrop to hide the above div underneath this one, which
+          // allow us to avoid a z index
+          style={{
+            background: `linear-gradient(135deg, ${partnerColor} 10%, hsla(var(--white) / 0.15) 90%)`,
+          }}
+        >
+          <div
+            className="px-4 py-6 md:p-6 rounded-xl flex flex-col gap-6"
+            style={{
+              background:
+                "linear-gradient(135deg, hsla(var(--black) / 0.7) 10%, hsla(var(--background) / 1) 90%)",
+            }}
+          >
+            <div className="flex flex-row justify-between items-stretch">
+              <img
+                src={partner.image || "/images/partners/default.png"}
+                alt={partner.id}
+                className="h-16 aspect-square rounded-full bg-white p-3"
+              />
+              <div className="bg-transparent-8 rounded-lg flex flex-col items-center justify-center gap-1 px-2 py-1.5 ">
+                <Typography variant="base">{nbActivities}</Typography>
+                <Typography variant="base-s" className="text-muted-foreground">
+                  {activityCounterLabel}
+                </Typography>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-col w-full gap-2">
-            <h3 className="text-white text-desktop-heading-s">
-              {i18n.formatMessage(partner.title)}
-            </h3>
-            <span className="text-white text-base">
-              {i18n.formatMessage(partner.shortDescription)}
-            </span>
-          </div>
-          <div className="flex gap-6 flex-wrap">
-            {partner.resources?.map((resource, index) => (
-              <Link
-                to={resource.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex gap-2 items-center text-link-color hover:text-white transition text-base-s"
-                key={index}
-              >
-                {/* TODO: Use the ExternalLink component, add an optional prop to display the icon */}
-                <Icon type="external-link" size={16} />
-                {i18n.formatMessage(resource.label)}
-              </Link>
-            ))}
-          </div>
-          <div className="flex justify-start items-center gap-3 text-link-color flex-wrap">
-            {partner.socials?.map((social, index) => (
-              <Link
-                to={social.link}
-                className="rounded-full p-3 bg-white/10 hover:bg-white/30"
-                key={index}
-              >
-                {social.type === SocialType.DISCORD && (
-                  <Icon type="platform-discord" size={16} />
-                )}
-                {social.type === SocialType.LINKEDIN && (
-                  <Icon type="platform-linkedin" size={16} />
-                )}
-                {social.type === SocialType.MEDIUM && (
-                  <Icon type="platform-medium" size={16} />
-                )}
-                {social.type === SocialType.TELEGRAM && (
-                  <Icon type="platform-telegram" size={16} />
-                )}
-                {social.type === SocialType.X && (
-                  <Icon type="platform-x" size={16} />
-                )}
-                {social.type === SocialType.YOUTUBE && (
-                  <Icon type="platform-youtube" size={16} />
-                )}
-              </Link>
-            ))}
+            <div className="flex flex-col gap-2">
+              <Typography variant="heading-s" component="p">
+                {i18n.formatMessage(partner.title)}
+              </Typography>
+              <Typography variant="base-s" className="text-muted-foreground">
+                {i18n.formatMessage(partner.shortDescription)}
+              </Typography>
+            </div>
+            <div className="flex flex-row gap-6 flex-wrap">
+              {partner.resources?.map((resource) => (
+                <ExternalLink
+                  key={resource.url}
+                  href={resource.url}
+                  openInNewTab
+                  className="flex flex-row gap-2 items-center text-primary hover:text-primary-background-hover no-underline hover:underline"
+                >
+                  {/* TODO: Use the ExternalLink component, add an optional prop to display the icon */}
+                  <Icon type="external-link" size={16} />
+                  <Typography variant="base-s">
+                    {i18n.formatMessage(resource.label)}
+                  </Typography>
+                </ExternalLink>
+              ))}
+            </div>
+            <div className="flex flex-row justify-start items-center gap-3 flex-wrap">
+              {partner.socials?.map((social) => (
+                <IconButtonLink
+                  key={social.link}
+                  href={social.link}
+                  shape="circle"
+                  className="rounded-full p-3 bg-white/10 hover:bg-white/30"
+                  icon={
+                    <Icon
+                      type={
+                        social.type === SocialType.DISCORD
+                          ? "platform-discord"
+                          : social.type === SocialType.LINKEDIN
+                            ? "platform-linkedin"
+                            : social.type === SocialType.MEDIUM
+                              ? "platform-medium"
+                              : social.type === SocialType.TELEGRAM
+                                ? "platform-telegram"
+                                : social.type === SocialType.X
+                                  ? "platform-x"
+                                  : social.type === SocialType.YOUTUBE
+                                    ? "platform-youtube"
+                                    : "external-link"
+                      }
+                      size={16}
+                    />
+                  }
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
