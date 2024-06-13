@@ -2,7 +2,7 @@ import { useIntl } from "react-intl";
 import { twMerge } from "tailwind-merge";
 
 import { Icon } from "~/components/atoms";
-import { PointCard } from "~/components/molecules";
+import { XpPointsChip } from "~/components/molecules";
 import { Activity, useActivity } from "~/features/activity";
 
 export type MissionActivityCardProps = {
@@ -44,11 +44,11 @@ export const MissionActivityCard: React.FC<MissionActivityCardProps> = (
           <h5 className="text-heading-s flex-1 text-nowrap overflow-ellipsis overflow-hidden">
             {i18n.formatMessage(activity.title)}
           </h5>
-          <PointCard points={activity.points} />
+          <XpPointsChip nbXpPoints={activity.points} />
           <Icon type="chevron-right" size={20} />
         </div>
         <div className="flex lg:hidden gap-3 lg:gap-4 w-full justify-start">
-          <PointCard points={activity.points} />
+          <XpPointsChip nbXpPoints={activity.points} />
         </div>
       </div>
     </div>

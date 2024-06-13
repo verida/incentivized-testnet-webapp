@@ -10,8 +10,6 @@ module.exports = {
         partnerInfoBg: "linear-gradient(129deg, #220F41 1.09%, #19193D 98.84%)", // TODO: To rework
         partnerMissionCardBg:
           "linear-gradient(180deg, #733BD6 0.5%, rgba(115, 59, 214, 0.00) 100%)", // TODO: To rework
-        pointBg:
-          "linear-gradient(0deg, rgba(138, 98, 237, 0.20) 0%, rgba(138, 98, 237, 0.20) 100%, #19193D)", // TODO: To rework
       },
       colors: {
         "white": "hsl(var(--white))",
@@ -66,10 +64,9 @@ module.exports = {
           DEFAULT: "hsl(var(--gray))",
         },
         "border": {
-          DEFAULT: "hsla(var(--white) / 0.15)",
-          30: "hsla(var(--white) / 0.3)",
-          60: "hsla(var(--white) / 0.6)",
-          component: "#a683ff99", // TODO: To rework
+          DEFAULT: "hsla(var(--white) / 0.15)", // TODO: To remove, use transparent-15 instead
+          30: "hsla(var(--white) / 0.3)", // TODO: To remove, use transparent-30 instead
+          60: "hsla(var(--white) / 0.6)", // TODO: To remove, use transparent-60 instead
         },
         "divider": {
           DEFAULT: "hsla(var(--white) / 0.15)",
@@ -209,7 +206,6 @@ module.exports = {
       },
       borderRadius: {
         10: "2.5rem",
-        badge: "53px",
       },
       padding: {
         0.25: "1px",
