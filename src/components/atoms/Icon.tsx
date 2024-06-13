@@ -7,7 +7,6 @@ import {
   Check,
   CheckOne,
   Close,
-  CooperativeHandshake,
   Copy,
   Down,
   History,
@@ -52,7 +51,6 @@ export type GenericIconType =
   | "notification-success"
   | "notification-error"
   | "agreement"
-  | "partner"
   | "external-link"
   | "arrow-right"
   | "arrow-left";
@@ -112,8 +110,6 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
       return <Agreement size={size} {...otherProps} />;
     case "wallet":
       return <Wallet size={size} {...otherProps} />;
-    case "partner":
-      return <CooperativeHandshake size={size} {...otherProps} />;
     case "external-link":
       return <Share size={size} {...otherProps} />;
     case "arrow-right":
