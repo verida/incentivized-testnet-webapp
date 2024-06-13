@@ -12,7 +12,6 @@ export * from "./SideNavigation";
 export * from "./TopBanner";
 export * from "./UpcomingActivitiesCTA";
 export * from "./PartnerListItem";
-export * from "./PointCard";
 export * from "./TimeleftCard";
 export * from "./PointCard";
 export * from "./XPCard";

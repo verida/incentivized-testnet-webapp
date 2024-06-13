@@ -31,14 +31,14 @@
   }
 
   .bg-app {
-    background-image: url("./images/bg_bottom.webp");
+    background-image: url("./images/bg_bottom.png"); /* TODO: Get an image with a transparent background */
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: auto 500px;
   }
 
   .bg-homepage {
-    background-image: url("./images/bg_homepage_top.webp");
+    background-image: url("./images/bg_homepage_top.png"); /* TODO: Get an image with a transparent background */
     background-position: top;
     background-repeat: no-repeat;
     background-size: auto 500px;

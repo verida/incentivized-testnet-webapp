@@ -77,7 +77,7 @@ export const MissionProgressBar: React.FunctionComponent<
             </Typography>
           )}
 
-          {showPoint && <PointCard point={point || 0} />}
+          {showPoint && <PointCard points={point || 0} />}
         </div>
       )}
 

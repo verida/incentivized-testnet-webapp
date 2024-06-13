@@ -94,7 +94,7 @@ export function MissionInfoCard({ mission }: { mission: Mission }) {
             {missionLabel}
           </h3>
           <div className="flex justify-between items-center mt-auto">
-            <PointCard point={totalPoints} />
+            <PointCard points={totalPoints} />
             <StackedImage
               images={partners.map((partner) => partner.image || "")}
             />
