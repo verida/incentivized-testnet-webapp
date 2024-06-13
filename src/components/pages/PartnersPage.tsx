@@ -14,6 +14,8 @@ export const PartnersPage: React.FC = () => {
     defaultMessage: "Partners",
   });
 
+  // TODO: Implement the case where there are no partners
+
   return (
     <PageLayout title={title}>
       <div className="grid gap-4 lg:gap-8 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">

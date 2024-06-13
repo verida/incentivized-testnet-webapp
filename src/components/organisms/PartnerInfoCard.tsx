@@ -3,34 +3,43 @@ import { Link } from "react-router-dom";
 
 import { ReactComponent as ExternalIcon } from "~/assets/icons/link-external.svg";
 import { Icon } from "~/components/atoms";
-import { Activity } from "~/features/activity";
-import { Partner, PartnerMission, SocialType } from "~/features/partners";
+import { Partner, SocialType } from "~/features/partners";
 
-export const PartnerInfoCard = ({
-  partner,
-  activities,
-  missions,
-}: {
+export type PartnerInfoCardProps = {
   partner: Partner;
-  activities: Activity[];
-  missions: PartnerMission[];
-}) => {
+  nbActivities: number;
+};
+
+export const PartnerInfoCard: React.FC<PartnerInfoCardProps> = (props) => {
+  const { partner, nbActivities } = props;
+
   const i18n = useIntl();
 
-  const badgeText = i18n.formatMessage({
-    id: "partner.info.badge",
-    description: "Description of partner badge",
+  const cardBadgeLabel = i18n.formatMessage({
+    id: "PartnerInfoCard.cardBadgeLabel",
+    description: "Label above the partner info card",
     defaultMessage: "Partner",
   });
-  const activityText = i18n.formatMessage({
-    id: "partner.info.activity.title",
-    description: "Description of activities title",
-    defaultMessage: "Activities",
-  });
+
+  const activityCounterLabel = i18n.formatMessage(
+    {
+      id: "PartnerInfoCard.activityCounterLabel",
+      description:
+        "Sub text for the number of activitiies in the counter in the partner info card",
+      defaultMessage: `{nbActivities, plural,
+        one {Activity}
+        other {Activities}
+      }`,
+    },
+    {
+      nbActivities,
+    }
+  );
+
   return (
     <div className="max-w-full lg:max-w-partner-info-card h-fit bg-transparent-3 relative">
       <div className="absolute bottom-[calc(100%_-_10px)] left-0 bg-partner-info-primary text-white font-semibold px-4 pt-1 pb-[14px] rounded-tr-lg rounded-tl-lg border border-partner-info-primary z-0 text-base-s">
-        {badgeText}
+        {cardBadgeLabel}
       </div>
       <div className="bg-partnerInfoBg backdrop-blur-4xl px-4 py-6 md:p-6 rounded-xl relative border-partner-info-primary border z-10 flex flex-col gap-6">
         <div className="flex items-center h-16">
@@ -41,9 +50,9 @@ export const PartnerInfoCard = ({
           />
           <div className="flex flex-col ml-auto h-full bg-backButtonBackground hover:text-white gap-1 px-2 py-1.5 rounded-lg text-center">
             <span className="block text-desktop-base font-semibold">
-              {activities.length}
+              {nbActivities}
             </span>
-            <span className="block text-base-s">{activityText}</span>
+            <span className="block text-base-s">{activityCounterLabel}</span>
           </div>
         </div>
         <div className="flex flex-col w-full gap-2">
