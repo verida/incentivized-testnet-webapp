@@ -2,7 +2,7 @@ import { useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
-import { Button, Typography } from "~/components/atoms";
+import { Button, ExternalLink, Typography } from "~/components/atoms";
 import { XPCard } from "~/components/molecules";
 import { Activity, MISSION_01_ID, Mission } from "~/features/activity";
 
@@ -33,7 +33,7 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
 
   const i18n = useIntl();
   const isOnboardingMission = mission.id === MISSION_01_ID;
-
+  const { resources } = mission;
   const startMissionText = i18n.formatMessage({
     id: "partner.mission.info.mission_text",
     description: "Description of partner mission text",
@@ -44,6 +44,12 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
     id: "partner.mission.info.activity_text",
     description: "Description of partner mission activity text",
     defaultMessage: "Complete all activities below",
+  });
+
+  const resourcesSectionTitle = i18n.formatMessage({
+    id: "MissionSection.resourcesSectionTitle",
+    description: "Title of the resources section in each mission section",
+    defaultMessage: "Resources",
   });
 
   return (
@@ -71,6 +77,22 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
                   newline: <></>,
                 })}
               </Typography>
+            )}
+            {isOnboardingMission && resources && resources.length > 0 && (
+              <aside className="text-muted-foreground">
+                <Typography variant="subtitle">
+                  {resourcesSectionTitle}
+                </Typography>
+                <ul>
+                  {resources.map((resource, index) => (
+                    <li key={index}>
+                      <ExternalLink href={resource.url} openInNewTab>
+                        {i18n.formatMessage(resource.label)}
+                      </ExternalLink>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
             )}
             {showStartButton && (
               <Button
