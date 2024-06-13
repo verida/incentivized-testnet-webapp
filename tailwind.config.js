@@ -6,10 +6,6 @@ module.exports = {
       sans: ["Sora", "sans-serif"],
     },
     extend: {
-      backgroundImage: {
-        partnerMissionCardBg:
-          "linear-gradient(180deg, #733BD6 0.5%, rgba(115, 59, 214, 0.00) 100%)", // TODO: To rework
-      },
       colors: {
         white: "hsl(var(--white))",
         black: "hsl(var(--black))",
@@ -84,8 +80,6 @@ module.exports = {
           grad2: "hsl(var(--banner-grad-2))",
           foreground: "hsl(var(--foreground))",
         },
-        partnerMissionInfoContentBg: "rgba(25, 25, 61, 0.88)", // TODO: To rework
-        partnerMissionInfoButtonColor: "#19193D", // TODO: To rework
       },
       fontSize: {
         "heading-l": [

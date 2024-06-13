@@ -1,7 +1,7 @@
 import { useIntl } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import { Button } from "~/components/atoms";
+import { ButtonLink, Typography } from "~/components/atoms";
 import { Activity, Mission } from "~/features/activity";
 
 import { MissionActivityCard } from "./MissionActivityCard";
@@ -9,53 +9,61 @@ import { MissionActivityCard } from "./MissionActivityCard";
 export type MissionCardProps = {
   mission: Mission;
   activities: Activity[];
+
+  /* Allow overriding the default message if needed */
+  activityListMessage?: string;
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const MissionCard: React.FC<MissionCardProps> = (props) => {
-  const { mission, activities, ...divProps } = props;
-
-  const navigate = useNavigate();
+  const { mission, activities, activityListMessage, ...divProps } = props;
 
   const i18n = useIntl();
 
-  const startMissionText = i18n.formatMessage({
-    id: "partner.mission.info.mission_text",
-    description: "Description of partner mission text",
-    defaultMessage: "Start Mission",
+  const goToMissionButtonLabel = i18n.formatMessage({
+    id: "MissionCard.goToMissionButtonLabel",
+    description:
+      "Label of the button on the Mission card to open the mission page",
+    defaultMessage: "Go to Mission",
   });
 
-  const activityText = i18n.formatMessage({
-    id: "partner.mission.info.activity_text",
-    description: "Description of partner mission activity text",
-    defaultMessage: "Complete all activities below",
-  });
+  const resolvedActivityListMessage =
+    activityListMessage ??
+    i18n.formatMessage({
+      id: "MissionCard.defaultActivityListMessage",
+      description:
+        "Default message displayed above the activity list in the mission card",
+      defaultMessage: "Complete all activities below",
+    });
 
   return (
     <div {...divProps}>
-      <div className="border border-white/50 bg-partnerMissionCardBg backdrop-blur-4xl rounded-2xl w-full overflow-hidden">
-        <div className="bg-partner-mission-overlay w-full h-full absolute -z-10 rounded-2xl"></div>
-        <div className="flex flex-col py-6 px-4 lg:p-6 gap-6">
-          <h4 className="text-desktop-heading-m leading-[140%]">
+      <div className="border border-border bg-clip-padding bg-mission-card rounded-2xl">
+        <div className="flex flex-col items-start py-6 px-4 lg:px-6 gap-6">
+          <Typography variant="heading-m">
             {i18n.formatMessage(mission.title)}
-          </h4>
-          <Button
-            className="py-2.5 px-8 bg-white rounded-xl text-desktop-base-s font-semibold text-partnerMissionInfoButtonColor w-fit hover:bg-white/90"
-            onClick={() => navigate(`/missions/${mission.id}`)}
+          </Typography>
+          <ButtonLink
+            href={`/missions/${mission.id}`}
+            className="text-background bg-white hover:bg-white/90"
+            // TODO: Create button colour variant
           >
-            {startMissionText}
-          </Button>
+            {goToMissionButtonLabel}
+          </ButtonLink>
         </div>
-        <div className="flex flex-col py-6 px-4 lg:py-8 lg:px-6 gap-6 rounded-2xl bg-partnerMissionInfoContentBg w-full backdrop-blur-[30px]">
-          <h5 className="text-desktop-base font-semibold">{activityText}</h5>
-          <div className="flex flex-col w-full gap-6">
+        <div className="py-6 px-4 lg:pt-8 lg:p-6 flex flex-col gap-6 rounded-[calc(1rem_-_1px)] bg-background/90">
+          <Typography variant="base">{resolvedActivityListMessage}</Typography>
+          <ul className="flex flex-col w-full gap-6">
             {activities.map((activity, index) => (
-              <MissionActivityCard
-                key={activity.id}
-                activity={activity}
-                activityIndex={index + 1}
-              />
+              <li key={activity.id}>
+                <Link to={`/activities/${activity.id}`}>
+                  <MissionActivityCard
+                    activity={activity}
+                    activityIndex={index + 1}
+                  />
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </div>

@@ -25,25 +25,32 @@ export const PartnerPage: React.FC = () => {
       title={partner?.title ? i18n.formatMessage(partner?.title) : undefined}
     >
       {partner ? (
-        <div className="flex flex-col lg:flex-row gap-10 w-full justify-center">
-          <PartnerInfoCard partner={partner} nbActivities={activities.length} />
-          <div className={"grid grid-cols-1 lg:gap-8"}>
+        <div className="flex flex-col justify-start lg:flex-row gap-10">
+          <PartnerInfoCard
+            partner={partner}
+            nbActivities={activities.length}
+            className="max-lg:w-full"
+          />
+          <ul className={"flex-grow grid grid-cols-1 gap-8"}>
             {missions.map((mission) => (
-              <MissionCard
-                key={mission.id}
-                mission={mission}
-                activities={activities.filter(
-                  // TODO: To optimise if this component is used elsewhere.
-                  // Activities are a fixed constant, this filter can be done
-                  // in the Mission card itself.In this  particular case, it
-                  // should only be the activities of a given partner, so this
-                  // MissionCard could take an optional partnerId prop to
-                  // filter the activities.
-                  (activity) => activity.missionId === mission.id
-                )}
-              />
+              <li key={mission.id}>
+                <article>
+                  <MissionCard
+                    mission={mission}
+                    activities={activities.filter(
+                      // TODO: To optimise if this component is used elsewhere.
+                      // Activities are a fixed constant, this filter can be done
+                      // in the Mission card itself.In this  particular case, it
+                      // should only be the activities of a given partner, so this
+                      // MissionCard could take an optional partnerId prop to
+                      // filter the activities.
+                      (activity) => activity.missionId === mission.id
+                    )}
+                  />
+                </article>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       ) : (
         <div className="">{emptry}</div>
