@@ -2,8 +2,7 @@ import { useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
 
 import { Button } from "~/components/atoms";
-import { Activity } from "~/features/activity";
-import { PartnerMission } from "~/features/partners";
+import { Activity, Mission } from "~/features/activity";
 
 import { MissionActivityCard } from "./MissionActivityCard";
 
@@ -11,7 +10,7 @@ export const MissionCard = ({
   mission,
   activities,
 }: {
-  mission: PartnerMission;
+  mission: Mission;
   activities: Activity[];
 }) => {
   const navigate = useNavigate();
