@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { Button, Typography } from "~/components/atoms";
 import { XPCard } from "~/components/molecules";
 import { Activity, Mission } from "~/features/activity";
-import { PartnerMission } from "~/features/partners";
 
 import { MissionActivityCard } from "./MissionActivityCard";
 
@@ -16,7 +15,7 @@ export const MissionCard = ({
   showStartButton,
   showPartners,
 }: {
-  mission: PartnerMission | Mission;
+  mission: Mission;
   activities: Activity[];
   showDetails?: boolean;
   showPoints?: boolean;
