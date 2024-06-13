@@ -14,7 +14,7 @@ import { MissionCard, MissionInfoCard } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { missions, useActivity } from "~/features/activity";
 
-export function MissionPage({}) {
+export function MissionPage() {
   const i18n = useIntl();
   const emptry = i18n.formatMessage({
     id: "MissionPage.empty",

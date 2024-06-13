@@ -1,7 +1,6 @@
 // Partner
 import { MessageDescriptor } from "react-intl";
 
-import { Mission } from "~/features/activity";
 import { Resource } from "~/types";
 
 export enum SocialType {
@@ -35,8 +34,4 @@ export type Partner = {
   resources?: Resource[];
   socials?: Social[];
   image?: string;
-};
-
-export type PartnerMission = Mission & {
-  partners: string[];
 };

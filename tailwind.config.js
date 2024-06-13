@@ -7,17 +7,13 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        customGradient:
-          "linear-gradient(138deg, rgba(255, 255, 255, .9), rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, .9))",
-        reverseCustomGradient:
-          "linear-gradient(138deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.1))",
-        partnerInfoBg: "linear-gradient(129deg, #220F41 1.09%, #19193D 98.84%)",
+        partnerInfoBg: "linear-gradient(129deg, #220F41 1.09%, #19193D 98.84%)", // TODO: To rework
         partnerMissionCardBg:
-          "linear-gradient(180deg, #733BD6 0.5%, rgba(115, 59, 214, 0.00) 100%)",
+          "linear-gradient(180deg, #733BD6 0.5%, rgba(115, 59, 214, 0.00) 100%)", // TODO: To rework
         pointBg:
-          "linear-gradient(0deg, rgba(138, 98, 237, 0.20) 0%, rgba(138, 98, 237, 0.20) 100%, #19193D)",
+          "linear-gradient(0deg, rgba(138, 98, 237, 0.20) 0%, rgba(138, 98, 237, 0.20) 100%, #19193D)", // TODO: To rework
         progressBg:
-          "linear-gradient(91deg, rgba(166, 131, 255, 0.24) 0%, rgba(166, 131, 255, 0.10) 100%)",
+          "linear-gradient(91deg, rgba(166, 131, 255, 0.24) 0%, rgba(166, 131, 255, 0.10) 100%)", // TODO: To rework
       },
       colors: {
         "white": "hsl(var(--white))",
@@ -35,7 +31,11 @@ module.exports = {
           20: "hsla(var(--white) / 0.2)",
           30: "hsla(var(--white) / 0.3)",
         },
-        "background": "hsl(var(--background))",
+        "background": {
+          "DEFAULT": "hsl(var(--background))",
+          "light": "hsl(var(--background-light))",
+          "extra-light": "hsl(var(--background-extra-light))",
+        },
         "foreground": "hsl(var(--foreground))",
         "muted": {
           DEFAULT: "hsla(var(--background) / 0.2)",
@@ -67,12 +67,11 @@ module.exports = {
         "gray": {
           DEFAULT: "hsl(var(--gray))",
         },
-
         "border": {
           DEFAULT: "hsla(var(--white) / 0.15)",
           30: "hsla(var(--white) / 0.3)",
           60: "hsla(var(--white) / 0.6)",
-          component: "#a683ff99",
+          component: "#a683ff99", // TODO rework
           progress: "#A683FF",
         },
         "divider": {
@@ -92,15 +91,11 @@ module.exports = {
           grad2: "hsl(var(--banner-grad-2))",
           foreground: "hsl(var(--foreground))",
         },
-        "partnerListItemBackgroundColor": {
-          DEFAULT: "#242250", // design
-          HOVER: "#312F5B", // design
-        },
-        "partner-info-primary": "#733BD6",
-        "link-color": "#A683FF",
-        "partnerMissionContentBg": "rgba(36, 32, 81, 0.80)",
-        "partnerMissionInfoContentBg": "rgba(25, 25, 61, 0.88)",
-        "partnerMissionInfoButtonColor": "#19193D",
+        "partner-info-primary": "#733BD6", // TODO: To rework
+        "link-color": "#A683FF", // TODO: To rework
+        "partnerMissionContentBg": "rgba(36, 32, 81, 0.80)", // TODO: To rework
+        "partnerMissionInfoContentBg": "rgba(25, 25, 61, 0.88)", // TODO: To rework
+        "partnerMissionInfoButtonColor": "#19193D", // TODO: To rework
       },
       fontSize: {
         "heading-l": [
@@ -195,6 +190,7 @@ module.exports = {
           },
         ],
         "mission-title": [
+          // TODO: To rework
           "1.25rem",
           {
             lineHeight: "140%",
@@ -202,6 +198,7 @@ module.exports = {
           },
         ],
         "point-title": [
+          // TODO: To rework
           "18px",
           {
             lineHeight: "140%",
@@ -235,19 +232,22 @@ module.exports = {
         0.25: "1px",
       },
       maxWidth: {
-        "partners-default": "500px",
-        "partners-lg": "1000px",
-        "partners-xl": "1216px",
-        "partner-info-card": "384px",
         "mission": "1008px",
         "mission-page": "1216px",
         "mission-page-progress": "1072px",
+        "partners-default": "500px", // TODO: To rework
+        "partners-lg": "1000px", // TODO: To rework
+        "partners-xl": "1216px", // TODO: To rework
+        "partner-info-card": "384px", // TODO: To rework
+      },
+      minWidth: {
+        "partner-info-card": "300px", //TODO: To rework
       },
       width: {
         30: "120px",
       },
       boxShadow: {
-        "partner-mission": "16px 32px 80px 0px #0F0F25",
+        "partner-mission": "16px 32px 80px 0px #0F0F25", // TODO: To rework
       },
     },
   },

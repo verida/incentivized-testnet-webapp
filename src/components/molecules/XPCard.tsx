@@ -1,10 +1,8 @@
 import { useIntl } from "react-intl";
 import { twMerge } from "tailwind-merge";
 
-import { ReactComponent as BgPoint } from "~/assets/images/bg_point.svg";
 import bgXP from "~/assets/images/bg_xp.png";
-
-import { Typography } from "../atoms";
+import { Typography } from "~/components/atoms";
 
 export const XPCard = ({
   point,
@@ -27,7 +25,6 @@ export const XPCard = ({
       )}
     >
       <img src={bgXP} alt="" className="h-40 w-auto" />
-      {/* <BgPoint width={160} height={160} /> */}
       <div className="absolute w-full h-full flex justify-center items-center">
         <Typography className="!font-bold !text-point-title">
           {xpText}

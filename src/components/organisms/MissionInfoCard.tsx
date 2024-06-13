@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useIntl } from "react-intl";
 
+import { Typography } from "~/components/atoms";
 import {
   MissionProgressBar,
   PointCard,
@@ -10,8 +11,6 @@ import {
 import { Mission, useActivity } from "~/features/activity";
 import { activities } from "~/features/activity/activities";
 import { Partner, partners as wholePartners } from "~/features/partners";
-
-import { Typography } from "../atoms";
 
 export function MissionInfoCard({ mission }: { mission: Mission }) {
   const i18n = useIntl();

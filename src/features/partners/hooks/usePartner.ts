@@ -1,68 +1,34 @@
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 
 import {
-  Activity,
-  activities as wholeActivities,
-  missions as wholeMissions,
+  activities as allActivities,
+  missions as allMissions,
 } from "~/features/activity";
 import { partners } from "~/features/partners/constants";
-import { Partner, PartnerMission } from "~/features/partners/types";
 
-export function usePartner(partner_id: string) {
-  const [partner, setPartner] = useState<Partner | undefined>();
-  const [activities, setActivities] = useState<Activity[]>([]);
-  const [missions, setMissions] = useState<PartnerMission[]>([]);
+export function usePartner(partnerId: string) {
+  const partner = useMemo(() => {
+    return partners.find((item) => item.id === partnerId);
+  }, [partnerId]);
 
-  useEffect(() => {
-    setPartner(partners.find((item) => item.id === partner_id));
-    const _activities = wholeActivities.filter(
+  const activities = useMemo(() => {
+    return allActivities.filter(
       (item) =>
         item.enabled &&
         item.visible &&
-        item.partners?.find((_partnerId) => _partnerId === partner_id)
+        item.partners?.find((_partnerId) => _partnerId === partnerId)
     );
-    setActivities(_activities);
+  }, [partnerId]);
 
-    let missionIds = _activities.map((activity) => activity.missionId);
+  const missions = useMemo(() => {
+    let missionIds = activities.map((activity) => activity.missionId);
     // Remove duplicated mission ids
     missionIds = [...new Set(missionIds)];
 
-    const _missions = missionIds.reduce<PartnerMission[]>(
-      (accumulator, currentValue) => {
-        // Get regular mission
-        const mission = wholeMissions.find((item) => item.id === currentValue);
-        // Get partner ids for activities of this mission
-        let _partnerIds: string[] = [];
-        _activities
-          .filter((activity) => activity.missionId === currentValue)
-          .map((activity) => {
-            if (activity.partners) {
-              _partnerIds = _partnerIds.concat(activity.partners);
-            }
-            return true;
-          });
-        _partnerIds = [...new Set(_partnerIds)];
-
-        if (mission) {
-          const partnerIds = _partnerIds.reduce<string[]>((array, value) => {
-            if (value) {
-              array.push(value);
-            }
-            return array;
-          }, []);
-
-          accumulator.push({
-            ...mission,
-            partners: partnerIds,
-          });
-        }
-        return accumulator;
-      },
-      []
-    );
-
-    setMissions(_missions);
-  }, [partner_id]);
+    return allMissions
+      .filter((item) => missionIds.includes(item.id))
+      .sort((a, b) => a.order - b.order);
+  }, [activities]);
 
   return {
     partner,
