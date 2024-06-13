@@ -1,7 +1,6 @@
 import { useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 
-import { ReactComponent as ExternalIcon } from "~/assets/icons/link-external.svg";
 import { Icon } from "~/components/atoms";
 import { Partner, SocialType } from "~/features/partners";
 
@@ -73,7 +72,8 @@ export const PartnerInfoCard: React.FC<PartnerInfoCardProps> = (props) => {
                 className="flex gap-2 items-center text-link-color hover:text-white transition text-base-s"
                 key={index}
               >
-                <ExternalIcon width={16} height={16} />
+                {/* TODO: Use the ExternalLink component, add an optional prop to display the icon */}
+                <Icon type="external-link" size={16} />
                 {i18n.formatMessage(resource.label)}
               </Link>
             ))}
