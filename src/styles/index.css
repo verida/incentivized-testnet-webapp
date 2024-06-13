@@ -56,4 +56,10 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
+
+  .bg-onboarding-mission-overlay {
+    background-image: url("./images/onboarding-mission-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }

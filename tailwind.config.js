@@ -54,6 +54,7 @@ module.exports = {
         "success": {
           DEFAULT: "hsl(var(--success))",
           background: "hsla(var(--success) / 0.2)",
+          WHITE: "hsl(var(--white))",
         },
         "warning": {
           DEFAULT: "hsl(var(--warning))",

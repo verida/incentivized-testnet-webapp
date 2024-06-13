@@ -1,9 +1,10 @@
 import { useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
+import { twMerge } from "tailwind-merge";
 
 import { Button, Typography } from "~/components/atoms";
 import { XPCard } from "~/components/molecules";
-import { Activity, Mission } from "~/features/activity";
+import { Activity, MISSION_01_ID, Mission } from "~/features/activity";
 
 import { MissionActivityCard } from "./MissionActivityCard";
 import { MissionActivityComingSoonCard } from "./MissionActivityComingSoonCard";
@@ -31,6 +32,7 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
   const navigate = useNavigate();
 
   const i18n = useIntl();
+  const isOnboardingMission = mission.id === MISSION_01_ID;
 
   const startMissionText = i18n.formatMessage({
     id: "partner.mission.info.mission_text",
@@ -47,7 +49,14 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
   return (
     <div {...divProps}>
       <div className="border border-white/50 bg-partnerMissionCardBg backdrop-blur-4xl rounded-2xl w-full overflow-hidden">
-        <div className="bg-partner-mission-overlay w-full h-full absolute -z-10"></div>
+        <div
+          className={twMerge(
+            "w-full h-full absolute -z-10",
+            !isOnboardingMission
+              ? "bg-partner-mission-overlay"
+              : "bg-onboarding-mission-overlay "
+          )}
+        ></div>
         <div className="flex py-6 px-4 lg:p-6 gap-6 items-center">
           <div className="flex gap-6 flex-1 flex-col">
             <Typography
@@ -74,7 +83,11 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
           </div>
           {showPoints && (
             <div className="hidden lg:flex">
-              <XPCard point={100} classNames="h-full" />
+              <XPCard
+                point={100}
+                classNames="h-full"
+                theme={isOnboardingMission ? "BLUE" : "RED"}
+              />
             </div>
           )}
         </div>

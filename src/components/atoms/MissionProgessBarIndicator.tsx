@@ -7,7 +7,7 @@ const missionProgessBarIndicatorVariants = cva("w-full rounded-full h-2", {
     variant: {
       todo: "bg-transparent-15",
       pending: "bg-pending",
-      completed: "bg-success",
+      completed: "bg-success-WHITE",
     },
   },
   defaultVariants: {
