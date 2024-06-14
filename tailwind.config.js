@@ -190,6 +190,10 @@ module.exports = {
       },
       width: {
         30: "120px",
+        50: "200px",
+      },
+      height: {
+        50: "200px",
       },
     },
   },

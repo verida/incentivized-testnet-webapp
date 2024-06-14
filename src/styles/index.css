@@ -62,4 +62,15 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
+  .bg-xp-badge {
+    background-image: url("./images/point-bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .bg-xp-badge-blue {
+    background-image: url("./images/blue-point-bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }

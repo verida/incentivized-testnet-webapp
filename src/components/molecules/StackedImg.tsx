@@ -6,7 +6,7 @@ export type StackedImageProps = {
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const StackedImage: React.FC<StackedImageProps> = (props) => {
-  const { images, ...divProps } = props;
+  const { images, className, ...divProps } = props;
   const i18n = useIntl();
   const altText = i18n.formatMessage({
     id: "StackedImage.alt",
@@ -15,7 +15,7 @@ export const StackedImage: React.FC<StackedImageProps> = (props) => {
   });
 
   return (
-    <div className="flex" {...divProps}>
+    <div className={twMerge("flex", className)} {...divProps}>
       {images.map((image, index) => (
         <img
           key={index}

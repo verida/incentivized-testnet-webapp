@@ -1,7 +1,6 @@
 import { useIntl } from "react-intl";
+import { twMerge } from "tailwind-merge";
 
-import { ReactComponent as BgBlueXP } from "~/assets/images/blue-point-bg.svg";
-import { ReactComponent as BgXP } from "~/assets/images/point-bg.svg";
 import { Typography } from "~/components/atoms";
 
 export type XpPointsBadgeProps = {
@@ -10,7 +9,7 @@ export type XpPointsBadgeProps = {
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const XpPointsBadge: React.FC<XpPointsBadgeProps> = (props) => {
-  const { nbXpPoints, theme, ...divProps } = props;
+  const { nbXpPoints, theme, className, ...divProps } = props;
   const i18n = useIntl();
   const formattedValue = i18n.formatMessage(
     {
@@ -23,12 +22,14 @@ export const XpPointsBadge: React.FC<XpPointsBadgeProps> = (props) => {
     }
   );
   return (
-    <div className={"relative flex justify-center h-fit w-full"} {...divProps}>
-      {theme === "BLUE" ? (
-        <BgBlueXP className="flex" />
-      ) : (
-        <BgXP className="flex" />
+    <div
+      className={twMerge(
+        "relative flex justify-center w-40 h-40",
+        theme === "BLUE" ? "bg-xp-badge-blue" : "bg-xp-badge",
+        className
       )}
+      {...divProps}
+    >
       <div className="absolute w-full h-full flex justify-center items-center">
         <Typography variant={"heading-s"}>{formattedValue}</Typography>
       </div>

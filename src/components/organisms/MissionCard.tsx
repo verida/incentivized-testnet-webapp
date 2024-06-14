@@ -112,6 +112,7 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
               <XpPointsBadge
                 nbXpPoints={points}
                 theme={isOnboardingMission ? "BLUE" : "RED"}
+                className={"w-50 h-50"}
               />
             </div>
           )}

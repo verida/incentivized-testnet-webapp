@@ -74,7 +74,7 @@ export const MissionInfoCard: React.FC<MissionInfoCardProps> = (props) => {
         <div className="relative rounded-xl flex flex-col overflow-hidden backdrop-blur-4xl h-full">
           <div className="bg-mission-card w-full h-full absolute -z-10"></div>
           <div className="p-4">
-            <XpPointsBadge nbXpPoints={totalPoints} />
+            <XpPointsBadge nbXpPoints={totalPoints} className="m-auto" />
             <div className="w-full">
               <Typography
                 component={"span"}
