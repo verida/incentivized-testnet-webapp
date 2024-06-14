@@ -14,6 +14,7 @@ import type {
   ActivityOnMessage,
 } from "~/features/activity/types";
 import { Logger } from "~/features/logger";
+import { PARTNER_ID_ZKPASS } from "~/features/partners";
 import { Sentry } from "~/features/sentry";
 import {
   type ReceivedMessage,
@@ -232,6 +233,7 @@ export const activity: Activity = {
   visible: false,
   order: 1,
   points: 50,
+  partners: [PARTNER_ID_ZKPASS],
   title: defineMessage({
     id: "activities.claimKuCoinOwnerzkPass.title",
     defaultMessage: "Prove ownership and claim a KuCoin credential",

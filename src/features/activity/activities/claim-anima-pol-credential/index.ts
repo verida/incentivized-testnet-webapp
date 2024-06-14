@@ -9,7 +9,7 @@ import type {
   ActivityOnMessage,
 } from "~/features/activity/types";
 import { Logger } from "~/features/logger";
-import { PARTNER_ID_POLYGONID } from "~/features/partners";
+import { PARTNER_ID_POLYGONID, PARTNER_ID_SYNAPS } from "~/features/partners";
 import { Sentry } from "~/features/sentry";
 import {
   type ReceivedMessage,
@@ -218,7 +218,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
 export const activity: Activity = {
   id: ACTIVITY_ID,
   missionId: MISSION_04_ID,
-  partners: [PARTNER_ID_POLYGONID],
+  partners: [PARTNER_ID_POLYGONID, PARTNER_ID_SYNAPS],
   enabled: true,
   ended: false,
   visible: true,
