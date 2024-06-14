@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ButtonLink, Typography } from "~/components/atoms";
 import { Activity, Mission } from "~/features/activity";
 
+import { ComingSoonActivityItem } from "./ComingSoonActivityItem";
 import { MissionActivityCard } from "./MissionActivityCard";
 
 export type MissionCardProps = {
@@ -63,6 +64,9 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
                 </Link>
               </li>
             ))}
+            <li>
+              <ComingSoonActivityItem activityIndex={activities.length + 1} />
+            </li>
           </ul>
         </div>
       </div>
