@@ -14,6 +14,8 @@ export const partner: Partner = {
     description: "Description of the partner synaps",
   }),
   logo: "/images/partners/synaps.png",
+  accentColor: "#4763F5",
+  accentForegoundColor: "light",
   resources: [
     {
       label: defineMessage({

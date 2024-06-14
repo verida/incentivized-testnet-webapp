@@ -14,6 +14,8 @@ export const partner: Partner = {
     description: "Description of the partner gamer31",
   }),
   logo: "/images/partners/gamer31.svg",
+  accentColor: "#FC0",
+  accentForegoundColor: "dark",
   resources: [
     {
       label: defineMessage({

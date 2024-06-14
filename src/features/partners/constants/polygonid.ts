@@ -15,6 +15,8 @@ export const partner: Partner = {
     description: "description of the partner Polygon ID",
   }),
   logo: "/images/partners/polygonid.png",
+  accentColor: "#8343F3",
+  accentForegoundColor: "light",
   resources: [
     {
       label: defineMessage({

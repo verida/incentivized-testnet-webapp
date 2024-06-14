@@ -14,6 +14,8 @@ export const partner: Partner = {
     description: "Description of the partner zkPass",
   }),
   logo: "/images/partners/zkPass.png",
+  accentColor: "#C5FF4A",
+  accentForegoundColor: "dark",
   resources: [
     {
       label: defineMessage({

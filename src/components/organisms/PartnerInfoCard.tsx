@@ -40,10 +40,6 @@ export const PartnerInfoCard: React.FC<PartnerInfoCardProps> = (props) => {
     }
   );
 
-  // TODO: Get that color from the partner definition
-  // const partnerColor = "#733BD6";
-  const partnerColor = "#E6007A";
-
   return (
     <div
       {...divProps}
@@ -62,11 +58,20 @@ export const PartnerInfoCard: React.FC<PartnerInfoCardProps> = (props) => {
           // bottom-[calc(100%_-_1px)] and pb-px is to ensure there is no gap
           // with the div below
           style={{
-            backgroundColor: partnerColor,
+            backgroundColor: partner.accentColor,
           }}
         >
           <div className="px-4 py-1">
-            <Typography variant="base-s">{cardBadgeLabel}</Typography>
+            <Typography
+              variant="base-s"
+              className={
+                partner.accentForegoundColor === "light"
+                  ? "text-foreground"
+                  : "text-background"
+              }
+            >
+              {cardBadgeLabel}
+            </Typography>
           </div>
         </div>
         <div
@@ -74,7 +79,7 @@ export const PartnerInfoCard: React.FC<PartnerInfoCardProps> = (props) => {
           // Use the backdrop to hide the above div underneath this one, which
           // allow us to avoid a z index
           style={{
-            background: `linear-gradient(135deg, ${partnerColor} 10%, hsla(var(--white) / 0.15) 90%)`,
+            background: `linear-gradient(135deg, ${partner.accentColor} 10%, hsla(var(--white) / 0.15) 90%)`,
           }}
         >
           <div
@@ -113,7 +118,7 @@ export const PartnerInfoCard: React.FC<PartnerInfoCardProps> = (props) => {
                   key={resource.url}
                   href={resource.url}
                   openInNewTab
-                  className="flex flex-row gap-2 items-center text-primary hover:text-primary-background-hover no-underline hover:underline"
+                  className="flex flex-row gap-2 items-center no-underline hover:underline"
                 >
                   {/* TODO: Use the ExternalLink component, add an optional prop to display the icon */}
                   <Icon type="external-link" size={16} />

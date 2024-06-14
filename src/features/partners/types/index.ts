@@ -23,6 +23,8 @@ export type Partner = {
   name: string;
   description: MessageDescriptor;
   logo: string;
+  accentColor: string;
+  accentForegoundColor: "dark" | "light";
   visible: boolean;
   resources: Resource[];
   socials: PartnerSocial[];

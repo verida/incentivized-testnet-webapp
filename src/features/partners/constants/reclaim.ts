@@ -6,7 +6,7 @@ export const PARTNER_ID_RECLAIM = "reclaim-protocol";
 
 export const partner: Partner = {
   id: PARTNER_ID_RECLAIM,
-  visible: false,
+  visible: true,
   name: "Reclaim Protocol",
   description: defineMessage({
     id: "partners.reclaim.description",
@@ -15,6 +15,8 @@ export const partner: Partner = {
     description: "Description of the partner Reclaim Protocol",
   }),
   logo: "/images/partners/reclaim.svg",
+  accentColor: "#0000ED",
+  accentForegoundColor: "light",
   resources: [
     {
       label: defineMessage({
