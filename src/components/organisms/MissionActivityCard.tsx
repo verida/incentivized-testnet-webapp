@@ -8,13 +8,14 @@ import { Activity, useActivity } from "~/features/activity";
 export type MissionActivityCardProps = {
   activityIndex: number;
   activity: Activity;
+  showPartners?: boolean;
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 // TODO: Rename to ActivityListItem or something like this. Also it is not a card, not everything is a card!
 export const MissionActivityCard: React.FC<MissionActivityCardProps> = (
   props
 ) => {
-  const { activityIndex, activity, ...divProps } = props;
+  const { activityIndex, activity, showPartners, ...divProps } = props;
 
   const { getUserActivity } = useActivity();
   const userActivity = getUserActivity(activity.id);

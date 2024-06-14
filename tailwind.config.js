@@ -83,6 +83,7 @@ module.exports = {
           grad2: "hsl(var(--banner-grad-2))",
           foreground: "hsl(var(--foreground))",
         },
+        missionBottom: "rgba(36, 32, 81, 0.80)",
       },
       fontSize: {
         "heading-l": [

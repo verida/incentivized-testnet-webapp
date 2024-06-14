@@ -14,3 +14,5 @@ export * from "./SideNavigation";
 export * from "./TopBanner";
 export * from "./UpcomingActivitiesCTA";
 export * from "./XpPointsChip";
+export * from "./XpPointsBadge";
+export * from "./StackedImg";

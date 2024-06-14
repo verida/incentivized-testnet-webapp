@@ -2,18 +2,36 @@ import React from "react";
 import { useIntl } from "react-intl";
 import { twMerge } from "tailwind-merge";
 
-import { MissionProgessBarIndicator, Typography } from "~/components/atoms";
+import {
+  MissionProgessBarIndicator,
+  Typography,
+  Variants,
+} from "~/components/atoms";
 import { UserActivityStatus } from "~/features/activity";
+
+import { XpPointsChip } from "./XpPointsChip";
 
 export type MissionProgressBarProps = {
   isLoading?: boolean;
   statuses: UserActivityStatus[];
+  variant?: Variants;
+  showPoint?: boolean;
+  showLabel?: boolean;
+  point?: number;
 } & React.ComponentPropsWithRef<"div">;
 
 export const MissionProgressBar: React.FunctionComponent<
   MissionProgressBarProps
 > = (props) => {
-  const { isLoading, statuses, ...divProps } = props;
+  const {
+    isLoading,
+    statuses,
+    variant,
+    showPoint,
+    point,
+    showLabel,
+    ...divProps
+  } = props;
 
   const nbActivities = statuses.length;
   const nbCompletedActivities = statuses.filter(
@@ -48,7 +66,21 @@ export const MissionProgressBar: React.FunctionComponent<
 
   return (
     <div {...divProps}>
-      <Typography variant="subtitle">{missionProgressMessage}</Typography>
+      {(showLabel || showPoint) && (
+        <div className="flex justify-between lg:justify-start gap-6 items-center">
+          {showLabel && (
+            <Typography
+              variant={variant || "subtitle"}
+              className="flex-1 lg:flex-none"
+            >
+              {missionProgressMessage}
+            </Typography>
+          )}
+
+          {showPoint && <XpPointsChip nbXpPoints={point || 0} />}
+        </div>
+      )}
+
       <div className={classes}>
         {statuses.map((status, index) => (
           <MissionProgessBarIndicator

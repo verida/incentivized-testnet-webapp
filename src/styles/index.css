@@ -56,4 +56,10 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
+
+  .bg-onboarding-mission-card {
+    background-image: url("./images/bg_onboarding_mission_card.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
