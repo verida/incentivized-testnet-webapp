@@ -1,5 +1,6 @@
 import { type VariantProps, cva } from "class-variance-authority";
 import React from "react";
+import { Link } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
 const buttonLinkBaseVariants = cva(
@@ -87,6 +88,7 @@ export type ButtonLinkBaseVariants = VariantProps<
 export type ButtonLinkBaseProps = {
   href: string;
   openInNewTab?: boolean;
+  internal?: boolean;
 } & ButtonLinkBaseVariants &
   Omit<React.ComponentPropsWithRef<"a">, "href">;
 
@@ -104,6 +106,7 @@ export const ButtonLinkBase: React.FunctionComponent<ButtonLinkBaseProps> = (
     className,
     target,
     rel,
+    internal,
     ...otherProps
   } = props;
 
@@ -112,7 +115,17 @@ export const ButtonLinkBase: React.FunctionComponent<ButtonLinkBaseProps> = (
     className
   );
 
-  return (
+  return internal ? (
+    <Link
+      {...otherProps}
+      to={href}
+      target={target ? target : openInNewTab ? "_blank" : undefined}
+      rel={rel ? rel : openInNewTab ? "noopener noreferrer" : undefined}
+      className={classes}
+    >
+      {children}
+    </Link>
+  ) : (
     <a
       {...otherProps}
       href={href}

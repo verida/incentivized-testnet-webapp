@@ -100,6 +100,7 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
               <ButtonLink
                 href={`/missions/${mission.id}`}
                 className="text-background bg-white hover:bg-white/90"
+                internal={true}
                 // TODO: Create button colour variant
               >
                 {goToMissionButtonLabel}
