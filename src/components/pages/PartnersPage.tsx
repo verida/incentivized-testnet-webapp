@@ -19,15 +19,11 @@ export const PartnersPage: React.FC = () => {
   return (
     <PageLayout title={title}>
       <ul className="grid gap-4 lg:gap-8 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
-        {[...partners, ...partners, ...partners, ...partners].map(
-          (partner, index) => (
-            <li
-              key={index} // TODO: Use the partner.id once the list has no duplicates
-            >
-              <PartnerListItem partner={partner} />
-            </li>
-          )
-        )}
+        {partners.map((partner) => (
+          <li key={partner.id}>
+            <PartnerListItem partner={partner} />
+          </li>
+        ))}
       </ul>
     </PageLayout>
   );
