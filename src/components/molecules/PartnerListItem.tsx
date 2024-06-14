@@ -34,7 +34,7 @@ export const PartnerListItem: React.FC<PartnersListItemProps> = (props) => {
             alt={partnerLogoAlt}
             className="bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 w-20 md:w-30"
           />
-          <Typography variant="heading-m" component="p">
+          <Typography variant="heading-m" component="p" className="text-center">
             {partner.name}
           </Typography>
         </div>

@@ -6,8 +6,8 @@ export const PARTNER_ID_RECLAIM = "reclaim-protocol";
 
 export const partner: Partner = {
   id: PARTNER_ID_RECLAIM,
-  visible: true,
-  name: "Reclaim Protocol",
+  visible: false,
+  name: "Reclaim",
   description: defineMessage({
     id: "partners.reclaim.description",
     defaultMessage:
