@@ -1,37 +1,29 @@
-// Partner
 import { MessageDescriptor } from "react-intl";
 
 import { Resource } from "~/types";
 
-export enum SocialType {
-  LINKEDIN = "linkedin",
-  YOUTUBE = "youtube",
-  X = "x",
-  TELEGRAM = "telegram",
+export enum PartnerSocialType {
   DISCORD = "discord",
-  TICKTOCK = "ticktok",
+  LINKEDIN = "linkedin",
   MEDIUM = "medium",
+  REDDIT = "reddit",
+  TELEGRAM = "telegram",
+  X = "x",
+  WHATSAPP = "whatsapp",
+  YOUTUBE = "youtube",
 }
 
-export type Social = {
-  id: string;
-  title: MessageDescriptor;
-  type: SocialType;
-  link: string;
-  icon?: JSX.Element;
+export type PartnerSocial = {
+  type: PartnerSocialType;
+  url: string;
 };
 
 export type Partner = {
   id: string;
-  idLabel: MessageDescriptor;
-  enabled: boolean;
+  name: string;
+  description: MessageDescriptor;
+  logo: string;
   visible: boolean;
-  frozen: boolean;
-  order: number;
-  title: MessageDescriptor;
-  shortDescription: MessageDescriptor;
-  longDescription: MessageDescriptor;
-  resources?: Resource[];
-  socials?: Social[];
-  image?: string;
+  resources: Resource[];
+  socials: PartnerSocial[];
 };

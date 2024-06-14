@@ -21,9 +21,7 @@ export const PartnerPage: React.FC = () => {
   // TODO: Implement the case there is no missions to display
 
   return (
-    <PageLayout
-      title={partner?.title ? i18n.formatMessage(partner?.title) : undefined}
-    >
+    <PageLayout title={partner?.name}>
       {partner ? (
         <div className="flex flex-col justify-start lg:flex-row gap-10">
           <PartnerInfoCard

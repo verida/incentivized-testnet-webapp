@@ -7,7 +7,7 @@ import {
   IconButtonLink,
   Typography,
 } from "~/components/atoms";
-import { Partner, SocialType } from "~/features/partners";
+import { Partner, getPartnerSocialIcon } from "~/features/partners";
 
 export type PartnerInfoCardProps = {
   partner: Partner;
@@ -88,7 +88,7 @@ export const PartnerInfoCard: React.FC<PartnerInfoCardProps> = (props) => {
           >
             <div className="flex flex-row justify-between items-stretch">
               <img
-                src={partner.image || "/images/partners/default.png"}
+                src={partner.logo}
                 alt={partner.id}
                 className="h-16 aspect-square rounded-full bg-white p-3"
               />
@@ -101,14 +101,14 @@ export const PartnerInfoCard: React.FC<PartnerInfoCardProps> = (props) => {
             </div>
             <div className="flex flex-col gap-2">
               <Typography variant="heading-s" component="p">
-                {i18n.formatMessage(partner.title)}
+                {partner.name}
               </Typography>
               <Typography variant="base-s" className="text-muted-foreground">
-                {i18n.formatMessage(partner.shortDescription)}
+                {i18n.formatMessage(partner.description)}
               </Typography>
             </div>
             <div className="flex flex-row gap-6 flex-wrap">
-              {partner.resources?.map((resource) => (
+              {partner.resources.map((resource) => (
                 <ExternalLink
                   key={resource.url}
                   href={resource.url}
@@ -124,34 +124,19 @@ export const PartnerInfoCard: React.FC<PartnerInfoCardProps> = (props) => {
               ))}
             </div>
             <div className="flex flex-row justify-start items-center gap-3 flex-wrap">
-              {partner.socials?.map((social) => (
-                <IconButtonLink
-                  key={social.link}
-                  href={social.link}
-                  shape="circle"
-                  className="rounded-full p-3 bg-white/10 hover:bg-white/30"
-                  icon={
-                    <Icon
-                      type={
-                        social.type === SocialType.DISCORD
-                          ? "platform-discord"
-                          : social.type === SocialType.LINKEDIN
-                            ? "platform-linkedin"
-                            : social.type === SocialType.MEDIUM
-                              ? "platform-medium"
-                              : social.type === SocialType.TELEGRAM
-                                ? "platform-telegram"
-                                : social.type === SocialType.X
-                                  ? "platform-x"
-                                  : social.type === SocialType.YOUTUBE
-                                    ? "platform-youtube"
-                                    : "external-link"
-                      }
-                      size={16}
-                    />
-                  }
-                />
-              ))}
+              {partner.socials.map((social) => {
+                const icon = getPartnerSocialIcon(social.type, 16);
+
+                return (
+                  <IconButtonLink
+                    key={social.url}
+                    href={social.url}
+                    shape="circle"
+                    className="rounded-full p-3 bg-white/10 hover:bg-white/30"
+                    icon={icon}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>
