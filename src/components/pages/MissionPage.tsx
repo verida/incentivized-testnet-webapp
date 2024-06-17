@@ -1,22 +1,14 @@
 import { useMemo } from "react";
 import { useIntl } from "react-intl";
-import { useNavigate, useParams } from "react-router-dom";
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useParams } from "react-router-dom";
 
-import { Typography } from "~/components/atoms";
 import { MissionProgressBar } from "~/components/molecules";
-import { MissionCard, MissionInfoCard } from "~/components/organisms";
+import { MissionCard } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { useActivity } from "~/features/activity";
 import {
   getMissionById,
   isOnboardingMission as isOnboardingMissionFunc,
-  missions,
 } from "~/features/missions";
 
 export const MissionPage: React.FC = () => {
@@ -26,8 +18,6 @@ export const MissionPage: React.FC = () => {
   // Check if current mission is onboarding mission
   const mission = getMissionById(missionId);
   const isOnboardingMission = isOnboardingMissionFunc(missionId);
-
-  const navigate = useNavigate();
 
   const {
     activities: allActivities,
@@ -59,14 +49,11 @@ export const MissionPage: React.FC = () => {
     defaultMessage: "No data",
   });
 
-  const title = i18n.formatMessage({
-    id: "MissionPage.title",
-    defaultMessage: "Explore More",
-    description: "Title of mission page",
-  });
-
   return (
-    <PageLayout hideReportIssueButton>
+    <PageLayout
+      hideReportIssueButton
+      displayExploreMoreMissionsSection={!isOnboardingMission}
+    >
       {mission ? (
         <div className="flex flex-col w-full max-w-mission-page mx-auto">
           <div className="w-full justify-center max-w-mission mx-auto">
@@ -90,44 +77,6 @@ export const MissionPage: React.FC = () => {
               showLabel={true}
             />
           </div>
-          {!isOnboardingMission && (
-            <>
-              {/* TODO: Create a dedicated component for the caroussel */}
-              <div className="flex flex-col mt-28 w-full overflow-hidden justify-center items-center gap-10">
-                <Typography variant="heading-m">{title}</Typography>
-                <Swiper
-                  className="relative !z-0 w-full flex gap-2 bg-transparent md:hidden"
-                  modules={[Navigation]}
-                  slidesPerView={1}
-                  spaceBetween={32}
-                >
-                  {missions.map((mission) => (
-                    <SwiperSlide
-                      key={mission.id}
-                      className="flex bg-transparent w-fit justify-center"
-                      onClick={() => navigate(`/missions/${mission.id}`)}
-                      // TODO: Prefer use of a <Link>
-                    >
-                      <MissionInfoCard mission={mission} />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-                {/* Desktop view */}
-                <div className="gap-4 justify-between w-full items-stretch hidden md:grid grid-cols-3">
-                  {missions.slice(0, 3).map((mission) => (
-                    <div
-                      key={mission.id}
-                      className="flex-1 h-full"
-                      onClick={() => navigate(`/missions/${mission.id}`)}
-                      // TODO: Prefer use of a <Link>
-                    >
-                      <MissionInfoCard mission={mission} className="h-full" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </>
-          )}
         </div>
       ) : (
         <>
