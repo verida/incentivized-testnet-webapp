@@ -63,14 +63,14 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
-  .bg-xp-badge {
-    background-image: url("./images/point-bg.svg");
+  .bg-xp-badge-default {
+    background-image: url("./images/bg_xp_points_badge_default.svg");
     background-repeat: no-repeat;
     background-size: cover;
   }
 
-  .bg-xp-badge-blue {
-    background-image: url("./images/blue-point-bg.svg");
+  .bg-xp-badge-onboarding {
+    background-image: url("./images/bg_xp_points_badge_onboarding.svg");
     background-repeat: no-repeat;
     background-size: cover;
   }

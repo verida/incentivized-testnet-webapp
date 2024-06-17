@@ -44,6 +44,10 @@ export const PartnerPage: React.FC = () => {
                       // filter the activities.
                       (activity) => activity.missionId === mission.id
                     )}
+                    displayGoToMissionButton
+                    hidePartnersOnActivities
+                    hideTotalMissionPoints
+                    hideDescription
                   />
                 </article>
               </li>

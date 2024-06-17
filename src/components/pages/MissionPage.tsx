@@ -59,10 +59,7 @@ export const MissionPage: React.FC = () => {
             <MissionSection
               activities={missionActivities}
               mission={mission}
-              showDescription={true}
-              hideButtonLink={true}
-              showPoints={true}
-              showPartners={true}
+              displayGoToMissionButton
             />
           </div>
           <div className="sticky bottom-6 max-w-[calc(1264px_-_12rem)] w-full">

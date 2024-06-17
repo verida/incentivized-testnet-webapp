@@ -16,13 +16,12 @@ import { ComingSoonActivityItem } from "./ComingSoonActivityItem";
 export type MissionSectionProps = {
   mission: Mission;
   activities: Activity[];
-
   /* Allow overriding the default message if needed */
   activityListMessage?: string;
-  showDescription?: boolean;
-  showPoints?: boolean;
-  hideButtonLink?: boolean;
-  showPartners?: boolean;
+  hideDescription?: boolean;
+  hideTotalMissionPoints?: boolean;
+  displayGoToMissionButton?: boolean;
+  hidePartnersOnActivities?: boolean;
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const MissionSection: React.FC<MissionSectionProps> = (props) => {
@@ -30,10 +29,10 @@ export const MissionSection: React.FC<MissionSectionProps> = (props) => {
     mission,
     activities,
     activityListMessage,
-    showDescription,
-    showPoints,
-    hideButtonLink,
-    showPartners,
+    hideDescription = false,
+    hideTotalMissionPoints = false,
+    displayGoToMissionButton = false,
+    hidePartnersOnActivities = false,
     ...divProps
   } = props;
 
@@ -70,30 +69,34 @@ export const MissionSection: React.FC<MissionSectionProps> = (props) => {
     <div {...divProps}>
       <div
         className={twMerge(
-          "border border-border bg-clip-padding bg-mission-card rounded-2xl",
+          "border border-border bg-clip-padding rounded-2xl",
           isOnboardingMission ? "bg-onboarding-mission-card" : "bg-mission-card"
         )}
       >
-        <div className="flex py-6 px-4 lg:px-6 gap-6">
+        <div className="flex flex-row p-6 gap-6">
           <div className="flex flex-col items-start gap-6">
             <Typography variant="heading-m">
               {i18n.formatMessage(mission.title)}
             </Typography>
-            {showDescription && (
+            {!hideDescription && (
               <Typography variant={"base"}>
                 {i18n.formatMessage(mission.shortDescription, {
-                  newline: <></>,
+                  newline: (
+                    <>
+                      <br />
+                    </>
+                  ),
                 })}
               </Typography>
             )}
-            {isOnboardingMission && resources && resources.length > 0 && (
+            {resources && resources.length > 0 ? (
               <aside className="text-muted-foreground">
                 <Typography variant="subtitle">
                   {resourcesSectionTitle}
                 </Typography>
                 <ul>
-                  {resources.map((resource, index) => (
-                    <li key={index}>
+                  {resources.map((resource) => (
+                    <li key={resource.url}>
                       <ExternalLink href={resource.url} openInNewTab>
                         {i18n.formatMessage(resource.label)}
                       </ExternalLink>
@@ -101,25 +104,24 @@ export const MissionSection: React.FC<MissionSectionProps> = (props) => {
                   ))}
                 </ul>
               </aside>
-            )}
-            {!hideButtonLink && (
+            ) : null}
+            {displayGoToMissionButton && (
               <ButtonLink
                 href={`/missions/${mission.id}`}
                 className="text-background bg-white hover:bg-white/90"
-                internal={true}
+                internal
                 // TODO: Create button colour variant
               >
                 {goToMissionButtonLabel}
               </ButtonLink>
             )}
           </div>
-          {showPoints && (
+          {!hideTotalMissionPoints && (
             <div className="hidden lg:block">
               <XpPointsBadge
                 nbXpPoints={points}
-                theme={isOnboardingMission ? "BLUE" : "RED"}
-                size="BIG"
-                className={"w-50 h-50"}
+                theme={isOnboardingMission ? "onboarding" : "default"}
+                className="w-50"
               />
             </div>
           )}
@@ -133,7 +135,7 @@ export const MissionSection: React.FC<MissionSectionProps> = (props) => {
                   <ActivityListItem
                     activity={activity}
                     activityIndex={index + 1}
-                    showPartners={showPartners}
+                    showPartners={!hidePartnersOnActivities}
                   />
                 </Link>
               </li>
