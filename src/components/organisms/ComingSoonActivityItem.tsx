@@ -1,8 +1,7 @@
 import { useIntl } from "react-intl";
 
-import { Chip, Typography } from "~/components/atoms";
-
-import { ComingSoonChip } from "../molecules";
+import { Typography } from "~/components/atoms";
+import { ComingSoonChip } from "~/components/molecules";
 
 export type ComingSoonActivityItemProps = {
   activityIndex: number;
