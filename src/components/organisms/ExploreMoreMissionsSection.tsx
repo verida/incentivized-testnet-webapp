@@ -8,7 +8,7 @@ import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { Typography } from "~/components/atoms";
-import { MissionInfoCard } from "~/components/organisms";
+import { MissionCard } from "~/components/organisms";
 import { missions } from "~/features/missions";
 
 export type ExploreMoreMissionsSectionProps = Omit<
@@ -45,7 +45,7 @@ export const ExploreMoreMissionsSection: React.FC<
               className="flex bg-transparent w-fit justify-center"
             >
               <Link to={`/missions/${mission.id}`}>
-                <MissionInfoCard mission={mission} />
+                <MissionCard mission={mission} />
               </Link>
             </SwiperSlide>
           ))}
@@ -55,7 +55,7 @@ export const ExploreMoreMissionsSection: React.FC<
           {missions.slice(0, 3).map((mission) => (
             <div key={mission.id} className="flex-1 h-full">
               <Link to={`/missions/${mission.id}`}>
-                <MissionInfoCard mission={mission} className="h-full" />
+                <MissionCard mission={mission} className="h-full" />
               </Link>
             </div>
           ))}

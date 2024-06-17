@@ -1,148 +1,111 @@
+import { useMemo } from "react";
 import { useIntl } from "react-intl";
-import { Link } from "react-router-dom";
-import { twMerge } from "tailwind-merge";
 
-import { ButtonLink, ExternalLink, Typography } from "~/components/atoms";
-import { XpPointsBadge } from "~/components/molecules";
-import { Activity } from "~/features/activity";
+import { Typography } from "~/components/atoms";
 import {
-  Mission,
-  isOnboardingMission as isOnboardingMissionFunc,
-} from "~/features/missions";
-
-import { ActivityListItem } from "./ActivityListItem";
-import { ComingSoonActivityItem } from "./ComingSoonActivityItem";
+  MissionProgressBar,
+  StackedImage,
+  XpPointsBadge,
+  XpPointsChip,
+} from "~/components/molecules";
+import { useActivity } from "~/features/activity";
+import { activities } from "~/features/activity/activities";
+import { Mission } from "~/features/missions";
+import { Partner, partners as wholePartners } from "~/features/partners";
 
 export type MissionCardProps = {
   mission: Mission;
-  activities: Activity[];
-
-  /* Allow overriding the default message if needed */
-  activityListMessage?: string;
-  showDescription?: boolean;
-  showPoints?: boolean;
-  hideButtonLink?: boolean;
-  showPartners?: boolean;
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
-// TODO: Rename as MissionSection
 export const MissionCard: React.FC<MissionCardProps> = (props) => {
-  const {
-    mission,
-    activities,
-    activityListMessage,
-    showDescription,
-    showPoints,
-    hideButtonLink,
-    showPartners,
-    ...divProps
-  } = props;
-
-  const isOnboardingMission = isOnboardingMissionFunc(mission.id);
-
-  const { resources } = mission;
-
+  const { mission, ...divProps } = props;
   const i18n = useIntl();
 
-  const goToMissionButtonLabel = i18n.formatMessage({
-    id: "MissionCard.goToMissionButtonLabel",
-    description:
-      "Label of the button on the Mission card to open the mission page",
-    defaultMessage: "Go to Mission",
-  });
+  const missionLabel = i18n.formatMessage(mission.title);
 
-  const resolvedActivityListMessage =
-    activityListMessage ??
-    i18n.formatMessage({
-      id: "MissionCard.defaultActivityListMessage",
-      description:
-        "Default message displayed above the activity list in the mission card",
-      defaultMessage: "Complete all activities below",
+  const { isLoadingUserActivities, getUserActivity } = useActivity();
+
+  const missionActivities = activities.filter(
+    (activity) =>
+      activity.enabled && activity.visible && activity.missionId === mission.id
+  );
+  const activityStatuses = useMemo(() => {
+    return missionActivities.map((activity) => {
+      const userActivity = getUserActivity(activity.id);
+      return userActivity?.status ?? "todo";
     });
+  }, [missionActivities, getUserActivity]);
 
-  const resourcesSectionTitle = i18n.formatMessage({
-    id: "MissionCard.resourcesSectionTitle",
-    description: "Title of the resources section in each mission card",
-    defaultMessage: "Resources",
+  const progressLabel = i18n.formatMessage({
+    id: "MissionInfoCard.progresslabel",
+    description: "progress label",
+    defaultMessage: `${activityStatuses.filter((status) => status === "completed")?.length} / ${activityStatuses.length}`,
   });
-  const points = activities.reduce((acc, cur) => acc + cur.points, 0);
+
+  const totalPoints = missionActivities?.reduce((acc, cur) => {
+    return acc + cur.points;
+  }, 0);
+
+  const partnerIds = missionActivities
+    .reduce<string[]>((acc, cur) => {
+      if (cur.partners) {
+        return acc.concat(cur.partners);
+      } else {
+        return acc;
+      }
+    }, [])
+    .reduce<string[]>((acc, cur) => {
+      if (!acc.includes(cur)) {
+        acc.push(cur);
+      }
+      return acc;
+    }, []);
+
+  const partners = partnerIds.reduce((acc: Partner[], partnerId) => {
+    const partner = wholePartners.find((item) => item.id === partnerId);
+    if (partner) {
+      acc.push(partner);
+    }
+    return acc;
+  }, []);
 
   return (
     <div {...divProps}>
-      <div
-        className={twMerge(
-          "border border-border bg-clip-padding bg-mission-card rounded-2xl",
-          isOnboardingMission ? "bg-onboarding-mission-card" : "bg-mission-card"
-        )}
-      >
-        <div className="flex py-6 px-4 lg:px-6 gap-6">
-          <div className="flex flex-col items-start gap-6">
-            <Typography variant="heading-m">
-              {i18n.formatMessage(mission.title)}
-            </Typography>
-            {showDescription && (
-              <Typography variant={"base"}>
-                {i18n.formatMessage(mission.shortDescription, {
-                  newline: <></>,
-                })}
-              </Typography>
-            )}
-            {isOnboardingMission && resources && resources.length > 0 && (
-              <aside className="text-muted-foreground">
-                <Typography variant="subtitle">
-                  {resourcesSectionTitle}
-                </Typography>
-                <ul>
-                  {resources.map((resource, index) => (
-                    <li key={index}>
-                      <ExternalLink href={resource.url} openInNewTab>
-                        {i18n.formatMessage(resource.label)}
-                      </ExternalLink>
-                    </li>
-                  ))}
-                </ul>
-              </aside>
-            )}
-            {!hideButtonLink && (
-              <ButtonLink
-                href={`/missions/${mission.id}`}
-                className="text-background bg-white hover:bg-white/90"
-                internal={true}
-                // TODO: Create button colour variant
+      <div className="border border-white/30 backdrop-blur-4xl overflow-hidden rounded-xl w-full h-full">
+        <div className="relative rounded-xl flex flex-col overflow-hidden backdrop-blur-4xl h-full">
+          <div className="bg-mission-card w-full h-full absolute -z-10"></div>
+          <div className="p-4">
+            <XpPointsBadge nbXpPoints={totalPoints} className="m-auto" />
+            <div className="w-full">
+              <Typography
+                component={"span"}
+                className="!text-base-s !font-semibold"
               >
-                {goToMissionButtonLabel}
-              </ButtonLink>
-            )}
+                {progressLabel}
+              </Typography>
+              <div className="flex gap-1">
+                <MissionProgressBar
+                  className="gap-3 lg:gap-6 flex flex-col w-full"
+                  isLoading={isLoadingUserActivities}
+                  statuses={activityStatuses}
+                  showPoint={false}
+                  showLabel={false}
+                />
+              </div>
+            </div>
           </div>
-          {showPoints && (
-            <div className="hidden lg:block">
-              <XpPointsBadge
-                nbXpPoints={points}
-                theme={isOnboardingMission ? "BLUE" : "RED"}
-                size="BIG"
-                className={"w-50 h-50"}
+
+          <div className="rounded-tl-xl rounded-tr-xl overflow-hidden bg-missionBottom flex-1 px-4 py-6 flex flex-col w-full gap-6">
+            <h3 className="text-desktop-base lg:text-mission-title line-clamp-2">
+              {missionLabel}
+            </h3>
+            <div className="flex justify-between items-center mt-auto">
+              <XpPointsChip nbXpPoints={totalPoints} />
+              <StackedImage
+                images={partners.map((partner) => partner.logo || "")}
               />
             </div>
-          )}
-        </div>
-        <div className="py-6 px-4 lg:pt-8 lg:p-6 flex flex-col gap-6 rounded-[calc(1rem_-_1px)] bg-background/90">
-          <Typography variant="base">{resolvedActivityListMessage}</Typography>
-          <ul className="flex flex-col w-full gap-6">
-            {activities.map((activity, index) => (
-              <li key={activity.id}>
-                <Link to={`/activities/${activity.id}`}>
-                  <ActivityListItem
-                    activity={activity}
-                    activityIndex={index + 1}
-                    showPartners={showPartners}
-                  />
-                </Link>
-              </li>
-            ))}
-            <li>
-              <ComingSoonActivityItem activityIndex={activities.length + 1} />
-            </li>
-          </ul>
+          </div>
         </div>
       </div>
     </div>

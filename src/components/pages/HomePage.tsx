@@ -5,7 +5,7 @@ import { Typography } from "~/components/atoms";
 import { Alert, HomeHero } from "~/components/molecules";
 import {
   ConnectVeridaButton,
-  MissionSection,
+  LegacyMissionSection,
   MissionsSideNavigation,
 } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
@@ -173,7 +173,7 @@ export const HomePage: React.FC = () => {
             </aside>
           </div>
           {missions.map((mission, index) => (
-            <MissionSection
+            <LegacyMissionSection
               key={mission.id}
               mission={mission}
               className={index > 0 ? "mt-16" : ""}

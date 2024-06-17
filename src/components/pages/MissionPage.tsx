@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
 
-import { MissionBottomBar, MissionCard } from "~/components/organisms";
+import { MissionBottomBar, MissionSection } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { useActivity } from "~/features/activity";
 import {
@@ -56,7 +56,7 @@ export const MissionPage: React.FC = () => {
       {mission ? (
         <div className="flex flex-col items-center gap-6 lg:gap-11">
           <div className="max-w-[calc(1264px_-_16rem)]">
-            <MissionCard
+            <MissionSection
               activities={missionActivities}
               mission={mission}
               showDescription={true}

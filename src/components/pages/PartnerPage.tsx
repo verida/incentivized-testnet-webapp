@@ -1,7 +1,7 @@
 import { useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
 
-import { MissionCard, PartnerInfoCard } from "~/components/organisms";
+import { MissionSection, PartnerInfoCard } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { usePartner } from "~/features/partners";
 
@@ -33,7 +33,7 @@ export const PartnerPage: React.FC = () => {
             {missions.map((mission) => (
               <li key={mission.id}>
                 <article>
-                  <MissionCard
+                  <MissionSection
                     mission={mission}
                     activities={activities.filter(
                       // TODO: To optimise if this component is used elsewhere.
