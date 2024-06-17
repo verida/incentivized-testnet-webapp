@@ -12,7 +12,7 @@ export const Avatar: React.FunctionComponent<AvatarProps> = (props) => {
   const { image, alt = "avatar", ...otherProps } = props;
 
   const commonClasses =
-    "aspect-square h-full rounded-full border border-border-60 bg-transparent-15";
+    "aspect-square h-full rounded-full border border-transparent-60 bg-transparent-15";
 
   const avatar = image ? (
     <img

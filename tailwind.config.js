@@ -66,9 +66,8 @@ module.exports = {
           DEFAULT: "hsl(var(--gray))",
         },
         border: {
-          DEFAULT: "hsla(var(--white) / 0.15)", // TODO: To remove, use transparent-15 instead
-          30: "hsla(var(--white) / 0.3)", // TODO: To remove, use transparent-30 instead
-          60: "hsla(var(--white) / 0.6)", // TODO: To remove, use transparent-60 instead
+          DEFAULT: "hsla(var(--white) / 0.15)",
+          hover: "hsla(var(--white) / 0.3)",
         },
         divider: {
           DEFAULT: "hsla(var(--white) / 0.15)",

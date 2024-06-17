@@ -28,7 +28,7 @@ export const PartnerListItem: React.FC<PartnersListItemProps> = (props) => {
   return (
     <article {...articleProps}>
       <Link to={`/partners/${partner.id}`}>
-        <div className="border border-border hover:border-border-30 bg-background-light hover:bg-background-extra-light rounded-3xl md:rounded-10 flex flex-col items-center justify-center py-8 lg:py-12 gap-6 md:gap-10">
+        <div className="border border-border hover:border-border-hover bg-background-light hover:bg-background-extra-light rounded-3xl md:rounded-10 flex flex-col items-center justify-center py-8 lg:py-12 gap-6 md:gap-10">
           <img
             src={partner.logo}
             alt={partnerLogoAlt}

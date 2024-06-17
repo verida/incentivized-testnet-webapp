@@ -2,8 +2,7 @@ import { useMemo } from "react";
 import { useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
 
-import { MissionProgressBar } from "~/components/molecules";
-import { MissionCard } from "~/components/organisms";
+import { MissionBottomBar, MissionCard } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { useActivity } from "~/features/activity";
 import {
@@ -55,8 +54,8 @@ export const MissionPage: React.FC = () => {
       displayExploreMoreMissionsSection={!isOnboardingMission}
     >
       {mission ? (
-        <div className="flex flex-col w-full max-w-mission-page mx-auto">
-          <div className="w-full justify-center max-w-mission mx-auto">
+        <div className="flex flex-col items-center gap-6 lg:gap-11">
+          <div className="max-w-[calc(1264px_-_16rem)]">
             <MissionCard
               activities={missionActivities}
               mission={mission}
@@ -66,15 +65,11 @@ export const MissionPage: React.FC = () => {
               showPartners={true}
             />
           </div>
-          <div className="sticky bottom-6 left-0 right-0 max-w-mission-page-progress mx-auto w-full mt-11 p-4 lg:px-6 lg:py-4 rounded-2xl backdrop-blur-xl border-border-progress border bg-progressBg">
-            <MissionProgressBar
-              variant="base"
-              className="gap-3 lg:gap-6 flex flex-col w-full"
-              isLoading={isLoadingUserActivities}
+          <div className="sticky bottom-6 max-w-[calc(1264px_-_12rem)] w-full">
+            <MissionBottomBar
               statuses={activityStatuses}
-              point={missionTotalPoints}
-              showPoint={true}
-              showLabel={true}
+              points={missionTotalPoints}
+              isLoading={isLoadingUserActivities}
             />
           </div>
         </div>
