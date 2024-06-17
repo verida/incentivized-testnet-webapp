@@ -4,7 +4,7 @@ export * from "./Footer";
 export * from "./GetSupportSection";
 export * from "./Header";
 export * from "./LearnMoreSection";
-export * from "./MissionActivityCard";
+export * from "./ActivityListItem";
 export * from "./MissionCard";
 export * from "./MissionSection";
 export * from "./MissionsSideNavigation";

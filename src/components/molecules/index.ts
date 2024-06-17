@@ -16,3 +16,6 @@ export * from "./UpcomingActivitiesCTA";
 export * from "./XpPointsChip";
 export * from "./XpPointsBadge";
 export * from "./StackedImg";
+export * from "./PendingChip";
+export * from "./EndedChip";
+export * from "./ComingSoonChip";

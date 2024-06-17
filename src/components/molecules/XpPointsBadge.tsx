@@ -5,11 +5,12 @@ import { Typography } from "~/components/atoms";
 
 export type XpPointsBadgeProps = {
   nbXpPoints: number;
+  size?: "BIG" | "SMALL";
   theme?: "RED" | "BLUE";
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const XpPointsBadge: React.FC<XpPointsBadgeProps> = (props) => {
-  const { nbXpPoints, theme, className, ...divProps } = props;
+  const { nbXpPoints, theme, size, className, ...divProps } = props;
   const i18n = useIntl();
   const formattedValue = i18n.formatMessage(
     {
@@ -31,7 +32,9 @@ export const XpPointsBadge: React.FC<XpPointsBadgeProps> = (props) => {
       {...divProps}
     >
       <div className="absolute w-full h-full flex justify-center items-center">
-        <Typography variant={"heading-s"}>{formattedValue}</Typography>
+        <Typography variant={size === "BIG" ? "heading-s" : "base"}>
+          {formattedValue}
+        </Typography>
       </div>
     </div>
   );

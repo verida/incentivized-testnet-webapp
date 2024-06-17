@@ -6,8 +6,8 @@ import { ButtonLink, ExternalLink, Typography } from "~/components/atoms";
 import { XpPointsBadge } from "~/components/molecules";
 import { Activity, MISSION_01_ID, Mission } from "~/features/activity";
 
+import { ActivityListItem } from "./ActivityListItem";
 import { ComingSoonActivityItem } from "./ComingSoonActivityItem";
-import { MissionActivityCard } from "./MissionActivityCard";
 
 export type MissionCardProps = {
   mission: Mission;
@@ -112,6 +112,7 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
               <XpPointsBadge
                 nbXpPoints={points}
                 theme={isOnboardingMission ? "BLUE" : "RED"}
+                size="BIG"
                 className={"w-50 h-50"}
               />
             </div>
@@ -123,7 +124,7 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
             {activities.map((activity, index) => (
               <li key={activity.id}>
                 <Link to={`/activities/${activity.id}`}>
-                  <MissionActivityCard
+                  <ActivityListItem
                     activity={activity}
                     activityIndex={index + 1}
                     showPartners={showPartners}

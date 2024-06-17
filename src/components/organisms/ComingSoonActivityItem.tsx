@@ -2,6 +2,8 @@ import { useIntl } from "react-intl";
 
 import { Chip, Typography } from "~/components/atoms";
 
+import { ComingSoonChip } from "../molecules";
+
 export type ComingSoonActivityItemProps = {
   activityIndex: number;
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
@@ -16,11 +18,7 @@ export const ComingSoonActivityItem: React.FC<ComingSoonActivityItemProps> = (
     description: "Default message of next activity text",
     defaultMessage: "Next Activity",
   });
-  const comingSoonText = i18n.formatMessage({
-    id: "ComingSoonActivityItem.comingSoonText",
-    description: "Default message of coming soon text",
-    defaultMessage: "Coming Soon",
-  });
+
   return (
     <div {...divProps}>
       <div className="flex flex-col lg:flex-row px-4 py-5 lg:p-6 rounded-xl border border-white/20 bg-transparent-6 hover:border-white/40 hover:bg-transparent-10 items-center cursor-pointer gap-4">
@@ -38,17 +36,9 @@ export const ComingSoonActivityItem: React.FC<ComingSoonActivityItemProps> = (
           >
             {nextActivityText}
           </Typography>
-          <Chip variant={"muted"} className="hidden lg:flex">
-            <Typography variant={"subtitle"} className="text-transparent-70">
-              {comingSoonText}
-            </Typography>
-          </Chip>
+          <ComingSoonChip className="hidden lg:flex" />
         </div>
-        <Chip variant={"muted"} className="flex lg:hidden">
-          <Typography variant={"subtitle"} className="text-transparent-70">
-            {comingSoonText}
-          </Typography>
-        </Chip>
+        <ComingSoonChip className="flex lg:hidden mr-auto" />
       </div>
     </div>
   );

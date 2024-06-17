@@ -99,14 +99,14 @@ export function MissionPage() {
                 ))}
               </Swiper>
               {/* Desktop view */}
-              <div className="gap-8 justify-between w-full items-stretch hidden md:flex">
+              <div className="gap-8 justify-between w-full items-stretch hidden md:grid grid-cols-3">
                 {missions.slice(0, 3).map((mission, index) => (
                   <div
                     className="flex-1 h-full"
                     key={index}
                     onClick={() => navigate(`/missions/${mission.id}`)}
                   >
-                    <MissionInfoCard mission={mission} />
+                    <MissionInfoCard mission={mission} className="h-full" />
                   </div>
                 ))}
               </div>
