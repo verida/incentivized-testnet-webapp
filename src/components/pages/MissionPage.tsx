@@ -14,24 +14,17 @@ import { MissionCard, MissionInfoCard } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { useActivity } from "~/features/activity";
 import {
+  getMissionById,
   isOnboardingMission as isOnboardingMissionFunc,
   missions,
 } from "~/features/missions";
 
 export const MissionPage: React.FC = () => {
-  const i18n = useIntl();
-
-  const emptry = i18n.formatMessage({
-    id: "MissionPage.emptyMessage",
-    description: "Message when mission doesn't exist",
-    defaultMessage: "No data",
-  });
-
   // Extract mission id from url path
   const { missionId = "" } = useParams();
 
   // Check if current mission is onboarding mission
-  const mission = missions.find((item) => item.id === missionId);
+  const mission = getMissionById(missionId);
   const isOnboardingMission = isOnboardingMissionFunc(missionId);
 
   const navigate = useNavigate();
@@ -53,7 +46,18 @@ export const MissionPage: React.FC = () => {
     });
   }, [missionActivities, getUserActivity]);
 
-  const point = missionActivities.reduce((acc, cur) => acc + cur.points, 0);
+  const missionTotalPoints = missionActivities.reduce(
+    (totalNbPoints, activity) => totalNbPoints + activity.points,
+    0
+  );
+
+  const i18n = useIntl();
+
+  const emptry = i18n.formatMessage({
+    id: "MissionPage.emptyMessage",
+    description: "Message when mission doesn't exist",
+    defaultMessage: "No data",
+  });
 
   const title = i18n.formatMessage({
     id: "MissionPage.title",
@@ -81,7 +85,7 @@ export const MissionPage: React.FC = () => {
               className="gap-3 lg:gap-6 flex flex-col w-full"
               isLoading={isLoadingUserActivities}
               statuses={activityStatuses}
-              point={point}
+              point={missionTotalPoints}
               showPoint={true}
               showLabel={true}
             />
