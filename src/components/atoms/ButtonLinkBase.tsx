@@ -106,7 +106,7 @@ export const ButtonLinkBase: React.FunctionComponent<ButtonLinkBaseProps> = (
     className,
     target,
     rel,
-    internal,
+    internal = false,
     ...otherProps
   } = props;
 
@@ -116,13 +116,7 @@ export const ButtonLinkBase: React.FunctionComponent<ButtonLinkBaseProps> = (
   );
 
   return internal ? (
-    <Link
-      {...otherProps}
-      to={href}
-      target={target ? target : openInNewTab ? "_blank" : undefined}
-      rel={rel ? rel : openInNewTab ? "noopener noreferrer" : undefined}
-      className={classes}
-    >
+    <Link {...otherProps} to={href} className={classes}>
       {children}
     </Link>
   ) : (
