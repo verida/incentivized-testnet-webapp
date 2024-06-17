@@ -12,11 +12,11 @@ import { Typography } from "~/components/atoms";
 import { MissionProgressBar } from "~/components/molecules";
 import { MissionCard, MissionInfoCard } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
+import { useActivity } from "~/features/activity";
 import {
   isOnboardingMission as isOnboardingMissionFunc,
   missions,
-  useActivity,
-} from "~/features/activity";
+} from "~/features/missions";
 
 export const MissionPage: React.FC = () => {
   const i18n = useIntl();

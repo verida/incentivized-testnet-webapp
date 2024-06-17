@@ -15,14 +15,15 @@ import {
 } from "~/components/molecules";
 import { ActivityCard } from "~/components/organisms";
 import { config } from "~/config";
-import type { Mission } from "~/features/activity";
 import { useActivity } from "~/features/activity";
+import type { Mission } from "~/features/missions";
 import { useVerida } from "~/features/verida";
 
 export type MissionSectionProps = {
   mission: Mission;
 } & React.ComponentPropsWithRef<"article">;
 
+// TODO: Rename as LegacyMissionSection
 export const MissionSection: React.FunctionComponent<MissionSectionProps> = (
   props
 ) => {

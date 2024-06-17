@@ -3,7 +3,6 @@ import { defineMessage } from "react-intl";
 
 import { config } from "~/config";
 import { VERIDA_CREDENTIAL_RECLAIM_SCHEMA_URLS } from "~/features/activity/activities/reclaim/constants";
-import { MISSION_06_ID } from "~/features/activity/missions";
 import type {
   Activity,
   ActivityOnExecute,
@@ -11,6 +10,7 @@ import type {
   ActivityOnMessage,
 } from "~/features/activity/types";
 import { Logger } from "~/features/logger";
+import { MISSION_06_ID } from "~/features/missions";
 import { PARTNER_ID_RECLAIM } from "~/features/partners";
 import { Sentry } from "~/features/sentry";
 import {

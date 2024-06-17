@@ -8,14 +8,16 @@ import {
   XpPointsBadge,
   XpPointsChip,
 } from "~/components/molecules";
-import { Mission, useActivity } from "~/features/activity";
+import { useActivity } from "~/features/activity";
 import { activities } from "~/features/activity/activities";
+import { Mission } from "~/features/missions";
 import { Partner, partners as wholePartners } from "~/features/partners";
 
 export type MissionInfoCardProps = {
   mission: Mission;
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
+// TODO: Rename as MissionCard
 export const MissionInfoCard: React.FC<MissionInfoCardProps> = (props) => {
   const { mission, ...divProps } = props;
   const i18n = useIntl();

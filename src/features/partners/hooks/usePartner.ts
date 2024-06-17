@@ -1,9 +1,7 @@
 import { useMemo } from "react";
 
-import {
-  activities as allActivities,
-  missions as allMissions,
-} from "~/features/activity";
+import { activities as allActivities } from "~/features/activity";
+import { missions as allMissions } from "~/features/missions";
 import { partners } from "~/features/partners/constants";
 
 export function usePartner(partnerId: string) {

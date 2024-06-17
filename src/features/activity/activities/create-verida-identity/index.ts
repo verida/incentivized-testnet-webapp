@@ -1,13 +1,13 @@
 import { toast } from "react-hot-toast";
 import { defineMessage } from "react-intl";
 
-import { MISSION_01_ID } from "~/features/activity/missions";
 import type {
   Activity,
   ActivityOnExecute,
   ActivityOnInit,
 } from "~/features/activity/types";
 import { Logger } from "~/features/logger";
+import { MISSION_01_ID } from "~/features/missions";
 import { wait } from "~/utils";
 
 const logger = new Logger("activity");

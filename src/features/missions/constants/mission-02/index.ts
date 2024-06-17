@@ -1,6 +1,6 @@
 import { defineMessage } from "react-intl";
 
-import type { Mission } from "~/features/activity/types";
+import type { Mission } from "~/features/missions/types";
 
 export const MISSION_02_ID = "mission-02";
 

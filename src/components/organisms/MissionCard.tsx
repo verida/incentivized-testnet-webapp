@@ -4,7 +4,11 @@ import { twMerge } from "tailwind-merge";
 
 import { ButtonLink, ExternalLink, Typography } from "~/components/atoms";
 import { XpPointsBadge } from "~/components/molecules";
-import { Activity, MISSION_01_ID, Mission } from "~/features/activity";
+import { Activity } from "~/features/activity";
+import {
+  Mission,
+  isOnboardingMission as isOnboardingMissionFunc,
+} from "~/features/missions";
 
 import { ActivityListItem } from "./ActivityListItem";
 import { ComingSoonActivityItem } from "./ComingSoonActivityItem";
@@ -21,6 +25,7 @@ export type MissionCardProps = {
   showPartners?: boolean;
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
+// TODO: Rename as MissionSection
 export const MissionCard: React.FC<MissionCardProps> = (props) => {
   const {
     mission,
@@ -33,9 +38,11 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
     ...divProps
   } = props;
 
-  const i18n = useIntl();
-  const isOnboardingMission = mission.id === MISSION_01_ID;
+  const isOnboardingMission = isOnboardingMissionFunc(mission.id);
+
   const { resources } = mission;
+
+  const i18n = useIntl();
 
   const goToMissionButtonLabel = i18n.formatMessage({
     id: "MissionCard.goToMissionButtonLabel",

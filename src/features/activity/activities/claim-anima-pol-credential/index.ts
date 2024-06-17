@@ -1,7 +1,6 @@
 import toast from "react-hot-toast";
 import { defineMessage } from "react-intl";
 
-import { MISSION_04_ID } from "~/features/activity/missions";
 import type {
   Activity,
   ActivityOnExecute,
@@ -9,6 +8,7 @@ import type {
   ActivityOnMessage,
 } from "~/features/activity/types";
 import { Logger } from "~/features/logger";
+import { MISSION_04_ID } from "~/features/missions";
 import { PARTNER_ID_POLYGONID, PARTNER_ID_SYNAPS } from "~/features/partners";
 import { Sentry } from "~/features/sentry";
 import {

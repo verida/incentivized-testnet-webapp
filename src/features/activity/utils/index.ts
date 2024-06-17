@@ -1,8 +1,6 @@
-import { type UseMutateAsyncFunction } from "@tanstack/react-query";
 import { type IDatastore } from "@verida/types";
 import { type WebUser } from "@verida/web-helpers";
 
-import { MISSION_01_ID } from "~/features/activity/missions";
 import {
   UserActivityRecordSchema,
   UserActivitySchema,
@@ -13,7 +11,6 @@ import type {
 } from "~/features/activity/types";
 import { Logger } from "~/features/logger";
 import { PlausibleEvent, capturePlausibleEvent } from "~/features/plausible";
-import type { ReceivedMessage } from "~/features/verida";
 
 const logger = new Logger("activity");
 
@@ -137,17 +134,4 @@ export async function deleteActivitiesInDatastore(
   } catch (error: unknown) {
     throw new Error("Error deleting activities", { cause: error });
   }
-}
-
-export type HandleInitActivityArgs = {
-  activityId: string;
-  userActivity: UserActivity | null;
-  veridaWebUser: WebUser;
-  verifyReceivedMessage: (message: ReceivedMessage<unknown>) => boolean;
-  saveActivity: UseMutateAsyncFunction<void, unknown, UserActivity>;
-  successToastMessage: string;
-};
-
-export function isOnboardingMission(missionId: string) {
-  return missionId === MISSION_01_ID;
 }
