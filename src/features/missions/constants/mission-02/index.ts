@@ -2,7 +2,7 @@ import { defineMessage } from "react-intl";
 
 import type { Mission } from "~/features/missions/types";
 
-export const MISSION_02_ID = "mission-02";
+export const MISSION_02_ID = "2";
 
 export const mission: Mission = {
   id: MISSION_02_ID,
