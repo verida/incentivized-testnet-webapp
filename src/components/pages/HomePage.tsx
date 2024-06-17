@@ -1,6 +1,7 @@
 import React from "react";
 import { useIntl } from "react-intl";
 
+import { Typography } from "~/components/atoms";
 import { Alert, HomeHero } from "~/components/molecules";
 import {
   ConnectVeridaButton,
@@ -8,6 +9,7 @@ import {
   MissionsSideNavigation,
 } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
+import { APP_TITLE } from "~/constants";
 import { useActivity } from "~/features/activity";
 import {
   useAirdrop1,
@@ -16,7 +18,7 @@ import {
 } from "~/features/airdrops";
 import { useVerida } from "~/features/verida";
 
-export const HomePage: React.FunctionComponent = () => {
+export const HomePage: React.FC = () => {
   const i18n = useIntl();
   const { isConnected } = useVerida();
   const { missions } = useActivity();
@@ -92,71 +94,93 @@ export const HomePage: React.FunctionComponent = () => {
   });
 
   return (
-    <PageLayout title={tagline}>
-      <HomeHero className="mt-4" />
-      {isConnected ? null : (
-        <div className="mt-6 flex justify-center">
-          <ConnectVeridaButton longLabel />
+    <PageLayout
+      hideBackButton
+      displayGetSupportSection
+      displayLearnMoreSection
+      containerClassName="bg-homepage"
+      contentClassName="max-w-screen-sm sm:px-4 pt-16"
+    >
+      <div className="flex flex-col justify-center">
+        <div className="flex flex-col items-center justify-center text-center w-full mt-28">
+          <Typography
+            variant="base"
+            className="leading-[120%] font-semibold text-primary uppercase tracking-[0.07rem] sm:tracking-[0.08rem]"
+          >
+            {APP_TITLE}
+          </Typography>
+          <Typography variant="heading-l" className="mt-3">
+            {/* Had to surround by div because of style conflict with Typography, likely 'text-transparent' */}
+            <div className="bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/70 px-8 sm:px-14 text-center">
+              {tagline}
+            </div>
+          </Typography>
         </div>
-      )}
-      {isAirdrop1Enabled &&
-        isConnected &&
-        !isAirdrop1ProofSubmitted &&
-        !isCheckingAirdrop1ProofSubmitted && (
+        <HomeHero className="mt-4" />
+        {isConnected ? null : (
+          <div className="mt-6 flex justify-center">
+            <ConnectVeridaButton longLabel />
+          </div>
+        )}
+        {isAirdrop1Enabled &&
+          isConnected &&
+          !isAirdrop1ProofSubmitted &&
+          !isCheckingAirdrop1ProofSubmitted && (
+            <Alert
+              type="info"
+              actions={[
+                {
+                  type: "button",
+                  label: airdrop1AlertProveActionButtonLabel,
+                  onClick: openAirdrop1Modal,
+                },
+                {
+                  type: "link",
+                  label: airdrop1AlertLearnActionButtonLabel,
+                  href: airdrop1Metadata.articleUrl,
+                  openInNewTab: true,
+                  color: "default",
+                },
+              ]}
+              message={airdrop1AlertMessage}
+              className="mt-6"
+            />
+          )}
+        {isAirdrop2Enabled && isConnected && (
           <Alert
             type="info"
             actions={[
               {
                 type: "button",
-                label: airdrop1AlertProveActionButtonLabel,
-                onClick: openAirdrop1Modal,
+                label: airdrop2AlertCheckActionButtonLabel,
+                onClick: openAirdrop2Modal,
               },
               {
                 type: "link",
-                label: airdrop1AlertLearnActionButtonLabel,
-                href: airdrop1Metadata.articleUrl,
+                label: airdrop2AlertLearnActionButtonLabel,
+                href: airdrop2Metadata.articleUrl,
                 openInNewTab: true,
                 color: "default",
               },
             ]}
-            message={airdrop1AlertMessage}
+            message={airdrop2AlertMessage}
             className="mt-6"
           />
         )}
-      {isAirdrop2Enabled && isConnected && (
-        <Alert
-          type="info"
-          actions={[
-            {
-              type: "button",
-              label: airdrop2AlertCheckActionButtonLabel,
-              onClick: openAirdrop2Modal,
-            },
-            {
-              type: "link",
-              label: airdrop2AlertLearnActionButtonLabel,
-              href: airdrop2Metadata.articleUrl,
-              openInNewTab: true,
-              color: "default",
-            },
-          ]}
-          message={airdrop2AlertMessage}
-          className="mt-6"
-        />
-      )}
-      <div className="mt-16 relative">
-        <div className="hidden lg:block absolute top-0 bottom-0 -right-6 translate-x-full w-36 xl:w-64">
-          <aside className="sticky top-24">
-            <MissionsSideNavigation />
-          </aside>
+        <div className="mt-16 relative">
+          <div className="hidden lg:block absolute top-0 bottom-0 -right-6 translate-x-full w-36 xl:w-64">
+            <aside className="sticky top-24">
+              <MissionsSideNavigation />
+            </aside>
+          </div>
+          {missions.map((mission, index) => (
+            <MissionSection
+              key={mission.id}
+              mission={mission}
+              className={index > 0 ? "mt-16" : ""}
+            />
+          ))}
         </div>
-        {missions.map((mission) => (
-          <MissionSection
-            key={mission.id}
-            mission={mission}
-            className="mt-16"
-          />
-        ))}
       </div>
     </PageLayout>
   );

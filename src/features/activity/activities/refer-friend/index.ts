@@ -192,6 +192,7 @@ export const activity: Activity = {
   visible: true,
   order: 4,
   points: 100,
+  partners: [],
   title: defineMessage({
     id: "activities.referFriend.title",
     defaultMessage: "Refer a friend to join Verida Missions",

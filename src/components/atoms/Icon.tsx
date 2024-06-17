@@ -1,5 +1,6 @@
 import {
   Agreement,
+  ArrowLeft,
   ArrowRight,
   Attention,
   Bug,
@@ -8,13 +9,18 @@ import {
   Close,
   Copy,
   Down,
+  History,
+  Left,
   LoadingOne,
   Logout,
+  Right,
+  Share,
   ShareOne,
   Up,
   User,
   Wallet,
 } from "@icon-park/react";
+import { ReactComponent as XpPointsIcon } from "assets/icons/xp_points_icon.svg";
 import { ReactComponent as Whatsapp } from "assets/logos/platforms/whatsapp.svg";
 import React from "react";
 
@@ -30,8 +36,11 @@ import { ReactComponent as Youtube } from "~/assets/logos/platforms/youtube.svg"
 export type GenericIconType =
   | "chevron-up"
   | "chevron-down"
+  | "chevron-right"
+  | "chevron-left"
   | "user"
   | "bug"
+  | "clock"
   | "close"
   | "copy"
   | "loading"
@@ -42,7 +51,10 @@ export type GenericIconType =
   | "notification-success"
   | "notification-error"
   | "agreement"
-  | "arrow-right";
+  | "external-link"
+  | "arrow-right"
+  | "arrow-left";
+export type CustomIconType = "xp-points";
 export type PlatformIconType =
   | "platform-discord"
   | "platform-linkedin"
@@ -53,7 +65,7 @@ export type PlatformIconType =
   | "platform-x"
   | "platform-whatsapp"
   | "platform-youtube";
-export type IconType = GenericIconType | PlatformIconType;
+export type IconType = GenericIconType | CustomIconType | PlatformIconType;
 
 export type IconProps = {
   type: IconType;
@@ -68,10 +80,16 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
       return <Down size={size} {...otherProps} />;
     case "chevron-up":
       return <Up size={size} {...otherProps} />;
+    case "chevron-right":
+      return <Right size={size} {...otherProps} />;
+    case "chevron-left":
+      return <Left size={size} {...otherProps} />;
     case "user":
       return <User size={size} {...otherProps} />;
     case "bug":
       return <Bug size={size} {...otherProps} />;
+    case "clock":
+      return <History size={size} {...otherProps} />;
     case "close":
       return <Close size={size} {...otherProps} />;
     case "loading":
@@ -92,8 +110,18 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
       return <Agreement size={size} {...otherProps} />;
     case "wallet":
       return <Wallet size={size} {...otherProps} />;
+    case "external-link":
+      return <Share size={size} {...otherProps} />;
     case "arrow-right":
       return <ArrowRight size={size} {...otherProps} />;
+    case "arrow-left":
+      return <ArrowLeft size={size} {...otherProps} />;
+    case "xp-points":
+      return (
+        <IconContainer {...otherProps}>
+          <XpPointsIcon height={size} width={size} />
+        </IconContainer>
+      );
     case "platform-discord":
       return (
         <IconContainer {...otherProps}>

@@ -57,6 +57,7 @@ export const activity: Activity = {
   visible: true,
   order: 1,
   points: 100,
+  partners: [],
   title: defineMessage({
     id: "activities.createVeridaIdentity.title",
     defaultMessage: "Create a Verida Identity",

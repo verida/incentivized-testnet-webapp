@@ -11,6 +11,7 @@ import type {
   ActivityOnMessage,
 } from "~/features/activity/types";
 import { Logger } from "~/features/logger";
+import { PARTNER_ID_RECLAIM } from "~/features/partners";
 import { Sentry } from "~/features/sentry";
 import {
   type ReceivedMessage,
@@ -231,6 +232,7 @@ export const activity: Activity = {
   visible: true,
   order: 5,
   points: 100,
+  partners: [PARTNER_ID_RECLAIM],
   title: defineMessage({
     id: "activities.claimUberOwnerReclaim.title",
     defaultMessage: "Claim an Uber credential/Prove ownership",

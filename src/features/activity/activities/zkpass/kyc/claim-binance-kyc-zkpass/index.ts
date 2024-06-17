@@ -14,6 +14,7 @@ import type {
   ActivityOnMessage,
 } from "~/features/activity/types";
 import { Logger } from "~/features/logger";
+import { PARTNER_ID_ZKPASS } from "~/features/partners";
 import { Sentry } from "~/features/sentry";
 import {
   type ReceivedMessage,
@@ -227,6 +228,7 @@ const handleExecute: ActivityOnExecute = async (veridaWebUser) => {
 export const activity: Activity = {
   id: ACTIVITY_ID,
   missionId: MISSION_05_ID,
+  partners: [PARTNER_ID_ZKPASS],
   enabled: true,
   ended: false,
   visible: true,

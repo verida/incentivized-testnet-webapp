@@ -9,6 +9,8 @@
     --white: 0deg 0% 100%;
     --black: 0deg 0% 0%;
     --background: 240deg 42% 17%;
+    --background-light: 243deg 40% 22%;
+    --background-extra-light: 243deg 32% 27%;
     --foreground: 0deg 0% 100%;
     --primary: 257deg 100% 76%;
     --primary-bg-hover: 255deg 100% 82%;
@@ -29,13 +31,17 @@
   }
 
   .bg-app {
-    background-image: url("./images/bg_top.webp"),
-      url("./images/bg_bottom.webp");
-    background-position: top, bottom;
-    background-repeat: no-repeat, no-repeat;
-    background-size:
-      auto 500px,
-      auto 500px;
+    background-image: url("./images/bg_bottom.png"); /* TODO: Get an image with a transparent background */
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: auto 500px;
+  }
+
+  .bg-homepage {
+    background-image: url("./images/bg_homepage_top.png"); /* TODO: Get an image with a transparent background */
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: auto 500px;
   }
 
   .bg-mission-section {
@@ -43,5 +49,11 @@
     background-position: top;
     background-repeat: no-repeat;
     background-size: auto auto;
+  }
+
+  .bg-mission-card {
+    background-image: url("./images/bg_mission_card.png");
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }

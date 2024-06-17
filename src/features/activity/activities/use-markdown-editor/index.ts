@@ -75,6 +75,7 @@ export const activity: Activity = {
   visible: true,
   order: 3,
   points: 50,
+  partners: [],
   title: defineMessage({
     id: "activities.useMarkdownEditor.title",
     defaultMessage: "Use the Markdown Editor demo app",

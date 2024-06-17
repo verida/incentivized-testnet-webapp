@@ -15,6 +15,10 @@
     "defaultMessage": "{points} XP",
     "description": "Label of the XP points chip on each activity card"
   },
+  "ActivityDaysLeftChip.formattedValue": {
+    "defaultMessage": "{nbDaysLeft, plural, one {{nbDaysLeft} day left} other {{nbDaysLeft} days left} }",
+    "description": "Formatted value of days left in the activity days left chip"
+  },
   "ActivityStatus.activityCheckingLabel": {
     "defaultMessage": "Checking",
     "description": "Label of the status for a disabled activity"
@@ -227,6 +231,14 @@
     "defaultMessage": "Learn More",
     "description": "Title of the 'Learn More' section"
   },
+  "MissionCard.defaultActivityListMessage": {
+    "defaultMessage": "Complete all activities below",
+    "description": "Default message displayed above the activity list in the mission card"
+  },
+  "MissionCard.goToMissionButtonLabel": {
+    "defaultMessage": "Go to Mission",
+    "description": "Label of the button on the Mission card to open the mission page"
+  },
   "MissionProgressBar.missionProgressMessage": {
     "defaultMessage": "{nbCompletedActivities, number} of {nbActivities, number} {nbActivities, plural, one {activity} other {activities} } completed",
     "description": "Message for the mission progress bar"
@@ -251,6 +263,26 @@
     "defaultMessage": "Missions",
     "description": "Title of the side navigation"
   },
+  "PartnerInfoCard.activityCounterLabel": {
+    "defaultMessage": "{nbActivities, plural, one {Activity} other {Activities} }",
+    "description": "Sub text for the number of activitiies in the counter in the partner info card"
+  },
+  "PartnerInfoCard.cardBadgeLabel": {
+    "defaultMessage": "Partner",
+    "description": "Label above the partner info card"
+  },
+  "PartnerListItem.partnerLogoAlt": {
+    "defaultMessage": "Logo of {partnerName}",
+    "description": "Alt for the logo of a partner"
+  },
+  "PartnerPage.empty": {
+    "defaultMessage": "No data",
+    "description": "Description"
+  },
+  "PartnersPage.title": {
+    "defaultMessage": "Partners",
+    "description": "Title of the Partners page"
+  },
   "ReportIssueButton.reportIssueButtonLabel": {
     "defaultMessage": "Report Issue",
     "description": "Label of the button to access the form to report an issue"
@@ -270,6 +302,10 @@
   "UpcomingActivitiesCTA.title": {
     "defaultMessage": "Next activity coming soon",
     "description": "Message to display in the upcoming activities CTA"
+  },
+  "XpPointsChip.formattedValue": {
+    "defaultMessage": "{xpPoints} XP",
+    "description": "Formatted value of XP points in the XP points chip"
   },
   "activities.claimAnimaPoLCredential.actionExecutingLabel": {
     "defaultMessage": "Sending Request",
@@ -1242,6 +1278,46 @@
   "missions.mission-06.title": {
     "defaultMessage": "Generate proofs with Reclaim Protocol",
     "description": "Title of the mission 06"
+  },
+  "partners.gamer31.description": {
+    "defaultMessage": "Gamer31 is a gaming identity provider",
+    "description": "Description of the partner gamer31"
+  },
+  "partners.gamer31.resources.website": {
+    "defaultMessage": "gamer31.com",
+    "description": "Label of the Gamer31 website"
+  },
+  "partners.polygonid.description": {
+    "defaultMessage": "Polygon ID gives you the power to build trusted and secure relationships between users and dApps.",
+    "description": "description of the partner Polygon ID"
+  },
+  "partners.polygonid.resources.website": {
+    "defaultMessage": "polygon.technology/polygon-id",
+    "description": "Label of the Polygon ID website"
+  },
+  "partners.reclaim.description": {
+    "defaultMessage": "Reclaim Protocol is a cryptographical digital notary, a solution designed to transform every website into an API",
+    "description": "Description of the partner Reclaim Protocol"
+  },
+  "partners.reclaim.resources.website": {
+    "defaultMessage": "reclaimprotocol.org",
+    "description": "Label of the Reclaim Protocol website"
+  },
+  "partners.synaps.description": {
+    "defaultMessage": "Synaps provides identity verification solutions",
+    "description": "Description of the partner synaps"
+  },
+  "partners.synaps.resources.website": {
+    "defaultMessage": "synaps.io",
+    "description": "Label of the Synaps website"
+  },
+  "partners.zkpass.description": {
+    "defaultMessage": "Protocol for private Data based on MPC, ZKP, 3P-TLS",
+    "description": "Description of the partner zkPass"
+  },
+  "partners.zkpass.resources.website": {
+    "defaultMessage": "zkpass.org",
+    "description": "Label of the zkPass website"
   },
   "topBanner.vdaTokenMessage": {
     "defaultMessage": "The Verida Storage Credit Token (VDA) is now live. Learn more",

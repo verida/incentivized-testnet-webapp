@@ -14,19 +14,24 @@ module.exports = {
           DEFAULT: "hsla(var(--white) / 0)",
           3: "hsla(var(--white) / 0.03)",
           5: "hsla(var(--white) / 0.05)",
+          6: "hsla(var(--white) / 0.06)",
+          8: "hsla(var(--white) / 0.08)",
           10: "hsla(var(--white) / 0.10)",
+          12: "hsla(var(--white) / 0.12)",
           15: "hsla(var(--white) / 0.15)",
           20: "hsla(var(--white) / 0.2)",
           30: "hsla(var(--white) / 0.3)",
         },
-
-        background: "hsl(var(--background))",
+        background: {
+          "DEFAULT": "hsl(var(--background))",
+          "light": "hsl(var(--background-light))",
+          "extra-light": "hsl(var(--background-extra-light))",
+        },
         foreground: "hsl(var(--foreground))",
         muted: {
           DEFAULT: "hsla(var(--background) / 0.2)",
           foreground: "hsla(var(--foreground) / 0.7)",
         },
-
         primary: {
           "DEFAULT": "hsl(var(--primary))",
           "background": "hsla(var(--primary) / 0.2)",
@@ -53,11 +58,10 @@ module.exports = {
         gray: {
           DEFAULT: "hsl(var(--gray))",
         },
-
         border: {
-          DEFAULT: "hsla(var(--white) / 0.15)",
-          30: "hsla(var(--white) / 0.3)",
-          60: "hsla(var(--white) / 0.6)",
+          DEFAULT: "hsla(var(--white) / 0.15)", // TODO: To remove, use transparent-15 instead
+          30: "hsla(var(--white) / 0.3)", // TODO: To remove, use transparent-30 instead
+          60: "hsla(var(--white) / 0.6)", // TODO: To remove, use transparent-60 instead
         },
         divider: {
           DEFAULT: "hsla(var(--white) / 0.15)",
@@ -161,16 +165,27 @@ module.exports = {
       },
       screens: {
         sm: "696px",
+        xl: "1264px",
       },
       spacing: {
         4.5: "1.125rem",
       },
       backdropBlur: {
         "xs": "3px",
+        "sm": "4.5px",
         "4xl": "100px",
       },
       lineHeight: {
         3.5: "0.875rem",
+      },
+      borderRadius: {
+        10: "2.5rem",
+      },
+      padding: {
+        0.25: "1px",
+      },
+      width: {
+        30: "120px",
       },
     },
   },

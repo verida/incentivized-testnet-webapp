@@ -11,11 +11,7 @@ import {
   UserActivitySchema,
 } from "~/features/activity/schemas";
 import { ReceivedMessage } from "~/features/verida";
-
-export type Resource = {
-  label: MessageDescriptor;
-  url: string;
-};
+import { Resource } from "~/types";
 
 // Mission
 
@@ -91,6 +87,7 @@ export type Activity = {
   actionLabel: MessageDescriptor;
   actionReExecuteLabel?: MessageDescriptor;
   actionExecutingLabel: MessageDescriptor;
+  partners: string[];
   onInit: ActivityOnInit;
   onExecute: ActivityOnExecute;
   onMessage?: ActivityOnMessage;

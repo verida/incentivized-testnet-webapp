@@ -9,6 +9,7 @@ import type {
   ActivityOnMessage,
 } from "~/features/activity/types";
 import { Logger } from "~/features/logger";
+import { PARTNER_ID_GAMER31, PARTNER_ID_POLYGONID } from "~/features/partners";
 import { Sentry } from "~/features/sentry";
 import {
   type ReceivedMessage,
@@ -222,6 +223,7 @@ export const activity: Activity = {
   visible: true,
   order: 5,
   points: 50,
+  partners: [PARTNER_ID_GAMER31, PARTNER_ID_POLYGONID],
   title: defineMessage({
     id: "activities.claimGamer31BrawlStars.title",
     defaultMessage: "Claim a Gamer31 Brawl Stars credential",
