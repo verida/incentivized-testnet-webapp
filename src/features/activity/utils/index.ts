@@ -2,6 +2,7 @@ import { type UseMutateAsyncFunction } from "@tanstack/react-query";
 import { type IDatastore } from "@verida/types";
 import { type WebUser } from "@verida/web-helpers";
 
+import { MISSION_01_ID } from "~/features/activity/missions";
 import {
   UserActivityRecordSchema,
   UserActivitySchema,
@@ -146,3 +147,7 @@ export type HandleInitActivityArgs = {
   saveActivity: UseMutateAsyncFunction<void, unknown, UserActivity>;
   successToastMessage: string;
 };
+
+export function isOnboardingMission(missionId: string) {
+  return missionId === MISSION_01_ID;
+}
