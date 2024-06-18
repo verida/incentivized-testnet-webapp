@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
@@ -19,10 +20,10 @@ export type MissionSectionProps = {
   /* Allow overriding the default message if needed */
   activityListMessage?: string;
   hideDescription?: boolean;
-  hideTotalMissionPoints?: boolean;
+  hideTotalMissionXpPoints?: boolean;
   displayGoToMissionButton?: boolean;
   hidePartnersOnActivities?: boolean;
-} & Omit<React.ComponentPropsWithRef<"div">, "children">;
+} & Omit<React.ComponentPropsWithRef<"article">, "children">;
 
 export const MissionSection: React.FC<MissionSectionProps> = (props) => {
   const {
@@ -30,13 +31,22 @@ export const MissionSection: React.FC<MissionSectionProps> = (props) => {
     activities,
     activityListMessage,
     hideDescription = false,
-    hideTotalMissionPoints = false,
+    hideTotalMissionXpPoints = false,
     displayGoToMissionButton = false,
     hidePartnersOnActivities = false,
     ...divProps
   } = props;
 
   const isOnboardingMission = isOnboardingMissionFunc(mission.id);
+
+  const totalMissionXpPoints = useMemo(
+    () =>
+      activities.reduce(
+        (totalXpPoints, activity) => totalXpPoints + activity.points,
+        0
+      ),
+    [activities]
+  );
 
   const { resources } = mission;
 
@@ -60,26 +70,25 @@ export const MissionSection: React.FC<MissionSectionProps> = (props) => {
 
   const resourcesSectionTitle = i18n.formatMessage({
     id: "MissionSection.resourcesSectionTitle",
-    description: "Title of the resources section in each mission card",
+    description: "Title of the resources section in each mission section",
     defaultMessage: "Resources",
   });
-  const points = activities.reduce((acc, cur) => acc + cur.points, 0);
 
   return (
-    <div {...divProps}>
+    <article {...divProps}>
       <div
         className={twMerge(
           "border border-border bg-clip-padding rounded-2xl",
-          isOnboardingMission ? "bg-onboarding-mission-card" : "bg-mission-card"
+          isOnboardingMission ? "bg-mission-onboarding" : "bg-mission-default"
         )}
       >
-        <div className="flex flex-row p-6 gap-6">
+        <section className="flex flex-row p-6 gap-6">
           <div className="flex flex-col items-start gap-6">
             <Typography variant="heading-m">
               {i18n.formatMessage(mission.title)}
             </Typography>
             {!hideDescription && (
-              <Typography variant={"base"}>
+              <Typography variant="base">
                 {i18n.formatMessage(mission.shortDescription, {
                   newline: (
                     <>
@@ -90,7 +99,7 @@ export const MissionSection: React.FC<MissionSectionProps> = (props) => {
               </Typography>
             )}
             {resources && resources.length > 0 ? (
-              <aside className="text-muted-foreground">
+              <aside className="flex flex-col gap-2 text-muted-foreground">
                 <Typography variant="subtitle">
                   {resourcesSectionTitle}
                 </Typography>
@@ -108,27 +117,27 @@ export const MissionSection: React.FC<MissionSectionProps> = (props) => {
             {displayGoToMissionButton && (
               <ButtonLink
                 href={`/missions/${mission.id}`}
-                className="text-background bg-white hover:bg-white/90"
                 internal
+                className="text-background bg-white hover:bg-white/90"
                 // TODO: Create button colour variant
               >
                 {goToMissionButtonLabel}
               </ButtonLink>
             )}
           </div>
-          {!hideTotalMissionPoints && (
+          {!hideTotalMissionXpPoints && (
             <div className="hidden lg:block">
               <XpPointsBadge
-                nbXpPoints={points}
+                nbXpPoints={totalMissionXpPoints}
                 theme={isOnboardingMission ? "onboarding" : "default"}
                 className="w-50"
               />
             </div>
           )}
-        </div>
-        <div className="py-6 px-4 lg:pt-8 lg:p-6 flex flex-col gap-6 rounded-[calc(1rem_-_1px)] bg-background/90">
+        </section>
+        <section className="py-6 px-4 lg:py-8 lg:px-6 flex flex-col gap-6 rounded-[calc(1rem_-_1px)] bg-background/90">
           <Typography variant="base">{resolvedActivityListMessage}</Typography>
-          <ul className="flex flex-col w-full gap-6">
+          <ul className="flex flex-col gap-6">
             {activities.map((activity, index) => (
               <li key={activity.id}>
                 <Link to={`/activities/${activity.id}`}>
@@ -144,8 +153,8 @@ export const MissionSection: React.FC<MissionSectionProps> = (props) => {
               <ComingSoonActivityItem activityIndex={activities.length + 1} />
             </li>
           </ul>
-        </div>
+        </section>
       </div>
-    </div>
+    </article>
   );
 };

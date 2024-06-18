@@ -24,8 +24,21 @@ export const MissionPage: React.FC = () => {
     getUserActivity,
   } = useActivity();
 
-  const missionActivities = allActivities.filter(
-    (activity) => activity.missionId === mission?.id && activity.visible
+  const missionActivities = useMemo(
+    () =>
+      allActivities.filter(
+        (activity) => activity.missionId === mission?.id && activity.visible
+      ),
+    [allActivities, mission]
+  );
+
+  const missionTotalXpPoints = useMemo(
+    () =>
+      missionActivities.reduce(
+        (totalNbPoints, activity) => totalNbPoints + activity.points,
+        0
+      ),
+    [missionActivities]
   );
 
   const activityStatuses = useMemo(() => {
@@ -34,11 +47,6 @@ export const MissionPage: React.FC = () => {
       return userActivity?.status ?? "todo";
     });
   }, [missionActivities, getUserActivity]);
-
-  const missionTotalPoints = missionActivities.reduce(
-    (totalNbPoints, activity) => totalNbPoints + activity.points,
-    0
-  );
 
   const i18n = useIntl();
 
@@ -56,19 +64,15 @@ export const MissionPage: React.FC = () => {
       {mission ? (
         <div className="flex flex-col items-center gap-6 lg:gap-11">
           <div className="max-w-[calc(1264px_-_16rem)]">
-            <MissionSection
-              activities={missionActivities}
-              mission={mission}
-              displayGoToMissionButton
-            />
+            <MissionSection mission={mission} activities={missionActivities} />
           </div>
-          <div className="sticky bottom-6 max-w-[calc(1264px_-_12rem)] w-full">
+          <footer className="sticky bottom-4 sm:bottom-6 max-w-[calc(1264px_-_12rem)] w-full">
             <MissionBottomBar
               statuses={activityStatuses}
-              points={missionTotalPoints}
+              points={missionTotalXpPoints}
               isLoading={isLoadingUserActivities}
             />
-          </div>
+          </footer>
         </div>
       ) : (
         <>

@@ -32,7 +32,7 @@
   }
 
   .bg-app {
-    background-image: url("./images/bg_bottom.png"); /* TODO: Get an image with a transparent background */
+    background-image: url("./images/bg_app_bottom.png"); /* TODO: Get an image with a transparent background */
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: auto 500px;
@@ -52,14 +52,14 @@
     background-size: auto auto;
   }
 
-  .bg-mission-card {
-    background-image: url("./images/bg_mission_card.png");
+  .bg-mission-default {
+    background-image: url("./images/bg_mission_default.png");
     background-repeat: no-repeat;
     background-size: cover;
   }
 
-  .bg-onboarding-mission-card {
-    background-image: url("./images/bg_onboarding_mission_card.png");
+  .bg-mission-onboarding {
+    background-image: url("./images/bg_mission_onboarding.png");
     background-repeat: no-repeat;
     background-size: cover;
   }

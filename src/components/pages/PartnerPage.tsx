@@ -11,6 +11,18 @@ export const PartnerPage: React.FC = () => {
 
   const i18n = useIntl();
 
+  const missionActivityListMessage = i18n.formatMessage(
+    {
+      id: "PartnerPage.missionActivityListMessage",
+      description:
+        "Message displayed above the activity list of each mission section for a given partner",
+      defaultMessage: "{partnerName} activities:",
+    },
+    {
+      partnerName: partner?.name || "",
+    }
+  );
+
   // TODO: Rework the not found state of the Partner page
   const emptry = i18n.formatMessage({
     id: "PartnerPage.empty",
@@ -32,24 +44,17 @@ export const PartnerPage: React.FC = () => {
           <ul className={"flex-grow grid grid-cols-1 gap-8"}>
             {missions.map((mission) => (
               <li key={mission.id}>
-                <article>
-                  <MissionSection
-                    mission={mission}
-                    activities={activities.filter(
-                      // TODO: To optimise if this component is used elsewhere.
-                      // Activities are a fixed constant, this filter can be done
-                      // in the Mission card itself.In this  particular case, it
-                      // should only be the activities of a given partner, so this
-                      // MissionCard could take an optional partnerId prop to
-                      // filter the activities.
-                      (activity) => activity.missionId === mission.id
-                    )}
-                    displayGoToMissionButton
-                    hidePartnersOnActivities
-                    hideTotalMissionPoints
-                    hideDescription
-                  />
-                </article>
+                <MissionSection
+                  mission={mission}
+                  activities={activities.filter(
+                    (activity) => activity.missionId === mission.id
+                  )}
+                  activityListMessage={missionActivityListMessage}
+                  displayGoToMissionButton
+                  hidePartnersOnActivities
+                  hideTotalMissionXpPoints
+                  hideDescription
+                />
               </li>
             ))}
           </ul>

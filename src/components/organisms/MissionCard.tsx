@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useIntl } from "react-intl";
+import { twMerge } from "tailwind-merge";
 
 import { Typography } from "~/components/atoms";
 import {
@@ -10,7 +11,10 @@ import {
 } from "~/components/molecules";
 import { useActivity } from "~/features/activity";
 import { activities } from "~/features/activity/activities";
-import { Mission } from "~/features/missions";
+import {
+  Mission,
+  isOnboardingMission as isOnboardingMissionFunc,
+} from "~/features/missions";
 import { Partner, partners as wholePartners } from "~/features/partners";
 
 export type MissionCardProps = {
@@ -19,9 +23,8 @@ export type MissionCardProps = {
 
 export const MissionCard: React.FC<MissionCardProps> = (props) => {
   const { mission, ...divProps } = props;
-  const i18n = useIntl();
 
-  const missionLabel = i18n.formatMessage(mission.title);
+  const isOnboardingMission = isOnboardingMissionFunc(mission.id);
 
   const { isLoadingUserActivities, getUserActivity } = useActivity();
 
@@ -35,6 +38,10 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
       return userActivity?.status ?? "todo";
     });
   }, [missionActivities, getUserActivity]);
+
+  const i18n = useIntl();
+
+  const missionLabel = i18n.formatMessage(mission.title);
 
   const progressLabel = i18n.formatMessage({
     id: "MissionInfoCard.progresslabel",
@@ -73,9 +80,20 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
     <div {...divProps}>
       <div className="border border-white/30 backdrop-blur-4xl overflow-hidden rounded-xl w-full h-full">
         <div className="relative rounded-xl flex flex-col overflow-hidden backdrop-blur-4xl h-full">
-          <div className="bg-mission-card w-full h-full absolute -z-10"></div>
+          <div
+            className={twMerge(
+              "bg-mission-default w-full h-full absolute -z-10",
+              isOnboardingMission
+                ? "bg-mission-onboarding"
+                : "bg-mission-default"
+            )}
+          ></div>
           <div className="p-4">
-            <XpPointsBadge nbXpPoints={totalPoints} className="m-auto" />
+            <XpPointsBadge
+              nbXpPoints={totalPoints}
+              theme={isOnboardingMission ? "onboarding" : "default"}
+              className="m-auto"
+            />
             <div className="w-full">
               <Typography
                 component={"span"}
