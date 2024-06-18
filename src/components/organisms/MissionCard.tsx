@@ -113,7 +113,7 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
             </div>
           </div>
 
-          <div className="rounded-tl-xl rounded-tr-xl overflow-hidden bg-missionBottom flex-1 px-4 py-6 flex flex-col w-full gap-6">
+          <div className="rounded-tl-xl rounded-tr-xl overflow-hidden bg-background/90 flex-1 px-4 py-6 flex flex-col w-full gap-6">
             <h3 className="text-desktop-base lg:text-mission-title line-clamp-2">
               {missionLabel}
             </h3>
