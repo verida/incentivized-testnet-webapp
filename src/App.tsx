@@ -10,6 +10,7 @@ import {
 import {
   HomePage,
   MissionPage,
+  MissionsPage,
   PartnerPage,
   PartnersPage,
 } from "~/components/pages";
@@ -31,6 +32,7 @@ const router = sentryCreateBrowserRouter(
       <Route index element={<HomePage />} />
       <Route path="/partners" element={<PartnersPage />} />
       <Route path="/partners/:partnerId" element={<PartnerPage />} />
+      <Route path="/missions" element={<MissionsPage />} />
       <Route path="/missions/:missionId" element={<MissionPage />} />
       {/* <Route path="terms-and-conditions" element={<TermsConditionsView />} /> */}
       <Route path="*" element={<Navigate replace to="/" />} />
