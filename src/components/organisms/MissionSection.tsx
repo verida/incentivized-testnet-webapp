@@ -82,7 +82,7 @@ export const MissionSection: React.FC<MissionSectionProps> = (props) => {
           isOnboardingMission ? "bg-mission-onboarding" : "bg-mission-default"
         )}
       >
-        <section className="flex flex-row p-6 gap-6">
+        <section className=" p-6 flex flex-row gap-6">
           <div className="flex flex-col items-start gap-6">
             <Typography variant="heading-m">
               {i18n.formatMessage(mission.title)}
