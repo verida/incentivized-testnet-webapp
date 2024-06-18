@@ -8,6 +8,7 @@ import {
   GetSupportSection,
   LearnMoreSection,
 } from "~/components/organisms";
+import { Mission } from "~/features/missions";
 
 export type PageLayoutProps = {
   title?: string;
@@ -34,6 +35,7 @@ export type PageLayoutProps = {
   displayLearnMoreSection?: boolean;
 
   displayExploreMoreMissionsSection?: boolean;
+  exploreMoreMissionsFilterPredicate?: (mission: Mission) => boolean;
 } & Pick<React.ComponentPropsWithRef<"div">, "children">;
 
 export const PageLayout: React.FC<PageLayoutProps> = (props) => {
@@ -47,6 +49,7 @@ export const PageLayout: React.FC<PageLayoutProps> = (props) => {
     displayGetSupportSection = false,
     displayLearnMoreSection = false,
     displayExploreMoreMissionsSection = false,
+    exploreMoreMissionsFilterPredicate,
   } = props;
 
   return (
@@ -90,9 +93,12 @@ export const PageLayout: React.FC<PageLayoutProps> = (props) => {
       {displayGetSupportSection ||
       displayGetSupportSection ||
       displayExploreMoreMissionsSection ? (
-        <div className="mt-4 sm:mt-6 flex flex-col items-center">
+        <div className="mt-14 sm:mt-20 flex flex-col items-center">
           {displayExploreMoreMissionsSection ? (
-            <ExploreMoreMissionsSection className="px-4 sm:px-6 max-w-screen-xl w-full" />
+            <ExploreMoreMissionsSection
+              filterPredicate={exploreMoreMissionsFilterPredicate}
+              className="max-w-screen-xl w-full"
+            />
           ) : null}
           {displayGetSupportSection ? (
             <GetSupportSection className="px-4 sm:px-6 max-w-screen-xl w-full" />

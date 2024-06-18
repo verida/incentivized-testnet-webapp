@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
 
@@ -6,6 +6,7 @@ import { MissionBottomBar, MissionSection } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { useActivity } from "~/features/activity";
 import {
+  Mission,
   getMissionById,
   isOnboardingMission as isOnboardingMissionFunc,
 } from "~/features/missions";
@@ -48,6 +49,11 @@ export const MissionPage: React.FC = () => {
     });
   }, [missionActivities, getUserActivity]);
 
+  const filteroutCurrentMission = useCallback(
+    (mission: Mission) => mission.id !== missionId,
+    [missionId]
+  );
+
   const i18n = useIntl();
 
   const emptry = i18n.formatMessage({
@@ -60,6 +66,7 @@ export const MissionPage: React.FC = () => {
     <PageLayout
       hideReportIssueButton
       displayExploreMoreMissionsSection={!isOnboardingMission}
+      exploreMoreMissionsFilterPredicate={filteroutCurrentMission}
     >
       {mission ? (
         <div className="flex flex-col items-center gap-6 lg:gap-11">

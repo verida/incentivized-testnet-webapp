@@ -8,6 +8,7 @@ export * from "./HomeHero";
 export * from "./LegacyMissionProgressBar";
 export * from "./MissionActivitiesProgressBar";
 export * from "./MissionCardActivitiesProgressBar";
+export * from "./PageAsideSectionWrapper";
 export * from "./PartnerListItem";
 export * from "./PortalWrapper";
 export * from "./ReportIssueButton";

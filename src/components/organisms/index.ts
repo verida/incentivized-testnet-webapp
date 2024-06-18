@@ -10,6 +10,7 @@ export * from "./LearnMoreSection";
 export * from "./LegacyMissionSection";
 export * from "./MissionBottomBar";
 export * from "./MissionCard";
+export * from "./MissionCardsCaroussel";
 export * from "./MissionSection";
 export * from "./MissionsSideNavigation";
 export * from "./PartnerInfoCard";
