@@ -2,14 +2,6 @@ import { type VariantProps, cva } from "class-variance-authority";
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-export type Variants =
-  | "base"
-  | "heading-l"
-  | "heading-m"
-  | "heading-s"
-  | "base-s"
-  | "subtitle";
-
 const typographyVariants = cva("", {
   variants: {
     variant: {

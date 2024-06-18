@@ -3,35 +3,20 @@ import { useIntl } from "react-intl";
 import { twMerge } from "tailwind-merge";
 
 import {
-  MissionProgessBarIndicator,
+  LegacyMissionProgessBarIndicator,
   Typography,
-  Variants,
 } from "~/components/atoms";
 import { UserActivityStatus } from "~/features/activity";
 
-import { XpPointsChip } from "./XpPointsChip";
-
-export type MissionProgressBarProps = {
+export type LegacyMissionProgressBarProps = {
   isLoading?: boolean;
   statuses: UserActivityStatus[];
-  variant?: Variants;
-  showPoint?: boolean;
-  showLabel?: boolean;
-  point?: number;
 } & React.ComponentPropsWithRef<"div">;
 
-export const MissionProgressBar: React.FunctionComponent<
-  MissionProgressBarProps
+export const LegacyMissionProgressBar: React.FC<
+  LegacyMissionProgressBarProps
 > = (props) => {
-  const {
-    isLoading,
-    statuses,
-    variant,
-    showPoint,
-    point,
-    showLabel,
-    ...divProps
-  } = props;
+  const { isLoading, statuses, ...divProps } = props;
 
   const nbActivities = statuses.length;
   const nbCompletedActivities = statuses.filter(
@@ -46,7 +31,7 @@ export const MissionProgressBar: React.FunctionComponent<
 
   const missionProgressMessage = i18n.formatMessage(
     {
-      id: "MissionProgressBar.missionProgressMessage",
+      id: "LegacyMissionProgressBar.missionProgressMessage",
       defaultMessage: `{nbCompletedActivities, number} of {nbActivities, number} {nbActivities, plural,
         one {activity}
         other {activities}
@@ -66,24 +51,10 @@ export const MissionProgressBar: React.FunctionComponent<
 
   return (
     <div {...divProps}>
-      {(showLabel || showPoint) && (
-        <div className="flex justify-between lg:justify-start gap-6 items-center">
-          {showLabel && (
-            <Typography
-              variant={variant || "subtitle"}
-              className="flex-1 lg:flex-none"
-            >
-              {missionProgressMessage}
-            </Typography>
-          )}
-
-          {showPoint && <XpPointsChip nbXpPoints={point || 0} />}
-        </div>
-      )}
-
+      <Typography variant="subtitle">{missionProgressMessage}</Typography>
       <div className={classes}>
         {statuses.map((status, index) => (
-          <MissionProgessBarIndicator
+          <LegacyMissionProgessBarIndicator
             key={index}
             variant={status}
             className="flex-grow"

@@ -2,9 +2,8 @@ import { useMemo } from "react";
 import { useIntl } from "react-intl";
 import { twMerge } from "tailwind-merge";
 
-import { Typography } from "~/components/atoms";
 import {
-  MissionProgressBar,
+  MissionCardActivitiesProgressBar,
   StackedImage,
   XpPointsBadge,
   XpPointsChip,
@@ -42,12 +41,6 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
   const i18n = useIntl();
 
   const missionLabel = i18n.formatMessage(mission.title);
-
-  const progressLabel = i18n.formatMessage({
-    id: "MissionInfoCard.progresslabel",
-    description: "progress label",
-    defaultMessage: `${activityStatuses.filter((status) => status === "completed")?.length} / ${activityStatuses.length}`,
-  });
 
   const totalPoints = missionActivities?.reduce((acc, cur) => {
     return acc + cur.points;
@@ -94,23 +87,10 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
               theme={isOnboardingMission ? "onboarding" : "default"}
               className="m-auto"
             />
-            <div className="w-full">
-              <Typography
-                component={"span"}
-                className="!text-base-s !font-semibold"
-              >
-                {progressLabel}
-              </Typography>
-              <div className="flex gap-1">
-                <MissionProgressBar
-                  className="gap-3 lg:gap-6 flex flex-col w-full"
-                  isLoading={isLoadingUserActivities}
-                  statuses={activityStatuses}
-                  showPoint={false}
-                  showLabel={false}
-                />
-              </div>
-            </div>
+            <MissionCardActivitiesProgressBar
+              isLoading={isLoadingUserActivities}
+              activityStatuses={activityStatuses}
+            />
           </div>
 
           <div className="rounded-tl-xl rounded-tr-xl overflow-hidden bg-background/90 flex-1 px-4 py-6 flex flex-col w-full gap-6">

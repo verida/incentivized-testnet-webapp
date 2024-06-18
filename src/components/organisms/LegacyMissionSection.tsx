@@ -10,7 +10,7 @@ import {
   Typography,
 } from "~/components/atoms";
 import {
-  MissionProgressBar,
+  LegacyMissionProgressBar,
   UpcomingActivitiesCTA,
 } from "~/components/molecules";
 import { ActivityCard } from "~/components/organisms";
@@ -187,7 +187,7 @@ export const LegacyMissionSection: React.FunctionComponent<
           </div>
         )}
         {!isConnected || isMissionComingSoon ? null : (
-          <MissionProgressBar
+          <LegacyMissionProgressBar
             isLoading={isLoadingUserActivities}
             statuses={activityStatuses}
           />

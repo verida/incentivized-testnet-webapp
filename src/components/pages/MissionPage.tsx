@@ -68,7 +68,7 @@ export const MissionPage: React.FC = () => {
           </div>
           <footer className="sticky bottom-4 sm:bottom-6 max-w-[calc(1264px_-_12rem)] w-full">
             <MissionBottomBar
-              statuses={activityStatuses}
+              activityStatuses={activityStatuses}
               points={missionTotalXpPoints}
               isLoading={isLoadingUserActivities}
             />

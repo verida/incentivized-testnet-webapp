@@ -21,9 +21,13 @@ module.exports = {
           15: "hsla(var(--white) / 0.15)",
           20: "hsla(var(--white) / 0.2)",
           30: "hsla(var(--white) / 0.3)",
+          40: "hsla(var(--white) / 0.4)",
+          50: "hsla(var(--white) / 0.5)",
           60: "hsla(var(--white) / 0.6)",
           70: "hsla(var(--white) / 0.7)",
           80: "hsla(var(--white) / 0.8)",
+          90: "hsla(var(--white) / 0.9)",
+          95: "hsla(var(--white) / 0.95)",
         },
         background: {
           "DEFAULT": "hsl(var(--background))",
