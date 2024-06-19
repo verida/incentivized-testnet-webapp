@@ -12,6 +12,7 @@ const chipVariants = cva(
         primary: "bg-primary-background text-primary border-primary/20",
         success: "bg-success-background text-success border-success/20",
         pending: "bg-pending-background text-pending border-pending/20",
+        ended: "bg-ended-background text-ended border-transparent-20",
       },
     },
     defaultVariants: {

@@ -1,4 +1,3 @@
-import { type UseMutateAsyncFunction } from "@tanstack/react-query";
 import { type IDatastore } from "@verida/types";
 import { type WebUser } from "@verida/web-helpers";
 
@@ -12,7 +11,6 @@ import type {
 } from "~/features/activity/types";
 import { Logger } from "~/features/logger";
 import { PlausibleEvent, capturePlausibleEvent } from "~/features/plausible";
-import type { ReceivedMessage } from "~/features/verida";
 
 const logger = new Logger("activity");
 
@@ -137,12 +135,3 @@ export async function deleteActivitiesInDatastore(
     throw new Error("Error deleting activities", { cause: error });
   }
 }
-
-export type HandleInitActivityArgs = {
-  activityId: string;
-  userActivity: UserActivity | null;
-  veridaWebUser: WebUser;
-  verifyReceivedMessage: (message: ReceivedMessage<unknown>) => boolean;
-  saveActivity: UseMutateAsyncFunction<void, unknown, UserActivity>;
-  successToastMessage: string;
-};

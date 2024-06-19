@@ -58,7 +58,7 @@ const buttonBaseVariants = cva(
         variant: "outlined",
         color: "default",
         className:
-          "text-foreground bg-transparent-8 hover:bg-transparent-12 border border-transparent-10 hover:border-transparent-20 disabled:opacity-30 disabled:bg-transparent-8",
+          "text-foreground bg-transparent-8 hover:bg-transparent-12 border border-border hover:border-border-hover disabled:opacity-30 disabled:bg-transparent-8",
       },
       {
         variant: "text",

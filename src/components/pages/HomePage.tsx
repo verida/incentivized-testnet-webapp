@@ -5,23 +5,22 @@ import { Typography } from "~/components/atoms";
 import { Alert, HomeHero } from "~/components/molecules";
 import {
   ConnectVeridaButton,
-  MissionSection,
+  LegacyMissionSection,
   MissionsSideNavigation,
 } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { APP_TITLE } from "~/constants";
-import { useActivity } from "~/features/activity";
 import {
   useAirdrop1,
   useAirdrop1Queries,
   useAirdrop2,
 } from "~/features/airdrops";
+import { missions } from "~/features/missions";
 import { useVerida } from "~/features/verida";
 
 export const HomePage: React.FC = () => {
   const i18n = useIntl();
   const { isConnected } = useVerida();
-  const { missions } = useActivity();
   const {
     metadata: airdrop1Metadata,
     isEnabled: isAirdrop1Enabled,
@@ -174,7 +173,7 @@ export const HomePage: React.FC = () => {
             </aside>
           </div>
           {missions.map((mission, index) => (
-            <MissionSection
+            <LegacyMissionSection
               key={mission.id}
               mission={mission}
               className={index > 0 ? "mt-16" : ""}

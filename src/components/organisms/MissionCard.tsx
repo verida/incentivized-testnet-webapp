@@ -1,71 +1,101 @@
+import { useMemo } from "react";
 import { useIntl } from "react-intl";
-import { Link } from "react-router-dom";
+import { twMerge } from "tailwind-merge";
 
-import { ButtonLink, Typography } from "~/components/atoms";
-import { Activity, Mission } from "~/features/activity";
-
-import { MissionActivityCard } from "./MissionActivityCard";
+import { Typography } from "~/components/atoms";
+import {
+  MissionCardActivitiesProgressBar,
+  StackedImage,
+  XpPointsBadge,
+  XpPointsChip,
+} from "~/components/molecules";
+import { useActivity } from "~/features/activity";
+import {
+  Mission,
+  isOnboardingMission as isOnboardingMissionFunc,
+} from "~/features/missions";
+import { partners as allPartners } from "~/features/partners";
 
 export type MissionCardProps = {
   mission: Mission;
-  activities: Activity[];
-
-  /* Allow overriding the default message if needed */
-  activityListMessage?: string;
-} & Omit<React.ComponentPropsWithRef<"div">, "children">;
+} & Omit<React.ComponentPropsWithRef<"article">, "children">;
 
 export const MissionCard: React.FC<MissionCardProps> = (props) => {
-  const { mission, activities, activityListMessage, ...divProps } = props;
+  const { mission, className, ...articleProps } = props;
+
+  const isOnboardingMission = isOnboardingMissionFunc(mission.id);
+
+  const { isLoadingUserActivities, activities, getUserActivity } =
+    useActivity();
+
+  const missionActivities = useMemo(
+    () =>
+      activities.filter(
+        (activity) =>
+          activity.enabled &&
+          activity.visible &&
+          activity.missionId === mission.id
+      ),
+    [activities, mission]
+  );
+
+  const activityStatuses = useMemo(() => {
+    return missionActivities.map((activity) => {
+      const userActivity = getUserActivity(activity.id);
+      return userActivity?.status ?? "todo";
+    });
+  }, [missionActivities, getUserActivity]);
+
+  const totalMissionPoints = useMemo(
+    () =>
+      missionActivities?.reduce(
+        (totalXpPoints, activity) => totalXpPoints + activity.points,
+        0
+      ) ?? 0,
+    [missionActivities]
+  );
+
+  const partners = useMemo(() => {
+    const partnerIds = new Set(
+      missionActivities.flatMap((activity) => activity.partners)
+    );
+    return allPartners.filter((partner) => partnerIds.has(partner.id));
+  }, [missionActivities]);
 
   const i18n = useIntl();
 
-  const goToMissionButtonLabel = i18n.formatMessage({
-    id: "MissionCard.goToMissionButtonLabel",
-    description:
-      "Label of the button on the Mission card to open the mission page",
-    defaultMessage: "Go to Mission",
-  });
-
-  const resolvedActivityListMessage =
-    activityListMessage ??
-    i18n.formatMessage({
-      id: "MissionCard.defaultActivityListMessage",
-      description:
-        "Default message displayed above the activity list in the mission card",
-      defaultMessage: "Complete all activities below",
-    });
+  const missionLabel = i18n.formatMessage(mission.title);
 
   return (
-    <div {...divProps}>
-      <div className="border border-border bg-clip-padding bg-mission-card rounded-2xl">
-        <div className="flex flex-col items-start py-6 px-4 lg:px-6 gap-6">
-          <Typography variant="heading-m">
-            {i18n.formatMessage(mission.title)}
-          </Typography>
-          <ButtonLink
-            href={`/missions/${mission.id}`}
-            className="text-background bg-white hover:bg-white/90"
-            // TODO: Create button colour variant
-          >
-            {goToMissionButtonLabel}
-          </ButtonLink>
-        </div>
-        <div className="py-6 px-4 lg:pt-8 lg:p-6 flex flex-col gap-6 rounded-[calc(1rem_-_1px)] bg-background/90">
-          <Typography variant="base">{resolvedActivityListMessage}</Typography>
-          <ul className="flex flex-col w-full gap-6">
-            {activities.map((activity, index) => (
-              <li key={activity.id}>
-                <Link to={`/activities/${activity.id}`}>
-                  <MissionActivityCard
-                    activity={activity}
-                    activityIndex={index + 1}
-                  />
-                </Link>
-              </li>
-            ))}
-          </ul>
+    <article
+      className={twMerge(
+        "border border-border bg-clip-padding rounded-xl h-full flex flex-col justify-start",
+        isOnboardingMission ? "bg-mission-onboarding" : "bg-mission-default",
+        className
+      )}
+      {...articleProps}
+    >
+      <div className="p-4 flex flex-col items-stretch">
+        <XpPointsBadge
+          nbXpPoints={totalMissionPoints}
+          theme={isOnboardingMission ? "onboarding" : "default"}
+        />
+        <MissionCardActivitiesProgressBar
+          isLoading={isLoadingUserActivities}
+          activityStatuses={activityStatuses}
+        />
+      </div>
+      <div className="py-6 px-4 rounded-[calc(0.75rem_-_1px)] bg-background/90 flex-grow flex flex-col justify-between gap-6">
+        <Typography variant="heading-s" component="p" className="line-clamp-3">
+          {missionLabel}
+        </Typography>
+        <div className="flex flex-row justify-between items-center">
+          <XpPointsChip nbXpPoints={totalMissionPoints} />
+          <StackedImage
+            images={partners.map((partner) => partner.logo || "")}
+          />
         </div>
       </div>
-    </div>
+    </article>
   );
 };

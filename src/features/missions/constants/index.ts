@@ -1,3 +1,5 @@
+import { config } from "~/config";
+
 import { mission as mission01 } from "./mission-01";
 import { mission as mission02 } from "./mission-02";
 import { mission as mission03 } from "./mission-03";
@@ -19,4 +21,6 @@ export const missions = [
   mission04,
   mission05,
   mission06,
-].sort((a, b) => a.order - b.order);
+]
+  .filter((m) => (config.devMode ? true : m.visible))
+  .sort((a, b) => a.order - b.order);

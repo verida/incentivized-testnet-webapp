@@ -1,5 +1,6 @@
 import React from "react";
 import { useIntl } from "react-intl";
+import { Link } from "react-router-dom";
 
 import { PartnerListItem } from "~/components/molecules";
 import { PageLayout } from "~/components/templates";
@@ -21,7 +22,9 @@ export const PartnersPage: React.FC = () => {
       <ul className="grid gap-4 lg:gap-8 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
         {partners.map((partner) => (
           <li key={partner.id}>
-            <PartnerListItem partner={partner} />
+            <Link to={`/partners/${partner.id}`}>
+              <PartnerListItem partner={partner} />
+            </Link>
           </li>
         ))}
       </ul>

@@ -21,6 +21,13 @@ module.exports = {
           15: "hsla(var(--white) / 0.15)",
           20: "hsla(var(--white) / 0.2)",
           30: "hsla(var(--white) / 0.3)",
+          40: "hsla(var(--white) / 0.4)",
+          50: "hsla(var(--white) / 0.5)",
+          60: "hsla(var(--white) / 0.6)",
+          70: "hsla(var(--white) / 0.7)",
+          80: "hsla(var(--white) / 0.8)",
+          90: "hsla(var(--white) / 0.9)",
+          95: "hsla(var(--white) / 0.95)",
         },
         background: {
           "DEFAULT": "hsl(var(--background))",
@@ -55,13 +62,16 @@ module.exports = {
           DEFAULT: "hsl(var(--pending))",
           background: "hsla(var(--pending) / 0.2)",
         },
+        ended: {
+          DEFAULT: "hsl(var(--error))",
+          background: "hsla(var(--white) / 0.1)",
+        },
         gray: {
           DEFAULT: "hsl(var(--gray))",
         },
         border: {
-          DEFAULT: "hsla(var(--white) / 0.15)", // TODO: To remove, use transparent-15 instead
-          30: "hsla(var(--white) / 0.3)", // TODO: To remove, use transparent-30 instead
-          60: "hsla(var(--white) / 0.6)", // TODO: To remove, use transparent-60 instead
+          DEFAULT: "hsla(var(--white) / 0.15)",
+          hover: "hsla(var(--white) / 0.3)",
         },
         divider: {
           DEFAULT: "hsla(var(--white) / 0.15)",
@@ -186,6 +196,10 @@ module.exports = {
       },
       width: {
         30: "120px",
+        50: "200px",
+      },
+      height: {
+        50: "200px",
       },
     },
   },

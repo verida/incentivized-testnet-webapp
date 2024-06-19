@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { twJoin, twMerge } from "tailwind-merge";
 
 import { ReactComponent as VeridaNetworkLogoWithText } from "~/assets/images/verida_network_logo_with_text.svg";
-import { Avatar, Chip, Icon, Typography } from "~/components/atoms";
+import { Avatar, Icon, Typography } from "~/components/atoms";
 import type { MenuItem } from "~/components/molecules";
-import { HeaderMenu } from "~/components/molecules";
+import { HeaderMenu, XpPointsChip } from "~/components/molecules";
 import { ConnectVeridaButton } from "~/components/organisms";
 import { config } from "~/config";
 import { useActivity } from "~/features/activity";
@@ -71,15 +71,6 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     defaultMessage: "'<Anon>'",
   });
 
-  const xpPointsChipLabel = i18n.formatMessage(
-    {
-      id: "Header.xpPointsChipLabel",
-      description: "Display of the user total XP points",
-      defaultMessage: "{points} XP",
-    },
-    { points: userXpPoints }
-  );
-
   const airdrop1ButtonLabel = i18n.formatMessage(airdrop1Metadata.shortTitle);
 
   const airdrop2ButtonLabel = i18n.formatMessage(airdrop2Metadata.shortTitle);
@@ -124,7 +115,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     ? [
         {
           key: "delete-user-activities",
-          label: "Delete User Activities",
+          label: "[DEV] Delete User Activities",
           action: deleteUserActivities,
         },
       ]
@@ -178,7 +169,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
 
   return (
     <header {...headerProps}>
-      <div className="flex flex-row justify-between border-b border-solid border-divider bg-translucent px-4 pt-3 pb-[calc(0.75rem_-_1px)] backdrop-blur-[5px] sm:px-6">
+      <div className="flex flex-row justify-between border-b border-solid border-divider bg-background/40 px-4 pt-3 pb-[calc(0.75rem_-_1px)] backdrop-blur-xl sm:px-6">
         <div className="justify-self-start">
           <Link to="/" aria-label={homeLinkAriaLabel}>
             <div className={twJoin("aspect-[10/3]", contentHeight)}>
@@ -189,18 +180,10 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
         <div className="flex items-center gap-2 md:gap-4 justify-between justify-self-end">
           {isConnected ? (
             <>
-              <Chip variant="primary">
-                {isLoadingUserActivities ? (
-                  // FIXME: Icon doesn't spin
-                  <Icon
-                    size={16}
-                    type="loading"
-                    className="animate-spin-slow"
-                  />
-                ) : (
-                  xpPointsChipLabel
-                )}
-              </Chip>
+              <XpPointsChip
+                nbXpPoints={userXpPoints}
+                isLoading={isLoadingUserActivities}
+              />
               <button onClick={handleOpenMenu}>
                 <Avatar
                   image={profile?.avatarUri}

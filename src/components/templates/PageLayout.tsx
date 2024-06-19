@@ -3,7 +3,12 @@ import { twMerge } from "tailwind-merge";
 
 import { BackButton, Typography } from "~/components/atoms";
 import { ReportIssueButton } from "~/components/molecules";
-import { GetSupportSection, LearnMoreSection } from "~/components/organisms";
+import {
+  ExploreMoreMissionsSection,
+  GetSupportSection,
+  LearnMoreSection,
+} from "~/components/organisms";
+import { Mission } from "~/features/missions";
 
 export type PageLayoutProps = {
   title?: string;
@@ -28,6 +33,9 @@ export type PageLayoutProps = {
    * Display the "Learn More" section. Default to false as most common case is to not show the "Learn More" section.
    */
   displayLearnMoreSection?: boolean;
+
+  displayExploreMoreMissionsSection?: boolean;
+  exploreMoreMissionsFilterPredicate?: (mission: Mission) => boolean;
 } & Pick<React.ComponentPropsWithRef<"div">, "children">;
 
 export const PageLayout: React.FC<PageLayoutProps> = (props) => {
@@ -40,6 +48,8 @@ export const PageLayout: React.FC<PageLayoutProps> = (props) => {
     hideReportIssueButton = false,
     displayGetSupportSection = false,
     displayLearnMoreSection = false,
+    displayExploreMoreMissionsSection = false,
+    exploreMoreMissionsFilterPredicate,
   } = props;
 
   return (
@@ -80,8 +90,16 @@ export const PageLayout: React.FC<PageLayoutProps> = (props) => {
           <ReportIssueButton />
         </div>
       )}
-      {displayGetSupportSection || displayGetSupportSection ? (
-        <div className="mt-4 sm:mt-6 flex flex-col items-center">
+      {displayGetSupportSection ||
+      displayGetSupportSection ||
+      displayExploreMoreMissionsSection ? (
+        <div className="mt-14 sm:mt-20 flex flex-col items-center">
+          {displayExploreMoreMissionsSection ? (
+            <ExploreMoreMissionsSection
+              filterPredicate={exploreMoreMissionsFilterPredicate}
+              className="max-w-screen-xl w-full"
+            />
+          ) : null}
           {displayGetSupportSection ? (
             <GetSupportSection className="px-4 sm:px-6 max-w-screen-xl w-full" />
           ) : null}

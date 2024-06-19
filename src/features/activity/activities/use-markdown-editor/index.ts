@@ -1,12 +1,12 @@
 import { defineMessage } from "react-intl";
 
-import { MISSION_01_ID } from "~/features/activity/missions";
 import type {
   Activity,
   ActivityOnExecute,
   ActivityOnInit,
 } from "~/features/activity/types";
 import { Logger } from "~/features/logger";
+import { MISSION_01_ID } from "~/features/missions";
 import { Sentry } from "~/features/sentry";
 import { wait } from "~/utils";
 

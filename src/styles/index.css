@@ -31,7 +31,7 @@
   }
 
   .bg-app {
-    background-image: url("./images/bg_bottom.png"); /* TODO: Get an image with a transparent background */
+    background-image: url("./images/bg_app_bottom.png"); /* TODO: Get an image with a transparent background */
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: auto 500px;
@@ -51,8 +51,25 @@
     background-size: auto auto;
   }
 
-  .bg-mission-card {
-    background-image: url("./images/bg_mission_card.png");
+  .bg-mission-default {
+    background-image: url("./images/bg_mission_default.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .bg-mission-onboarding {
+    background-image: url("./images/bg_mission_onboarding.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .bg-xp-badge-default {
+    background-image: url("./images/bg_xp_points_badge_default.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .bg-xp-badge-onboarding {
+    background-image: url("./images/bg_xp_points_badge_onboarding.svg");
     background-repeat: no-repeat;
     background-size: cover;
   }

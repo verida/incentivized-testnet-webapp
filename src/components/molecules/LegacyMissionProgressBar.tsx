@@ -2,16 +2,19 @@ import React from "react";
 import { useIntl } from "react-intl";
 import { twMerge } from "tailwind-merge";
 
-import { MissionProgessBarIndicator, Typography } from "~/components/atoms";
+import {
+  LegacyMissionProgessBarIndicator,
+  Typography,
+} from "~/components/atoms";
 import { UserActivityStatus } from "~/features/activity";
 
-export type MissionProgressBarProps = {
+export type LegacyMissionProgressBarProps = {
   isLoading?: boolean;
   statuses: UserActivityStatus[];
 } & React.ComponentPropsWithRef<"div">;
 
-export const MissionProgressBar: React.FunctionComponent<
-  MissionProgressBarProps
+export const LegacyMissionProgressBar: React.FC<
+  LegacyMissionProgressBarProps
 > = (props) => {
   const { isLoading, statuses, ...divProps } = props;
 
@@ -28,7 +31,7 @@ export const MissionProgressBar: React.FunctionComponent<
 
   const missionProgressMessage = i18n.formatMessage(
     {
-      id: "MissionProgressBar.missionProgressMessage",
+      id: "LegacyMissionProgressBar.missionProgressMessage",
       defaultMessage: `{nbCompletedActivities, number} of {nbActivities, number} {nbActivities, plural,
         one {activity}
         other {activities}
@@ -51,7 +54,7 @@ export const MissionProgressBar: React.FunctionComponent<
       <Typography variant="subtitle">{missionProgressMessage}</Typography>
       <div className={classes}>
         {statuses.map((status, index) => (
-          <MissionProgessBarIndicator
+          <LegacyMissionProgessBarIndicator
             key={index}
             variant={status}
             className="flex-grow"

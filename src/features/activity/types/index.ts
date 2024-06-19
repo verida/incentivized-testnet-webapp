@@ -13,21 +13,6 @@ import {
 import { ReceivedMessage } from "~/features/verida";
 import { Resource } from "~/types";
 
-// Mission
-
-export type Mission = {
-  id: string;
-  idLabel: MessageDescriptor;
-  enabled: boolean;
-  visible: boolean;
-  frozen: boolean;
-  order: number;
-  title: MessageDescriptor;
-  shortDescription: MessageDescriptor;
-  longDescription: MessageDescriptor;
-  resources?: Resource[];
-};
-
 // User activity
 
 export type UserActivity = z.infer<typeof UserActivitySchema>;
@@ -39,6 +24,12 @@ export type UserActivityRecord = z.infer<typeof UserActivityRecordSchema>;
 export type UserActivityStatus = "todo" | "pending" | "completed";
 
 // Activity
+
+export type ActivityStatus =
+  | UserActivityStatus
+  | "ended"
+  | "disabled"
+  | "checking";
 
 export type ActivityOnUnmount = () => Promise<void>;
 
