@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 
 import {
+  AirdropsPage,
   HomePage,
   MissionPage,
   MissionsPage,
@@ -34,6 +35,7 @@ const router = sentryCreateBrowserRouter(
       <Route path="/partners/:partnerId" element={<PartnerPage />} />
       <Route path="/missions" element={<MissionsPage />} />
       <Route path="/missions/:missionId" element={<MissionPage />} />
+      <Route path="/airdrops" element={<AirdropsPage />} />
       {/* <Route path="terms-and-conditions" element={<TermsConditionsView />} /> */}
       <Route path="*" element={<Navigate replace to="/" />} />
     </Route>

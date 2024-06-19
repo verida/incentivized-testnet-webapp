@@ -1,3 +1,4 @@
+export * from "./AirdropsPage";
 export * from "./HomePage";
 export * from "./MissionPage";
 export * from "./MissionsPage";
