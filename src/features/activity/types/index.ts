@@ -25,6 +25,12 @@ export type UserActivityStatus = "todo" | "pending" | "completed";
 
 // Activity
 
+export type ActivityStatus =
+  | UserActivityStatus
+  | "ended"
+  | "disabled"
+  | "checking";
+
 export type ActivityOnUnmount = () => Promise<void>;
 
 export type ActivityOnInit = (

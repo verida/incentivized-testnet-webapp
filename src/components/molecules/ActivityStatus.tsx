@@ -2,10 +2,10 @@ import React from "react";
 import { useIntl } from "react-intl";
 
 import { Chip, ChipVariants, Icon } from "~/components/atoms";
-import type { UserActivityStatus } from "~/features/activity";
+import type { ActivityStatus as ActivityStatusType } from "~/features/activity";
 
 export type ActivityStatusProps = {
-  status: UserActivityStatus | "ended" | "disabled" | "checking";
+  status: ActivityStatusType;
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
@@ -77,11 +77,13 @@ export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
         ? "success"
         : status === "pending"
           ? "pending"
-          : status === "ended" || status === "disabled" || status === "checking"
-            ? "muted"
-            : status === "todo"
+          : status === "ended"
+            ? "ended"
+            : status === "disabled" || status === "checking"
               ? "muted"
-              : "primary",
+              : status === "todo"
+                ? "muted"
+                : "primary",
   };
 
   return (
