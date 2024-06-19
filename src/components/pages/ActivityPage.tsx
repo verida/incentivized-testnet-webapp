@@ -2,7 +2,13 @@ import { useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
 
 import { Button, Typography } from "~/components/atoms";
-import { PartnerCircledLogo, XpPointsChip } from "~/components/molecules";
+import {
+  ActivityDaysLeftChip,
+  ActivityStatus,
+  PartnerCircledLogo,
+  StackedDiv,
+  XpPointsChip,
+} from "~/components/molecules";
 import { ActivityStepCard } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { activities } from "~/features/activity";
@@ -40,16 +46,26 @@ export const ActivityPage: React.FC = () => {
     description: "Label activity by",
   });
 
-  const polygonLabel = i18n.formatMessage({
-    id: "ActivityPage.polygonLabel",
-    defaultMessage: "Polygon",
-    description: "Label Polygon",
+  const statusLabel = i18n.formatMessage({
+    id: "ActivityPage.statusLabel",
+    defaultMessage: "Status",
+    description: "Label Status",
+  });
+
+  const rewardLabel = i18n.formatMessage({
+    id: "ActivityPage.rewardLabel",
+    defaultMessage: "Reward",
+    description: "Label Reward",
   });
 
   const activitySteps = longDescriptionMessage
     .split(/Step \d+\. /)
     .slice(1)
     .map((step) => step.replaceAll("{newline}", ""));
+
+  const partnerLogos = activity.partners.map((partner) => (
+    <PartnerCircledLogo partnerId={partner} />
+  ));
 
   return (
     <PageLayout
@@ -59,6 +75,23 @@ export const ActivityPage: React.FC = () => {
     >
       <div className="flex flex-col justify-center items-center">
         <div className="max-w-[calc(1264px_-_29rem)]">
+          <div className="flex py-2 mb-3">
+            {partnerLogos.length > 0 ? (
+              <>
+                <div className="flex items-center">
+                  <Typography variant={"base-s"} className="mr-4">
+                    {activityByLabel}
+                  </Typography>
+                  <StackedDiv divs={partnerLogos} />
+                  <div className="w-px h-full bg-transparent-15 mx-6" />
+                </div>
+              </>
+            ) : null}
+            <div className="flex gap-4 items-center">
+              <Typography variant={"base-s"}>{statusLabel}</Typography>
+              <ActivityDaysLeftChip nbDaysLeft={6} />
+            </div>
+          </div>
           <div className="text-muted-foreground">
             <Typography>{shortDescriptionMessage}</Typography>
             <br />
@@ -78,24 +111,14 @@ export const ActivityPage: React.FC = () => {
         <footer className="sticky mt-10 bottom-4 sm:bottom-6 max-w-[calc(1264px_-_12rem)] w-full">
           <div className="p-4 lg:px-6 lg:py-4 rounded-xl lg:rounded-2xl backdrop-blur-xl border border-border bg-clip-border bg-gradient-to-r from-primary/25 to-primary/10">
             <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center">
-              <div className="flex grow gap-4 items-center">
-                {activity.partners.length > 0 ? (
-                  <>
-                    <PartnerCircledLogo partnerId={activity.partners[0]} />
-                    <div className="flex justify-between items-center grow">
-                      <div className="flex flex-col justify-between">
-                        <Typography variant={"base-s"}>
-                          {activityByLabel}
-                        </Typography>
-                        <Typography variant={"heading-s"}>
-                          {polygonLabel}
-                        </Typography>
-                      </div>
-                    </div>
-                  </>
-                ) : null}
-                <XpPointsChip nbXpPoints={activity.points} />
+              <div className="flex grow justify-between items-center">
+                <div className="flex items-center gap-3">
+                  <Typography>{rewardLabel}</Typography>
+                  <XpPointsChip nbXpPoints={activity.points} />
+                </div>
+                <ActivityStatus status="pending" />
               </div>
+
               <Button color="primary" className="h-12">
                 {verifyButtonLabel}
               </Button>

@@ -15,6 +15,7 @@ export * from "./PortalWrapper";
 export * from "./ReportIssueButton";
 export * from "./ShareOnSocials";
 export * from "./SideNavigation";
+export * from "./StackedDiv";
 export * from "./StackedImg";
 export * from "./TopBanner";
 export * from "./UpcomingActivitiesCTA";

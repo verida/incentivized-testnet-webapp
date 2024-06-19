@@ -32,13 +32,13 @@ export const PartnerCircledLogo: React.FC<PartnerCircledLogoProps> = (
   }
 
   return (
-    <div className="relative flex justify-center items-center w-12 h-12 md:w-20 md:h-20">
+    <div className="relative flex justify-center items-center w-8 h-8">
       <PartnerEllipse />
-      <div className="absolute p-2 md:p-3">
+      <div className="absolute p-1">
         <div
-          className="bg-white rounded-full p-1 md:p-2"
+          className="bg-white rounded-full p-1"
           style={{
-            boxShadow: `0px 1.926px 30.815px 0px ${partner.accentColor}`,
+            boxShadow: `0px 0.856px 13.695px 0px ${partner.accentColor}`,
           }}
         >
           <img src={partner.logo} alt={partnerLogoAlt} className="" />
