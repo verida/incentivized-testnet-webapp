@@ -19,6 +19,30 @@
     "defaultMessage": "{nbDaysLeft, plural, one {{nbDaysLeft} day left} other {{nbDaysLeft} days left} }",
     "description": "Formatted value of days left in the activity days left chip"
   },
+  "ActivityPage.activityByLabel": {
+    "defaultMessage": "Activity by",
+    "description": "Label activity by"
+  },
+  "ActivityPage.finishStepsMessage": {
+    "defaultMessage": "Once you've finished with all steps, click the 'Verify' button below.",
+    "description": "Message for what to do after finishing all steps"
+  },
+  "ActivityPage.rewardLabel": {
+    "defaultMessage": "Reward",
+    "description": "Label Reward"
+  },
+  "ActivityPage.statusLabel": {
+    "defaultMessage": "Status",
+    "description": "Label Status"
+  },
+  "ActivityPage.stepLabel": {
+    "defaultMessage": "Step {index}",
+    "description": "Label above the activity step card"
+  },
+  "ActivityPage.verifyButtonLabel": {
+    "defaultMessage": "Verify",
+    "description": "Label on the verify button"
+  },
   "ActivityStatus.activityCheckingLabel": {
     "defaultMessage": "Checking",
     "description": "Label of the status for a disabled activity"
@@ -119,6 +143,10 @@
     "defaultMessage": "Terms and Conditions",
     "description": "Label of the Airdrops Terms and Conditions link."
   },
+  "ComingSoonActivityItem.nextActivityText": {
+    "defaultMessage": "Next Activity",
+    "description": "Default message of next activity text"
+  },
   "ConnectVeridaButton.checkingConnectionButtonLabel": {
     "defaultMessage": "Checking",
     "description": "Label of the Connect to Verida button when checking if already conencted. Note, the button has a spinner next to this label"
@@ -147,6 +175,10 @@
     "defaultMessage": "Try again",
     "description": "Label of the 'Try Again' button displayed on the default error fallback card"
   },
+  "ExploreMoreMissionsSection.sectionTitle": {
+    "defaultMessage": "Explore More",
+    "description": "Title of mission page"
+  },
   "Footer.builtOnLabel": {
     "defaultMessage": "Built on",
     "description": "label of the 'built on' text in the footer section"
@@ -174,10 +206,6 @@
   "Header.profileNameFallback": {
     "defaultMessage": "'<Anon>'",
     "description": "Fallback name for the profile name in the Header"
-  },
-  "Header.xpPointsChipLabel": {
-    "defaultMessage": "{points} XP",
-    "description": "Display of the user total XP points"
   },
   "HomeHero.descriptionPart1": {
     "defaultMessage": "Take control over your own personal data. Join Verida Missions, build up your XP, and earn storage credits for secure data management on Verida Network.",
@@ -231,37 +259,65 @@
     "defaultMessage": "Learn More",
     "description": "Title of the 'Learn More' section"
   },
-  "MissionCard.defaultActivityListMessage": {
-    "defaultMessage": "Complete all activities below",
-    "description": "Default message displayed above the activity list in the mission card"
-  },
-  "MissionCard.goToMissionButtonLabel": {
-    "defaultMessage": "Go to Mission",
-    "description": "Label of the button on the Mission card to open the mission page"
-  },
-  "MissionProgressBar.missionProgressMessage": {
+  "LegacyMissionProgressBar.missionProgressMessage": {
     "defaultMessage": "{nbCompletedActivities, number} of {nbActivities, number} {nbActivities, plural, one {activity} other {activities} } completed",
     "description": "Message for the mission progress bar"
   },
-  "MissionSection.activitiesSectionTitle": {
+  "LegacyMissionSection.activitiesSectionTitle": {
     "defaultMessage": "Activities",
     "description": "Title for the activities section"
   },
-  "MissionSection.comingSoonMessage": {
+  "LegacyMissionSection.comingSoonMessage": {
     "defaultMessage": "Coming Soon",
     "description": "Message to display when a mission is not yet available"
+  },
+  "LegacyMissionSection.resourcesSectionTitle": {
+    "defaultMessage": "Resources",
+    "description": "Title of the resources section in each mission section"
+  },
+  "LegacyMissionSection.toggleCollapseButtonLabel": {
+    "defaultMessage": "Toggle mission section",
+    "description": "Aria label for the button to toggle the mission section"
+  },
+  "MissionBottomBar.longMessage": {
+    "defaultMessage": "{nbCompletedActivities, number} of {nbActivities, number} {nbActivities, plural, one {activity} other {activities} } completed",
+    "description": "Message for the mission progress bar"
+  },
+  "MissionBottomBar.shortMessage": {
+    "defaultMessage": "{nbCompletedActivities, number} of {nbActivities, number} {nbActivities, plural, one {activity} other {activities} }",
+    "description": "Message for the mission progress bar"
+  },
+  "MissionCardActivitiesProgressBar.progressMessage": {
+    "defaultMessage": "{nbCompletedActivities, number}/{nbActivities, number}",
+    "description": "Message for the mission progress bar"
+  },
+  "MissionPage.emptyMessage": {
+    "defaultMessage": "No data",
+    "description": "Message when mission doesn't exist"
+  },
+  "MissionSection.defaultActivityListMessage": {
+    "defaultMessage": "Complete all activities below",
+    "description": "Default message displayed above the activity list in the mission card"
+  },
+  "MissionSection.goToMissionButtonLabel": {
+    "defaultMessage": "Go to Mission",
+    "description": "Label of the button on the Mission card to open the mission page"
   },
   "MissionSection.resourcesSectionTitle": {
     "defaultMessage": "Resources",
     "description": "Title of the resources section in each mission section"
   },
-  "MissionSection.toggleCollapseButtonLabel": {
-    "defaultMessage": "Toggle mission section",
-    "description": "Aria label for the button to toggle the mission section"
+  "MissionsPage.title": {
+    "defaultMessage": "Missions",
+    "description": "Title of the Missions page"
   },
   "MissionsSideNavigation.title": {
     "defaultMessage": "Missions",
     "description": "Title of the side navigation"
+  },
+  "PartnerCircledLogo.partnerLogoAlt": {
+    "defaultMessage": "Logo of {partnerName}",
+    "description": "Alt for the logo of a partner"
   },
   "PartnerInfoCard.activityCounterLabel": {
     "defaultMessage": "{nbActivities, plural, one {Activity} other {Activities} }",
@@ -279,6 +335,10 @@
     "defaultMessage": "No data",
     "description": "Description"
   },
+  "PartnerPage.missionActivityListMessage": {
+    "defaultMessage": "{partnerName} activities:",
+    "description": "Message displayed above the activity list of each mission section for a given partner"
+  },
   "PartnersPage.title": {
     "defaultMessage": "Partners",
     "description": "Title of the Partners page"
@@ -290,6 +350,10 @@
   "ShareOnSocials.shareOnX": {
     "defaultMessage": "Share on",
     "description": "Label of the Share on X. The X is a logo appended after this message"
+  },
+  "StackedImage.alt": {
+    "defaultMessage": "item of stacked images",
+    "description": "Alt text of stacked image"
   },
   "TermsConditionsPage.termsConditionsTitle": {
     "defaultMessage": "Terms of Use",
@@ -1167,6 +1231,10 @@
     "defaultMessage": "Verida Missions: Discover the future of personal data control and ownership.",
     "description": "Default application title for the meta tags"
   },
+  "missions.mission-01.description": {
+    "defaultMessage": "This first mission guides you through setting up your identity, exploring demo apps, and introducing you to the Verida Network.{newline}{newline}Get Started:{newline}1. Click the 'Connect' button above{newline}2. Depending on being on mobile or desktop, either click the button, or scan the QR code with your phone{newline}3. Follow the instructions to install the Wallet and create your Identity{newline}4. You may have to refresh this page and connect again",
+    "description": "Short description of the mission 01"
+  },
   "missions.mission-01.idLabel": {
     "defaultMessage": "Mission 1",
     "description": "Label of the mission if 01"
@@ -1191,13 +1259,13 @@
     "defaultMessage": "Install the Verida Wallet (iOS and Android)",
     "description": "Label of the wallet install url resource"
   },
-  "missions.mission-01.shortDescription": {
-    "defaultMessage": "This first mission guides you through setting up your identity, exploring demo apps, and introducing you to the Verida Network.{newline}{newline}Get Started:{newline}1. Click the 'Connect' button above{newline}2. Depending on being on mobile or desktop, either click the button, or scan the QR code with your phone{newline}3. Follow the instructions to install the Wallet and create your Identity{newline}4. You may have to refresh this page and connect again",
-    "description": "Short description of the mission 01"
-  },
   "missions.mission-01.title": {
     "defaultMessage": "Onboarding to the Verida Network",
     "description": "Title of the mission 01"
+  },
+  "missions.mission-02.description": {
+    "defaultMessage": "The Verida Wallet supports Polygon ID for receiving and storing Verifiable Credentials (VC), which can be presented in a privacy-preserving way to third parties via Zero-Knowledge Proofs (ZKP). This mission will guide you through the flow of using the Verida Wallet with various issuers and verifiers in the Polygon ID ecosystem.",
+    "description": "Short description of the mission 02"
   },
   "missions.mission-02.idLabel": {
     "defaultMessage": "Mission 2",
@@ -1207,13 +1275,13 @@
     "defaultMessage": "The Verida Wallet supports Polygon ID for receiving and storing Verifiable Credentials (VC), which can be presented in a privacy-preserving way to third parties via Zero-Knowledge Proofs (ZKP). This mission will guide you through the flow of using the Verida Wallet with various issuers and verifiers in the Polygon ID ecosystem.",
     "description": "Long description of the mission 02"
   },
-  "missions.mission-02.shortDescription": {
-    "defaultMessage": "The Verida Wallet supports Polygon ID for receiving and storing Verifiable Credentials (VC), which can be presented in a privacy-preserving way to third parties via Zero-Knowledge Proofs (ZKP). This mission will guide you through the flow of using the Verida Wallet with various issuers and verifiers in the Polygon ID ecosystem.",
-    "description": "Short description of the mission 02"
-  },
   "missions.mission-02.title": {
     "defaultMessage": "Leverage Credentials and Zero-Knowledge with Polygon ID",
     "description": "Title of the mission 02"
+  },
+  "missions.mission-03.description": {
+    "defaultMessage": "Gamer31 is on a mission to redefine how gamers establish their identities and reputation. Combined with Verida's web3 wallet and database storage network, don't miss this opportunity to claim your gaming ZK Polygon ID credentials and build your private gaming identity for web3.",
+    "description": "Short description of the mission 03"
   },
   "missions.mission-03.idLabel": {
     "defaultMessage": "Mission 3",
@@ -1223,13 +1291,13 @@
     "defaultMessage": "Gamer31 is on a mission to redefine how gamers establish their identities and reputation. Combined with Verida's web3 wallet and database storage network, don't miss this opportunity to claim your gaming ZK Polygon ID credentials and build your private gaming identity for web3.",
     "description": "Long description of the mission 03"
   },
-  "missions.mission-03.shortDescription": {
-    "defaultMessage": "Gamer31 is on a mission to redefine how gamers establish their identities and reputation. Combined with Verida's web3 wallet and database storage network, don't miss this opportunity to claim your gaming ZK Polygon ID credentials and build your private gaming identity for web3.",
-    "description": "Short description of the mission 03"
-  },
   "missions.mission-03.title": {
     "defaultMessage": "Craft Your Unique Web3 Gaming Identity with Gamer31 ZK Credentials",
     "description": "Title of the mission 03"
+  },
+  "missions.mission-04.description": {
+    "defaultMessage": "Embrace the future of secure and authentic online interactions by claiming your Proof of Life with Polygon ID. This mission, in partnership with Synaps, empowers individuals to assert their humanity while upholding their privacy.",
+    "description": "Short description of the mission 04"
   },
   "missions.mission-04.idLabel": {
     "defaultMessage": "Mission 4",
@@ -1239,13 +1307,13 @@
     "defaultMessage": "Embrace the future of secure and authentic online interactions by claiming your Proof of Life with Polygon ID. This mission, in partnership with Synaps, empowers individuals to assert their humanity while upholding their privacy.",
     "description": "Long description of the mission 04"
   },
-  "missions.mission-04.shortDescription": {
-    "defaultMessage": "Embrace the future of secure and authentic online interactions by claiming your Proof of Life with Polygon ID. This mission, in partnership with Synaps, empowers individuals to assert their humanity while upholding their privacy.",
-    "description": "Short description of the mission 04"
-  },
   "missions.mission-04.title": {
     "defaultMessage": "Prove Your Humanity and Build Trusted Online Communities with Synaps Proof of Life Credential",
     "description": "Title of the mission 04"
+  },
+  "missions.mission-05.description": {
+    "defaultMessage": "zkPass is a private data protocol that enables privacy-preserving verification.{newline}{newline}It is built on the foundation of Multi-Party Computation (MPC), Zero-Knowledge Proofs (ZKP), and three-party Transport Layer Security (3P-TLS).{newline}{newline}zkPass protocol allows you to prove information about yourself from any supported service without disclosing personal data.{newline}{newline}If you have an existing account on centralized exchanges (CEX), you can prove ownership/KYC and claim a credential.{newline}{newline}*No KYC information is captured or stored through this process.",
+    "description": "Short description of the mission 05"
   },
   "missions.mission-05.idLabel": {
     "defaultMessage": "Mission 5",
@@ -1255,13 +1323,13 @@
     "defaultMessage": "zkPass is a private data protocol that enables privacy-preserving verification.{newline}{newline}It is built on the foundation of Multi-Party Computation (MPC), Zero-Knowledge Proofs (ZKP), and three-party Transport Layer Security (3P-TLS).{newline}{newline}zkPass protocol allows you to prove information about yourself from any supported service without disclosing personal data.{newline}{newline}If you have an existing account on centralized exchanges (CEX), you can prove ownership/KYC and claim a credential.{newline}{newline}*No KYC information is captured or stored through this process.",
     "description": "Long description of the mission 05"
   },
-  "missions.mission-05.shortDescription": {
-    "defaultMessage": "zkPass is a private data protocol that enables privacy-preserving verification.{newline}{newline}It is built on the foundation of Multi-Party Computation (MPC), Zero-Knowledge Proofs (ZKP), and three-party Transport Layer Security (3P-TLS).{newline}{newline}zkPass protocol allows you to prove information about yourself from any supported service without disclosing personal data.{newline}{newline}If you have an existing account on centralized exchanges (CEX), you can prove ownership/KYC and claim a credential.{newline}{newline}*No KYC information is captured or stored through this process.",
-    "description": "Short description of the mission 05"
-  },
   "missions.mission-05.title": {
     "defaultMessage": "Generate CEX proofs with zkPass protocol",
     "description": "Title of the mission 05"
+  },
+  "missions.mission-06.description": {
+    "defaultMessage": "Reclaim protocol allows you to proof information about yourself from any website, without disclosing your personal data",
+    "description": "Short description of the mission 06"
   },
   "missions.mission-06.idLabel": {
     "defaultMessage": "Mission 6",
@@ -1270,10 +1338,6 @@
   "missions.mission-06.longDescription": {
     "defaultMessage": "Reclaim protocol allows you to proof information about yourself from any website, without disclosing your personal data",
     "description": "Long description of the mission 06"
-  },
-  "missions.mission-06.shortDescription": {
-    "defaultMessage": "Reclaim protocol allows you to proof information about yourself from any website, without disclosing your personal data",
-    "description": "Short description of the mission 06"
   },
   "missions.mission-06.title": {
     "defaultMessage": "Generate proofs with Reclaim Protocol",
