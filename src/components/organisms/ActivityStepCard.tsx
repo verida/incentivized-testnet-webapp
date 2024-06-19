@@ -1,6 +1,6 @@
 import { useIntl } from "react-intl";
 
-import { Typography } from "../atoms";
+import { Typography } from "~/components/atoms";
 
 export type ActivityStepCardProps = {
   index: number;

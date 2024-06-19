@@ -1,13 +1,11 @@
 import { useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
 
+import { Button, Typography } from "~/components/atoms";
+import { PartnerCircledLogo, XpPointsChip } from "~/components/molecules";
+import { ActivityStepCard } from "~/components/organisms";
+import { PageLayout } from "~/components/templates";
 import { activities } from "~/features/activity";
-
-import { Button, Typography } from "../atoms";
-import { XpPointsChip } from "../molecules";
-import { PartnerCircledLogo } from "../molecules/PartnerCircledLogo";
-import { ActivityStepCard } from "../organisms";
-import { PageLayout } from "../templates";
 
 export const ActivityPage: React.FC = () => {
   const i18n = useIntl();

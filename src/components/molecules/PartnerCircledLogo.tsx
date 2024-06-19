@@ -1,17 +1,18 @@
 import { ReactComponent as PartnerEllipse } from "assets/images/partner_ellipse.svg";
 import { useIntl } from "react-intl";
 
-import { Partner, usePartner } from "~/features/partners";
+import { usePartner } from "~/features/partners";
 
-export type PartnerCircledLogo = {
+export type PartnerCircledLogoProps = {
   partnerId: string;
-} & Omit<React.ComponentPropsWithRef<"article">, "children">;
+};
 
-export const PartnerCircledLogo: React.FC<PartnerCircledLogo> = (props) => {
-  const { partnerId, ...articleProps } = props;
+export const PartnerCircledLogo: React.FC<PartnerCircledLogoProps> = (
+  props
+) => {
+  const { partnerId } = props;
 
   const { partner } = usePartner(partnerId);
-  console.log(partner);
 
   const i18n = useIntl();
 
