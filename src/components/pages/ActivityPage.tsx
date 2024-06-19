@@ -1,11 +1,11 @@
-import { useMemo } from "react";
 import { useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
 
-import { activities, useActivity } from "~/features/activity";
+import { activities } from "~/features/activity";
 
 import { Button, Typography } from "../atoms";
 import { XpPointsChip } from "../molecules";
+import { PartnerCircledLogo } from "../molecules/PartnerCircledLogo";
 import { ActivityStepCard } from "../organisms";
 import { PageLayout } from "../templates";
 
@@ -63,32 +63,34 @@ export const ActivityPage: React.FC = () => {
           </div>
           <div className="mt-24 md:mt-14 flex flex-col gap-10 md:gap-16">
             {activitySteps?.map((step, index) => (
-              <ActivityStepCard index={index} step={step} />
+              <ActivityStepCard index={index} step={step} key={index} />
             ))}
           </div>
         </div>
         <footer className="sticky mt-10 bottom-4 sm:bottom-6 max-w-[calc(1264px_-_12rem)] w-full">
           <div className="p-4 lg:px-6 lg:py-4 rounded-xl lg:rounded-2xl backdrop-blur-xl border border-border bg-clip-border bg-gradient-to-r from-primary/25 to-primary/10">
-            <div className="flex flex-col md:flex-row gap-4">
-              <div className="flex grow gap-4">
-                <div className="relative flex justify-center items-center">
-                  <div className="absolute">
-                    <img src="/images/partners/polygonid.png" />
-                  </div>
-                </div>
-                <div className="flex justify-between items-center grow">
-                  <div className="flex flex-col justify-between">
-                    <Typography variant={"base-s"}>
-                      {activityByLabel}
-                    </Typography>
-                    <Typography variant={"heading-s"}>
-                      {polygonLabel}
-                    </Typography>
-                  </div>
-                  <XpPointsChip nbXpPoints={activity.points} />
-                </div>
+            <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center">
+              <div className="flex grow gap-4 items-center">
+                {activity.partners.length > 0 ? (
+                  <>
+                    <PartnerCircledLogo partnerId={activity.partners[0]} />
+                    <div className="flex justify-between items-center grow">
+                      <div className="flex flex-col justify-between">
+                        <Typography variant={"base-s"}>
+                          {activityByLabel}
+                        </Typography>
+                        <Typography variant={"heading-s"}>
+                          {polygonLabel}
+                        </Typography>
+                      </div>
+                    </div>
+                  </>
+                ) : null}
+                <XpPointsChip nbXpPoints={activity.points} />
               </div>
-              <Button color="primary">{verifyButtonLabel}</Button>
+              <Button color="primary" className="h-12">
+                {verifyButtonLabel}
+              </Button>
             </div>
           </div>
         </footer>
