@@ -18,14 +18,15 @@ export type MenuItem = {
   replaceButton?: boolean;
 };
 
-export type HeaderMenuProps = {
+export type HeaderIdentityMenuProps = {
   open: boolean;
   onClose: () => void;
-  onDisconnect: () => void;
 };
 
-export const HeaderMenu: React.FunctionComponent<HeaderMenuProps> = (props) => {
-  const { open, onClose, onDisconnect } = props;
+export const HeaderIdentityMenu: React.FunctionComponent<
+  HeaderIdentityMenuProps
+> = (props) => {
+  const { open, onClose } = props;
 
   const i18n = useIntl();
   const { profile, did, disconnect } = useVerida();
@@ -44,8 +45,8 @@ export const HeaderMenu: React.FunctionComponent<HeaderMenuProps> = (props) => {
 
   const handleDisconnect = useCallback(() => {
     void disconnect();
-    onDisconnect();
-  }, [onDisconnect, disconnect]);
+    onClose();
+  }, [onClose, disconnect]);
 
   const handleAirdrop1Click = useCallback(() => {
     openAirdrop1Modal();
@@ -56,13 +57,13 @@ export const HeaderMenu: React.FunctionComponent<HeaderMenuProps> = (props) => {
   }, [openAirdrop2Modal]);
 
   const profileNameFallback = i18n.formatMessage({
-    id: "Header.profileNameFallback",
+    id: "HeaderIdentityMenu.profileNameFallback",
     description: "Fallback name for the profile name in the Header",
     defaultMessage: "'<Anon>'",
   });
 
   const disconnectButtonLabel = i18n.formatMessage({
-    id: "Header.disconnectButtonLabel",
+    id: "HeaderIdentityMenu.disconnectButtonLabel",
     description: "Label for the disconnect button in the Header",
     defaultMessage: "Disconnect",
   });

@@ -5,7 +5,7 @@ import { twJoin } from "tailwind-merge";
 
 import { ReactComponent as VeridaNetworkLogoWithText } from "~/assets/images/verida_network_logo_with_text.svg";
 import { Avatar } from "~/components/atoms";
-import { HeaderMenu, XpPointsChip } from "~/components/molecules";
+import { HeaderIdentityMenu, XpPointsChip } from "~/components/molecules";
 import { ConnectVeridaButton } from "~/components/organisms";
 import { useActivity } from "~/features/activity";
 import { useVerida } from "~/features/verida";
@@ -19,21 +19,17 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const { ...headerProps } = props;
 
   const i18n = useIntl();
-  const [openMenu, setOpenMenu] = useState(false);
+  const [openIdentityMenu, setOpenIdentityMenu] = useState(false);
   const { isConnected, profile } = useVerida();
   const { userXpPoints, isLoadingUserActivities } = useActivity();
 
-  const handleOpenMenu = useCallback(() => {
-    setOpenMenu(true);
+  const handleOpenIdentityMenu = useCallback(() => {
+    setOpenIdentityMenu(true);
   }, []);
 
-  const handleCloseMenu = useCallback(() => {
-    setOpenMenu(false);
+  const handleCloseIdentityMenu = useCallback(() => {
+    setOpenIdentityMenu(false);
   }, []);
-
-  const handleDisconnect = useCallback(() => {
-    handleCloseMenu();
-  }, [handleCloseMenu]);
 
   const homeLinkAriaLabel = i18n.formatMessage({
     id: "Header.homeLinkAriaLabel",
@@ -60,17 +56,16 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
                 nbXpPoints={userXpPoints}
                 isLoading={isLoadingUserActivities}
               />
-              <button onClick={handleOpenMenu}>
+              <button onClick={handleOpenIdentityMenu}>
                 <Avatar
                   image={profile?.avatarUri}
                   alt={profile?.name}
                   className={contentHeight}
                 />
               </button>
-              <HeaderMenu
-                open={openMenu}
-                onClose={handleCloseMenu}
-                onDisconnect={handleDisconnect}
+              <HeaderIdentityMenu
+                open={openIdentityMenu}
+                onClose={handleCloseIdentityMenu}
               />
             </>
           ) : (
