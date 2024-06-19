@@ -24,6 +24,11 @@
     --menu: 246deg 59% 10%;
     --banner-grad-1: 270deg 57% 53%;
     --banner-grad-2: 254deg 65% 35%;
+    --card-1-background: 262deg 65% 54%;
+    --card-1-grad-1: 263deg 64% 21%;
+    --card-1-grad-2: 240deg 42% 17%;
+    --card-2-background: 175deg 65% 53%;
+    --card-2-grad-1: 187deg 46% 33%;
   }
 
   body {

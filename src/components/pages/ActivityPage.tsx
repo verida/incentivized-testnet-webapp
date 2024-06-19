@@ -6,6 +6,7 @@ import { PartnerCircledLogo, XpPointsChip } from "~/components/molecules";
 import { ActivityStepCard } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { activities } from "~/features/activity";
+import { isOnboardingMission } from "~/features/missions";
 
 export const ActivityPage: React.FC = () => {
   const i18n = useIntl();
@@ -65,7 +66,12 @@ export const ActivityPage: React.FC = () => {
           </div>
           <div className="mt-24 md:mt-14 flex flex-col gap-10 md:gap-16">
             {activitySteps?.map((step, index) => (
-              <ActivityStepCard index={index} step={step} key={index} />
+              <ActivityStepCard
+                index={index}
+                step={step}
+                isOnboardingActivity={isOnboardingMission(activity.missionId)}
+                key={index}
+              />
             ))}
           </div>
         </div>

@@ -90,6 +90,16 @@ module.exports = {
           grad2: "hsl(var(--banner-grad-2))",
           foreground: "hsl(var(--foreground))",
         },
+        stepCard1Banner: {
+          DEFAULT: "hsl(var(--card-1-background))",
+          grad1: "hsl(var(--card-1-grad-1))",
+          grad2: "hsl(var(--card-1-grad-2))",
+        },
+        stepCard2Banner: {
+          DEFAULT: "hsl(var(--card-2-background))",
+          grad1: "hsl(var(--card-2-grad-1) / 0.1)",
+          grad2: "hsl(var(--card-2-grad-2) / 0)",
+        },
       },
       fontSize: {
         "heading-l": [
