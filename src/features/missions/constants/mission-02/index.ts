@@ -20,8 +20,8 @@ export const mission: Mission = {
     defaultMessage: "Leverage Credentials and Zero-Knowledge with Polygon ID",
     description: "Title of the mission 02",
   }),
-  shortDescription: defineMessage({
-    id: "missions.mission-02.shortDescription",
+  description: defineMessage({
+    id: "missions.mission-02.description",
     defaultMessage:
       "The Verida Wallet supports Polygon ID for receiving and storing Verifiable Credentials (VC), which can be presented in a privacy-preserving way to third parties via Zero-Knowledge Proofs (ZKP). This mission will guide you through the flow of using the Verida Wallet with various issuers and verifiers in the Polygon ID ecosystem.",
     description: "Short description of the mission 02",
@@ -32,4 +32,5 @@ export const mission: Mission = {
       "The Verida Wallet supports Polygon ID for receiving and storing Verifiable Credentials (VC), which can be presented in a privacy-preserving way to third parties via Zero-Knowledge Proofs (ZKP). This mission will guide you through the flow of using the Verida Wallet with various issuers and verifiers in the Polygon ID ecosystem.",
     description: "Long description of the mission 02",
   }),
+  resources: [],
 };

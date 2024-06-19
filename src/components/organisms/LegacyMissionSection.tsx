@@ -27,7 +27,7 @@ export const LegacyMissionSection: React.FunctionComponent<
   LegacyMissionSectionProps
 > = (props) => {
   const { mission, ...articleProps } = props;
-  const { title, shortDescription, longDescription, resources } = mission;
+  const { title, description, longDescription, resources } = mission;
 
   const [isCollapsed, setIsCollapsed] = React.useState(true);
   const i18n = useIntl();
@@ -132,7 +132,7 @@ export const LegacyMissionSection: React.FunctionComponent<
             <>
               <Typography className="text-muted-foreground">
                 {i18n.formatMessage(
-                  isConnected ? longDescription : shortDescription,
+                  isConnected ? longDescription : description,
                   {
                     newline: (
                       <>

@@ -47,8 +47,6 @@ export const MissionSection: React.FC<MissionSectionProps> = (props) => {
     [activities]
   );
 
-  const { resources } = mission;
-
   const i18n = useIntl();
 
   const goToMissionButtonLabel = i18n.formatMessage({
@@ -88,7 +86,7 @@ export const MissionSection: React.FC<MissionSectionProps> = (props) => {
             </Typography>
             {!hideDescription && (
               <Typography variant="base">
-                {i18n.formatMessage(mission.shortDescription, {
+                {i18n.formatMessage(mission.description, {
                   newline: (
                     <>
                       <br />
@@ -97,13 +95,13 @@ export const MissionSection: React.FC<MissionSectionProps> = (props) => {
                 })}
               </Typography>
             )}
-            {resources && resources.length > 0 ? (
+            {mission.resources.length > 0 ? (
               <aside className="flex flex-col gap-2 text-muted-foreground">
                 <Typography variant="subtitle">
                   {resourcesSectionTitle}
                 </Typography>
                 <ul>
-                  {resources.map((resource) => (
+                  {mission.resources.map((resource) => (
                     <li key={resource.url}>
                       <ExternalLink href={resource.url} openInNewTab>
                         {i18n.formatMessage(resource.label)}

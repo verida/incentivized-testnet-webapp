@@ -20,8 +20,8 @@ export const mission: Mission = {
     defaultMessage: "Generate proofs with Reclaim Protocol",
     description: "Title of the mission 06",
   }),
-  shortDescription: defineMessage({
-    id: "missions.mission-06.shortDescription",
+  description: defineMessage({
+    id: "missions.mission-06.description",
     defaultMessage:
       "Reclaim protocol allows you to proof information about yourself from any website, without disclosing your personal data",
     description: "Short description of the mission 06",
@@ -32,4 +32,5 @@ export const mission: Mission = {
       "Reclaim protocol allows you to proof information about yourself from any website, without disclosing your personal data",
     description: "Long description of the mission 06",
   }),
+  resources: [],
 };
