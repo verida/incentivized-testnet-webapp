@@ -9,6 +9,7 @@ import {
   Close,
   Copy,
   Down,
+  HamburgerButton,
   History,
   Left,
   LoadingOne,
@@ -44,6 +45,8 @@ export type GenericIconType =
   | "close"
   | "copy"
   | "loading"
+  | "menu-open"
+  | "menu-close"
   | "check"
   | "disconnect"
   | "share"
@@ -94,6 +97,10 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
       return <Close size={size} {...otherProps} />;
     case "loading":
       return <LoadingOne size={size} {...otherProps} />;
+    case "menu-open":
+      return <HamburgerButton size={size} {...otherProps} />;
+    case "menu-close":
+      return <Close size={size} {...otherProps} />;
     case "check":
       return <Check size={size} {...otherProps} />;
     case "copy":

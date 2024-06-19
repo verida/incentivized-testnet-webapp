@@ -9,7 +9,7 @@ import { useActivity } from "~/features/activity";
 import { useAirdrop1, useAirdrop2 } from "~/features/airdrops";
 import { truncateDid, useVerida } from "~/features/verida";
 
-export type MenuItem = {
+type MenuItem = {
   key: string;
   label: React.ReactNode;
   action?: () => void;

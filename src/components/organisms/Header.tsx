@@ -1,11 +1,13 @@
 import React, { useCallback, useState } from "react";
-import { useIntl } from "react-intl";
-import { Link } from "react-router-dom";
-import { twJoin } from "tailwind-merge";
+import { twMerge } from "tailwind-merge";
 
 import { ReactComponent as VeridaNetworkLogoWithText } from "~/assets/images/verida_network_logo_with_text.svg";
-import { Avatar } from "~/components/atoms";
-import { HeaderIdentityMenu, XpPointsChip } from "~/components/molecules";
+import { Avatar, Icon } from "~/components/atoms";
+import {
+  HeaderIdentityMenu,
+  HeaderNavMenu,
+  XpPointsChip,
+} from "~/components/molecules";
 import { ConnectVeridaButton } from "~/components/organisms";
 import { useActivity } from "~/features/activity";
 import { useVerida } from "~/features/verida";
@@ -18,8 +20,8 @@ export type HeaderProps = Omit<
 export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const { ...headerProps } = props;
 
-  const i18n = useIntl();
   const [openIdentityMenu, setOpenIdentityMenu] = useState(false);
+  const [openNavMenu, setOpenNavMenu] = useState(false);
   const { isConnected, profile } = useVerida();
   const { userXpPoints, isLoadingUserActivities } = useActivity();
 
@@ -31,23 +33,30 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     setOpenIdentityMenu(false);
   }, []);
 
-  const homeLinkAriaLabel = i18n.formatMessage({
-    id: "Header.homeLinkAriaLabel",
-    description: "Aria label for the home link in the Header",
-    defaultMessage: "Return to Home page",
-  });
+  const handleOpenNavMenu = useCallback(() => {
+    setOpenNavMenu(true);
+  }, []);
 
-  const contentHeight = "h-10";
+  const handleCloseNavMenu = useCallback(() => {
+    setOpenNavMenu(false);
+  }, []);
 
   return (
     <header {...headerProps}>
-      <div className="flex flex-row justify-between border-b border-solid border-divider bg-background/40 px-4 pt-3 pb-[calc(0.75rem_-_1px)] backdrop-blur-xl sm:px-6">
-        <div className="justify-self-start">
-          <Link to="/" aria-label={homeLinkAriaLabel}>
-            <div className={twJoin("aspect-[10/3]", contentHeight)}>
-              <VeridaNetworkLogoWithText height="100%" width="100%" />
-            </div>
-          </Link>
+      <div
+        className={twMerge(
+          "flex flex-row justify-between border-b border-solid border-divider px-4 pl-0 pt-3 pb-[calc(0.75rem_-_1px)] backdrop-blur-xl sm:px-6",
+          openNavMenu ? "bg-background" : "bg-background/40"
+        )}
+      >
+        <div className="justify-self-start flex flex-row items-center justify-stretch">
+          <button onClick={handleOpenNavMenu} className="pl-4 pr-3 py-1">
+            <Icon type={openNavMenu ? "menu-close" : "menu-open"} size={24} />
+          </button>
+          <HeaderNavMenu open={openNavMenu} onClose={handleCloseNavMenu} />
+          <div className="h-8 aspect-[10/3]">
+            <VeridaNetworkLogoWithText height="100%" width="100%" />
+          </div>
         </div>
         <div className="flex items-center gap-2 md:gap-4 justify-between justify-self-end">
           {isConnected ? (
@@ -60,7 +69,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
                 <Avatar
                   image={profile?.avatarUri}
                   alt={profile?.name}
-                  className={contentHeight}
+                  className="h-10"
                 />
               </button>
               <HeaderIdentityMenu

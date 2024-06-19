@@ -4,6 +4,7 @@ export * from "./Alert";
 export * from "./CopyToClipboardButton";
 export * from "./ErrorFallbackCard";
 export * from "./HeaderIdentityMenu";
+export * from "./HeaderNavMenu";
 export * from "./HomeHero";
 export * from "./LegacyMissionProgressBar";
 export * from "./MissionActivitiesProgressBar";
