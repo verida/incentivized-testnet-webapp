@@ -63,8 +63,8 @@ module.exports = {
           background: "hsla(var(--pending) / 0.2)",
         },
         ended: {
-          DEFAULT: "var(--ended)",
-          background: "rgba(255 ,255 ,255 ,0.1)",
+          DEFAULT: "hsl(var(--error))",
+          background: "hsla(var(--white) / 0.1)",
         },
         gray: {
           DEFAULT: "hsl(var(--gray))",
