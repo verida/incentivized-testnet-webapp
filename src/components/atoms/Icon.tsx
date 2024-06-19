@@ -20,7 +20,7 @@ import {
   User,
   Wallet,
 } from "@icon-park/react";
-import { ReactComponent as XpPointsIcon } from "assets/icons/xp_points_icon.svg";
+import XpPointsIconImage from "assets/icons/xp_points_icon.png";
 import { ReactComponent as Whatsapp } from "assets/logos/platforms/whatsapp.svg";
 import React from "react";
 
@@ -119,7 +119,11 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
     case "xp-points":
       return (
         <IconContainer {...otherProps}>
-          <XpPointsIcon height={size} width={size} />
+          <img
+            style={{ height: size, width: size }}
+            src={XpPointsIconImage}
+            alt=""
+          />
         </IconContainer>
       );
     case "platform-discord":
