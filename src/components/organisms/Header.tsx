@@ -1,17 +1,14 @@
 import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
 import { Link } from "react-router-dom";
-import { twJoin, twMerge } from "tailwind-merge";
+import { twJoin } from "tailwind-merge";
 
 import { ReactComponent as VeridaNetworkLogoWithText } from "~/assets/images/verida_network_logo_with_text.svg";
-import { Avatar, Icon, Typography } from "~/components/atoms";
-import type { MenuItem } from "~/components/molecules";
+import { Avatar } from "~/components/atoms";
 import { HeaderMenu, XpPointsChip } from "~/components/molecules";
 import { ConnectVeridaButton } from "~/components/organisms";
-import { config } from "~/config";
 import { useActivity } from "~/features/activity";
-import { useAirdrop1, useAirdrop2 } from "~/features/airdrops";
-import { truncateDid, useVerida } from "~/features/verida";
+import { useVerida } from "~/features/verida";
 
 export type HeaderProps = Omit<
   React.ComponentPropsWithRef<"header">,
@@ -23,20 +20,8 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
 
   const i18n = useIntl();
   const [openMenu, setOpenMenu] = useState(false);
-  const { disconnect, isConnected, profile, did } = useVerida();
-  const { deleteUserActivities, userXpPoints, isLoadingUserActivities } =
-    useActivity();
-
-  const {
-    metadata: airdrop1Metadata,
-    isEnabled: isAirdrop1Enabled,
-    openModal: openAirdrop1Modal,
-  } = useAirdrop1();
-  const {
-    metadata: airdrop2Metadata,
-    openModal: openAirdrop2Modal,
-    isEnabled: isAirdrop2Enabled,
-  } = useAirdrop2();
+  const { isConnected, profile } = useVerida();
+  const { userXpPoints, isLoadingUserActivities } = useActivity();
 
   const handleOpenMenu = useCallback(() => {
     setOpenMenu(true);
@@ -48,16 +33,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
 
   const handleDisconnect = useCallback(() => {
     handleCloseMenu();
-    void disconnect();
-  }, [handleCloseMenu, disconnect]);
-
-  const handleAirdrop1Click = useCallback(() => {
-    openAirdrop1Modal();
-  }, [openAirdrop1Modal]);
-
-  const handleAirdrop2Click = useCallback(() => {
-    openAirdrop2Modal();
-  }, [openAirdrop2Modal]);
+  }, [handleCloseMenu]);
 
   const homeLinkAriaLabel = i18n.formatMessage({
     id: "Header.homeLinkAriaLabel",
@@ -65,107 +41,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     defaultMessage: "Return to Home page",
   });
 
-  const profileNameFallback = i18n.formatMessage({
-    id: "Header.profileNameFallback",
-    description: "Fallback name for the profile name in the Header",
-    defaultMessage: "'<Anon>'",
-  });
-
-  const airdrop1ButtonLabel = i18n.formatMessage(airdrop1Metadata.shortTitle);
-
-  const airdrop2ButtonLabel = i18n.formatMessage(airdrop2Metadata.shortTitle);
-
-  const disconnectButtonLabel = i18n.formatMessage({
-    id: "Header.disconnectButtonLabel",
-    description: "Label for the disconnect button in the Header",
-    defaultMessage: "Disconnect",
-  });
-
   const contentHeight = "h-10";
-
-  const airdropsMenuItems: MenuItem[] = [];
-
-  if (isAirdrop1Enabled) {
-    airdropsMenuItems.push({
-      key: "airdrop1",
-      label: (
-        <div className="flex flex-row gap-2 items-center">
-          <Icon type="wallet" size={20} />
-          {airdrop1ButtonLabel}
-        </div>
-      ),
-      action: handleAirdrop1Click,
-    });
-  }
-
-  if (isAirdrop2Enabled) {
-    airdropsMenuItems.push({
-      key: "airdrop2",
-      label: (
-        <div className="flex flex-row gap-2 items-center">
-          <Icon type="wallet" size={20} />
-          {airdrop2ButtonLabel}
-        </div>
-      ),
-      action: handleAirdrop2Click,
-    });
-  }
-
-  const devModeMenuItems: MenuItem[] = config.devMode
-    ? [
-        {
-          key: "delete-user-activities",
-          label: "[DEV] Delete User Activities",
-          action: deleteUserActivities,
-        },
-      ]
-    : [];
-
-  const menuItems: MenuItem[] = [
-    {
-      key: "profile-info",
-      label: (
-        <div className="p-2 flex flex-col gap-0.5 justify-between flex-shrink truncate border-b border-solid border-divider">
-          <Typography
-            variant="subtitle"
-            className={twMerge(
-              "truncate",
-              profile?.name === undefined ? "italic" : undefined
-            )}
-          >
-            <span className="text-foreground">
-              {/* TODO: Investigate class conflict preventing setting 'text-foreground' on Typography */}
-              {profile?.name || profileNameFallback}
-            </span>
-          </Typography>
-          {did === undefined ? null : (
-            <>
-              <Typography variant="base-s" className="truncate">
-                <span className="text-muted-foreground">
-                  {/* TODO: Investigate class conflict preventing setting 'text-foreground' on Typography */}
-                  {truncateDid(did, 7, 4)}
-                </span>
-              </Typography>
-            </>
-          )}
-        </div>
-      ),
-      disabled: true,
-      replaceButton: true,
-    },
-    ...airdropsMenuItems,
-    {
-      key: "disconnect",
-      label: (
-        <div className="flex flex-row gap-2 items-center">
-          <Icon type="disconnect" size={20} />
-          {disconnectButtonLabel}
-        </div>
-      ),
-      action: handleDisconnect,
-    },
-    ...devModeMenuItems,
-  ];
 
   return (
     <header {...headerProps}>
@@ -194,7 +70,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
               <HeaderMenu
                 open={openMenu}
                 onClose={handleCloseMenu}
-                items={menuItems}
+                onDisconnect={handleDisconnect}
               />
             </>
           ) : (
