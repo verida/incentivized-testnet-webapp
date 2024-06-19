@@ -9,7 +9,7 @@ export type ActivityStatusProps = {
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const ActivityStatus: React.FunctionComponent<ActivityStatusProps> = (
-  props
+  props: ActivityStatusProps
 ) => {
   const { status, ...divProps } = props;
 

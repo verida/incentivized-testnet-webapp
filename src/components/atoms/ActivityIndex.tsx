@@ -10,7 +10,7 @@ export type ActivityIndexProps = {
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const ActivityIndex: React.FunctionComponent<ActivityIndexProps> = (
-  props
+  props: ActivityIndexProps
 ) => {
   const { index, status = "todo", className, ...divProps } = props;
 
