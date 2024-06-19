@@ -1,5 +1,6 @@
 export * from "./ActivityCard";
 export * from "./ActivityListItem";
+export * from "./ActivityStepCard";
 export * from "./ComingSoonActivityItem";
 export * from "./ConnectVeridaButton";
 export * from "./ExploreMoreMissionsSection";
