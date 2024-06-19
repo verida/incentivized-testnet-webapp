@@ -15,7 +15,6 @@ export * from "./ReportIssueButton";
 export * from "./ShareOnSocials";
 export * from "./SideNavigation";
 export * from "./StackedImg";
-export * from "./TopBanner";
 export * from "./UpcomingActivitiesCTA";
 export * from "./XpPointsBadge";
 export * from "./XpPointsChip";

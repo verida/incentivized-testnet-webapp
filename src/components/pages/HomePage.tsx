@@ -98,10 +98,10 @@ export const HomePage: React.FC = () => {
       displayGetSupportSection
       displayLearnMoreSection
       containerClassName="bg-homepage"
-      contentClassName="max-w-screen-sm sm:px-4 pt-16"
+      contentClassName="max-w-screen-sm sm:px-4 pt-4"
     >
       <div className="flex flex-col justify-center">
-        <div className="flex flex-col items-center justify-center text-center w-full mt-28">
+        <div className="flex flex-col items-center justify-center text-center w-full mt-24">
           <Typography
             variant="base"
             className="leading-[120%] font-semibold text-primary uppercase tracking-[0.07rem] sm:tracking-[0.08rem]"
