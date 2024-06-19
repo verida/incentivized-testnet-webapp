@@ -1,9 +1,10 @@
 import { useIntl } from "react-intl";
 import { twMerge } from "tailwind-merge";
 
-import { Icon, Typography } from "~/components/atoms";
-import { EndedChip, PendingChip, XpPointsChip } from "~/components/molecules";
+import { ActivityIndex, Icon, Typography } from "~/components/atoms";
+import { ActivityStatus, XpPointsChip } from "~/components/molecules";
 import { Activity, useActivity } from "~/features/activity";
+import { useVerida } from "~/features/verida";
 
 export type ActivityListItemProps = {
   activityIndex: number;
@@ -14,62 +15,85 @@ export type ActivityListItemProps = {
 export const ActivityListItem: React.FC<ActivityListItemProps> = (props) => {
   const { activityIndex, activity, showPartners, ...divProps } = props;
 
-  const { getUserActivity } = useActivity();
+  const { isConnected } = useVerida();
+  const { getUserActivity, isLoadingUserActivities } = useActivity();
   const userActivity = getUserActivity(activity.id);
+  const status = userActivity?.status || "todo";
 
   const i18n = useIntl();
 
   return (
     <div {...divProps}>
-      <div className=" px-4 py-5 lg:p-6 rounded-xl border border-white/20 bg-transparent-6 hover:border-white/40 hover:bg-transparent-10 flex flex-col gap-4">
-        <div className="flex items-center gap-3 lg:gap-4">
-          <div
-            className={twMerge(
-              "rounded-full w-8 h-8 lg:w-10 lg:h-10 flex justify-center items-center text-desktop-base-s font-semibold",
-              activity.ended
-                ? "bg-ended-background"
-                : userActivity?.status === "completed"
-                  ? "bg-success"
-                  : userActivity?.status === "pending"
-                    ? "bg-white text-background"
-                    : "bg-white/20"
-            )}
-          >
-            {userActivity?.status === "completed" ? (
-              <Icon type="check" size={20} />
-            ) : (
-              activityIndex
-            )}
-          </div>
+      <div
+        className={twMerge(
+          " px-4 py-5 lg:p-6 rounded-xl border border-transparent sm:border-border hover:border-border-hover hover:bg-transparent-10 flex flex-col gap-6",
+          activity.ended ? "bg-transparent-3" : "bg-transparent-6"
+        )}
+      >
+        <div className="flex flex-row items-center justify-start gap-3 lg:gap-4">
+          <ActivityIndex
+            index={String(activityIndex)}
+            status={
+              isLoadingUserActivities
+                ? "checking"
+                : activity.ended
+                  ? "ended"
+                  : userActivity?.status
+            }
+            className="h-8 lg:h-10"
+          />
           <Typography
             variant="heading-s"
             className={twMerge(
-              "flex-1 text-nowrap overflow-ellipsis overflow-hidden",
-              activity.ended ? "text-white/30" : "text-foreground"
+              "flex-1 overflow-ellipsis overflow-hidden line-clamp-2",
+              activity.ended ? "text-transparent-70" : "text-foreground"
             )}
           >
             {i18n.formatMessage(activity.title)}
           </Typography>
-          {activity.ended && <EndedChip className="hidden lg:flex" />}
-          {!activity.ended && (
-            <>
-              <div className="hidden lg:flex gap-4">
-                {userActivity?.status === "pending" && <PendingChip />}
-                <XpPointsChip nbXpPoints={activity.points} />
-              </div>
-              {userActivity?.status !== "completed" && (
+          <div className="flex flex-row items-center gap-4">
+            {activity.enabled ? (
+              <>
+                <div className="hidden lg:flex flex-row items-center gap-4">
+                  {isConnected &&
+                  (isLoadingUserActivities || status !== "todo") ? (
+                    <>
+                      <ActivityStatus
+                        status={isLoadingUserActivities ? "checking" : status}
+                      />
+                      <XpPointsChip nbXpPoints={activity.points} />
+                    </>
+                  ) : activity.ended ? (
+                    <ActivityStatus status="ended" />
+                  ) : (
+                    <XpPointsChip nbXpPoints={activity.points} />
+                  )}
+                </div>
                 <Icon type="chevron-right" size={20} />
+              </>
+            ) : (
+              <ActivityStatus status="disabled" />
+            )}
+          </div>
+        </div>
+        <div className="lg:hidden flex flex-row gap-3">
+          {activity.enabled ? (
+            <>
+              {isConnected && (isLoadingUserActivities || status !== "todo") ? (
+                <>
+                  <XpPointsChip nbXpPoints={activity.points} />
+                  <ActivityStatus
+                    status={isLoadingUserActivities ? "checking" : status}
+                  />
+                </>
+              ) : activity.ended ? (
+                <ActivityStatus status="ended" />
+              ) : (
+                <XpPointsChip nbXpPoints={activity.points} />
               )}
             </>
-          )}
-        </div>
-        <div className="lg:hidden">
-          {activity.ended && <EndedChip />}
-          {!activity.ended && (
-            <div className="flex flex-row gap-3 lg:gap-4 justify-start">
-              {userActivity?.status === "pending" && <PendingChip />}
-              <XpPointsChip nbXpPoints={activity.points} />
-            </div>
+          ) : (
+            <ActivityStatus status="disabled" />
           )}
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { useIntl } from "react-intl";
 
 import { Typography } from "~/components/atoms";
-import { ComingSoonChip } from "~/components/molecules";
+import { ActivityStatus } from "~/components/molecules";
 
 export type ComingSoonActivityItemProps = {
   activityIndex: number;
@@ -18,6 +18,7 @@ export const ComingSoonActivityItem: React.FC<ComingSoonActivityItemProps> = (
     defaultMessage: "Next Activity",
   });
 
+  // TODO: To rework if used in the future
   return (
     <div {...divProps}>
       <div className="flex flex-col lg:flex-row px-4 py-5 lg:p-6 rounded-xl border border-white/20 bg-transparent-6 hover:border-white/40 hover:bg-transparent-10 items-center cursor-pointer gap-4">
@@ -35,9 +36,9 @@ export const ComingSoonActivityItem: React.FC<ComingSoonActivityItemProps> = (
           >
             {nextActivityText}
           </Typography>
-          <ComingSoonChip className="hidden lg:flex" />
+          <ActivityStatus status="disabled" className="hidden lg:block" />
         </div>
-        <ComingSoonChip className="flex lg:hidden mr-auto" />
+        <ActivityStatus status="disabled" className="lg:hidden mr-auto" />
       </div>
     </div>
   );

@@ -12,7 +12,6 @@ import {
 } from "~/features/missions";
 
 import { ActivityListItem } from "./ActivityListItem";
-import { ComingSoonActivityItem } from "./ComingSoonActivityItem";
 
 export type MissionSectionProps = {
   mission: Mission;
@@ -149,9 +148,6 @@ export const MissionSection: React.FC<MissionSectionProps> = (props) => {
                 </Link>
               </li>
             ))}
-            <li>
-              <ComingSoonActivityItem activityIndex={activities.length + 1} />
-            </li>
           </ul>
         </section>
       </div>
