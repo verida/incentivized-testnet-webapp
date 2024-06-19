@@ -53,7 +53,11 @@ export const ActivityPage: React.FC = () => {
     .map((step) => step.replaceAll("{newline}", ""));
 
   return (
-    <PageLayout hideReportIssueButton title={titleMessage}>
+    <PageLayout
+      hideReportIssueButton
+      title={titleMessage}
+      titleClassName="max-w-[calc(1264px_-_29rem)] text-left text-white"
+    >
       <div className="flex flex-col justify-center items-center">
         <div className="max-w-[calc(1264px_-_29rem)]">
           <div className="text-muted-foreground">
