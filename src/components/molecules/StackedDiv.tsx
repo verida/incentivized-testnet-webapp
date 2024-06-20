@@ -1,4 +1,3 @@
-import { useIntl } from "react-intl";
 import { twMerge } from "tailwind-merge";
 
 export type StackedDivProps = {
@@ -7,7 +6,6 @@ export type StackedDivProps = {
 
 export const StackedDiv: React.FC<StackedDivProps> = (props) => {
   const { divs, className, ...divProps } = props;
-  const i18n = useIntl();
 
   return (
     <div className={twMerge("flex", className)} {...divProps}>
