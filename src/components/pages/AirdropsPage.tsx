@@ -2,6 +2,7 @@ import React from "react";
 import { useIntl } from "react-intl";
 import { Outlet } from "react-router-dom";
 
+import AboutAirdropsImage from "~/assets/images/vda_airdrop_illustration.png";
 import { ButtonLink, Typography } from "~/components/atoms";
 import { AirdropCard } from "~/components/organisms/AirdropCard";
 import { PageLayout } from "~/components/templates";
@@ -100,6 +101,7 @@ export const AirdropsPage: React.FC = () => {
               ))}
             </ul>
             <div className="flex flex-col gap-4 items-center">
+              <img src={AboutAirdropsImage} alt="" className="h-40" />
               <Typography
                 variant="heading-l"
                 component="p"
