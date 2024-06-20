@@ -46,6 +46,11 @@ module.exports = {
           "background-disabled": "hsl(var(--primary-bg-disabled))",
           "foreground": "hsl(var(--background))",
         },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          background: "hsla(var(--secondary) / 0.2)",
+          foreground: "hsl(var(--background))",
+        },
         success: {
           DEFAULT: "hsl(var(--success))",
           background: "hsla(var(--success) / 0.2)",
@@ -113,6 +118,13 @@ module.exports = {
             fontWeight: "600",
           },
         ],
+        "heading-xs": [
+          "0.875rem",
+          {
+            lineHeight: "120%",
+            fontWeight: "600",
+          },
+        ],
         "base": [
           "0.875rem",
           {
@@ -150,6 +162,13 @@ module.exports = {
         ],
         "desktop-heading-s": [
           "1.25rem",
+          {
+            lineHeight: "120%",
+            fontWeight: "600",
+          },
+        ],
+        "desktop-heading-xs": [
+          "1rem",
           {
             lineHeight: "120%",
             fontWeight: "600",
