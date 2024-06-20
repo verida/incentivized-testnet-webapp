@@ -36,7 +36,6 @@ const router = sentryCreateBrowserRouter(
       <Route path="/missions" element={<MissionsPage />} />
       <Route path="/missions/:missionId" element={<MissionPage />} />
       <Route path="/airdrops" element={<AirdropsPage />} />
-      {/* <Route path="terms-and-conditions" element={<TermsConditionsView />} /> */}
       <Route path="*" element={<Navigate replace to="/" />} />
     </Route>
   )

@@ -4,4 +4,3 @@ export * from "./MissionPage";
 export * from "./MissionsPage";
 export * from "./PartnerPage";
 export * from "./PartnersPage";
-export * from "./TermsConditionsPage";
