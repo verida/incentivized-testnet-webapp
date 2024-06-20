@@ -3,7 +3,10 @@ import { useIntl } from "react-intl";
 
 import { Typography } from "~/components/atoms";
 import { Alert, HomeHero } from "~/components/molecules";
-import { ConnectVeridaButton } from "~/components/organisms";
+import {
+  ConnectVeridaButton,
+  HomeMissionBeginSection,
+} from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { APP_TITLE } from "~/constants";
 import {
@@ -13,8 +16,6 @@ import {
 } from "~/features/airdrops";
 import { missions } from "~/features/missions";
 import { useVerida } from "~/features/verida";
-
-import { HomeMissionBeginSection } from "../organisms/HomeMissionBeginSection";
 
 export const HomePage: React.FC = () => {
   const i18n = useIntl();

@@ -1,11 +1,10 @@
 import React, { useMemo } from "react";
 import { useIntl } from "react-intl";
 
+import { Typography } from "~/components/atoms";
+import { HomeOnboardingMissionCard } from "~/components/organisms";
 import { useActivity } from "~/features/activity";
 import { MISSION_01_ID, Mission } from "~/features/missions";
-
-import { Typography } from "../atoms";
-import { HomeOnboardingMissionCard } from "./HomeOnboardingMissionCard";
 
 export type HomeMissionBeginSectionProps = {
   missions: Mission[];

@@ -11,6 +11,7 @@ export * from "./LegacyMissionSection";
 export * from "./MissionBottomBar";
 export * from "./MissionCard";
 export * from "./MissionCardsCaroussel";
+export * from "./HomeMissionBeginSection";
 export * from "./HomeOnboardingMissionCard";
 export * from "./MissionSection";
 export * from "./MissionsSideNavigation";

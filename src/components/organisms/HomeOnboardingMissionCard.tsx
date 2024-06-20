@@ -8,13 +8,12 @@ import {
   LegacyMissionProgressBar,
   XpPointsBadge,
 } from "~/components/molecules";
+import { ActivityListItem } from "~/components/organisms";
 import { Activity, UserActivityStatus } from "~/features/activity";
 import {
   Mission,
   isOnboardingMission as isOnboardingMissionFunc,
 } from "~/features/missions";
-
-import { ActivityListItem } from "./ActivityListItem";
 
 export type HomeOnboardingMissionCardProps = {
   mission: Mission;
