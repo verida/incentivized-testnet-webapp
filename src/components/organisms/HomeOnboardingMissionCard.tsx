@@ -23,7 +23,6 @@ export type HomeOnboardingMissionCardProps = {
   activityStatuses: UserActivityStatus[];
   isLoadingUserActivities?: boolean;
   hideDescription?: boolean;
-  hideTotalMissionXpPoints?: boolean;
   displayGoToMissionButton?: boolean;
   hidePartnersOnActivities?: boolean;
 } & Omit<React.ComponentPropsWithRef<"article">, "children">;
@@ -38,7 +37,6 @@ export const HomeOnboardingMissionCard: React.FC<
     activityStatuses,
     isLoadingUserActivities,
     hideDescription = false,
-    hideTotalMissionXpPoints = false,
     displayGoToMissionButton = false,
     hidePartnersOnActivities = false,
     ...divProps
