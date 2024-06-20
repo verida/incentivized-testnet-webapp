@@ -1,5 +1,6 @@
 import { VariantProps, cva } from "class-variance-authority";
 import React from "react";
+import { twMerge } from "tailwind-merge";
 
 import {
   Button,
@@ -67,6 +68,7 @@ export const Alert: React.FunctionComponent<AlertProps> = (props) => {
                           ? "legacyPrimary"
                           : "secondary"
                     }
+                    className={twMerge("w-full", action.className)}
                   >
                     {action.label}
                   </Button>
@@ -84,6 +86,7 @@ export const Alert: React.FunctionComponent<AlertProps> = (props) => {
                           ? "legacyPrimary"
                           : "secondary"
                     }
+                    className={twMerge("w-full", action.className)}
                   >
                     {action.label}
                   </ButtonLink>
