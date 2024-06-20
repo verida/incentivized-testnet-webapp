@@ -1,8 +1,7 @@
 import { useIntl } from "react-intl";
 
+import { ExternalLink, Typography } from "~/components/atoms";
 import { Resource } from "~/types";
-
-import { ExternalLink, Typography } from "../atoms";
 
 export type ResourcesSectionProps = {
   resources: Resource[];
@@ -22,7 +21,7 @@ export const ResourcesSection: React.FunctionComponent<
   });
 
   return (
-    <div>
+    <article {...articleProps}>
       <Typography variant={"heading-m"}>{resourcesLabel}</Typography>
       <div className="flex gap-3 bg-transparent-10 rounded-xl p-4 lg:px-6 lg:py-4 mt-4 lg:mt-6">
         <div></div>
@@ -40,6 +39,6 @@ export const ResourcesSection: React.FunctionComponent<
           ))}
         </ul>
       </div>
-    </div>
+    </article>
   );
 };
