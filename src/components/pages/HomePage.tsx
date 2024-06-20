@@ -60,12 +60,9 @@ export const HomePage: React.FC = () => {
       "Label for the airdrop 1 'Prove' alert button on the home page",
   });
 
-  const airdrop1AlertLearnActionButtonLabel = i18n.formatMessage({
-    id: "HomePage.airdrop1AlertLearnActionButtonLabel",
-    defaultMessage: "Learn more",
-    description:
-      "Label for the airdrop 1 'Learn more' alert button on the home page",
-  });
+  const airdrop1AlertLearnActionButtonLabel = i18n.formatMessage(
+    airdrop1Metadata.resource.label
+  );
 
   const airdrop2AlertMessage = i18n.formatMessage(
     {
@@ -85,12 +82,9 @@ export const HomePage: React.FC = () => {
       "Label for the airdrop 2 'Check' alert button on the home page",
   });
 
-  const airdrop2AlertLearnActionButtonLabel = i18n.formatMessage({
-    id: "HomePage.airdrop2AlertLearnActionButtonLabel",
-    defaultMessage: "Learn more",
-    description:
-      "Label for the airdrop 2 'Learn more' alert button on the home page",
-  });
+  const airdrop2AlertLearnActionButtonLabel = i18n.formatMessage(
+    airdrop2Metadata.resource.label
+  );
 
   return (
     <PageLayout
@@ -136,7 +130,7 @@ export const HomePage: React.FC = () => {
                 {
                   type: "link",
                   label: airdrop1AlertLearnActionButtonLabel,
-                  href: airdrop1Metadata.articleUrl,
+                  href: airdrop1Metadata.resource.url,
                   openInNewTab: true,
                   color: "secondary",
                 },
@@ -157,7 +151,7 @@ export const HomePage: React.FC = () => {
               {
                 type: "link",
                 label: airdrop2AlertLearnActionButtonLabel,
-                href: airdrop2Metadata.articleUrl,
+                href: airdrop2Metadata.resource.url,
                 openInNewTab: true,
                 color: "secondary",
               },

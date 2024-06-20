@@ -7,10 +7,30 @@ import { PageLayout } from "~/components/templates";
 import { useAirdrop1, useAirdrop2 } from "~/features/airdrops";
 
 export const AirdropsPage: React.FC = () => {
-  const { metadata: airdrop1Metadata } = useAirdrop1();
-  const { metadata: airdrop2Metadata } = useAirdrop2();
+  const {
+    metadata: airdrop1Metadata,
+    isEnabled: isAirdrop1Enabled,
+    openModal: openAirdrop1Modal,
+  } = useAirdrop1();
+  const {
+    metadata: airdrop2Metadata,
+    isEnabled: isAirdrop2Enabled,
+    openModal: openAirdrop2Modal,
+  } = useAirdrop2();
 
   const i18n = useIntl();
+
+  const airdrop1ActionButtonLabel = i18n.formatMessage({
+    id: "AirdropsPage.airdrop1ActionButtonLabel",
+    defaultMessage: "Prove",
+    description: "",
+  });
+
+  const airdrop2ActionButtonLabel = i18n.formatMessage({
+    id: "AirdropsPage.airdrop2ActionButtonLabel",
+    defaultMessage: "Check",
+    description: "",
+  });
 
   const title = i18n.formatMessage(
     {
@@ -53,16 +73,28 @@ export const AirdropsPage: React.FC = () => {
           </div>
         </div>
         <ul className="flex flex-col gap-10">
-          <li>
-            <article>
-              <AirdropCard airdrop={airdrop1Metadata} />
-            </article>
-          </li>
-          <li>
-            <article>
-              <AirdropCard airdrop={airdrop2Metadata} />
-            </article>
-          </li>
+          {isAirdrop1Enabled ? (
+            <li>
+              <article>
+                <AirdropCard
+                  airdrop={airdrop1Metadata}
+                  onActionClick={openAirdrop1Modal}
+                  actionButtonLabel={airdrop1ActionButtonLabel}
+                />
+              </article>
+            </li>
+          ) : null}
+          {isAirdrop2Enabled ? (
+            <li>
+              <article>
+                <AirdropCard
+                  airdrop={airdrop2Metadata}
+                  onActionClick={openAirdrop2Modal}
+                  actionButtonLabel={airdrop2ActionButtonLabel}
+                />
+              </article>
+            </li>
+          ) : null}
         </ul>
       </div>
     </PageLayout>

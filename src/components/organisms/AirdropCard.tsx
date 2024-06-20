@@ -1,22 +1,21 @@
 import React from "react";
 import { useIntl } from "react-intl";
 
-import { ButtonLink, Typography } from "~/components/atoms";
+import { Button, ButtonLink, Typography } from "~/components/atoms";
 import { AirdropDefinition } from "~/features/airdrops";
 
 export type AirdropCardProps = {
   airdrop: AirdropDefinition;
+  onActionClick: () => void;
+  actionButtonLabel: string;
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
-  const { airdrop, ...divProps } = props;
+  const { airdrop, actionButtonLabel, onActionClick, ...divProps } = props;
 
   const i18n = useIntl();
 
-  const airdropArticleLink = i18n.formatMessage({
-    id: "airdrop.articleLink",
-    defaultMessage: "Learn more",
-  });
+  const airdropResourceLabel = i18n.formatMessage(airdrop.resource.label);
 
   return (
     <div {...divProps}>
@@ -31,14 +30,17 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
             <Typography>{i18n.formatMessage(airdrop.description)}</Typography>
           </div>
           <div className="px-4 py-5 flex flex-col sm:flex-row sm:justify-end gap-6">
+            <Button variant="contained" color="primary" onClick={onActionClick}>
+              {actionButtonLabel}
+            </Button>
             <ButtonLink
-              href={airdrop.articleUrl}
+              href={airdrop.resource.url}
               openInNewTab
               variant="contained"
               color="secondary"
               className="w-full sm:w-fit"
             >
-              {airdropArticleLink}
+              {airdropResourceLabel}
             </ButtonLink>
           </div>
         </div>

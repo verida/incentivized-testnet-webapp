@@ -204,7 +204,7 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
             ) : (
               <>
                 {notEligibleMessage}{" "}
-                <ExternalLink href={metadata.articleUrl} openInNewTab>
+                <ExternalLink href={metadata.resource.url} openInNewTab>
                   {announcementArticleUrlLabel}
                 </ExternalLink>
               </>

@@ -23,8 +23,14 @@ export const AIRDROP_1_DEFINITION: AirdropDefinition = {
     description: "Description of the airdrop 1",
   }),
   vdaAllocation: "1M VDA",
-  articleUrl:
-    "https://news.verida.io/verida-announces-inaugural-early-adopters-airdrop-f1e42399fe91",
+  resource: {
+    label: defineMessage({
+      id: "airdrops.airdrop1.resource.label",
+      defaultMessage: "Learn More",
+      description: "Label for the resource of the airdrop 1",
+    }),
+    url: "https://news.verida.io/verida-announces-inaugural-early-adopters-airdrop-f1e42399fe91",
+  },
 };
 
 export const AIRDROP_1_MIN_XP_POINTS = 50;
@@ -50,6 +56,12 @@ export const AIRDROP_2_DEFINITION: AirdropDefinition = {
     description: "Description of the airdrop 2",
   }),
   vdaAllocation: "2.2M VDA",
-  articleUrl:
-    "https://news.verida.io/verida-announces-2-200-000-vda-airdrop-2-for-early-galxe-and-zealy-campaign-participants-977b99b40459",
+  resource: {
+    label: defineMessage({
+      id: "airdrops.airdrop2.resource.label",
+      defaultMessage: "Learn More",
+      description: "Label for the resource of the airdrop 2",
+    }),
+    url: "https://news.verida.io/verida-announces-2-200-000-vda-airdrop-2-for-early-galxe-and-zealy-campaign-participants-977b99b40459",
+  },
 };
