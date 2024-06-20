@@ -7,14 +7,19 @@ import { Modal } from "~/components/templates";
 import { useActivity } from "~/features/activity";
 import {
   AIRDROPS_TERMS_URL,
+  AIRDROP_1_DEFINITION,
   AIRDROP_1_MIN_XP_POINTS,
-  useAirdrop1,
   useAirdrop1Queries,
 } from "~/features/airdrops";
 
-export const Airdrop1Modal: React.FunctionComponent = () => {
+export type Airdrop1ModalProps = {
+  onClose: () => void;
+};
+
+export const Airdrop1Modal: React.FC<Airdrop1ModalProps> = (props) => {
+  const { onClose } = props;
+
   const { userXpPoints, isLoadingUserActivities } = useActivity();
-  const { metadata, closeModal, isModalOpen } = useAirdrop1();
   const {
     isCheckingProofSubmitted,
     isProofSubmitted,
@@ -30,8 +35,8 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
     setHasProofSubmitError(false);
     setProofSubmitError(null);
     setIsTermsAccepted(false);
-    closeModal();
-  }, [closeModal]);
+    onClose();
+  }, [onClose]);
 
   const handleAcceptTerms = useCallback(() => {
     setIsTermsAccepted(true);
@@ -56,7 +61,7 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
 
   const i18n = useIntl();
 
-  const modalTitle = i18n.formatMessage(metadata.longTitle);
+  const modalTitle = i18n.formatMessage(AIRDROP_1_DEFINITION.title);
 
   const checkingSubmittedProofMessage = i18n.formatMessage({
     id: "Airdrop1Modal.checkingSubmittedProofMessage",
@@ -74,7 +79,7 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
         "Message displayed in the airdrop 1 modal when the proof has already been submitted",
     },
     {
-      airdropTitle: i18n.formatMessage(metadata.longTitle),
+      airdropTitle: i18n.formatMessage(AIRDROP_1_DEFINITION.title),
       newline: (
         <>
           <br />
@@ -138,7 +143,7 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
         "Message displayed in the rewards modal when before submitting the claim",
     },
     {
-      airdropTitle: i18n.formatMessage(metadata.longTitle),
+      airdropTitle: i18n.formatMessage(AIRDROP_1_DEFINITION.title),
       newline: (
         <>
           <br />
@@ -162,7 +167,7 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
         "Message displayed in the airdrop 1 modal when the proof submission fails",
     },
     {
-      airdropTitle: i18n.formatMessage(metadata.longTitle),
+      airdropTitle: i18n.formatMessage(AIRDROP_1_DEFINITION.title),
       newline: (
         <>
           <br />
@@ -173,7 +178,7 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
 
   return (
     <Modal
-      open={metadata.enabled && isModalOpen}
+      open
       onClose={handleClose}
       title={modalTitle}
       actions={
@@ -199,7 +204,7 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
                         label: submitButtonLabel,
                         onClick: handleSubmit,
                         variant: "contained",
-                        color: "legacyPrimary",
+                        color: "primary",
                         disabled: isSubmittingProof,
                       },
                     ]

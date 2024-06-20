@@ -2,7 +2,6 @@ import React from "react";
 import { HelmetProvider } from "react-helmet-async";
 
 import { ActivityProvider } from "~/features/activity";
-import { AirdropsProvider } from "~/features/airdrops";
 import { IntlProvider } from "~/features/i18n";
 import { Notifications } from "~/features/notifications";
 import { VeridaProvider } from "~/features/verida";
@@ -21,12 +20,10 @@ export const AppContextProviders: React.FunctionComponent<
       <IntlProvider>
         <VeridaProvider>
           <ActivityProvider>
-            <AirdropsProvider>
-              <HelmetProvider>
-                {props.children}
-                <Notifications />
-              </HelmetProvider>
-            </AirdropsProvider>
+            <HelmetProvider>
+              {props.children}
+              <Notifications />
+            </HelmetProvider>
           </ActivityProvider>
         </VeridaProvider>
       </IntlProvider>

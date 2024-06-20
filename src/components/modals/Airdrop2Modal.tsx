@@ -6,12 +6,17 @@ import { Alert, ShareOnSocials } from "~/components/molecules";
 import { Modal } from "~/components/templates";
 import {
   AIRDROPS_TERMS_URL,
-  useAirdrop2,
+  AIRDROP_2_DEFINITION,
   useAirdrop2CheckEligibility,
 } from "~/features/airdrops";
 
-export const Airdrop2Modal: React.FunctionComponent = () => {
-  const { metadata, isModalOpen, closeModal } = useAirdrop2();
+export type Airdrop2ModalProps = {
+  onClose: () => void;
+};
+
+export const Airdrop2Modal: React.FC<Airdrop2ModalProps> = (props) => {
+  const { onClose } = props;
+
   const { checkEligbility, isChecking } = useAirdrop2CheckEligibility();
 
   const [walletAddress, setWalletAddress] = useState("");
@@ -53,12 +58,12 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
     setWalletAddress("");
     setEligibilityStatus("unknown");
     setEligibilityCheckError(null);
-    closeModal();
-  }, [closeModal]);
+    onClose();
+  }, [onClose]);
 
   const i18n = useIntl();
 
-  const modalTitle = i18n.formatMessage(metadata.longTitle);
+  const modalTitle = i18n.formatMessage(AIRDROP_2_DEFINITION.title);
 
   const checkYourEligibilityMessage = i18n.formatMessage(
     {
@@ -68,7 +73,7 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
       description: "Welcome message in the airdrop 2 modal",
     },
     {
-      airdropTitle: i18n.formatMessage(metadata.longTitle),
+      airdropTitle: i18n.formatMessage(AIRDROP_2_DEFINITION.title),
       newline: (
         <>
           <br />
@@ -99,7 +104,7 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
         "Message displayed in the airdrop 2 modal when the user is included",
     },
     {
-      airdropTitle: i18n.formatMessage(metadata.longTitle),
+      airdropTitle: i18n.formatMessage(AIRDROP_2_DEFINITION.title),
       newline: (
         <>
           <br />
@@ -124,7 +129,7 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
         "Message displayed in the airdrop 2 modal when the user is not included",
     },
     {
-      airdropTitle: i18n.formatMessage(metadata.longTitle),
+      airdropTitle: i18n.formatMessage(AIRDROP_2_DEFINITION.title),
       newline: (
         <>
           <br />
@@ -155,7 +160,7 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
 
   return (
     <Modal
-      open={metadata.enabled && isModalOpen}
+      open
       onClose={handleClose}
       title={modalTitle}
       actions={
@@ -204,7 +209,10 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
             ) : (
               <>
                 {notEligibleMessage}{" "}
-                <ExternalLink href={metadata.resource.url} openInNewTab>
+                <ExternalLink
+                  href={AIRDROP_2_DEFINITION.resource.url}
+                  openInNewTab
+                >
                   {announcementArticleUrlLabel}
                 </ExternalLink>
               </>

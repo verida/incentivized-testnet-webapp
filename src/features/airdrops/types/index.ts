@@ -3,11 +3,12 @@ import { type MessageDescriptor } from "react-intl";
 import { Resource } from "~/types";
 
 export type AirdropDefinition = {
-  id: number;
+  id: string;
+  order: number;
   enabled: boolean;
-  shortTitle: MessageDescriptor;
-  longTitle: MessageDescriptor;
+  title: MessageDescriptor;
   description: MessageDescriptor;
+  actionLabel: MessageDescriptor;
   resource: Resource;
   vdaAllocation: string;
 };

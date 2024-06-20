@@ -62,14 +62,13 @@ export const Modal: React.FunctionComponent<ModalProps> = (props) => {
         onClick={onClose}
       />
       <div
-        className="fixed bottom-0 z-50 w-full rounded-t-3xl border border-solid border-gray-dark bg-background sm:bottom-auto sm:top-1/2 sm:left-1/2 sm:max-w-2xl sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-b-3xl"
+        className="fixed bottom-0 z-50 w-full rounded-t-3xl border border-solid border-border bg-background sm:bottom-auto sm:top-1/2 sm:left-1/2 sm:max-w-2xl sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-b-3xl"
         aria-labelledby={labelId}
         role="dialog"
         aria-modal="true"
       >
         <div className="relative px-4 sm:p-8 pt-6 pb-8  max-h-[90Vh] sm:max-h-[80vh] flex flex-col">
           <div className="mb-5 flex items-center justify-between sm:mb-8">
-            <div className="flex-grow basis-0" />
             <Typography
               variant="heading-s"
               component="h2"
@@ -78,15 +77,13 @@ export const Modal: React.FunctionComponent<ModalProps> = (props) => {
             >
               {title}
             </Typography>
-            <div className="flex-grow basis-0 flex justify-end">
-              <IconButton
-                size="small"
-                variant="text"
-                color="secondary"
-                onClick={onClose}
-                icon={<Icon type="close" size={20} />}
-              />
-            </div>
+            <IconButton
+              size="small"
+              variant="text"
+              color="secondary"
+              onClick={onClose}
+              icon={<Icon type="close" size={20} />}
+            />
           </div>
           <div className="overflow-auto">{children}</div>
           {actions && actions.length > 0 ? (

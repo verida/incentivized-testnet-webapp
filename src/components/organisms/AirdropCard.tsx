@@ -1,22 +1,18 @@
 import React from "react";
 import { useIntl } from "react-intl";
 
-import { Button, ButtonLink, Typography } from "~/components/atoms";
+import { ButtonLink, Typography } from "~/components/atoms";
 import { VdaTokensChip } from "~/components/molecules";
 import { AirdropDefinition } from "~/features/airdrops";
 
 export type AirdropCardProps = {
   airdrop: AirdropDefinition;
-  onActionClick: () => void;
-  actionButtonLabel: string;
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
-  const { airdrop, actionButtonLabel, onActionClick, ...divProps } = props;
+  const { airdrop, ...divProps } = props;
 
   const i18n = useIntl();
-
-  const airdropResourceLabel = i18n.formatMessage(airdrop.resource.label);
 
   return (
     <div {...divProps}>
@@ -25,21 +21,30 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
           <div className="rounded-[1.25rem] px-4 py-6 bg-gradient-to-br from-primary/20 to-black/50 shadow-[0px_3px_4px_1px_rgba(0,0,0,0.15)_inset] flex flex-col gap-6">
             <div className="flex flex-col sm:flex-row justify-between gap-3">
               <Typography variant="heading-m">
-                {i18n.formatMessage(airdrop.longTitle)}
+                {i18n.formatMessage(airdrop.title)}
               </Typography>
               <VdaTokensChip nbVdaTokens={airdrop.vdaAllocation} />
             </div>
-            <Typography>{i18n.formatMessage(airdrop.description)}</Typography>
+            <Typography className="text-muted-foreground">
+              {i18n.formatMessage(airdrop.description, {
+                newline: (
+                  <>
+                    <br />
+                  </>
+                ),
+              })}
+            </Typography>
           </div>
           <div className="px-4 py-5 flex flex-col sm:flex-row sm:justify-end gap-6">
-            <Button
+            <ButtonLink
               variant="contained"
               color="primary"
               className="w-full sm:w-fit"
-              onClick={onActionClick}
+              href={`/airdrops/${airdrop.id}`}
+              internal
             >
-              {actionButtonLabel}
-            </Button>
+              {i18n.formatMessage(airdrop.actionLabel)}
+            </ButtonLink>
             <ButtonLink
               href={airdrop.resource.url}
               openInNewTab
@@ -47,7 +52,7 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
               color="secondary"
               className="w-full sm:w-fit"
             >
-              {airdropResourceLabel}
+              {i18n.formatMessage(airdrop.resource.label)}
             </ButtonLink>
           </div>
         </div>
