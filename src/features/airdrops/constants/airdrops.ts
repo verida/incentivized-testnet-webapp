@@ -22,7 +22,7 @@ export const AIRDROP_1_DEFINITION: AirdropDefinition = {
       "This airdrop rewards early participants in Verida's Missions program. Early community members were able to explore and experience the benefits of effective self-sovereign identity and data ownership in web3.",
     description: "Description of the airdrop 1",
   }),
-  vdaAllocation: "1M VDA",
+  vdaAllocation: "1M",
   resource: {
     label: defineMessage({
       id: "airdrops.airdrop1.resource.label",
@@ -55,7 +55,7 @@ export const AIRDROP_2_DEFINITION: AirdropDefinition = {
       "Airdrop 2 rewards Veridians who participated in Verida Zealy campaigns or Galxe campaigns between 2023 and 2024.",
     description: "Description of the airdrop 2",
   }),
-  vdaAllocation: "2.2M VDA",
+  vdaAllocation: "2.2M",
   resource: {
     label: defineMessage({
       id: "airdrops.airdrop2.resource.label",

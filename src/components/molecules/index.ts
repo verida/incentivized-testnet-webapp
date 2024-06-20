@@ -17,5 +17,6 @@ export * from "./ShareOnSocials";
 export * from "./SideNavigation";
 export * from "./StackedImg";
 export * from "./UpcomingActivitiesCTA";
+export * from "./VdaTokensChip";
 export * from "./XpPointsBadge";
 export * from "./XpPointsChip";
