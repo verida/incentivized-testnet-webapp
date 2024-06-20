@@ -26,6 +26,12 @@ export const AIRDROP_1_DEFINITION: AirdropDefinition = {
     defaultMessage: "Prove",
     description: "Label for the action of the airdrop 1",
   }),
+  requirements: defineMessage({
+    id: "airdrops.airdrop1.requirements",
+    defaultMessage:
+      "- Earned 50 XP on Verida Missions before March 21st 2024{newline}{newline}- Registered for the airdrop by proving your XP points",
+    description: "Requirements of the airdrop 1",
+  }),
   vdaAllocation: "1M",
   resource: {
     label: defineMessage({

@@ -24,6 +24,12 @@ export const AIRDROP_2_DEFINITION: AirdropDefinition = {
     defaultMessage: "Check",
     description: "Label for the action of the airdrop 2",
   }),
+  requirements: defineMessage({
+    id: "airdrops.airdrop2.requirements",
+    defaultMessage:
+      "- Participated in a Verida Zealy campaign or Galxe campaign between 2023 and 2024",
+    description: "Requirements of the airdrop 2",
+  }),
   vdaAllocation: "2.2M",
   resource: {
     label: defineMessage({

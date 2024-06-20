@@ -9,6 +9,7 @@ export type AirdropDefinition = {
   title: MessageDescriptor;
   description: MessageDescriptor;
   actionLabel: MessageDescriptor;
+  requirements: MessageDescriptor;
   resource: Resource;
   vdaAllocation: string;
 };
