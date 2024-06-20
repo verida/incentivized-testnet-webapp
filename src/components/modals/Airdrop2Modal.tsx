@@ -11,7 +11,7 @@ import {
 } from "~/features/airdrops";
 
 export const Airdrop2Modal: React.FunctionComponent = () => {
-  const { metadata, isEnabled, isModalOpen, closeModal } = useAirdrop2();
+  const { metadata, isModalOpen, closeModal } = useAirdrop2();
   const { checkEligbility, isChecking } = useAirdrop2CheckEligibility();
 
   const [walletAddress, setWalletAddress] = useState("");
@@ -155,7 +155,7 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
 
   return (
     <Modal
-      open={isEnabled && isModalOpen}
+      open={metadata.enabled && isModalOpen}
       onClose={handleClose}
       title={modalTitle}
       actions={

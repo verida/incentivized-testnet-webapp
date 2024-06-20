@@ -12,22 +12,16 @@ import {
   AIRDROP_2_DEFINITION,
 } from "~/features/airdrops/constants";
 import { AirdropDefinition } from "~/features/airdrops/types";
-import {
-  isAirdrop1Enabled as isAirdrop1EnabledFunc,
-  isAirdrop2Enabled as isAirdrop2EnabledFunc,
-} from "~/features/airdrops/utils";
 
 export type AirdropsContextType = {
   airdrop1: {
     metadata: AirdropDefinition;
-    isEnabled: boolean;
     isModalOpen: boolean;
     openModal: () => void;
     closeModal: () => void;
   };
   airdrop2: {
     metadata: AirdropDefinition;
-    isEnabled: boolean;
     isModalOpen: boolean;
     openModal: () => void;
     closeModal: () => void;
@@ -43,7 +37,6 @@ export const AirdropsProvider: React.FC<AirdropsProviderProps> = (props) => {
 
   // Airdrop 1
 
-  const isAirdrop1Enabled = isAirdrop1EnabledFunc();
   const [isAirdrop1ModalOpen, setIsAirdrop1ModalOpen] = useState(false);
 
   const openAirdrop1Modal = useCallback(() => {
@@ -56,7 +49,6 @@ export const AirdropsProvider: React.FC<AirdropsProviderProps> = (props) => {
 
   // Airdrop 2
 
-  const isAirdrop2Enabled = isAirdrop2EnabledFunc();
   const [isAirdrop2ModalOpen, setIsAirdrop2ModalOpen] = useState(false);
 
   const openAirdrop2Modal = useCallback(() => {
@@ -71,25 +63,21 @@ export const AirdropsProvider: React.FC<AirdropsProviderProps> = (props) => {
     () => ({
       airdrop1: {
         metadata: AIRDROP_1_DEFINITION,
-        isEnabled: isAirdrop1Enabled,
         isModalOpen: isAirdrop1ModalOpen,
         openModal: openAirdrop1Modal,
         closeModal: closeAirdrop1Modal,
       },
       airdrop2: {
         metadata: AIRDROP_2_DEFINITION,
-        isEnabled: isAirdrop2Enabled,
         isModalOpen: isAirdrop2ModalOpen,
         openModal: openAirdrop2Modal,
         closeModal: closeAirdrop2Modal,
       },
     }),
     [
-      isAirdrop1Enabled,
       isAirdrop1ModalOpen,
       openAirdrop1Modal,
       closeAirdrop1Modal,
-      isAirdrop2Enabled,
       isAirdrop2ModalOpen,
       openAirdrop2Modal,
       closeAirdrop2Modal,
@@ -99,8 +87,8 @@ export const AirdropsProvider: React.FC<AirdropsProviderProps> = (props) => {
   return (
     <airdropsContext.Provider value={contextValue}>
       {children}
-      {isAirdrop1Enabled ? <Airdrop1Modal /> : null}
-      {isAirdrop2Enabled ? <Airdrop2Modal /> : null}
+      {AIRDROP_1_DEFINITION.enabled ? <Airdrop1Modal /> : null}
+      {AIRDROP_2_DEFINITION.enabled ? <Airdrop2Modal /> : null}
     </airdropsContext.Provider>
   );
 };

@@ -14,7 +14,7 @@ import {
 
 export const Airdrop1Modal: React.FunctionComponent = () => {
   const { userXpPoints, isLoadingUserActivities } = useActivity();
-  const { metadata, closeModal, isEnabled, isModalOpen } = useAirdrop1();
+  const { metadata, closeModal, isModalOpen } = useAirdrop1();
   const {
     isCheckingProofSubmitted,
     isProofSubmitted,
@@ -173,7 +173,7 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
 
   return (
     <Modal
-      open={isEnabled && isModalOpen}
+      open={metadata.enabled && isModalOpen}
       onClose={handleClose}
       title={modalTitle}
       actions={

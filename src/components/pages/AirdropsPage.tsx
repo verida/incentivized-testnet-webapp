@@ -7,16 +7,10 @@ import { PageLayout } from "~/components/templates";
 import { useAirdrop1, useAirdrop2 } from "~/features/airdrops";
 
 export const AirdropsPage: React.FC = () => {
-  const {
-    metadata: airdrop1Metadata,
-    isEnabled: isAirdrop1Enabled,
-    openModal: openAirdrop1Modal,
-  } = useAirdrop1();
-  const {
-    metadata: airdrop2Metadata,
-    isEnabled: isAirdrop2Enabled,
-    openModal: openAirdrop2Modal,
-  } = useAirdrop2();
+  const { metadata: airdrop1Metadata, openModal: openAirdrop1Modal } =
+    useAirdrop1();
+  const { metadata: airdrop2Metadata, openModal: openAirdrop2Modal } =
+    useAirdrop2();
 
   const i18n = useIntl();
 
@@ -73,7 +67,7 @@ export const AirdropsPage: React.FC = () => {
           </div>
         </div>
         <ul className="flex flex-col gap-10">
-          {isAirdrop1Enabled ? (
+          {airdrop1Metadata.enabled ? (
             <li>
               <article>
                 <AirdropCard
@@ -84,7 +78,7 @@ export const AirdropsPage: React.FC = () => {
               </article>
             </li>
           ) : null}
-          {isAirdrop2Enabled ? (
+          {airdrop2Metadata.enabled ? (
             <li>
               <article>
                 <AirdropCard

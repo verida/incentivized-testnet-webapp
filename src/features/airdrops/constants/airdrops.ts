@@ -1,11 +1,14 @@
+import { EnvironmentType } from "@verida/types";
 import { defineMessage } from "react-intl";
 
+import { config } from "~/config";
 import { AirdropDefinition } from "~/features/airdrops/types";
 
 // Airdrop 1: Early Adopters
 
 export const AIRDROP_1_DEFINITION: AirdropDefinition = {
   id: 1,
+  enabled: true && config.verida.environment === EnvironmentType.MAINNET,
   shortTitle: defineMessage({
     id: "airdrops.airdrop1.shortTitle",
     defaultMessage: "Airdrop 1: Early Adopters",
@@ -39,6 +42,7 @@ export const AIRDROP_1_MIN_XP_POINTS = 50;
 
 export const AIRDROP_2_DEFINITION: AirdropDefinition = {
   id: 2,
+  enabled: true && config.verida.environment === EnvironmentType.MAINNET,
   shortTitle: defineMessage({
     id: "airdrops.airdrop2.shortTitle",
     defaultMessage: "Airdrop 2: Early Galxe and Zealy",

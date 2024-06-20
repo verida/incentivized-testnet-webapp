@@ -4,6 +4,7 @@ import { Resource } from "~/types";
 
 export type AirdropDefinition = {
   id: number;
+  enabled: boolean;
   shortTitle: MessageDescriptor;
   longTitle: MessageDescriptor;
   description: MessageDescriptor;

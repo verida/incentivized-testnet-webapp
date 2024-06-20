@@ -6,7 +6,6 @@ import { Icon, Typography } from "~/components/atoms";
 import { PortalWrapper } from "~/components/molecules/PortalWrapper";
 import { config } from "~/config";
 import { useActivity } from "~/features/activity";
-import { useAirdrop1, useAirdrop2 } from "~/features/airdrops";
 import { truncateDid, useVerida } from "~/features/verida";
 
 type MenuItem = {
@@ -32,29 +31,10 @@ export const HeaderIdentityMenu: React.FunctionComponent<
   const { profile, did, disconnect } = useVerida();
   const { deleteUserActivities } = useActivity();
 
-  const {
-    metadata: airdrop1Metadata,
-    isEnabled: isAirdrop1Enabled,
-    openModal: openAirdrop1Modal,
-  } = useAirdrop1();
-  const {
-    metadata: airdrop2Metadata,
-    openModal: openAirdrop2Modal,
-    isEnabled: isAirdrop2Enabled,
-  } = useAirdrop2();
-
   const handleDisconnect = useCallback(() => {
     void disconnect();
     onClose();
   }, [onClose, disconnect]);
-
-  const handleAirdrop1Click = useCallback(() => {
-    openAirdrop1Modal();
-  }, [openAirdrop1Modal]);
-
-  const handleAirdrop2Click = useCallback(() => {
-    openAirdrop2Modal();
-  }, [openAirdrop2Modal]);
 
   const profileNameFallback = i18n.formatMessage({
     id: "HeaderIdentityMenu.profileNameFallback",
@@ -68,39 +48,7 @@ export const HeaderIdentityMenu: React.FunctionComponent<
     defaultMessage: "Disconnect",
   });
 
-  const airdrop1ButtonLabel = i18n.formatMessage(airdrop1Metadata.shortTitle);
-
-  const airdrop2ButtonLabel = i18n.formatMessage(airdrop2Metadata.shortTitle);
-
   const items: MenuItem[] = useMemo(() => {
-    const airdropsMenuItems: MenuItem[] = [];
-
-    if (isAirdrop1Enabled) {
-      airdropsMenuItems.push({
-        key: "airdrop1",
-        label: (
-          <div className="flex flex-row gap-2 items-center">
-            <Icon type="wallet" size={20} />
-            {airdrop1ButtonLabel}
-          </div>
-        ),
-        action: handleAirdrop1Click,
-      });
-    }
-
-    if (isAirdrop2Enabled) {
-      airdropsMenuItems.push({
-        key: "airdrop2",
-        label: (
-          <div className="flex flex-row gap-2 items-center">
-            <Icon type="wallet" size={20} />
-            {airdrop2ButtonLabel}
-          </div>
-        ),
-        action: handleAirdrop2Click,
-      });
-    }
-
     const devModeMenuItems: MenuItem[] = config.devMode
       ? [
           {
@@ -143,7 +91,6 @@ export const HeaderIdentityMenu: React.FunctionComponent<
         disabled: true,
         replaceButton: true,
       },
-      ...airdropsMenuItems,
       {
         key: "disconnect",
         label: (
@@ -159,15 +106,9 @@ export const HeaderIdentityMenu: React.FunctionComponent<
 
     return menuItems;
   }, [
-    airdrop1ButtonLabel,
-    airdrop2ButtonLabel,
     did,
     disconnectButtonLabel,
-    handleAirdrop1Click,
-    handleAirdrop2Click,
     handleDisconnect,
-    isAirdrop1Enabled,
-    isAirdrop2Enabled,
     profile,
     profileNameFallback,
     deleteUserActivities,
