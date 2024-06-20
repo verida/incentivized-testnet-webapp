@@ -146,6 +146,7 @@ export const AirdropsPage: React.FC = () => {
                 href={AIRDROPS_FAQ_URL}
                 variant="contained"
                 color="primary"
+                openInNewTab
               >
                 {faqButtonLabel}
               </ButtonLink>
