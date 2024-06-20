@@ -9,7 +9,7 @@ import {
   StackedDiv,
   XpPointsChip,
 } from "~/components/molecules";
-import { ActivityStepCard } from "~/components/organisms";
+import { ActivityStepCard, ResourcesSection } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { activities } from "~/features/activity";
 import { isOnboardingMission } from "~/features/missions";
@@ -92,11 +92,14 @@ export const ActivityPage: React.FC = () => {
               <ActivityDaysLeftChip nbDaysLeft={6} />
             </div>
           </div>
-          <div className="text-muted-foreground">
+          <div className="text-muted-foreground mb-10">
             <Typography>{shortDescriptionMessage}</Typography>
             <br />
             <Typography>{finishStepsMessage}</Typography>
           </div>
+          {activity.resources ? (
+            <ResourcesSection resources={activity.resources} />
+          ) : null}
           <div className="mt-24 md:mt-14 flex flex-col gap-10 md:gap-16">
             {activitySteps?.map((step, index) => (
               <ActivityStepCard

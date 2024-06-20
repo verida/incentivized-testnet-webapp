@@ -198,6 +198,9 @@ module.exports = {
       lineHeight: {
         3.5: "0.875rem",
       },
+      listStyleType: {
+        square: "square",
+      },
       borderRadius: {
         10: "2.5rem",
       },
