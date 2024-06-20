@@ -50,7 +50,7 @@ export const ConnectVeridaButton: React.FunctionComponent<
     <Button
       onClick={handleConnect}
       variant="contained"
-      color="legacyPrimary"
+      color="primary"
       disabled={isConnecting || isCheckingConnection}
       size="medium"
     >

@@ -12,7 +12,6 @@ export const buttonBaseVariants = cva(
         outlined: "",
       },
       color: {
-        legacyPrimary: "",
         primary: "",
         secondary: "",
       },
@@ -85,24 +84,6 @@ export const buttonBaseVariants = cva(
         color: "primary",
         className:
           "text-foreground bg-transparent hover:bg-foreground/10 disabled:opacity-30 disabled:bg-transparent",
-      },
-      {
-        variant: "contained",
-        color: "legacyPrimary",
-        className:
-          "text-primary-foreground bg-primary hover:bg-primary-background-hover disabled:bg-primary-background-disabled",
-      },
-      {
-        variant: "outlined",
-        color: "legacyPrimary",
-        // TODO: Properly rework the style of this coumpound variant when needed
-        className:
-          "text-primary bg-transparent-8 hover:bg-transparent-12 border-primary hover:border-primary disabled:opacity-30 disabled:bg-transparent-8",
-      },
-      {
-        variant: "text",
-        color: "legacyPrimary",
-        className: "text-primary hover:bg-primary/10 disabled:text-primary/70",
       },
     ],
     defaultVariants: {

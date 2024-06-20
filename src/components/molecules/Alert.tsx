@@ -65,7 +65,7 @@ export const Alert: React.FunctionComponent<AlertProps> = (props) => {
                       action.color
                         ? action.color
                         : type === "info"
-                          ? "legacyPrimary"
+                          ? "primary"
                           : "secondary"
                     }
                     className={twMerge("w-full", action.className)}
@@ -83,7 +83,7 @@ export const Alert: React.FunctionComponent<AlertProps> = (props) => {
                       action.color
                         ? action.color
                         : type === "info"
-                          ? "legacyPrimary"
+                          ? "primary"
                           : "secondary"
                     }
                     className={twMerge("w-full", action.className)}
