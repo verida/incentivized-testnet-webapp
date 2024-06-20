@@ -6,4 +6,5 @@ export type AirdropDefinition = {
   longTitle: MessageDescriptor;
   description: MessageDescriptor;
   articleUrl: string;
+  vdaAllocation: string;
 };
