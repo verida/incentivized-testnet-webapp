@@ -59,14 +59,14 @@ export const Alert: React.FunctionComponent<AlertProps> = (props) => {
                 return (
                   <Button
                     {...buttonProps}
+                    variant={action.variant || "contained"}
                     color={
                       action.color
                         ? action.color
                         : type === "info"
-                          ? "primary"
-                          : "default"
+                          ? "legacyPrimary"
+                          : "secondary"
                     }
-                    className="whitespace-nowrap"
                   >
                     {action.label}
                   </Button>
@@ -76,14 +76,14 @@ export const Alert: React.FunctionComponent<AlertProps> = (props) => {
                 return (
                   <ButtonLink
                     {...linkProps}
+                    variant={action.variant || "contained"}
                     color={
                       action.color
                         ? action.color
                         : type === "info"
-                          ? "primary"
-                          : "default"
+                          ? "legacyPrimary"
+                          : "secondary"
                     }
-                    className="whitespace-nowrap"
                   >
                     {action.label}
                   </ButtonLink>

@@ -188,6 +188,8 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
                     {
                       label: acceptTermsButtonLabel,
                       onClick: handleAcceptTerms,
+                      variant: "contained",
+                      color: "secondary",
                     },
                   ]
                 : hasProofSubmitError
@@ -197,7 +199,7 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
                         label: submitButtonLabel,
                         onClick: handleSubmit,
                         variant: "contained",
-                        color: "primary",
+                        color: "legacyPrimary",
                         disabled: isSubmittingProof,
                       },
                     ]

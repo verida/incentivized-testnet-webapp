@@ -138,7 +138,7 @@ export const HomePage: React.FC = () => {
                   label: airdrop1AlertLearnActionButtonLabel,
                   href: airdrop1Metadata.articleUrl,
                   openInNewTab: true,
-                  color: "default",
+                  color: "secondary",
                 },
               ]}
               message={airdrop1AlertMessage}
@@ -159,7 +159,7 @@ export const HomePage: React.FC = () => {
                 label: airdrop2AlertLearnActionButtonLabel,
                 href: airdrop2Metadata.articleUrl,
                 openInNewTab: true,
-                color: "default",
+                color: "secondary",
               },
             ]}
             message={airdrop2AlertMessage}

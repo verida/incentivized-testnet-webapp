@@ -114,6 +114,7 @@ export const LegacyMissionSection: React.FunctionComponent<
               <IconButton
                 size="small"
                 variant="text"
+                color="secondary"
                 aria-label={toggleCollapseButtonLabel}
                 // TODO: Fix accessibility as this button doesn't do anything now that the div capture the click event
                 icon={

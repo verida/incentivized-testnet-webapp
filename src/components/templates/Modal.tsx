@@ -82,6 +82,7 @@ export const Modal: React.FunctionComponent<ModalProps> = (props) => {
               <IconButton
                 size="small"
                 variant="text"
+                color="secondary"
                 onClick={onClose}
                 icon={<Icon type="close" size={20} />}
               />

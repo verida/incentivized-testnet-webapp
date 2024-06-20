@@ -164,6 +164,8 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
               {
                 label: checkEligibilityButtonLabel,
                 onClick: handleCheckEligibility,
+                variant: "contained",
+                color: "secondary",
                 disabled: isChecking,
               },
             ]

@@ -115,8 +115,8 @@ export const MissionSection: React.FC<MissionSectionProps> = (props) => {
               <ButtonLink
                 href={`/missions/${mission.id}`}
                 internal
-                className="text-background bg-white hover:bg-white/90"
-                // TODO: Create button colour variant
+                variant="contained"
+                color="primary"
               >
                 {goToMissionButtonLabel}
               </ButtonLink>
