@@ -13,7 +13,7 @@ import { useVerida } from "~/features/verida";
 
 const logger = new Logger("Airdrops");
 
-export function useAirdrop1Queries() {
+export function useAirdrop1() {
   const queryClient = useQueryClient();
   const { isConnected, did, profile } = useVerida();
   const { userActivities, userXpPoints } = useActivity();

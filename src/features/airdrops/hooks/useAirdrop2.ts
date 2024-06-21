@@ -6,7 +6,7 @@ import { Sentry } from "~/features/sentry";
 
 const logger = new Logger("Airdrops");
 
-export function useAirdrop2CheckEligibility() {
+export function useAirdrop2() {
   const {
     mutateAsync: checkEligbility,
     isLoading: isChecking,

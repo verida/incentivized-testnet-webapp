@@ -7,7 +7,7 @@ import { Modal } from "~/components/templates";
 import {
   AIRDROPS_TERMS_URL,
   AIRDROP_2_DEFINITION,
-  useAirdrop2CheckEligibility,
+  useAirdrop2,
 } from "~/features/airdrops";
 
 export type Airdrop2ModalProps = {
@@ -17,7 +17,7 @@ export type Airdrop2ModalProps = {
 export const Airdrop2Modal: React.FC<Airdrop2ModalProps> = (props) => {
   const { onClose } = props;
 
-  const { checkEligbility, isChecking } = useAirdrop2CheckEligibility();
+  const { checkEligbility, isChecking } = useAirdrop2();
 
   const [walletAddress, setWalletAddress] = useState("");
   const [eligilibilityStatus, setEligibilityStatus] = useState<

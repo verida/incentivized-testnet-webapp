@@ -9,7 +9,7 @@ import {
   AIRDROPS_TERMS_URL,
   AIRDROP_1_DEFINITION,
   AIRDROP_1_MIN_XP_POINTS,
-  useAirdrop1Queries,
+  useAirdrop1,
 } from "~/features/airdrops";
 
 export type Airdrop1ModalProps = {
@@ -25,7 +25,7 @@ export const Airdrop1Modal: React.FC<Airdrop1ModalProps> = (props) => {
     isProofSubmitted,
     isSubmittingProof,
     submitProof,
-  } = useAirdrop1Queries();
+  } = useAirdrop1();
 
   const [hasProofSubmitError, setHasProofSubmitError] = useState(false);
   const [proofSubmitError, setProofSubmitError] = useState<string | null>(null);

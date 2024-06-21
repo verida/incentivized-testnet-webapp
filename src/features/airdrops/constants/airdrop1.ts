@@ -23,7 +23,7 @@ export const AIRDROP_1_DEFINITION: AirdropDefinition = {
   }),
   actionLabel: defineMessage({
     id: "airdrops.airdrop1.actionLabel",
-    defaultMessage: "Prove",
+    defaultMessage: "Register",
     description: "Label for the action of the airdrop 1",
   }),
   requirements: defineMessage({
