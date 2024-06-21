@@ -35,8 +35,13 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
     <>
       <div {...divProps}>
         <div className="bg-background rounded-3xl">
-          <div className="border border-border rounded-3xl p-1 bg-gradient-to-br from-transparent-8 to-transparent-3 shadow-[12px_24px_40px_0px_rgba(0,0,0,0.16)] flex flex-col">
-            <div className="rounded-[1.25rem] px-4 py-6 bg-gradient-to-br from-primary/20 to-black/50 shadow-[0px_3px_4px_1px_rgba(0,0,0,0.15)_inset] flex flex-col gap-6">
+          <div className="border border-border rounded-3xl p-1 bg-gradient-to-br from-transparent-8 to-transparent-3 shadow-[12px_24px_40px_0px_rgba(0,0,0,0.15)] flex flex-col">
+            <div
+              className="rounded-[1.25rem] px-4 py-6 shadow-[0px_3px_4px_1px_rgba(0,0,0,0.15)_inset] flex flex-col gap-6"
+              style={{
+                background: `linear-gradient(290deg, hsla(var(--black) / 0.30) 20%, ${airdrop.accentColor} 90%)`,
+              }}
+            >
               <div className="flex flex-col sm:flex-row justify-between gap-3">
                 <Typography variant="heading-m">
                   {i18n.formatMessage(airdrop.title)}

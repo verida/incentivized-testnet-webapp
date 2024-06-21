@@ -39,4 +39,5 @@ export const AIRDROP_2_DEFINITION: AirdropDefinition = {
     }),
     url: "https://news.verida.io/verida-announces-2-200-000-vda-airdrop-2-for-early-galxe-and-zealy-campaign-participants-977b99b40459",
   },
+  accentColor: "#24545B4D",
 };

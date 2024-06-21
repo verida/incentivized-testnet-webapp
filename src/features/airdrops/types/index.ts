@@ -12,4 +12,5 @@ export type AirdropDefinition = {
   requirements: MessageDescriptor;
   resource: Resource;
   vdaAllocation: string;
+  accentColor: string;
 };
