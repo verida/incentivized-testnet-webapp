@@ -1,6 +1,7 @@
 export * from "./ActivityDaysLeftChip";
 export * from "./ActivityStatus";
 export * from "./Alert";
+export * from "./CollapsibleList";
 export * from "./CopyToClipboardButton";
 export * from "./ErrorFallbackCard";
 export * from "./HeaderMenu";
