@@ -1,10 +1,19 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { useIntl } from "react-intl";
 
-import { Button, ButtonLink, Typography } from "~/components/atoms";
+import {
+  AirdropUserStatus,
+  Button,
+  ButtonLink,
+  Typography,
+} from "~/components/atoms";
 import { AirdropRequirementsModal } from "~/components/modals";
 import { VdaTokensChip } from "~/components/molecules";
-import { AirdropDefinition } from "~/features/airdrops";
+import {
+  AirdropDefinition,
+  AirdropUserStatus as AirdropUserStatusType,
+  useAirdrops,
+} from "~/features/airdrops";
 
 export type AirdropCardProps = {
   airdrop: AirdropDefinition;
@@ -12,6 +21,12 @@ export type AirdropCardProps = {
 
 export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
   const { airdrop, ...divProps } = props;
+
+  const { airdropUserStatues } = useAirdrops();
+
+  const airdropUserStatus: AirdropUserStatusType = useMemo(() => {
+    return airdropUserStatues[airdrop.id] || "notApplicable";
+  }, [airdrop, airdropUserStatues]);
 
   const [openRequirementsModal, setOpenRequirentsModal] = useState(false);
 
@@ -59,33 +74,54 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
               </Typography>
             </div>
             <div className="px-4 py-5 flex flex-col sm:flex-row sm:justify-between gap-6">
-              <Button
-                variant="text"
-                color="primary"
-                onClick={handleRequirementsButtonClick}
-                className="w-full sm:w-fit"
-              >
-                {requirementsButtonLabel}
-              </Button>
-              <div className=" flex flex-col sm:flex-row sm:justify-end gap-6">
-                <ButtonLink
-                  variant="contained"
+              <div className="flex flex-col justify-end">
+                <Button
+                  variant="text"
                   color="primary"
-                  className="w-full sm:w-fit"
-                  href={`/airdrops/${airdrop.id}`}
-                  internal
-                >
-                  {i18n.formatMessage(airdrop.actionLabel)}
-                </ButtonLink>
-                <ButtonLink
-                  href={airdrop.resource.url}
-                  openInNewTab
-                  variant="contained"
-                  color="secondary"
+                  onClick={handleRequirementsButtonClick}
                   className="w-full sm:w-fit"
                 >
-                  {i18n.formatMessage(airdrop.resource.label)}
-                </ButtonLink>
+                  {requirementsButtonLabel}
+                </Button>
+              </div>
+              <div className="flex flex-col gap-6">
+                {/** TODO: Rework this part to better taking into account the
+                 * different states of the airdrop, in which stage it is
+                 * (registration, claim, ended) and the user status (waiting
+                 * for registration, registered, claimed, etc.)
+                 */}
+                {airdropUserStatus === "waitingRegistration" ||
+                airdropUserStatus === "notApplicable" ? (
+                  <Typography className="text-center sm:text-right text-muted-foreground">
+                    {i18n.formatMessage(airdrop.actionMessage)}
+                  </Typography>
+                ) : null}
+                <div className=" flex flex-col sm:flex-row gap-6 justify-end">
+                  {airdropUserStatus === "waitingRegistration" ||
+                  airdropUserStatus === "notApplicable" ? (
+                    <ButtonLink
+                      variant="contained"
+                      color="primary"
+                      className="w-full sm:w-fit"
+                      href={`/airdrops/${airdrop.id}`}
+                      internal
+                    >
+                      {i18n.formatMessage(airdrop.actionLabel)}
+                    </ButtonLink>
+                  ) : (
+                    <AirdropUserStatus status={airdropUserStatus} />
+                  )}
+
+                  <ButtonLink
+                    href={airdrop.resource.url}
+                    openInNewTab
+                    variant="contained"
+                    color="secondary"
+                    className="w-full sm:w-fit"
+                  >
+                    {i18n.formatMessage(airdrop.resource.label)}
+                  </ButtonLink>
+                </div>
               </div>
             </div>
           </div>

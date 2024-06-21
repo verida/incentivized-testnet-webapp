@@ -18,13 +18,19 @@ export const AIRDROP_1_DEFINITION: AirdropDefinition = {
   description: defineMessage({
     id: "airdrops.airdrop1.description",
     defaultMessage:
-      "This airdrop rewards early participants in Verida's Missions program. Early community members were able to explore and experience the benefits of effective self-sovereign identity and data ownership in web3.{newline}{newline}Prove your eligibility for the Airdrop 1 now while it's open.",
+      "This airdrop rewards early participants in Verida's Missions program. Early community members were able to explore and experience the benefits of effective self-sovereign identity and data ownership in web3.",
     description: "Description of the airdrop 1",
   }),
   actionLabel: defineMessage({
     id: "airdrops.airdrop1.actionLabel",
     defaultMessage: "Register",
     description: "Label for the action of the airdrop 1",
+  }),
+  actionMessage: defineMessage({
+    id: "airdrops.airdrop1.actionMessage",
+    defaultMessage: "Register by proving your elligibility",
+    description:
+      "Message displayed above the action button in the airdrop 1 card",
   }),
   requirements: defineMessage({
     id: "airdrops.airdrop1.requirements",

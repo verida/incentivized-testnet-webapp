@@ -151,6 +151,14 @@
     "defaultMessage": "Airdrop Requirements",
     "description": "Title of the airdrop requirements modal"
   },
+  "AirdropUserStatus.checkingStatusMessage": {
+    "defaultMessage": "Checking",
+    "description": "Message displayed when checking the airdrop user's status"
+  },
+  "AirdropUserStatus.registeredStatusMessage": {
+    "defaultMessage": "Registered",
+    "description": "Message displayed when the user is registered for the airdrop"
+  },
   "AirdropsPage.aboutAirdropsMessage": {
     "defaultMessage": "The Verida Foundation has committed to giving 20% of the total initial token supply to the community through its Network Growth Rewards.{newline}{newline}Airdrops target constructive participation, ensuring that tokens go to contributors. Past airdrop eligibility does not guarantee eligibility in future airdrops.",
     "description": "Message in the section about airdrops in the airdrops page"
@@ -1236,11 +1244,15 @@
     "description": "Label of the video 'How to use the Markdown Editor demo app'"
   },
   "airdrops.airdrop1.actionLabel": {
-    "defaultMessage": "Prove",
+    "defaultMessage": "Register",
     "description": "Label for the action of the airdrop 1"
   },
+  "airdrops.airdrop1.actionMessage": {
+    "defaultMessage": "Register by proving your elligibility",
+    "description": "Message displayed above the action button in the airdrop 1 card"
+  },
   "airdrops.airdrop1.description": {
-    "defaultMessage": "This airdrop rewards early participants in Verida's Missions program. Early community members were able to explore and experience the benefits of effective self-sovereign identity and data ownership in web3.{newline}{newline}Prove your eligibility for the Airdrop 1 now while it's open.",
+    "defaultMessage": "This airdrop rewards early participants in Verida's Missions program. Early community members were able to explore and experience the benefits of effective self-sovereign identity and data ownership in web3.",
     "description": "Description of the airdrop 1"
   },
   "airdrops.airdrop1.requirements": {
@@ -1259,8 +1271,12 @@
     "defaultMessage": "Check",
     "description": "Label for the action of the airdrop 2"
   },
+  "airdrops.airdrop2.actionMessage": {
+    "defaultMessage": "Check if you are included in the airdrop",
+    "description": "Message displayed above the action buttonin the airdrop 2 card"
+  },
   "airdrops.airdrop2.description": {
-    "defaultMessage": "Airdrop 2 rewards Veridians who participated in Verida Zealy campaigns or Galxe campaigns between 2023 and 2024.{newline}{newline}Until the claim process is open, check if you are included in the Airdrop 2.",
+    "defaultMessage": "Airdrop 2 rewards Veridians who participated in Verida Zealy campaigns or Galxe campaigns between 2023 and 2024.",
     "description": "Description of the airdrop 2"
   },
   "airdrops.airdrop2.requirements": {
