@@ -40,7 +40,6 @@ export const MissionCardsCarousel: React.FC<MissionCardsCarouselProps> = (
           <div className="hidden lg:flex gap-3">
             <IconButton
               variant="outlined"
-              color="default"
               className="backdrop-blur-sm"
               icon={<Icon type="arrow-left" size={18} />}
               disabled={currentScrollIndex <= 0}
@@ -48,7 +47,6 @@ export const MissionCardsCarousel: React.FC<MissionCardsCarouselProps> = (
             />
             <IconButton
               variant="outlined"
-              color="default"
               className="backdrop-blur-sm"
               icon={<Icon type="arrow-right" size={18} />}
               disabled={currentScrollIndex >= missions.length - MAX_NB_ITEMS}

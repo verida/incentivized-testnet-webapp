@@ -59,7 +59,6 @@ export const PartnerCardsCarousel: React.FC<PartnerCardsCarouselProps> = (
             <div className="flex gap-3 py-1">
               <IconButton
                 variant="outlined"
-                color="default"
                 className="backdrop-blur-sm"
                 icon={<Icon type="arrow-left" size={18} />}
                 disabled={currentScrollIndex <= 0}
@@ -67,7 +66,6 @@ export const PartnerCardsCarousel: React.FC<PartnerCardsCarouselProps> = (
               />
               <IconButton
                 variant="outlined"
-                color="default"
                 className="backdrop-blur-sm"
                 icon={<Icon type="arrow-right" size={18} />}
                 disabled={currentScrollIndex >= partners.length - MAX_NB_ITEMS}

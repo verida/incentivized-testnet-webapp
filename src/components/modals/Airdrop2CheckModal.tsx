@@ -15,7 +15,7 @@ export type Airdrop2CheckModalProps = {
 };
 
 export const Airdrop2CheckModal: React.FC<Airdrop2CheckModalProps> = (
-  props
+  props: Airdrop2CheckModalProps
 ) => {
   const { onClose } = props;
 

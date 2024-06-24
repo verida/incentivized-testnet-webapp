@@ -18,7 +18,9 @@ export type AirdropsProviderProps = {
   children?: React.ReactNode;
 };
 
-export const AirdropsProvider: React.FC<AirdropsProviderProps> = (props) => {
+export const AirdropsProvider: React.FC<AirdropsProviderProps> = (
+  props: AirdropsProviderProps
+) => {
   const { children } = props;
 
   const { isConnected: isVeridaConnected, isConnecting: isVeridaConnecting } =
