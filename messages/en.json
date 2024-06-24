@@ -15,10 +15,6 @@
     "defaultMessage": "{points} XP",
     "description": "Label of the XP points chip on each activity card"
   },
-  "ActivityDaysLeftChip.formattedValue": {
-    "defaultMessage": "{nbDaysLeft, plural, one {{nbDaysLeft} day left} other {{nbDaysLeft} days left} }",
-    "description": "Formatted value of days left in the activity days left chip"
-  },
   "ActivityStatus.activityCheckingLabel": {
     "defaultMessage": "Checking",
     "description": "Label of the status for a disabled activity"
@@ -43,79 +39,79 @@
     "defaultMessage": "To do",
     "description": "Label of the status for an activity to perform"
   },
-  "Airdrop1Modal.acceptTermsButtonLabel": {
+  "Airdrop1RegistrationModal.acceptTermsButtonLabel": {
     "defaultMessage": "Accept",
     "description": "Label for the button to accept the terms and conditions in the airdrop 1 modal"
   },
-  "Airdrop1Modal.acceptTermsMessage": {
+  "Airdrop1RegistrationModal.acceptTermsMessage": {
     "defaultMessage": "Please read and accept the",
     "description": "Message displayed in the airdrop 1 modal when asking the user to accept the terms and conditions of the airdrop."
   },
-  "Airdrop1Modal.checkingSubmittedProofMessage": {
-    "defaultMessage": "Checking existing proof of eligibility...",
+  "Airdrop1RegistrationModal.checkingSubmittedProofMessage": {
+    "defaultMessage": "Checking existing registration...",
     "description": "Message displayed in the airdrop 1 modal when checking if the proof has already been submitted"
   },
-  "Airdrop1Modal.notEnoughPointsMessage": {
-    "defaultMessage": "You do not have enough XP points to submit your proof of eligibility.{newline}{newline}Complete some activities to reach at least {minPoints} XP points and try again.",
+  "Airdrop1RegistrationModal.notEnoughPointsMessage": {
+    "defaultMessage": "You do not have enough XP points to register for this airdrop.{newline}{newline}Complete some activities to reach at least {minPoints} XP points and try again.",
     "description": "Message displayed in the airdrop 1 modal when the user doesn't have enough XP points"
   },
-  "Airdrop1Modal.proofAlreadySubmittedMessage": {
-    "defaultMessage": "Congratulations! You are eligible for the {airdropTitle} and have been registered.{newline}{newline}Check our socials to be notified when the claim window opens.",
+  "Airdrop1RegistrationModal.proofAlreadySubmittedMessage": {
+    "defaultMessage": "Congratulations! You are registered for the {airdropTitle}.{newline}{newline}Check our socials to be notified when the claim window opens.{newline}{newline}Note that the claim process will also be subject to the",
     "description": "Message displayed in the airdrop 1 modal when the proof has already been submitted"
   },
-  "Airdrop1Modal.proofSubmitErrorMessage": {
+  "Airdrop1RegistrationModal.proofSubmitErrorMessage": {
     "defaultMessage": "Unfortunately, you are not eligible for the {airdropTitle}.{newline}To confirm the criteria, please check the",
     "description": "Message displayed in the airdrop 1 modal when the proof submission fails"
   },
-  "Airdrop1Modal.sharedMessageOnSocialsText": {
+  "Airdrop1RegistrationModal.sharedMessageOnSocialsText": {
     "defaultMessage": "I have successfully registered for @verida_io Airdrop 1 at https://missions.verida.network/",
     "description": "Message shared on social after submitted the proof"
   },
-  "Airdrop1Modal.submitButtonLabel": {
+  "Airdrop1RegistrationModal.submitButtonLabel": {
     "defaultMessage": "Submit Proofs",
     "description": "Label for the submit button in the airdrop 1 modal"
   },
-  "Airdrop1Modal.submitProofMessage": {
-    "defaultMessage": "As a decentralised application, Verida Missions needs to verify your completed activities meet the {airdropTitle} criteria.{newline}{newline}Please submit your XP points proofs to our server for verification.",
+  "Airdrop1RegistrationModal.submitProofMessage": {
+    "defaultMessage": "As a decentralised application, Verida Missions needs to verify that your completed activities meet the {airdropTitle} criteria.{newline}{newline}Please submit your XP points proofs to our server for verification.",
     "description": "Message displayed in the rewards modal when before submitting the claim"
   },
-  "Airdrop1Modal.termsUrlLabel": {
+  "Airdrop1RegistrationModal.termsUrlLabel": {
     "defaultMessage": "Terms and Conditions",
     "description": "Label of the Airdrops Terms and Conditions link displayed in the airdrop 1 modal."
   },
-  "Airdrop2Modal.announcementArticleUrlLabel": {
+  "Airdrop2CheckModal.announcementArticleUrlLabel": {
     "defaultMessage": "announcement article",
     "description": "Label of the Airdrop 2 announcement article link."
   },
-  "Airdrop2Modal.checkEligibilityButtonLabel": {
+  "Airdrop2CheckModal.checkEligibilityButtonLabel": {
     "defaultMessage": "Check",
     "description": "Button label to check a user is included in the airdrop 2 modal"
   },
-  "Airdrop2Modal.checkYourEligibilityMessage": {
+  "Airdrop2CheckModal.checkYourEligibilityMessage": {
     "defaultMessage": "Check if your blockchain wallet address used for the Galxe and Zealy campaigns is included in the {airdropTitle}*{newline}{newline}*This does not guarantee your eligibility to claim airdrop rewards. All Verida Airdrops will be subject to the Airdrop",
     "description": "Welcome message in the airdrop 2 modal"
   },
-  "Airdrop2Modal.checkingEligibilityMessage": {
+  "Airdrop2CheckModal.checkingEligibilityMessage": {
     "defaultMessage": "Checking...",
     "description": "Message displayed in the airdrop 2 modal when checking if included in the list"
   },
-  "Airdrop2Modal.notEligibleMessage": {
+  "Airdrop2CheckModal.notEligibleMessage": {
     "defaultMessage": "Unfortunately, you are not included in the {airdropTitle}{newline}{newline}Read the criteria in the",
     "description": "Message displayed in the airdrop 2 modal when the user is not included"
   },
-  "Airdrop2Modal.sharedMessageOnSocialsText": {
+  "Airdrop2CheckModal.sharedMessageOnSocialsText": {
     "defaultMessage": "I am included in the @verida_io Airdrop 2 at https://missions.verida.network/",
     "description": "Message shared on social if eligible to airdrop 2"
   },
-  "Airdrop2Modal.somethingWentWrongMessage": {
+  "Airdrop2CheckModal.somethingWentWrongMessage": {
     "defaultMessage": "Something went wrong. Please try again later.",
     "description": "Message displayed in the airdrop 2 modal when something went wrong"
   },
-  "Airdrop2Modal.succesfullyEligibleMessage": {
+  "Airdrop2CheckModal.succesfullyEligibleMessage": {
     "defaultMessage": "Congratulations! You are included in the {airdropTitle}*.{newline}{newline}Check our socials to be notified when the claim window opens.{newline}{newline}*This does not guarantee your eligibility to claim airdrop rewards. All Verida Airdrops will be subject to the Airdrop",
     "description": "Message displayed in the airdrop 2 modal when the user is included"
   },
-  "Airdrop2Modal.termsUrlLabel": {
+  "Airdrop2CheckModal.termsUrlLabel": {
     "defaultMessage": "Terms and Conditions",
     "description": "Label of the Airdrops Terms and Conditions link."
   },
@@ -196,19 +192,15 @@
     "description": "Message displayed when the user is registered for the airdrop"
   },
   "AirdropsPage.aboutAirdropsMessage": {
-    "defaultMessage": "The Verida Foundation has committed to giving 20% of the total initial token supply to the community through its Network Growth Rewards.{newline}{newline}Airdrops target constructive participation, ensuring that tokens go to contributors. Past airdrop eligibility does not guarantee eligibility in future airdrops.",
+    "defaultMessage": "The Verida Foundation has committed to giving 20% of the total initial token supply to the community through its Network Growth Rewards.{newline}{newline}Airdrops target constructive participation — ensuring that tokens go to contributors. Note that past airdrop eligibility criteria do not guarantee eligibility in future airdrops.",
     "description": "Message in the section about airdrops in the airdrops page"
   },
   "AirdropsPage.aboutAirdropsSectionTitle": {
     "defaultMessage": "About Airdrops",
     "description": "Title of the section about airdrops in the airdrops page"
   },
-  "AirdropsPage.commonQuestionsSectionTitle": {
-    "defaultMessage": "Common Questions",
-    "description": "Title of the section common questions in the airdrops page"
-  },
   "AirdropsPage.faqButtonLabel": {
-    "defaultMessage": "Read Full FAQ",
+    "defaultMessage": "Read FAQ",
     "description": "Label for the FAQ button in the airdrops page"
   },
   "AirdropsPage.tagline": {
@@ -242,6 +234,10 @@
   "ConnectVeridaButton.connectingButtonLabel": {
     "defaultMessage": "Connecting",
     "description": "Label of the Connect to Verida button when connecting. Note, the button has a spinner next to this label"
+  },
+  "DaysCountdownChip.formattedValue": {
+    "defaultMessage": "{nbDaysLeft, plural, one {{nbDaysLeft} day left} other {{nbDaysLeft} days left} }",
+    "description": "Formatted value of days left in the activity days left chip"
   },
   "ErrorFallbackCard.cardMessage": {
     "defaultMessage": "If the error persists, try refreshing your browser and cleaning your browser's data.",
@@ -1318,22 +1314,6 @@
   "airdrops.airdrop3.title": {
     "defaultMessage": "Verida Airdrop 3",
     "description": "Title of the airdrop 3"
-  },
-  "airdrops.commonQuestions.answer1": {
-    "defaultMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis fringilla diam. Vivamus ipsum metus, ultricies nec pellentesque eu, rhoncus a ligula. Quisque ut facilisis urna, dictum ultrices nisl.",
-    "description": "Answer 1 in the common questions section in the airdrops page"
-  },
-  "airdrops.commonQuestions.answer2": {
-    "defaultMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis fringilla diam. Vivamus ipsum metus, ultricies nec pellentesque eu, rhoncus a ligula. Quisque ut facilisis urna, dictum ultrices nisl. Curabitur ornare eu est a mollis. Vivamus mollis hendrerit ipsum at scelerisque.",
-    "description": "Answer 1 in the common questions section in the airdrops page"
-  },
-  "airdrops.commonQuestions.question1": {
-    "defaultMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-    "description": "Question 1 in the common questions section in the airdrops page"
-  },
-  "airdrops.commonQuestions.question2": {
-    "defaultMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-    "description": "Question 1 in the common questions section in the airdrops page"
   },
   "app.meta.defaultDescription": {
     "defaultMessage": "Explore a new paradigm shift for managing your personal data with self-sovereign technology. Experience Verida Wallet, with zero-knowledge credentials, decentralized identity and access to a private data storage network designed for web3.",
