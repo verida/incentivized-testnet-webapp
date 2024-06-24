@@ -10,11 +10,13 @@ import {
   useAirdrop2,
 } from "~/features/airdrops";
 
-export type Airdrop2ModalProps = {
+export type Airdrop2CheckModalProps = {
   onClose: () => void;
 };
 
-export const Airdrop2Modal: React.FC<Airdrop2ModalProps> = (props) => {
+export const Airdrop2CheckModal: React.FC<Airdrop2CheckModalProps> = (
+  props
+) => {
   const { onClose } = props;
 
   const { checkEligbility, isChecking } = useAirdrop2();
@@ -67,7 +69,7 @@ export const Airdrop2Modal: React.FC<Airdrop2ModalProps> = (props) => {
 
   const checkYourEligibilityMessage = i18n.formatMessage(
     {
-      id: "Airdrop2Modal.checkYourEligibilityMessage",
+      id: "Airdrop2CheckModal.checkYourEligibilityMessage",
       defaultMessage:
         "Check if your blockchain wallet address used for the Galxe and Zealy campaigns is included in the {airdropTitle}*{newline}{newline}*This does not guarantee your eligibility to claim airdrop rewards. All Verida Airdrops will be subject to the Airdrop",
       description: "Welcome message in the airdrop 2 modal",
@@ -83,13 +85,13 @@ export const Airdrop2Modal: React.FC<Airdrop2ModalProps> = (props) => {
   );
 
   const termsUrlLabel = i18n.formatMessage({
-    id: "Airdrop2Modal.termsUrlLabel",
+    id: "Airdrop2CheckModal.termsUrlLabel",
     defaultMessage: "Terms and Conditions",
     description: "Label of the Airdrops Terms and Conditions link.",
   });
 
   const checkingEligibilityMessage = i18n.formatMessage({
-    id: "Airdrop2Modal.checkingEligibilityMessage",
+    id: "Airdrop2CheckModal.checkingEligibilityMessage",
     defaultMessage: "Checking...",
     description:
       "Message displayed in the airdrop 2 modal when checking if included in the list",
@@ -97,7 +99,7 @@ export const Airdrop2Modal: React.FC<Airdrop2ModalProps> = (props) => {
 
   const succesfullyEligibleMessage = i18n.formatMessage(
     {
-      id: "Airdrop2Modal.succesfullyEligibleMessage",
+      id: "Airdrop2CheckModal.succesfullyEligibleMessage",
       defaultMessage:
         "Congratulations! You are included in the {airdropTitle}*.{newline}{newline}Check our socials to be notified when the claim window opens.{newline}{newline}*This does not guarantee your eligibility to claim airdrop rewards. All Verida Airdrops will be subject to the Airdrop",
       description:
@@ -114,7 +116,7 @@ export const Airdrop2Modal: React.FC<Airdrop2ModalProps> = (props) => {
   );
 
   const sharedMessageOnSocialsText = i18n.formatMessage({
-    id: "Airdrop2Modal.sharedMessageOnSocialsText",
+    id: "Airdrop2CheckModal.sharedMessageOnSocialsText",
     defaultMessage:
       "I am included in the @verida_io Airdrop 2 at https://missions.verida.network/",
     description: "Message shared on social if eligible to airdrop 2",
@@ -122,7 +124,7 @@ export const Airdrop2Modal: React.FC<Airdrop2ModalProps> = (props) => {
 
   const notEligibleMessage = i18n.formatMessage(
     {
-      id: "Airdrop2Modal.notEligibleMessage",
+      id: "Airdrop2CheckModal.notEligibleMessage",
       defaultMessage:
         "Unfortunately, you are not included in the {airdropTitle}{newline}{newline}Read the criteria in the",
       description:
@@ -139,20 +141,20 @@ export const Airdrop2Modal: React.FC<Airdrop2ModalProps> = (props) => {
   );
 
   const announcementArticleUrlLabel = i18n.formatMessage({
-    id: "Airdrop2Modal.announcementArticleUrlLabel",
+    id: "Airdrop2CheckModal.announcementArticleUrlLabel",
     defaultMessage: "announcement article",
     description: "Label of the Airdrop 2 announcement article link.",
   });
 
   const checkEligibilityButtonLabel = i18n.formatMessage({
-    id: "Airdrop2Modal.checkEligibilityButtonLabel",
+    id: "Airdrop2CheckModal.checkEligibilityButtonLabel",
     defaultMessage: "Check",
     description:
       "Button label to check a user is included in the airdrop 2 modal",
   });
 
   const somethingWentWrongMessage = i18n.formatMessage({
-    id: "Airdrop2Modal.somethingWentWrongMessage",
+    id: "Airdrop2CheckModal.somethingWentWrongMessage",
     defaultMessage: "Something went wrong. Please try again later.",
     description:
       "Message displayed in the airdrop 2 modal when something went wrong",
