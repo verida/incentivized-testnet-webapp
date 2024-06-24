@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 
 import { Button, Typography } from "~/components/atoms";
 import {
-  ActivityDaysLeftChip,
   ActivityStatus,
+  DaysCountdownChip,
   PartnerCircledLogo,
   StackedDiv,
   XpPointsChip,
@@ -89,7 +89,7 @@ export const ActivityPage: React.FC = () => {
             ) : null}
             <div className="flex gap-4 items-center">
               <Typography variant={"base-s"}>{statusLabel}</Typography>
-              <ActivityDaysLeftChip nbDaysLeft={6} />
+              <DaysCountdownChip nbDaysLeft={6} />
             </div>
           </div>
           <div className="text-muted-foreground mb-10">
