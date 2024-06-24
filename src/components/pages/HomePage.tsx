@@ -25,54 +25,49 @@ export const HomePage: React.FC = () => {
     defaultMessage: "Explore a new era of data ownership",
   });
 
-  const airdrop1AlertMessage = i18n.formatMessage(
-    {
-      id: "HomePage.airdrop1AlertMessage",
-      defaultMessage: "Prove your eligibility for the {airdropTitle}",
-      description: "Message for the airdrop 1 alert on the home page",
-    },
-    {
-      airdropTitle: i18n.formatMessage(airdrop1Metadata.longTitle),
-    }
-  );
-
-  const airdrop1AlertProveActionButtonLabel = i18n.formatMessage({
-    id: "HomePage.airdrop1AlertProveActionButtonLabel",
-    defaultMessage: "Prove",
-    description:
-      "Label for the airdrop 1 'Prove' alert button on the home page",
+  const airdropsAndVdaTokenAlertMessage = i18n.formatMessage({
+    id: "HomePage.airdropsAndVdaTokenAlertMessage",
+    description: "Message displayed in the airdrop alert on the home page",
+    defaultMessage:
+      "The Verida Storage Credit Token (VDA) is now live. Learn more about the VDA Token and check our airdrops.",
   });
 
-  const airdrop1AlertLearnActionButtonLabel = i18n.formatMessage({
-    id: "HomePage.airdrop1AlertLearnActionButtonLabel",
-    defaultMessage: "Learn more",
+  const airdropsAlertButtonLabel = i18n.formatMessage({
+    id: "HomePage.airdropsAlertButtonLabel",
     description:
-      "Label for the airdrop 1 'Learn more' alert button on the home page",
+      "Label for the button in the airdrop/vda token alert to redirect to the airdrops page",
+    defaultMessage: "Airdrops",
   });
 
-  const airdrop2AlertMessage = i18n.formatMessage(
-    {
-      id: "HomePage.airdrop2AlertMessage",
-      defaultMessage: "Check if you are included in the {airdropTitle}",
-      description: "Message for the airdrop 2 alert on the home page",
-    },
-    {
-      airdropTitle: i18n.formatMessage(airdrop2Metadata.longTitle),
-    }
-  );
-
-  const airdrop2AlertCheckActionButtonLabel = i18n.formatMessage({
-    id: "HomePage.airdrop2AlertCheckActionButtonLabel",
-    defaultMessage: "Check",
+  const vdaTokenAlertButtonLabel = i18n.formatMessage({
+    id: "HomePage.vdaTokenAlertButtonLabel",
     description:
-      "Label for the airdrop 2 'Check' alert button on the home page",
+      "Label for the button in the airdrop/vda token alert to redirect to the VDA token page on verida.network",
+    defaultMessage: "VDA Token",
   });
 
-  const airdrop2AlertLearnActionButtonLabel = i18n.formatMessage({
-    id: "HomePage.airdrop2AlertLearnActionButtonLabel",
-    defaultMessage: "Learn more",
-    description:
-      "Label for the airdrop 2 'Learn more' alert button on the home page",
+  const trendingLabel = i18n.formatMessage({
+    id: "HomePage.trendingLabel",
+    defaultMessage: "Trending",
+    description: "Label Trending",
+  });
+
+  const newLabel = i18n.formatMessage({
+    id: "HomePage.newLabel",
+    defaultMessage: "New",
+    description: "Label New",
+  });
+
+  const partnersLabel = i18n.formatMessage({
+    id: "HomePage.partnersLabel",
+    defaultMessage: "Partners",
+    description: "Label Partners",
+  });
+
+  const unlockMoreMissionsLabel = i18n.formatMessage({
+    id: "HomePage.unlockMoreMissionsLabel",
+    defaultMessage: "Unlock More Missions",
+    description: "Label Unlock More Missions",
   });
 
   return (
