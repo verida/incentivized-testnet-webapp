@@ -9,6 +9,7 @@ export const AIRDROP_1_DEFINITION: AirdropDefinition = {
   status: "registration-opened",
   order: 1,
   enabled: true && config.verida.environment === EnvironmentType.MAINNET,
+  registrationCloseDate: new Date("2024-07-01T00:00:00Z"),
   title: defineMessage({
     id: "airdrops.airdrop1.title",
     defaultMessage: "Verida Airdrop 1",

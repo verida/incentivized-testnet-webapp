@@ -15,3 +15,10 @@ export async function wait(ms = 1000) {
     setTimeout(resolve, ms);
   });
 }
+
+export function getDaysLeft(targetDate: Date): number {
+  const currentDate = new Date();
+  const differenceInTime = targetDate.getTime() - currentDate.getTime();
+  const differenceInDays = Math.ceil(differenceInTime / (1000 * 3600 * 24));
+  return differenceInDays;
+}

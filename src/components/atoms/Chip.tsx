@@ -11,6 +11,8 @@ const chipVariants = cva(
         muted: "bg-transparent text-muted-foreground border-border",
         primary: "bg-primary-background text-primary border-primary/20",
         success: "bg-success-background text-success border-success/20",
+        warning: "bg-warning-background text-warning border-warning/20",
+        error: "bg-error-background text-error border-error/20",
         pending: "bg-pending-background text-pending border-pending/20",
         ended: "bg-ended-background text-ended border-transparent-20",
       },

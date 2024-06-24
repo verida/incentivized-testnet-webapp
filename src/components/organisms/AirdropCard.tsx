@@ -11,6 +11,7 @@ import { AirdropRequirementsModal } from "~/components/modals";
 import {
   AirdropCardBase,
   ComingSoonAirdropCard,
+  DaysCountdownChip,
   VdaTokensChip,
 } from "~/components/molecules";
 import {
@@ -18,6 +19,7 @@ import {
   AirdropUserStatus as AirdropUserStatusType,
   useAirdrops,
 } from "~/features/airdrops";
+import { getDaysLeft } from "~/utils";
 
 export type AirdropCardProps = {
   airdrop: AirdropDefinition;
@@ -154,15 +156,35 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
                   {checkMessage}
                 </Typography>
               ) : airdrop.status === "registration-opened" &&
-                airdropUserStatus === "none" ? (
-                <Typography className="text-center sm:text-right text-muted-foreground">
-                  {registerMessage}
-                </Typography>
+                (airdropUserStatus === "not-connected" ||
+                  airdropUserStatus === "none") ? (
+                <div className="flex flex-col sm:flex-row gap-2 items-center">
+                  <Typography className="text-center sm:text-right text-muted-foreground">
+                    {registerMessage}
+                  </Typography>
+                  {airdrop.registrationCloseDate ? (
+                    <DaysCountdownChip
+                      // TODO: Optimise as this can be negative
+                      nbDaysLeft={getDaysLeft(airdrop.registrationCloseDate)}
+                      variant="warning"
+                    />
+                  ) : null}
+                </div>
               ) : airdrop.status === "claim-opened" &&
-                airdropUserStatus === "registered" ? (
-                <Typography className="text-center sm:text-right text-muted-foreground">
-                  {claimMessage}
-                </Typography>
+                (airdropUserStatus === "not-connected" ||
+                  airdropUserStatus === "registered") ? (
+                <div className="flex flex-col sm:flex-row gap-2 items-center">
+                  <Typography className="text-center sm:text-right text-muted-foreground">
+                    {claimMessage}
+                  </Typography>
+                  {airdrop.claimCloseDate ? (
+                    <DaysCountdownChip
+                      // TODO: Optimise as this can be negative
+                      nbDaysLeft={getDaysLeft(airdrop.claimCloseDate)}
+                      variant="warning"
+                    />
+                  ) : null}
+                </div>
               ) : ((airdrop.status === "registration-closed" ||
                   airdrop.status === "claim-opened" ||
                   airdrop.status === "claim-closed") &&

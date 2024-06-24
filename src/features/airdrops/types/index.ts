@@ -7,8 +7,8 @@ export type AirdropDefinition = {
   status: AirdropStatus;
   order: number;
   enabled: boolean;
-  // TODO: Add registrationCloseDate?: Date;
-  // TODO: Add claimCloseDate?: Date
+  registrationCloseDate?: Date;
+  claimCloseDate?: Date;
   title: MessageDescriptor;
   description?: MessageDescriptor;
   accentColor: string;
