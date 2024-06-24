@@ -26,7 +26,12 @@ export const ShareOnSocials: React.FunctionComponent<ShareOnSocialsProps> = (
 
   return (
     <div {...divProps}>
-      <ButtonLink href={xUrl} openInNewTab>
+      <ButtonLink
+        href={xUrl}
+        openInNewTab
+        variant="contained"
+        color="secondary"
+      >
         {shareOnX}
         <Icon type="platform-x" />
       </ButtonLink>

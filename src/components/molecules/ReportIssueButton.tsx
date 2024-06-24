@@ -34,7 +34,7 @@ export const ReportIssueButton: React.FunctionComponent<
       openInNewTab
       size="small"
       variant="contained"
-      color="default"
+      color="secondary"
       className={twMerge(
         // For now, it's the only button with this spacing, consider a 'size' variant if more
         "py-1.5 px-3 rounded-xl backdrop-blur-[5px] w-fit",

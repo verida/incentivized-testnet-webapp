@@ -1,2 +1,4 @@
-export * from "./Airdrop1Modal";
-export * from "./Airdrop2Modal";
+export * from "./Airdrop1RegistrationModal";
+export * from "./Airdrop2CheckModal";
+export * from "./AirdropModal";
+export * from "./AirdropRequirementsModal";

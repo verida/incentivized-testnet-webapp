@@ -50,6 +50,7 @@ export const CopyToClipboardButton: React.FunctionComponent<
     <div {...divProps}>
       <IconButton
         variant="contained"
+        color="secondary"
         size={size}
         icon={<Icon type={copied ? "check" : "copy"} size={iconSize} />}
         onClick={handleCopy}

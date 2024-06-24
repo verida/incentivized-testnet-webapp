@@ -25,7 +25,7 @@ export const XpPointsChip: React.FC<XpPointsChipProps> = (props) => {
 
   return (
     <div {...divProps}>
-      <Chip variant="primary">
+      <Chip variant="primary" className="pl-1.5">
         <div className="flex flex-row gap-1.5 items-center">
           {isLoading ? (
             <Icon size={20} type="loading" className="animate-spin-slow" />
