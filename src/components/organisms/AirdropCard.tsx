@@ -1,12 +1,7 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { useIntl } from "react-intl";
 
-import {
-  AirdropStatus,
-  Button,
-  ButtonLink,
-  Typography,
-} from "~/components/atoms";
+import { AirdropStatus, ButtonLink, Typography } from "~/components/atoms";
 import { AirdropRequirementsModal } from "~/components/modals";
 import {
   AirdropCardBase,
@@ -140,14 +135,12 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
           <div className="flex flex-col sm:flex-row sm:justify-between gap-6">
             <div className="flex flex-col justify-end">
               {airdrop.requirements ? (
-                <Button
-                  variant="text"
-                  color="primary"
+                <button
                   onClick={handleRequirementsButtonClick}
-                  className="w-full sm:w-fit"
+                  className="w-full sm:w-fit underline py-2.5 bg-transparent text-foreground"
                 >
                   {requirementsButtonLabel}
-                </Button>
+                </button>
               ) : null}
             </div>
             <div className="flex flex-col gap-6">
