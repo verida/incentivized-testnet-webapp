@@ -30,7 +30,7 @@ export const PartnerListItem: React.FC<PartnersListItemProps> = (props) => {
     <article {...articleProps}>
       <div
         className={twMerge(
-          "border border-border hover:border-border-hover bg-background-light hover:bg-background-extra-light flex flex-col items-center justify-center",
+          "border border-border hover:border-border-hover hover:shadow-3xl bg-background-light hover:bg-background-extra-light flex flex-col items-center justify-center",
           small
             ? "rounded-3xl py-8 gap-6"
             : "rounded-3xl md:rounded-10 py-8 lg:py-12 gap-6 md:gap-10"

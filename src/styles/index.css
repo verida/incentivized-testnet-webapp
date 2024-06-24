@@ -25,6 +25,7 @@
     --menu: 246deg 59% 10%;
     --banner-grad-1: 270deg 57% 53%;
     --banner-grad-2: 254deg 65% 35%;
+    --shadow: 240deg 42% 10%;
   }
 
   body {
@@ -53,7 +54,8 @@
   }
 
   .bg-mission-default {
-    background-image: url("./images/bg_mission_default.png");
+    background-image: url("./images/bg_mission_default.png"),
+      linear-gradient(180deg, #733bd6 0.5%, transparent 100%);
     background-repeat: no-repeat;
     background-size: cover;
   }

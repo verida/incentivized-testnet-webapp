@@ -220,6 +220,9 @@ module.exports = {
       height: {
         50: "200px",
       },
+      boxShadow: {
+        "3xl": "16px 32px 80px 0px hsla(var(--shadow) / 0.15)",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

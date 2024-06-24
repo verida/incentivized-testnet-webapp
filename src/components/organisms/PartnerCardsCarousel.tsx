@@ -56,7 +56,7 @@ export const PartnerCardsCarousel: React.FC<PartnerCardsCarouselProps> = (
         <Typography variant={"heading-m"}>{title}</Typography>
         <div className="hidden lg:flex gap-3">
           {navButton ? (
-            <>
+            <div className="flex gap-3 py-1">
               <IconButton
                 variant="outlined"
                 color="default"
@@ -73,10 +73,14 @@ export const PartnerCardsCarousel: React.FC<PartnerCardsCarouselProps> = (
                 disabled={currentScrollIndex >= partners.length - MAX_NB_ITEMS}
                 onClick={() => setCurrentScrollIndex((prev) => prev + 1)}
               />
-            </>
+            </div>
           ) : null}
           {viewAllButton && viewAllLink ? (
-            <ButtonLinkBase href={viewAllLink}>{viewAllLabel}</ButtonLinkBase>
+            <ButtonLinkBase href={viewAllLink} internal className="py-3.5">
+              <Typography variant={"base-s"} className="!font-semibold">
+                {viewAllLabel}
+              </Typography>
+            </ButtonLinkBase>
           ) : null}
         </div>
       </div>
