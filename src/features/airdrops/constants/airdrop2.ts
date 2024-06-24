@@ -6,11 +6,12 @@ import { AirdropDefinition } from "~/features/airdrops/types";
 
 export const AIRDROP_2_DEFINITION: AirdropDefinition = {
   id: "airdrop2",
+  status: "checking",
   order: 2,
   enabled: true && config.verida.environment === EnvironmentType.MAINNET,
   title: defineMessage({
     id: "airdrops.airdrop2.title",
-    defaultMessage: "Airdrop 2: Early Galxe and Zealy Participants",
+    defaultMessage: "Verida Airdrop 2",
     description: "Title of the airdrop 2",
   }),
   description: defineMessage({
@@ -45,5 +46,5 @@ export const AIRDROP_2_DEFINITION: AirdropDefinition = {
     }),
     url: "https://news.verida.io/verida-announces-2-200-000-vda-airdrop-2-for-early-galxe-and-zealy-campaign-participants-977b99b40459",
   },
-  accentColor: "#24545B4D",
+  accentColor: "#24545B",
 };

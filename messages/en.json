@@ -187,6 +187,10 @@
     "defaultMessage": "Next Activity",
     "description": "Default message of next activity text"
   },
+  "ComingSoonAirdropCard.comingSoon": {
+    "defaultMessage": "Coming Soon",
+    "description": "Coming soon message"
+  },
   "ConnectVeridaButton.checkingConnectionButtonLabel": {
     "defaultMessage": "Checking",
     "description": "Label of the Connect to Verida button when checking if already conencted. Note, the button has a spinner next to this label"
@@ -1264,7 +1268,7 @@
     "description": "Label for the resource of the airdrop 1"
   },
   "airdrops.airdrop1.title": {
-    "defaultMessage": "Airdrop 1: Early Adopters",
+    "defaultMessage": "Verida Airdrop 1",
     "description": "Title of the airdrop 1"
   },
   "airdrops.airdrop2.actionLabel": {
@@ -1288,8 +1292,24 @@
     "description": "Label for the resource of the airdrop 2"
   },
   "airdrops.airdrop2.title": {
-    "defaultMessage": "Airdrop 2: Early Galxe and Zealy Participants",
+    "defaultMessage": "Verida Airdrop 2",
     "description": "Title of the airdrop 2"
+  },
+  "airdrops.airdrop3.actionLabel": {
+    "defaultMessage": "-",
+    "description": "Label for the action of the airdrop 3"
+  },
+  "airdrops.airdrop3.actionMessage": {
+    "defaultMessage": "-",
+    "description": "Message displayed above the action button in the airdrop 3 card"
+  },
+  "airdrops.airdrop3.description": {
+    "defaultMessage": "-",
+    "description": "Description of the airdrop 3"
+  },
+  "airdrops.airdrop3.title": {
+    "defaultMessage": "Verida Airdrop 3",
+    "description": "Title of the airdrop 3"
   },
   "airdrops.commonQuestions.answer1": {
     "defaultMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis fringilla diam. Vivamus ipsum metus, ultricies nec pellentesque eu, rhoncus a ligula. Quisque ut facilisis urna, dictum ultrices nisl.",

@@ -4,15 +4,14 @@ import { defineMessage } from "react-intl";
 import { config } from "~/config";
 import { AirdropDefinition } from "~/features/airdrops/types";
 
-// Airdrop 1: Early Adopters
-
 export const AIRDROP_1_DEFINITION: AirdropDefinition = {
   id: "airdrop1",
+  status: "registration-opened",
   order: 1,
   enabled: true && config.verida.environment === EnvironmentType.MAINNET,
   title: defineMessage({
     id: "airdrops.airdrop1.title",
-    defaultMessage: "Airdrop 1: Early Adopters",
+    defaultMessage: "Verida Airdrop 1",
     description: "Title of the airdrop 1",
   }),
   description: defineMessage({
@@ -47,7 +46,7 @@ export const AIRDROP_1_DEFINITION: AirdropDefinition = {
     }),
     url: "https://news.verida.io/verida-announces-inaugural-early-adopters-airdrop-f1e42399fe91",
   },
-  accentColor: "#6C3E924D",
+  accentColor: "#6C3E92",
 };
 
 export const AIRDROP_1_MIN_XP_POINTS = 50;

@@ -209,12 +209,14 @@ export const Airdrop2Modal: React.FC<Airdrop2ModalProps> = (props) => {
             ) : (
               <>
                 {notEligibleMessage}{" "}
-                <ExternalLink
-                  href={AIRDROP_2_DEFINITION.resource.url}
-                  openInNewTab
-                >
-                  {announcementArticleUrlLabel}
-                </ExternalLink>
+                {AIRDROP_2_DEFINITION.resource ? (
+                  <ExternalLink
+                    href={AIRDROP_2_DEFINITION.resource.url}
+                    openInNewTab
+                  >
+                    {announcementArticleUrlLabel}
+                  </ExternalLink>
+                ) : null}
               </>
             )}
           </Typography>
