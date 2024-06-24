@@ -2,7 +2,7 @@ import React from "react";
 import { useIntl } from "react-intl";
 
 import { SideNavigation } from "~/components/molecules";
-import { useActivity } from "~/features/activity";
+import { missions } from "~/features/missions";
 
 export type MissionsSideNavigationProps = React.ComponentPropsWithRef<"div">;
 
@@ -12,7 +12,6 @@ export const MissionsSideNavigation: React.FunctionComponent<
   const { ...divProps } = props;
 
   const i18n = useIntl();
-  const { missions } = useActivity();
 
   const navigationItems = missions.map((mission, index) => ({
     id: mission.id,

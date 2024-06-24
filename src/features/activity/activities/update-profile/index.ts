@@ -1,13 +1,13 @@
 import { type WebUserProfile } from "@verida/web-helpers";
 import { defineMessage } from "react-intl";
 
-import { MISSION_01_ID } from "~/features/activity/missions";
 import type {
   Activity,
   ActivityOnExecute,
   ActivityOnInit,
 } from "~/features/activity/types";
 import { Logger } from "~/features/logger";
+import { MISSION_01_ID } from "~/features/missions";
 import { Sentry } from "~/features/sentry";
 import { wait } from "~/utils";
 
@@ -115,6 +115,7 @@ export const activity: Activity = {
   visible: true,
   order: 2,
   points: 50,
+  partners: [],
   title: defineMessage({
     id: "activities.updateProfile.title",
     defaultMessage: "Update your public profile",

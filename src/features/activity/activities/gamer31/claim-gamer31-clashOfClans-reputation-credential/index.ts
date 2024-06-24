@@ -1,7 +1,6 @@
 import toast from "react-hot-toast";
 import { defineMessage } from "react-intl";
 
-import { MISSION_03_ID } from "~/features/activity/missions";
 import type {
   Activity,
   ActivityOnExecute,
@@ -9,6 +8,8 @@ import type {
   ActivityOnMessage,
 } from "~/features/activity/types";
 import { Logger } from "~/features/logger";
+import { MISSION_03_ID } from "~/features/missions";
+import { PARTNER_ID_GAMER31, PARTNER_ID_POLYGONID } from "~/features/partners";
 import { Sentry } from "~/features/sentry";
 import {
   type ReceivedMessage,
@@ -222,6 +223,7 @@ export const activity: Activity = {
   visible: true,
   order: 3,
   points: 50,
+  partners: [PARTNER_ID_GAMER31, PARTNER_ID_POLYGONID],
   title: defineMessage({
     id: "activities.claimGamer31ClashOfClans.title",
     defaultMessage: "Claim a Gamer31 Clash Of Clans credential",

@@ -202,6 +202,8 @@ export const ActivityCard: React.FunctionComponent<ActivityCardProps> = (
                 isChecking ? null : status === "todo" ||
                   status === "pending" ? (
                   <Button
+                    variant="contained"
+                    color="secondary"
                     size="medium"
                     onClick={() => void handleExecuteActivity()}
                     disabled={executing}

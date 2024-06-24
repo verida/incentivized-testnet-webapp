@@ -1,11 +1,19 @@
 import { ReactComponent as VeridaNetworkLogo } from "assets/images/verida_network_logo_with_text_white.svg";
 import React from "react";
 import { useIntl } from "react-intl";
+import { twMerge } from "tailwind-merge";
 
 import { ExternalLink, Typography } from "~/components/atoms";
 import { VERIDA_NETWORK_URL } from "~/constants";
 
-export const Footer: React.FunctionComponent = () => {
+export type FooterProps = Omit<
+  React.ComponentPropsWithRef<"footer">,
+  "children"
+>;
+
+export const Footer: React.FC<FooterProps> = (props) => {
+  const { className, ...footerProps } = props;
+
   const i18n = useIntl();
   const copyrightYear = `${new Date().getFullYear()}`;
 
@@ -15,16 +23,9 @@ export const Footer: React.FunctionComponent = () => {
     description: "label of the 'built on' text in the footer section",
   });
 
-  // const termsAndConditionLinkLabel = i18n.formatMessage({
-  //   id: "Footer.termsAndConditionLinkLabel",
-  //   defaultMessage: "Terms of Use",
-  //   description:
-  //     "Label of the 'Terms and Condition' Link in the footer section",
-  // });
-
   const conditionsWillApplyMessage = i18n.formatMessage({
     id: "Footer.conditionsWillApplyMessage",
-    defaultMessage: "Eligibility conditions and terms of use will apply",
+    defaultMessage: "Eligibility conditions and terms of use apply",
     description:
       "Message stating that conditions will apply when using the app",
   });
@@ -39,8 +40,14 @@ export const Footer: React.FunctionComponent = () => {
   );
 
   return (
-    <footer className="flex flex-col items-center justify-center space-y-3 border-t border-solid border-divider py-4 px-6 sm:flex-row sm:justify-between">
-      <div className="flex flex-col justify-center sm:order-2">
+    <footer
+      {...footerProps}
+      className={twMerge(
+        "flex flex-col items-center justify-center space-y-3 border-t border-solid border-divider py-4 px-6 sm:flex-row sm:justify-between",
+        className
+      )}
+    >
+      <div className="flex flex-col justify-center sm:order-2 px-8">
         <ExternalLink
           href={VERIDA_NETWORK_URL}
           openInNewTab
@@ -62,7 +69,7 @@ export const Footer: React.FunctionComponent = () => {
           {/* <Link to="/terms-and-conditions" className="hover:underline">
             {termsAndConditionLinkLabel}
           </Link> */}
-          <Typography className="text-center text-xs">
+          <Typography className="text-center sm:text-right text-xs">
             {conditionsWillApplyMessage}
           </Typography>
         </div>

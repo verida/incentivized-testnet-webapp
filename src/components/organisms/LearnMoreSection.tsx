@@ -1,5 +1,6 @@
 import React from "react";
 import { useIntl } from "react-intl";
+import { twMerge } from "tailwind-merge";
 
 import { ExternalLink, Typography } from "~/components/atoms";
 import { VERIDA_MISSIONS_FAQ_URL } from "~/constants";
@@ -25,7 +26,14 @@ const links: Link[] = [
   },
 ];
 
-export const LearnMoreSection: React.FunctionComponent = () => {
+export type LearnMoreSectionProps = Omit<
+  React.ComponentPropsWithRef<"aside">,
+  "children"
+>;
+
+export const LearnMoreSection: React.FC<LearnMoreSectionProps> = (props) => {
+  const { className, ...asideProps } = props;
+
   const i18n = useIntl();
 
   const sectionTitle = i18n.formatMessage({
@@ -35,7 +43,13 @@ export const LearnMoreSection: React.FunctionComponent = () => {
   });
 
   return (
-    <aside className="p-4 flex flex-col justify-center items-center gap-4">
+    <aside
+      {...asideProps}
+      className={twMerge(
+        "p-4 flex flex-col justify-center items-center gap-4",
+        className
+      )}
+    >
       <Typography variant="heading-s" component="p">
         {sectionTitle}
       </Typography>

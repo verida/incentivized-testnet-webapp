@@ -1,6 +1,5 @@
 import { createContext, useCallback, useMemo } from "react";
 
-import { config } from "~/config";
 import { activities } from "~/features/activity/activities";
 import {
   useActivitiesDatastore,
@@ -10,17 +9,11 @@ import {
   useMessageListener,
   useUserXpPoints,
 } from "~/features/activity/hooks";
-import { missions } from "~/features/activity/missions";
-import type {
-  Activity,
-  Mission,
-  UserActivityRecord,
-} from "~/features/activity/types";
+import type { Activity, UserActivityRecord } from "~/features/activity/types";
 import { useVerida } from "~/features/verida";
 
 type ActivityContextType = {
   activities: Activity[];
-  missions: Mission[];
   userActivities: UserActivityRecord[];
   userXpPoints: number;
   isLoadingUserActivities: boolean;
@@ -87,7 +80,6 @@ export const ActivityProvider: React.FunctionComponent<
 
   const contextValue: ActivityContextType = useMemo(
     () => ({
-      missions: missions.filter((m) => (config.devMode ? true : m.visible)),
       activities: activities,
       userActivities: userActivities || [],
       userXpPoints,

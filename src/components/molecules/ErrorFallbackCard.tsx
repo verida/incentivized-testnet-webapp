@@ -56,7 +56,12 @@ export const RawErrorFallbackCard: React.FunctionComponent<
         <span className="mb-2 text-lg font-semibold">{title}</span>
         <Typography className="mb-4">{message}</Typography>
         <div className="w-full">
-          <Button variant="contained" size="large" onClick={resetErrorBoundary}>
+          <Button
+            variant="contained"
+            color="secondary"
+            size="large"
+            onClick={resetErrorBoundary}
+          >
             {resetButtonLabel}
           </Button>
         </div>

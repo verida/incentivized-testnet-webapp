@@ -1,7 +1,6 @@
 import toast from "react-hot-toast";
 import { defineMessage } from "react-intl";
 
-import { MISSION_01_ID } from "~/features/activity/missions";
 import type {
   Activity,
   ActivityOnExecute,
@@ -10,6 +9,7 @@ import type {
 } from "~/features/activity/types";
 import { copyToClipboard } from "~/features/clipboard";
 import { Logger } from "~/features/logger";
+import { MISSION_01_ID } from "~/features/missions";
 import { Sentry } from "~/features/sentry";
 import { ReceivedMessage, getMessaging } from "~/features/verida";
 import { wait } from "~/utils";
@@ -192,6 +192,7 @@ export const activity: Activity = {
   visible: true,
   order: 4,
   points: 100,
+  partners: [],
   title: defineMessage({
     id: "activities.referFriend.title",
     defaultMessage: "Refer a friend to join Verida Missions",

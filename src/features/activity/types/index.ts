@@ -11,26 +11,7 @@ import {
   UserActivitySchema,
 } from "~/features/activity/schemas";
 import { ReceivedMessage } from "~/features/verida";
-
-export type Resource = {
-  label: MessageDescriptor;
-  url: string;
-};
-
-// Mission
-
-export type Mission = {
-  id: string;
-  idLabel: MessageDescriptor;
-  enabled: boolean;
-  visible: boolean;
-  frozen: boolean;
-  order: number;
-  title: MessageDescriptor;
-  shortDescription: MessageDescriptor;
-  longDescription: MessageDescriptor;
-  resources?: Resource[];
-};
+import { Resource } from "~/types";
 
 // User activity
 
@@ -43,6 +24,12 @@ export type UserActivityRecord = z.infer<typeof UserActivityRecordSchema>;
 export type UserActivityStatus = "todo" | "pending" | "completed";
 
 // Activity
+
+export type ActivityStatus =
+  | UserActivityStatus
+  | "ended"
+  | "disabled"
+  | "checking";
 
 export type ActivityOnUnmount = () => Promise<void>;
 
@@ -91,6 +78,7 @@ export type Activity = {
   actionLabel: MessageDescriptor;
   actionReExecuteLabel?: MessageDescriptor;
   actionExecutingLabel: MessageDescriptor;
+  partners: string[];
   onInit: ActivityOnInit;
   onExecute: ActivityOnExecute;
   onMessage?: ActivityOnMessage;
