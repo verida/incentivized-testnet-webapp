@@ -16,4 +16,3 @@ export * from "./MissionSection";
 export * from "./MissionsSideNavigation";
 export * from "./PartnerInfoCard";
 export * from "./ResourcesSection";
-export * from "./TermsAndConditions";

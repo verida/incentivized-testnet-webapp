@@ -15,10 +15,6 @@
     "defaultMessage": "{points} XP",
     "description": "Label of the XP points chip on each activity card"
   },
-  "ActivityDaysLeftChip.formattedValue": {
-    "defaultMessage": "{nbDaysLeft, plural, one {{nbDaysLeft} day left} other {{nbDaysLeft} days left} }",
-    "description": "Formatted value of days left in the activity days left chip"
-  },
   "ActivityPage.activityByLabel": {
     "defaultMessage": "Activity by",
     "description": "Label activity by"
@@ -67,81 +63,185 @@
     "defaultMessage": "To do",
     "description": "Label of the status for an activity to perform"
   },
-  "Airdrop1Modal.acceptTermsButtonLabel": {
+  "Airdrop1RegistrationModal.acceptTermsButtonLabel": {
     "defaultMessage": "Accept",
     "description": "Label for the button to accept the terms and conditions in the airdrop 1 modal"
   },
-  "Airdrop1Modal.acceptTermsMessage": {
+  "Airdrop1RegistrationModal.acceptTermsMessage": {
     "defaultMessage": "Please read and accept the",
     "description": "Message displayed in the airdrop 1 modal when asking the user to accept the terms and conditions of the airdrop."
   },
-  "Airdrop1Modal.checkingSubmittedProofMessage": {
-    "defaultMessage": "Checking existing proof of eligibility...",
+  "Airdrop1RegistrationModal.checkingSubmittedProofMessage": {
+    "defaultMessage": "Checking existing registration...",
     "description": "Message displayed in the airdrop 1 modal when checking if the proof has already been submitted"
   },
-  "Airdrop1Modal.notEnoughPointsMessage": {
-    "defaultMessage": "You do not have enough XP points to submit your proof of eligibility.{newline}{newline}Complete some activities to reach at least {minPoints} XP points and try again.",
+  "Airdrop1RegistrationModal.notEnoughPointsMessage": {
+    "defaultMessage": "You do not have enough XP points to register for this airdrop.{newline}{newline}Complete some activities to reach at least {minPoints} XP points and try again.",
     "description": "Message displayed in the airdrop 1 modal when the user doesn't have enough XP points"
   },
-  "Airdrop1Modal.proofAlreadySubmittedMessage": {
-    "defaultMessage": "Congratulations! You are eligible for the {airdropTitle} and have been registered.{newline}{newline}Check our socials to be notified when the claim window opens.",
+  "Airdrop1RegistrationModal.proofAlreadySubmittedMessage": {
+    "defaultMessage": "Congratulations! You are registered for the {airdropTitle}.{newline}{newline}Check our socials to be notified when the claim window opens.{newline}{newline}Note that the claim process will also be subject to the",
     "description": "Message displayed in the airdrop 1 modal when the proof has already been submitted"
   },
-  "Airdrop1Modal.proofSubmitErrorMessage": {
+  "Airdrop1RegistrationModal.proofSubmitErrorMessage": {
     "defaultMessage": "Unfortunately, you are not eligible for the {airdropTitle}.{newline}To confirm the criteria, please check the",
     "description": "Message displayed in the airdrop 1 modal when the proof submission fails"
   },
-  "Airdrop1Modal.sharedMessageOnSocialsText": {
+  "Airdrop1RegistrationModal.sharedMessageOnSocialsText": {
     "defaultMessage": "I have successfully registered for @verida_io Airdrop 1 at https://missions.verida.network/",
     "description": "Message shared on social after submitted the proof"
   },
-  "Airdrop1Modal.submitButtonLabel": {
+  "Airdrop1RegistrationModal.submitButtonLabel": {
     "defaultMessage": "Submit Proofs",
     "description": "Label for the submit button in the airdrop 1 modal"
   },
-  "Airdrop1Modal.submitProofMessage": {
-    "defaultMessage": "As a decentralised application, Verida Missions needs to verify your completed activities meet the {airdropTitle} criteria.{newline}{newline}Please submit your XP points proofs to our server for verification.",
+  "Airdrop1RegistrationModal.submitProofMessage": {
+    "defaultMessage": "As a decentralised application, Verida Missions needs to verify that your completed activities meet the {airdropTitle} criteria.{newline}{newline}Please submit your XP points proofs to our server for verification.",
     "description": "Message displayed in the rewards modal when before submitting the claim"
   },
-  "Airdrop1Modal.termsUrlLabel": {
+  "Airdrop1RegistrationModal.termsUrlLabel": {
     "defaultMessage": "Terms and Conditions",
     "description": "Label of the Airdrops Terms and Conditions link displayed in the airdrop 1 modal."
   },
-  "Airdrop2Modal.announcementArticleUrlLabel": {
+  "Airdrop2CheckModal.announcementArticleUrlLabel": {
     "defaultMessage": "announcement article",
     "description": "Label of the Airdrop 2 announcement article link."
   },
-  "Airdrop2Modal.checkEligibilityButtonLabel": {
+  "Airdrop2CheckModal.checkEligibilityButtonLabel": {
     "defaultMessage": "Check",
     "description": "Button label to check a user is included in the airdrop 2 modal"
   },
-  "Airdrop2Modal.checkYourEligibilityMessage": {
+  "Airdrop2CheckModal.checkYourEligibilityMessage": {
     "defaultMessage": "Check if your blockchain wallet address used for the Galxe and Zealy campaigns is included in the {airdropTitle}*{newline}{newline}*This does not guarantee your eligibility to claim airdrop rewards. All Verida Airdrops will be subject to the Airdrop",
     "description": "Welcome message in the airdrop 2 modal"
   },
-  "Airdrop2Modal.checkingEligibilityMessage": {
+  "Airdrop2CheckModal.checkingEligibilityMessage": {
     "defaultMessage": "Checking...",
     "description": "Message displayed in the airdrop 2 modal when checking if included in the list"
   },
-  "Airdrop2Modal.notEligibleMessage": {
+  "Airdrop2CheckModal.notEligibleMessage": {
     "defaultMessage": "Unfortunately, you are not included in the {airdropTitle}{newline}{newline}Read the criteria in the",
     "description": "Message displayed in the airdrop 2 modal when the user is not included"
   },
-  "Airdrop2Modal.sharedMessageOnSocialsText": {
+  "Airdrop2CheckModal.sharedMessageOnSocialsText": {
     "defaultMessage": "I am included in the @verida_io Airdrop 2 at https://missions.verida.network/",
     "description": "Message shared on social if eligible to airdrop 2"
   },
-  "Airdrop2Modal.somethingWentWrongMessage": {
+  "Airdrop2CheckModal.somethingWentWrongMessage": {
     "defaultMessage": "Something went wrong. Please try again later.",
     "description": "Message displayed in the airdrop 2 modal when something went wrong"
   },
-  "Airdrop2Modal.succesfullyEligibleMessage": {
+  "Airdrop2CheckModal.succesfullyEligibleMessage": {
     "defaultMessage": "Congratulations! You are included in the {airdropTitle}*.{newline}{newline}Check our socials to be notified when the claim window opens.{newline}{newline}*This does not guarantee your eligibility to claim airdrop rewards. All Verida Airdrops will be subject to the Airdrop",
     "description": "Message displayed in the airdrop 2 modal when the user is included"
   },
-  "Airdrop2Modal.termsUrlLabel": {
+  "Airdrop2CheckModal.termsUrlLabel": {
     "defaultMessage": "Terms and Conditions",
     "description": "Label of the Airdrops Terms and Conditions link."
+  },
+  "AirdropCard.checkButtonLabel": {
+    "defaultMessage": "Check",
+    "description": "Label for the check button of the airdrop card"
+  },
+  "AirdropCard.checkMessage": {
+    "defaultMessage": "Check if you are included in the airdrop",
+    "description": "Message displayed above the check button in the airdrop card"
+  },
+  "AirdropCard.claimButtonLabel": {
+    "defaultMessage": "Claim",
+    "description": "Label for the claim button of the airdrop card"
+  },
+  "AirdropCard.claimMessage": {
+    "defaultMessage": "Claim before it's too late",
+    "description": "Message displayed above the claim button in the airdrop card"
+  },
+  "AirdropCard.missedAirdropMessage": {
+    "defaultMessage": "Unfortunately you missed this airdrop",
+    "description": "Message displayed in the airdrop card when the user missed the registration or claiming"
+  },
+  "AirdropCard.registerButtonLabel": {
+    "defaultMessage": "Register",
+    "description": "Label for the register button of the airdrop card"
+  },
+  "AirdropCard.registerMessage": {
+    "defaultMessage": "Register before it's too late",
+    "description": "Message displayed above the register button in the airdrop card"
+  },
+  "AirdropCard.requirementsButtonLabel": {
+    "defaultMessage": "Requirements",
+    "description": "Label for the requirements button of the airdrop card"
+  },
+  "AirdropModal.notConnectedModalMessage": {
+    "defaultMessage": "To proceed with the airdrop, you need to connect your Verida identity.",
+    "description": "Message of the modal when the user is not connected"
+  },
+  "AirdropModal.notConnectedModalTitle": {
+    "defaultMessage": "Connect your Verida identity",
+    "description": "Title of the modal when the user is not connected"
+  },
+  "AirdropRequirementsModal.airdropRequirementSectionMessage": {
+    "defaultMessage": "For {airdropTitle}",
+    "description": "Message displayed above the requirements for the airdrop"
+  },
+  "AirdropRequirementsModal.closeButtonLabel": {
+    "defaultMessage": "Got It",
+    "description": "Label for the close button of the airdrop requirements modal"
+  },
+  "AirdropRequirementsModal.termsConditionsLinkLabel": {
+    "defaultMessage": "Terms and Conditions",
+    "description": "Label for the terms and conditions link"
+  },
+  "AirdropRequirementsModal.termsConditionsMessage": {
+    "defaultMessage": "- Additional requirements defined in the airdrops",
+    "description": "Label for the terms and conditions"
+  },
+  "AirdropRequirementsModal.title": {
+    "defaultMessage": "Airdrop Requirements",
+    "description": "Title of the airdrop requirements modal"
+  },
+  "AirdropStatus.checkingStatusMessage": {
+    "defaultMessage": "Checking",
+    "description": "Message displayed when checking the airdrop user's status"
+  },
+  "AirdropStatus.claimedStatusMessage": {
+    "defaultMessage": "Claimed",
+    "description": "Message displayed when the user has claimed the airdrop"
+  },
+  "AirdropStatus.closedStatusMessage": {
+    "defaultMessage": "Closed",
+    "description": "Message displayed when the user has claimed the airdrop"
+  },
+  "AirdropStatus.registeredStatusMessage": {
+    "defaultMessage": "Registered",
+    "description": "Message displayed when the user is registered for the airdrop"
+  },
+  "AirdropsPage.aboutAirdropsMessage": {
+    "defaultMessage": "The Verida Foundation has committed to giving 20% of the total initial token supply to the community through its Network Growth Rewards.{newline}{newline}Airdrops target constructive participation — ensuring that tokens go to contributors. Note that past airdrop eligibility criteria do not guarantee eligibility in future airdrops.",
+    "description": "Message in the section about airdrops in the airdrops page"
+  },
+  "AirdropsPage.aboutAirdropsSectionTitle": {
+    "defaultMessage": "About Airdrops",
+    "description": "Title of the section about airdrops in the airdrops page"
+  },
+  "AirdropsPage.faqButtonLabel": {
+    "defaultMessage": "Read FAQ",
+    "description": "Label for the FAQ button in the airdrops page"
+  },
+  "AirdropsPage.tagline": {
+    "defaultMessage": "This program is intended to reward early adopters to the network and encourage newcomers to discover Verida's features and capabilities.",
+    "description": "Tag line displayed at the top of the Airdrops page"
+  },
+  "AirdropsPage.title": {
+    "defaultMessage": "Verida{newline}Airdrops",
+    "description": "Title of the Airdrops page"
+  },
+  "ComingSoonActivityItem.nextActivityText": {
+    "defaultMessage": "Next Activity",
+    "description": "Default message of next activity text"
+  },
+  "ComingSoonAirdropCard.comingSoon": {
+    "defaultMessage": "Coming Soon",
+    "description": "Coming soon message"
   },
   "ComingSoonActivityItem.nextActivityText": {
     "defaultMessage": "Next Activity",
@@ -162,6 +262,10 @@
   "ConnectVeridaButton.connectingButtonLabel": {
     "defaultMessage": "Connecting",
     "description": "Label of the Connect to Verida button when connecting. Note, the button has a spinner next to this label"
+  },
+  "DaysCountdownChip.formattedValue": {
+    "defaultMessage": "{nbDaysLeft, plural, one {{nbDaysLeft} day left} other {{nbDaysLeft} days left} }",
+    "description": "Formatted value of days left in the activity days left chip"
   },
   "ErrorFallbackCard.cardMessage": {
     "defaultMessage": "If the error persists, try refreshing your browser and cleaning your browser's data.",
@@ -184,7 +288,7 @@
     "description": "label of the 'built on' text in the footer section"
   },
   "Footer.conditionsWillApplyMessage": {
-    "defaultMessage": "Eligibility conditions and terms of use will apply",
+    "defaultMessage": "Eligibility conditions and terms of use apply",
     "description": "Message stating that conditions will apply when using the app"
   },
   "Footer.copyrightMessage": {
@@ -195,17 +299,29 @@
     "defaultMessage": "Get Support",
     "description": "Title of the 'Get Support' section"
   },
-  "Header.disconnectButtonLabel": {
+  "Header.airdropsNavLabel": {
+    "defaultMessage": "Airdrops",
+    "description": "Label for the Airdrops item in the navigation menu"
+  },
+  "Header.missionsNavLabel": {
+    "defaultMessage": "Missions",
+    "description": "Label for the Mission item in the navigation menu"
+  },
+  "HeaderIdentityMenu.disconnectButtonLabel": {
     "defaultMessage": "Disconnect",
     "description": "Label for the disconnect button in the Header"
   },
-  "Header.homeLinkAriaLabel": {
-    "defaultMessage": "Return to Home page",
-    "description": "Aria label for the home link in the Header"
-  },
-  "Header.profileNameFallback": {
+  "HeaderIdentityMenu.profileNameFallback": {
     "defaultMessage": "'<Anon>'",
     "description": "Fallback name for the profile name in the Header"
+  },
+  "HeaderNavMenu.airdropsItemLabel": {
+    "defaultMessage": "Airdrops",
+    "description": "Label for the Airdrops item in the navigation menu"
+  },
+  "HeaderNavMenu.missionsItemLabel": {
+    "defaultMessage": "Missions",
+    "description": "Label for the Mission item in the navigation menu"
   },
   "HomeHero.descriptionPart1": {
     "defaultMessage": "Take control over your own personal data. Join Verida Missions, build up your XP, and earn storage credits for secure data management on Verida Network.",
@@ -227,33 +343,21 @@
     "defaultMessage": "This is a Testnet version of Verida Missions.",
     "description": "Warning for non-mainnet environments"
   },
-  "HomePage.airdrop1AlertLearnActionButtonLabel": {
-    "defaultMessage": "Learn more",
-    "description": "Label for the airdrop 1 'Learn more' alert button on the home page"
+  "HomePage.airdropsAlertButtonLabel": {
+    "defaultMessage": "Airdrops",
+    "description": "Label for the button in the airdrop/vda token alert to redirect to the airdrops page"
   },
-  "HomePage.airdrop1AlertMessage": {
-    "defaultMessage": "Prove your eligibility for the {airdropTitle}",
-    "description": "Message for the airdrop 1 alert on the home page"
-  },
-  "HomePage.airdrop1AlertProveActionButtonLabel": {
-    "defaultMessage": "Prove",
-    "description": "Label for the airdrop 1 'Prove' alert button on the home page"
-  },
-  "HomePage.airdrop2AlertCheckActionButtonLabel": {
-    "defaultMessage": "Check",
-    "description": "Label for the airdrop 2 'Check' alert button on the home page"
-  },
-  "HomePage.airdrop2AlertLearnActionButtonLabel": {
-    "defaultMessage": "Learn more",
-    "description": "Label for the airdrop 2 'Learn more' alert button on the home page"
-  },
-  "HomePage.airdrop2AlertMessage": {
-    "defaultMessage": "Check if you are included in the {airdropTitle}",
-    "description": "Message for the airdrop 2 alert on the home page"
+  "HomePage.airdropsAndVdaTokenAlertMessage": {
+    "defaultMessage": "The Verida Storage Credit Token (VDA) is now live. Learn more about the VDA Token and check our airdrops.",
+    "description": "Message displayed in the airdrop alert on the home page"
   },
   "HomePage.tagline": {
     "defaultMessage": "Explore a new era of data ownership",
     "description": "Tag line displayed at the top of the Home page"
+  },
+  "HomePage.vdaTokenAlertButtonLabel": {
+    "defaultMessage": "VDA Token",
+    "description": "Label for the button in the airdrop/vda token alert to redirect to the VDA token page on verida.network"
   },
   "LearnMoreSection.sectionTitle": {
     "defaultMessage": "Learn More",
@@ -355,10 +459,6 @@
     "defaultMessage": "item of stacked images",
     "description": "Alt text of stacked image"
   },
-  "TermsConditionsPage.termsConditionsTitle": {
-    "defaultMessage": "Terms of Use",
-    "description": "Title for the terms and conditions page"
-  },
   "UpcomingActivitiesCTA.JoinDiscordMessage": {
     "defaultMessage": "Join Verida's Discord community for updates on new activities and missions.",
     "description": "Message to display in the upcoming activities CTA"
@@ -366,6 +466,10 @@
   "UpcomingActivitiesCTA.title": {
     "defaultMessage": "Next activity coming soon",
     "description": "Message to display in the upcoming activities CTA"
+  },
+  "VdaTokensChip.formattedValue": {
+    "defaultMessage": "{nbVdaTokens} VDA",
+    "description": "Formatted value of VDA tokens in the VDA tokens chip"
   },
   "XpPointsChip.formattedValue": {
     "defaultMessage": "{xpPoints} XP",
@@ -1207,21 +1311,41 @@
     "defaultMessage": "How to use the Markdown Editor demo app",
     "description": "Label of the video 'How to use the Markdown Editor demo app'"
   },
-  "airdrops.airdrop1.longTitle": {
-    "defaultMessage": "Airdrop 1: Early Adopters",
-    "description": "Long title of the airdrop 1"
+  "airdrops.airdrop1.description": {
+    "defaultMessage": "This airdrop rewards early participants in Verida's Missions program. Early community members were able to explore and experience the benefits of effective self-sovereign identity and data ownership in web3.",
+    "description": "Description of the airdrop 1"
   },
-  "airdrops.airdrop1.shortTitle": {
-    "defaultMessage": "Airdrop 1: Early Adopters",
-    "description": "Short title of the airdrop 1"
+  "airdrops.airdrop1.requirements": {
+    "defaultMessage": "- Earned 50 XP on Verida Missions before March 21st 2024{newline}{newline}- Registered for the airdrop by proving your XP points",
+    "description": "Requirements of the airdrop 1"
   },
-  "airdrops.airdrop2.longTitle": {
-    "defaultMessage": "Airdrop 2: Early Galxe and Zealy Participants",
-    "description": "Long title of the airdrop 2"
+  "airdrops.airdrop1.resource.label": {
+    "defaultMessage": "Learn More",
+    "description": "Label for the resource of the airdrop 1"
   },
-  "airdrops.airdrop2.shortTitle": {
-    "defaultMessage": "Airdrop 2: Early Galxe and Zealy",
-    "description": "Short title of the airdrop 2"
+  "airdrops.airdrop1.title": {
+    "defaultMessage": "Verida Airdrop 1",
+    "description": "Title of the airdrop 1"
+  },
+  "airdrops.airdrop2.description": {
+    "defaultMessage": "Airdrop 2 rewards Veridians who participated in Verida Zealy campaigns or Galxe campaigns between 2023 and 2024.",
+    "description": "Description of the airdrop 2"
+  },
+  "airdrops.airdrop2.requirements": {
+    "defaultMessage": "- Participated in a Verida Zealy campaign or Galxe campaign between 2023 and 2024",
+    "description": "Requirements of the airdrop 2"
+  },
+  "airdrops.airdrop2.resource.label": {
+    "defaultMessage": "Learn More",
+    "description": "Label for the resource of the airdrop 2"
+  },
+  "airdrops.airdrop2.title": {
+    "defaultMessage": "Verida Airdrop 2",
+    "description": "Title of the airdrop 2"
+  },
+  "airdrops.airdrop3.title": {
+    "defaultMessage": "Verida Airdrop 3",
+    "description": "Title of the airdrop 3"
   },
   "app.meta.defaultDescription": {
     "defaultMessage": "Explore a new paradigm shift for managing your personal data with self-sovereign technology. Experience Verida Wallet, with zero-knowledge credentials, decentralized identity and access to a private data storage network designed for web3.",
@@ -1382,10 +1506,6 @@
   "partners.zkpass.resources.website": {
     "defaultMessage": "zkpass.org",
     "description": "Label of the zkPass website"
-  },
-  "topBanner.vdaTokenMessage": {
-    "defaultMessage": "The Verida Storage Credit Token (VDA) is now live. Learn more",
-    "description": "Content displayed in the top banner for the VDA token"
   },
   "useExecuteActivity.activityAlreadyBeingExecutedMessage": {
     "defaultMessage": "An activity is already being executed, please wait for it to finish",

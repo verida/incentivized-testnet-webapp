@@ -6,6 +6,7 @@ import { ReportIssueButton } from "~/components/molecules";
 import {
   ExploreMoreMissionsSection,
   GetSupportSection,
+  HeaderOffset,
   LearnMoreSection,
 } from "~/components/organisms";
 import { Mission } from "~/features/missions";
@@ -59,6 +60,7 @@ export const PageLayout: React.FC<PageLayoutProps> = (props) => {
       <main
         className={twMerge("flex-grow flex flex-col mb-4", containerClassName)}
       >
+        <HeaderOffset />
         <div className="flex-grow gap-12 sm:gap-16 flex flex-col ">
           {!hideBackButton || title ? (
             <div className=" mt-6 sm:mt-16 flex flex-col sm:flex-row gap-6 px-4 sm:px-6">

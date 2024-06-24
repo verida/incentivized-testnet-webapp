@@ -7,8 +7,10 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 
+import { AirdropModal } from "~/components/modals";
 import {
   ActivityPage,
+  AirdropsPage,
   HomePage,
   MissionPage,
   MissionsPage,
@@ -36,7 +38,9 @@ const router = sentryCreateBrowserRouter(
       <Route path="/missions" element={<MissionsPage />} />
       <Route path="/missions/:missionId" element={<MissionPage />} />
       <Route path="/activities/:activityId" element={<ActivityPage />} />
-      {/* <Route path="terms-and-conditions" element={<TermsConditionsView />} /> */}
+      <Route path="/airdrops" element={<AirdropsPage />}>
+        <Route path="/airdrops/:airdropId" element={<AirdropModal />} />
+      </Route>
       <Route path="*" element={<Navigate replace to="/" />} />
     </Route>
   )

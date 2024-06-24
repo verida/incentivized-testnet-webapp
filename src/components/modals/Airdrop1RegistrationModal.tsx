@@ -7,20 +7,27 @@ import { Modal } from "~/components/templates";
 import { useActivity } from "~/features/activity";
 import {
   AIRDROPS_TERMS_URL,
+  AIRDROP_1_DEFINITION,
   AIRDROP_1_MIN_XP_POINTS,
   useAirdrop1,
-  useAirdrop1Queries,
 } from "~/features/airdrops";
 
-export const Airdrop1Modal: React.FunctionComponent = () => {
+export type Airdrop1RegistrationModalProps = {
+  onClose: () => void;
+};
+
+export const Airdrop1RegistrationModal: React.FC<
+  Airdrop1RegistrationModalProps
+> = (props) => {
+  const { onClose } = props;
+
   const { userXpPoints, isLoadingUserActivities } = useActivity();
-  const { metadata, closeModal, isEnabled, isModalOpen } = useAirdrop1();
   const {
     isCheckingProofSubmitted,
     isProofSubmitted,
     isSubmittingProof,
     submitProof,
-  } = useAirdrop1Queries();
+  } = useAirdrop1();
 
   const [hasProofSubmitError, setHasProofSubmitError] = useState(false);
   const [proofSubmitError, setProofSubmitError] = useState<string | null>(null);
@@ -30,8 +37,8 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
     setHasProofSubmitError(false);
     setProofSubmitError(null);
     setIsTermsAccepted(false);
-    closeModal();
-  }, [closeModal]);
+    onClose();
+  }, [onClose]);
 
   const handleAcceptTerms = useCallback(() => {
     setIsTermsAccepted(true);
@@ -56,25 +63,25 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
 
   const i18n = useIntl();
 
-  const modalTitle = i18n.formatMessage(metadata.longTitle);
+  const modalTitle = i18n.formatMessage(AIRDROP_1_DEFINITION.title);
 
   const checkingSubmittedProofMessage = i18n.formatMessage({
-    id: "Airdrop1Modal.checkingSubmittedProofMessage",
-    defaultMessage: "Checking existing proof of eligibility...",
+    id: "Airdrop1RegistrationModal.checkingSubmittedProofMessage",
+    defaultMessage: "Checking existing registration...",
     description:
       "Message displayed in the airdrop 1 modal when checking if the proof has already been submitted",
   });
 
   const proofAlreadySubmittedMessage = i18n.formatMessage(
     {
-      id: "Airdrop1Modal.proofAlreadySubmittedMessage",
+      id: "Airdrop1RegistrationModal.proofAlreadySubmittedMessage",
       defaultMessage:
-        "Congratulations! You are eligible for the {airdropTitle} and have been registered.{newline}{newline}Check our socials to be notified when the claim window opens.",
+        "Congratulations! You are registered for the {airdropTitle}.{newline}{newline}Check our socials to be notified when the claim window opens.{newline}{newline}Note that the claim process will also be subject to the",
       description:
         "Message displayed in the airdrop 1 modal when the proof has already been submitted",
     },
     {
-      airdropTitle: i18n.formatMessage(metadata.longTitle),
+      airdropTitle: i18n.formatMessage(AIRDROP_1_DEFINITION.title),
       newline: (
         <>
           <br />
@@ -84,7 +91,7 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
   );
 
   const sharedMessageOnSocialsText = i18n.formatMessage({
-    id: "Airdrop1Modal.sharedMessageOnSocialsText",
+    id: "Airdrop1RegistrationModal.sharedMessageOnSocialsText",
     description: "Message shared on social after submitted the proof",
     defaultMessage:
       "I have successfully registered for @verida_io Airdrop 1 at https://missions.verida.network/",
@@ -92,9 +99,9 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
 
   const notEnoughPointsMessage = i18n.formatMessage(
     {
-      id: "Airdrop1Modal.notEnoughPointsMessage",
+      id: "Airdrop1RegistrationModal.notEnoughPointsMessage",
       defaultMessage:
-        "You do not have enough XP points to submit your proof of eligibility.{newline}{newline}Complete some activities to reach at least {minPoints} XP points and try again.",
+        "You do not have enough XP points to register for this airdrop.{newline}{newline}Complete some activities to reach at least {minPoints} XP points and try again.",
       description:
         "Message displayed in the airdrop 1 modal when the user doesn't have enough XP points",
     },
@@ -109,21 +116,21 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
   );
 
   const acceptTermsMessage = i18n.formatMessage({
-    id: "Airdrop1Modal.acceptTermsMessage",
+    id: "Airdrop1RegistrationModal.acceptTermsMessage",
     defaultMessage: "Please read and accept the",
     description:
       "Message displayed in the airdrop 1 modal when asking the user to accept the terms and conditions of the airdrop.",
   });
 
   const termsUrlLabel = i18n.formatMessage({
-    id: "Airdrop1Modal.termsUrlLabel",
+    id: "Airdrop1RegistrationModal.termsUrlLabel",
     defaultMessage: "Terms and Conditions",
     description:
       "Label of the Airdrops Terms and Conditions link displayed in the airdrop 1 modal.",
   });
 
   const acceptTermsButtonLabel = i18n.formatMessage({
-    id: "Airdrop1Modal.acceptTermsButtonLabel",
+    id: "Airdrop1RegistrationModal.acceptTermsButtonLabel",
     defaultMessage: "Accept",
     description:
       "Label for the button to accept the terms and conditions in the airdrop 1 modal",
@@ -131,14 +138,14 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
 
   const submitProofMessage = i18n.formatMessage(
     {
-      id: "Airdrop1Modal.submitProofMessage",
+      id: "Airdrop1RegistrationModal.submitProofMessage",
       defaultMessage:
-        "As a decentralised application, Verida Missions needs to verify your completed activities meet the {airdropTitle} criteria.{newline}{newline}Please submit your XP points proofs to our server for verification.",
+        "As a decentralised application, Verida Missions needs to verify that your completed activities meet the {airdropTitle} criteria.{newline}{newline}Please submit your XP points proofs to our server for verification.",
       description:
         "Message displayed in the rewards modal when before submitting the claim",
     },
     {
-      airdropTitle: i18n.formatMessage(metadata.longTitle),
+      airdropTitle: i18n.formatMessage(AIRDROP_1_DEFINITION.title),
       newline: (
         <>
           <br />
@@ -148,21 +155,21 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
   );
 
   const submitButtonLabel = i18n.formatMessage({
-    id: "Airdrop1Modal.submitButtonLabel",
+    id: "Airdrop1RegistrationModal.submitButtonLabel",
     defaultMessage: "Submit Proofs",
     description: "Label for the submit button in the airdrop 1 modal",
   });
 
   const proofSubmitErrorMessage = i18n.formatMessage(
     {
-      id: "Airdrop1Modal.proofSubmitErrorMessage",
+      id: "Airdrop1RegistrationModal.proofSubmitErrorMessage",
       defaultMessage:
         "Unfortunately, you are not eligible for the {airdropTitle}.{newline}To confirm the criteria, please check the",
       description:
         "Message displayed in the airdrop 1 modal when the proof submission fails",
     },
     {
-      airdropTitle: i18n.formatMessage(metadata.longTitle),
+      airdropTitle: i18n.formatMessage(AIRDROP_1_DEFINITION.title),
       newline: (
         <>
           <br />
@@ -173,7 +180,7 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
 
   return (
     <Modal
-      open={isEnabled && isModalOpen}
+      open
       onClose={handleClose}
       title={modalTitle}
       actions={
@@ -188,6 +195,8 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
                     {
                       label: acceptTermsButtonLabel,
                       onClick: handleAcceptTerms,
+                      variant: "contained",
+                      color: "secondary",
                     },
                   ]
                 : hasProofSubmitError
@@ -222,7 +231,12 @@ export const Airdrop1Modal: React.FunctionComponent = () => {
             {isCheckingProofSubmitted || isLoadingUserActivities ? (
               checkingSubmittedProofMessage
             ) : isProofSubmitted ? (
-              proofAlreadySubmittedMessage
+              <>
+                {proofAlreadySubmittedMessage}{" "}
+                <ExternalLink href={AIRDROPS_TERMS_URL} openInNewTab>
+                  {termsUrlLabel}
+                </ExternalLink>
+              </>
             ) : !hasEnoughPoints ? (
               notEnoughPointsMessage
             ) : !isTermsAccepted ? (

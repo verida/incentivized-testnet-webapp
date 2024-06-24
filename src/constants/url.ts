@@ -18,7 +18,5 @@ export const VERIDA_WALLET_DOWNLOAD_URL = "https://vault.verida.io/";
 export const VERIDA_MISSIONS_FAQ_URL =
   "https://community.verida.io/network-faq#c297834af96b4bde946832e5660ce164";
 
-export const VERIDA_BLOG_POST_VDA_WHITELIST =
-  "https://news.verida.io/announcing-the-verida-storage-credit-community-pre-sale-and-whitelist-d7f92e78b91c";
-
+/** URL of the VDA token page on verida.network */
 export const VDA_TOKEN_PAGE_URL = "https://www.verida.network/vda-token";

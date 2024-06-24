@@ -1,4 +1,5 @@
 export * from "./ActivityIndex";
+export * from "./AirdropStatus";
 export * from "./Avatar";
 export * from "./BackButton";
 export * from "./Button";

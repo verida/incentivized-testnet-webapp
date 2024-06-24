@@ -84,12 +84,6 @@ module.exports = {
           DEFAULT: "hsla(var(--menu) / 0.8)",
           foreground: "hsl(var(--foreground))",
         },
-        topBanner: {
-          DEFAULT: "hsl(var(--banner-grad-1))",
-          grad1: "hsl(var(--banner-grad-1))",
-          grad2: "hsl(var(--banner-grad-2))",
-          foreground: "hsl(var(--foreground))",
-        },
         stepCard1Banner: {
           DEFAULT: "hsl(var(--card-1-background))",
           grad1: "hsl(var(--card-1-grad-1))",
