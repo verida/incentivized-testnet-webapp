@@ -119,6 +119,34 @@
     "defaultMessage": "Terms and Conditions",
     "description": "Label of the Airdrops Terms and Conditions link."
   },
+  "AirdropCard.checkButtonLabel": {
+    "defaultMessage": "Check",
+    "description": "Label for the check button of the airdrop card"
+  },
+  "AirdropCard.checkMessage": {
+    "defaultMessage": "Check if you are included in the airdrop",
+    "description": "Message displayed above the check button in the airdrop card"
+  },
+  "AirdropCard.claimButtonLabel": {
+    "defaultMessage": "Claim",
+    "description": "Label for the claim button of the airdrop card"
+  },
+  "AirdropCard.claimMessage": {
+    "defaultMessage": "Claim before it's too late",
+    "description": "Message displayed above the claim button in the airdrop card"
+  },
+  "AirdropCard.missedAirdropMessage": {
+    "defaultMessage": "Unfortunately you missed this airdrop",
+    "description": "Message displayed in the airdrop card when the user missed the registration or claiming"
+  },
+  "AirdropCard.registerButtonLabel": {
+    "defaultMessage": "Register",
+    "description": "Label for the register button of the airdrop card"
+  },
+  "AirdropCard.registerMessage": {
+    "defaultMessage": "Register before it's too late",
+    "description": "Message displayed above the register button in the airdrop card"
+  },
   "AirdropCard.requirementsButtonLabel": {
     "defaultMessage": "Requirements",
     "description": "Label for the requirements button of the airdrop card"
@@ -151,11 +179,19 @@
     "defaultMessage": "Airdrop Requirements",
     "description": "Title of the airdrop requirements modal"
   },
-  "AirdropUserStatus.checkingStatusMessage": {
+  "AirdropStatus.checkingStatusMessage": {
     "defaultMessage": "Checking",
     "description": "Message displayed when checking the airdrop user's status"
   },
-  "AirdropUserStatus.registeredStatusMessage": {
+  "AirdropStatus.claimedStatusMessage": {
+    "defaultMessage": "Claimed",
+    "description": "Message displayed when the user has claimed the airdrop"
+  },
+  "AirdropStatus.closedStatusMessage": {
+    "defaultMessage": "Closed",
+    "description": "Message displayed when the user has claimed the airdrop"
+  },
+  "AirdropStatus.registeredStatusMessage": {
     "defaultMessage": "Registered",
     "description": "Message displayed when the user is registered for the airdrop"
   },
@@ -1247,14 +1283,6 @@
     "defaultMessage": "How to use the Markdown Editor demo app",
     "description": "Label of the video 'How to use the Markdown Editor demo app'"
   },
-  "airdrops.airdrop1.actionLabel": {
-    "defaultMessage": "Register",
-    "description": "Label for the action of the airdrop 1"
-  },
-  "airdrops.airdrop1.actionMessage": {
-    "defaultMessage": "Register by proving your elligibility",
-    "description": "Message displayed above the action button in the airdrop 1 card"
-  },
   "airdrops.airdrop1.description": {
     "defaultMessage": "This airdrop rewards early participants in Verida's Missions program. Early community members were able to explore and experience the benefits of effective self-sovereign identity and data ownership in web3.",
     "description": "Description of the airdrop 1"
@@ -1271,14 +1299,6 @@
     "defaultMessage": "Verida Airdrop 1",
     "description": "Title of the airdrop 1"
   },
-  "airdrops.airdrop2.actionLabel": {
-    "defaultMessage": "Check",
-    "description": "Label for the action of the airdrop 2"
-  },
-  "airdrops.airdrop2.actionMessage": {
-    "defaultMessage": "Check if you are included in the airdrop",
-    "description": "Message displayed above the action buttonin the airdrop 2 card"
-  },
   "airdrops.airdrop2.description": {
     "defaultMessage": "Airdrop 2 rewards Veridians who participated in Verida Zealy campaigns or Galxe campaigns between 2023 and 2024.",
     "description": "Description of the airdrop 2"
@@ -1294,18 +1314,6 @@
   "airdrops.airdrop2.title": {
     "defaultMessage": "Verida Airdrop 2",
     "description": "Title of the airdrop 2"
-  },
-  "airdrops.airdrop3.actionLabel": {
-    "defaultMessage": "-",
-    "description": "Label for the action of the airdrop 3"
-  },
-  "airdrops.airdrop3.actionMessage": {
-    "defaultMessage": "-",
-    "description": "Message displayed above the action button in the airdrop 3 card"
-  },
-  "airdrops.airdrop3.description": {
-    "defaultMessage": "-",
-    "description": "Description of the airdrop 3"
   },
   "airdrops.airdrop3.title": {
     "defaultMessage": "Verida Airdrop 3",

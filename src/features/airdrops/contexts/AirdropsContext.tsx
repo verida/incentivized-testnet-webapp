@@ -36,13 +36,14 @@ export const AirdropsProvider: React.FC<AirdropsProviderProps> = (props) => {
   useEffect(() => {
     setAirdropUserStatues({
       [AIRDROP_1_DEFINITION.id]: !isVeridaConnected
-        ? "waiting-registration"
-        : isVeridaConnecting || isAirdrop1CheckingRegistration
-          ? "checking"
-          : isAirdrop1Registered
-            ? "registered"
-            : "waiting-registration",
-      [AIRDROP_2_DEFINITION.id]: "not-applicable",
+        ? "not-connected"
+        : isAirdrop1Registered
+          ? "registered"
+          : isVeridaConnecting ||
+              (isVeridaConnected && isAirdrop1CheckingRegistration)
+            ? "loading"
+            : "none",
+      [AIRDROP_2_DEFINITION.id]: !isVeridaConnected ? "not-connected" : "none",
     });
   }, [
     isVeridaConnected,

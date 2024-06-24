@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from "react";
 import { useIntl } from "react-intl";
 
 import {
-  AirdropUserStatus,
+  AirdropStatus,
   Button,
   ButtonLink,
   Typography,
@@ -32,7 +32,7 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
   const { airdropUserStatues } = useAirdrops();
 
   const airdropUserStatus: AirdropUserStatusType = useMemo(() => {
-    return airdropUserStatues[airdrop.id] || "not-applicable";
+    return airdropUserStatues[airdrop.id] || "none";
   }, [airdrop, airdropUserStatues]);
 
   const [openRequirementsModal, setOpenRequirentsModal] = useState(false);
@@ -47,12 +47,6 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
 
   const i18n = useIntl();
 
-  const requirementsButtonLabel = i18n.formatMessage({
-    id: "AirdropCard.requirementsButtonLabel",
-    defaultMessage: "Requirements",
-    description: "Label for the requirements button of the airdrop card",
-  });
-
   if (airdrop.status === "coming-soon") {
     return (
       <ComingSoonAirdropCard
@@ -61,6 +55,56 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
       />
     );
   }
+
+  const requirementsButtonLabel = i18n.formatMessage({
+    id: "AirdropCard.requirementsButtonLabel",
+    defaultMessage: "Requirements",
+    description: "Label for the requirements button of the airdrop card",
+  });
+
+  const checkMessage = i18n.formatMessage({
+    id: "AirdropCard.checkMessage",
+    defaultMessage: "Check if you are included in the airdrop",
+    description: "Message displayed above the check button in the airdrop card",
+  });
+
+  const checkButtonLabel = i18n.formatMessage({
+    id: "AirdropCard.checkButtonLabel",
+    defaultMessage: "Check",
+    description: "Label for the check button of the airdrop card",
+  });
+
+  const registerMessage = i18n.formatMessage({
+    id: "AirdropCard.registerMessage",
+    defaultMessage: "Register before it's too late",
+    description:
+      "Message displayed above the register button in the airdrop card",
+  });
+
+  const registerButtonLabel = i18n.formatMessage({
+    id: "AirdropCard.registerButtonLabel",
+    defaultMessage: "Register",
+    description: "Label for the register button of the airdrop card",
+  });
+
+  const claimMessage = i18n.formatMessage({
+    id: "AirdropCard.claimMessage",
+    defaultMessage: "Claim before it's too late",
+    description: "Message displayed above the claim button in the airdrop card",
+  });
+
+  const claimButtonLabel = i18n.formatMessage({
+    id: "AirdropCard.claimButtonLabel",
+    defaultMessage: "Claim",
+    description: "Label for the claim button of the airdrop card",
+  });
+
+  const missedAirdropMessage = i18n.formatMessage({
+    id: "AirdropCard.missedAirdropMessage",
+    defaultMessage: "Unfortunately you missed this airdrop",
+    description:
+      "Message displayed in the airdrop card when the user missed the registration or claiming",
+  });
 
   return (
     <>
@@ -77,15 +121,17 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
                 <VdaTokensChip nbVdaTokens={airdrop.vdaAllocation} />
               ) : null}
             </div>
-            <Typography className="text-muted-foreground">
-              {i18n.formatMessage(airdrop.description, {
-                newline: (
-                  <>
-                    <br />
-                  </>
-                ),
-              })}
-            </Typography>
+            {airdrop.description ? (
+              <Typography className="text-muted-foreground">
+                {i18n.formatMessage(airdrop.description, {
+                  newline: (
+                    <>
+                      <br />
+                    </>
+                  ),
+                })}
+              </Typography>
+            ) : null}
           </div>
         }
         bottomContent={
@@ -103,20 +149,32 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
               ) : null}
             </div>
             <div className="flex flex-col gap-6">
-              {/** TODO: Rework this part to better taking into account the
-               * different states of the airdrop, in which stage it is
-               * (registration, claim, ended) and the user status (waiting
-               * for registration, registered, claimed, etc.)
-               */}
-              {airdropUserStatus === "waiting-registration" ||
-              airdropUserStatus === "not-applicable" ? (
+              {airdrop.status === "check" ? (
                 <Typography className="text-center sm:text-right text-muted-foreground">
-                  {i18n.formatMessage(airdrop.actionMessage)}
+                  {checkMessage}
+                </Typography>
+              ) : airdrop.status === "registration-opened" &&
+                airdropUserStatus === "none" ? (
+                <Typography className="text-center sm:text-right text-muted-foreground">
+                  {registerMessage}
+                </Typography>
+              ) : airdrop.status === "claim-opened" &&
+                airdropUserStatus === "registered" ? (
+                <Typography className="text-center sm:text-right text-muted-foreground">
+                  {claimMessage}
+                </Typography>
+              ) : ((airdrop.status === "registration-closed" ||
+                  airdrop.status === "claim-opened" ||
+                  airdrop.status === "claim-closed") &&
+                  airdropUserStatus === "none") ||
+                (airdrop.status === "claim-closed" &&
+                  airdropUserStatus === "registered") ? (
+                <Typography className="text-center sm:text-right text-muted-foreground">
+                  {missedAirdropMessage}
                 </Typography>
               ) : null}
               <div className=" flex flex-col sm:flex-row gap-6 justify-end">
-                {airdropUserStatus === "waiting-registration" ||
-                airdropUserStatus === "not-applicable" ? (
+                {airdrop.status === "check" ? (
                   <ButtonLink
                     variant="contained"
                     color="primary"
@@ -124,10 +182,37 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
                     href={`/airdrops/${airdrop.id}`}
                     internal
                   >
-                    {i18n.formatMessage(airdrop.actionLabel)}
+                    {checkButtonLabel}
+                  </ButtonLink>
+                ) : airdrop.status === "registration-opened" &&
+                  (airdropUserStatus === "not-connected" ||
+                    airdropUserStatus === "none") ? (
+                  <ButtonLink
+                    variant="contained"
+                    color="primary"
+                    className="w-full sm:w-fit"
+                    href={`/airdrops/${airdrop.id}`}
+                    internal
+                  >
+                    {registerButtonLabel}
+                  </ButtonLink>
+                ) : airdrop.status === "claim-opened" &&
+                  (airdropUserStatus === "not-connected" ||
+                    airdropUserStatus === "registered") ? (
+                  <ButtonLink
+                    variant="contained"
+                    color="primary"
+                    className="w-full sm:w-fit"
+                    href={`/airdrops/${airdrop.id}`}
+                    internal
+                  >
+                    {claimButtonLabel}
                   </ButtonLink>
                 ) : (
-                  <AirdropUserStatus status={airdropUserStatus} />
+                  <AirdropStatus
+                    airdropStatus={airdrop.status}
+                    userStatus={airdropUserStatus}
+                  />
                 )}
                 {airdrop.resource ? (
                   <ButtonLink

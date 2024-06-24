@@ -7,6 +7,7 @@ import {
   Check,
   CheckOne,
   Close,
+  CloseOne,
   Copy,
   Down,
   HamburgerButton,
@@ -44,6 +45,7 @@ export type GenericIconType =
   | "bug"
   | "clock"
   | "close"
+  | "close-outline"
   | "copy"
   | "loading"
   | "menu-open"
@@ -96,6 +98,8 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
       return <History size={size} {...otherProps} />;
     case "close":
       return <Close size={size} {...otherProps} />;
+    case "close-outline":
+      return <CloseOne size={size} {...otherProps} />;
     case "loading":
       return <LoadingOne size={size} {...otherProps} />;
     case "menu-open":

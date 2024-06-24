@@ -6,7 +6,7 @@ import { AirdropDefinition } from "~/features/airdrops/types";
 
 export const AIRDROP_2_DEFINITION: AirdropDefinition = {
   id: "airdrop2",
-  status: "checking",
+  status: "check",
   order: 2,
   enabled: true && config.verida.environment === EnvironmentType.MAINNET,
   title: defineMessage({
@@ -19,17 +19,6 @@ export const AIRDROP_2_DEFINITION: AirdropDefinition = {
     defaultMessage:
       "Airdrop 2 rewards Veridians who participated in Verida Zealy campaigns or Galxe campaigns between 2023 and 2024.",
     description: "Description of the airdrop 2",
-  }),
-  actionLabel: defineMessage({
-    id: "airdrops.airdrop2.actionLabel",
-    defaultMessage: "Check",
-    description: "Label for the action of the airdrop 2",
-  }),
-  actionMessage: defineMessage({
-    id: "airdrops.airdrop2.actionMessage",
-    defaultMessage: "Check if you are included in the airdrop",
-    description:
-      "Message displayed above the action buttonin the airdrop 2 card",
   }),
   requirements: defineMessage({
     id: "airdrops.airdrop2.requirements",
