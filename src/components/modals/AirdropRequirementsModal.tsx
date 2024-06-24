@@ -80,10 +80,12 @@ export const AirdropRequirementsModal: React.FC<
         <Typography>{airdropRequirementSectionMessage}</Typography>
         <Typography>{requirementsContent}</Typography>
         <Typography>
-          {termsConditionsRequirement}
-          <ExternalLink href={AIRDROPS_TERMS_URL} openInNewTab>
-            {termsConditionsLinkLabel}
-          </ExternalLink>
+          <>
+            {termsConditionsRequirement}{" "}
+            <ExternalLink href={AIRDROPS_TERMS_URL} openInNewTab>
+              {termsConditionsLinkLabel}
+            </ExternalLink>
+          </>
         </Typography>
       </div>
     </Modal>
