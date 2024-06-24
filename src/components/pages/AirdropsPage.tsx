@@ -48,7 +48,7 @@ export const AirdropsPage: React.FC = () => {
       id: "AirdropsPage.aboutAirdropsMessage",
       description: "Message in the section about airdrops in the airdrops page",
       defaultMessage:
-        "The Verida Foundation has committed to giving 20% of the total initial token supply to the community through its Network Growth Rewards.{newline}{newline}Airdrops target constructive participation, ensuring that tokens go to contributors. Past airdrop eligibility does not guarantee eligibility in future airdrops.",
+        "The Verida Foundation has committed to giving 20% of the total initial token supply to the community through its Network Growth Rewards.{newline}{newline}Airdrops target constructive participation — ensuring that tokens go to contributors. Note that past airdrop eligibility criteria do not guarantee eligibility in future airdrops.",
     },
     {
       newline: (
@@ -59,16 +59,16 @@ export const AirdropsPage: React.FC = () => {
     }
   );
 
-  const commonQuestionsSectionTitle = i18n.formatMessage({
-    id: "AirdropsPage.commonQuestionsSectionTitle",
-    description: "Title of the section common questions in the airdrops page",
-    defaultMessage: "Common Questions",
-  });
+  // const commonQuestionsSectionTitle = i18n.formatMessage({
+  //   id: "AirdropsPage.commonQuestionsSectionTitle",
+  //   description: "Title of the section common questions in the airdrops page",
+  //   defaultMessage: "Common Questions",
+  // });
 
   const faqButtonLabel = i18n.formatMessage({
     id: "AirdropsPage.faqButtonLabel",
     description: "Label for the FAQ button in the airdrops page",
-    defaultMessage: "Read Full FAQ",
+    defaultMessage: "Read FAQ",
   });
 
   return (
@@ -117,13 +117,13 @@ export const AirdropsPage: React.FC = () => {
               </Typography>
             </div>
             <div className="flex flex-col gap-4 items-center">
-              <Typography
+              {/* <Typography
                 variant="heading-l"
                 component="p"
                 className="text-center"
               >
                 {commonQuestionsSectionTitle}
-              </Typography>
+              </Typography> */}
               <div className="flex flex-col gap-6">
                 {AIRDROPS_COMMON_QUESTIONS.map((question, index) => (
                   <div key={index} className="flex flex-col gap-3">
