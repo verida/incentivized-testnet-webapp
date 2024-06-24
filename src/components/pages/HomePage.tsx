@@ -6,6 +6,7 @@ import { Alert, HomeHero } from "~/components/molecules";
 import {
   ConnectVeridaButton,
   HomeMissionBeginSection,
+  MissionCardsCaroussel,
 } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { APP_TITLE } from "~/constants";
@@ -183,8 +184,9 @@ export const HomePage: React.FC = () => {
             </div> */}
           </div>
         </div>
-        <div className="flex flex-row gap-16 lg:gap-20 max-w-[calc(1264px_-_3rem)] mt-16">
+        <div className="flex flex-col gap-16 lg:gap-20 max-w-[calc(1264px_-_3rem)] mt-16">
           <HomeMissionBeginSection missions={missions} />
+          <MissionCardsCaroussel missions={missions} />
         </div>
       </div>
     </PageLayout>
