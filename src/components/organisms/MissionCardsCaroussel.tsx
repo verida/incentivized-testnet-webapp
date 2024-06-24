@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { Icon, IconButton } from "~/components/atoms";
+import { Icon, IconButton, Typography } from "~/components/atoms";
 import { MissionCard } from "~/components/organisms";
 import { Mission } from "~/features/missions";
 
@@ -9,12 +9,13 @@ const MAX_NB_ITEMS = 3;
 
 export type MissionCardsCarousselProps = {
   missions: Mission[];
+  title?: string;
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const MissionCardsCaroussel: React.FC<MissionCardsCarousselProps> = (
   props
 ) => {
-  const { missions, ...asideProps } = props;
+  const { missions, title, ...asideProps } = props;
 
   const [currentScrollIndex, setCurrentScrollIndex] = useState(0);
 
@@ -25,8 +26,9 @@ export const MissionCardsCaroussel: React.FC<MissionCardsCarousselProps> = (
 
   return (
     <div {...asideProps}>
-      <div className="mb-6">
-        <div className="hidden lg:flex gap-3 justify-end">
+      <div className="flex mb-6 justify-between">
+        <Typography variant={"heading-m"}>{title}</Typography>
+        <div className="hidden lg:flex gap-3">
           <IconButton
             variant="outlined"
             color="default"

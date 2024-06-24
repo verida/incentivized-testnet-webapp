@@ -92,6 +92,30 @@ export const HomePage: React.FC = () => {
       "Label for the airdrop 2 'Learn more' alert button on the home page",
   });
 
+  const trendingLabel = i18n.formatMessage({
+    id: "HomePage.trendingLabel",
+    defaultMessage: "Trending",
+    description: "Label Trending",
+  });
+
+  const newLabel = i18n.formatMessage({
+    id: "HomePage.newLabel",
+    defaultMessage: "New",
+    description: "Label New",
+  });
+
+  // const partnersLabel = i18n.formatMessage({
+  //   id: "HomePage.partnersLabel",
+  //   defaultMessage: "Partners",
+  //   description: "Label Partners",
+  // });
+
+  const unlockMoreMissionsLabel = i18n.formatMessage({
+    id: "HomePage.unlockMoreMissionsLabel",
+    defaultMessage: "Unlock More Missions",
+    description: "Label Unlock More Missions",
+  });
+
   return (
     <PageLayout
       hideBackButton
@@ -186,7 +210,12 @@ export const HomePage: React.FC = () => {
         </div>
         <div className="flex flex-col gap-16 lg:gap-20 max-w-[calc(1264px_-_3rem)] mt-16">
           <HomeMissionBeginSection missions={missions} />
-          <MissionCardsCaroussel missions={missions} />
+          <MissionCardsCaroussel missions={missions} title={trendingLabel} />
+          <MissionCardsCaroussel missions={missions} title={newLabel} />
+          <MissionCardsCaroussel
+            missions={missions}
+            title={unlockMoreMissionsLabel}
+          />
         </div>
       </div>
     </PageLayout>
