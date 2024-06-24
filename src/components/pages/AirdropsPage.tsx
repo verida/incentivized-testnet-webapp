@@ -68,7 +68,7 @@ export const AirdropsPage: React.FC = () => {
   const faqButtonLabel = i18n.formatMessage({
     id: "AirdropsPage.faqButtonLabel",
     description: "Label for the FAQ button in the airdrops page",
-    defaultMessage: "Read FAQ",
+    defaultMessage: "Read Full FAQ",
   });
 
   return (

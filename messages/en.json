@@ -172,7 +172,7 @@
     "description": "Title of the section common questions in the airdrops page"
   },
   "AirdropsPage.faqButtonLabel": {
-    "defaultMessage": "Read FAQ",
+    "defaultMessage": "Read Full FAQ",
     "description": "Label for the FAQ button in the airdrops page"
   },
   "AirdropsPage.tagline": {
