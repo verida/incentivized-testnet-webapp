@@ -1,5 +1,6 @@
 import { VariantProps, cva } from "class-variance-authority";
 import React from "react";
+import { twMerge } from "tailwind-merge";
 
 import {
   Button,
@@ -59,14 +60,15 @@ export const Alert: React.FunctionComponent<AlertProps> = (props) => {
                 return (
                   <Button
                     {...buttonProps}
+                    variant={action.variant || "contained"}
                     color={
                       action.color
                         ? action.color
                         : type === "info"
                           ? "primary"
-                          : "default"
+                          : "secondary"
                     }
-                    className="whitespace-nowrap"
+                    className={twMerge("w-full", action.className)}
                   >
                     {action.label}
                   </Button>
@@ -76,14 +78,15 @@ export const Alert: React.FunctionComponent<AlertProps> = (props) => {
                 return (
                   <ButtonLink
                     {...linkProps}
+                    variant={action.variant || "contained"}
                     color={
                       action.color
                         ? action.color
                         : type === "info"
                           ? "primary"
-                          : "default"
+                          : "secondary"
                     }
-                    className="whitespace-nowrap"
+                    className={twMerge("w-full", action.className)}
                   >
                     {action.label}
                   </ButtonLink>

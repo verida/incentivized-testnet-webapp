@@ -2,8 +2,8 @@ import { type VariantProps, cva } from "class-variance-authority";
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-const buttonBaseVariants = cva(
-  "flex items-center gap-2 justify-center text-sm font-semibold whitespace-nowrap",
+export const buttonBaseVariants = cva(
+  "flex items-center gap-2 justify-center text-sm font-semibold whitespace-nowrap w-fit",
   {
     variants: {
       variant: {
@@ -12,8 +12,8 @@ const buttonBaseVariants = cva(
         outlined: "",
       },
       color: {
-        default: "",
         primary: "",
+        secondary: "",
       },
       size: {
         "no-margin": "p-0 rounded-lg",
@@ -25,6 +25,7 @@ const buttonBaseVariants = cva(
       shape: {
         standard: "",
         square: "",
+        circle: "rounded-full",
       },
     },
     compoundVariants: [
@@ -50,43 +51,44 @@ const buttonBaseVariants = cva(
       },
       {
         variant: "contained",
-        color: "default",
+        color: "secondary",
         className:
           "text-foreground bg-transparent-15 hover:bg-transparent-30 disabled:opacity-30 disabled:bg-transparent-15",
       },
       {
         variant: "outlined",
-        color: "default",
+        color: "secondary",
         className:
           "text-foreground bg-transparent-8 hover:bg-transparent-12 border border-border hover:border-border-hover disabled:opacity-30 disabled:bg-transparent-8",
       },
       {
         variant: "text",
-        color: "default",
-        className: "hover:bg-transparent-10 disabled:text-muted-foreground",
+        color: "secondary",
+        className:
+          "text-foreground bg-transparent hover:bg-transparent-10 disabled:text-muted-foreground",
       },
       {
         variant: "contained",
         color: "primary",
         className:
-          "text-primary-foreground bg-primary hover:bg-primary-background-hover disabled:bg-primary-background-disabled",
+          "text-background bg-foreground hover:bg-foreground/90 disabled:bg-foreground/40",
       },
       {
         variant: "outlined",
         color: "primary",
-        // TODO: Properly rework the style of this coumpound variant when needed
         className:
-          "text-primary bg-transparent-8 hover:bg-transparent-12 border-primary hover:border-primary disabled:opacity-30 disabled:bg-transparent-8",
+          "text-foreground bg-transparent-8 hover:bg-transparent-12 border border-foreground hover:border-foreground/90 disabled:opacity-30 disabled:bg-transparent-8",
       },
       {
         variant: "text",
         color: "primary",
-        className: "text-primary hover:bg-primary/10 disabled:text-primary/70",
+        className:
+          "text-foreground bg-transparent hover:bg-foreground/10 disabled:opacity-30 disabled:bg-transparent",
       },
     ],
     defaultVariants: {
       variant: "contained",
-      color: "default",
+      color: "secondary",
       size: "medium",
       shape: "standard",
     },

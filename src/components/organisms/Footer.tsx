@@ -23,16 +23,9 @@ export const Footer: React.FC<FooterProps> = (props) => {
     description: "label of the 'built on' text in the footer section",
   });
 
-  // const termsAndConditionLinkLabel = i18n.formatMessage({
-  //   id: "Footer.termsAndConditionLinkLabel",
-  //   defaultMessage: "Terms of Use",
-  //   description:
-  //     "Label of the 'Terms and Condition' Link in the footer section",
-  // });
-
   const conditionsWillApplyMessage = i18n.formatMessage({
     id: "Footer.conditionsWillApplyMessage",
-    defaultMessage: "Eligibility conditions and terms of use will apply",
+    defaultMessage: "Eligibility conditions and terms of use apply",
     description:
       "Message stating that conditions will apply when using the app",
   });
@@ -54,7 +47,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
         className
       )}
     >
-      <div className="flex flex-col justify-center sm:order-2">
+      <div className="flex flex-col justify-center sm:order-2 px-8">
         <ExternalLink
           href={VERIDA_NETWORK_URL}
           openInNewTab
@@ -76,7 +69,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
           {/* <Link to="/terms-and-conditions" className="hover:underline">
             {termsAndConditionLinkLabel}
           </Link> */}
-          <Typography className="text-center text-xs">
+          <Typography className="text-center sm:text-right text-xs">
             {conditionsWillApplyMessage}
           </Typography>
         </div>

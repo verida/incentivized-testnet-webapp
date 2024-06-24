@@ -9,32 +9,13 @@ import {
   MissionsSideNavigation,
 } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
-import { APP_TITLE } from "~/constants";
-import {
-  useAirdrop1,
-  useAirdrop1Queries,
-  useAirdrop2,
-} from "~/features/airdrops";
+import { APP_TITLE, VDA_TOKEN_PAGE_URL } from "~/constants";
 import { missions } from "~/features/missions";
 import { useVerida } from "~/features/verida";
 
 export const HomePage: React.FC = () => {
   const i18n = useIntl();
   const { isConnected } = useVerida();
-  const {
-    metadata: airdrop1Metadata,
-    isEnabled: isAirdrop1Enabled,
-    openModal: openAirdrop1Modal,
-  } = useAirdrop1();
-  const {
-    isProofSubmitted: isAirdrop1ProofSubmitted,
-    isCheckingProofSubmitted: isCheckingAirdrop1ProofSubmitted,
-  } = useAirdrop1Queries();
-  const {
-    metadata: airdrop2Metadata,
-    isEnabled: isAirdrop2Enabled,
-    openModal: openAirdrop2Modal,
-  } = useAirdrop2();
 
   const tagline = i18n.formatMessage({
     id: "HomePage.tagline",
@@ -42,54 +23,25 @@ export const HomePage: React.FC = () => {
     defaultMessage: "Explore a new era of data ownership",
   });
 
-  const airdrop1AlertMessage = i18n.formatMessage(
-    {
-      id: "HomePage.airdrop1AlertMessage",
-      defaultMessage: "Prove your eligibility for the {airdropTitle}",
-      description: "Message for the airdrop 1 alert on the home page",
-    },
-    {
-      airdropTitle: i18n.formatMessage(airdrop1Metadata.longTitle),
-    }
-  );
-
-  const airdrop1AlertProveActionButtonLabel = i18n.formatMessage({
-    id: "HomePage.airdrop1AlertProveActionButtonLabel",
-    defaultMessage: "Prove",
-    description:
-      "Label for the airdrop 1 'Prove' alert button on the home page",
+  const airdropsAndVdaTokenAlertMessage = i18n.formatMessage({
+    id: "HomePage.airdropsAndVdaTokenAlertMessage",
+    description: "Message displayed in the airdrop alert on the home page",
+    defaultMessage:
+      "The Verida Storage Credit Token (VDA) is now live. Learn more about the VDA Token and check our airdrops.",
   });
 
-  const airdrop1AlertLearnActionButtonLabel = i18n.formatMessage({
-    id: "HomePage.airdrop1AlertLearnActionButtonLabel",
-    defaultMessage: "Learn more",
+  const airdropsAlertButtonLabel = i18n.formatMessage({
+    id: "HomePage.airdropsAlertButtonLabel",
     description:
-      "Label for the airdrop 1 'Learn more' alert button on the home page",
+      "Label for the button in the airdrop/vda token alert to redirect to the airdrops page",
+    defaultMessage: "Airdrops",
   });
 
-  const airdrop2AlertMessage = i18n.formatMessage(
-    {
-      id: "HomePage.airdrop2AlertMessage",
-      defaultMessage: "Check if you are included in the {airdropTitle}",
-      description: "Message for the airdrop 2 alert on the home page",
-    },
-    {
-      airdropTitle: i18n.formatMessage(airdrop2Metadata.longTitle),
-    }
-  );
-
-  const airdrop2AlertCheckActionButtonLabel = i18n.formatMessage({
-    id: "HomePage.airdrop2AlertCheckActionButtonLabel",
-    defaultMessage: "Check",
+  const vdaTokenAlertButtonLabel = i18n.formatMessage({
+    id: "HomePage.vdaTokenAlertButtonLabel",
     description:
-      "Label for the airdrop 2 'Check' alert button on the home page",
-  });
-
-  const airdrop2AlertLearnActionButtonLabel = i18n.formatMessage({
-    id: "HomePage.airdrop2AlertLearnActionButtonLabel",
-    defaultMessage: "Learn more",
-    description:
-      "Label for the airdrop 2 'Learn more' alert button on the home page",
+      "Label for the button in the airdrop/vda token alert to redirect to the VDA token page on verida.network",
+    defaultMessage: "VDA Token",
   });
 
   return (
@@ -98,10 +50,10 @@ export const HomePage: React.FC = () => {
       displayGetSupportSection
       displayLearnMoreSection
       containerClassName="bg-homepage"
-      contentClassName="max-w-screen-sm sm:px-4 pt-16"
+      contentClassName="max-w-screen-sm sm:px-4 pt-4"
     >
       <div className="flex flex-col justify-center">
-        <div className="flex flex-col items-center justify-center text-center w-full mt-28">
+        <div className="flex flex-col items-center justify-center text-center w-full mt-24">
           <Typography
             variant="base"
             className="leading-[120%] font-semibold text-primary uppercase tracking-[0.07rem] sm:tracking-[0.08rem]"
@@ -121,51 +73,27 @@ export const HomePage: React.FC = () => {
             <ConnectVeridaButton longLabel />
           </div>
         )}
-        {isAirdrop1Enabled &&
-          isConnected &&
-          !isAirdrop1ProofSubmitted &&
-          !isCheckingAirdrop1ProofSubmitted && (
-            <Alert
-              type="info"
-              actions={[
-                {
-                  type: "button",
-                  label: airdrop1AlertProveActionButtonLabel,
-                  onClick: openAirdrop1Modal,
-                },
-                {
-                  type: "link",
-                  label: airdrop1AlertLearnActionButtonLabel,
-                  href: airdrop1Metadata.articleUrl,
-                  openInNewTab: true,
-                  color: "default",
-                },
-              ]}
-              message={airdrop1AlertMessage}
-              className="mt-6"
-            />
-          )}
-        {isAirdrop2Enabled && isConnected && (
-          <Alert
-            type="info"
-            actions={[
-              {
-                type: "button",
-                label: airdrop2AlertCheckActionButtonLabel,
-                onClick: openAirdrop2Modal,
-              },
-              {
-                type: "link",
-                label: airdrop2AlertLearnActionButtonLabel,
-                href: airdrop2Metadata.articleUrl,
-                openInNewTab: true,
-                color: "default",
-              },
-            ]}
-            message={airdrop2AlertMessage}
-            className="mt-6"
-          />
-        )}
+        <Alert
+          type="info"
+          message={airdropsAndVdaTokenAlertMessage}
+          actions={[
+            {
+              type: "link",
+              label: airdropsAlertButtonLabel,
+              href: "/airdrops",
+              internal: true,
+            },
+            {
+              type: "link",
+              label: vdaTokenAlertButtonLabel,
+              href: VDA_TOKEN_PAGE_URL,
+              color: "secondary",
+              internal: false,
+              openInNewTab: true,
+            },
+          ]}
+          className="mt-6"
+        />
         <div className="mt-16 relative">
           <div className="hidden lg:block absolute top-0 bottom-0 -right-6 translate-x-full w-36 xl:w-64">
             <aside className="sticky top-24">

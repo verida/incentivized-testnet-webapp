@@ -37,7 +37,13 @@ export const GetSupportSection: React.FC<GetSupportSectionProps> = (props) => {
       <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6 w-full">
         {links.map((link, index) => (
           <li key={index}>
-            <ButtonLink href={link.url} openInNewTab>
+            <ButtonLink
+              variant="contained"
+              color="secondary"
+              href={link.url}
+              openInNewTab
+              className="w-full"
+            >
               {link.icon}
               <span>{link.label}</span>
             </ButtonLink>

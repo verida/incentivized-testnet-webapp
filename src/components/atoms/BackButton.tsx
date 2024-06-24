@@ -22,7 +22,7 @@ export const BackButton: React.FC<BackButtonProps> = (props) => {
     <IconButton
       {...iconButtonProps}
       variant="outlined"
-      color="default"
+      color="secondary"
       className={twMerge("backdrop-blur-sm", className)}
       icon={<Icon type="arrow-left" size={18} />}
       onClick={handleBack}

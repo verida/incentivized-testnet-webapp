@@ -6,13 +6,20 @@ import { Alert, ShareOnSocials } from "~/components/molecules";
 import { Modal } from "~/components/templates";
 import {
   AIRDROPS_TERMS_URL,
+  AIRDROP_2_DEFINITION,
   useAirdrop2,
-  useAirdrop2CheckEligibility,
 } from "~/features/airdrops";
 
-export const Airdrop2Modal: React.FunctionComponent = () => {
-  const { metadata, isEnabled, isModalOpen, closeModal } = useAirdrop2();
-  const { checkEligbility, isChecking } = useAirdrop2CheckEligibility();
+export type Airdrop2CheckModalProps = {
+  onClose: () => void;
+};
+
+export const Airdrop2CheckModal: React.FC<Airdrop2CheckModalProps> = (
+  props
+) => {
+  const { onClose } = props;
+
+  const { checkEligbility, isChecking } = useAirdrop2();
 
   const [walletAddress, setWalletAddress] = useState("");
   const [eligilibilityStatus, setEligibilityStatus] = useState<
@@ -53,22 +60,22 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
     setWalletAddress("");
     setEligibilityStatus("unknown");
     setEligibilityCheckError(null);
-    closeModal();
-  }, [closeModal]);
+    onClose();
+  }, [onClose]);
 
   const i18n = useIntl();
 
-  const modalTitle = i18n.formatMessage(metadata.longTitle);
+  const modalTitle = i18n.formatMessage(AIRDROP_2_DEFINITION.title);
 
   const checkYourEligibilityMessage = i18n.formatMessage(
     {
-      id: "Airdrop2Modal.checkYourEligibilityMessage",
+      id: "Airdrop2CheckModal.checkYourEligibilityMessage",
       defaultMessage:
         "Check if your blockchain wallet address used for the Galxe and Zealy campaigns is included in the {airdropTitle}*{newline}{newline}*This does not guarantee your eligibility to claim airdrop rewards. All Verida Airdrops will be subject to the Airdrop",
       description: "Welcome message in the airdrop 2 modal",
     },
     {
-      airdropTitle: i18n.formatMessage(metadata.longTitle),
+      airdropTitle: i18n.formatMessage(AIRDROP_2_DEFINITION.title),
       newline: (
         <>
           <br />
@@ -78,13 +85,13 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
   );
 
   const termsUrlLabel = i18n.formatMessage({
-    id: "Airdrop2Modal.termsUrlLabel",
+    id: "Airdrop2CheckModal.termsUrlLabel",
     defaultMessage: "Terms and Conditions",
     description: "Label of the Airdrops Terms and Conditions link.",
   });
 
   const checkingEligibilityMessage = i18n.formatMessage({
-    id: "Airdrop2Modal.checkingEligibilityMessage",
+    id: "Airdrop2CheckModal.checkingEligibilityMessage",
     defaultMessage: "Checking...",
     description:
       "Message displayed in the airdrop 2 modal when checking if included in the list",
@@ -92,14 +99,14 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
 
   const succesfullyEligibleMessage = i18n.formatMessage(
     {
-      id: "Airdrop2Modal.succesfullyEligibleMessage",
+      id: "Airdrop2CheckModal.succesfullyEligibleMessage",
       defaultMessage:
         "Congratulations! You are included in the {airdropTitle}*.{newline}{newline}Check our socials to be notified when the claim window opens.{newline}{newline}*This does not guarantee your eligibility to claim airdrop rewards. All Verida Airdrops will be subject to the Airdrop",
       description:
         "Message displayed in the airdrop 2 modal when the user is included",
     },
     {
-      airdropTitle: i18n.formatMessage(metadata.longTitle),
+      airdropTitle: i18n.formatMessage(AIRDROP_2_DEFINITION.title),
       newline: (
         <>
           <br />
@@ -109,7 +116,7 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
   );
 
   const sharedMessageOnSocialsText = i18n.formatMessage({
-    id: "Airdrop2Modal.sharedMessageOnSocialsText",
+    id: "Airdrop2CheckModal.sharedMessageOnSocialsText",
     defaultMessage:
       "I am included in the @verida_io Airdrop 2 at https://missions.verida.network/",
     description: "Message shared on social if eligible to airdrop 2",
@@ -117,14 +124,14 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
 
   const notEligibleMessage = i18n.formatMessage(
     {
-      id: "Airdrop2Modal.notEligibleMessage",
+      id: "Airdrop2CheckModal.notEligibleMessage",
       defaultMessage:
         "Unfortunately, you are not included in the {airdropTitle}{newline}{newline}Read the criteria in the",
       description:
         "Message displayed in the airdrop 2 modal when the user is not included",
     },
     {
-      airdropTitle: i18n.formatMessage(metadata.longTitle),
+      airdropTitle: i18n.formatMessage(AIRDROP_2_DEFINITION.title),
       newline: (
         <>
           <br />
@@ -134,20 +141,20 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
   );
 
   const announcementArticleUrlLabel = i18n.formatMessage({
-    id: "Airdrop2Modal.announcementArticleUrlLabel",
+    id: "Airdrop2CheckModal.announcementArticleUrlLabel",
     defaultMessage: "announcement article",
     description: "Label of the Airdrop 2 announcement article link.",
   });
 
   const checkEligibilityButtonLabel = i18n.formatMessage({
-    id: "Airdrop2Modal.checkEligibilityButtonLabel",
+    id: "Airdrop2CheckModal.checkEligibilityButtonLabel",
     defaultMessage: "Check",
     description:
       "Button label to check a user is included in the airdrop 2 modal",
   });
 
   const somethingWentWrongMessage = i18n.formatMessage({
-    id: "Airdrop2Modal.somethingWentWrongMessage",
+    id: "Airdrop2CheckModal.somethingWentWrongMessage",
     defaultMessage: "Something went wrong. Please try again later.",
     description:
       "Message displayed in the airdrop 2 modal when something went wrong",
@@ -155,7 +162,7 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
 
   return (
     <Modal
-      open={isEnabled && isModalOpen}
+      open
       onClose={handleClose}
       title={modalTitle}
       actions={
@@ -164,6 +171,8 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
               {
                 label: checkEligibilityButtonLabel,
                 onClick: handleCheckEligibility,
+                variant: "contained",
+                color: "secondary",
                 disabled: isChecking,
               },
             ]
@@ -202,9 +211,14 @@ export const Airdrop2Modal: React.FunctionComponent = () => {
             ) : (
               <>
                 {notEligibleMessage}{" "}
-                <ExternalLink href={metadata.articleUrl} openInNewTab>
-                  {announcementArticleUrlLabel}
-                </ExternalLink>
+                {AIRDROP_2_DEFINITION.resource ? (
+                  <ExternalLink
+                    href={AIRDROP_2_DEFINITION.resource.url}
+                    openInNewTab
+                  >
+                    {announcementArticleUrlLabel}
+                  </ExternalLink>
+                ) : null}
               </>
             )}
           </Typography>

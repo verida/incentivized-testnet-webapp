@@ -49,16 +49,6 @@ export const config = {
   api: {
     baseUrl: process.env.REACT_APP_API_BASE_URL,
   },
-  airdrops: {
-    airdrop1: {
-      // Airdrop 1: Early Adopters Airdrop
-      isEnabled: true,
-    },
-    airdrop2: {
-      // Airdrop 1: Galxe and Zealy Airdrop
-      isEnabled: true,
-    },
-  },
   sentry: {
     enabled: process.env.REACT_APP_SENTRY_ENABLED === "false" ? false : true,
     dsn: process.env.REACT_APP_SENTRY_DSN,
