@@ -14,5 +14,5 @@ export const AIRDROP_3_DEFINITION: AirdropDefinition = {
     defaultMessage: "Verida Airdrop 3",
     description: "Title of the airdrop 3",
   }),
-  accentColor: "#19193D",
+  accentColor: "rgba(25, 25, 61, 0.3)",
 };

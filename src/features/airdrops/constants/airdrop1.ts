@@ -36,7 +36,7 @@ export const AIRDROP_1_DEFINITION: AirdropDefinition = {
     }),
     url: "https://news.verida.io/verida-announces-inaugural-early-adopters-airdrop-f1e42399fe91",
   },
-  accentColor: "#6C3E92",
+  accentColor: "rgba(108, 62, 146, 0.3)",
 };
 
 export const AIRDROP_1_MIN_XP_POINTS = 50;
