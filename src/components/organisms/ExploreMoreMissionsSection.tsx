@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { useIntl } from "react-intl";
 
 import { PageAsideSectionWrapper } from "~/components/molecules";
-import { MissionCardsCaroussel } from "~/components/organisms";
+import { MissionCardsCarousel } from "~/components/organisms";
 import { Mission, missions } from "~/features/missions";
 
 export type ExploreMoreMissionsSectionProps = {
@@ -30,7 +30,7 @@ export const ExploreMoreMissionsSection: React.FC<
   return (
     <aside {...asideProps}>
       <PageAsideSectionWrapper title={sectionTitle}>
-        <MissionCardsCaroussel missions={displayedMissions} />
+        <MissionCardsCarousel missions={displayedMissions} />
       </PageAsideSectionWrapper>
     </aside>
   );

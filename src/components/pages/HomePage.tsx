@@ -6,7 +6,8 @@ import { Alert, HomeHero } from "~/components/molecules";
 import {
   ConnectVeridaButton,
   HomeMissionBeginSection,
-  MissionCardsCaroussel,
+  MissionCardsCarousel,
+  PartnerCardsCarousel,
 } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { APP_TITLE } from "~/constants";
@@ -16,6 +17,7 @@ import {
   useAirdrop2,
 } from "~/features/airdrops";
 import { missions } from "~/features/missions";
+import { partners } from "~/features/partners";
 import { useVerida } from "~/features/verida";
 
 export const HomePage: React.FC = () => {
@@ -104,11 +106,11 @@ export const HomePage: React.FC = () => {
     description: "Label New",
   });
 
-  // const partnersLabel = i18n.formatMessage({
-  //   id: "HomePage.partnersLabel",
-  //   defaultMessage: "Partners",
-  //   description: "Label Partners",
-  // });
+  const partnersLabel = i18n.formatMessage({
+    id: "HomePage.partnersLabel",
+    defaultMessage: "Partners",
+    description: "Label Partners",
+  });
 
   const unlockMoreMissionsLabel = i18n.formatMessage({
     id: "HomePage.unlockMoreMissionsLabel",
@@ -210,11 +212,27 @@ export const HomePage: React.FC = () => {
         </div>
         <div className="flex flex-col gap-16 lg:gap-20 max-w-[calc(1264px_-_3rem)] mt-16">
           <HomeMissionBeginSection missions={missions} />
-          <MissionCardsCaroussel missions={missions} title={trendingLabel} />
-          <MissionCardsCaroussel missions={missions} title={newLabel} />
-          <MissionCardsCaroussel
+          <MissionCardsCarousel
+            missions={missions}
+            title={trendingLabel}
+            navButton
+          />
+          <MissionCardsCarousel
+            missions={missions}
+            title={newLabel}
+            navButton
+          />
+          <PartnerCardsCarousel
+            partners={partners}
+            title={partnersLabel}
+            navButton
+            viewAllButton
+            viewAllLink="/partners"
+          />
+          <MissionCardsCarousel
             missions={missions}
             title={unlockMoreMissionsLabel}
+            navButton
           />
         </div>
       </div>
