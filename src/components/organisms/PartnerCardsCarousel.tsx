@@ -8,10 +8,8 @@ import {
   IconButton,
   Typography,
 } from "~/components/atoms";
-import { MissionCard, PartnerInfoCard } from "~/components/organisms";
+import { PartnerListItem } from "~/components/molecules";
 import { Partner } from "~/features/partners";
-
-import { PartnerListItem } from "../molecules";
 
 const MAX_NB_ITEMS = 6;
 
