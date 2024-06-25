@@ -211,6 +211,14 @@
     "defaultMessage": "Verida{newline}Airdrops",
     "description": "Title of the Airdrops page"
   },
+  "CollapsibleList.collapseLabel": {
+    "defaultMessage": "Collapse",
+    "description": "Label Collapse"
+  },
+  "CollapsibleList.viewAllLabel": {
+    "defaultMessage": "View All",
+    "description": "Label View All"
+  },
   "ComingSoonActivityItem.nextActivityText": {
     "defaultMessage": "Next Activity",
     "description": "Default message of next activity text"
@@ -295,6 +303,10 @@
     "defaultMessage": "Missions",
     "description": "Label for the Mission item in the navigation menu"
   },
+  "HomeContinueMissionCard.continueMissionButtonLabel": {
+    "defaultMessage": "Continue",
+    "description": "Label of the button on the Mission card to open the mission page"
+  },
   "HomeHero.descriptionPart1": {
     "defaultMessage": "Take control over your own personal data. Join Verida Missions, build up your XP, and earn storage credits for secure data management on Verida Network.",
     "description": "Description (part 1) of Verida Missions"
@@ -315,6 +327,22 @@
     "defaultMessage": "This is a Testnet version of Verida Missions.",
     "description": "Warning for non-mainnet environments"
   },
+  "HomeMissionBeginSection.beginMissionLabel": {
+    "defaultMessage": "Begin Your Journey",
+    "description": "Label for Home Onboarding Card"
+  },
+  "HomeMissionBeginSection.continueMissionLabel": {
+    "defaultMessage": "Continue where you left of",
+    "description": "Label for Home Continue Mission Card"
+  },
+  "HomeOnboardingMissionCard.defaultActivityListMessage": {
+    "defaultMessage": "Activities",
+    "description": "Default message displayed above the activity list in the mission card"
+  },
+  "HomeOnboardingMissionCard.startMissionButtonLabel": {
+    "defaultMessage": "Start Mission",
+    "description": "Label of the button on the Mission card to open the mission page"
+  },
   "HomePage.airdropsAlertButtonLabel": {
     "defaultMessage": "Airdrops",
     "description": "Label for the button in the airdrop/vda token alert to redirect to the airdrops page"
@@ -323,9 +351,25 @@
     "defaultMessage": "The Verida Storage Credit Token (VDA) is now live. Learn more about the VDA Token and check our airdrops.",
     "description": "Message displayed in the airdrop alert on the home page"
   },
+  "HomePage.newLabel": {
+    "defaultMessage": "New",
+    "description": "Label New"
+  },
+  "HomePage.partnersLabel": {
+    "defaultMessage": "Partners",
+    "description": "Label Partners"
+  },
   "HomePage.tagline": {
     "defaultMessage": "Explore a new era of data ownership",
     "description": "Tag line displayed at the top of the Home page"
+  },
+  "HomePage.trendingLabel": {
+    "defaultMessage": "Trending",
+    "description": "Label Trending"
+  },
+  "HomePage.unlockMoreMissionsLabel": {
+    "defaultMessage": "Unlock More Missions",
+    "description": "Label Unlock More Missions"
   },
   "HomePage.vdaTokenAlertButtonLabel": {
     "defaultMessage": "VDA Token",
@@ -336,8 +380,12 @@
     "description": "Title of the 'Learn More' section"
   },
   "LegacyMissionProgressBar.missionProgressMessage": {
-    "defaultMessage": "{nbCompletedActivities, number} of {nbActivities, number} {nbActivities, plural, one {activity} other {activities} } completed",
+    "defaultMessage": "{nbCompletedActivities, number}{separator}{nbActivities, number} {nbActivities, plural, one {activity} other {activities} } completed",
     "description": "Message for the mission progress bar"
+  },
+  "LegacyMissionProgressBar.missionProgressShortenMessage": {
+    "defaultMessage": "{nbCompletedActivities, number}/{nbActivities, number}",
+    "description": "Shorten Message for the mission progress bar"
   },
   "LegacyMissionSection.activitiesSectionTitle": {
     "defaultMessage": "Activities",
@@ -367,6 +415,10 @@
     "defaultMessage": "{nbCompletedActivities, number}/{nbActivities, number}",
     "description": "Message for the mission progress bar"
   },
+  "MissionCardsCarousel.viewAllLabel": {
+    "defaultMessage": "View All",
+    "description": "Label for View All button"
+  },
   "MissionPage.emptyMessage": {
     "defaultMessage": "No data",
     "description": "Message when mission doesn't exist"
@@ -390,6 +442,10 @@
   "MissionsSideNavigation.title": {
     "defaultMessage": "Missions",
     "description": "Title of the side navigation"
+  },
+  "PartnerCardsCarousel.viewAllLabel": {
+    "defaultMessage": "View All",
+    "description": "Label for View All button"
   },
   "PartnerInfoCard.activityCounterLabel": {
     "defaultMessage": "{nbActivities, plural, one {Activity} other {Activities} }",
@@ -1324,7 +1380,7 @@
     "description": "Default application title for the meta tags"
   },
   "missions.mission-01.description": {
-    "defaultMessage": "This first mission guides you through setting up your identity, exploring demo apps, and introducing you to the Verida Network.{newline}{newline}Get Started:{newline}1. Click the 'Connect' button above{newline}2. Depending on being on mobile or desktop, either click the button, or scan the QR code with your phone{newline}3. Follow the instructions to install the Wallet and create your Identity{newline}4. You may have to refresh this page and connect again",
+    "defaultMessage": "This first mission guides you through setting up your identity, exploring demo apps, and introducing you to the Verida Network.",
     "description": "Short description of the mission 01"
   },
   "missions.mission-01.idLabel": {
@@ -1332,7 +1388,7 @@
     "description": "Label of the mission if 01"
   },
   "missions.mission-01.longDescription": {
-    "defaultMessage": "This first mission guides you through setting up your identity, exploring demo apps, and introducing you to the Verida Network.",
+    "defaultMessage": "This first mission guides you through setting up your identity, exploring demo apps, and introducing you to the Verida Network.{newline}{newline}Get Started:{newline}1. Click the 'Connect' button above{newline}2. Depending on being on mobile or desktop, either click the button, or scan the QR code with your phone{newline}3. Follow the instructions to install the Wallet and create your Identity{newline}4. You may have to refresh this page and connect again",
     "description": "Long description of the mission 01"
   },
   "missions.mission-01.resources.howToCreateVeridaIdentity.label": {
