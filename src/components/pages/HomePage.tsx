@@ -159,17 +159,23 @@ export const HomePage: React.FC = () => {
             viewAllButton
             viewAllLink="/missions"
           />
-          <MissionCardsCarousel missions={missions} title={newLabel} />
+          <MissionCardsCarousel
+            missions={missions}
+            title={newLabel}
+            viewAllButton
+            viewAllLink="/missions"
+          />
           <PartnerCardsCarousel
             partners={partners}
             title={partnersLabel}
             viewAllButton
             viewAllLink="/partners"
-            className=""
           />
           <MissionCardsCarousel
             missions={missions}
             title={unlockMoreMissionsLabel}
+            viewAllButton
+            viewAllLink="/missions"
           />
         </div>
       </div>
