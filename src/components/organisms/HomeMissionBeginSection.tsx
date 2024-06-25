@@ -1,10 +1,9 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { useIntl } from "react-intl";
 
 import { Typography } from "~/components/atoms";
 import { HomeOnboardingMissionCard } from "~/components/organisms";
-import { useActivity } from "~/features/activity";
-import { MISSION_01_ID, Mission } from "~/features/missions";
+import { Mission } from "~/features/missions";
 
 export type HomeMissionBeginSectionProps = {
   missions: Mission[];
@@ -17,29 +16,8 @@ export const HomeMissionBeginSection: React.FC<HomeMissionBeginSectionProps> = (
 
   const i18n = useIntl();
 
-  const {
-    activities: allActivities,
-    isLoadingUserActivities,
-    getUserActivity,
-  } = useActivity();
-
-  const onboardingActivities = useMemo(
-    () =>
-      allActivities.filter(
-        (activity) => activity.missionId === MISSION_01_ID && activity.visible
-      ),
-    [allActivities]
-  );
-
-  const activityStatuses = useMemo(() => {
-    return onboardingActivities.map((activity) => {
-      const userActivity = getUserActivity(activity.id);
-      return userActivity?.status ?? "todo";
-    });
-  }, [onboardingActivities, getUserActivity]);
-
-  const beginMissionsLabel = i18n.formatMessage({
-    id: "HomeMissionBeginSection.beginMissionsLabel",
+  const beginMissionLabel = i18n.formatMessage({
+    id: "HomeMissionBeginSection.beginMissionLabel",
     defaultMessage: "Begin Your Journey",
     description: "Label for Home Onboarding Card",
   });
@@ -47,13 +25,10 @@ export const HomeMissionBeginSection: React.FC<HomeMissionBeginSectionProps> = (
   return (
     <article>
       <Typography variant={"heading-m"} className="mb-6">
-        {beginMissionsLabel}
+        {beginMissionLabel}
       </Typography>
       <HomeOnboardingMissionCard
         mission={missions[0]}
-        activities={onboardingActivities}
-        isLoadingUserActivities={isLoadingUserActivities}
-        activityStatuses={activityStatuses}
         displayGoToMissionButton
       />
     </article>

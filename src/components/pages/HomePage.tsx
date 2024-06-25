@@ -6,6 +6,7 @@ import { Alert, HomeHero } from "~/components/molecules";
 import {
   ConnectVeridaButton,
   HomeMissionBeginSection,
+  HomeMissionContinueSection,
   MissionCardsCarousel,
   PartnerCardsCarousel,
 } from "~/components/organisms";
@@ -140,6 +141,7 @@ export const HomePage: React.FC = () => {
         </div>
         <div className="flex flex-col gap-16 lg:gap-20 max-w-[calc(1264px_-_3rem)] mt-16">
           <HomeMissionBeginSection missions={missions} />
+          <HomeMissionContinueSection missions={missions} />
           <MissionCardsCarousel
             missions={missions}
             title={trendingLabel}
