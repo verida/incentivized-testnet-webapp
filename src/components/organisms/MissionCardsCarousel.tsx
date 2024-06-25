@@ -33,7 +33,7 @@ export const MissionCardsCarousel: React.FC<MissionCardsCarouselProps> = (
   return (
     <div {...asideProps}>
       {title ? (
-        <div className="flex ml-6 mb-6 justify-between">
+        <div className="flex pl-6 pr-2 lg:pr-6 mb-6 justify-between items-center">
           <Typography variant={"heading-m"}>{title}</Typography>
           {viewAllButton && viewAllLink ? (
             <ButtonLinkBase href={viewAllLink} internal className="py-3.5">

@@ -1,13 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 
-import {
-  ButtonLinkBase,
-  Icon,
-  IconButton,
-  Typography,
-} from "~/components/atoms";
+import { ButtonLinkBase, Typography } from "~/components/atoms";
 import { PartnerListItem } from "~/components/molecules";
 import { Partner } from "~/features/partners";
 
@@ -38,7 +33,7 @@ export const PartnerCardsCarousel: React.FC<PartnerCardsCarouselProps> = (
   return (
     <div {...asideProps}>
       {title ? (
-        <div className="flex pl-6 pr-2 mb-6 justify-between items-center">
+        <div className="flex pl-6 pr-2 lg:pr-6 mb-6 justify-between items-center">
           <Typography variant={"heading-m"}>{title}</Typography>
           {viewAllButton && viewAllLink ? (
             <ButtonLinkBase href={viewAllLink} internal className="py-3.5">
@@ -50,7 +45,7 @@ export const PartnerCardsCarousel: React.FC<PartnerCardsCarouselProps> = (
         </div>
       ) : null}
       <ul className="overflow-x-auto scroll-smooth snap-x snap-proximity px-6 flex flex-row gap-4 sm:gap-8 items-stretch">
-        {partners.map((partner) => (
+        {displayedItems.map((partner) => (
           <li
             key={partner.id}
             className="flex-1 snap-center min-w-[176px] w-screen max-w-[176px]"

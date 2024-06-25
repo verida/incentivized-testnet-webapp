@@ -153,7 +153,12 @@ export const HomePage: React.FC = () => {
             missions={missions.slice(1, 3)}
             title={continueMissionLabel}
           />
-          <MissionCardsCarousel missions={missions} title={trendingLabel} />
+          <MissionCardsCarousel
+            missions={missions}
+            title={trendingLabel}
+            viewAllButton
+            viewAllLink="/missions"
+          />
           <MissionCardsCarousel missions={missions} title={newLabel} />
           <PartnerCardsCarousel
             partners={partners}

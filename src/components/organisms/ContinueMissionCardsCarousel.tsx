@@ -1,9 +1,8 @@
 import React from "react";
 import { useIntl } from "react-intl";
-import { Link } from "react-router-dom";
 
 import { ButtonLinkBase, Typography } from "~/components/atoms";
-import { HomeContinueMissionCard, MissionCard } from "~/components/organisms";
+import { HomeContinueMissionCard } from "~/components/organisms";
 import { Mission } from "~/features/missions";
 
 const MAX_NB_ITEMS = 2;
