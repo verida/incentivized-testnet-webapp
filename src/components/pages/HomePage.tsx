@@ -5,8 +5,8 @@ import { Typography } from "~/components/atoms";
 import { Alert, HomeHero } from "~/components/molecules";
 import {
   ConnectVeridaButton,
+  ContinueMissionCardsCarousel,
   HomeMissionBeginSection,
-  HomeMissionContinueSection,
   MissionCardsCarousel,
   PartnerCardsCarousel,
 } from "~/components/organisms";
@@ -47,6 +47,12 @@ export const HomePage: React.FC = () => {
     defaultMessage: "VDA Token",
   });
 
+  const continueMissionLabel = i18n.formatMessage({
+    id: "HomeMissionBeginSection.continueMissionLabel",
+    defaultMessage: "Continue where you left of",
+    description: "Label for Home Continue Mission Card",
+  });
+
   const trendingLabel = i18n.formatMessage({
     id: "HomePage.trendingLabel",
     defaultMessage: "Trending",
@@ -77,11 +83,11 @@ export const HomePage: React.FC = () => {
       displayGetSupportSection
       displayLearnMoreSection
       containerClassName="bg-homepage"
-      contentClassName="sm:px-4 pt-4"
+      contentClassName="px-0 sm:px-4 pt-4"
     >
       <div className="flex flex-col">
         <div className="flex justify-center">
-          <div className="max-w-screen-sm">
+          <div className="max-w-screen-sm px-6">
             <div className="flex flex-col items-center justify-center text-center w-full mt-28">
               <Typography
                 variant="base"
@@ -139,30 +145,26 @@ export const HomePage: React.FC = () => {
             </div> */}
           </div>
         </div>
-        <div className="flex flex-col gap-16 lg:gap-20 max-w-[calc(1264px_-_3rem)] mt-16">
-          <HomeMissionBeginSection missions={missions} />
-          <HomeMissionContinueSection missions={missions} />
-          <MissionCardsCarousel
-            missions={missions}
-            title={trendingLabel}
-            navButton
+        <div className="flex flex-col gap-16 lg:gap-20 max-w-screen-xl mt-16">
+          <div className="flex flex-col gap-16 lg:gap-20 px-6">
+            <HomeMissionBeginSection missions={missions} />
+          </div>
+          <ContinueMissionCardsCarousel
+            missions={missions.slice(1, 3)}
+            title={continueMissionLabel}
           />
-          <MissionCardsCarousel
-            missions={missions}
-            title={newLabel}
-            navButton
-          />
+          <MissionCardsCarousel missions={missions} title={trendingLabel} />
+          <MissionCardsCarousel missions={missions} title={newLabel} />
           <PartnerCardsCarousel
             partners={partners}
             title={partnersLabel}
-            navButton
             viewAllButton
             viewAllLink="/partners"
+            className=""
           />
           <MissionCardsCarousel
             missions={missions}
             title={unlockMoreMissionsLabel}
-            navButton
           />
         </div>
       </div>

@@ -93,9 +93,10 @@ export const HomeOnboardingMissionCard: React.FC<
                 nbXpPoints={totalMissionXpPoints}
                 theme="onboarding"
                 className="w-28 lg:w-56"
+                textClassName="!text-xs lg:!text-xl"
               />
             </div>
-            <div className="flex flex-col items-start gap-3 w-full">
+            <div className="flex flex-col items-start gap-3 w-full lg:min-w-[200px]">
               <div className="grow">
                 <Typography variant="heading-m">
                   {i18n.formatMessage(mission.title)}

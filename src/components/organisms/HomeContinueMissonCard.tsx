@@ -7,7 +7,7 @@ import {
   StackedImage,
   XpPointsChip,
 } from "~/components/molecules";
-import { activities, useActivity } from "~/features/activity";
+import { useActivity } from "~/features/activity";
 import { Mission } from "~/features/missions";
 import { partners as allPartners } from "~/features/partners";
 
@@ -87,7 +87,7 @@ export const HomeContinueMissionCard: React.FC<HomeContinueMissionCardProps> = (
           <ButtonLink
             href={`/missions/${mission.id}`}
             internal
-            className="text-background bg-white hover:bg-white/90 py-3.5"
+            className="text-background bg-white hover:bg-white/90 py-3.5 w-full lg:w-auto"
             // TODO: Create button colour variant
           >
             {continueMissionButtonLabel}

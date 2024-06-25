@@ -6,10 +6,11 @@ import { Typography } from "~/components/atoms";
 export type XpPointsBadgeProps = {
   nbXpPoints: number;
   theme?: "default" | "onboarding";
+  textClassName?: string;
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const XpPointsBadge: React.FC<XpPointsBadgeProps> = (props) => {
-  const { nbXpPoints, theme = "default", ...divProps } = props;
+  const { nbXpPoints, theme = "default", textClassName, ...divProps } = props;
 
   const i18n = useIntl();
   const formattedValue = i18n.formatMessage(
@@ -32,7 +33,11 @@ export const XpPointsBadge: React.FC<XpPointsBadgeProps> = (props) => {
             : "bg-xp-badge-default"
         )}
       >
-        <Typography variant="heading-s" component="span">
+        <Typography
+          variant="heading-s"
+          component="span"
+          className={textClassName}
+        >
           {formattedValue}
         </Typography>
       </div>
