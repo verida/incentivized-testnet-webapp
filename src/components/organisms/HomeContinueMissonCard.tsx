@@ -31,7 +31,7 @@ export const HomeContinueMissionCard: React.FC<HomeContinueMissionCardProps> = (
       allActivities.filter(
         (activity) => activity.missionId === mission.id && activity.visible
       ),
-    [allActivities]
+    [allActivities, mission.id]
   );
 
   const activityStatuses = useMemo(() => {
@@ -43,11 +43,11 @@ export const HomeContinueMissionCard: React.FC<HomeContinueMissionCardProps> = (
 
   const totalMissionXpPoints = useMemo(
     () =>
-      activities.reduce(
+      missionActivities.reduce(
         (totalXpPoints, activity) => totalXpPoints + activity.points,
         0
       ),
-    [activities]
+    [missionActivities]
   );
 
   const partners = useMemo(() => {
@@ -75,13 +75,14 @@ export const HomeContinueMissionCard: React.FC<HomeContinueMissionCardProps> = (
             images={partners.map((partner) => partner.logo || "")}
           />
         </div>
-        <Typography className="mb-8">
+        <Typography variant={"heading-s"} className="mb-8 grow">
           {i18n.formatMessage(mission.title)}
         </Typography>
-        <div className="flex flex-col sm:flex-row justify-between items-end grow">
+        <div className="flex flex-col lg:flex-row justify-between gap-4">
           <LegacyMissionProgressBar
             isLoading={isLoadingUserActivities}
             statuses={activityStatuses}
+            small
           />
           <ButtonLink
             href={`/missions/${mission.id}`}

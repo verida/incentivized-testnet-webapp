@@ -9,11 +9,8 @@ import {
   XpPointsBadge,
 } from "~/components/molecules";
 import { ActivityListItem } from "~/components/organisms";
-import { activities, useActivity } from "~/features/activity";
-import {
-  Mission,
-  isOnboardingMission as isOnboardingMissionFunc,
-} from "~/features/missions";
+import { useActivity } from "~/features/activity";
+import { Mission } from "~/features/missions";
 
 export type HomeOnboardingMissionCardProps = {
   mission: Mission;
@@ -44,7 +41,7 @@ export const HomeOnboardingMissionCard: React.FC<
       allActivities.filter(
         (activity) => activity.missionId === mission.id && activity.visible
       ),
-    [allActivities]
+    [allActivities, mission.id]
   );
 
   const activityStatuses = useMemo(() => {
@@ -56,11 +53,11 @@ export const HomeOnboardingMissionCard: React.FC<
 
   const totalMissionXpPoints = useMemo(
     () =>
-      activities.reduce(
+      onboardingActivities.reduce(
         (totalXpPoints, activity) => totalXpPoints + activity.points,
         0
       ),
-    [activities]
+    [onboardingActivities]
   );
 
   const i18n = useIntl();
@@ -116,6 +113,7 @@ export const HomeOnboardingMissionCard: React.FC<
                 <LegacyMissionProgressBar
                   isLoading={isLoadingUserActivities}
                   statuses={activityStatuses}
+                  small
                 />
               </div>
               {displayGoToMissionButton && (
