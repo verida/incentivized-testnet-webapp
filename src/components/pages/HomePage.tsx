@@ -12,13 +12,16 @@ import {
 } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { APP_TITLE, VDA_TOKEN_PAGE_URL } from "~/constants";
-import { missions } from "~/features/missions";
+import { MISSION_01_ID, useMissions } from "~/features/missions";
 import { partners } from "~/features/partners";
 import { useVerida } from "~/features/verida";
 
 export const HomePage: React.FC = () => {
   const i18n = useIntl();
   const { isConnected } = useVerida();
+
+  const { missions, isMissionCompleted, missionsSortedByCompletionPercentage } =
+    useMissions();
 
   const tagline = i18n.formatMessage({
     id: "HomePage.tagline",
@@ -147,12 +150,14 @@ export const HomePage: React.FC = () => {
         </div>
         <div className="flex flex-col gap-16 lg:gap-20 max-w-screen-xl mt-16">
           <div className="flex flex-col gap-16 lg:gap-20 px-6">
-            <HomeMissionBeginSection missions={missions} />
+            <HomeMissionBeginSection mission={missions[0]} />
           </div>
-          <ContinueMissionCardsCarousel
-            missions={missions.slice(1, 3)}
-            title={continueMissionLabel}
-          />
+          {isMissionCompleted(MISSION_01_ID) ? (
+            <ContinueMissionCardsCarousel
+              missions={missionsSortedByCompletionPercentage.slice(1, 3)}
+              title={continueMissionLabel}
+            />
+          ) : null}
           <MissionCardsCarousel
             missions={missions}
             title={trendingLabel}

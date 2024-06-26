@@ -6,13 +6,13 @@ import { HomeOnboardingMissionCard } from "~/components/organisms";
 import { Mission } from "~/features/missions";
 
 export type HomeMissionBeginSectionProps = {
-  missions: Mission[];
+  mission: Mission;
 } & React.ComponentPropsWithRef<"article">;
 
 export const HomeMissionBeginSection: React.FC<HomeMissionBeginSectionProps> = (
   props
 ) => {
-  const { missions } = props;
+  const { mission } = props;
 
   const i18n = useIntl();
 
@@ -27,10 +27,7 @@ export const HomeMissionBeginSection: React.FC<HomeMissionBeginSectionProps> = (
       <Typography variant={"heading-m"} className="mb-6">
         {beginMissionLabel}
       </Typography>
-      <HomeOnboardingMissionCard
-        mission={missions[0]}
-        displayGoToMissionButton
-      />
+      <HomeOnboardingMissionCard mission={mission} displayGoToMissionButton />
     </article>
   );
 };
