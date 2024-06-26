@@ -154,7 +154,7 @@ export const HomePage: React.FC = () => {
           </div>
           {isMissionCompleted(MISSION_01_ID) ? (
             <ContinueMissionCardsCarousel
-              missions={missionsSortedByCompletionPercentage.slice(1, 3)}
+              missions={missionsSortedByCompletionPercentage.slice(0, 2)}
               title={continueMissionLabel}
             />
           ) : null}

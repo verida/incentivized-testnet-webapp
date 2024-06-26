@@ -1,9 +1,7 @@
 import { useMemo } from "react";
 
 import { Activity, useActivity } from "~/features/activity";
-import { calculateCompletionPercentage } from "~/features/missions/utils";
-
-import { missions } from "../constants";
+import { calculateCompletionPercentage, missions } from "~/features/missions";
 
 export function useMissions() {
   const { activities, getUserActivity } = useActivity();
@@ -36,9 +34,12 @@ export function useMissions() {
       return activityStatuses.every((status) => status === "completed");
     };
 
-    const missionsSortedByCompletionPercentage = missions.sort(
-      (a, b) => getCompletionPercentage(b.id) - getCompletionPercentage(a.id)
-    );
+    const missionsSortedByCompletionPercentage = missions
+      .slice(1)
+      .filter((mission) => !isMissionCompleted(mission.id))
+      .sort(
+        (a, b) => getCompletionPercentage(b.id) - getCompletionPercentage(a.id)
+      );
 
     return {
       getMissionActivities,
