@@ -65,7 +65,9 @@ export const ActivityCompletionModal: React.FC<ActivityCompletionModalProps> = (
           <img src={ActivityCompletedImage} alt="" loading="eager" />
         </div>
         <Typography variant={"heading-m"}>{titleMessage}</Typography>
-        <Typography>{activityCompleteSectionMessage}</Typography>
+        <Typography className="text-desktop-base text-center">
+          {activityCompleteSectionMessage}
+        </Typography>
       </div>
     </Modal>
   );
