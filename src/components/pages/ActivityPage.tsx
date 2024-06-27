@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
+import { useDebouncedCallback } from "use-debounce";
 
 import { Button, Typography } from "~/components/atoms";
 import {
@@ -15,6 +16,8 @@ import { PageLayout } from "~/components/templates";
 import { useActivity } from "~/features/activity";
 import { isOnboardingMission } from "~/features/missions";
 
+import { ActivityCompletionModal } from "../modals";
+
 export const ActivityPage: React.FC = () => {
   const i18n = useIntl();
 
@@ -28,20 +31,29 @@ export const ActivityPage: React.FC = () => {
   } = useActivity();
 
   const [isExecuting, setIsExecuting] = useState(false);
+  const [completionModalOpen, setCompletionModalOpen] = useState(false);
+  const [nextActivityId, setNextActivityId] = useState<string>();
 
   const activity = activities.find((activity) => activity.id === activityId);
+
+  const handleExecuteActivity = useDebouncedCallback(
+    async () => {
+      setIsExecuting(true);
+      const { status, nextActivityId: nextId } =
+        await executeActivity(activityId);
+      if (status === "activityExecutionCompleted") {
+        setNextActivityId(nextId);
+        setCompletionModalOpen(true);
+      }
+      setIsExecuting(false);
+    },
+    1000,
+    { leading: true }
+  );
 
   if (!activity) {
     return null;
   }
-
-  const handleExecute = () => {
-    void (async () => {
-      setIsExecuting(true);
-      await executeActivity(activityId);
-      setIsExecuting(false);
-    })();
-  };
 
   const userActivity = getUserActivity(activityId);
 
@@ -146,7 +158,7 @@ export const ActivityPage: React.FC = () => {
                 <Button
                   color="primary"
                   className="h-12 w-full md:w-auto"
-                  onClick={handleExecute}
+                  onClick={() => void handleExecuteActivity()}
                   disabled={isLoadingUserActivities || isExecuting}
                 >
                   {i18n.formatMessage(
@@ -160,6 +172,11 @@ export const ActivityPage: React.FC = () => {
           </div>
         </footer>
       </div>
+      <ActivityCompletionModal
+        open={completionModalOpen}
+        onClose={() => setCompletionModalOpen(false)}
+        nextActivityId={nextActivityId}
+      />
     </PageLayout>
   );
 };

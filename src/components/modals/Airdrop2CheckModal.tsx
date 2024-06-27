@@ -165,6 +165,7 @@ export const Airdrop2CheckModal: React.FC<Airdrop2CheckModalProps> = (
       open
       onClose={handleClose}
       title={modalTitle}
+      alignBottomOnMobile
       actions={
         eligilibilityStatus === "unknown" || eligilibilityStatus === "error"
           ? [

@@ -41,7 +41,12 @@ export const AirdropModal: React.FC = () => {
 
   if (!isConnected && !isConnecting) {
     return (
-      <Modal open onClose={handleClose} title={notConnectedModalTitle}>
+      <Modal
+        open
+        onClose={handleClose}
+        title={notConnectedModalTitle}
+        alignBottomOnMobile
+      >
         <div className="flex flex-col gap-8">
           <Typography>{notConnectedModalMessage}</Typography>
           <ConnectVeridaButton longLabel />

@@ -183,6 +183,7 @@ export const Airdrop1RegistrationModal: React.FC<
       open
       onClose={handleClose}
       title={modalTitle}
+      alignBottomOnMobile
       actions={
         isCheckingProofSubmitted || isLoadingUserActivities
           ? []

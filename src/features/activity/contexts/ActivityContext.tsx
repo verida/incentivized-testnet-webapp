@@ -18,7 +18,9 @@ type ActivityContextType = {
   userXpPoints: number;
   isLoadingUserActivities: boolean;
   getUserActivity: (activityId: string) => UserActivityRecord | undefined;
-  executeActivity: (activityId: string) => Promise<void>;
+  executeActivity: (
+    activityId: string
+  ) => Promise<{ status: string; nextActivityId?: string }>;
   deleteUserActivities: () => void;
 };
 
