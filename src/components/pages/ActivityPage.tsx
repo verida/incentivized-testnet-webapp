@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useDebouncedCallback } from "use-debounce";
 
 import { Button, Typography } from "~/components/atoms";
+import { ActivityCompletionModal } from "~/components/modals";
 import {
   ActivityStatus,
   DaysCountdownChip,
@@ -15,8 +16,6 @@ import { ActivityStepCard, ResourcesSection } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { useActivity } from "~/features/activity";
 import { isOnboardingMission } from "~/features/missions";
-
-import { ActivityCompletionModal } from "../modals";
 
 export const ActivityPage: React.FC = () => {
   const i18n = useIntl();

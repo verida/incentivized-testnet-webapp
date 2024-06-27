@@ -143,7 +143,7 @@ export function useExecuteActivity(
 
         // Notify about the result
         switch (executionResult.status) {
-          case "todo": {
+          case "completed": {
             const activityExecutionCompletedNotificationMessage =
               i18n.formatMessage({
                 id: "useExecuteActivity.activityExecutionCompletedNotificationMessage",
@@ -175,7 +175,7 @@ export function useExecuteActivity(
             };
             break;
           }
-          case "completed": {
+          case "todo": {
             const activityExecutionTodoNotificationMessage = i18n.formatMessage(
               {
                 id: "useExecuteActivity.activityExecutionTodoNotificationMessage",

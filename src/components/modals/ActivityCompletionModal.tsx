@@ -22,7 +22,7 @@ export const ActivityCompletionModal: React.FC<ActivityCompletionModalProps> = (
   const handleNext = useCallback(() => {
     onClose();
     navigate(nextActivityId ? `/activities/${nextActivityId}` : "/");
-  }, [nextActivityId, navigate]);
+  }, [nextActivityId, onClose, navigate]);
 
   const i18n = useIntl();
 
