@@ -15,6 +15,18 @@
     "defaultMessage": "{points} XP",
     "description": "Label of the XP points chip on each activity card"
   },
+  "ActivityCompletionModal.activityCompleteSectionMessage": {
+    "defaultMessage": "Congratulations! You've completed this activity.",
+    "description": "Message displayed below the title of the activity completion modal"
+  },
+  "ActivityCompletionModal.closeButtonLabel": {
+    "defaultMessage": "Next Activity",
+    "description": "Label for the close button of the activity completion modal"
+  },
+  "ActivityCompletionModal.titleMessage": {
+    "defaultMessage": "Activity Completed!",
+    "description": "Title of the activity completion modal"
+  },
   "ActivityPage.activityByLabel": {
     "defaultMessage": "Activity by",
     "description": "Label activity by"
@@ -22,6 +34,10 @@
   "ActivityPage.finishStepsMessage": {
     "defaultMessage": "Once you've finished with all steps, click the 'Verify' button below.",
     "description": "Message for what to do after finishing all steps"
+  },
+  "ActivityPage.resourcesLabel": {
+    "defaultMessage": "Resources",
+    "description": "Label Resources"
   },
   "ActivityPage.rewardLabel": {
     "defaultMessage": "Reward",
@@ -34,10 +50,6 @@
   "ActivityPage.stepLabel": {
     "defaultMessage": "Step {index}",
     "description": "Label above the activity step card"
-  },
-  "ActivityPage.verifyButtonLabel": {
-    "defaultMessage": "Verify",
-    "description": "Label on the verify button"
   },
   "ActivityStatus.activityCheckingLabel": {
     "defaultMessage": "Checking",
@@ -242,10 +254,6 @@
   "ComingSoonAirdropCard.comingSoon": {
     "defaultMessage": "Coming Soon",
     "description": "Coming soon message"
-  },
-  "ComingSoonActivityItem.nextActivityText": {
-    "defaultMessage": "Next Activity",
-    "description": "Default message of next activity text"
   },
   "ConnectVeridaButton.checkingConnectionButtonLabel": {
     "defaultMessage": "Checking",
