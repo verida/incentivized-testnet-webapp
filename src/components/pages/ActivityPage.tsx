@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
 
@@ -11,18 +12,38 @@ import {
 } from "~/components/molecules";
 import { ActivityStepCard, ResourcesSection } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
-import { activities } from "~/features/activity";
+import { useActivity } from "~/features/activity";
 import { isOnboardingMission } from "~/features/missions";
 
 export const ActivityPage: React.FC = () => {
   const i18n = useIntl();
 
   const { activityId = "" } = useParams();
+
+  const {
+    activities,
+    isLoadingUserActivities,
+    getUserActivity,
+    executeActivity,
+  } = useActivity();
+
+  const [isExecuting, setIsExecuting] = useState(false);
+
   const activity = activities.find((activity) => activity.id === activityId);
 
   if (!activity) {
     return null;
   }
+
+  const handleExecute = () => {
+    void (async () => {
+      setIsExecuting(true);
+      await executeActivity(activityId);
+      setIsExecuting(false);
+    })();
+  };
+
+  const userActivity = getUserActivity(activityId);
 
   const titleMessage = i18n.formatMessage(activity.title);
   const shortDescriptionMessage = i18n.formatMessage(activity.shortDescription);
@@ -32,12 +53,6 @@ export const ActivityPage: React.FC = () => {
     defaultMessage:
       "Once you've finished with all steps, click the 'Verify' button below.",
     description: "Message for what to do after finishing all steps",
-  });
-
-  const verifyButtonLabel = i18n.formatMessage({
-    id: "ActivityPage.verifyButtonLabel",
-    defaultMessage: "Verify",
-    description: "Label on the verify button",
   });
 
   const activityByLabel = i18n.formatMessage({
@@ -119,12 +134,28 @@ export const ActivityPage: React.FC = () => {
                   <Typography>{rewardLabel}</Typography>
                   <XpPointsChip nbXpPoints={activity.points} />
                 </div>
-                <ActivityStatus status="pending" />
+                <ActivityStatus
+                  status={
+                    activity.ended
+                      ? "ended"
+                      : userActivity?.status ?? "checking"
+                  }
+                />
               </div>
-
-              <Button color="primary" className="h-12">
-                {verifyButtonLabel}
-              </Button>
+              {userActivity?.status !== "completed" && !activity.ended ? (
+                <Button
+                  color="primary"
+                  className="h-12 w-full md:w-auto"
+                  onClick={handleExecute}
+                  disabled={isLoadingUserActivities || isExecuting}
+                >
+                  {i18n.formatMessage(
+                    isExecuting
+                      ? activity.actionExecutingLabel
+                      : activity.actionLabel
+                  )}
+                </Button>
+              ) : null}
             </div>
           </div>
         </footer>
