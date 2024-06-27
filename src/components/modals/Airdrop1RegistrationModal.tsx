@@ -18,7 +18,7 @@ export type Airdrop1RegistrationModalProps = {
 
 export const Airdrop1RegistrationModal: React.FC<
   Airdrop1RegistrationModalProps
-> = (props: Airdrop1RegistrationModalProps) => {
+> = (props) => {
   const { onClose } = props;
 
   const { userXpPoints, isLoadingUserActivities } = useActivity();
