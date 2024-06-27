@@ -58,7 +58,16 @@ export const ActivityPage: React.FC = () => {
   const userActivity = getUserActivity(activityId);
 
   const titleMessage = i18n.formatMessage(activity.title);
-  const shortDescriptionMessage = i18n.formatMessage(activity.shortDescription);
+  const shortDescriptionMessage = i18n.formatMessage(
+    activity.shortDescription,
+    {
+      newline: (
+        <>
+          <br />
+        </>
+      ),
+    }
+  );
   const longDescriptionMessage = i18n.formatMessage(activity.longDescription);
   const finishStepsMessage = i18n.formatMessage({
     id: "ActivityPage.finishStepsMessage",
