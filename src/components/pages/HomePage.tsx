@@ -6,12 +6,11 @@ import { Alert, HomeHero } from "~/components/molecules";
 import {
   ContinueMissionCardsCarousel,
   ExploreMissionsHomeSection, // HomeMissionBeginSection,
-  PartnerCardsCarousel,
+  PartnersHomeSection,
 } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { APP_TITLE, VDA_TOKEN_PAGE_URL } from "~/constants";
 import { MISSION_01_ID, useMissions } from "~/features/missions";
-import { partners } from "~/features/partners";
 
 export const HomePage: React.FC = () => {
   const i18n = useIntl();
@@ -50,12 +49,6 @@ export const HomePage: React.FC = () => {
     id: "HomeMissionBeginSection.continueMissionLabel",
     defaultMessage: "Continue where you left of",
     description: "Label for Home Continue Mission Card",
-  });
-
-  const partnersLabel = i18n.formatMessage({
-    id: "HomePage.partnersLabel",
-    defaultMessage: "Partners",
-    description: "Label Partners",
   });
 
   return (
@@ -117,12 +110,7 @@ export const HomePage: React.FC = () => {
             />
           ) : null} */}
           <ExploreMissionsHomeSection />
-          {/* <PartnerCardsCarousel
-            partners={partners}
-            title={partnersLabel}
-            viewAllButton
-            viewAllLink="/partners"
-          /> */}
+          <PartnersHomeSection />
         </div>
       </div>
     </PageLayout>

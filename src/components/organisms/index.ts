@@ -17,3 +17,4 @@ export * from "./HomeContinueMissonCard";
 export * from "./MissionSection";
 export * from "./PartnerInfoCard";
 export * from "./PartnerCardsCarousel";
+export * from "./PartnersHomeSection";
