@@ -124,7 +124,11 @@ export const ActivityPage: React.FC = () => {
             ) : null}
             <div className="flex gap-4 items-center">
               <Typography variant={"base-s"}>{statusLabel}</Typography>
-              <DaysCountdownChip nbDaysLeft={6} />
+              <ActivityStatus
+                status={
+                  activity.ended ? "ended" : userActivity?.status ?? "checking"
+                }
+              />
             </div>
           </div>
           <div className="text-muted-foreground mb-10">
