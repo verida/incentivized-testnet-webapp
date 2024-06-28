@@ -86,102 +86,81 @@ export const HomePage: React.FC = () => {
       displayGetSupportSection
       displayLearnMoreSection
       containerClassName="bg-homepage"
-      contentClassName="px-0 sm:px-4 pt-4"
     >
-      <div className="flex flex-col">
-        <div className="flex justify-center">
-          <div className="max-w-screen-sm px-6">
-            <div className="flex flex-col items-center justify-center text-center w-full mt-28">
+      <div className="flex flex-col gap-16 items-center">
+        <div className="mt-24 flex flex-col gap-16 max-w-screen-sm">
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3 items-center text-center">
               <Typography
                 variant="base"
                 className="leading-[120%] font-semibold text-primary uppercase tracking-[0.07rem] sm:tracking-[0.08rem]"
               >
                 {APP_TITLE}
               </Typography>
-              <Typography variant="heading-l" className="mt-3">
+              <Typography variant="heading-l">
                 {/* Had to surround by div because of style conflict with Typography, likely 'text-transparent' */}
-                <div className="bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/70 px-8 sm:px-14 text-center">
+                <div className="bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/70 px-8 sm:px-16 text-center">
                   {tagline}
                 </div>
               </Typography>
             </div>
-            <HomeHero className="mt-4" />
-            {isConnected ? null : (
-              <div className="mt-6 flex justify-center">
-                <ConnectVeridaButton longLabel />
-              </div>
-            )}
-            <Alert
-              type="info"
-              message={airdropsAndVdaTokenAlertMessage}
-              actions={[
-                {
-                  type: "link",
-                  label: airdropsAlertButtonLabel,
-                  href: "/airdrops",
-                  internal: true,
-                },
-                {
-                  type: "link",
-                  label: vdaTokenAlertButtonLabel,
-                  href: VDA_TOKEN_PAGE_URL,
-                  color: "secondary",
-                  internal: false,
-                  openInNewTab: true,
-                },
-              ]}
-              className="mt-6"
-            />
-            {/* <div className="mt-16 relative">
-              <div className="hidden lg:block absolute top-0 bottom-0 -right-6 translate-x-full w-36 xl:w-64">
-                <aside className="sticky top-24">
-                  <MissionsSideNavigation />
-                </aside>
-              </div>
-              {missions.map((mission, index) => (
-                <LegacyMissionSection
-                  key={mission.id}
-                  mission={mission}
-                  className={index > 0 ? "mt-16" : ""}
-                />
-              ))}
-            </div> */}
+            <HomeHero />
           </div>
+          <Alert
+            type="info"
+            message={airdropsAndVdaTokenAlertMessage}
+            actions={[
+              {
+                type: "link",
+                label: airdropsAlertButtonLabel,
+                href: "/airdrops",
+                internal: true,
+              },
+              {
+                type: "link",
+                label: vdaTokenAlertButtonLabel,
+                href: VDA_TOKEN_PAGE_URL,
+                color: "secondary",
+                internal: false,
+                openInNewTab: true,
+              },
+            ]}
+          />
         </div>
-        <div className="flex flex-col gap-16 lg:gap-20 max-w-screen-xl mt-16">
-          <div className="flex flex-col gap-16 lg:gap-20 px-6">
+        <div className="flex flex-col gap-16 lg:gap-20 w-full">
+          {/* <div className="flex flex-col gap-16 lg:gap-20 px-6">
             <HomeMissionBeginSection mission={missions[0]} />
-          </div>
-          {isMissionCompleted(MISSION_01_ID) ? (
+          </div> */}
+          {/* {isMissionCompleted(MISSION_01_ID) ? (
             <ContinueMissionCardsCarousel
               missions={missionsSortedByCompletionPercentage.slice(0, 2)}
               title={continueMissionLabel}
             />
-          ) : null}
-          <MissionCardsCarousel
+          ) : null} */}
+          {/* <MissionCardsCarousel
             missions={missions}
             title={trendingLabel}
             viewAllButton
             viewAllLink="/missions"
-          />
-          <MissionCardsCarousel
+          /> */}
+          {/* <MissionCardsCarousel
             missions={missions}
             title={newLabel}
             viewAllButton
             viewAllLink="/missions"
-          />
-          <PartnerCardsCarousel
+          /> */}
+          {/* <PartnerCardsCarousel
             partners={partners}
             title={partnersLabel}
             viewAllButton
             viewAllLink="/partners"
-          />
-          <MissionCardsCarousel
+          /> */}
+          {/* <MissionCardsCarousel
             missions={missions}
             title={unlockMoreMissionsLabel}
             viewAllButton
             viewAllLink="/missions"
-          />
+          /> */}
         </div>
       </div>
     </PageLayout>

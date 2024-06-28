@@ -60,7 +60,7 @@ export const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
 
   return (
     <div {...props}>
-      <div className="flex flex-grow flex-col items-center justify-center text-center gap-2 text-muted-foreground px-0 sm:px-16">
+      <div className="flex flex-col items-center text-center gap-4 text-muted-foreground px-0 sm:px-16">
         <Typography>{descriptionPart1}</Typography>
         <Typography>
           <ExternalLink href={VERIDA_WALLET_DOWNLOAD_URL} openInNewTab>
