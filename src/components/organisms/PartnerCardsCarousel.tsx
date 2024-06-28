@@ -32,10 +32,12 @@ export const PartnerCardsCarousel: React.FC<PartnerCardsCarouselProps> = (
         {displayedPartners.map((partner) => (
           <li
             key={partner.id}
-            className="flex-1 snap-start w-[calc((_1216px_-_10rem_)_/_6)]"
-            // w-[calc((_1216px_-_20rem_)_/_6)]: based on 6 cards filling
+            className="flex-1 snap-center min-w-[calc((_1216px_-_10rem_)_/_6)] w-screen max-w-[calc((_1216px_-_10rem_)_/_6)]"
+            // max-w-[calc((_1216px_-_20rem_)_/_6)]: based on 6 cards filling
             // the wide layout screen, considering a 1216px container width
             // reference - gap of 2rem. Then keep this size constant.
+            // Have to use the same for min-w-[...] and add w-screen as simply
+            // doing w-[...] doesn't work in this case
           >
             <Link to={`/partners/${partner.id}`}>
               <PartnerCard
