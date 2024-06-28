@@ -61,7 +61,7 @@ export const PageLayout: React.FC<PageLayoutProps> = (props) => {
         <HeaderOffset />
         <div className="flex-grow gap-12 sm:gap-16 flex flex-col ">
           {!hideBackButton || title ? (
-            <div className=" mt-6 sm:mt-16 flex flex-col sm:flex-row gap-6 px-4 sm:px-6">
+            <div className=" mt-6 sm:mt-16 flex flex-col sm:flex-row gap-6 px-6">
               <div className="sm:flex-1 sm:content-center">
                 {hideBackButton ? null : <BackButton />}
               </div>
@@ -78,7 +78,7 @@ export const PageLayout: React.FC<PageLayoutProps> = (props) => {
           ) : null}
           <div
             className={twMerge(
-              "flex-grow px-4 sm:px-6 max-w-screen-xl self-center w-full",
+              "flex-grow px-6 max-w-screen-xl self-center w-full",
               // This gives consumer of this component the ability to overwrite the width and horizontal layout
               contentClassName
             )}

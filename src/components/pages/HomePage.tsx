@@ -4,21 +4,17 @@ import { useIntl } from "react-intl";
 import { Typography } from "~/components/atoms";
 import { Alert, HomeHero } from "~/components/molecules";
 import {
-  ConnectVeridaButton,
   ContinueMissionCardsCarousel,
-  HomeMissionBeginSection,
-  MissionCardsCarousel,
+  ExploreMissionsHomeSection, // HomeMissionBeginSection,
   PartnerCardsCarousel,
 } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { APP_TITLE, VDA_TOKEN_PAGE_URL } from "~/constants";
 import { MISSION_01_ID, useMissions } from "~/features/missions";
 import { partners } from "~/features/partners";
-import { useVerida } from "~/features/verida";
 
 export const HomePage: React.FC = () => {
   const i18n = useIntl();
-  const { isConnected } = useVerida();
 
   const { missions, isMissionCompleted, missionsSortedByCompletionPercentage } =
     useMissions();
@@ -56,28 +52,10 @@ export const HomePage: React.FC = () => {
     description: "Label for Home Continue Mission Card",
   });
 
-  const trendingLabel = i18n.formatMessage({
-    id: "HomePage.trendingLabel",
-    defaultMessage: "Trending",
-    description: "Label Trending",
-  });
-
-  const newLabel = i18n.formatMessage({
-    id: "HomePage.newLabel",
-    defaultMessage: "New",
-    description: "Label New",
-  });
-
   const partnersLabel = i18n.formatMessage({
     id: "HomePage.partnersLabel",
     defaultMessage: "Partners",
     description: "Label Partners",
-  });
-
-  const unlockMoreMissionsLabel = i18n.formatMessage({
-    id: "HomePage.unlockMoreMissionsLabel",
-    defaultMessage: "Unlock More Missions",
-    description: "Label Unlock More Missions",
   });
 
   return (
@@ -86,9 +64,10 @@ export const HomePage: React.FC = () => {
       displayGetSupportSection
       displayLearnMoreSection
       containerClassName="bg-homepage"
+      contentClassName="px-0"
     >
       <div className="flex flex-col gap-16 items-center">
-        <div className="mt-24 flex flex-col gap-16 max-w-screen-sm">
+        <div className="mt-24 flex flex-col gap-16 max-w-screen-sm px-6">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-3 items-center text-center">
               <Typography
@@ -137,29 +116,12 @@ export const HomePage: React.FC = () => {
               title={continueMissionLabel}
             />
           ) : null} */}
-          {/* <MissionCardsCarousel
-            missions={missions}
-            title={trendingLabel}
-            viewAllButton
-            viewAllLink="/missions"
-          /> */}
-          {/* <MissionCardsCarousel
-            missions={missions}
-            title={newLabel}
-            viewAllButton
-            viewAllLink="/missions"
-          /> */}
+          <ExploreMissionsHomeSection />
           {/* <PartnerCardsCarousel
             partners={partners}
             title={partnersLabel}
             viewAllButton
             viewAllLink="/partners"
-          /> */}
-          {/* <MissionCardsCarousel
-            missions={missions}
-            title={unlockMoreMissionsLabel}
-            viewAllButton
-            viewAllLink="/missions"
           /> */}
         </div>
       </div>
