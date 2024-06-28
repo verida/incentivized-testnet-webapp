@@ -4,18 +4,18 @@ import { twMerge } from "tailwind-merge";
 import { Typography } from "~/components/atoms";
 import { Partner } from "~/features/partners";
 
-export type PartnersListItemProps = {
+export type PartnerCardProps = {
   partner: Partner;
 } & Omit<React.ComponentPropsWithRef<"article">, "children">;
 
-export const PartnerListItem: React.FC<PartnersListItemProps> = (props) => {
+export const PartnerCard: React.FC<PartnerCardProps> = (props) => {
   const { partner, className, ...articleProps } = props;
 
   const i18n = useIntl();
 
   const partnerLogoAlt = i18n.formatMessage(
     {
-      id: "PartnerListItem.partnerLogoAlt",
+      id: "PartnerCard.partnerLogoAlt",
       description: "Alt for the logo of a partner",
       defaultMessage: "Logo of {partnerName}",
     },

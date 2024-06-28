@@ -15,6 +15,7 @@ export * from "./HomeContinueMissonCard";
 // export * from "./HomeMissionBeginSection";
 // export * from "./HomeOnboardingMissionCard";
 export * from "./MissionSection";
-export * from "./PartnerInfoCard";
+export * from "./PartnerCard";
 export * from "./PartnerCardsCarousel";
+export * from "./PartnerInfoCard";
 export * from "./PartnersHomeSection";

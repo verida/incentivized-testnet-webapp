@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
 
-import { PartnerListItem } from "~/components/molecules";
+import { PartnerCard } from "~/components/organisms/PartnerCard";
 import { Partner } from "~/features/partners";
 
 // The layout (particularly the width of each item) is based on a max number of
@@ -38,7 +38,7 @@ export const PartnerCardsCarousel: React.FC<PartnerCardsCarouselProps> = (
             // reference - gap of 2rem. Then keep this size constant.
           >
             <Link to={`/partners/${partner.id}`}>
-              <PartnerListItem
+              <PartnerCard
                 partner={partner}
                 className="hover:border-border-hover hover:bg-background-extra-light"
               />
