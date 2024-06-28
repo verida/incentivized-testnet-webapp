@@ -14,6 +14,9 @@ export type LegacyMissionProgressBarProps = {
   small?: boolean;
 } & React.ComponentPropsWithRef<"div">;
 
+/**
+ * @deprecated
+ */
 export const LegacyMissionProgressBar: React.FC<
   LegacyMissionProgressBarProps
 > = (props) => {

@@ -44,13 +44,6 @@
     background-size: auto 500px;
   }
 
-  .bg-mission-section {
-    background-image: url("./images/bg_mission_section_top.png");
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: auto auto;
-  }
-
   .bg-mission-default {
     background-image: url("./images/bg_mission_default.png"),
       linear-gradient(180deg, #733bd6 0.5%, transparent 100%);

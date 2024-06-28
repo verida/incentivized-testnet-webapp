@@ -15,7 +15,6 @@ export * from "./Input";
 export * from "./InternalLink";
 export * from "./LegacyMissionProgressBarIndicator";
 export * from "./MissionActivitiesProgressBarIndicator";
-export * from "./MissionIdLabelChip";
 export * from "./SideNavigationItem";
 export * from "./SkeletonBase";
 export * from "./Typography";
