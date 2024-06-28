@@ -202,7 +202,9 @@ module.exports = {
         3.5: "0.875rem",
       },
       borderRadius: {
-        10: "2.5rem",
+        "4xl": "2rem",
+        "5xl": "2.5rem",
+        "6xl": "3rem",
       },
       padding: {
         0.25: "1px",

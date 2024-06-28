@@ -23,7 +23,10 @@ export const PartnersPage: React.FC = () => {
         {partners.map((partner) => (
           <li key={partner.id}>
             <Link to={`/partners/${partner.id}`}>
-              <PartnerListItem partner={partner} />
+              <PartnerListItem
+                partner={partner}
+                className="hover:border-border-hover hover:bg-background-extra-light"
+              />
             </Link>
           </li>
         ))}

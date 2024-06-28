@@ -40,7 +40,7 @@ export const PartnerCardsCarousel: React.FC<PartnerCardsCarouselProps> = (
             <Link to={`/partners/${partner.id}`}>
               <PartnerListItem
                 partner={partner}
-                className="hover:border-border-hover"
+                className="hover:border-border-hover hover:bg-background-extra-light"
               />
             </Link>
           </li>
