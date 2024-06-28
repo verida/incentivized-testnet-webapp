@@ -13,7 +13,6 @@ export * from "./IconButton";
 export * from "./IconButtonLink";
 export * from "./Input";
 export * from "./InternalLink";
-export * from "./LegacyMissionProgressBarIndicator";
 export * from "./MissionActivitiesProgressBarIndicator";
 export * from "./SideNavigationItem";
 export * from "./SkeletonBase";

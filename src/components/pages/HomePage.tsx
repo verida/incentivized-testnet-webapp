@@ -4,20 +4,16 @@ import { useIntl } from "react-intl";
 import { Typography } from "~/components/atoms";
 import { Alert, HomeHero } from "~/components/molecules";
 import {
-  ContinueMissionCardsCarousel,
   ExploreMissionsHomeSection,
   OnboardingHomeSection,
+  OngoingMissionsHomeSection,
   PartnersHomeSection,
 } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { APP_TITLE, VDA_TOKEN_PAGE_URL } from "~/constants";
-import { MISSION_01_ID, useMissions } from "~/features/missions";
 
 export const HomePage: React.FC = () => {
   const i18n = useIntl();
-
-  const { missions, isMissionCompleted, missionsSortedByCompletionPercentage } =
-    useMissions();
 
   const tagline = i18n.formatMessage({
     id: "HomePage.tagline",
@@ -44,12 +40,6 @@ export const HomePage: React.FC = () => {
     description:
       "Label for the button in the airdrop/vda token alert to redirect to the VDA token page on verida.network",
     defaultMessage: "VDA Token",
-  });
-
-  const continueMissionLabel = i18n.formatMessage({
-    id: "HomeMissionBeginSection.continueMissionLabel",
-    defaultMessage: "Continue where you left of",
-    description: "Label for Home Continue Mission Card",
   });
 
   return (
@@ -102,12 +92,7 @@ export const HomePage: React.FC = () => {
         </div>
         <div className="flex flex-col gap-16 lg:gap-20 w-full">
           <OnboardingHomeSection />
-          {/* {isMissionCompleted(MISSION_01_ID) ? (
-            <ContinueMissionCardsCarousel
-              missions={missionsSortedByCompletionPercentage.slice(0, 2)}
-              title={continueMissionLabel}
-            />
-          ) : null} */}
+          <OngoingMissionsHomeSection />
           <ExploreMissionsHomeSection />
           <PartnersHomeSection />
         </div>

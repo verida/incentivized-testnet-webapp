@@ -9,7 +9,6 @@ export * from "./ErrorFallbackCard";
 export * from "./HeaderIdentityMenu";
 export * from "./HeaderNavMenu";
 export * from "./HomeHero";
-export * from "./LegacyMissionProgressBar";
 export * from "./MissionActivitiesProgressBar";
 export * from "./MissionCardActivitiesProgressBar";
 export * from "./PortalWrapper";

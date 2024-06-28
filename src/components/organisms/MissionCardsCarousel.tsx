@@ -17,9 +17,10 @@ export const MissionCardsCarousel: React.FC<MissionCardsCarouselProps> = (
 ) => {
   const { missions, ...divProps } = props;
 
-  const displayedMissions = useMemo(() => {
-    return missions.slice(0, MAX_NB_ITEMS);
-  }, [missions]);
+  const displayedMissions = useMemo(
+    () => missions.slice(0, MAX_NB_ITEMS),
+    [missions]
+  );
 
   if (displayedMissions.length === 0) {
     return null;
