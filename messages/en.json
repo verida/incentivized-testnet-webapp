@@ -1,20 +1,4 @@
 {
-  "ActivityCard.connectToCompleteMessage": {
-    "defaultMessage": "Connect for details",
-    "description": "Message to show when the user is not connected"
-  },
-  "ActivityCard.referralLinkCopiedToClipboardToastMessage": {
-    "defaultMessage": "Your referral link has been copied to your clipboard",
-    "description": "Toast message displayed after successfully copying the referral link to the user's clipboard"
-  },
-  "ActivityCard.resourcesSectionTitle": {
-    "defaultMessage": "Resources",
-    "description": "Title of the resources section in each activity card"
-  },
-  "ActivityCard.xpPointsChipLabel": {
-    "defaultMessage": "{points} XP",
-    "description": "Label of the XP points chip on each activity card"
-  },
   "ActivityStatus.activityCheckingLabel": {
     "defaultMessage": "Checking",
     "description": "Label of the status for a disabled activity"
@@ -211,13 +195,13 @@
     "defaultMessage": "Verida{newline}Airdrops",
     "description": "Title of the Airdrops page"
   },
-  "CollapsibleList.collapseLabel": {
+  "CollapsibleList.collapseButtonLabel": {
     "defaultMessage": "Collapse",
-    "description": "Label Collapse"
+    "description": "Label of the button to collapse the items of a collapsible list"
   },
-  "CollapsibleList.viewAllLabel": {
+  "CollapsibleList.viewAllButtonLabel": {
     "defaultMessage": "View All",
-    "description": "Label View All"
+    "description": "Label of the button to display all items of a collapsible list"
   },
   "ComingSoonActivityItem.nextActivityText": {
     "defaultMessage": "Next Activity",
@@ -258,6 +242,14 @@
   "ErrorFallbackCard.resetButtonLabel": {
     "defaultMessage": "Try again",
     "description": "Label of the 'Try Again' button displayed on the default error fallback card"
+  },
+  "ExploreMissionsHomeSection.title": {
+    "defaultMessage": "Explore Missions",
+    "description": "Title of the Explore Missions section on the home page"
+  },
+  "ExploreMissionsHomeSection.viewAllMissionsButtonLabel": {
+    "defaultMessage": "View All",
+    "description": "Label of the button to view all missions"
   },
   "ExploreMoreMissionsSection.sectionTitle": {
     "defaultMessage": "Explore More",
@@ -303,10 +295,6 @@
     "defaultMessage": "Missions",
     "description": "Label for the Mission item in the navigation menu"
   },
-  "HomeContinueMissionCard.continueMissionButtonLabel": {
-    "defaultMessage": "Continue",
-    "description": "Label of the button on the Mission card to open the mission page"
-  },
   "HomeHero.descriptionPart1": {
     "defaultMessage": "Take control over your own personal data. Join Verida Missions, build up your XP, and earn storage credits for secure data management on Verida Network.",
     "description": "Description (part 1) of Verida Missions"
@@ -327,22 +315,6 @@
     "defaultMessage": "This is a Testnet version of Verida Missions.",
     "description": "Warning for non-mainnet environments"
   },
-  "HomeMissionBeginSection.beginMissionLabel": {
-    "defaultMessage": "Begin Your Journey",
-    "description": "Label for Home Onboarding Card"
-  },
-  "HomeMissionBeginSection.continueMissionLabel": {
-    "defaultMessage": "Continue where you left of",
-    "description": "Label for Home Continue Mission Card"
-  },
-  "HomeOnboardingMissionCard.defaultActivityListMessage": {
-    "defaultMessage": "Activities",
-    "description": "Default message displayed above the activity list in the mission card"
-  },
-  "HomeOnboardingMissionCard.startMissionButtonLabel": {
-    "defaultMessage": "Start Mission",
-    "description": "Label of the button on the Mission card to open the mission page"
-  },
   "HomePage.airdropsAlertButtonLabel": {
     "defaultMessage": "Airdrops",
     "description": "Label for the button in the airdrop/vda token alert to redirect to the airdrops page"
@@ -351,25 +323,9 @@
     "defaultMessage": "The Verida Storage Credit Token (VDA) is now live. Learn more about the VDA Token and check our airdrops.",
     "description": "Message displayed in the airdrop alert on the home page"
   },
-  "HomePage.newLabel": {
-    "defaultMessage": "New",
-    "description": "Label New"
-  },
-  "HomePage.partnersLabel": {
-    "defaultMessage": "Partners",
-    "description": "Label Partners"
-  },
   "HomePage.tagline": {
     "defaultMessage": "Explore a new era of data ownership",
     "description": "Tag line displayed at the top of the Home page"
-  },
-  "HomePage.trendingLabel": {
-    "defaultMessage": "Trending",
-    "description": "Label Trending"
-  },
-  "HomePage.unlockMoreMissionsLabel": {
-    "defaultMessage": "Unlock More Missions",
-    "description": "Label Unlock More Missions"
   },
   "HomePage.vdaTokenAlertButtonLabel": {
     "defaultMessage": "VDA Token",
@@ -378,30 +334,6 @@
   "LearnMoreSection.sectionTitle": {
     "defaultMessage": "Learn More",
     "description": "Title of the 'Learn More' section"
-  },
-  "LegacyMissionProgressBar.missionProgressMessage": {
-    "defaultMessage": "{nbCompletedActivities, number}{separator}{nbActivities, number} {nbActivities, plural, one {activity} other {activities} } completed",
-    "description": "Message for the mission progress bar"
-  },
-  "LegacyMissionProgressBar.missionProgressShortenMessage": {
-    "defaultMessage": "{nbCompletedActivities, number}/{nbActivities, number}",
-    "description": "Shorten Message for the mission progress bar"
-  },
-  "LegacyMissionSection.activitiesSectionTitle": {
-    "defaultMessage": "Activities",
-    "description": "Title for the activities section"
-  },
-  "LegacyMissionSection.comingSoonMessage": {
-    "defaultMessage": "Coming Soon",
-    "description": "Message to display when a mission is not yet available"
-  },
-  "LegacyMissionSection.resourcesSectionTitle": {
-    "defaultMessage": "Resources",
-    "description": "Title of the resources section in each mission section"
-  },
-  "LegacyMissionSection.toggleCollapseButtonLabel": {
-    "defaultMessage": "Toggle mission section",
-    "description": "Aria label for the button to toggle the mission section"
   },
   "MissionBottomBar.longMessage": {
     "defaultMessage": "{nbCompletedActivities, number} of {nbActivities, number} {nbActivities, plural, one {activity} other {activities} } completed",
@@ -414,10 +346,6 @@
   "MissionCardActivitiesProgressBar.progressMessage": {
     "defaultMessage": "{nbCompletedActivities, number}/{nbActivities, number}",
     "description": "Message for the mission progress bar"
-  },
-  "MissionCardsCarousel.viewAllLabel": {
-    "defaultMessage": "View All",
-    "description": "Label for View All button"
   },
   "MissionPage.emptyMessage": {
     "defaultMessage": "No data",
@@ -439,13 +367,45 @@
     "defaultMessage": "Missions",
     "description": "Title of the Missions page"
   },
-  "MissionsSideNavigation.title": {
-    "defaultMessage": "Missions",
-    "description": "Title of the side navigation"
+  "OnboardingHomeCard.defaultActivityListMessage": {
+    "defaultMessage": "Activities",
+    "description": "Default message displayed above the activity list in the mission card"
   },
-  "PartnerCardsCarousel.viewAllLabel": {
-    "defaultMessage": "View All",
-    "description": "Label for View All button"
+  "OnboardingHomeCard.gotToMissionButtonLabel": {
+    "defaultMessage": "Go to Mission",
+    "description": "Label of the button on the Mission card to open the mission page"
+  },
+  "OnboardingHomeCard.longProgressMessage": {
+    "defaultMessage": "{nbCompletedActivities, number} of {nbActivities, number} {nbActivities, plural, one {activity} other {activities} } completed",
+    "description": "Long message for the progress bar on the onboarding home card"
+  },
+  "OnboardingHomeCard.shortProgressMessage": {
+    "defaultMessage": "{nbCompletedActivities, number}/{nbActivities, number}",
+    "description": "Short message for the progress bar on the onboarding home card"
+  },
+  "OnboardingHomeSection.title": {
+    "defaultMessage": "Begin Your Journey",
+    "description": "Title of the Onboarding section on the home page"
+  },
+  "OngoingMissionCard.continueMissionButtonLabel": {
+    "defaultMessage": "Continue",
+    "description": "Label of the button on the ongoing mission card to open the mission page"
+  },
+  "OngoingMissionCard.longProgressMessage": {
+    "defaultMessage": "{nbCompletedActivities, number} of {nbActivities, number} {nbActivities, plural, one {activity} other {activities} } completed",
+    "description": "Long message for the progress bar on the ongoing mission card"
+  },
+  "OngoingMissionCard.shortProgressMessage": {
+    "defaultMessage": "{nbCompletedActivities, number}/{nbActivities, number}",
+    "description": "Short message for the progress bar on the ongoing mission card"
+  },
+  "OngoingMissionsHomeSection.title": {
+    "defaultMessage": "Continue where you left of",
+    "description": "Title of the on going missions section on the home page"
+  },
+  "PartnerCard.partnerLogoAlt": {
+    "defaultMessage": "Logo of {partnerName}",
+    "description": "Alt for the logo of a partner"
   },
   "PartnerInfoCard.activityCounterLabel": {
     "defaultMessage": "{nbActivities, plural, one {Activity} other {Activities} }",
@@ -455,10 +415,6 @@
     "defaultMessage": "Partner",
     "description": "Label above the partner info card"
   },
-  "PartnerListItem.partnerLogoAlt": {
-    "defaultMessage": "Logo of {partnerName}",
-    "description": "Alt for the logo of a partner"
-  },
   "PartnerPage.empty": {
     "defaultMessage": "No data",
     "description": "Description"
@@ -466,6 +422,14 @@
   "PartnerPage.missionActivityListMessage": {
     "defaultMessage": "{partnerName} activities:",
     "description": "Message displayed above the activity list of each mission section for a given partner"
+  },
+  "PartnersHomeSection.title": {
+    "defaultMessage": "Partners",
+    "description": "Title of the Partners section on the home page"
+  },
+  "PartnersHomeSection.viewAllPartnersButtonLabel": {
+    "defaultMessage": "View All",
+    "description": "Label of the button to view all partners"
   },
   "PartnersPage.title": {
     "defaultMessage": "Partners",
@@ -482,14 +446,6 @@
   "StackedImage.alt": {
     "defaultMessage": "item of stacked images",
     "description": "Alt text of stacked image"
-  },
-  "UpcomingActivitiesCTA.JoinDiscordMessage": {
-    "defaultMessage": "Join Verida's Discord community for updates on new activities and missions.",
-    "description": "Message to display in the upcoming activities CTA"
-  },
-  "UpcomingActivitiesCTA.title": {
-    "defaultMessage": "Next activity coming soon",
-    "description": "Message to display in the upcoming activities CTA"
   },
   "VdaTokensChip.formattedValue": {
     "defaultMessage": "{nbVdaTokens} VDA",
@@ -1380,7 +1336,7 @@
     "description": "Default application title for the meta tags"
   },
   "missions.mission-01.description": {
-    "defaultMessage": "This first mission guides you through setting up your identity, exploring demo apps, and introducing you to the Verida Network.",
+    "defaultMessage": "This first mission guides you through setting up your identity, exploring demo apps, and introducing you to the Verida Network.{newline}{newline}Get Started:{newline}1. Click the 'Connect' button above{newline}2. Depending on being on mobile or desktop, either click the button, or scan the QR code with your phone{newline}3. Follow the instructions to install the Wallet and create your Identity{newline}4. You may have to refresh this page and connect again",
     "description": "Short description of the mission 01"
   },
   "missions.mission-01.idLabel": {
@@ -1388,7 +1344,7 @@
     "description": "Label of the mission if 01"
   },
   "missions.mission-01.longDescription": {
-    "defaultMessage": "This first mission guides you through setting up your identity, exploring demo apps, and introducing you to the Verida Network.{newline}{newline}Get Started:{newline}1. Click the 'Connect' button above{newline}2. Depending on being on mobile or desktop, either click the button, or scan the QR code with your phone{newline}3. Follow the instructions to install the Wallet and create your Identity{newline}4. You may have to refresh this page and connect again",
+    "defaultMessage": "This first mission guides you through setting up your identity, exploring demo apps, and introducing you to the Verida Network.",
     "description": "Long description of the mission 01"
   },
   "missions.mission-01.resources.howToCreateVeridaIdentity.label": {
