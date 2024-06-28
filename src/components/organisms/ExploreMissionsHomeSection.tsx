@@ -2,8 +2,8 @@ import React, { useMemo } from "react";
 import { useIntl } from "react-intl";
 
 import { ButtonLink } from "~/components/atoms";
-import { HomeSectionWrapper } from "~/components/molecules";
 import { MissionCardsCarousel } from "~/components/organisms/MissionCardsCarousel";
+import { HomeSectionWrapper } from "~/components/templates";
 import { ONBOARDING_MISSION, missions } from "~/features/missions";
 
 export type ExploreMissionsHomeSectionProps = Omit<

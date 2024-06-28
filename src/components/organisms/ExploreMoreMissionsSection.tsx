@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
 import { useIntl } from "react-intl";
 
-import { PageAsideSectionWrapper } from "~/components/molecules";
 import { MissionCardsCarousel } from "~/components/organisms";
+import { PageAsideSectionWrapper } from "~/components/templates";
 import { Mission, missions } from "~/features/missions";
 
 export type ExploreMoreMissionsSectionProps = {

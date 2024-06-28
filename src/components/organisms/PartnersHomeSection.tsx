@@ -2,8 +2,8 @@ import React from "react";
 import { useIntl } from "react-intl";
 
 import { ButtonLink } from "~/components/atoms";
-import { HomeSectionWrapper } from "~/components/molecules";
 import { PartnerCardsCarousel } from "~/components/organisms/PartnerCardsCarousel";
+import { HomeSectionWrapper } from "~/components/templates";
 import { partners } from "~/features/partners";
 
 export type PartnersHomeSectionProps = Omit<
