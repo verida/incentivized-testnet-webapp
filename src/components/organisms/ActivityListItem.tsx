@@ -9,18 +9,18 @@ import { useVerida } from "~/features/verida";
 export type ActivityListItemProps = {
   activityIndex: number;
   activity: Activity;
-  showPartners?: boolean;
+  hidePartners?: boolean;
   hideXpPoints?: boolean;
-  small?: boolean;
+  size?: "default" | "small";
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const ActivityListItem: React.FC<ActivityListItemProps> = (props) => {
   const {
     activityIndex,
     activity,
-    showPartners,
+    // hidePartners = false, // TODO: Add the partners
     hideXpPoints = false,
-    small = false,
+    size = "default",
     ...divProps
   } = props;
 
@@ -37,13 +37,13 @@ export const ActivityListItem: React.FC<ActivityListItemProps> = (props) => {
         className={twMerge(
           "rounded-xl border border-transparent sm:border-border hover:border-border-hover hover:bg-transparent-10 flex flex-col gap-6",
           activity.ended ? "bg-transparent-3" : "bg-transparent-6",
-          small ? "px-4 py-3" : "px-4 py-5 lg:p-6"
+          size === "small" ? "px-4 py-3" : "px-4 py-5 lg:p-6"
         )}
       >
         <div
           className={twMerge(
-            "flex flex-row items-center justify-start gap-3 lg:gap-4",
-            small ? "h-8" : ""
+            "flex flex-row items-center justify-start",
+            size === "small" ? "gap-3" : "gap-3 lg:gap-4"
           )}
         >
           <ActivityIndex
@@ -55,39 +55,59 @@ export const ActivityListItem: React.FC<ActivityListItemProps> = (props) => {
                   ? "ended"
                   : userActivity?.status
             }
-            className={small ? "h-6" : "h-8 lg:h-10"}
           />
-          <div className="grow">
-            <Typography
-              variant={small ? "heading-xs" : "heading-s"}
-              className={twMerge(
-                "flex-1 overflow-ellipsis overflow-hidden line-clamp-2",
-                activity.ended ? "text-transparent-70" : "text-foreground"
-              )}
-            >
-              {i18n.formatMessage(activity.title)}
-            </Typography>
-          </div>
-          <div className="flex flex-row items-center gap-4">
+          <Typography
+            variant={size === "small" ? "heading-xs" : "heading-s"}
+            className={twMerge(
+              "flex-1",
+              activity.ended ? "text-transparent-70" : "text-foreground",
+              size === "small" ? "line-clamp-1" : "line-clamp-2"
+            )}
+          >
+            {i18n.formatMessage(activity.title)}
+          </Typography>
+          <div
+            className={twMerge(
+              "flex flex-row items-center",
+              size === "small" ? "gap-3" : "gap-4"
+            )}
+          >
             {activity.enabled ? (
               <>
-                <div className="hidden lg:flex flex-row items-center gap-4">
-                  {isConnected &&
-                  (isLoadingUserActivities || status !== "todo") ? (
-                    <>
-                      <ActivityStatus
-                        status={isLoadingUserActivities ? "checking" : status}
-                      />
-                      {!hideXpPoints ? (
-                        <XpPointsChip nbXpPoints={activity.points} />
-                      ) : null}
-                    </>
-                  ) : activity.ended ? (
+                {isConnected &&
+                (isLoadingUserActivities || status !== "todo") ? (
+                  <div
+                    className={twMerge(
+                      "hidden lg:flex flex-row items-center",
+                      size === "small" ? "gap-3" : "gap-4"
+                    )}
+                  >
+                    <ActivityStatus
+                      status={isLoadingUserActivities ? "checking" : status}
+                    />
+                    {!hideXpPoints ? (
+                      <XpPointsChip nbXpPoints={activity.points} />
+                    ) : null}
+                  </div>
+                ) : activity.ended ? (
+                  <div
+                    className={twMerge(
+                      "hidden lg:flex flex-row items-center",
+                      size === "small" ? "gap-3" : "gap-4"
+                    )}
+                  >
                     <ActivityStatus status="ended" />
-                  ) : !hideXpPoints ? (
+                  </div>
+                ) : !hideXpPoints ? (
+                  <div
+                    className={twMerge(
+                      "hidden lg:flex flex-row items-center",
+                      size === "small" ? "gap-3" : "gap-4"
+                    )}
+                  >
                     <XpPointsChip nbXpPoints={activity.points} />
-                  ) : null}
-                </div>
+                  </div>
+                ) : null}
                 <Icon type="chevron-right" size={20} />
               </>
             ) : (

@@ -80,7 +80,7 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
           <XpPointsBadge
             nbXpPoints={totalMissionPoints}
             theme={isOnboardingMission ? "onboarding" : "default"}
-            className="w-40 h-40"
+            className="w-40"
           />
         </div>
         <MissionCardActivitiesProgressBar

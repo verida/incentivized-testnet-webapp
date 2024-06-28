@@ -6,11 +6,10 @@ import { Typography } from "~/components/atoms";
 export type XpPointsBadgeProps = {
   nbXpPoints: number;
   theme?: "default" | "onboarding";
-  textClassName?: string;
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const XpPointsBadge: React.FC<XpPointsBadgeProps> = (props) => {
-  const { nbXpPoints, theme = "default", textClassName, ...divProps } = props;
+  const { nbXpPoints, theme = "default", className, ...divProps } = props;
 
   const i18n = useIntl();
   const formattedValue = i18n.formatMessage(
@@ -24,7 +23,7 @@ export const XpPointsBadge: React.FC<XpPointsBadgeProps> = (props) => {
     }
   );
   return (
-    <div {...divProps}>
+    <div {...divProps} className={twMerge("min-w-40", className)}>
       <div
         className={twMerge(
           "flex flex-row justify-center items-center w-full aspect-square",
@@ -33,11 +32,7 @@ export const XpPointsBadge: React.FC<XpPointsBadgeProps> = (props) => {
             : "bg-xp-badge-default"
         )}
       >
-        <Typography
-          variant="heading-s"
-          component="span"
-          className={textClassName}
-        >
+        <Typography variant="heading-s" component="span">
           {formattedValue}
         </Typography>
       </div>

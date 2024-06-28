@@ -1,47 +1,66 @@
-import React, { Children, useState } from "react";
+import React, { Children, useCallback, useMemo, useState } from "react";
 import { useIntl } from "react-intl";
+import { twMerge } from "tailwind-merge";
 
-import { Icon, Typography } from "~/components/atoms";
+import { Button, Icon, Typography } from "~/components/atoms";
 
 export type CollapsibleListProps = {
-  limit?: number;
-} & React.ComponentPropsWithRef<"ul">;
+  nbItemWhenCollapsed?: number;
+  listClassName?: React.ComponentPropsWithRef<"ul">["className"];
+} & React.ComponentPropsWithRef<"div">;
 
 export const CollapsibleList: React.FC<CollapsibleListProps> = (props) => {
-  const { limit = 3, children, ...ulProps } = props;
+  const {
+    nbItemWhenCollapsed = 3,
+    children,
+    listClassName,
+    ...divProps
+  } = props;
 
-  const i18n = useIntl();
+  const items = useMemo(() => Children.toArray(children), [children]);
 
   const [isCollapsed, setIsCollapsed] = useState(true);
 
-  const viewAllLabel = i18n.formatMessage({
-    id: "CollapsibleList.viewAllLabel",
-    description: "Label View All",
+  const toggleCollapse = useCallback(() => setIsCollapsed((prev) => !prev), []);
+
+  const i18n = useIntl();
+
+  const viewAllButtonLabel = i18n.formatMessage({
+    id: "CollapsibleList.viewAllButtonLabel",
+    description:
+      "Label of the button to display all items of a collapsible list",
     defaultMessage: "View All",
   });
 
-  const collapseLabel = i18n.formatMessage({
-    id: "CollapsibleList.collapseLabel",
-    description: "Label Collapse",
+  const collapseButtonLabel = i18n.formatMessage({
+    id: "CollapsibleList.collapseButtonLabel",
+    description:
+      "Label of the button to collapse the items of a collapsible list",
     defaultMessage: "Collapse",
   });
 
-  const items = Children.toArray(children);
-
   return (
-    <div>
-      <ul {...ulProps}>{isCollapsed ? items.slice(0, limit) : children}</ul>
-      {items.length > limit ? (
-        <div
-          className="flex justify-center gap-2 mt-8 hover:cursor-pointer"
-          onClick={() => setIsCollapsed((prev) => !prev)}
-        >
-          <Typography variant={"base-s"}>
-            {isCollapsed ? viewAllLabel : collapseLabel}
-          </Typography>
-          <Icon type={isCollapsed ? "chevron-down" : "chevron-up"} size={20} />
-        </div>
-      ) : null}
+    <div {...divProps}>
+      <div className="flex flex-col gap-5">
+        <ul className={twMerge("flex flex-col gap-6", listClassName)}>
+          {isCollapsed ? items.slice(0, nbItemWhenCollapsed) : children}
+        </ul>
+        {items.length > nbItemWhenCollapsed ? (
+          <Button
+            variant="text"
+            onClick={toggleCollapse}
+            className="self-center"
+          >
+            <Typography variant="subtitle">
+              {isCollapsed ? viewAllButtonLabel : collapseButtonLabel}
+            </Typography>
+            <Icon
+              type={isCollapsed ? "chevron-down" : "chevron-up"}
+              size={20}
+            />
+          </Button>
+        ) : null}
+      </div>
     </div>
   );
 };

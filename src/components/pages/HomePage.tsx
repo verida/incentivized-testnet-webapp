@@ -5,7 +5,8 @@ import { Typography } from "~/components/atoms";
 import { Alert, HomeHero } from "~/components/molecules";
 import {
   ContinueMissionCardsCarousel,
-  ExploreMissionsHomeSection, // HomeMissionBeginSection,
+  ExploreMissionsHomeSection,
+  OnboardingHomeSection,
   PartnersHomeSection,
 } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
@@ -100,9 +101,7 @@ export const HomePage: React.FC = () => {
           />
         </div>
         <div className="flex flex-col gap-16 lg:gap-20 w-full">
-          {/* <div className="flex flex-col gap-16 lg:gap-20 px-6">
-            <HomeMissionBeginSection mission={missions[0]} />
-          </div> */}
+          <OnboardingHomeSection />
           {/* {isMissionCompleted(MISSION_01_ID) ? (
             <ContinueMissionCardsCarousel
               missions={missionsSortedByCompletionPercentage.slice(0, 2)}
