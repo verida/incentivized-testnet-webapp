@@ -24,23 +24,30 @@ export const PartnerCard: React.FC<PartnerCardProps> = (props) => {
     }
   );
 
-  // TODO: Use container query rather than media query to adapt the content based on the container size for smoother transitions
   return (
     <article
       {...articleProps}
       className={twMerge(
-        "border border-border hover:border-border-hover bg-background-light hover:bg-background-extra-light rounded-3xl md:rounded-5xl flex flex-col items-center justify-center py-8 lg:py-12 gap-6 md:gap-10",
+        "border border-border bg-background-light rounded-3xl flex flex-col items-center justify-center gap-6",
         className
       )}
     >
-      <img
-        src={partner.logo}
-        alt={partnerLogoAlt}
-        className="bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 w-20 md:w-30"
-      />
-      <Typography variant="heading-m" component="p" className="text-center">
-        {partner.name}
-      </Typography>
+      <div className="pt-8 pb-0 px-[20%] w-full flex flex-row justify-center">
+        <img
+          src={partner.logo}
+          alt={partnerLogoAlt}
+          className="bg-white rounded-2xl p-4 w-full max-w-36 aspect-square"
+        />
+      </div>
+      <div className="pb-8">
+        <Typography
+          variant="heading-s"
+          component="p"
+          className="text-center line-clamp-1"
+        >
+          {partner.name}
+        </Typography>
+      </div>
     </article>
   );
 };
