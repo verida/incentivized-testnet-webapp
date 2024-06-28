@@ -16,7 +16,7 @@ export const ExploreMoreMissionsSection: React.FC<
 
   const displayedMissions = useMemo(() => {
     // TODO: Improve the logic to select missions, maybe shuffling them, removing completed ones, etc.
-    return missions.filter(filterPredicate).slice(0, 3);
+    return missions.filter(filterPredicate);
   }, [filterPredicate]);
 
   const i18n = useIntl();

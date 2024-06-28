@@ -18,9 +18,7 @@ export const ExploreMissionsHomeSection: React.FC<
 
   const displayedMissions = useMemo(() => {
     // TODO: Improve the logic to select missions, maybe shuffling them, removing completed ones, etc.
-    return missions
-      .filter((mission) => mission.id !== ONBOARDING_MISSION.id)
-      .slice(0, 3);
+    return missions.filter((mission) => mission.id !== ONBOARDING_MISSION.id);
   }, []);
 
   const i18n = useIntl();
