@@ -190,6 +190,13 @@ module.exports = {
         sm: "696px",
         xl: "1264px",
       },
+      containers: {
+        "2xs": "16rem",
+        "3xs": "14rem",
+        "4xs": "12rem",
+        "5xs": "8rem",
+        "6xs": "4rem",
+      },
       spacing: {
         4.5: "1.125rem",
       },
@@ -221,5 +228,8 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("@tailwindcss/container-queries"),
+    require("tailwindcss-animate"),
+  ],
 };
