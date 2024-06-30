@@ -103,6 +103,13 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
       "Message displayed in the airdrop card when the user missed the registration or claiming",
   });
 
+  const waitForClaimMessage = i18n.formatMessage({
+    id: "AirdropCard.waitForClaimMessage",
+    defaultMessage: "Please wait for the claim to open",
+    description:
+      "Message displayed in the airdrop card when the user is registered and has to wait for the claim process to open",
+  });
+
   return (
     <>
       <AirdropCardBase
@@ -186,6 +193,11 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
                   airdropUserStatus === "registered") ? (
                 <Typography className="text-center sm:text-right text-muted-foreground">
                   {missedAirdropMessage}
+                </Typography>
+              ) : airdrop.status === "registration-closed" &&
+                airdropUserStatus === "registered" ? (
+                <Typography className="text-center sm:text-right text-muted-foreground">
+                  {waitForClaimMessage}
                 </Typography>
               ) : null}
               <div className=" flex flex-col sm:flex-row gap-6 justify-end">
