@@ -158,17 +158,42 @@ export function getMissionCompletionPercentage(
   missionId: string
 ): number {
   const missionActivities = getActivitiesForMission(activities, missionId);
+  const filteredActivities = missionActivities.filter(
+    (activity) => activity.visible
+  );
 
-  if (missionActivities.length === 0) {
+  if (filteredActivities.length === 0) {
     return 0;
   }
 
-  const completedActivities = missionActivities.filter((activity) => {
+  const completedActivities = filteredActivities.filter((activity) => {
     const userActivity = getUserActivityForId(userActivities, activity.id);
     return userActivity?.status === "completed";
   });
 
-  return completedActivities.length / missionActivities.length;
+  return completedActivities.length / filteredActivities.length;
+}
+
+export function getMissionPendingPercentage(
+  activities: Activity[],
+  userActivities: UserActivityRecord[],
+  missionId: string
+): number {
+  const missionActivities = getActivitiesForMission(activities, missionId);
+  const filteredActivities = missionActivities.filter(
+    (activity) => activity.visible
+  );
+
+  if (filteredActivities.length === 0) {
+    return 0;
+  }
+
+  const completedActivities = filteredActivities.filter((activity) => {
+    const userActivity = getUserActivityForId(userActivities, activity.id);
+    return userActivity?.status === "pending";
+  });
+
+  return completedActivities.length / filteredActivities.length;
 }
 
 export function isMissionCompleted(
@@ -207,9 +232,35 @@ export function sortMissionsByCompletionPercentage(
   userActivities: UserActivityRecord[],
   missions: Mission[]
 ): Mission[] {
-  return [...missions].sort(
-    (a, b) =>
-      getMissionCompletionPercentage(activities, userActivities, b.id) -
-      getMissionCompletionPercentage(activities, userActivities, a.id)
-  );
+  return [...missions].sort((a, b) => {
+    const missionACompletionPercentage = getMissionCompletionPercentage(
+      activities,
+      userActivities,
+      a.id
+    );
+
+    const missionBCompletionPercentage = getMissionCompletionPercentage(
+      activities,
+      userActivities,
+      b.id
+    );
+
+    if (missionACompletionPercentage === missionBCompletionPercentage) {
+      const missionAPendingPercentage = getMissionPendingPercentage(
+        activities,
+        userActivities,
+        a.id
+      );
+
+      const missionBPendingPercentage = getMissionPendingPercentage(
+        activities,
+        userActivities,
+        b.id
+      );
+
+      return missionBPendingPercentage - missionAPendingPercentage;
+    }
+
+    return missionBCompletionPercentage - missionACompletionPercentage;
+  });
 }
