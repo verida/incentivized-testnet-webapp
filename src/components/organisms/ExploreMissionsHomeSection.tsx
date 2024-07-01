@@ -4,7 +4,7 @@ import { useIntl } from "react-intl";
 import { ButtonLink } from "~/components/atoms";
 import { MissionCardsCarousel } from "~/components/organisms/MissionCardsCarousel";
 import { HomeSectionWrapper } from "~/components/templates";
-import { ONBOARDING_MISSION, missions } from "~/features/missions";
+import { isOnboardingMission, missions } from "~/features/missions";
 
 export type ExploreMissionsHomeSectionProps = Omit<
   React.ComponentPropsWithRef<typeof HomeSectionWrapper>,
@@ -17,8 +17,10 @@ export const ExploreMissionsHomeSection: React.FC<
   const { ...wrapperProps } = props;
 
   const displayedMissions = useMemo(() => {
-    // TODO: Improve the logic to select missions, maybe shuffling them, removing completed ones, etc.
-    return missions.filter((mission) => mission.id !== ONBOARDING_MISSION.id);
+    return missions.filter(
+      // Filter out the onboarding mission
+      (mission) => !isOnboardingMission(mission.id)
+    );
   }, []);
 
   const i18n = useIntl();
