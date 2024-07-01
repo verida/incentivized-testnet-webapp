@@ -131,6 +131,10 @@
     "defaultMessage": "Requirements",
     "description": "Label for the requirements button of the airdrop card"
   },
+  "AirdropCard.waitForClaimMessage": {
+    "defaultMessage": "Please wait for the claim to open",
+    "description": "Message displayed in the airdrop card when the user is registered and has to wait for the claim process to open"
+  },
   "AirdropModal.notConnectedModalMessage": {
     "defaultMessage": "To proceed with the airdrop, you need to connect your Verida identity.",
     "description": "Message of the modal when the user is not connected"
