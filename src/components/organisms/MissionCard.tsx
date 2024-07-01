@@ -15,6 +15,7 @@ import {
   isOnboardingMission as isOnboardingMissionFunc,
 } from "~/features/missions";
 import { partners as allPartners } from "~/features/partners";
+import { useVerida } from "~/features/verida";
 
 export type MissionCardProps = {
   mission: Mission;
@@ -24,6 +25,8 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
   const { mission, className, ...articleProps } = props;
 
   const isOnboardingMission = isOnboardingMissionFunc(mission.id);
+
+  const { isConnected, isConnecting } = useVerida();
 
   const { isLoadingUserActivities, activities, getUserActivity } =
     useActivity();
@@ -84,7 +87,7 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
           />
         </div>
         <MissionCardActivitiesProgressBar
-          isLoading={isLoadingUserActivities}
+          isLoading={isConnecting || (isConnected && isLoadingUserActivities)}
           activityStatuses={activityStatuses}
         />
       </div>

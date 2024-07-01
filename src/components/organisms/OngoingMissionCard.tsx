@@ -11,6 +11,7 @@ import {
 import { useActivity } from "~/features/activity";
 import { Mission } from "~/features/missions";
 import { partners as allPartners } from "~/features/partners";
+import { useVerida } from "~/features/verida";
 
 export type OngoingMissionCardProps = {
   mission: Mission;
@@ -20,6 +21,8 @@ export const OngoingMissionCard: React.FC<OngoingMissionCardProps> = (
   props
 ) => {
   const { mission, className, ...articleProps } = props;
+
+  const { isConnected, isConnecting } = useVerida();
 
   const {
     activities: allActivities,
@@ -127,7 +130,9 @@ export const OngoingMissionCard: React.FC<OngoingMissionCardProps> = (
               {longProgressMessage}
             </Typography>
             <MissionActivitiesProgressBar
-              isLoading={isLoadingUserActivities}
+              isLoading={
+                isConnecting || (isConnected && isLoadingUserActivities)
+              }
               activityStatuses={activityStatuses}
               className="flex-1 lg:self-stretch"
             />

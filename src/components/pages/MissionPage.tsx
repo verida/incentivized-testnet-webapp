@@ -10,6 +10,7 @@ import {
   getMissionById,
   isOnboardingMission as isOnboardingMissionFunc,
 } from "~/features/missions";
+import { useVerida } from "~/features/verida";
 
 export const MissionPage: React.FC = () => {
   // Extract mission id from url path
@@ -18,6 +19,8 @@ export const MissionPage: React.FC = () => {
   // Check if current mission is onboarding mission
   const mission = getMissionById(missionId);
   const isOnboardingMission = isOnboardingMissionFunc(missionId);
+
+  const { isConnected, isConnecting } = useVerida();
 
   const {
     activities: allActivities,
@@ -82,7 +85,9 @@ export const MissionPage: React.FC = () => {
             <MissionBottomBar
               activityStatuses={activityStatuses}
               points={missionTotalXpPoints}
-              isLoading={isLoadingUserActivities}
+              isLoading={
+                isConnecting || (isConnected && isLoadingUserActivities)
+              }
             />
           </footer>
         </div>

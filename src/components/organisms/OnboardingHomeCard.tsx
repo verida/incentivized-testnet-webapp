@@ -16,6 +16,7 @@ import {
   useActivity,
 } from "~/features/activity";
 import { ONBOARDING_MISSION } from "~/features/missions";
+import { useVerida } from "~/features/verida";
 
 export type OnboardingHomeCardProps = Omit<
   React.ComponentPropsWithRef<"div">,
@@ -26,6 +27,8 @@ export const OnboardingHomeCard: React.FC<OnboardingHomeCardProps> = (
   props
 ) => {
   const { ...divProps } = props;
+
+  const { isConnected, isConnecting } = useVerida();
 
   const {
     activities: allActivities,
@@ -157,7 +160,9 @@ export const OnboardingHomeCard: React.FC<OnboardingHomeCardProps> = (
                       {longProgressMessage}
                     </Typography>
                     <MissionActivitiesProgressBar
-                      isLoading={isLoadingUserActivities}
+                      isLoading={
+                        isConnecting || (isConnected && isLoadingUserActivities)
+                      }
                       activityStatuses={activityStatuses}
                       className="flex-1 lg:self-stretch"
                     />
