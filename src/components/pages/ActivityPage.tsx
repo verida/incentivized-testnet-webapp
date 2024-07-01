@@ -62,8 +62,15 @@ export const ActivityPage: React.FC = () => {
     }
   }, [isConnected, isLoadingUserActivities, userActivity]);
 
+  const notFoundMessage = i18n.formatMessage({
+    id: "ActivityPage.emptyMessage",
+    description: "Message when activity doesn't exist",
+    defaultMessage: "No data",
+  });
+
   if (!activity) {
-    return null;
+    /* TODO: Rework the not found state */
+    return <div>{notFoundMessage}</div>;
   }
 
   const titleMessage = i18n.formatMessage(activity.title);
@@ -122,17 +129,15 @@ export const ActivityPage: React.FC = () => {
     <PageLayout
       hideReportIssueButton
       title={titleMessage}
-      titleClassName="max-w-[calc(1264px_-_29rem)] text-left text-white"
+      titleClassName="max-w-[calc(1264px_-_29rem)] text-left"
     >
-      <div className="flex flex-col justify-center items-center">
-        <div className="max-w-[calc(1264px_-_29rem)]">
-          <div className="flex py-2 mb-3 gap-6 items-center justify-stretch">
+      <div className="flex flex-col justify-center items-center gap-10">
+        <div className="max-w-[calc(1264px_-_29rem)] flex flex-col gap-6">
+          <div className="flex py-2 gap-4 sm:gap-6 items-center justify-stretch">
             {partnerLogos.length > 0 ? (
               <>
-                <div className="flex items-center">
-                  <Typography variant={"base-s"} className="mr-4">
-                    {activityByLabel}
-                  </Typography>
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <Typography variant={"base-s"}>{activityByLabel}</Typography>
                   <StackedDiv divs={partnerLogos} />
                 </div>
               </>
@@ -141,13 +146,13 @@ export const ActivityPage: React.FC = () => {
               <div className="self-stretch border-l border-transparent-15" />
             ) : null}
             {activityStatus ? (
-              <div className="flex gap-4 items-center">
+              <div className="flex gap-3 sm:gap-4 items-center">
                 <Typography variant={"base-s"}>{statusLabel}</Typography>
                 <ActivityStatus status={activityStatus} />
               </div>
             ) : null}
           </div>
-          <div className="text-muted-foreground mb-10">
+          <div className="text-muted-foreground">
             <Typography>{shortDescriptionMessage}</Typography>
             <br />
             <Typography>{finishStepsMessage}</Typography>
@@ -155,10 +160,10 @@ export const ActivityPage: React.FC = () => {
           {activity.resources ? (
             <ResourcesSection resources={activity.resources} />
           ) : null}
-          <div className="mt-24 md:mt-14 flex flex-col gap-10 md:gap-16">
+          <div className="pt-8 flex flex-col gap-10 md:gap-16">
             {activitySteps?.map((step, index) => (
               <ActivityStepCard
-                index={index}
+                index={index + 1}
                 step={step}
                 isOnboardingActivity={isOnboardingMission(activity.missionId)}
                 key={index}
@@ -166,7 +171,7 @@ export const ActivityPage: React.FC = () => {
             ))}
           </div>
         </div>
-        <footer className="sticky mt-10 bottom-4 sm:bottom-6 max-w-[calc(1264px_-_12rem)] w-full">
+        <footer className="sticky bottom-4 sm:bottom-6 max-w-[calc(1264px_-_12rem)] w-full">
           <div className="p-4 lg:px-6 lg:py-4 rounded-xl lg:rounded-2xl backdrop-blur-xl border border-border bg-clip-border bg-gradient-to-r from-primary/25 to-primary/10">
             <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center">
               <div className="flex grow justify-between items-center">

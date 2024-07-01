@@ -21,7 +21,7 @@ export const ActivityStepCard: React.FC<ActivityStepCardProps> = (props) => {
       description: "Label above the activity step card",
     },
     {
-      index: index + 1,
+      index: index,
     }
   );
 
@@ -51,7 +51,7 @@ export const ActivityStepCard: React.FC<ActivityStepCardProps> = (props) => {
             background: gradient,
           }}
         >
-          <Typography variant={"heading-s"}>{step}</Typography>
+          <Typography variant={"base"}>{step}</Typography>
         </div>
       </div>
     </div>

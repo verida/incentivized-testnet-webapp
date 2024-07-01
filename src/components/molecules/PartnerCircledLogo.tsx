@@ -1,4 +1,3 @@
-import { ReactComponent as PartnerEllipse } from "assets/images/partner_ellipse.svg";
 import { useIntl } from "react-intl";
 
 import { usePartner } from "~/features/partners";
@@ -33,7 +32,7 @@ export const PartnerCircledLogo: React.FC<PartnerCircledLogoProps> = (
 
   return (
     <div className="relative flex justify-center items-center w-8 h-8">
-      <PartnerEllipse />
+      <div className="w-full h-full border border-foreground rounded-full" />
       <div className="absolute p-1">
         <div
           className="bg-white rounded-full p-1"
@@ -41,7 +40,11 @@ export const PartnerCircledLogo: React.FC<PartnerCircledLogoProps> = (
             boxShadow: `0px 0.856px 13.695px 0px ${partner.accentColor}`,
           }}
         >
-          <img src={partner.logo} alt={partnerLogoAlt} className="" />
+          <img
+            src={partner.logo}
+            alt={partnerLogoAlt}
+            className="rounded-full"
+          />
         </div>
       </div>
     </div>
