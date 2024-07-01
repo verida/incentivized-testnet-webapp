@@ -20,6 +20,7 @@ export * from "./ShareOnSocials";
 export * from "./SideNavigation";
 export * from "./StackedDiv";
 export * from "./StackedImg";
+export * from "./TabbedCardBase";
 export * from "./UpcomingActivitiesCTA";
 export * from "./VdaTokensChip";
 export * from "./XpPointsBadge";

@@ -1,8 +1,7 @@
 import { useIntl } from "react-intl";
 
 import { Typography } from "~/components/atoms";
-
-import { TabbedCardBase } from "../molecules/TabbedCardBase";
+import { TabbedCardBase } from "~/components/molecules";
 
 export type ActivityStepCardProps = {
   index: number;

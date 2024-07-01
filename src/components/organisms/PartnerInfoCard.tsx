@@ -7,9 +7,8 @@ import {
   IconButtonLink,
   Typography,
 } from "~/components/atoms";
+import { TabbedCardBase } from "~/components/molecules";
 import { Partner, getPartnerSocialIcon } from "~/features/partners";
-
-import { TabbedCardBase } from "../molecules/TabbedCardBase";
 
 export type PartnerInfoCardProps = {
   partner: Partner;

@@ -29,7 +29,7 @@ export const ActivityPage: React.FC = () => {
 
   const { activityId = "" } = useParams();
 
-  const { isConnected, isConnecting } = useVerida();
+  const { isConnected } = useVerida();
 
   const {
     activities,
@@ -56,8 +56,6 @@ export const ActivityPage: React.FC = () => {
   const userActivity = getUserActivity(activityId);
 
   useEffect(() => {
-    console.log("isConnected", isConnected);
-    console.log("isLoadingUserActivities", isLoadingUserActivities);
     if (isConnected) {
       if (isLoadingUserActivities) {
         setActivityStatus("checking");
@@ -65,7 +63,7 @@ export const ActivityPage: React.FC = () => {
         setActivityStatus(activity?.ended ? "completed" : userActivity?.status);
       }
     }
-  }, [isConnected, isLoadingUserActivities, userActivity]);
+  }, [activity, isConnected, isLoadingUserActivities, userActivity]);
 
   const notFoundMessage = i18n.formatMessage({
     id: "ActivityPage.emptyMessage",
