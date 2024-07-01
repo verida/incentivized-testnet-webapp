@@ -9,7 +9,12 @@ import {
   XpPointsBadge,
 } from "~/components/molecules";
 import { ActivityListItem } from "~/components/organisms/ActivityListItem";
-import { UserActivityStatus, useActivity } from "~/features/activity";
+import {
+  Activity,
+  UserActivityStatus,
+  getActivitiesForMission,
+  useActivity,
+} from "~/features/activity";
 import { ONBOARDING_MISSION } from "~/features/missions";
 
 export type OnboardingHomeCardProps = Omit<
@@ -28,12 +33,8 @@ export const OnboardingHomeCard: React.FC<OnboardingHomeCardProps> = (
     getUserActivity,
   } = useActivity();
 
-  const onboardingActivities = useMemo(
-    () =>
-      allActivities.filter(
-        (activity) =>
-          activity.missionId === ONBOARDING_MISSION.id && activity.visible
-      ),
+  const onboardingActivities: Activity[] = useMemo(
+    () => getActivitiesForMission(allActivities, ONBOARDING_MISSION.id),
     [allActivities]
   );
 
@@ -44,12 +45,17 @@ export const OnboardingHomeCard: React.FC<OnboardingHomeCardProps> = (
     });
   }, [onboardingActivities, getUserActivity]);
 
-  const nbActivities = activityStatuses.length;
-  const nbCompletedActivities = activityStatuses.filter(
-    (status) => status === "completed"
-  ).length;
+  const nbActivities: number = useMemo(
+    () => activityStatuses.length,
+    [activityStatuses]
+  );
 
-  const totalMissionXpPoints = useMemo(
+  const nbCompletedActivities: number = useMemo(
+    () => activityStatuses.filter((status) => status === "completed").length,
+    [activityStatuses]
+  );
+
+  const totalMissionXpPoints: number = useMemo(
     () =>
       onboardingActivities.reduce(
         (totalXpPoints, activity) => totalXpPoints + activity.points,
