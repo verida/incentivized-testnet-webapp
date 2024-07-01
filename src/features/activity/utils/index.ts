@@ -6,10 +6,12 @@ import {
   UserActivitySchema,
 } from "~/features/activity/schemas";
 import type {
+  Activity,
   UserActivity,
   UserActivityRecord,
 } from "~/features/activity/types";
 import { Logger } from "~/features/logger";
+import { Mission } from "~/features/missions";
 import { PlausibleEvent, capturePlausibleEvent } from "~/features/plausible";
 
 const logger = new Logger("activity");
@@ -134,4 +136,81 @@ export async function deleteActivitiesInDatastore(
   } catch (error: unknown) {
     throw new Error("Error deleting activities", { cause: error });
   }
+}
+
+export function getUserActivityForId(
+  userActivities: UserActivityRecord[],
+  activityId: string
+): UserActivityRecord | undefined {
+  return userActivities?.find((activity) => activity.id === activityId);
+}
+
+export function getActivitiesForMission(
+  activities: Activity[],
+  missionId: string
+): Activity[] {
+  return activities.filter((activity) => activity.missionId === missionId);
+}
+
+export function getMissionCompletionPercentage(
+  activities: Activity[],
+  userActivities: UserActivityRecord[],
+  missionId: string
+): number {
+  const missionActivities = getActivitiesForMission(activities, missionId);
+
+  if (missionActivities.length === 0) {
+    return 0;
+  }
+
+  const completedActivities = missionActivities.filter((activity) => {
+    const userActivity = getUserActivityForId(userActivities, activity.id);
+    return userActivity?.status === "completed";
+  });
+
+  return completedActivities.length / missionActivities.length;
+}
+
+export function isMissionCompleted(
+  activities: Activity[],
+  userActivities: UserActivityRecord[],
+  missionId: string
+): boolean {
+  const missionActivities = getActivitiesForMission(activities, missionId);
+
+  const activityStatuses = missionActivities.map((activity) => {
+    const userActivity = getUserActivityForId(userActivities, activity.id);
+    return userActivity?.status ?? "todo";
+  });
+
+  return activityStatuses.every((status) => status === "completed");
+}
+
+export function isMissionStarted(
+  activities: Activity[],
+  userActivities: UserActivityRecord[],
+  missionId: string
+): boolean {
+  const missionActivities = getActivitiesForMission(activities, missionId);
+
+  const activityStatuses = missionActivities.map((activity) => {
+    const userActivity = getUserActivityForId(userActivities, activity.id);
+    return userActivity?.status ?? "todo";
+  });
+
+  return activityStatuses.every((status) => status === "todo");
+
+  return false;
+}
+
+export function sortMissionsByCompletionPercentage(
+  activities: Activity[],
+  userActivities: UserActivityRecord[],
+  missions: Mission[]
+): Mission[] {
+  return [...missions].sort(
+    (a, b) =>
+      getMissionCompletionPercentage(activities, userActivities, b.id) -
+      getMissionCompletionPercentage(activities, userActivities, a.id)
+  );
 }
