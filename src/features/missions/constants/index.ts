@@ -24,5 +24,5 @@ export const missions = [
   mission05,
   mission06,
 ]
-  .filter((m) => (config.devMode ? true : m.visible))
+  .filter((mission) => (config.devMode ? true : mission.visible))
   .sort((a, b) => a.order - b.order);
