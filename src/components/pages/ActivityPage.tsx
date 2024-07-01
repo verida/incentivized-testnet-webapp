@@ -51,12 +51,16 @@ export const ActivityPage: React.FC = () => {
   const userActivity = getUserActivity(activityId);
 
   useEffect(() => {
+    console.log("isConnected", isConnected);
+    console.log("isLoadingUserActivities", isLoadingUserActivities);
     if (isConnected) {
-      setActivityStatus(activity?.ended ? "completed" : userActivity?.status);
-    } else if (isConnecting) {
-      setActivityStatus("checking");
+      if (isLoadingUserActivities) {
+        setActivityStatus("checking");
+      } else {
+        setActivityStatus(activity?.ended ? "completed" : userActivity?.status);
+      }
     }
-  }, [isConnected, isConnecting, userActivity]);
+  }, [isConnected, isLoadingUserActivities, userActivity]);
 
   if (!activity) {
     return null;
@@ -97,6 +101,12 @@ export const ActivityPage: React.FC = () => {
     id: "ActivityPage.rewardLabel",
     defaultMessage: "Reward",
     description: "Label Reward",
+  });
+
+  const connectToCompleteMessage = i18n.formatMessage({
+    id: "ActivityPage.connectToCompleteMessage",
+    description: "Message to show when the user is not connected",
+    defaultMessage: "Connect for details",
   });
 
   const activitySteps = longDescriptionMessage
@@ -168,20 +178,26 @@ export const ActivityPage: React.FC = () => {
                   <ActivityStatus status={activityStatus} />
                 ) : null}
               </div>
-              {userActivity?.status !== "completed" && !activity.ended ? (
-                <Button
-                  color="primary"
-                  className="h-12 w-full md:w-auto"
-                  onClick={() => void handleExecuteActivity()}
-                  disabled={isLoadingUserActivities || isExecuting}
-                >
-                  {i18n.formatMessage(
-                    isExecuting
-                      ? activity.actionExecutingLabel
-                      : activity.actionLabel
-                  )}
-                </Button>
-              ) : null}
+              {isConnected ? (
+                userActivity?.status !== "completed" && !activity.ended ? (
+                  <Button
+                    color="primary"
+                    className="h-12 w-full md:w-auto"
+                    onClick={() => void handleExecuteActivity()}
+                    disabled={isLoadingUserActivities || isExecuting}
+                  >
+                    {i18n.formatMessage(
+                      isExecuting
+                        ? activity.actionExecutingLabel
+                        : activity.actionLabel
+                    )}
+                  </Button>
+                ) : null
+              ) : (
+                <Typography className="text-muted-foreground">
+                  {connectToCompleteMessage}
+                </Typography>
+              )}
             </div>
           </div>
         </footer>
