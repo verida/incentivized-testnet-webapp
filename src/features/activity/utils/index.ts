@@ -180,7 +180,8 @@ export function isMissionCompleted(
 
   const activityStatuses = missionActivities.map((activity) => {
     const userActivity = getUserActivityForId(userActivities, activity.id);
-    return userActivity?.status ?? "todo";
+    // In this particular case, we can consider ended activities as completed
+    return activity.ended ? "completed" : userActivity?.status ?? "todo";
   });
 
   return activityStatuses.every((status) => status === "completed");
@@ -199,8 +200,6 @@ export function isMissionStarted(
   });
 
   return activityStatuses.every((status) => status === "todo");
-
-  return false;
 }
 
 export function sortMissionsByCompletionPercentage(
