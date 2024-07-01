@@ -59,6 +59,7 @@ export const Alert: React.FunctionComponent<AlertProps> = (props) => {
                 const { type: actionType, ...buttonProps } = action;
                 return (
                   <Button
+                    key={action.label}
                     {...buttonProps}
                     variant={action.variant || "contained"}
                     color={
@@ -77,6 +78,7 @@ export const Alert: React.FunctionComponent<AlertProps> = (props) => {
                 const { type: actionType, ...linkProps } = action;
                 return (
                   <ButtonLink
+                    key={action.label}
                     {...linkProps}
                     variant={action.variant || "contained"}
                     color={
