@@ -11,6 +11,8 @@ import {
   isOnboardingMission as isOnboardingMissionFunc,
 } from "~/features/missions";
 
+import { StickyBottomBar } from "../atoms";
+
 export const MissionPage: React.FC = () => {
   // Extract mission id from url path
   const { missionId = "" } = useParams();
@@ -73,13 +75,13 @@ export const MissionPage: React.FC = () => {
           <div className="max-w-[calc(1264px_-_16rem)]">
             <MissionSection mission={mission} activities={missionActivities} />
           </div>
-          <footer className="sticky bottom-4 sm:bottom-6 max-w-[calc(1264px_-_12rem)] w-full">
+          <StickyBottomBar>
             <MissionBottomBar
               activityStatuses={activityStatuses}
               points={missionTotalXpPoints}
               isLoading={isLoadingUserActivities}
             />
-          </footer>
+          </StickyBottomBar>
         </div>
       ) : (
         <>

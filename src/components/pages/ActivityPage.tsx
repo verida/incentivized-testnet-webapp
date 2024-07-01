@@ -3,7 +3,12 @@ import { useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
 import { useDebouncedCallback } from "use-debounce";
 
-import { Button, Typography } from "~/components/atoms";
+import {
+  BlurredDiv,
+  Button,
+  StickyBottomBar,
+  Typography,
+} from "~/components/atoms";
 import {
   ActivityStatus,
   PartnerCircledLogo,
@@ -171,8 +176,8 @@ export const ActivityPage: React.FC = () => {
             ))}
           </div>
         </div>
-        <footer className="sticky bottom-4 sm:bottom-6 max-w-[calc(1264px_-_12rem)] w-full">
-          <div className="p-4 lg:px-6 lg:py-4 rounded-xl lg:rounded-2xl backdrop-blur-xl border border-border bg-clip-border bg-gradient-to-r from-primary/25 to-primary/10">
+        <StickyBottomBar>
+          <BlurredDiv>
             <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center">
               <div className="flex grow justify-between items-center">
                 <div className="flex items-center gap-3">
@@ -204,8 +209,8 @@ export const ActivityPage: React.FC = () => {
                 </Typography>
               )}
             </div>
-          </div>
-        </footer>
+          </BlurredDiv>
+        </StickyBottomBar>
       </div>
     </PageLayout>
   );
