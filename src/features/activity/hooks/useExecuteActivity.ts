@@ -34,11 +34,10 @@ export function useExecuteActivity(
         toast.success(activityAlreadyBeingExecutedMessage, {
           icon: null,
         });
-        return { status: "activityAlreadyBeingExecuted" };
+        return;
       }
 
       executingActivityRef.current = true;
-      let status;
       try {
         logger.info("Executing activity", {
           activityId,
@@ -65,7 +64,7 @@ export function useExecuteActivity(
               },
             }
           );
-          return { status: "activityNotFound" };
+          return;
         }
 
         // Check existing status, if todo or pending, continue, otherwise return or throw error
@@ -92,7 +91,7 @@ export function useExecuteActivity(
               },
             }
           );
-          return { status: "activityAlreadyCompleted" };
+          return;
         }
 
         // Execute the action
@@ -118,7 +117,7 @@ export function useExecuteActivity(
               },
             }
           );
-          return { status: "errorWhileExecutionActivity" };
+          return;
         }
 
         // Save the execution result
@@ -138,7 +137,7 @@ export function useExecuteActivity(
           });
           toast.error(errorWhileSavingExecutionResultMessage);
           // No need to capture the error with Sentry as it has been captured by the mutation error handler ... normally
-          return { status: "errorWhileSavingExecutionResult" };
+          return;
         }
 
         // Notify about the result
@@ -156,23 +155,6 @@ export function useExecuteActivity(
                 ? i18n.formatMessage(executionResult.message)
                 : activityExecutionCompletedNotificationMessage
             );
-            let nextActivity = activities.find(
-              (act) =>
-                act.missionId === activity.missionId &&
-                act.order === activity.order + 1
-            );
-            if (!nextActivity) {
-              nextActivity = activities.find(
-                (act) =>
-                  act.missionId ===
-                    (parseInt(activity.missionId) + 1).toString() &&
-                  act.order === 1
-              );
-            }
-            status = {
-              status: "activityExecutionCompleted",
-              nextActivityId: nextActivity?.id,
-            };
             break;
           }
           case "todo": {
@@ -189,7 +171,6 @@ export function useExecuteActivity(
                 ? i18n.formatMessage(executionResult.message)
                 : activityExecutionTodoNotificationMessage
             );
-            status = { status: "activityExecutionTodo" };
             break;
           }
           case "pending": {
@@ -209,7 +190,6 @@ export function useExecuteActivity(
                 icon: null,
               }
             );
-            status = { status: "activityExecutionPending" };
             break;
           }
           default: {
@@ -229,13 +209,11 @@ export function useExecuteActivity(
                 },
               }
             );
-            status = { status: "nonSupportedExecutionResult" };
           }
         }
       } finally {
         executingActivityRef.current = false;
       }
-      return status;
     },
     [activities, i18n, userActivities, webUserInstanceRef, saveActivity]
   );

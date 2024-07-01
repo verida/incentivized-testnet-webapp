@@ -67,7 +67,6 @@ export const AirdropRequirementsModal: React.FC<
       open={open}
       onClose={onClose}
       title={title}
-      alignBottomOnMobile
       actions={[
         {
           label: closeButtonLabel,

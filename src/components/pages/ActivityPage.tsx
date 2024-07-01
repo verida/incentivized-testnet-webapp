@@ -4,10 +4,8 @@ import { useParams } from "react-router-dom";
 import { useDebouncedCallback } from "use-debounce";
 
 import { Button, Typography } from "~/components/atoms";
-import { ActivityCompletionModal } from "~/components/modals";
 import {
   ActivityStatus,
-  DaysCountdownChip,
   PartnerCircledLogo,
   StackedDiv,
   XpPointsChip,
@@ -30,20 +28,13 @@ export const ActivityPage: React.FC = () => {
   } = useActivity();
 
   const [isExecuting, setIsExecuting] = useState(false);
-  const [completionModalOpen, setCompletionModalOpen] = useState(false);
-  const [nextActivityId, setNextActivityId] = useState<string>();
 
   const activity = activities.find((activity) => activity.id === activityId);
 
   const handleExecuteActivity = useDebouncedCallback(
     async () => {
       setIsExecuting(true);
-      const { status, nextActivityId: nextId } =
-        await executeActivity(activityId);
-      if (status === "activityExecutionCompleted") {
-        setNextActivityId(nextId);
-        setCompletionModalOpen(true);
-      }
+      await executeActivity(activityId);
       setIsExecuting(false);
     },
     1000,
@@ -184,11 +175,6 @@ export const ActivityPage: React.FC = () => {
           </div>
         </footer>
       </div>
-      <ActivityCompletionModal
-        open={completionModalOpen}
-        onClose={() => setCompletionModalOpen(false)}
-        nextActivityId={nextActivityId}
-      />
     </PageLayout>
   );
 };
