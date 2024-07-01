@@ -18,7 +18,7 @@ export const ActivityListItem: React.FC<ActivityListItemProps> = (props) => {
   const {
     activityIndex,
     activity,
-    // hidePartners = false, // TODO: Add the partners
+    hidePartners, // TODO: Handle the hidePartners prop
     hideXpPoints = false,
     size = "default",
     ...divProps
