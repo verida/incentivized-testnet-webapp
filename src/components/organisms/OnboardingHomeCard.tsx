@@ -123,19 +123,25 @@ export const OnboardingHomeCard: React.FC<OnboardingHomeCardProps> = (
               <XpPointsBadge
                 nbXpPoints={totalMissionXpPoints}
                 theme="onboarding"
-                className="rounded-xl bg-mission-onboarding flex flex-row items-center"
+                className="rounded-xl bg-mission-onboarding flex flex-row items-center min-w-20 w-full max-w-52"
               />
               <div className="flex-1 flex flex-col gap-6 justify-between">
                 <div className="flex flex-col gap-3">
                   <Typography variant="heading-m" className="line-clamp-2">
                     {i18n.formatMessage(ONBOARDING_MISSION.title)}
                   </Typography>
-                  <div className="hidden lg:block">
+                  <div className="hidden sm:block">
                     <Typography
                       variant="base-s"
                       className="text-muted-foreground line-clamp-3"
                     >
-                      {i18n.formatMessage(ONBOARDING_MISSION.description)}
+                      {i18n.formatMessage(ONBOARDING_MISSION.description, {
+                        newline: (
+                          <>
+                            <br />
+                          </>
+                        ),
+                      })}
                     </Typography>
                   </div>
                 </div>
