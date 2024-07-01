@@ -2,6 +2,7 @@ import { useCallback, useMemo } from "react";
 import { useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
 
+import { StickyBottomBarBase } from "~/components/atoms";
 import { MissionBottomBar, MissionSection } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { useActivity } from "~/features/activity";
@@ -10,8 +11,6 @@ import {
   getMissionById,
   isOnboardingMission as isOnboardingMissionFunc,
 } from "~/features/missions";
-
-import { StickyBottomBar } from "../atoms";
 
 export const MissionPage: React.FC = () => {
   // Extract mission id from url path
@@ -75,13 +74,13 @@ export const MissionPage: React.FC = () => {
           <div className="max-w-[calc(1264px_-_16rem)]">
             <MissionSection mission={mission} activities={missionActivities} />
           </div>
-          <StickyBottomBar>
+          <StickyBottomBarBase>
             <MissionBottomBar
               activityStatuses={activityStatuses}
               points={missionTotalXpPoints}
               isLoading={isLoadingUserActivities}
             />
-          </StickyBottomBar>
+          </StickyBottomBarBase>
         </div>
       ) : (
         <>

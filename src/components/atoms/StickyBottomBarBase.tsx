@@ -1,9 +1,9 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-export const StickyBottomBar: React.FC<React.ComponentPropsWithRef<"div">> = (
-  props
-) => {
+export const StickyBottomBarBase: React.FC<
+  React.ComponentPropsWithRef<"div">
+> = (props) => {
   const { className, children, ...divProps } = props;
 
   return (

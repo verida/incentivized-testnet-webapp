@@ -1,7 +1,7 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-export const BlurredDiv: React.FC<React.ComponentPropsWithRef<"div">> = (
+export const BlurredDivBase: React.FC<React.ComponentPropsWithRef<"div">> = (
   props
 ) => {
   const { className, children, ...divProps } = props;

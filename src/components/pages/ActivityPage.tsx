@@ -4,9 +4,9 @@ import { useParams } from "react-router-dom";
 import { useDebouncedCallback } from "use-debounce";
 
 import {
-  BlurredDiv,
+  BlurredDivBase,
   Button,
-  StickyBottomBar,
+  StickyBottomBarBase,
   Typography,
 } from "~/components/atoms";
 import {
@@ -176,8 +176,8 @@ export const ActivityPage: React.FC = () => {
             ))}
           </div>
         </div>
-        <StickyBottomBar>
-          <BlurredDiv>
+        <StickyBottomBarBase>
+          <BlurredDivBase>
             <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center">
               <div className="flex grow justify-between items-center">
                 <div className="flex items-center gap-3">
@@ -209,8 +209,8 @@ export const ActivityPage: React.FC = () => {
                 </Typography>
               )}
             </div>
-          </BlurredDiv>
-        </StickyBottomBar>
+          </BlurredDivBase>
+        </StickyBottomBarBase>
       </div>
     </PageLayout>
   );

@@ -1,7 +1,8 @@
 import { useIntl } from "react-intl";
-import { twMerge } from "tailwind-merge";
 
 import { Typography } from "~/components/atoms";
+
+import { TabbedCardBase } from "../molecules/TabbedCardBase";
 
 export type ActivityStepCardProps = {
   index: number;
@@ -25,35 +26,13 @@ export const ActivityStepCard: React.FC<ActivityStepCardProps> = (props) => {
     }
   );
 
-  const gradient = isOnboardingActivity
-    ? "linear-gradient(129deg, hsl(var(--card-2-grad-1)) 1.09%, hsl(var(--background)) 98.84%)"
-    : "linear-gradient(129deg, hsl(var(--card-1-grad-1)) 1.09%, hsl(var(--card-1-grad-2)) 98.84%)";
-
   return (
-    <div className="relative" {...divProps}>
-      <div
-        className={twMerge(
-          "absolute bottom-[calc(100%_-_1px)] pb-px left-0 rounded-t-lg px-4 py-1",
-          isOnboardingActivity ? "bg-stepCard2Banner" : "bg-stepCard1Banner"
-        )}
-      >
-        <Typography variant="base-s">{stepLabel}</Typography>
-      </div>
-      <div
-        className={twMerge(
-          "rounded-xl rounded-tl-none p-px backdrop-blur-0",
-          isOnboardingActivity ? "bg-stepCard2Banner" : "bg-stepCard1Banner"
-        )}
-      >
-        <div
-          className="px-4 py-6 md:p-6 rounded-[calc(0.75rem_-_1px)]"
-          style={{
-            background: gradient,
-          }}
-        >
-          <Typography variant={"base"}>{step}</Typography>
-        </div>
-      </div>
-    </div>
+    <TabbedCardBase
+      label={stepLabel}
+      backgroundColor={`hsl(var(${isOnboardingActivity ? "--card-2-background" : "--card-1-background"}))`}
+      {...divProps}
+    >
+      <Typography variant={"base"}>{step}</Typography>
+    </TabbedCardBase>
   );
 };

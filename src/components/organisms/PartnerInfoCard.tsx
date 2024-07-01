@@ -9,6 +9,8 @@ import {
 } from "~/components/atoms";
 import { Partner, getPartnerSocialIcon } from "~/features/partners";
 
+import { TabbedCardBase } from "../molecules/TabbedCardBase";
+
 export type PartnerInfoCardProps = {
   partner: Partner;
   nbActivities: number;
@@ -52,100 +54,64 @@ export const PartnerInfoCard: React.FC<PartnerInfoCardProps> = (props) => {
         className
       )}
     >
-      <div className="relative">
-        <div
-          className="absolute bottom-[calc(100%_-_1px)] pb-px left-0 rounded-t-lg"
-          // bottom-[calc(100%_-_1px)] and pb-px is to ensure there is no gap
-          // with the div below
-          style={{
-            backgroundColor: partner.accentColor,
-          }}
-        >
-          <div className="px-4 py-1">
-            <Typography
-              variant="base-s"
-              className={
-                partner.accentForegoundColor === "light"
-                  ? "text-foreground"
-                  : "text-background"
-              }
-            >
-              {cardBadgeLabel}
+      <TabbedCardBase
+        label={cardBadgeLabel}
+        backgroundColor={partner.accentColor}
+        foregroundColor={partner.accentForegoundColor}
+      >
+        <div className="flex flex-row justify-between items-stretch">
+          <img
+            src={partner.logo}
+            alt={partner.id}
+            className="h-16 aspect-square rounded-full bg-white p-3"
+          />
+          <div className="bg-transparent-8 rounded-lg flex flex-col items-center justify-center gap-1 px-2 py-1.5 ">
+            <Typography variant="base">{nbActivities}</Typography>
+            <Typography variant="base-s" className="text-muted-foreground">
+              {activityCounterLabel}
             </Typography>
           </div>
         </div>
-        <div
-          className="rounded-xl rounded-tl-none p-px backdrop-blur-0"
-          // Use the backdrop to hide the above div underneath this one, which
-          // allow us to avoid a z index
-          style={{
-            background: `linear-gradient(135deg, ${partner.accentColor} 10%, hsla(var(--white) / 0.15) 90%)`,
-          }}
-        >
-          <div
-            className="px-4 py-6 md:p-6 rounded-[calc(0.75rem_-_1px)] flex flex-col gap-6"
-            // rounded-[calc(0.75rem_-_1px)] to have a constant border of 1px
-            // with the surrounding div
-            style={{
-              background:
-                "linear-gradient(135deg, hsla(var(--black) / 0.7) 10%, hsla(var(--background) / 1) 90%)",
-            }}
-          >
-            <div className="flex flex-row justify-between items-stretch">
-              <img
-                src={partner.logo}
-                alt={partner.id}
-                className="h-16 aspect-square rounded-full bg-white p-3"
-              />
-              <div className="bg-transparent-8 rounded-lg flex flex-col items-center justify-center gap-1 px-2 py-1.5 ">
-                <Typography variant="base">{nbActivities}</Typography>
-                <Typography variant="base-s" className="text-muted-foreground">
-                  {activityCounterLabel}
-                </Typography>
-              </div>
-            </div>
-            <div className="flex flex-col gap-2">
-              <Typography variant="heading-s" component="p">
-                {partner.name}
-              </Typography>
-              <Typography variant="base-s" className="text-muted-foreground">
-                {i18n.formatMessage(partner.description)}
-              </Typography>
-            </div>
-            <div className="flex flex-row gap-6 flex-wrap">
-              {partner.resources.map((resource) => (
-                <ExternalLink
-                  key={resource.url}
-                  href={resource.url}
-                  openInNewTab
-                  className="flex flex-row gap-2 items-center no-underline hover:underline"
-                >
-                  {/* TODO: Use the ExternalLink component, add an optional prop to display the icon */}
-                  <Icon type="external-link" size={16} />
-                  <Typography variant="base-s">
-                    {i18n.formatMessage(resource.label)}
-                  </Typography>
-                </ExternalLink>
-              ))}
-            </div>
-            <div className="flex flex-row justify-start items-center gap-3 flex-wrap">
-              {partner.socials.map((social) => {
-                const icon = getPartnerSocialIcon(social.type, 16);
-
-                return (
-                  <IconButtonLink
-                    key={social.url}
-                    href={social.url}
-                    shape="circle"
-                    className="rounded-full p-3 bg-white/10 hover:bg-white/30"
-                    icon={icon}
-                  />
-                );
-              })}
-            </div>
-          </div>
+        <div className="flex flex-col gap-2">
+          <Typography variant="heading-s" component="p">
+            {partner.name}
+          </Typography>
+          <Typography variant="base-s" className="text-muted-foreground">
+            {i18n.formatMessage(partner.description)}
+          </Typography>
         </div>
-      </div>
+        <div className="flex flex-row gap-6 flex-wrap">
+          {partner.resources.map((resource) => (
+            <ExternalLink
+              key={resource.url}
+              href={resource.url}
+              openInNewTab
+              className="flex flex-row gap-2 items-center no-underline hover:underline"
+            >
+              {/* TODO: Use the ExternalLink component, add an optional prop to display the icon */}
+              <Icon type="external-link" size={16} />
+              <Typography variant="base-s">
+                {i18n.formatMessage(resource.label)}
+              </Typography>
+            </ExternalLink>
+          ))}
+        </div>
+        <div className="flex flex-row justify-start items-center gap-3 flex-wrap">
+          {partner.socials.map((social) => {
+            const icon = getPartnerSocialIcon(social.type, 16);
+
+            return (
+              <IconButtonLink
+                key={social.url}
+                href={social.url}
+                shape="circle"
+                className="rounded-full p-3 bg-white/10 hover:bg-white/30"
+                icon={icon}
+              />
+            );
+          })}
+        </div>
+      </TabbedCardBase>
     </div>
   );
 };
