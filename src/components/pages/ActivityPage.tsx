@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
 import { useDebouncedCallback } from "use-debounce";
@@ -12,13 +12,19 @@ import {
 } from "~/components/molecules";
 import { ActivityStepCard, ResourcesSection } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
-import { useActivity } from "~/features/activity";
+import {
+  ActivityStatus as ActivityStatusType,
+  useActivity,
+} from "~/features/activity";
 import { isOnboardingMission } from "~/features/missions";
+import { useVerida } from "~/features/verida";
 
 export const ActivityPage: React.FC = () => {
   const i18n = useIntl();
 
   const { activityId = "" } = useParams();
+
+  const { isConnected, isConnecting } = useVerida();
 
   const {
     activities,
@@ -27,6 +33,7 @@ export const ActivityPage: React.FC = () => {
     executeActivity,
   } = useActivity();
 
+  const [activityStatus, setActivityStatus] = useState<ActivityStatusType>();
   const [isExecuting, setIsExecuting] = useState(false);
 
   const activity = activities.find((activity) => activity.id === activityId);
@@ -41,11 +48,19 @@ export const ActivityPage: React.FC = () => {
     { leading: true }
   );
 
+  const userActivity = getUserActivity(activityId);
+
+  useEffect(() => {
+    if (isConnected) {
+      setActivityStatus(activity?.ended ? "completed" : userActivity?.status);
+    } else if (isConnecting) {
+      setActivityStatus("checking");
+    }
+  }, [isConnected, isConnecting, userActivity]);
+
   if (!activity) {
     return null;
   }
-
-  const userActivity = getUserActivity(activityId);
 
   const titleMessage = i18n.formatMessage(activity.title);
   const shortDescriptionMessage = i18n.formatMessage(
@@ -101,7 +116,7 @@ export const ActivityPage: React.FC = () => {
     >
       <div className="flex flex-col justify-center items-center">
         <div className="max-w-[calc(1264px_-_29rem)]">
-          <div className="flex py-2 mb-3">
+          <div className="flex py-2 mb-3 gap-6 items-center justify-stretch">
             {partnerLogos.length > 0 ? (
               <>
                 <div className="flex items-center">
@@ -109,18 +124,18 @@ export const ActivityPage: React.FC = () => {
                     {activityByLabel}
                   </Typography>
                   <StackedDiv divs={partnerLogos} />
-                  <div className="w-px h-full bg-transparent-15 mx-6" />
                 </div>
               </>
             ) : null}
-            <div className="flex gap-4 items-center">
-              <Typography variant={"base-s"}>{statusLabel}</Typography>
-              <ActivityStatus
-                status={
-                  activity.ended ? "ended" : userActivity?.status ?? "checking"
-                }
-              />
-            </div>
+            {partnerLogos.length > 0 && activityStatus ? (
+              <div className="self-stretch border-l border-transparent-15" />
+            ) : null}
+            {activityStatus ? (
+              <div className="flex gap-4 items-center">
+                <Typography variant={"base-s"}>{statusLabel}</Typography>
+                <ActivityStatus status={activityStatus} />
+              </div>
+            ) : null}
           </div>
           <div className="text-muted-foreground mb-10">
             <Typography>{shortDescriptionMessage}</Typography>
@@ -149,13 +164,9 @@ export const ActivityPage: React.FC = () => {
                   <Typography>{rewardLabel}</Typography>
                   <XpPointsChip nbXpPoints={activity.points} />
                 </div>
-                <ActivityStatus
-                  status={
-                    activity.ended
-                      ? "ended"
-                      : userActivity?.status ?? "checking"
-                  }
-                />
+                {activityStatus ? (
+                  <ActivityStatus status={activityStatus} />
+                ) : null}
               </div>
               {userActivity?.status !== "completed" && !activity.ended ? (
                 <Button
