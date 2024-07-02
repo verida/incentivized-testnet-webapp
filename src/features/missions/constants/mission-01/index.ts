@@ -29,7 +29,7 @@ export const mission: Mission = {
   description: defineMessage({
     id: "missions.mission-01.description",
     defaultMessage:
-      "This first mission guides you through setting up your identity, exploring demo apps, and introducing you to the Verida Network.{newline}{newline}Get Started:{newline}1. Click the 'Connect' button above{newline}2. Depending on being on mobile or desktop, either click the button, or scan the QR code with your phone{newline}3. Follow the instructions to install the Wallet and create your Identity{newline}4. You may have to refresh this page and connect again",
+      "This first mission guides you through setting up your identity, exploring demo apps, and introducing you to the Verida Network.",
     description: "Description of the mission 01",
   }),
   resources: [

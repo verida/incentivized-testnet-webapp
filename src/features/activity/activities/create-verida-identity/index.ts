@@ -82,5 +82,48 @@ export const activity: Activity = {
   }),
   onInit: handleInit,
   onExecute: handleExecute,
-  steps: [],
+  steps: [
+    {
+      order: 1,
+      description: defineMessage({
+        id: "activities.createVeridaIdentity.steps.1.description",
+        defaultMessage: "Click the 'Connect' button above.",
+        description: "Step 1 of the activity 'create Verida Identity'",
+      }),
+    },
+    {
+      order: 2,
+      description: defineMessage({
+        id: "activities.createVeridaIdentity.step2.description",
+        defaultMessage:
+          "Depending on being on mobile or desktop, either click the button, or scan the QR code with your phone.",
+        description: "Step 2 of the activity 'create Verida Identity'",
+      }),
+    },
+    {
+      order: 3,
+      description: defineMessage({
+        id: "activities.createVeridaIdentity.step3.description",
+        defaultMessage:
+          "Follow the instructions to install the Wallet app and create your Identity.",
+        description: "Step 3 of the activity 'create Verida Identity'",
+      }),
+    },
+    {
+      order: 4,
+      description: defineMessage({
+        id: "activities.createVeridaIdentity.step4.description",
+        defaultMessage: "You may have to refresh this page and connect again.",
+        description: "Step 4 of the activity 'create Verida Identity'",
+      }),
+    },
+    {
+      order: 5,
+      description: defineMessage({
+        id: "activities.createVeridaIdentity.step5.description",
+        defaultMessage: "This activity will automatically complete.",
+        description: "Step 5 of the activity 'create Verida Identity'",
+      }),
+    },
+  ],
 };
