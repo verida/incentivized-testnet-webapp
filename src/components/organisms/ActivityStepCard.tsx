@@ -31,7 +31,7 @@ export const ActivityStepCard: React.FC<ActivityStepCardProps> = (props) => {
   return (
     <TabbedCardBase
       label={stepLabel}
-      accentColor={`hsl(var(${theme === "onboarding" ? "--card-2-background" : "--card-1-background"}))`}
+      accentColor={`hsl(var(${theme === "onboarding" ? "--onboarding-accent" : "--primary"}))`}
       foregroundColor="light"
       {...tabbedCardBaseProps}
     >

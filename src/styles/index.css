@@ -22,8 +22,7 @@
     --gray: 251deg 15% 78%;
     --notification: 246deg 59% 10%;
     --menu: 246deg 59% 10%;
-    --card-1-background: 262deg 65% 54%;
-    --card-2-background: 175deg 65% 53%;
+    --onboarding-accent: 175deg 65% 53%;
   }
 
   body {
