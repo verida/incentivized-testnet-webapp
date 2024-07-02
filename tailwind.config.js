@@ -46,6 +46,11 @@ module.exports = {
           "background-disabled": "hsl(var(--primary-bg-disabled))",
           "foreground": "hsl(var(--background))",
         },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          background: "hsla(var(--secondary) / 0.2)",
+          foreground: "hsl(var(--background))",
+        },
         success: {
           DEFAULT: "hsl(var(--success))",
           background: "hsla(var(--success) / 0.2)",
@@ -107,6 +112,13 @@ module.exports = {
             fontWeight: "600",
           },
         ],
+        "heading-xs": [
+          "0.875rem",
+          {
+            lineHeight: "120%",
+            fontWeight: "600",
+          },
+        ],
         "base": [
           "0.875rem",
           {
@@ -149,6 +161,13 @@ module.exports = {
             fontWeight: "600",
           },
         ],
+        "desktop-heading-xs": [
+          "1rem",
+          {
+            lineHeight: "120%",
+            fontWeight: "600",
+          },
+        ],
         "desktop-base": [
           "1rem",
           {
@@ -171,6 +190,13 @@ module.exports = {
         sm: "696px",
         xl: "1264px",
       },
+      containers: {
+        "2xs": "16rem",
+        "3xs": "14rem",
+        "4xs": "12rem",
+        "5xs": "8rem",
+        "6xs": "4rem",
+      },
       spacing: {
         4.5: "1.125rem",
       },
@@ -183,7 +209,9 @@ module.exports = {
         3.5: "0.875rem",
       },
       borderRadius: {
-        10: "2.5rem",
+        "4xl": "2rem",
+        "5xl": "2.5rem",
+        "6xl": "3rem",
       },
       padding: {
         0.25: "1px",
@@ -195,7 +223,13 @@ module.exports = {
       height: {
         50: "200px",
       },
+      boxShadow: {
+        "3xl": "16px 32px 80px 0px hsla(var(--shadow) / 0.15)",
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("@tailwindcss/container-queries"),
+    require("tailwindcss-animate"),
+  ],
 };

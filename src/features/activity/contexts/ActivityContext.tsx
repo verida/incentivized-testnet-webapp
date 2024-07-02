@@ -10,6 +10,7 @@ import {
   useUserXpPoints,
 } from "~/features/activity/hooks";
 import type { Activity, UserActivityRecord } from "~/features/activity/types";
+import { getUserActivityForId } from "~/features/activity/utils";
 import { useVerida } from "~/features/verida";
 
 type ActivityContextType = {
@@ -68,7 +69,7 @@ export const ActivityProvider: React.FunctionComponent<
 
   const getUserActivity = useCallback(
     (activityId: string) => {
-      return userActivities?.find((activity) => activity.id === activityId);
+      return getUserActivityForId(userActivities ?? [], activityId);
     },
     [userActivities]
   );

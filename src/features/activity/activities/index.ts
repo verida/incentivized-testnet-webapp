@@ -1,3 +1,5 @@
+import { config } from "~/config";
+
 import { activity as activityClaimAnimaPoL } from "./claim-anima-pol-credential";
 import { activity as activityClaimGateKeeperAdopter } from "./claim-gatekeeper-adopter-credential";
 import { activity as activityCreateVeridaIdentity } from "./create-verida-identity";
@@ -18,4 +20,6 @@ export const activities = [
   ...gamer31Activities,
   ...zkPassActivities,
   ...reclaimActivities,
-].sort((a, b) => a.order - b.order);
+]
+  .filter((activity) => (config.devMode ? true : activity.visible))
+  .sort((a, b) => a.order - b.order);

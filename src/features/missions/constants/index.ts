@@ -7,6 +7,8 @@ import { mission as mission04 } from "./mission-04";
 import { mission as mission05 } from "./mission-05";
 import { mission as mission06 } from "./mission-06";
 
+export const ONBOARDING_MISSION = mission01;
+
 export { MISSION_01_ID } from "./mission-01";
 export { MISSION_02_ID } from "./mission-02";
 export { MISSION_03_ID } from "./mission-03";
@@ -22,5 +24,5 @@ export const missions = [
   mission05,
   mission06,
 ]
-  .filter((m) => (config.devMode ? true : m.visible))
+  .filter((mission) => (config.devMode ? true : mission.visible))
   .sort((a, b) => a.order - b.order);

@@ -2,7 +2,7 @@ import React from "react";
 import { useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 
-import { PartnerListItem } from "~/components/molecules";
+import { PartnerCard } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { partners } from "~/features/partners";
 
@@ -23,7 +23,10 @@ export const PartnersPage: React.FC = () => {
         {partners.map((partner) => (
           <li key={partner.id}>
             <Link to={`/partners/${partner.id}`}>
-              <PartnerListItem partner={partner} />
+              <PartnerCard
+                partner={partner}
+                className="hover:border-border-hover hover:bg-background-extra-light"
+              />
             </Link>
           </li>
         ))}

@@ -141,7 +141,7 @@ export const MissionSection: React.FC<MissionSectionProps> = (props) => {
                   <ActivityListItem
                     activity={activity}
                     activityIndex={index + 1}
-                    showPartners={!hidePartnersOnActivities}
+                    hidePartners={hidePartnersOnActivities}
                   />
                 </Link>
               </li>
