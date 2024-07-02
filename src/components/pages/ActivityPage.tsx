@@ -12,10 +12,7 @@ import {
 } from "~/components/molecules";
 import { ActivityStepCard, ResourcesSection } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
-import {
-  ActivityStatus as ActivityStatusType,
-  useActivity,
-} from "~/features/activity";
+import { useActivity } from "~/features/activity";
 import { isOnboardingMission } from "~/features/missions";
 import { useVerida } from "~/features/verida";
 
@@ -37,7 +34,7 @@ export const ActivityPage: React.FC = () => {
 
   const activity = useMemo(
     () => activities.find((activity) => activity.id === activityId),
-    [activities]
+    [activities, activityId]
   );
 
   const handleExecuteActivity = useDebouncedCallback(
@@ -80,12 +77,6 @@ export const ActivityPage: React.FC = () => {
     id: "ActivityPage.activityByLabel",
     defaultMessage: "Activity by",
     description: "Label activity by",
-  });
-
-  const statusLabel = i18n.formatMessage({
-    id: "ActivityPage.statusLabel",
-    defaultMessage: "Status",
-    description: "Label Status",
   });
 
   const rewardLabel = i18n.formatMessage({

@@ -15,6 +15,7 @@
     --primary: 257deg 100% 76%;
     --primary-bg-hover: 255deg 100% 82%;
     --primary-bg-disabled: 250deg 35% 35%;
+    --secondary: 175deg 65% 53%;
     --success: 142deg 76% 36%;
     --warning: 36deg 100% 57%;
     --error: 0deg 84% 60%;
@@ -23,6 +24,7 @@
     --notification: 246deg 59% 10%;
     --menu: 246deg 59% 10%;
     --onboarding-accent: 175deg 65% 53%;
+    --shadow: 240deg 42% 10%;
   }
 
   body {
@@ -41,13 +43,6 @@
     background-position: top;
     background-repeat: no-repeat;
     background-size: auto 500px;
-  }
-
-  .bg-mission-section {
-    background-image: url("./images/bg_mission_section_top.png");
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: auto auto;
   }
 
   .bg-mission-default {

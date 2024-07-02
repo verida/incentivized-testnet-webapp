@@ -4,12 +4,13 @@ import { useParams } from "react-router-dom";
 
 import { MissionBottomBar, MissionSection } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
-import { useActivity } from "~/features/activity";
+import { isMissionCompleted, useActivity } from "~/features/activity";
 import {
   Mission,
   getMissionById,
   isOnboardingMission as isOnboardingMissionFunc,
 } from "~/features/missions";
+import { useVerida } from "~/features/verida";
 
 export const MissionPage: React.FC = () => {
   // Extract mission id from url path
@@ -19,8 +20,11 @@ export const MissionPage: React.FC = () => {
   const mission = getMissionById(missionId);
   const isOnboardingMission = isOnboardingMissionFunc(missionId);
 
+  const { isConnected, isConnecting } = useVerida();
+
   const {
     activities: allActivities,
+    userActivities,
     isLoadingUserActivities,
     getUserActivity,
   } = useActivity();
@@ -49,9 +53,13 @@ export const MissionPage: React.FC = () => {
     });
   }, [missionActivities, getUserActivity]);
 
-  const filteroutCurrentMission = useCallback(
-    (mission: Mission) => mission.id !== missionId,
-    [missionId]
+  const exploreMoreMissionsPredicate = useCallback(
+    (mission: Mission) =>
+      // Filter out current mission
+      mission.id !== missionId &&
+      // Filter out completed missions
+      !isMissionCompleted(allActivities, userActivities, mission.id),
+    [missionId, allActivities, userActivities]
   );
 
   const i18n = useIntl();
@@ -66,7 +74,7 @@ export const MissionPage: React.FC = () => {
     <PageLayout
       hideReportIssueButton
       displayExploreMoreMissionsSection={!isOnboardingMission}
-      exploreMoreMissionsFilterPredicate={filteroutCurrentMission}
+      exploreMoreMissionsFilterPredicate={exploreMoreMissionsPredicate}
     >
       {mission ? (
         <div className="flex flex-col items-center gap-6 lg:gap-11">
@@ -77,7 +85,9 @@ export const MissionPage: React.FC = () => {
             <MissionBottomBar
               activityStatuses={activityStatuses}
               points={missionTotalXpPoints}
-              isLoading={isLoadingUserActivities}
+              isLoading={
+                isConnecting || (isConnected && isLoadingUserActivities)
+              }
             />
           </footer>
         </div>
