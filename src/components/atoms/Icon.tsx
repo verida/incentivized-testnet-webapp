@@ -27,6 +27,7 @@ import XpPointsIconImage from "assets/icons/xp_points_icon.png";
 import { ReactComponent as Whatsapp } from "assets/logos/platforms/whatsapp.svg";
 import React from "react";
 
+import { ReactComponent as ResourceIcon } from "~/assets/icons/resource_icon.svg";
 import { ReactComponent as Discord } from "~/assets/logos/platforms/discord.svg";
 import { ReactComponent as LinkedIn } from "~/assets/logos/platforms/linkedin.svg";
 import { ReactComponent as Medium } from "~/assets/logos/platforms/medium.svg";
@@ -60,7 +61,7 @@ export type GenericIconType =
   | "external-link"
   | "arrow-right"
   | "arrow-left";
-export type CustomIconType = "xp-points" | "vda-token";
+export type CustomIconType = "xp-points" | "vda-token" | "resource";
 export type PlatformIconType =
   | "platform-discord"
   | "platform-linkedin"
@@ -142,6 +143,12 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
       return (
         <IconContainer {...otherProps}>
           <VDATokenIcon height={size} width={size} />
+        </IconContainer>
+      );
+    case "resource":
+      return (
+        <IconContainer {...otherProps}>
+          <ResourceIcon height={size} width={size} />
         </IconContainer>
       );
     case "platform-discord":
