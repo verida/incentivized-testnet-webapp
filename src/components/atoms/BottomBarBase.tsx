@@ -1,9 +1,9 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-export const BlurredDivBase: React.FC<React.ComponentPropsWithRef<"div">> = (
-  props
-) => {
+export type BottomBarBaseProps = React.ComponentPropsWithRef<"div">;
+
+export const BottomBarBase: React.FC<BottomBarBaseProps> = (props) => {
   const { className, children, ...divProps } = props;
 
   return (

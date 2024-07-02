@@ -2,7 +2,6 @@ import { useCallback, useMemo } from "react";
 import { useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
 
-import { StickyBottomBarBase } from "~/components/atoms";
 import { MissionBottomBar, MissionSection } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { useActivity } from "~/features/activity";
@@ -74,13 +73,13 @@ export const MissionPage: React.FC = () => {
           <div className="max-w-[calc(1264px_-_16rem)]">
             <MissionSection mission={mission} activities={missionActivities} />
           </div>
-          <StickyBottomBarBase>
+          <footer className="sticky bottom-4 sm:bottom-6 max-w-[calc(1264px_-_12rem)] w-full">
             <MissionBottomBar
               activityStatuses={activityStatuses}
               points={missionTotalXpPoints}
               isLoading={isLoadingUserActivities}
             />
-          </StickyBottomBarBase>
+          </footer>
         </div>
       ) : (
         <>
