@@ -1,3 +1,4 @@
+import { ReactComponent as VeridaNetworkLogo } from "assets/images/verida_network_logo_with_text_white.svg";
 import { useCallback, useMemo, useState } from "react";
 import { useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
@@ -6,6 +7,7 @@ import { useDebouncedCallback } from "use-debounce";
 import { BottomBarBase, Button, Typography } from "~/components/atoms";
 import {
   ActivityStatus,
+  NotFoundMessageBox,
   PartnerCircledLogo,
   StackedDiv,
   XpPointsChip,
@@ -63,14 +65,31 @@ export const ActivityPage: React.FC = () => {
   const i18n = useIntl();
 
   const notFoundMessage = i18n.formatMessage({
-    id: "ActivityPage.emptyMessage",
+    id: "ActivityPage.notFoundMessage",
     description: "Message when activity doesn't exist",
-    defaultMessage: "No data",
+    defaultMessage: "Activity Not Found",
+  });
+
+  const notFoundDescription = i18n.formatMessage({
+    id: "ActivityPage.notFoundDescription",
+    description: "Description when activity doesn't exist",
+    defaultMessage:
+      "The activity ID you entered does not match any existing activity. Please check the partner ID and try again.",
   });
 
   if (!activity) {
     /* TODO: Rework the not found state */
-    return <div>{notFoundMessage}</div>;
+    return (
+      <PageLayout hideReportIssueButton>
+        <div className="flex flex-col h-[40vh] justify-center items-center">
+          <NotFoundMessageBox
+            logo={<VeridaNetworkLogo />}
+            title={notFoundMessage}
+            description={notFoundDescription}
+          />
+        </div>
+      </PageLayout>
+    );
   }
 
   const activityTitle = i18n.formatMessage(activity.title);
