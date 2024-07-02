@@ -70,10 +70,6 @@ export type Activity = {
   points: number;
   title: MessageDescriptor;
   description: MessageDescriptor;
-  /**
-   * @deprecated
-   */
-  longDescription: MessageDescriptor;
   steps: ActivityStep[];
   instructions?: MessageDescriptor[];
   resources?: Resource[];

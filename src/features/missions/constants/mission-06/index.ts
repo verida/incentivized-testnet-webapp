@@ -24,7 +24,7 @@ export const mission: Mission = {
     id: "missions.mission-06.description",
     defaultMessage:
       "Reclaim protocol allows you to proof information about yourself from any website, without disclosing your personal data",
-    description: "Short description of the mission 06",
+    description: "Description of the mission 06",
   }),
   longDescription: defineMessage({
     id: "missions.mission-06.longDescription",

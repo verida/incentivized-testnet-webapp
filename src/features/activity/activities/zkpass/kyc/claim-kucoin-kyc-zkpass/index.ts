@@ -241,16 +241,10 @@ export const activity: Activity = {
       "Title of the activity 'Prove KYC level and claim a KuCoin credential'",
   }),
   description: defineMessage({
-    id: "activities.claimKuCoinKYCzkPass.shortDescription",
+    id: "activities.claimKuCoinKYCzkPass.description",
     defaultMessage: `Prove KYC level and claim a KuCoin credential using zkPass protocol. The credentials should be stored in your Verida Wallet.`,
     description:
-      "Short description of the activity 'Prove KYC level and claim a KuCoin credential'",
-  }),
-  longDescription: defineMessage({
-    id: "activities.claimKuCoinKYCzkPass.longDescription",
-    defaultMessage: `Prove KYC level and claim a credential of your KuCoin account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.`,
-    description:
-      "Long description of the activity 'Prove KYC level and claim a KuCoin credential'",
+      "Description of the activity 'Prove KYC level and claim a KuCoin credential'",
   }),
   actionLabel: defineMessage({
     id: "activities.claimKuCoinKYCzkPass.actionLabel",

@@ -64,16 +64,10 @@ export const activity: Activity = {
     description: "Title of the activity 'create identity'",
   }),
   description: defineMessage({
-    id: "activities.createVeridaIdentity.shortDescription",
+    id: "activities.createVeridaIdentity.description",
     defaultMessage:
       "Verida identities are an implementation of the Decentralized Identifier (DID) Standard from the W3C. A DID has a unique address (e.g. did:vda:mainnet:0x6B2...a6F) that is controlled by an end user with a private key or seed phrase. A user can verify themselves to another user, entity or application by sharing their unique DID address.",
-    description: "Short description of the activity 'create identity'",
-  }),
-  longDescription: defineMessage({
-    id: "activities.createVeridaIdentity.longDescription",
-    defaultMessage:
-      "Verida identities are an implementation of the Decentralized Identifier (DID) Standard from the W3C. A DID has a unique address (e.g. did:vda:mainnet:0x6B2...a6F) that is controlled by an end user with a private key or seed phrase. A user can verify themselves to another user, entity or application by sharing their unique DID address.",
-    description: "Long description of the activity 'create identity'",
+    description: "Description of the activity 'create identity'",
   }),
   actionLabel: defineMessage({
     id: "activities.createVeridaIdentity.actionLabel",

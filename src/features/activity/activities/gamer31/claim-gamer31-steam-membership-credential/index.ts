@@ -230,16 +230,9 @@ export const activity: Activity = {
     description: "Title of the activity 'Claim Gamer31 Steam credential'",
   }),
   description: defineMessage({
-    id: "activities.claimGamer31Steam.shortDescription",
+    id: "activities.claimGamer31Steam.description",
     defaultMessage: `Demonstrate your ownership of a Steam account by claiming the Gamer31 Steam proof of membership credential. This credential will be securely stored in your Verida Wallet, enabling private sharing and verification.`,
-    description:
-      "Short description of the activity 'claim Gamer31 Steam credential'",
-  }),
-  longDescription: defineMessage({
-    id: "activities.claimGamer31Steam.longDescription",
-    defaultMessage: `Demonstrate your ownership of a Steam account by claiming the Gamer31 Steam proof of membership credential. This credential will be securely stored in your Verida Wallet, enabling private sharing and verification.{newline}{newline}Step 1. Go to the Gamer 31 claim page (link in the resources below) and click on the Steam 'Claim' button to start the process.{newline}{newline}Step 2. Follow the instructions to connect with your Steam account, then to claim the credential by scanning the two QR codes with your Verida Wallet.{newline}{newline}Step 3. Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.`,
-    description:
-      "Long description of the activity 'claim Gamer31 Steam credential'",
+    description: "Description of the activity 'claim Gamer31 Steam credential'",
   }),
   actionLabel: defineMessage({
     id: "activities.claimGamer31Steam.actionLabel",

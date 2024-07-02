@@ -241,16 +241,10 @@ export const activity: Activity = {
       "Title of the activity 'Prove KYC level and claim a MEXC credential'",
   }),
   description: defineMessage({
-    id: "activities.claimMEXCKYCzkPass.shortDescription",
+    id: "activities.claimMEXCKYCzkPass.description",
     defaultMessage: `Prove KYC level and claim a MEXC credential using zkPass protocol. The credentials should be stored in your Verida Wallet.`,
     description:
-      "Short description of the activity 'Prove KYC level and claim a MEXC credential'",
-  }),
-  longDescription: defineMessage({
-    id: "activities.claimMEXCKYCzkPass.longDescription",
-    defaultMessage: `Prove KYC level and claim a credential of your MEXC account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.`,
-    description:
-      "Long description of the activity 'Prove KYC level and claim a MEXC credential'",
+      "Description of the activity 'Prove KYC level and claim a MEXC credential'",
   }),
   actionLabel: defineMessage({
     id: "activities.claimMEXCKYCzkPass.actionLabel",
