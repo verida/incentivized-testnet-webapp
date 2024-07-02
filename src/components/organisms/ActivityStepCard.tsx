@@ -28,10 +28,13 @@ export const ActivityStepCard: React.FC<ActivityStepCardProps> = (props) => {
   return (
     <TabbedCardBase
       label={stepLabel}
-      backgroundColor={`hsl(var(${isOnboardingActivity ? "--card-2-background" : "--card-1-background"}))`}
+      accentColor={`hsl(var(${isOnboardingActivity ? "--card-2-background" : "--card-1-background"}))`}
+      foregroundColor="light"
       {...divProps}
     >
-      <Typography variant={"base"}>{step}</Typography>
+      <div className="px-4 py-6 md:p-6">
+        <Typography variant={"base"}>{step}</Typography>
+      </div>
     </TabbedCardBase>
   );
 };

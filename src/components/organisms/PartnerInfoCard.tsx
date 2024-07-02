@@ -55,60 +55,62 @@ export const PartnerInfoCard: React.FC<PartnerInfoCardProps> = (props) => {
     >
       <TabbedCardBase
         label={cardBadgeLabel}
-        backgroundColor={partner.accentColor}
+        accentColor={partner.accentColor}
         foregroundColor={partner.accentForegoundColor}
       >
-        <div className="flex flex-row justify-between items-stretch">
-          <img
-            src={partner.logo}
-            alt={partner.id}
-            className="h-16 aspect-square rounded-full bg-white p-3"
-          />
-          <div className="bg-transparent-8 rounded-lg flex flex-col items-center justify-center gap-1 px-2 py-1.5 ">
-            <Typography variant="base">{nbActivities}</Typography>
+        <div className="px-4 py-6 md:p-6 flex flex-col gap-6">
+          <div className="flex flex-row justify-between items-stretch">
+            <img
+              src={partner.logo}
+              alt={partner.id}
+              className="h-16 aspect-square rounded-full bg-white p-3"
+            />
+            <div className="bg-transparent-8 rounded-lg flex flex-col items-center justify-center gap-1 px-2 py-1.5 ">
+              <Typography variant="base">{nbActivities}</Typography>
+              <Typography variant="base-s" className="text-muted-foreground">
+                {activityCounterLabel}
+              </Typography>
+            </div>
+          </div>
+          <div className="flex flex-col gap-2">
+            <Typography variant="heading-s" component="p">
+              {partner.name}
+            </Typography>
             <Typography variant="base-s" className="text-muted-foreground">
-              {activityCounterLabel}
+              {i18n.formatMessage(partner.description)}
             </Typography>
           </div>
-        </div>
-        <div className="flex flex-col gap-2">
-          <Typography variant="heading-s" component="p">
-            {partner.name}
-          </Typography>
-          <Typography variant="base-s" className="text-muted-foreground">
-            {i18n.formatMessage(partner.description)}
-          </Typography>
-        </div>
-        <div className="flex flex-row gap-6 flex-wrap">
-          {partner.resources.map((resource) => (
-            <ExternalLink
-              key={resource.url}
-              href={resource.url}
-              openInNewTab
-              className="flex flex-row gap-2 items-center no-underline hover:underline"
-            >
-              {/* TODO: Use the ExternalLink component, add an optional prop to display the icon */}
-              <Icon type="external-link" size={16} />
-              <Typography variant="base-s">
-                {i18n.formatMessage(resource.label)}
-              </Typography>
-            </ExternalLink>
-          ))}
-        </div>
-        <div className="flex flex-row justify-start items-center gap-3 flex-wrap">
-          {partner.socials.map((social) => {
-            const icon = getPartnerSocialIcon(social.type, 16);
+          <div className="flex flex-row gap-6 flex-wrap">
+            {partner.resources.map((resource) => (
+              <ExternalLink
+                key={resource.url}
+                href={resource.url}
+                openInNewTab
+                className="flex flex-row gap-2 items-center no-underline hover:underline"
+              >
+                {/* TODO: Use the ExternalLink component, add an optional prop to display the icon */}
+                <Icon type="external-link" size={16} />
+                <Typography variant="base-s">
+                  {i18n.formatMessage(resource.label)}
+                </Typography>
+              </ExternalLink>
+            ))}
+          </div>
+          <div className="flex flex-row justify-start items-center gap-3 flex-wrap">
+            {partner.socials.map((social) => {
+              const icon = getPartnerSocialIcon(social.type, 16);
 
-            return (
-              <IconButtonLink
-                key={social.url}
-                href={social.url}
-                shape="circle"
-                className="rounded-full p-3 bg-white/10 hover:bg-white/30"
-                icon={icon}
-              />
-            );
-          })}
+              return (
+                <IconButtonLink
+                  key={social.url}
+                  href={social.url}
+                  shape="circle"
+                  className="rounded-full p-3 bg-white/10 hover:bg-white/30"
+                  icon={icon}
+                />
+              );
+            })}
+          </div>
         </div>
       </TabbedCardBase>
     </div>
