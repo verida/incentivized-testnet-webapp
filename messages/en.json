@@ -15,29 +15,17 @@
     "defaultMessage": "{points} XP",
     "description": "Label of the XP points chip on each activity card"
   },
-  "ActivityCompletionModal.activityCompleteSectionMessage": {
-    "defaultMessage": "Congratulations! You've completed this activity.",
-    "description": "Message displayed below the title of the activity completion modal"
-  },
-  "ActivityCompletionModal.closeButtonLabel": {
-    "defaultMessage": "Next Activity",
-    "description": "Label for the close button of the activity completion modal"
-  },
-  "ActivityCompletionModal.titleMessage": {
-    "defaultMessage": "Activity Completed!",
-    "description": "Title of the activity completion modal"
-  },
   "ActivityPage.activityByLabel": {
     "defaultMessage": "Activity by",
     "description": "Label activity by"
   },
-  "ActivityPage.finishStepsMessage": {
-    "defaultMessage": "Once you've finished with all steps, click the 'Verify' button below.",
-    "description": "Message for what to do after finishing all steps"
+  "ActivityPage.connectToCompleteMessage": {
+    "defaultMessage": "Connect for details",
+    "description": "Message to show when the user is not connected"
   },
-  "ActivityPage.resourcesLabel": {
-    "defaultMessage": "Resources",
-    "description": "Label Resources"
+  "ActivityPage.emptyMessage": {
+    "defaultMessage": "No data",
+    "description": "Message when activity doesn't exist"
   },
   "ActivityPage.rewardLabel": {
     "defaultMessage": "Reward",
@@ -458,6 +446,10 @@
   "ReportIssueButton.reportIssueButtonLabel": {
     "defaultMessage": "Report Issue",
     "description": "Label of the button to access the form to report an issue"
+  },
+  "ResourcesSection.resourcesLabel": {
+    "defaultMessage": "Resources",
+    "description": "Label Resources"
   },
   "ShareOnSocials.shareOnX": {
     "defaultMessage": "Share on",
