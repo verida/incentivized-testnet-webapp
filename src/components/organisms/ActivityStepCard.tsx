@@ -1,16 +1,19 @@
 import { useIntl } from "react-intl";
 
 import { Typography } from "~/components/atoms";
-import { TabbedCardBase } from "~/components/molecules";
+import { TabbedCardBase, TabbedCardBaseProps } from "~/components/molecules";
 
 export type ActivityStepCardProps = {
   index: number;
   step: string;
-  isOnboardingActivity?: boolean;
-} & Omit<React.ComponentPropsWithRef<"div">, "children">;
+  theme?: "default" | "onboarding";
+} & Omit<
+  TabbedCardBaseProps,
+  "children" | "label" | "accentColor" | "foregroundColor"
+>;
 
 export const ActivityStepCard: React.FC<ActivityStepCardProps> = (props) => {
-  const { index, step, isOnboardingActivity = false, ...divProps } = props;
+  const { index, step, theme = "default", ...tabbedCardBaseProps } = props;
 
   const i18n = useIntl();
 
@@ -28,9 +31,9 @@ export const ActivityStepCard: React.FC<ActivityStepCardProps> = (props) => {
   return (
     <TabbedCardBase
       label={stepLabel}
-      accentColor={`hsl(var(${isOnboardingActivity ? "--card-2-background" : "--card-1-background"}))`}
+      accentColor={`hsl(var(${theme === "onboarding" ? "--card-2-background" : "--card-1-background"}))`}
       foregroundColor="light"
-      {...divProps}
+      {...tabbedCardBaseProps}
     >
       <div className="px-4 py-6 md:p-6">
         <Typography variant={"base"}>{step}</Typography>

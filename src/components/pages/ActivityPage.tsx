@@ -158,7 +158,11 @@ export const ActivityPage: React.FC = () => {
               <ActivityStepCard
                 index={index + 1}
                 step={step}
-                isOnboardingActivity={isOnboardingMission(activity.missionId)}
+                theme={
+                  isOnboardingMission(activity.missionId)
+                    ? "onboarding"
+                    : "default"
+                }
                 key={index}
               />
             ))}
