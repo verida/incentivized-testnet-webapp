@@ -129,7 +129,7 @@ export const ActivityPage: React.FC = () => {
             <ResourcesSection resources={activity.resources} />
           ) : null}
           {activitySteps.length > 0 ? (
-            <div className="pt-8 flex flex-col gap-10 md:gap-16">
+            <div className="pt-8 flex flex-col gap-5 md:gap-10">
               {activitySteps?.map((step, index) => (
                 <ActivityStepCard
                   key={index}

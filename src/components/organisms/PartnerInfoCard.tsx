@@ -57,6 +57,7 @@ export const PartnerInfoCard: React.FC<PartnerInfoCardProps> = (props) => {
         label={cardBadgeLabel}
         accentColor={partner.accentColor}
         foregroundColor={partner.accentForegoundColor}
+        className="-mt-7" // Align the top of the card
       >
         <div className="px-4 py-6 md:p-6 flex flex-col gap-6">
           <div className="flex flex-row justify-between items-stretch">
