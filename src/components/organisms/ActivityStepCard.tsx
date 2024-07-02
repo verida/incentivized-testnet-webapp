@@ -36,7 +36,7 @@ export const ActivityStepCard: React.FC<ActivityStepCardProps> = (props) => {
       {...tabbedCardBaseProps}
     >
       <div className="px-4 py-6 md:p-6">
-        <Typography variant={"base"}>{step}</Typography>
+        <Typography variant="base">{step}</Typography>
       </div>
     </TabbedCardBase>
   );

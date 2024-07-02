@@ -34,24 +34,18 @@ export const PartnerCircledLogo: React.FC<PartnerCircledLogoProps> = (
   return (
     <div
       className={twMerge(
-        "relative flex justify-center items-center w-8 h-8",
+        "w-8 aspect-square p-1 border border-foreground rounded-full",
         className
       )}
       {...divProps}
     >
-      <div className="p-1 border border-foreground rounded-full">
-        <div
-          className="bg-white rounded-full p-1"
-          style={{
-            boxShadow: `0px 0.856px 13.695px 0px ${partner.accentColor}`,
-          }}
-        >
-          <img
-            src={partner.logo}
-            alt={partnerLogoAlt}
-            className="rounded-full"
-          />
-        </div>
+      <div
+        className="bg-white rounded-full p-1"
+        style={{
+          boxShadow: `0px 0.856px 13.695px 0px ${partner.accentColor}`,
+        }}
+      >
+        <img src={partner.logo} alt={partnerLogoAlt} className="rounded-full" />
       </div>
     </div>
   );

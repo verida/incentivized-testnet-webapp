@@ -12,10 +12,10 @@ export type MissionBottomBarProps = {
   isLoading?: boolean;
   activityStatuses: UserActivityStatus[];
   points?: number;
-} & Omit<React.ComponentPropsWithRef<"div">, "children">;
+} & Omit<React.ComponentPropsWithRef<typeof BottomBarBase>, "children">;
 
 export const MissionBottomBar: React.FC<MissionBottomBarProps> = (props) => {
-  const { points, activityStatuses, isLoading, ...divProps } = props;
+  const { points, activityStatuses, isLoading, ...bottomBarBaseProps } = props;
 
   const nbActivities = activityStatuses.length;
   const nbCompletedActivities = activityStatuses.filter(
@@ -55,35 +55,29 @@ export const MissionBottomBar: React.FC<MissionBottomBarProps> = (props) => {
   );
 
   return (
-    <div {...divProps}>
-      <BottomBarBase>
-        <div className="p-4 lg:px-6 lg:py-4">
-          <div className="flex flex-col gap-3 sm:gap-5">
-            <div className="flex flex-row justify-between lg:justify-start gap-6 items-center">
-              <Typography
-                variant="heading-s"
-                component="p"
-                className="sm:hidden"
-              >
-                {shortMessage}
-              </Typography>
-              <Typography
-                variant="heading-s"
-                component="p"
-                className="hidden sm:block"
-              >
-                {longMessage}
-              </Typography>
-              <XpPointsChip nbXpPoints={points || 0} />
-            </div>
-            <MissionActivitiesProgressBar
-              isLoading={isLoading}
-              activityStatuses={activityStatuses}
-              className="gap-1 sm:gap-2"
-            />
+    <BottomBarBase {...bottomBarBaseProps}>
+      <div className="p-4 lg:px-6 lg:py-4">
+        <div className="flex flex-col gap-3 sm:gap-5">
+          <div className="flex flex-row justify-between lg:justify-start gap-6 items-center">
+            <Typography variant="heading-s" component="p" className="sm:hidden">
+              {shortMessage}
+            </Typography>
+            <Typography
+              variant="heading-s"
+              component="p"
+              className="hidden sm:block"
+            >
+              {longMessage}
+            </Typography>
+            <XpPointsChip nbXpPoints={points || 0} />
           </div>
+          <MissionActivitiesProgressBar
+            isLoading={isLoading}
+            activityStatuses={activityStatuses}
+            className="gap-1 sm:gap-2"
+          />
         </div>
-      </BottomBarBase>
-    </div>
+      </div>
+    </BottomBarBase>
   );
 };
