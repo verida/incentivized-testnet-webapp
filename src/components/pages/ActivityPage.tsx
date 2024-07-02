@@ -35,10 +35,10 @@ export const ActivityPage: React.FC = () => {
     [activities, activityId]
   );
 
-  const userActivity = useMemo(
-    () => getUserActivity(activityId),
-    [activityId, getUserActivity]
-  );
+  const userActivityStatus = useMemo(() => {
+    const status = getUserActivity(activityId)?.status ?? "todo";
+    return status;
+  }, [activityId, getUserActivity]);
 
   const activitySteps: ActivityStep[] = useMemo(() => {
     return activity
@@ -148,42 +148,55 @@ export const ActivityPage: React.FC = () => {
         <footer className="sticky bottom-4 sm:bottom-6 max-w-[calc(1264px_-_12rem)] w-full">
           <BottomBarBase>
             <div className="p-4 lg:px-6 lg:py-4">
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:items-center sm:flex-row gap-4 min-h-10">
                 <div className="flex flex-row grow justify-between items-center">
                   <div className="flex flex-row items-center gap-3">
                     <Typography>{rewardLabel}</Typography>
                     <XpPointsChip nbXpPoints={activity.points} />
                   </div>
-                  {isConnected && userActivity ? (
-                    <ActivityStatus
-                      status={
-                        isLoadingUserActivities
-                          ? "checking"
-                          : userActivity.status
-                      }
-                    />
-                  ) : null}
+                  {activity.enabled ? (
+                    isConnected &&
+                    (isLoadingUserActivities ||
+                      userActivityStatus !== "todo") ? (
+                      <ActivityStatus
+                        status={
+                          isLoadingUserActivities
+                            ? "checking"
+                            : userActivityStatus
+                        }
+                      />
+                    ) : activity.ended ? (
+                      <ActivityStatus status="ended" />
+                    ) : null
+                  ) : (
+                    <ActivityStatus status="disabled" />
+                  )}
                 </div>
-                {isConnected ? (
-                  userActivity?.status !== "completed" && !activity.ended ? (
-                    <Button
-                      color="primary"
-                      className="w-full sm:w-fit"
-                      onClick={handleExecuteButtonClick}
-                      disabled={isLoadingUserActivities || isExecuting}
-                    >
-                      {i18n.formatMessage(
-                        isExecuting
-                          ? activity.actionExecutingLabel
-                          : activity.actionLabel
-                      )}
-                    </Button>
+                {activity.enabled ? (
+                  isConnected ? (
+                    userActivityStatus !== "completed" &&
+                    !activity.ended &&
+                    !isLoadingUserActivities ? (
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        className="w-full sm:w-fit"
+                        onClick={handleExecuteButtonClick}
+                        disabled={isExecuting}
+                      >
+                        {i18n.formatMessage(
+                          isExecuting
+                            ? activity.actionExecutingLabel
+                            : activity.actionLabel
+                        )}
+                      </Button>
+                    ) : null
+                  ) : !activity.ended ? (
+                    <Typography className="text-muted-foreground text-center">
+                      {connectToCompleteMessage}
+                    </Typography>
                   ) : null
-                ) : (
-                  <Typography className="text-muted-foreground">
-                    {connectToCompleteMessage}
-                  </Typography>
-                )}
+                ) : null}
               </div>
             </div>
           </BottomBarBase>
