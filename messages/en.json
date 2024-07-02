@@ -15,10 +15,6 @@
     "defaultMessage": "Reward",
     "description": "Label Reward"
   },
-  "ActivityPage.statusLabel": {
-    "defaultMessage": "Status",
-    "description": "Label Status"
-  },
   "ActivityPage.stepLabel": {
     "defaultMessage": "Step {index}",
     "description": "Label above the activity step card"
@@ -432,6 +428,10 @@
     "description": "Title of the on going missions section on the home page"
   },
   "PartnerCard.partnerLogoAlt": {
+    "defaultMessage": "Logo of {partnerName}",
+    "description": "Alt for the logo of a partner"
+  },
+  "PartnerCircledLogo.partnerLogoAlt": {
     "defaultMessage": "Logo of {partnerName}",
     "description": "Alt for the logo of a partner"
   },
