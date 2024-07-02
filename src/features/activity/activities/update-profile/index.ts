@@ -144,6 +144,20 @@ export const activity: Activity = {
     description:
       "Label of the button when the activity 'update your profile' is being executed",
   }),
+  steps: [
+    {
+      id: "activities.updateProfile.step1",
+      defaultMessage:
+        "Go to your profile in the Verida Wallet, and update your public name, avatar and description.",
+      description: "Step 1 of the activity 'update profile'",
+    },
+    {
+      id: "activities.updateProfile.step2",
+      defaultMessage:
+        "Once you've updated your profile, click the 'Verify' button below.",
+      description: "Step 2 of the activity 'update profile'",
+    },
+  ],
   resources: [
     {
       label: defineMessage({

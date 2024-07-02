@@ -106,6 +106,20 @@ export const activity: Activity = {
     description:
       "Label of the button when the activity 'use markdown editor is being executed",
   }),
+  steps: [
+    {
+      id: "activities.useMarkdownEditor.step1",
+      defaultMessage:
+        "Connect to the Markdown Editor demo app (link in resources below) and create a new note.",
+      description: "Step 1 of the activity 'use markdown editor'",
+    },
+    {
+      id: "activities.useMarkdownEditor.step2",
+      defaultMessage:
+        "Once you've created a note, click the 'Verify' button below.",
+      description: "Step 2 of the activity 'use markdown editor'",
+    },
+  ],
   resources: [
     {
       label: defineMessage({

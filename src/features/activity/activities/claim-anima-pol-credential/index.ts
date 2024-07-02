@@ -263,6 +263,36 @@ export const activity: Activity = {
   onInit: handleInit,
   onExecute: handleExecute,
   onMessage: handleNewMessage,
+  steps: [
+    {
+      id: "activities.claimAnimaPoLCredential.step1",
+      defaultMessage:
+        "Go to the Synaps Proof of Life claim page to start the process (link in resources below).",
+      description:
+        "Step 1 of the activity 'Claim Synaps/Anima Proof of Life credential'",
+    },
+    {
+      id: "activities.claimAnimaPoLCredential.step2",
+      defaultMessage:
+        "Connect with your MetaMask wallet and follow the prompts to complete your proof of life check.",
+      description:
+        "Step 2 of the activity 'Claim Synaps/Anima Proof of Life credential'",
+    },
+    {
+      id: "activities.claimAnimaPoLCredential.step3",
+      defaultMessage:
+        "Claim your Proof of Life credential on Polygon ID. Use your Verida Wallet to connect and save the credential in your wallet.",
+      description:
+        "Step 3 of the activity 'Claim Synaps/Anima Proof of Life credential'",
+    },
+    {
+      id: "activities.claimAnimaPoLCredential.step4",
+      defaultMessage:
+        "Go back to Verida Missions. Click on the 'Send Request' button below and share the credential by replying to the message you received in your Wallet inbox.",
+      description:
+        "Step 4 of the activity 'Claim Synaps/Anima Proof of Life credential'",
+    },
+  ],
   resources: [
     {
       label: defineMessage({

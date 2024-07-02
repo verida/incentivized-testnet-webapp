@@ -224,4 +224,22 @@ export const activity: Activity = {
   onInit: handleInit,
   onExecute: handleExecute,
   onMessage: handleNewMessage,
+  steps: [
+    {
+      id: "activities.referFriend.step1",
+      defaultMessage: "Get your Verida Missions referral link below.",
+      description: "Step 1 of the activity 'refer friend'",
+    },
+    {
+      id: "activities.referFriend.step2",
+      defaultMessage: "Share your referral link with a friend.",
+      description: "Step 2 of the activity 'refer friend'",
+    },
+    {
+      id: "activities.referFriend.step3",
+      defaultMessage:
+        "Your friend will have to create a Verida Identity and connect to Verida Missions with your referral link for your activity to be completed.",
+      description: "Step 3 of the activity 'refer friend'",
+    },
+  ],
 };

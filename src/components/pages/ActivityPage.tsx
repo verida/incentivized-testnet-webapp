@@ -87,7 +87,7 @@ export const ActivityPage: React.FC = () => {
       ),
     }
   );
-  const longDescriptionMessage = i18n.formatMessage(activity.longDescription);
+  const activitySteps = activity.steps?.map((step) => i18n.formatMessage(step));
   const finishStepsMessage = i18n.formatMessage({
     id: "ActivityPage.finishStepsMessage",
     defaultMessage:
@@ -118,11 +118,6 @@ export const ActivityPage: React.FC = () => {
     description: "Message to show when the user is not connected",
     defaultMessage: "Connect for details",
   });
-
-  const activitySteps = longDescriptionMessage
-    .split(/Step \d+\. /)
-    .slice(1)
-    .map((step) => step.replaceAll("{newline}", ""));
 
   const partnerLogos = activity.partners.map((partner) => (
     <PartnerCircledLogo partnerId={partner} />

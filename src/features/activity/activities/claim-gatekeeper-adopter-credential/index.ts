@@ -261,6 +261,29 @@ export const activity: Activity = {
   onInit: handleInit,
   onExecute: handleExecute,
   onMessage: handleNewMessage,
+  steps: [
+    {
+      id: "activities.claimGateKeperAdopter.step1",
+      defaultMessage:
+        "Go to the GateKeeper claim page to start the process (link in resources below).",
+      description:
+        "Step 1 of the activity 'claim GateKeeper Adopter credential'",
+    },
+    {
+      id: "activities.claimGateKeperAdopter.step2",
+      defaultMessage:
+        "Select the Verida Wallet and follow the prompts to claim the credential and save it in your Wallet.",
+      description:
+        "Step 2 of the activity 'claim GateKeeper Adopter credential'",
+    },
+    {
+      id: "activities.claimGateKeperAdopter.step3",
+      defaultMessage:
+        "Click on the 'Send Request' button below and share the credential by replying to the message you received in your Wallet inbox.",
+      description:
+        "Step 3 of the activity 'claim GateKeeper Adopter credential'",
+    },
+  ],
   resources: [
     {
       label: defineMessage({

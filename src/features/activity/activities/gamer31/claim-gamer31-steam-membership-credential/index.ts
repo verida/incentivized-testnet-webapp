@@ -261,6 +261,26 @@ export const activity: Activity = {
   onInit: handleInit,
   onExecute: handleExecute,
   onMessage: handleNewMessage,
+  steps: [
+    {
+      id: "activities.claimGamer31Steam.step1",
+      defaultMessage:
+        "Go to the Gamer 31 claim page (link in the resources below) and click on the Steam 'Claim' button to start the process.",
+      description: "Step 1 of the activity 'claim Gamer31 Steam credential'",
+    },
+    {
+      id: "activities.claimGamer31Steam.step2",
+      defaultMessage:
+        "Follow the instructions to connect with your Steam account, then to claim the credential by scanning the two QR codes with your Verida Wallet.",
+      description: "Step 2 of the activity 'claim Gamer31 Steam credential'",
+    },
+    {
+      id: "activities.claimGamer31Steam.step3",
+      defaultMessage:
+        "Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
+      description: "Step 3 of the activity 'claim Gamer31 Steam credential'",
+    },
+  ],
   resources: [
     {
       label: defineMessage({

@@ -71,6 +71,7 @@ export type Activity = {
   title: MessageDescriptor;
   shortDescription: MessageDescriptor;
   longDescription: MessageDescriptor;
+  steps?: MessageDescriptor[];
   instructions?: MessageDescriptor[];
   resources?: Resource[];
   video?: Resource;

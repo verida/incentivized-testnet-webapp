@@ -272,6 +272,29 @@ export const activity: Activity = {
   onInit: handleInit,
   onExecute: handleExecute,
   onMessage: handleNewMessage,
+  steps: [
+    {
+      id: "activities.claimBinanceKYCzkPass.step1",
+      defaultMessage:
+        "Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.",
+      description:
+        "Step 1 of the activity 'Prove KYC level and claim a credential of your Binance account'",
+    },
+    {
+      id: "activities.claimBinanceKYCzkPass.step2",
+      defaultMessage:
+        "Accept the proof credential received in your inbox to save the credential.",
+      description:
+        "Step 2 of the activity 'Prove KYC level and claim a credential of your Binance account'",
+    },
+    {
+      id: "activities.claimBinanceKYCzkPass.step3",
+      defaultMessage:
+        "Reply to the message sent by Verida Missions to share your new credential.",
+      description:
+        "Step 3 of the activity 'Prove KYC level and claim a credential of your Binance account'",
+    },
+  ],
   resources: [
     {
       label: defineMessage({
