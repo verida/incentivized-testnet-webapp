@@ -3,11 +3,10 @@ import React from "react";
 import { useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 
+import { NotFoundMessageBox } from "~/components/molecules";
 import { PartnerCard } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { partners } from "~/features/partners";
-
-import { NotFoundMessageBox } from "../molecules";
 
 export const PartnersPage: React.FC = () => {
   const i18n = useIntl();
