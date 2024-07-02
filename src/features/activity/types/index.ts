@@ -69,9 +69,12 @@ export type Activity = {
   order: number;
   points: number;
   title: MessageDescriptor;
-  shortDescription: MessageDescriptor;
+  description: MessageDescriptor;
+  /**
+   * @deprecated
+   */
   longDescription: MessageDescriptor;
-  steps?: MessageDescriptor[];
+  steps: ActivityStep[];
   instructions?: MessageDescriptor[];
   resources?: Resource[];
   video?: Resource;
@@ -83,4 +86,10 @@ export type Activity = {
   onInit: ActivityOnInit;
   onExecute: ActivityOnExecute;
   onMessage?: ActivityOnMessage;
+};
+
+export type ActivityStep = {
+  order: number;
+  // title?: MessageDescriptor // TODO: Add step title
+  description: MessageDescriptor;
 };

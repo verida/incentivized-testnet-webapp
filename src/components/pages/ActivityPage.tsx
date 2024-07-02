@@ -12,7 +12,7 @@ import {
 } from "~/components/molecules";
 import { ActivityStepCard, ResourcesSection } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
-import { useActivity } from "~/features/activity";
+import { ActivityStep, useActivity } from "~/features/activity";
 import { isOnboardingMission } from "~/features/missions";
 import { useVerida } from "~/features/verida";
 
@@ -35,6 +35,17 @@ export const ActivityPage: React.FC = () => {
     [activities, activityId]
   );
 
+  const userActivity = useMemo(
+    () => getUserActivity(activityId),
+    [activityId, getUserActivity]
+  );
+
+  const activitySteps: ActivityStep[] = useMemo(() => {
+    return activity
+      ? [...activity.steps].sort((a, b) => a.order - b.order)
+      : [];
+  }, [activity]);
+
   const handleExecuteActivity = useDebouncedCallback(
     async () => {
       setIsExecuting(true);
@@ -48,11 +59,6 @@ export const ActivityPage: React.FC = () => {
   const handleExecuteButtonClick = useCallback(() => {
     void handleExecuteActivity();
   }, [handleExecuteActivity]);
-
-  const userActivity = useMemo(
-    () => getUserActivity(activityId),
-    [activityId, getUserActivity]
-  );
 
   const i18n = useIntl();
 
@@ -69,15 +75,13 @@ export const ActivityPage: React.FC = () => {
 
   const activityTitle = i18n.formatMessage(activity.title);
 
-  const description = i18n.formatMessage(activity.shortDescription, {
+  const description = i18n.formatMessage(activity.description, {
     newline: (
       <>
         <br />
       </>
     ),
   });
-
-  const activitySteps = activity.steps?.map((step) => i18n.formatMessage(step));
 
   const activityByLabel = i18n.formatMessage({
     id: "ActivityPage.activityByLabel",
@@ -124,20 +128,22 @@ export const ActivityPage: React.FC = () => {
           {activity.resources ? (
             <ResourcesSection resources={activity.resources} />
           ) : null}
-          <div className="pt-8 flex flex-col gap-10 md:gap-16">
-            {activitySteps?.map((step, index) => (
-              <ActivityStepCard
-                key={index}
-                index={index + 1}
-                step={step}
-                theme={
-                  isOnboardingMission(activity.missionId)
-                    ? "onboarding"
-                    : "default"
-                }
-              />
-            ))}
-          </div>
+          {activitySteps.length > 0 ? (
+            <div className="pt-8 flex flex-col gap-10 md:gap-16">
+              {activitySteps?.map((step, index) => (
+                <ActivityStepCard
+                  key={index}
+                  index={index + 1}
+                  step={step}
+                  theme={
+                    isOnboardingMission(activity.missionId)
+                      ? "onboarding"
+                      : "default"
+                  }
+                />
+              ))}
+            </div>
+          ) : null}
         </div>
         <footer className="sticky bottom-4 sm:bottom-6 max-w-[calc(1264px_-_12rem)] w-full">
           <BottomBarBase>

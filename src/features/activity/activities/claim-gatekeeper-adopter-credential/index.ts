@@ -229,7 +229,7 @@ export const activity: Activity = {
     defaultMessage: "Claim a GateKeeper Adopter credential",
     description: "Title of the activity 'Claim Gatekeeper Adopter credential'",
   }),
-  shortDescription: defineMessage({
+  description: defineMessage({
     id: "activities.claimGateKeperAdopter.shortDescription",
     defaultMessage: `This activity has now ended{newline}{newline}Claim the GateKeeper Adopter credential to prove you were an early pioneer of GateKeeper! The credential will be stored in your Verida Wallet, and can be securely shared and verified.`,
     description:
@@ -263,25 +263,34 @@ export const activity: Activity = {
   onMessage: handleNewMessage,
   steps: [
     {
-      id: "activities.claimGateKeperAdopter.step1",
-      defaultMessage:
-        "Go to the GateKeeper claim page to start the process (link in resources below).",
-      description:
-        "Step 1 of the activity 'claim GateKeeper Adopter credential'",
+      order: 1,
+      description: defineMessage({
+        id: "activities.claimGateKeperAdopter.step1.description",
+        defaultMessage:
+          "Go to the GateKeeper claim page to start the process (link in resources below).",
+        description:
+          "Step 1 of the activity 'claim GateKeeper Adopter credential'",
+      }),
     },
     {
-      id: "activities.claimGateKeperAdopter.step2",
-      defaultMessage:
-        "Select the Verida Wallet and follow the prompts to claim the credential and save it in your Wallet.",
-      description:
-        "Step 2 of the activity 'claim GateKeeper Adopter credential'",
+      order: 2,
+      description: defineMessage({
+        id: "activities.claimGateKeperAdopter.step2.description",
+        defaultMessage:
+          "Select the Verida Wallet and follow the prompts to claim the credential and save it in your Wallet.",
+        description:
+          "Step 2 of the activity 'claim GateKeeper Adopter credential'",
+      }),
     },
     {
-      id: "activities.claimGateKeperAdopter.step3",
-      defaultMessage:
-        "Click on the 'Send Request' button below and share the credential by replying to the message you received in your Wallet inbox.",
-      description:
-        "Step 3 of the activity 'claim GateKeeper Adopter credential'",
+      order: 3,
+      description: defineMessage({
+        id: "activities.claimGateKeperAdopter.step3.description",
+        defaultMessage:
+          "Click on the 'Send Request' button below and share the credential by replying to the message you received in your Wallet inbox.",
+        description:
+          "Step 3 of the activity 'claim GateKeeper Adopter credential'",
+      }),
     },
   ],
   resources: [

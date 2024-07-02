@@ -230,7 +230,7 @@ export const activity: Activity = {
     description:
       "Title of the activity 'Claim Gamer31 Clash Royale credential'",
   }),
-  shortDescription: defineMessage({
+  description: defineMessage({
     id: "activities.claimGamer31ClashRoyale.shortDescription",
     defaultMessage: `Celebrate your accomplishments in Clash Royale by claiming the Gamer31 Clash Royale proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.`,
     description:
@@ -264,25 +264,34 @@ export const activity: Activity = {
   onMessage: handleNewMessage,
   steps: [
     {
-      id: "activities.claimGamer31ClashRoyale.step1",
-      defaultMessage:
-        "Go to the Gamer 31 claim page (link in the resources below) and click on the Clash Royale 'Claim' button to start the process.",
-      description:
-        "Step 1 of the activity 'claim Gamer31 Clash Royale credential'",
+      order: 1,
+      description: defineMessage({
+        id: "activities.claimGamer31ClashRoyale.step1.description",
+        defaultMessage:
+          "Go to the Gamer 31 claim page (link in the resources below) and click on the Clash Royale 'Claim' button to start the process.",
+        description:
+          "Step 1 of the activity 'claim Gamer31 Clash Royale credential'",
+      }),
     },
     {
-      id: "activities.claimGamer31ClashRoyale.step2",
-      defaultMessage:
-        "Follow the instructions to connect with your Supercell account, then to claim the credential by scanning the two QR codes with your Verida Wallet.",
-      description:
-        "Step 2 of the activity 'claim Gamer31 Clash Royale credential'",
+      order: 2,
+      description: defineMessage({
+        id: "activities.claimGamer31ClashRoyale.step2.description",
+        defaultMessage:
+          "Follow the instructions to connect with your Supercell account, then to claim the credential by scanning the two QR codes with your Verida Wallet.",
+        description:
+          "Step 2 of the activity 'claim Gamer31 Clash Royale credential'",
+      }),
     },
     {
-      id: "activities.claimGamer31ClashRoyale.step3",
-      defaultMessage:
-        "Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
-      description:
-        "Step 3 of the activity 'claim Gamer31 Clash Royale credential'",
+      order: 3,
+      description: defineMessage({
+        id: "activities.claimGamer31ClashRoyale.step3.description",
+        defaultMessage:
+          "Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
+        description:
+          "Step 3 of the activity 'claim Gamer31 Clash Royale credential'",
+      }),
     },
   ],
   resources: [

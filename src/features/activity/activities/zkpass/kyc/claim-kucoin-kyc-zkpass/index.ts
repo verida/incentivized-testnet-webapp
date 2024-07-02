@@ -240,7 +240,7 @@ export const activity: Activity = {
     description:
       "Title of the activity 'Prove KYC level and claim a KuCoin credential'",
   }),
-  shortDescription: defineMessage({
+  description: defineMessage({
     id: "activities.claimKuCoinKYCzkPass.shortDescription",
     defaultMessage: `Prove KYC level and claim a KuCoin credential using zkPass protocol. The credentials should be stored in your Verida Wallet.`,
     description:
@@ -274,25 +274,34 @@ export const activity: Activity = {
   onMessage: handleNewMessage,
   steps: [
     {
-      id: "activities.claimKuCoinKYCzkPass.step1",
-      defaultMessage:
-        "Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.",
-      description:
-        "Step 1 of the activity 'Prove KYC level and claim a KuCoin credential'",
+      order: 1,
+      description: defineMessage({
+        id: "activities.claimKuCoinKYCzkPass.step1.description",
+        defaultMessage:
+          "Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.",
+        description:
+          "Step 1 of the activity 'Prove KYC level and claim a KuCoin credential'",
+      }),
     },
     {
-      id: "activities.claimKuCoinKYCzkPass.step2",
-      defaultMessage:
-        "Accept the proof credential received in your inbox to save the credential.",
-      description:
-        "Step 2 of the activity 'Prove KYC level and claim a KuCoin credential'",
+      order: 2,
+      description: defineMessage({
+        id: "activities.claimKuCoinKYCzkPass.step2.description",
+        defaultMessage:
+          "Accept the proof credential received in your inbox to save the credential.",
+        description:
+          "Step 2 of the activity 'Prove KYC level and claim a KuCoin credential'",
+      }),
     },
     {
-      id: "activities.claimKuCoinKYCzkPass.step3",
-      defaultMessage:
-        "Reply to the message sent by Verida Missions to share your new credential.",
-      description:
-        "Step 3 of the activity 'Prove KYC level and claim a KuCoin credential'",
+      order: 3,
+      description: defineMessage({
+        id: "activities.claimKuCoinKYCzkPass.step3.description",
+        defaultMessage:
+          "Reply to the message sent by Verida Missions to share your new credential.",
+        description:
+          "Step 3 of the activity 'Prove KYC level and claim a KuCoin credential'",
+      }),
     },
   ],
   resources: [

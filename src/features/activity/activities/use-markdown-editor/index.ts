@@ -82,7 +82,7 @@ export const activity: Activity = {
 
     description: "Title of the activity 'use markdown editor'",
   }),
-  shortDescription: defineMessage({
+  description: defineMessage({
     id: "activities.useMarkdownEditor.shortDescription",
     defaultMessage:
       "With the Markdown Editor demo app, you can create notes with markdown formatting. Notes are encrypted and securely stored in your Verida self-sovereign datastore.{newline}Note: this app is for demonstration purposes only.",
@@ -108,16 +108,22 @@ export const activity: Activity = {
   }),
   steps: [
     {
-      id: "activities.useMarkdownEditor.step1",
-      defaultMessage:
-        "Connect to the Markdown Editor demo app (link in resources below) and create a new note.",
-      description: "Step 1 of the activity 'use markdown editor'",
+      order: 1,
+      description: defineMessage({
+        id: "activities.useMarkdownEditor.step1.description",
+        defaultMessage:
+          "Connect to the Markdown Editor demo app (link in resources below) and create a new note.",
+        description: "Step 1 of the activity 'use markdown editor'",
+      }),
     },
     {
-      id: "activities.useMarkdownEditor.step2",
-      defaultMessage:
-        "Once you've created a note, click the 'Verify' button below.",
-      description: "Step 2 of the activity 'use markdown editor'",
+      order: 2,
+      description: defineMessage({
+        id: "activities.useMarkdownEditor.step2.description",
+        defaultMessage:
+          "Once you've created a note, click the 'Verify' button below.",
+        description: "Step 2 of the activity 'use markdown editor'",
+      }),
     },
   ],
   resources: [

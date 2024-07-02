@@ -121,7 +121,7 @@ export const activity: Activity = {
     defaultMessage: "Update your public profile",
     description: "Title of the activity 'update profile'",
   }),
-  shortDescription: defineMessage({
+  description: defineMessage({
     id: "activities.updateProfile.shortDescription",
     defaultMessage:
       "Each Verida Identity has a public profile that anyone can read from but only the owner can write to. The profile includes name, country, description and avatar. Except the name, all other properties are optional. Although, for this activity, we ask you to fill them with whatever you want (you can stay anon).",
@@ -146,16 +146,22 @@ export const activity: Activity = {
   }),
   steps: [
     {
-      id: "activities.updateProfile.step1",
-      defaultMessage:
-        "Go to your profile in the Verida Wallet, and update your public name, avatar and description.",
-      description: "Step 1 of the activity 'update profile'",
+      order: 1,
+      description: defineMessage({
+        id: "activities.updateProfile.step1.description",
+        defaultMessage:
+          "Go to your profile in the Verida Wallet, and update your public name, avatar and description.",
+        description: "Step 1 of the activity 'update profile'",
+      }),
     },
     {
-      id: "activities.updateProfile.step2",
-      defaultMessage:
-        "Once you've updated your profile, click the 'Verify' button below.",
-      description: "Step 2 of the activity 'update profile'",
+      order: 2,
+      description: defineMessage({
+        id: "activities.updateProfile.step2.description",
+        defaultMessage:
+          "Once you've updated your profile, click the 'Verify' button below.",
+        description: "Step 2 of the activity 'update profile'",
+      }),
     },
   ],
   resources: [

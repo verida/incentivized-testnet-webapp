@@ -2,10 +2,11 @@ import { useIntl } from "react-intl";
 
 import { Typography } from "~/components/atoms";
 import { TabbedCardBase, TabbedCardBaseProps } from "~/components/molecules";
+import { ActivityStep } from "~/features/activity";
 
 export type ActivityStepCardProps = {
   index: number;
-  step: string;
+  step: ActivityStep;
   theme?: "default" | "onboarding";
 } & Omit<
   TabbedCardBaseProps,
@@ -28,6 +29,14 @@ export const ActivityStepCard: React.FC<ActivityStepCardProps> = (props) => {
     }
   );
 
+  const description = i18n.formatMessage(step.description, {
+    newline: (
+      <>
+        <br />
+      </>
+    ),
+  });
+
   return (
     <TabbedCardBase
       label={stepLabel}
@@ -36,7 +45,7 @@ export const ActivityStepCard: React.FC<ActivityStepCardProps> = (props) => {
       {...tabbedCardBaseProps}
     >
       <div className="px-4 py-6 md:p-6">
-        <Typography variant="base">{step}</Typography>
+        <Typography variant="base">{description}</Typography>
       </div>
     </TabbedCardBase>
   );

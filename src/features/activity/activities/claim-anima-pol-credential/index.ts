@@ -231,7 +231,7 @@ export const activity: Activity = {
     description:
       "Title of the activity 'Claim Synaps/Anima Proof of Life credential'",
   }),
-  shortDescription: defineMessage({
+  description: defineMessage({
     id: "activities.claimAnimaPoLCredential.shortDescription",
     defaultMessage: `Claim your Proof of Life with Polygon ID and join the Sybil resistance. The credential will be stored in your Verida Wallet, and can be securely shared and verified.`,
     description:
@@ -265,32 +265,44 @@ export const activity: Activity = {
   onMessage: handleNewMessage,
   steps: [
     {
-      id: "activities.claimAnimaPoLCredential.step1",
-      defaultMessage:
-        "Go to the Synaps Proof of Life claim page to start the process (link in resources below).",
-      description:
-        "Step 1 of the activity 'Claim Synaps/Anima Proof of Life credential'",
+      order: 1,
+      description: defineMessage({
+        id: "activities.claimAnimaPoLCredential.step1.description",
+        defaultMessage:
+          "Go to the Synaps Proof of Life claim page to start the process (link in resources below).",
+        description:
+          "Step 1 of the activity 'Claim Synaps/Anima Proof of Life credential'",
+      }),
     },
     {
-      id: "activities.claimAnimaPoLCredential.step2",
-      defaultMessage:
-        "Connect with your MetaMask wallet and follow the prompts to complete your proof of life check.",
-      description:
-        "Step 2 of the activity 'Claim Synaps/Anima Proof of Life credential'",
+      order: 2,
+      description: defineMessage({
+        id: "activities.claimAnimaPoLCredential.step2.description",
+        defaultMessage:
+          "Connect with your MetaMask wallet and follow the prompts to complete your proof of life check.",
+        description:
+          "Step 2 of the activity 'Claim Synaps/Anima Proof of Life credential'",
+      }),
     },
     {
-      id: "activities.claimAnimaPoLCredential.step3",
-      defaultMessage:
-        "Claim your Proof of Life credential on Polygon ID. Use your Verida Wallet to connect and save the credential in your wallet.",
-      description:
-        "Step 3 of the activity 'Claim Synaps/Anima Proof of Life credential'",
+      order: 3,
+      description: defineMessage({
+        id: "activities.claimAnimaPoLCredential.step3.description",
+        defaultMessage:
+          "Claim your Proof of Life credential on Polygon ID. Use your Verida Wallet to connect and save the credential in your wallet.",
+        description:
+          "Step 3 of the activity 'Claim Synaps/Anima Proof of Life credential'",
+      }),
     },
     {
-      id: "activities.claimAnimaPoLCredential.step4",
-      defaultMessage:
-        "Go back to Verida Missions. Click on the 'Send Request' button below and share the credential by replying to the message you received in your Wallet inbox.",
-      description:
-        "Step 4 of the activity 'Claim Synaps/Anima Proof of Life credential'",
+      order: 4,
+      description: defineMessage({
+        id: "activities.claimAnimaPoLCredential.step4.description",
+        defaultMessage:
+          "Go back to Verida Missions. Click on the 'Send Request' button below and share the credential by replying to the message you received in your Wallet inbox.",
+        description:
+          "Step 4 of the activity 'Claim Synaps/Anima Proof of Life credential'",
+      }),
     },
   ],
   resources: [

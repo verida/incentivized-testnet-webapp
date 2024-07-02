@@ -229,7 +229,7 @@ export const activity: Activity = {
     defaultMessage: "Claim a Gamer31 Twitch credential",
     description: "Title of the activity 'Claim Gamer31 Twitch credential'",
   }),
-  shortDescription: defineMessage({
+  description: defineMessage({
     id: "activities.claimGamer31Twitch.shortDescription",
     defaultMessage: `Establish your Twitch account ownership by claiming the Gamer31 Twitch proof of membership credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.`,
     description:
@@ -263,22 +263,31 @@ export const activity: Activity = {
   onMessage: handleNewMessage,
   steps: [
     {
-      id: "activities.claimGamer31Twitch.step1",
-      defaultMessage:
-        "Go to the Gamer 31 claim page (link in the resources below) and click on the Twitch 'Claim' button to start the process.",
-      description: "Step 1 of the activity 'claim Gamer31 Twitch credential'",
+      order: 1,
+      description: defineMessage({
+        id: "activities.claimGamer31Twitch.step1.description",
+        defaultMessage:
+          "Go to the Gamer 31 claim page (link in the resources below) and click on the Twitch 'Claim' button to start the process.",
+        description: "Step 1 of the activity 'claim Gamer31 Twitch credential'",
+      }),
     },
     {
-      id: "activities.claimGamer31Twitch.step2",
-      defaultMessage:
-        "Follow the instructions to connect with your Twitch account, then to claim the credential by scanning the two QR codes with your Verida Wallet.",
-      description: "Step 2 of the activity 'claim Gamer31 Twitch credential'",
+      order: 2,
+      description: defineMessage({
+        id: "activities.claimGamer31Twitch.step2.description",
+        defaultMessage:
+          "Follow the instructions to connect with your Twitch account, then to claim the credential by scanning the two QR codes with your Verida Wallet.",
+        description: "Step 2 of the activity 'claim Gamer31 Twitch credential'",
+      }),
     },
     {
-      id: "activities.claimGamer31Twitch.step3",
-      defaultMessage:
-        "Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
-      description: "Step 3 of the activity 'claim Gamer31 Twitch credential'",
+      order: 3,
+      description: defineMessage({
+        id: "activities.claimGamer31Twitch.step3.description",
+        defaultMessage:
+          "Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
+        description: "Step 3 of the activity 'claim Gamer31 Twitch credential'",
+      }),
     },
   ],
   resources: [

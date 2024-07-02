@@ -229,7 +229,7 @@ export const activity: Activity = {
     defaultMessage: "Claim a Gamer31 Brawl Stars credential",
     description: "Title of the activity 'Claim Gamer31 Brawl Stars credential'",
   }),
-  shortDescription: defineMessage({
+  description: defineMessage({
     id: "activities.claimGamer31BrawlStars.shortDescription",
     defaultMessage: `Showcase your prowess in Brawl Stars with the Gamer31 Brawl Stars proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.`,
     description:
@@ -263,25 +263,34 @@ export const activity: Activity = {
   onMessage: handleNewMessage,
   steps: [
     {
-      id: "activities.claimGamer31BrawlStars.step1",
-      defaultMessage:
-        "Go to the Gamer 31 claim page (link in the resources below) and click on the Brawl Stars 'Claim' button to start the process.",
-      description:
-        "Step 1 of the activity 'claim Gamer31 Brawl Stars credential'",
+      order: 1,
+      description: defineMessage({
+        id: "activities.claimGamer31BrawlStars.step1.description",
+        defaultMessage:
+          "Go to the Gamer 31 claim page (link in the resources below) and click on the Brawl Stars 'Claim' button to start the process.",
+        description:
+          "Step 1 of the activity 'claim Gamer31 Brawl Stars credential'",
+      }),
     },
     {
-      id: "activities.claimGamer31BrawlStars.step2",
-      defaultMessage:
-        "Follow the instructions to connect with your Supercell account, then to claim the credential by scanning the two QR codes with your Verida Wallet.",
-      description:
-        "Step 2 of the activity 'claim Gamer31 Brawl Stars credential'",
+      order: 2,
+      description: defineMessage({
+        id: "activities.claimGamer31BrawlStars.step2.description",
+        defaultMessage:
+          "Follow the instructions to connect with your Supercell account, then to claim the credential by scanning the two QR codes with your Verida Wallet.",
+        description:
+          "Step 2 of the activity 'claim Gamer31 Brawl Stars credential'",
+      }),
     },
     {
-      id: "activities.claimGamer31BrawlStars.step3",
-      defaultMessage:
-        "Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
-      description:
-        "Step 3 of the activity 'claim Gamer31 Brawl Stars credential'",
+      order: 3,
+      description: defineMessage({
+        id: "activities.claimGamer31BrawlStars.step3.description",
+        defaultMessage:
+          "Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
+        description:
+          "Step 3 of the activity 'claim Gamer31 Brawl Stars credential'",
+      }),
     },
   ],
   resources: [

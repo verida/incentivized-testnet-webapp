@@ -240,7 +240,7 @@ export const activity: Activity = {
     description:
       "Title of the activity 'Prove KYC level and claim a credential of your Binance account'",
   }),
-  shortDescription: defineMessage({
+  description: defineMessage({
     id: "activities.claimBinanceKYCzkPass.shortDescription",
     defaultMessage: `Prove KYC level and claim a credential of your Binance account. The credentials will be stored in the Verida Network, and can be securely shared and verified.`,
     description:
@@ -274,25 +274,34 @@ export const activity: Activity = {
   onMessage: handleNewMessage,
   steps: [
     {
-      id: "activities.claimBinanceKYCzkPass.step1",
-      defaultMessage:
-        "Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.",
-      description:
-        "Step 1 of the activity 'Prove KYC level and claim a credential of your Binance account'",
+      order: 1,
+      description: defineMessage({
+        id: "activities.claimBinanceKYCzkPass.step1.description",
+        defaultMessage:
+          "Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.",
+        description:
+          "Step 1 of the activity 'Prove KYC level and claim a credential of your Binance account'",
+      }),
     },
     {
-      id: "activities.claimBinanceKYCzkPass.step2",
-      defaultMessage:
-        "Accept the proof credential received in your inbox to save the credential.",
-      description:
-        "Step 2 of the activity 'Prove KYC level and claim a credential of your Binance account'",
+      order: 2,
+      description: defineMessage({
+        id: "activities.claimBinanceKYCzkPass.step2.description",
+        defaultMessage:
+          "Accept the proof credential received in your inbox to save the credential.",
+        description:
+          "Step 2 of the activity 'Prove KYC level and claim a credential of your Binance account'",
+      }),
     },
     {
-      id: "activities.claimBinanceKYCzkPass.step3",
-      defaultMessage:
-        "Reply to the message sent by Verida Missions to share your new credential.",
-      description:
-        "Step 3 of the activity 'Prove KYC level and claim a credential of your Binance account'",
+      order: 3,
+      description: defineMessage({
+        id: "activities.claimBinanceKYCzkPass.step3.description",
+        defaultMessage:
+          "Reply to the message sent by Verida Missions to share your new credential.",
+        description:
+          "Step 3 of the activity 'Prove KYC level and claim a credential of your Binance account'",
+      }),
     },
   ],
   resources: [
