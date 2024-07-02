@@ -9,7 +9,7 @@ export const BottomBarBase: React.FC<BottomBarBaseProps> = (props) => {
   return (
     <div
       className={twMerge(
-        "p-4 lg:px-6 lg:py-4 rounded-xl lg:rounded-2xl backdrop-blur-xl border border-border bg-clip-border bg-gradient-to-r from-primary/25 to-primary/10",
+        "rounded-xl lg:rounded-2xl backdrop-blur-xl border border-border bg-clip-border bg-gradient-to-r from-primary/25 to-primary/10",
         className
       )}
       {...divProps}

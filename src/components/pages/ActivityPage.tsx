@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import { useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
 import { useDebouncedCallback } from "use-debounce";
@@ -33,10 +33,12 @@ export const ActivityPage: React.FC = () => {
     executeActivity,
   } = useActivity();
 
-  const [activityStatus, setActivityStatus] = useState<ActivityStatusType>();
   const [isExecuting, setIsExecuting] = useState(false);
 
-  const activity = activities.find((activity) => activity.id === activityId);
+  const activity = useMemo(
+    () => activities.find((activity) => activity.id === activityId),
+    [activities]
+  );
 
   const handleExecuteActivity = useDebouncedCallback(
     async () => {
@@ -48,17 +50,10 @@ export const ActivityPage: React.FC = () => {
     { leading: true }
   );
 
-  const userActivity = getUserActivity(activityId);
-
-  useEffect(() => {
-    if (isConnected) {
-      if (isLoadingUserActivities) {
-        setActivityStatus("checking");
-      } else {
-        setActivityStatus(activity?.ended ? "completed" : userActivity?.status);
-      }
-    }
-  }, [activity, isConnected, isLoadingUserActivities, userActivity]);
+  const userActivity = useMemo(
+    () => getUserActivity(activityId),
+    [activityId, getUserActivity]
+  );
 
   const notFoundMessage = i18n.formatMessage({
     id: "ActivityPage.emptyMessage",
@@ -72,23 +67,14 @@ export const ActivityPage: React.FC = () => {
   }
 
   const titleMessage = i18n.formatMessage(activity.title);
-  const shortDescriptionMessage = i18n.formatMessage(
-    activity.shortDescription,
-    {
-      newline: (
-        <>
-          <br />
-        </>
-      ),
-    }
-  );
-  const activitySteps = activity.steps?.map((step) => i18n.formatMessage(step));
-  const finishStepsMessage = i18n.formatMessage({
-    id: "ActivityPage.finishStepsMessage",
-    defaultMessage:
-      "Once you've finished with all steps, click the 'Verify' button below.",
-    description: "Message for what to do after finishing all steps",
+  const description = i18n.formatMessage(activity.shortDescription, {
+    newline: (
+      <>
+        <br />
+      </>
+    ),
   });
+  const activitySteps = activity.steps?.map((step) => i18n.formatMessage(step));
 
   const activityByLabel = i18n.formatMessage({
     id: "ActivityPage.activityByLabel",
@@ -126,30 +112,20 @@ export const ActivityPage: React.FC = () => {
     >
       <div className="flex flex-col justify-center items-center gap-10">
         <div className="max-w-[calc(1264px_-_29rem)] flex flex-col gap-6">
-          <div className="flex py-2 gap-4 sm:gap-6 items-center justify-stretch">
+          <div className="flex flex-row py-2 gap-4 sm:gap-6 items-center justify-stretch">
             {partnerLogos.length > 0 ? (
               <>
-                <div className="flex items-center gap-3 sm:gap-4">
+                <div className="flex flex-row items-center gap-3 sm:gap-4">
                   <Typography variant={"base-s"}>{activityByLabel}</Typography>
                   <StackedDiv divs={partnerLogos} />
                 </div>
               </>
             ) : null}
-            {partnerLogos.length > 0 && activityStatus ? (
-              <div className="self-stretch border-l border-transparent-15" />
-            ) : null}
-            {activityStatus ? (
-              <div className="flex gap-3 sm:gap-4 items-center">
-                <Typography variant={"base-s"}>{statusLabel}</Typography>
-                <ActivityStatus status={activityStatus} />
-              </div>
-            ) : null}
+            {/* TODO: Add countdown chip */}
           </div>
-          <div className="text-muted-foreground">
-            <Typography>{shortDescriptionMessage}</Typography>
-            <br />
-            <Typography>{finishStepsMessage}</Typography>
-          </div>
+          <Typography className="text-muted-foreground">
+            {description}
+          </Typography>
           {activity.resources ? (
             <ResourcesSection resources={activity.resources} />
           ) : null}
@@ -170,36 +146,44 @@ export const ActivityPage: React.FC = () => {
         </div>
         <footer className="sticky bottom-4 sm:bottom-6 max-w-[calc(1264px_-_12rem)] w-full">
           <BottomBarBase>
-            <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center">
-              <div className="flex grow justify-between items-center">
-                <div className="flex items-center gap-3">
-                  <Typography>{rewardLabel}</Typography>
-                  <XpPointsChip nbXpPoints={activity.points} />
+            <div className="p-4 lg:px-6 lg:py-4">
+              <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center">
+                <div className="flex flex-row grow justify-between items-center">
+                  <div className="flex flex-row items-center gap-3">
+                    <Typography>{rewardLabel}</Typography>
+                    <XpPointsChip nbXpPoints={activity.points} />
+                  </div>
+                  {isConnected && userActivity ? (
+                    <ActivityStatus
+                      status={
+                        isLoadingUserActivities
+                          ? "checking"
+                          : userActivity.status
+                      }
+                    />
+                  ) : null}
                 </div>
-                {activityStatus ? (
-                  <ActivityStatus status={activityStatus} />
-                ) : null}
+                {isConnected ? (
+                  userActivity?.status !== "completed" && !activity.ended ? (
+                    <Button
+                      color="primary"
+                      className="h-12 w-full md:w-auto"
+                      onClick={() => void handleExecuteActivity()}
+                      disabled={isLoadingUserActivities || isExecuting}
+                    >
+                      {i18n.formatMessage(
+                        isExecuting
+                          ? activity.actionExecutingLabel
+                          : activity.actionLabel
+                      )}
+                    </Button>
+                  ) : null
+                ) : (
+                  <Typography className="text-muted-foreground">
+                    {connectToCompleteMessage}
+                  </Typography>
+                )}
               </div>
-              {isConnected ? (
-                userActivity?.status !== "completed" && !activity.ended ? (
-                  <Button
-                    color="primary"
-                    className="h-12 w-full md:w-auto"
-                    onClick={() => void handleExecuteActivity()}
-                    disabled={isLoadingUserActivities || isExecuting}
-                  >
-                    {i18n.formatMessage(
-                      isExecuting
-                        ? activity.actionExecutingLabel
-                        : activity.actionLabel
-                    )}
-                  </Button>
-                ) : null
-              ) : (
-                <Typography className="text-muted-foreground">
-                  {connectToCompleteMessage}
-                </Typography>
-              )}
             </div>
           </BottomBarBase>
         </footer>

@@ -1,15 +1,16 @@
 import { useIntl } from "react-intl";
+import { twMerge } from "tailwind-merge";
 
 import { usePartner } from "~/features/partners";
 
 export type PartnerCircledLogoProps = {
   partnerId: string;
-};
+} & React.ComponentPropsWithRef<"div">;
 
 export const PartnerCircledLogo: React.FC<PartnerCircledLogoProps> = (
   props
 ) => {
-  const { partnerId } = props;
+  const { partnerId, className, ...divProps } = props;
 
   const { partner } = usePartner(partnerId);
 
@@ -31,7 +32,13 @@ export const PartnerCircledLogo: React.FC<PartnerCircledLogoProps> = (
   }
 
   return (
-    <div className="relative flex justify-center items-center w-8 h-8">
+    <div
+      className={twMerge(
+        "relative flex justify-center items-center w-8 h-8",
+        className
+      )}
+      {...divProps}
+    >
       <div className="p-1 border border-foreground rounded-full">
         <div
           className="bg-white rounded-full p-1"
