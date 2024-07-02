@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
 import { useDebouncedCallback } from "use-debounce";
@@ -46,6 +46,10 @@ export const ActivityPage: React.FC = () => {
     1000,
     { leading: true }
   );
+
+  const handleExecuteButtonClick = useCallback(() => {
+    void handleExecuteActivity();
+  }, [handleExecuteActivity]);
 
   const userActivity = useMemo(
     () => getUserActivity(activityId),
@@ -159,7 +163,7 @@ export const ActivityPage: React.FC = () => {
                     <Button
                       color="primary"
                       className="h-12 w-full md:w-auto"
-                      onClick={() => void handleExecuteActivity()}
+                      onClick={handleExecuteButtonClick}
                       disabled={isLoadingUserActivities || isExecuting}
                     >
                       {i18n.formatMessage(
