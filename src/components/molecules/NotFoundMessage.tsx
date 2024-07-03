@@ -27,8 +27,7 @@ export const NotFoundMessage: React.FC<NotFoundMessageProps> = (props) => {
     {
       id: "NotFoundMessage.notFoundDescription",
       description: "Description when entity doesn't exist",
-      defaultMessage:
-        "The {entity} ID you entered does not match any existing {entity}. Please check the {entity} ID and try again.",
+      defaultMessage: "The {entity} you're looking for hasn't been found.",
     },
     { entity: i18n.formatMessage(entity) }
   );

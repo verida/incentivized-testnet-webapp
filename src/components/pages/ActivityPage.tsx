@@ -71,9 +71,8 @@ export const ActivityPage: React.FC = () => {
   });
 
   if (!activity) {
-    /* TODO: Rework the not found state */
     return (
-      <PageLayout hideReportIssueButton>
+      <PageLayout>
         <div className="flex flex-col h-[40vh] justify-center items-center">
           <NotFoundMessage logo={<VeridaNetworkLogo />} entity={entity} />
         </div>

@@ -392,7 +392,7 @@
     "description": "Title of the Missions page"
   },
   "NotFoundMessage.notFoundDescription": {
-    "defaultMessage": "The {entity} ID you entered does not match any existing {entity}. Please check the {entity} ID and try again.",
+    "defaultMessage": "The {entity} you're looking for hasn't been found.",
     "description": "Description when entity doesn't exist"
   },
   "NotFoundMessage.notFoundMessage": {
