@@ -7,13 +7,9 @@
     "defaultMessage": "Connect for details",
     "description": "Message to show when the user is not connected"
   },
-  "ActivityPage.notFoundDescription": {
-    "defaultMessage": "The activity ID you entered does not match any existing activity. Please check the partner ID and try again.",
-    "description": "Description when activity doesn't exist"
-  },
-  "ActivityPage.notFoundMessage": {
-    "defaultMessage": "Activity Not Found",
-    "description": "Message when activity doesn't exist"
+  "ActivityPage.entity": {
+    "defaultMessage": "Activity",
+    "description": "Entity for not found message"
   },
   "ActivityPage.rewardLabel": {
     "defaultMessage": "Reward",
@@ -395,6 +391,14 @@
     "defaultMessage": "Missions",
     "description": "Title of the Missions page"
   },
+  "NotFoundMessage.notFoundDescription": {
+    "defaultMessage": "The {entity} ID you entered does not match any existing {entity}. Please check the {entity} ID and try again.",
+    "description": "Description when entity doesn't exist"
+  },
+  "NotFoundMessage.notFoundMessage": {
+    "defaultMessage": "{entity} Not Found",
+    "description": "Message when entity doesn't exist"
+  },
   "OnboardingHomeCard.defaultActivityListMessage": {
     "defaultMessage": "Activities",
     "description": "Default message displayed above the activity list in the mission card"
@@ -447,25 +451,13 @@
     "defaultMessage": "Partner",
     "description": "Label above the partner info card"
   },
-  "PartnerPage.emptyMissionDescription": {
-    "defaultMessage": "It looks like there are no missions available at the moment. Please check back later.",
-    "description": "Description when there are no missions for a partner"
-  },
-  "PartnerPage.emptyMissionMessage": {
-    "defaultMessage": "There are currently no missions to display",
-    "description": "Message when there are no missions for a partner"
+  "PartnerPage.empty": {
+    "defaultMessage": "No data",
+    "description": "Description"
   },
   "PartnerPage.missionActivityListMessage": {
     "defaultMessage": "{partnerName} activities:",
     "description": "Message displayed above the activity list of each mission section for a given partner"
-  },
-  "PartnerPage.notFoundDescription": {
-    "defaultMessage": "The partner ID you entered does not match any existing partner. Please check the partner ID and try again.",
-    "description": "Description when partner doesn't exist"
-  },
-  "PartnerPage.notFoundMessage": {
-    "defaultMessage": "Partner Not Found",
-    "description": "Message when partner doesn't exist"
   },
   "PartnersHomeSection.title": {
     "defaultMessage": "Partners",
@@ -474,14 +466,6 @@
   "PartnersHomeSection.viewAllPartnersButtonLabel": {
     "defaultMessage": "View All",
     "description": "Label of the button to view all partners"
-  },
-  "PartnersPage.emptyPartnerDescription": {
-    "defaultMessage": "It looks like there are no partners available at the moment. Please check back later.",
-    "description": "Description when there are no partners"
-  },
-  "PartnersPage.emptyPartnerMessage": {
-    "defaultMessage": "There are currently no partners to display",
-    "description": "Message when there are no partners"
   },
   "PartnersPage.title": {
     "defaultMessage": "Partners",
