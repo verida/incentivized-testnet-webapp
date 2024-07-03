@@ -371,9 +371,9 @@
     "defaultMessage": "{nbCompletedActivities, number}/{nbActivities, number}",
     "description": "Message for the mission progress bar"
   },
-  "MissionPage.emptyMessage": {
-    "defaultMessage": "No data",
-    "description": "Message when mission doesn't exist"
+  "MissionPage.entity": {
+    "defaultMessage": "Mission",
+    "description": "Entity for not found message"
   },
   "MissionSection.defaultActivityListMessage": {
     "defaultMessage": "Complete all activities below",

@@ -1,7 +1,9 @@
+import { ReactComponent as VeridaNetworkLogo } from "assets/images/verida_network_logo_with_text_white.svg";
 import { useCallback, useMemo } from "react";
-import { useIntl } from "react-intl";
+import { defineMessage } from "react-intl";
 import { useParams } from "react-router-dom";
 
+import { NotFoundMessage } from "~/components/molecules";
 import { MissionBottomBar, MissionSection } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { isMissionCompleted, useActivity } from "~/features/activity";
@@ -62,13 +64,21 @@ export const MissionPage: React.FC = () => {
     [missionId, allActivities, userActivities]
   );
 
-  const i18n = useIntl();
-
-  const emptry = i18n.formatMessage({
-    id: "MissionPage.emptyMessage",
-    description: "Message when mission doesn't exist",
-    defaultMessage: "No data",
+  const entity = defineMessage({
+    id: "MissionPage.entity",
+    description: "Entity for not found message",
+    defaultMessage: "Mission",
   });
+
+  if (!mission) {
+    return (
+      <PageLayout>
+        <div className="flex flex-col h-[40vh] justify-center items-center">
+          <NotFoundMessage logo={<VeridaNetworkLogo />} entity={entity} />
+        </div>
+      </PageLayout>
+    );
+  }
 
   return (
     <PageLayout
@@ -76,27 +86,18 @@ export const MissionPage: React.FC = () => {
       displayExploreMoreMissionsSection={!isOnboardingMission}
       exploreMoreMissionsFilterPredicate={exploreMoreMissionsPredicate}
     >
-      {mission ? (
-        <div className="flex flex-col items-center gap-6 lg:gap-11">
-          <div className="max-w-[calc(1264px_-_16rem)]">
-            <MissionSection mission={mission} activities={missionActivities} />
-          </div>
-          <footer className="sticky bottom-4 sm:bottom-6 max-w-[calc(1264px_-_12rem)] w-full">
-            <MissionBottomBar
-              activityStatuses={activityStatuses}
-              points={missionTotalXpPoints}
-              isLoading={
-                isConnecting || (isConnected && isLoadingUserActivities)
-              }
-            />
-          </footer>
+      <div className="flex flex-col items-center gap-6 lg:gap-11">
+        <div className="max-w-[calc(1264px_-_16rem)]">
+          <MissionSection mission={mission} activities={missionActivities} />
         </div>
-      ) : (
-        <>
-          {/* TODO: Rework the not found state */}
-          <div className="">{emptry}</div>
-        </>
-      )}
+        <footer className="sticky bottom-4 sm:bottom-6 max-w-[calc(1264px_-_12rem)] w-full">
+          <MissionBottomBar
+            activityStatuses={activityStatuses}
+            points={missionTotalXpPoints}
+            isLoading={isConnecting || (isConnected && isLoadingUserActivities)}
+          />
+        </footer>
+      </div>
     </PageLayout>
   );
 };
