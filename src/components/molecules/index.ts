@@ -11,7 +11,7 @@ export * from "./HeaderNavMenu";
 export * from "./HomeHero";
 export * from "./MissionActivitiesProgressBar";
 export * from "./MissionCardActivitiesProgressBar";
-export * from "./NotFoundMessageBox";
+export * from "./NotFoundMessage";
 export * from "./PartnerCircledLogo";
 export * from "./PortalWrapper";
 export * from "./ReportIssueButton";
