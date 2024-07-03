@@ -255,6 +255,14 @@
     "defaultMessage": "{nbDaysLeft, plural, one {{nbDaysLeft} day left} other {{nbDaysLeft} days left} }",
     "description": "Formatted value of days left in the activity days left chip"
   },
+  "EmptyListMessage.emptyListDescription": {
+    "defaultMessage": "It looks like there are no {entity} available at the moment. Please check back later.",
+    "description": "Description when there are no entities"
+  },
+  "EmptyListMessage.emptyListMessage": {
+    "defaultMessage": "There are currently no {entity} to display",
+    "description": "Message when there are no entities"
+  },
   "ErrorFallbackCard.cardMessage": {
     "defaultMessage": "If the error persists, try refreshing your browser and cleaning your browser's data.",
     "description": "Message of the default error fallback card"
@@ -451,13 +459,17 @@
     "defaultMessage": "Partner",
     "description": "Label above the partner info card"
   },
-  "PartnerPage.empty": {
-    "defaultMessage": "No data",
-    "description": "Description"
-  },
   "PartnerPage.missionActivityListMessage": {
     "defaultMessage": "{partnerName} activities:",
     "description": "Message displayed above the activity list of each mission section for a given partner"
+  },
+  "PartnerPage.missionEntity": {
+    "defaultMessage": "missions",
+    "description": "Entity for empty list"
+  },
+  "PartnerPage.partnerEntity": {
+    "defaultMessage": "Partner",
+    "description": "Entity for not found message"
   },
   "PartnersHomeSection.title": {
     "defaultMessage": "Partners",
