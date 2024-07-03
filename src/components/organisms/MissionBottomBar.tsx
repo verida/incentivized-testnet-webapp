@@ -1,7 +1,7 @@
 import React from "react";
 import { useIntl } from "react-intl";
 
-import { Typography } from "~/components/atoms";
+import { BottomBarBase, Typography } from "~/components/atoms";
 import {
   MissionActivitiesProgressBar,
   XpPointsChip,
@@ -12,10 +12,10 @@ export type MissionBottomBarProps = {
   isLoading?: boolean;
   activityStatuses: UserActivityStatus[];
   points?: number;
-} & Omit<React.ComponentPropsWithRef<"div">, "children">;
+} & Omit<React.ComponentPropsWithRef<typeof BottomBarBase>, "children">;
 
 export const MissionBottomBar: React.FC<MissionBottomBarProps> = (props) => {
-  const { points, activityStatuses, isLoading, ...divProps } = props;
+  const { points, activityStatuses, isLoading, ...bottomBarBaseProps } = props;
 
   const nbActivities = activityStatuses.length;
   const nbCompletedActivities = activityStatuses.filter(
@@ -55,8 +55,8 @@ export const MissionBottomBar: React.FC<MissionBottomBarProps> = (props) => {
   );
 
   return (
-    <div {...divProps}>
-      <div className="p-4 lg:px-6 lg:py-4 rounded-xl lg:rounded-2xl backdrop-blur-xl border border-border bg-clip-border bg-gradient-to-r from-primary/25 to-primary/10">
+    <BottomBarBase {...bottomBarBaseProps}>
+      <div className="p-4 lg:px-6 lg:py-4">
         <div className="flex flex-col gap-3 sm:gap-5">
           <div className="flex flex-row justify-between lg:justify-start gap-6 items-center">
             <Typography variant="heading-s" component="p" className="sm:hidden">
@@ -78,6 +78,6 @@ export const MissionBottomBar: React.FC<MissionBottomBarProps> = (props) => {
           />
         </div>
       </div>
-    </div>
+    </BottomBarBase>
   );
 };

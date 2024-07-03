@@ -239,17 +239,11 @@ export const activity: Activity = {
     description:
       "Title of the activity 'Claim an Uber credential/Prove ownership'",
   }),
-  shortDescription: defineMessage({
-    id: "activities.claimUberOwnerReclaim.shortDescription",
+  description: defineMessage({
+    id: "activities.claimUberOwnerReclaim.description",
     defaultMessage: `Prove ownership and claim a credential of your Uber account. The credentials will be securely stored on the Verida Network, and can be shared and verified.`,
     description:
-      "Short description of the activity 'Claim an Uber credential/Prove ownership'",
-  }),
-  longDescription: defineMessage({
-    id: "activities.claimUberOwnerReclaim.longDescription",
-    defaultMessage: `Prove ownership and claim a credential of your Uber account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.`,
-    description:
-      "Long description of the activity 'Claim an Uber credential/Prove ownership'",
+      "Description of the activity 'Claim an Uber credential/Prove ownership'",
   }),
   actionLabel: defineMessage({
     id: "activities.claimUberOwnerReclaim.actionLabel",
@@ -271,6 +265,38 @@ export const activity: Activity = {
   onInit: handleInit,
   onExecute: handleExecute,
   onMessage: handleNewMessage,
+  steps: [
+    {
+      order: 1,
+      description: defineMessage({
+        id: "activities.claimUberOwnerReclaim.step1.description",
+        defaultMessage:
+          "Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.",
+        description:
+          "Step 1 of the activity 'Claim an Uber credential/Prove ownership'",
+      }),
+    },
+    {
+      order: 2,
+      description: defineMessage({
+        id: "activities.claimUberOwnerReclaim.step2.description",
+        defaultMessage:
+          "Accept the proof credential received in your inbox to save the credential.",
+        description:
+          "Step 2 of the activity 'Claim an Uber credential/Prove ownership'",
+      }),
+    },
+    {
+      order: 3,
+      description: defineMessage({
+        id: "activities.claimUberOwnerReclaim.step3.description",
+        defaultMessage:
+          "Reply to the message sent by Verida Missions to share your new credential.",
+        description:
+          "Step 3 of the activity 'Claim an Uber credential/Prove ownership'",
+      }),
+    },
+  ],
   resources: [
     {
       label: defineMessage({

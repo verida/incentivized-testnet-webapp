@@ -2,6 +2,7 @@ export * from "./ActivityIndex";
 export * from "./AirdropStatus";
 export * from "./Avatar";
 export * from "./BackButton";
+export * from "./BottomBarBase";
 export * from "./Button";
 export * from "./ButtonBase";
 export * from "./ButtonLink";

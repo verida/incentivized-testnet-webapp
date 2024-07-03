@@ -15,6 +15,7 @@ export type PageLayoutProps = {
   title?: string;
   containerClassName?: string;
   contentClassName?: string;
+  titleClassName?: string;
 
   /**
    * Hides the back button. Default to false as most common case is to show the back button.
@@ -45,6 +46,7 @@ export const PageLayout: React.FC<PageLayoutProps> = (props) => {
     title,
     containerClassName,
     contentClassName,
+    titleClassName,
     hideBackButton = false,
     hideReportIssueButton = false,
     displayGetSupportSection = false,
@@ -62,13 +64,18 @@ export const PageLayout: React.FC<PageLayoutProps> = (props) => {
         <div className="flex-grow gap-12 sm:gap-16 flex flex-col ">
           {!hideBackButton || title ? (
             <div className=" mt-6 sm:mt-16 flex flex-col sm:flex-row gap-6 px-6">
-              <div className="sm:flex-1 sm:content-center">
+              <div className="sm:flex-1">
                 {hideBackButton ? null : <BackButton />}
               </div>
               {title && (
                 <Typography variant="heading-l">
                   {/* Had to surround by div because of style conflict with Typography, likely 'text-transparent' */}
-                  <div className="bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/70 text-center">
+                  <div
+                    className={twMerge(
+                      "bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/70 text-center",
+                      titleClassName
+                    )}
+                  >
                     {title}
                   </div>
                 </Typography>

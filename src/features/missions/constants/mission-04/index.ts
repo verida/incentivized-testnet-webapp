@@ -25,7 +25,7 @@ export const mission: Mission = {
     id: "missions.mission-04.description",
     defaultMessage:
       "Embrace the future of secure and authentic online interactions by claiming your Proof of Life with Polygon ID. This mission, in partnership with Synaps, empowers individuals to assert their humanity while upholding their privacy.",
-    description: "Short description of the mission 04",
+    description: "Description of the mission 04",
   }),
   longDescription: defineMessage({
     id: "missions.mission-04.longDescription",

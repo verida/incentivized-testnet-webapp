@@ -1,4 +1,5 @@
 export * from "./ActivityListItem";
+export * from "./ActivityStepCard";
 export * from "./ComingSoonActivityItem";
 export * from "./ConnectVeridaButton";
 export * from "./ExploreMissionsHomeSection";
@@ -20,3 +21,4 @@ export * from "./PartnerCard";
 export * from "./PartnerCardsCarousel";
 export * from "./PartnerInfoCard";
 export * from "./PartnersHomeSection";
+export * from "./ResourcesSection";

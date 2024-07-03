@@ -1,4 +1,24 @@
 {
+  "ActivityPage.activityByLabel": {
+    "defaultMessage": "Activity by",
+    "description": "Label activity by"
+  },
+  "ActivityPage.connectToCompleteMessage": {
+    "defaultMessage": "Connect for details",
+    "description": "Message to show when the user is not connected"
+  },
+  "ActivityPage.entity": {
+    "defaultMessage": "Activity",
+    "description": "Entity for not found message"
+  },
+  "ActivityPage.rewardLabel": {
+    "defaultMessage": "Reward",
+    "description": "Label Reward"
+  },
+  "ActivityPage.stepLabel": {
+    "defaultMessage": "Step {index}",
+    "description": "Label above the activity step card"
+  },
   "ActivityStatus.activityCheckingLabel": {
     "defaultMessage": "Checking",
     "description": "Label of the status for a disabled activity"
@@ -371,6 +391,14 @@
     "defaultMessage": "Missions",
     "description": "Title of the Missions page"
   },
+  "NotFoundMessage.notFoundDescription": {
+    "defaultMessage": "The {entity} you're looking for hasn't been found.",
+    "description": "Description when entity doesn't exist"
+  },
+  "NotFoundMessage.notFoundMessage": {
+    "defaultMessage": "{entity} Not Found",
+    "description": "Message when entity doesn't exist"
+  },
   "OnboardingHomeCard.defaultActivityListMessage": {
     "defaultMessage": "Activities",
     "description": "Default message displayed above the activity list in the mission card"
@@ -411,6 +439,10 @@
     "defaultMessage": "Logo of {partnerName}",
     "description": "Alt for the logo of a partner"
   },
+  "PartnerCircledLogo.partnerLogoAlt": {
+    "defaultMessage": "Logo of {partnerName}",
+    "description": "Alt for the logo of a partner"
+  },
   "PartnerInfoCard.activityCounterLabel": {
     "defaultMessage": "{nbActivities, plural, one {Activity} other {Activities} }",
     "description": "Sub text for the number of activitiies in the counter in the partner info card"
@@ -443,6 +475,10 @@
     "defaultMessage": "Report Issue",
     "description": "Label of the button to access the form to report an issue"
   },
+  "ResourcesSection.resourcesLabel": {
+    "defaultMessage": "Resources",
+    "description": "Label Resources"
+  },
   "ShareOnSocials.shareOnX": {
     "defaultMessage": "Share on",
     "description": "Label of the Share on X. The X is a logo appended after this message"
@@ -471,6 +507,10 @@
     "defaultMessage": "Re-send Request",
     "description": "Label of the button to perform the activity again "
   },
+  "activities.claimAnimaPoLCredential.description": {
+    "defaultMessage": "Claim your Proof of Life with Polygon ID and join the Sybil resistance. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
+    "description": "Description of the activity 'Claim Synaps/Anima Proof of Life credential'"
+  },
   "activities.claimAnimaPoLCredential.executePendingMessage": {
     "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share the credential.",
     "description": "Message explaining a request has been sent to the their Wallet inbox"
@@ -478,10 +518,6 @@
   "activities.claimAnimaPoLCredential.gettingExecutionErrorMessage": {
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
-  },
-  "activities.claimAnimaPoLCredential.longDescription": {
-    "defaultMessage": "Claim your Proof of Life with Polygon ID and join the Sybil resistance. The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the Synaps Proof of Life claim page to start the process (link in resources below).{newline}{newline}Step 2. Connect with your MetaMask wallet and follow the prompts to complete your proof of life check.{newline}{newline}Step 3. Claim your Proof of Life credential on Polygon ID. Use your Verida Wallet to connect and save the credential in your wallet.{newline}{newline}Step 4. Go back to Verida Missions. Click on the 'Send Request' button below and share the credential by replying to the message you received in your Wallet inbox.",
-    "description": "Long description of the activity 'Claim Synaps/Anima Proof of Life credential'"
   },
   "activities.claimAnimaPoLCredential.resources.blog.label": {
     "defaultMessage": "Blog: Verida and Synaps Partnership Announcement",
@@ -499,9 +535,21 @@
     "defaultMessage": "Video: Synaps - Claim a Proof of Life (PoL) Polygon ID Credential / Verida Network",
     "description": "Label of the resource 'video user guide'"
   },
-  "activities.claimAnimaPoLCredential.shortDescription": {
-    "defaultMessage": "Claim your Proof of Life with Polygon ID and join the Sybil resistance. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
-    "description": "Short description of the activity 'Claim Synaps/Anima Proof of Life credential'"
+  "activities.claimAnimaPoLCredential.step1.description": {
+    "defaultMessage": "Go to the Synaps Proof of Life claim page to start the process (link in resources below).",
+    "description": "Step 1 of the activity 'Claim Synaps/Anima Proof of Life credential'"
+  },
+  "activities.claimAnimaPoLCredential.step2.description": {
+    "defaultMessage": "Connect with your MetaMask wallet and follow the prompts to complete your proof of life check.",
+    "description": "Step 2 of the activity 'Claim Synaps/Anima Proof of Life credential'"
+  },
+  "activities.claimAnimaPoLCredential.step3.description": {
+    "defaultMessage": "Claim your Proof of Life credential on Polygon ID. Use your Verida Wallet to connect and save the credential in your wallet.",
+    "description": "Step 3 of the activity 'Claim Synaps/Anima Proof of Life credential'"
+  },
+  "activities.claimAnimaPoLCredential.step4.description": {
+    "defaultMessage": "Go back to Verida Missions. Click on the 'Send Request' button below and share the credential by replying to the message you received in your Wallet inbox.",
+    "description": "Step 4 of the activity 'Claim Synaps/Anima Proof of Life credential'"
   },
   "activities.claimAnimaPoLCredential.title": {
     "defaultMessage": "Synaps - Claim a Proof of Life (PoL) Polygon ID credential",
@@ -519,6 +567,10 @@
     "defaultMessage": "Verify again",
     "description": "Label of the button to perform the activity again "
   },
+  "activities.claimBinanceKYCzkPass.description": {
+    "defaultMessage": "Prove KYC level and claim a credential of your Binance account. The credentials will be stored in the Verida Network, and can be securely shared and verified.",
+    "description": "Description of the activity 'Prove KYC level and claim a credential of your Binance account'"
+  },
   "activities.claimBinanceKYCzkPass.executePendingMessage": {
     "defaultMessage": "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
     "description": "Message explaining a request has been sent to your Verida Wallet inbox"
@@ -527,17 +579,21 @@
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
   },
-  "activities.claimBinanceKYCzkPass.longDescription": {
-    "defaultMessage": "Prove KYC level and claim a credential of your Binance account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
-    "description": "Long description of the activity 'Prove KYC level and claim a credential of your Binance account'"
-  },
   "activities.claimBinanceKYCzkPass.resources.zkPassPageUrl.label": {
     "defaultMessage": "User guide of zkPass protocol",
     "description": "Label of the resource 'User guide of zkPass protocol'"
   },
-  "activities.claimBinanceKYCzkPass.shortDescription": {
-    "defaultMessage": "Prove KYC level and claim a credential of your Binance account. The credentials will be stored in the Verida Network, and can be securely shared and verified.",
-    "description": "Short description of the activity 'Prove KYC level and claim a credential of your Binance account'"
+  "activities.claimBinanceKYCzkPass.step1.description": {
+    "defaultMessage": "Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.",
+    "description": "Step 1 of the activity 'Prove KYC level and claim a credential of your Binance account'"
+  },
+  "activities.claimBinanceKYCzkPass.step2.description": {
+    "defaultMessage": "Accept the proof credential received in your inbox to save the credential.",
+    "description": "Step 2 of the activity 'Prove KYC level and claim a credential of your Binance account'"
+  },
+  "activities.claimBinanceKYCzkPass.step3.description": {
+    "defaultMessage": "Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Step 3 of the activity 'Prove KYC level and claim a credential of your Binance account'"
   },
   "activities.claimBinanceKYCzkPass.title": {
     "defaultMessage": "Prove KYC level and claim a Binance credential",
@@ -555,6 +611,10 @@
     "defaultMessage": "Verify again",
     "description": "Label of the button to perform the activity again "
   },
+  "activities.claimBinanceOwnerzkPass.description": {
+    "defaultMessage": "Prove ownership and claim a credential of your Binance account. The credentials will be securely stored on the Verida Network, and can be shared and verified.",
+    "description": "Description of the activity 'Prove ownership and claim a credential of your Binance account'"
+  },
   "activities.claimBinanceOwnerzkPass.executePendingMessage": {
     "defaultMessage": "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
     "description": "Message explaining a request has been sent to your Verida Wallet inbox"
@@ -563,17 +623,21 @@
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
   },
-  "activities.claimBinanceOwnerzkPass.longDescription": {
-    "defaultMessage": "Prove ownership and claim a credential of your Binance account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
-    "description": "Long description of the activity 'Prove ownership and claim a credential of your Binance account'"
-  },
   "activities.claimBinanceOwnerzkPass.resources.zkPassPageUrl.label": {
     "defaultMessage": "User guide of zkPass protocol",
     "description": "Label of the resource 'User guide of zkPass protocol'"
   },
-  "activities.claimBinanceOwnerzkPass.shortDescription": {
-    "defaultMessage": "Prove ownership and claim a credential of your Binance account. The credentials will be securely stored on the Verida Network, and can be shared and verified.",
-    "description": "Short description of the activity 'Prove ownership and claim a credential of your Binance account'"
+  "activities.claimBinanceOwnerzkPass.step1.description": {
+    "defaultMessage": "Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.",
+    "description": "Step 1 of the activity 'Prove ownership and claim a credential of your Binance account'"
+  },
+  "activities.claimBinanceOwnerzkPass.step2.description": {
+    "defaultMessage": "Accept the proof credential received in your inbox to save the credential.",
+    "description": "Step 2 of the activity 'Prove ownership and claim a credential of your Binance account'"
+  },
+  "activities.claimBinanceOwnerzkPass.step3.description": {
+    "defaultMessage": "Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Step 3 of the activity 'Prove ownership and claim a credential of your Binance account'"
   },
   "activities.claimBinanceOwnerzkPass.title": {
     "defaultMessage": "Prove ownership and claim a Binance credential",
@@ -591,6 +655,10 @@
     "defaultMessage": "Verify again",
     "description": "Label of the button to perform the activity again "
   },
+  "activities.claimBybitKYCzkPass.description": {
+    "defaultMessage": "Prove KYC level and claim a credential of your Bybit account. The credentials will be securely stored on the Verida Network, and can be shared and verified.",
+    "description": "Description of the activity 'Prove KYC level and claim a Bybit credential'"
+  },
   "activities.claimBybitKYCzkPass.executePendingMessage": {
     "defaultMessage": "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
     "description": "Message explaining a request has been sent to your Verida Wallet inbox"
@@ -599,17 +667,21 @@
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
   },
-  "activities.claimBybitKYCzkPass.longDescription": {
-    "defaultMessage": "Prove KYC level and claim a credential of your Bybit account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
-    "description": "Long description of the activity 'Prove KYC level and claim a Bybit credential'"
-  },
   "activities.claimBybitKYCzkPass.resources.ZkPassPageUrl.label": {
     "defaultMessage": "User guide of zkPass protocol",
     "description": "Label of the resource 'User guide of zkPass protocol'"
   },
-  "activities.claimBybitKYCzkPass.shortDescription": {
-    "defaultMessage": "Prove KYC level and claim a credential of your Bybit account. The credentials will be securely stored on the Verida Network, and can be shared and verified.",
-    "description": "Short description of the activity 'Prove KYC level and claim a Bybit credential'"
+  "activities.claimBybitKYCzkPass.step1.description": {
+    "defaultMessage": "Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.",
+    "description": "Step 1 of the activity 'Prove KYC level and claim a Bybit credential'"
+  },
+  "activities.claimBybitKYCzkPass.step2.description": {
+    "defaultMessage": "Accept the proof credential received in your inbox to save the credential.",
+    "description": "Step 2 of the activity 'Prove KYC level and claim a Bybit credential'"
+  },
+  "activities.claimBybitKYCzkPass.step3.description": {
+    "defaultMessage": "Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Step 3 of the activity 'Prove KYC level and claim a Bybit credential'"
   },
   "activities.claimBybitKYCzkPass.title": {
     "defaultMessage": "Prove KYC level and claim a Bybit credential",
@@ -627,6 +699,10 @@
     "defaultMessage": "Verify again",
     "description": "Label of the button to perform the activity again "
   },
+  "activities.claimBybitOwnerzkPass.description": {
+    "defaultMessage": "Prove ownership and claim a credential of your Bybit account. The credentials will be securely stored on the Verida Network, and can be shared and verified.",
+    "description": "Description of the activity 'Prove ownership and claim a Bybit credential'"
+  },
   "activities.claimBybitOwnerzkPass.executePendingMessage": {
     "defaultMessage": "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
     "description": "Message explaining a request has been sent to your Verida Wallet inbox"
@@ -635,17 +711,21 @@
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
   },
-  "activities.claimBybitOwnerzkPass.longDescription": {
-    "defaultMessage": "Prove ownership and claim a credential of your Bybit account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
-    "description": "Long description of the activity 'Prove ownership and claim a Bybit credential'"
-  },
   "activities.claimBybitOwnerzkPass.resources.ZkPassPageUrl.label": {
     "defaultMessage": "User guide of zkPass protocol",
     "description": "Label of the resource 'User guide of zkPass protocol'"
   },
-  "activities.claimBybitOwnerzkPass.shortDescription": {
-    "defaultMessage": "Prove ownership and claim a credential of your Bybit account. The credentials will be securely stored on the Verida Network, and can be shared and verified.",
-    "description": "Short description of the activity 'Prove ownership and claim a Bybit credential'"
+  "activities.claimBybitOwnerzkPass.step1.description": {
+    "defaultMessage": "Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.",
+    "description": "Step 1 of the activity 'Prove ownership and claim a Bybit credential'"
+  },
+  "activities.claimBybitOwnerzkPass.step2.description": {
+    "defaultMessage": "Accept the proof credential received in your inbox to save the credential.",
+    "description": "Step 2 of the activity 'Prove ownership and claim a Bybit credential'"
+  },
+  "activities.claimBybitOwnerzkPass.step3.description": {
+    "defaultMessage": "Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Step 3 of the activity 'Prove ownership and claim a Bybit credential'"
   },
   "activities.claimBybitOwnerzkPass.title": {
     "defaultMessage": "Prove ownership and claim a Bybit credential",
@@ -663,6 +743,10 @@
     "defaultMessage": "Re-send Request",
     "description": "Label of the button to perform the activity again "
   },
+  "activities.claimGamer31BrawlStars.description": {
+    "defaultMessage": "Showcase your prowess in Brawl Stars with the Gamer31 Brawl Stars proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
+    "description": "Description of the activity 'claim Gamer31 Brawl Stars credential'"
+  },
   "activities.claimGamer31BrawlStars.executePendingMessage": {
     "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a Gamer31 Brawl Stars credential.",
     "description": "Message explaining a request has been sent to the their Wallet inbox"
@@ -671,17 +755,21 @@
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
   },
-  "activities.claimGamer31BrawlStars.longDescription": {
-    "defaultMessage": "Showcase your prowess in Brawl Stars with the Gamer31 Brawl Stars proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the Gamer 31 claim page (link in the resources below) and click on the Brawl Stars 'Claim' button to start the process.{newline}{newline}Step 2. Follow the instructions to connect with your Supercell account, then to claim the credential by scanning the two QR codes with your Verida Wallet.{newline}{newline}Step 3. Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
-    "description": "Long description of the activity 'claim Gamer31 Brawl Stars credential'"
-  },
   "activities.claimGamer31BrawlStars.resources.gamer31ClaimPageUrl.label": {
     "defaultMessage": "Gamer31 claim page",
     "description": "Label of the resource 'Gamer31 claim page'"
   },
-  "activities.claimGamer31BrawlStars.shortDescription": {
-    "defaultMessage": "Showcase your prowess in Brawl Stars with the Gamer31 Brawl Stars proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
-    "description": "Short description of the activity 'claim Gamer31 Brawl Stars credential'"
+  "activities.claimGamer31BrawlStars.step1.description": {
+    "defaultMessage": "Go to the Gamer 31 claim page (link in the resources below) and click on the Brawl Stars 'Claim' button to start the process.",
+    "description": "Step 1 of the activity 'claim Gamer31 Brawl Stars credential'"
+  },
+  "activities.claimGamer31BrawlStars.step2.description": {
+    "defaultMessage": "Follow the instructions to connect with your Supercell account, then to claim the credential by scanning the two QR codes with your Verida Wallet.",
+    "description": "Step 2 of the activity 'claim Gamer31 Brawl Stars credential'"
+  },
+  "activities.claimGamer31BrawlStars.step3.description": {
+    "defaultMessage": "Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
+    "description": "Step 3 of the activity 'claim Gamer31 Brawl Stars credential'"
   },
   "activities.claimGamer31BrawlStars.title": {
     "defaultMessage": "Claim a Gamer31 Brawl Stars credential",
@@ -699,6 +787,10 @@
     "defaultMessage": "Re-send Request",
     "description": "Label of the button to perform the activity again "
   },
+  "activities.claimGamer31ClashOfClans.description": {
+    "defaultMessage": "Highlight your achievements in Clash of Clans by claiming the Gamer31 Clash of Clans proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
+    "description": "Description of the activity 'claim Gamer31 Clash Of Clans credential'"
+  },
   "activities.claimGamer31ClashOfClans.executePendingMessage": {
     "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a Gamer31 Clash Of Clans credential.",
     "description": "Message explaining a request has been sent to the their Wallet inbox"
@@ -707,17 +799,21 @@
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
   },
-  "activities.claimGamer31ClashOfClans.longDescription": {
-    "defaultMessage": "Highlight your achievements in Clash of Clans by claiming the Gamer31 Clash of Clans proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the Gamer 31 claim page (link in the resources below) and click on the Clash of Clans 'Claim' button to start the process.{newline}{newline}Step 2. Follow the instructions to connect with your Supercell account, then to claim the credential by scanning the two QR codes with your Verida Wallet.{newline}{newline}Step 3. Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
-    "description": "Long description of the activity 'claim Gamer31 Clash Of Clans credential'"
-  },
   "activities.claimGamer31ClashOfClans.resources.gamer31ClaimPageUrl.label": {
     "defaultMessage": "Gamer31 claim page",
     "description": "Label of the resource 'Gamer31 claim page'"
   },
-  "activities.claimGamer31ClashOfClans.shortDescription": {
-    "defaultMessage": "Highlight your achievements in Clash of Clans by claiming the Gamer31 Clash of Clans proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
-    "description": "Short description of the activity 'claim Gamer31 Clash Of Clans credential'"
+  "activities.claimGamer31ClashOfClans.step1.description": {
+    "defaultMessage": "Go to the Gamer 31 claim page (link in the resources below) and click on the Clash of Clans 'Claim' button to start the process.",
+    "description": "Step 1 of the activity 'Claim Gamer31 Clash Of Clans credential'"
+  },
+  "activities.claimGamer31ClashOfClans.step2.description": {
+    "defaultMessage": "Follow the instructions to connect with your Supercell account, then to claim the credential by scanning the two QR codes with your Verida Wallet.",
+    "description": "Step 2 of the activity 'Claim Gamer31 Clash Of Clans credential'"
+  },
+  "activities.claimGamer31ClashOfClans.step3.description": {
+    "defaultMessage": "Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
+    "description": "Step 3 of the activity 'Claim Gamer31 Clash Of Clans credential'"
   },
   "activities.claimGamer31ClashOfClans.title": {
     "defaultMessage": "Claim a Gamer31 Clash Of Clans credential",
@@ -735,6 +831,10 @@
     "defaultMessage": "Re-send Request",
     "description": "Label of the button to perform the activity again "
   },
+  "activities.claimGamer31ClashRoyale.description": {
+    "defaultMessage": "Celebrate your accomplishments in Clash Royale by claiming the Gamer31 Clash Royale proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
+    "description": "Description of the activity 'claim Gamer31 Clash Royale credential'"
+  },
   "activities.claimGamer31ClashRoyale.executePendingMessage": {
     "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a Gamer31 Clash Royale credential.",
     "description": "Message explaining a request has been sent to the their Wallet inbox"
@@ -743,17 +843,21 @@
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
   },
-  "activities.claimGamer31ClashRoyale.longDescription": {
-    "defaultMessage": "Celebrate your accomplishments in Clash Royale by claiming the Gamer31 Clash Royale proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the Gamer 31 claim page (link in the resources below) and click on the Clash Royale 'Claim' button to start the process.{newline}{newline}Step 2. Follow the instructions to connect with your Supercell account, then to claim the credential by scanning the two QR codes with your Verida Wallet.{newline}{newline}Step 3. Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
-    "description": "Long description of the activity 'claim Gamer31 Clash Royale credential'"
-  },
   "activities.claimGamer31ClashRoyale.resources.gamer31ClaimPageUrl.label": {
     "defaultMessage": "Gamer31 claim page",
     "description": "Label of the resource 'Gamer31 claim page'"
   },
-  "activities.claimGamer31ClashRoyale.shortDescription": {
-    "defaultMessage": "Celebrate your accomplishments in Clash Royale by claiming the Gamer31 Clash Royale proof of reputation credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
-    "description": "Short description of the activity 'claim Gamer31 Clash Royale credential'"
+  "activities.claimGamer31ClashRoyale.step1.description": {
+    "defaultMessage": "Go to the Gamer 31 claim page (link in the resources below) and click on the Clash Royale 'Claim' button to start the process.",
+    "description": "Step 1 of the activity 'claim Gamer31 Clash Royale credential'"
+  },
+  "activities.claimGamer31ClashRoyale.step2.description": {
+    "defaultMessage": "Follow the instructions to connect with your Supercell account, then to claim the credential by scanning the two QR codes with your Verida Wallet.",
+    "description": "Step 2 of the activity 'claim Gamer31 Clash Royale credential'"
+  },
+  "activities.claimGamer31ClashRoyale.step3.description": {
+    "defaultMessage": "Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
+    "description": "Step 3 of the activity 'claim Gamer31 Clash Royale credential'"
   },
   "activities.claimGamer31ClashRoyale.title": {
     "defaultMessage": "Claim a Gamer31 Clash Royale credential",
@@ -771,6 +875,10 @@
     "defaultMessage": "Re-send Request",
     "description": "Label of the button to perform the activity again "
   },
+  "activities.claimGamer31Lichess.description": {
+    "defaultMessage": "Secure your Lichess legacy with the Gamer31 Lichess proof of reputation credential! The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
+    "description": "Description of the activity 'claim Gamer31 Lichess credential'"
+  },
   "activities.claimGamer31Lichess.executePendingMessage": {
     "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a Gamer31 Lichess credential.",
     "description": "Message explaining a request has been sent to the their Wallet inbox"
@@ -779,17 +887,21 @@
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
   },
-  "activities.claimGamer31Lichess.longDescription": {
-    "defaultMessage": "Secure your Lichess legacy with the Gamer31 Lichess proof of reputation credential! The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the Gamer 31 claim page (link in the resources below) and click on the Lichess 'Claim' button to start the process.{newline}{newline}Step 2. Follow the instructions to connect with your Lichess account, then to claim the credential by scanning the two QR codes with your Verida Wallet.{newline}{newline}Step 3. Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
-    "description": "Long description of the activity 'claim Gamer31 Lichess credential'"
-  },
   "activities.claimGamer31Lichess.resources.gamer31ClaimPageUrl.label": {
     "defaultMessage": "Gamer31 claim page",
     "description": "Label of the resource 'Gamer31 claim page'"
   },
-  "activities.claimGamer31Lichess.shortDescription": {
-    "defaultMessage": "Secure your Lichess legacy with the Gamer31 Lichess proof of reputation credential! The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
-    "description": "Short description of the activity 'claim Gamer31 Lichess credential'"
+  "activities.claimGamer31Lichess.step1.description": {
+    "defaultMessage": "Go to the Gamer 31 claim page (link in the resources below) and click on the Lichess 'Claim' button to start the process.",
+    "description": "Step 1 of the activity 'claim Gamer31 Lichess credential'"
+  },
+  "activities.claimGamer31Lichess.step2.description": {
+    "defaultMessage": "Follow the instructions to connect with your Lichess account, then to claim the credential by scanning the two QR codes with your Verida Wallet.",
+    "description": "Step 2 of the activity 'claim Gamer31 Lichess credential'"
+  },
+  "activities.claimGamer31Lichess.step3.description": {
+    "defaultMessage": "Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
+    "description": "Step 3 of the activity 'claim Gamer31 Lichess credential'"
   },
   "activities.claimGamer31Lichess.title": {
     "defaultMessage": "Claim a Gamer31 Lichess credential",
@@ -807,6 +919,10 @@
     "defaultMessage": "Re-send Request",
     "description": "Label of the button to perform the activity again "
   },
+  "activities.claimGamer31Steam.description": {
+    "defaultMessage": "Demonstrate your ownership of a Steam account by claiming the Gamer31 Steam proof of membership credential. This credential will be securely stored in your Verida Wallet, enabling private sharing and verification.",
+    "description": "Description of the activity 'claim Gamer31 Steam credential'"
+  },
   "activities.claimGamer31Steam.executePendingMessage": {
     "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a Gamer31 Steam credential.",
     "description": "Message explaining a request has been sent to the their Wallet inbox"
@@ -815,17 +931,21 @@
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
   },
-  "activities.claimGamer31Steam.longDescription": {
-    "defaultMessage": "Demonstrate your ownership of a Steam account by claiming the Gamer31 Steam proof of membership credential. This credential will be securely stored in your Verida Wallet, enabling private sharing and verification.{newline}{newline}Step 1. Go to the Gamer 31 claim page (link in the resources below) and click on the Steam 'Claim' button to start the process.{newline}{newline}Step 2. Follow the instructions to connect with your Steam account, then to claim the credential by scanning the two QR codes with your Verida Wallet.{newline}{newline}Step 3. Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
-    "description": "Long description of the activity 'claim Gamer31 Steam credential'"
-  },
   "activities.claimGamer31Steam.resources.gamer31ClaimPageUrl.label": {
     "defaultMessage": "Gamer31 claim page",
     "description": "Label of the resource 'Gamer31 claim page'"
   },
-  "activities.claimGamer31Steam.shortDescription": {
-    "defaultMessage": "Demonstrate your ownership of a Steam account by claiming the Gamer31 Steam proof of membership credential. This credential will be securely stored in your Verida Wallet, enabling private sharing and verification.",
-    "description": "Short description of the activity 'claim Gamer31 Steam credential'"
+  "activities.claimGamer31Steam.step1.description": {
+    "defaultMessage": "Go to the Gamer 31 claim page (link in the resources below) and click on the Steam 'Claim' button to start the process.",
+    "description": "Step 1 of the activity 'claim Gamer31 Steam credential'"
+  },
+  "activities.claimGamer31Steam.step2.description": {
+    "defaultMessage": "Follow the instructions to connect with your Steam account, then to claim the credential by scanning the two QR codes with your Verida Wallet.",
+    "description": "Step 2 of the activity 'claim Gamer31 Steam credential'"
+  },
+  "activities.claimGamer31Steam.step3.description": {
+    "defaultMessage": "Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
+    "description": "Step 3 of the activity 'claim Gamer31 Steam credential'"
   },
   "activities.claimGamer31Steam.title": {
     "defaultMessage": "Claim a Gamer31 Steam credential",
@@ -843,6 +963,10 @@
     "defaultMessage": "Re-send Request",
     "description": "Label of the button to perform the activity again "
   },
+  "activities.claimGamer31Twitch.description": {
+    "defaultMessage": "Establish your Twitch account ownership by claiming the Gamer31 Twitch proof of membership credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
+    "description": "Description of the activity 'claim Gamer31 Twitch credential'"
+  },
   "activities.claimGamer31Twitch.executePendingMessage": {
     "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a Gamer31 Twitch credential.",
     "description": "Message explaining a request has been sent to the their Wallet inbox"
@@ -851,17 +975,21 @@
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
   },
-  "activities.claimGamer31Twitch.longDescription": {
-    "defaultMessage": "Establish your Twitch account ownership by claiming the Gamer31 Twitch proof of membership credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the Gamer 31 claim page (link in the resources below) and click on the Twitch 'Claim' button to start the process.{newline}{newline}Step 2. Follow the instructions to connect with your Twitch account, then to claim the credential by scanning the two QR codes with your Verida Wallet.{newline}{newline}Step 3. Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
-    "description": "Long description of the activity 'claim Gamer31 Twitch credential'"
-  },
   "activities.claimGamer31Twitch.resources.gamer31ClaimPageUrl.label": {
     "defaultMessage": "Gamer31 claim page",
     "description": "Label of the resource 'Gamer31 claim page'"
   },
-  "activities.claimGamer31Twitch.shortDescription": {
-    "defaultMessage": "Establish your Twitch account ownership by claiming the Gamer31 Twitch proof of membership credential. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
-    "description": "Short description of the activity 'claim Gamer31 Twitch credential'"
+  "activities.claimGamer31Twitch.step1.description": {
+    "defaultMessage": "Go to the Gamer 31 claim page (link in the resources below) and click on the Twitch 'Claim' button to start the process.",
+    "description": "Step 1 of the activity 'claim Gamer31 Twitch credential'"
+  },
+  "activities.claimGamer31Twitch.step2.description": {
+    "defaultMessage": "Follow the instructions to connect with your Twitch account, then to claim the credential by scanning the two QR codes with your Verida Wallet.",
+    "description": "Step 2 of the activity 'claim Gamer31 Twitch credential'"
+  },
+  "activities.claimGamer31Twitch.step3.description": {
+    "defaultMessage": "Click the 'Send Request' button on Verida Missions and share the credential by replying to the message you received in your Wallet inbox.",
+    "description": "Step 3 of the activity 'claim Gamer31 Twitch credential'"
   },
   "activities.claimGamer31Twitch.title": {
     "defaultMessage": "Claim a Gamer31 Twitch credential",
@@ -879,6 +1007,10 @@
     "defaultMessage": "Verify again",
     "description": "Label of the button to perform the activity again "
   },
+  "activities.claimGateKYCzkPass.description": {
+    "defaultMessage": "Prove KYC level and claim a Gate credential using zkPass protocol. The credentials should be stored in your Verida Wallet.",
+    "description": "Description of the activity 'Prove KYC level and claim a Gate credential'"
+  },
   "activities.claimGateKYCzkPass.executePendingMessage": {
     "defaultMessage": "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
     "description": "Message explaining a request has been sent to your Verida Wallet inbox"
@@ -887,17 +1019,21 @@
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
   },
-  "activities.claimGateKYCzkPass.longDescription": {
-    "defaultMessage": "Prove KYC level and claim a credential of your Gate account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
-    "description": "Long description of the activity 'Prove KYC level and claim a Gate credential'"
-  },
   "activities.claimGateKYCzkPass.resources.ZkPassPageUrl.label": {
     "defaultMessage": "User guide of zkPass protocol",
     "description": "Label of the resource 'User guide of zkPass protocol'"
   },
-  "activities.claimGateKYCzkPass.shortDescription": {
-    "defaultMessage": "Prove KYC level and claim a Gate credential using zkPass protocol. The credentials should be stored in your Verida Wallet.",
-    "description": "Short description of the activity 'Prove KYC level and claim a Gate credential'"
+  "activities.claimGateKYCzkPass.step1.description": {
+    "defaultMessage": "Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.",
+    "description": "Step 1 of the activity 'Prove KYC level and claim a Gate credential'"
+  },
+  "activities.claimGateKYCzkPass.step2.description": {
+    "defaultMessage": "Accept the proof credential received in your inbox to save the credential.",
+    "description": "Step 2 of the activity 'Prove KYC level and claim a Gate credential'"
+  },
+  "activities.claimGateKYCzkPass.step3.description": {
+    "defaultMessage": "Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Step 3 of the activity 'Prove KYC level and claim a Gate credential'"
   },
   "activities.claimGateKYCzkPass.title": {
     "defaultMessage": "Prove KYC level and claim a Gate credential",
@@ -915,6 +1051,10 @@
     "defaultMessage": "Re-send Request",
     "description": "Label of the button to perform the activity again "
   },
+  "activities.claimGateKeperAdopter.description": {
+    "defaultMessage": "This activity has now ended{newline}{newline}Claim the GateKeeper Adopter credential to prove you were an early pioneer of GateKeeper! The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
+    "description": "Description of the activity 'claim GateKeeper Adopter credential'"
+  },
   "activities.claimGateKeperAdopter.executePendingMessage": {
     "defaultMessage": "A request has been sent to your Wallet inbox. Please check your inbox and share a GateKeeper Adopter credential.",
     "description": "Message explaining a request has been sent to the their Wallet inbox"
@@ -922,10 +1062,6 @@
   "activities.claimGateKeperAdopter.gettingExecutionErrorMessage": {
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
-  },
-  "activities.claimGateKeperAdopter.longDescription": {
-    "defaultMessage": "This activity has now ended{newline}{newline}Claim the GateKeeper Adopter credential to prove you were an early pioneer of GateKeeper! The credential will be stored in your Verida Wallet, and can be securely shared and verified.{newline}{newline}Step 1. Go to the GateKeeper claim page to start the process (link in resources below).{newline}{newline}Step 2. Select the Verida Wallet and follow the prompts to claim the credential and save it in your Wallet.{newline}{newline}Step 3. Click on the 'Send Request' button below and share the credential by replying to the message you received in your Wallet inbox.",
-    "description": "Long description of the activity 'claim GateKeeper Adopter credential'"
   },
   "activities.claimGateKeperAdopter.resources.announcementBlogPost.label": {
     "defaultMessage": "Blog: Verida Wallet andf GateKeeper Partnership Announcement",
@@ -939,9 +1075,17 @@
     "defaultMessage": "User Guide: How to claim a GateKeeper Adopter credential",
     "description": "Label of the user guide resources to claim to the GK adopter credential"
   },
-  "activities.claimGateKeperAdopter.shortDescription": {
-    "defaultMessage": "This activity has now ended{newline}{newline}Claim the GateKeeper Adopter credential to prove you were an early pioneer of GateKeeper! The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
-    "description": "Short description of the activity 'claim GateKeeper Adopter credential'"
+  "activities.claimGateKeperAdopter.step1.description": {
+    "defaultMessage": "Go to the GateKeeper claim page to start the process (link in resources below).",
+    "description": "Step 1 of the activity 'claim GateKeeper Adopter credential'"
+  },
+  "activities.claimGateKeperAdopter.step2.description": {
+    "defaultMessage": "Select the Verida Wallet and follow the prompts to claim the credential and save it in your Wallet.",
+    "description": "Step 2 of the activity 'claim GateKeeper Adopter credential'"
+  },
+  "activities.claimGateKeperAdopter.step3.description": {
+    "defaultMessage": "Click on the 'Send Request' button below and share the credential by replying to the message you received in your Wallet inbox.",
+    "description": "Step 3 of the activity 'claim GateKeeper Adopter credential'"
   },
   "activities.claimGateKeperAdopter.title": {
     "defaultMessage": "Claim a GateKeeper Adopter credential",
@@ -959,6 +1103,10 @@
     "defaultMessage": "Verify again",
     "description": "Label of the button to perform the activity again "
   },
+  "activities.claimGateOwnerzkPass.description": {
+    "defaultMessage": "Prove ownership and claim a Gate credential using zkPass protocol. The credentials should be stored in your Verida Wallet.",
+    "description": "Description of the activity 'Prove ownership and claim a Gate credential'"
+  },
   "activities.claimGateOwnerzkPass.executePendingMessage": {
     "defaultMessage": "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
     "description": "Message explaining a request has been sent to your Verida Wallet inbox"
@@ -967,17 +1115,21 @@
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
   },
-  "activities.claimGateOwnerzkPass.longDescription": {
-    "defaultMessage": "Prove ownership and claim a credential of your Gate account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
-    "description": "Long description of the activity 'Prove ownership and claim a Gate credential'"
-  },
   "activities.claimGateOwnerzkPass.resources.ZkPassPageUrl.label": {
     "defaultMessage": "User guide of zkPass protocol",
     "description": "Label of the resource 'User guide of zkPass protocol'"
   },
-  "activities.claimGateOwnerzkPass.shortDescription": {
-    "defaultMessage": "Prove ownership and claim a Gate credential using zkPass protocol. The credentials should be stored in your Verida Wallet.",
-    "description": "Short description of the activity 'Prove ownership and claim a Gate credential'"
+  "activities.claimGateOwnerzkPass.step1.description": {
+    "defaultMessage": "Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.",
+    "description": "Step 1 of the activity 'Prove ownership and claim a Gate credential'"
+  },
+  "activities.claimGateOwnerzkPass.step2.description": {
+    "defaultMessage": "Accept the proof credential received in your inbox to save the credential.",
+    "description": "Step 2 of the activity 'Prove ownership and claim a Gate credential'"
+  },
+  "activities.claimGateOwnerzkPass.step3.description": {
+    "defaultMessage": "Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Step 3 of the activity 'Prove ownership and claim a Gate credential'"
   },
   "activities.claimGateOwnerzkPass.title": {
     "defaultMessage": "Prove ownership and claim a Gate credential",
@@ -995,6 +1147,10 @@
     "defaultMessage": "Verify again",
     "description": "Label of the button to perform the activity again "
   },
+  "activities.claimKuCoinKYCzkPass.description": {
+    "defaultMessage": "Prove KYC level and claim a KuCoin credential using zkPass protocol. The credentials should be stored in your Verida Wallet.",
+    "description": "Description of the activity 'Prove KYC level and claim a KuCoin credential'"
+  },
   "activities.claimKuCoinKYCzkPass.executePendingMessage": {
     "defaultMessage": "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
     "description": "Message explaining a request has been sent to your Verida Wallet inbox"
@@ -1003,17 +1159,21 @@
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
   },
-  "activities.claimKuCoinKYCzkPass.longDescription": {
-    "defaultMessage": "Prove KYC level and claim a credential of your KuCoin account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
-    "description": "Long description of the activity 'Prove KYC level and claim a KuCoin credential'"
-  },
   "activities.claimKuCoinKYCzkPass.resources.ZkPassPageUrl.label": {
     "defaultMessage": "User guide of zkPass protocol",
     "description": "Label of the resource 'User guide of zkPass protocol'"
   },
-  "activities.claimKuCoinKYCzkPass.shortDescription": {
-    "defaultMessage": "Prove KYC level and claim a KuCoin credential using zkPass protocol. The credentials should be stored in your Verida Wallet.",
-    "description": "Short description of the activity 'Prove KYC level and claim a KuCoin credential'"
+  "activities.claimKuCoinKYCzkPass.step1.description": {
+    "defaultMessage": "Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.",
+    "description": "Step 1 of the activity 'Prove KYC level and claim a KuCoin credential'"
+  },
+  "activities.claimKuCoinKYCzkPass.step2.description": {
+    "defaultMessage": "Accept the proof credential received in your inbox to save the credential.",
+    "description": "Step 2 of the activity 'Prove KYC level and claim a KuCoin credential'"
+  },
+  "activities.claimKuCoinKYCzkPass.step3.description": {
+    "defaultMessage": "Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Step 3 of the activity 'Prove KYC level and claim a KuCoin credential'"
   },
   "activities.claimKuCoinKYCzkPass.title": {
     "defaultMessage": "Prove KYC level and claim a KuCoin credential",
@@ -1031,6 +1191,10 @@
     "defaultMessage": "Verify again",
     "description": "Label of the button to perform the activity again "
   },
+  "activities.claimKuCoinOwnerzkPass.description": {
+    "defaultMessage": "Prove ownership and claim a credential of your KuCoin account. The credentials will be securely stored on the Verida Network, and can be shared and verified.",
+    "description": "Description of the activity 'Prove ownership and claim a KuCoin credential'"
+  },
   "activities.claimKuCoinOwnerzkPass.executePendingMessage": {
     "defaultMessage": "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
     "description": "Message explaining a request has been sent to your Verida Wallet inbox"
@@ -1039,17 +1203,21 @@
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
   },
-  "activities.claimKuCoinOwnerzkPass.longDescription": {
-    "defaultMessage": "Prove ownership and claim a credential of your KuCoin account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
-    "description": "Long description of the activity 'Prove ownership and claim a KuCoin credential'"
-  },
   "activities.claimKuCoinOwnerzkPass.resources.ZkPassPageUrl.label": {
     "defaultMessage": "User guide of zkPass protocol",
     "description": "Label of the resource 'User guide of zkPass protocol'"
   },
-  "activities.claimKuCoinOwnerzkPass.shortDescription": {
-    "defaultMessage": "Prove ownership and claim a credential of your KuCoin account. The credentials will be securely stored on the Verida Network, and can be shared and verified.",
-    "description": "Short description of the activity 'Prove ownership and claim a KuCoin credential'"
+  "activities.claimKuCoinOwnerzkPass.step1.description": {
+    "defaultMessage": "Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.",
+    "description": "Step 1 of the activity 'Prove ownership and claim a KuCoin credential'"
+  },
+  "activities.claimKuCoinOwnerzkPass.step2.description": {
+    "defaultMessage": "Accept the proof credential received in your inbox to save the credential.",
+    "description": "Step 2 of the activity 'Prove ownership and claim a KuCoin credential'"
+  },
+  "activities.claimKuCoinOwnerzkPass.step3.description": {
+    "defaultMessage": "Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Step 3 of the activity 'Prove ownership and claim a KuCoin credential'"
   },
   "activities.claimKuCoinOwnerzkPass.title": {
     "defaultMessage": "Prove ownership and claim a KuCoin credential",
@@ -1067,6 +1235,10 @@
     "defaultMessage": "Verify again",
     "description": "Label of the button to perform the activity again "
   },
+  "activities.claimMEXCKYCzkPass.description": {
+    "defaultMessage": "Prove KYC level and claim a MEXC credential using zkPass protocol. The credentials should be stored in your Verida Wallet.",
+    "description": "Description of the activity 'Prove KYC level and claim a MEXC credential'"
+  },
   "activities.claimMEXCKYCzkPass.executePendingMessage": {
     "defaultMessage": "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
     "description": "Message explaining a request has been sent to your Verida Wallet inbox"
@@ -1075,17 +1247,21 @@
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
   },
-  "activities.claimMEXCKYCzkPass.longDescription": {
-    "defaultMessage": "Prove KYC level and claim a credential of your MEXC account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
-    "description": "Long description of the activity 'Prove KYC level and claim a MEXC credential'"
-  },
   "activities.claimMEXCKYCzkPass.resources.ZkPassPageUrl.label": {
     "defaultMessage": "User guide of zkPass protocol",
     "description": "Label of the resource 'User guide of zkPass protocol'"
   },
-  "activities.claimMEXCKYCzkPass.shortDescription": {
-    "defaultMessage": "Prove KYC level and claim a MEXC credential using zkPass protocol. The credentials should be stored in your Verida Wallet.",
-    "description": "Short description of the activity 'Prove KYC level and claim a MEXC credential'"
+  "activities.claimMEXCKYCzkPass.step1.description": {
+    "defaultMessage": "Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.",
+    "description": "Step 1 of the activity 'Prove KYC level and claim a MEXC credential'"
+  },
+  "activities.claimMEXCKYCzkPass.step2.description": {
+    "defaultMessage": "Accept the proof credential received in your inbox to save the credential.",
+    "description": "Step 2 of the activity 'Prove KYC level and claim a MEXC credential'"
+  },
+  "activities.claimMEXCKYCzkPass.step3.description": {
+    "defaultMessage": "Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Step 3 of the activity 'Prove KYC level and claim a MEXC credential'"
   },
   "activities.claimMEXCKYCzkPass.title": {
     "defaultMessage": "Prove KYC level and claim a MEXC credential",
@@ -1103,6 +1279,10 @@
     "defaultMessage": "Verify again",
     "description": "Label of the button to perform the activity again "
   },
+  "activities.claimMEXCOwnerzkPass.description": {
+    "defaultMessage": "Prove ownership and claim a credential of your MEXC account. The credentials will be securely stored on the Verida Network, and can be shared and verified.",
+    "description": "Description of the activity 'Prove ownership and claim a MEXC credential'"
+  },
   "activities.claimMEXCOwnerzkPass.executePendingMessage": {
     "defaultMessage": "A request has been sent to your inbox. Please check your Verida Wallet inbox and share the credentials.",
     "description": "Message explaining a request has been sent to your Verida Wallet inbox"
@@ -1111,17 +1291,21 @@
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
   },
-  "activities.claimMEXCOwnerzkPass.longDescription": {
-    "defaultMessage": "Prove ownership and claim a credential of your MEXC account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
-    "description": "Long description of the activity 'Prove ownership and claim a MEXC credential'"
-  },
   "activities.claimMEXCOwnerzkPass.resources.ZkPassPageUrl.label": {
     "defaultMessage": "User guide of zkPass protocol",
     "description": "Label of the resource 'User guide of zkPass protocol'"
   },
-  "activities.claimMEXCOwnerzkPass.shortDescription": {
-    "defaultMessage": "Prove ownership and claim a credential of your MEXC account. The credentials will be securely stored on the Verida Network, and can be shared and verified.",
-    "description": "Short description of the activity 'Prove ownership and claim a MEXC credential'"
+  "activities.claimMEXCOwnerzkPass.step1.description": {
+    "defaultMessage": "Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.",
+    "description": "Step 1 of the activity 'Prove ownership and claim a MEXC credential'"
+  },
+  "activities.claimMEXCOwnerzkPass.step2.description": {
+    "defaultMessage": "Accept the proof credential received in your inbox to save the credential.",
+    "description": "Step 2 of the activity 'Prove ownership and claim a MEXC credential'"
+  },
+  "activities.claimMEXCOwnerzkPass.step3.description": {
+    "defaultMessage": "Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Step 3 of the activity 'Prove ownership and claim a MEXC credential'"
   },
   "activities.claimMEXCOwnerzkPass.title": {
     "defaultMessage": "Prove ownership and claim a MEXC credential",
@@ -1139,6 +1323,10 @@
     "defaultMessage": "Verify again",
     "description": "Label of the button to perform the activity again "
   },
+  "activities.claimUberOwnerReclaim.description": {
+    "defaultMessage": "Prove ownership and claim a credential of your Uber account. The credentials will be securely stored on the Verida Network, and can be shared and verified.",
+    "description": "Description of the activity 'Claim an Uber credential/Prove ownership'"
+  },
   "activities.claimUberOwnerReclaim.executePendingMessage": {
     "defaultMessage": "A request has been sent to your wallet inbox. Please check your Verida Wallet Inbox and share the credentials.",
     "description": "Message explaining a request has been sent to your Verida Wallet inbox"
@@ -1147,17 +1335,21 @@
     "defaultMessage": "There was an error while sending you the credential request, please try again later",
     "description": "Error message when we can't get the user profile"
   },
-  "activities.claimUberOwnerReclaim.longDescription": {
-    "defaultMessage": "Prove ownership and claim a credential of your Uber account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.",
-    "description": "Long description of the activity 'Claim an Uber credential/Prove ownership'"
-  },
   "activities.claimUberOwnerReclaim.resources.reclaimPageUrl.label": {
     "defaultMessage": "Whitepaper of Reclaim protocol",
     "description": "Label of the resource 'Whitepaper of Reclaim protocol'"
   },
-  "activities.claimUberOwnerReclaim.shortDescription": {
-    "defaultMessage": "Prove ownership and claim a credential of your Uber account. The credentials will be securely stored on the Verida Network, and can be shared and verified.",
-    "description": "Short description of the activity 'Claim an Uber credential/Prove ownership'"
+  "activities.claimUberOwnerReclaim.step1.description": {
+    "defaultMessage": "Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.",
+    "description": "Step 1 of the activity 'Claim an Uber credential/Prove ownership'"
+  },
+  "activities.claimUberOwnerReclaim.step2.description": {
+    "defaultMessage": "Accept the proof credential received in your inbox to save the credential.",
+    "description": "Step 2 of the activity 'Claim an Uber credential/Prove ownership'"
+  },
+  "activities.claimUberOwnerReclaim.step3.description": {
+    "defaultMessage": "Reply to the message sent by Verida Missions to share your new credential.",
+    "description": "Step 3 of the activity 'Claim an Uber credential/Prove ownership'"
   },
   "activities.claimUberOwnerReclaim.title": {
     "defaultMessage": "Claim an Uber credential/Prove ownership",
@@ -1171,13 +1363,29 @@
     "defaultMessage": "Verify",
     "description": "Label of the button to start the activity create identity"
   },
-  "activities.createVeridaIdentity.longDescription": {
+  "activities.createVeridaIdentity.description": {
     "defaultMessage": "Verida identities are an implementation of the Decentralized Identifier (DID) Standard from the W3C. A DID has a unique address (e.g. did:vda:mainnet:0x6B2...a6F) that is controlled by an end user with a private key or seed phrase. A user can verify themselves to another user, entity or application by sharing their unique DID address.",
-    "description": "Long description of the activity 'create identity'"
+    "description": "Description of the activity 'create identity'"
   },
-  "activities.createVeridaIdentity.shortDescription": {
-    "defaultMessage": "Verida identities are an implementation of the Decentralized Identifier (DID) Standard from the W3C. A DID has a unique address (e.g. did:vda:mainnet:0x6B2...a6F) that is controlled by an end user with a private key or seed phrase. A user can verify themselves to another user, entity or application by sharing their unique DID address.",
-    "description": "Short description of the activity 'create identity'"
+  "activities.createVeridaIdentity.step2.description": {
+    "defaultMessage": "Depending on being on mobile or desktop, either click the button, or scan the QR code with your phone.",
+    "description": "Step 2 of the activity 'create Verida Identity'"
+  },
+  "activities.createVeridaIdentity.step3.description": {
+    "defaultMessage": "Follow the instructions to install the Wallet app and create your Identity.",
+    "description": "Step 3 of the activity 'create Verida Identity'"
+  },
+  "activities.createVeridaIdentity.step4.description": {
+    "defaultMessage": "You may have to refresh this page and connect again.",
+    "description": "Step 4 of the activity 'create Verida Identity'"
+  },
+  "activities.createVeridaIdentity.step5.description": {
+    "defaultMessage": "This activity will automatically complete.",
+    "description": "Step 5 of the activity 'create Verida Identity'"
+  },
+  "activities.createVeridaIdentity.steps.1.description": {
+    "defaultMessage": "Click the 'Connect' button above.",
+    "description": "Step 1 of the activity 'create Verida Identity'"
   },
   "activities.createVeridaIdentity.title": {
     "defaultMessage": "Create a Verida Identity",
@@ -1191,17 +1399,25 @@
     "defaultMessage": "Get Referral Link",
     "description": "Label of the button to start the activity refer friend"
   },
+  "activities.referFriend.description": {
+    "defaultMessage": "This activity is temporarily closed.{newline}{newline}Invite a friend to create a Decentralized Identity and take control of their personal data.",
+    "description": "Description of the activity 'refer friend'"
+  },
   "activities.referFriend.executionResult.message": {
     "defaultMessage": "Your referral link has been copied to your clipboard. Share it with friends",
     "description": "Toast message displayed after executing the 'Refer a friend activity'"
   },
-  "activities.referFriend.longDescription": {
-    "defaultMessage": "This activity is temporarily closed.{newline}{newline}Invite a friend to create a Decentralized Identity and take control of their personal data.{newline}{newline}Step 1. Get your Verida Missions referral link below{newline}{newline}Step 2. Share your referral link with a friend{newline}{newline}Step 3. Your friend will have to create a Verida Identity and connect to Verida Missions with your referral link for your activity to be completed",
-    "description": "Long description of the activity 'refer friend'"
+  "activities.referFriend.step1.description": {
+    "defaultMessage": "Get your Verida Missions referral link below.",
+    "description": "Step 1 of the activity 'refer friend'"
   },
-  "activities.referFriend.shortDescription": {
-    "defaultMessage": "This activity is temporarily closed.{newline}{newline}Invite a friend to create a Decentralized Identity and take control of their personal data.",
-    "description": "Short description of the activity 'refer friend'"
+  "activities.referFriend.step2.description": {
+    "defaultMessage": "Share your referral link with a friend.",
+    "description": "Step 2 of the activity 'refer friend'"
+  },
+  "activities.referFriend.step3.description": {
+    "defaultMessage": "Your friend will have to create a Verida Identity and connect to Verida Missions with your referral link for your activity to be completed.",
+    "description": "Step 3 of the activity 'refer friend'"
   },
   "activities.referFriend.title": {
     "defaultMessage": "Refer a friend to join Verida Missions",
@@ -1215,13 +1431,13 @@
     "defaultMessage": "Verify",
     "description": "Label of the button to start the activity update profile"
   },
+  "activities.updateProfile.description": {
+    "defaultMessage": "Each Verida Identity has a public profile that anyone can read from but only the owner can write to. The profile includes name, country, description and avatar. Except the name, all other properties are optional. Although, for this activity, we ask you to fill them with whatever you want (you can stay anon).",
+    "description": "Description of the activity 'update profile'"
+  },
   "activities.updateProfile.gettingProfileErrorMessage": {
     "defaultMessage": "There was an error while getting your profile, please try again later",
     "description": "Error message when we can't get the user profile"
-  },
-  "activities.updateProfile.longDescription": {
-    "defaultMessage": "Each Verida Identity has a public profile that anyone can read from but only the owner can write to. The profile includes name, country, description and avatar. Except the name, all other properties are optional. Although, for this activity, we ask you to fill them with whatever you want (you can stay anon).{newline}{newline}Step 1. Go to your profile in the Verida Wallet, and update your public name, avatar and description.{newline}{newline}Step 2. Once you've updated your profile, click the 'Verify' button below.",
-    "description": "Long description of the activity 'update profile'"
   },
   "activities.updateProfile.missingFieldsErrorMessage": {
     "defaultMessage": "Some information are missing, please fill your public name, description and set an avatar in your profile",
@@ -1239,9 +1455,13 @@
     "defaultMessage": "Blog: Verida Wallet - The Ultimate Guide to Getting Started",
     "description": "Label of the wallet guide blog post resource"
   },
-  "activities.updateProfile.shortDescription": {
-    "defaultMessage": "Each Verida Identity has a public profile that anyone can read from but only the owner can write to. The profile includes name, country, description and avatar. Except the name, all other properties are optional. Although, for this activity, we ask you to fill them with whatever you want (you can stay anon).",
-    "description": "Short description of the activity 'update profile'"
+  "activities.updateProfile.step1.description": {
+    "defaultMessage": "Go to your profile in the Verida Wallet, and update your public name, avatar and description.",
+    "description": "Step 1 of the activity 'update profile'"
+  },
+  "activities.updateProfile.step2.description": {
+    "defaultMessage": "Once you've updated your profile, click the 'Verify' button below.",
+    "description": "Step 2 of the activity 'update profile'"
   },
   "activities.updateProfile.title": {
     "defaultMessage": "Update your public profile",
@@ -1259,13 +1479,13 @@
     "defaultMessage": "Check",
     "description": "Label of the button to start the activity use markdown editor"
   },
+  "activities.useMarkdownEditor.description": {
+    "defaultMessage": "With the Markdown Editor demo app, you can create notes with markdown formatting. Notes are encrypted and securely stored in your Verida self-sovereign datastore.{newline}Note: this app is for demonstration purposes only.",
+    "description": "Description of the activity 'use markdown editor'"
+  },
   "activities.useMarkdownEditor.executionErrorMessage": {
     "defaultMessage": "There was an error while checking this activity, please try again later",
     "description": "Error message when we are not able to check the activity"
-  },
-  "activities.useMarkdownEditor.longDescription": {
-    "defaultMessage": "With the Markdown Editor demo app, you can create notes with markdown formatting. Notes are encrypted and securely stored in your Verida self-sovereign datastore.{newline}Note: this app is for demonstration purposes only.{newline}{newline}Step 1. Connect to the Markdown Editor demo app (link in resources below) and create a new note.{newline}{newline}Step 2. Once you've created a note, click the 'Verify' button below.",
-    "description": "Long description of the activity 'use markdown editor'"
   },
   "activities.useMarkdownEditor.markdownEditorNotUsedErrorMessage": {
     "defaultMessage": "Looks like you haven't used the Markdown Editor demo app yet, please use it and check this activity again",
@@ -1283,9 +1503,13 @@
     "defaultMessage": "Markdown Editor demo app",
     "description": "Label of the resource 'Markdown Editor demo app'"
   },
-  "activities.useMarkdownEditor.shortDescription": {
-    "defaultMessage": "With the Markdown Editor demo app, you can create notes with markdown formatting. Notes are encrypted and securely stored in your Verida self-sovereign datastore.{newline}Note: this app is for demonstration purposes only.",
-    "description": "Short description of the activity 'use markdown editor'"
+  "activities.useMarkdownEditor.step1.description": {
+    "defaultMessage": "Connect to the Markdown Editor demo app (link in resources below) and create a new note.",
+    "description": "Step 1 of the activity 'use markdown editor'"
+  },
+  "activities.useMarkdownEditor.step2.description": {
+    "defaultMessage": "Once you've created a note, click the 'Verify' button below.",
+    "description": "Step 2 of the activity 'use markdown editor'"
   },
   "activities.useMarkdownEditor.title": {
     "defaultMessage": "Use the Markdown Editor demo app",
@@ -1340,8 +1564,8 @@
     "description": "Default application title for the meta tags"
   },
   "missions.mission-01.description": {
-    "defaultMessage": "This first mission guides you through setting up your identity, exploring demo apps, and introducing you to the Verida Network.{newline}{newline}Get Started:{newline}1. Click the 'Connect' button above{newline}2. Depending on being on mobile or desktop, either click the button, or scan the QR code with your phone{newline}3. Follow the instructions to install the Wallet and create your Identity{newline}4. You may have to refresh this page and connect again",
-    "description": "Short description of the mission 01"
+    "defaultMessage": "This first mission guides you through setting up your identity, exploring demo apps, and introducing you to the Verida Network.",
+    "description": "Description of the mission 01"
   },
   "missions.mission-01.idLabel": {
     "defaultMessage": "Mission 1",
@@ -1373,7 +1597,7 @@
   },
   "missions.mission-02.description": {
     "defaultMessage": "The Verida Wallet supports Polygon ID for receiving and storing Verifiable Credentials (VC), which can be presented in a privacy-preserving way to third parties via Zero-Knowledge Proofs (ZKP). This mission will guide you through the flow of using the Verida Wallet with various issuers and verifiers in the Polygon ID ecosystem.",
-    "description": "Short description of the mission 02"
+    "description": "Description of the mission 02"
   },
   "missions.mission-02.idLabel": {
     "defaultMessage": "Mission 2",
@@ -1389,7 +1613,7 @@
   },
   "missions.mission-03.description": {
     "defaultMessage": "Gamer31 is on a mission to redefine how gamers establish their identities and reputation. Combined with Verida's web3 wallet and database storage network, don't miss this opportunity to claim your gaming ZK Polygon ID credentials and build your private gaming identity for web3.",
-    "description": "Short description of the mission 03"
+    "description": "Description of the mission 03"
   },
   "missions.mission-03.idLabel": {
     "defaultMessage": "Mission 3",
@@ -1405,7 +1629,7 @@
   },
   "missions.mission-04.description": {
     "defaultMessage": "Embrace the future of secure and authentic online interactions by claiming your Proof of Life with Polygon ID. This mission, in partnership with Synaps, empowers individuals to assert their humanity while upholding their privacy.",
-    "description": "Short description of the mission 04"
+    "description": "Description of the mission 04"
   },
   "missions.mission-04.idLabel": {
     "defaultMessage": "Mission 4",
@@ -1421,7 +1645,7 @@
   },
   "missions.mission-05.description": {
     "defaultMessage": "zkPass is a private data protocol that enables privacy-preserving verification.{newline}{newline}It is built on the foundation of Multi-Party Computation (MPC), Zero-Knowledge Proofs (ZKP), and three-party Transport Layer Security (3P-TLS).{newline}{newline}zkPass protocol allows you to prove information about yourself from any supported service without disclosing personal data.{newline}{newline}If you have an existing account on centralized exchanges (CEX), you can prove ownership/KYC and claim a credential.{newline}{newline}*No KYC information is captured or stored through this process.",
-    "description": "Short description of the mission 05"
+    "description": "Description of the mission 05"
   },
   "missions.mission-05.idLabel": {
     "defaultMessage": "Mission 5",
@@ -1437,7 +1661,7 @@
   },
   "missions.mission-06.description": {
     "defaultMessage": "Reclaim protocol allows you to proof information about yourself from any website, without disclosing your personal data",
-    "description": "Short description of the mission 06"
+    "description": "Description of the mission 06"
   },
   "missions.mission-06.idLabel": {
     "defaultMessage": "Mission 6",

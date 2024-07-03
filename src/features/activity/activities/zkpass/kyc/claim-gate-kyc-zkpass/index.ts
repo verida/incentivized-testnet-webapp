@@ -240,17 +240,11 @@ export const activity: Activity = {
     description:
       "Title of the activity 'Prove KYC level and claim a Gate credential'",
   }),
-  shortDescription: defineMessage({
-    id: "activities.claimGateKYCzkPass.shortDescription",
+  description: defineMessage({
+    id: "activities.claimGateKYCzkPass.description",
     defaultMessage: `Prove KYC level and claim a Gate credential using zkPass protocol. The credentials should be stored in your Verida Wallet.`,
     description:
-      "Short description of the activity 'Prove KYC level and claim a Gate credential'",
-  }),
-  longDescription: defineMessage({
-    id: "activities.claimGateKYCzkPass.longDescription",
-    defaultMessage: `Prove KYC level and claim a credential of your Gate account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.`,
-    description:
-      "Long description of the activity 'Prove KYC level and claim a Gate credential'",
+      "Description of the activity 'Prove KYC level and claim a Gate credential'",
   }),
   actionLabel: defineMessage({
     id: "activities.claimGateKYCzkPass.actionLabel",
@@ -272,6 +266,38 @@ export const activity: Activity = {
   onInit: handleInit,
   onExecute: handleExecute,
   onMessage: handleNewMessage,
+  steps: [
+    {
+      order: 1,
+      description: defineMessage({
+        id: "activities.claimGateKYCzkPass.step1.description",
+        defaultMessage:
+          "Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.",
+        description:
+          "Step 1 of the activity 'Prove KYC level and claim a Gate credential'",
+      }),
+    },
+    {
+      order: 2,
+      description: defineMessage({
+        id: "activities.claimGateKYCzkPass.step2.description",
+        defaultMessage:
+          "Accept the proof credential received in your inbox to save the credential.",
+        description:
+          "Step 2 of the activity 'Prove KYC level and claim a Gate credential'",
+      }),
+    },
+    {
+      order: 3,
+      description: defineMessage({
+        id: "activities.claimGateKYCzkPass.step3.description",
+        defaultMessage:
+          "Reply to the message sent by Verida Missions to share your new credential.",
+        description:
+          "Step 3 of the activity 'Prove KYC level and claim a Gate credential'",
+      }),
+    },
+  ],
   resources: [
     {
       label: defineMessage({

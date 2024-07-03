@@ -25,7 +25,7 @@ export const mission: Mission = {
     id: "missions.mission-03.description",
     defaultMessage:
       "Gamer31 is on a mission to redefine how gamers establish their identities and reputation. Combined with Verida's web3 wallet and database storage network, don't miss this opportunity to claim your gaming ZK Polygon ID credentials and build your private gaming identity for web3.",
-    description: "Short description of the mission 03",
+    description: "Description of the mission 03",
   }),
   longDescription: defineMessage({
     id: "missions.mission-03.longDescription",

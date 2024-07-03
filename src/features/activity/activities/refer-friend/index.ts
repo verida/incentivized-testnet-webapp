@@ -198,17 +198,11 @@ export const activity: Activity = {
     defaultMessage: "Refer a friend to join Verida Missions",
     description: "Title of the activity 'refer friend'",
   }),
-  shortDescription: defineMessage({
-    id: "activities.referFriend.shortDescription",
+  description: defineMessage({
+    id: "activities.referFriend.description",
     defaultMessage:
       "This activity is temporarily closed.{newline}{newline}Invite a friend to create a Decentralized Identity and take control of their personal data.",
-    description: "Short description of the activity 'refer friend'",
-  }),
-  longDescription: defineMessage({
-    id: "activities.referFriend.longDescription",
-    defaultMessage:
-      "This activity is temporarily closed.{newline}{newline}Invite a friend to create a Decentralized Identity and take control of their personal data.{newline}{newline}Step 1. Get your Verida Missions referral link below{newline}{newline}Step 2. Share your referral link with a friend{newline}{newline}Step 3. Your friend will have to create a Verida Identity and connect to Verida Missions with your referral link for your activity to be completed",
-    description: "Long description of the activity 'refer friend'",
+    description: "Description of the activity 'refer friend'",
   }),
   actionLabel: defineMessage({
     id: "activities.referFriend.actionLabel",
@@ -224,4 +218,31 @@ export const activity: Activity = {
   onInit: handleInit,
   onExecute: handleExecute,
   onMessage: handleNewMessage,
+  steps: [
+    {
+      order: 1,
+      description: defineMessage({
+        id: "activities.referFriend.step1.description",
+        defaultMessage: "Get your Verida Missions referral link below.",
+        description: "Step 1 of the activity 'refer friend'",
+      }),
+    },
+    {
+      order: 2,
+      description: defineMessage({
+        id: "activities.referFriend.step2.description",
+        defaultMessage: "Share your referral link with a friend.",
+        description: "Step 2 of the activity 'refer friend'",
+      }),
+    },
+    {
+      order: 3,
+      description: defineMessage({
+        id: "activities.referFriend.step3.description",
+        defaultMessage:
+          "Your friend will have to create a Verida Identity and connect to Verida Missions with your referral link for your activity to be completed.",
+        description: "Step 3 of the activity 'refer friend'",
+      }),
+    },
+  ],
 };
