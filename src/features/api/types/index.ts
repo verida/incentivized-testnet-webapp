@@ -12,6 +12,7 @@ export type Airdrop1CheckSuccessResponse = {
   status: "success";
   isRegistered: boolean;
   isClaimed: boolean;
+  claimableTokenAmount: number | null;
 };
 
 export type Airdrop1RegistrationDto = {

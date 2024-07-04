@@ -22,7 +22,7 @@ export const Airdrop1RegistrationModal: React.FC<
   const { onClose } = props;
 
   const { userXpPoints, isLoadingUserActivities } = useActivity();
-  const { isGettingStatus, isRegistered, isRegistering, register } =
+  const { isGettingUserStatus, userStatus, isRegistering, register } =
     useAirdrop1();
 
   const [hasProofSubmitError, setHasProofSubmitError] = useState(false);
@@ -180,9 +180,9 @@ export const Airdrop1RegistrationModal: React.FC<
       onClose={handleClose}
       title={modalTitle}
       actions={
-        isGettingStatus || isLoadingUserActivities
+        isGettingUserStatus || isLoadingUserActivities
           ? []
-          : isRegistered
+          : userStatus?.isRegistered
             ? []
             : !hasEnoughPoints
               ? []
@@ -210,9 +210,9 @@ export const Airdrop1RegistrationModal: React.FC<
     >
       <div className="flex flex-col gap-6">
         <div className="flex flex-col sm:flex-row gap-4 items-center">
-          {isGettingStatus || isLoadingUserActivities || isRegistering ? (
+          {isGettingUserStatus || isLoadingUserActivities || isRegistering ? (
             <Icon type="loading" size={40} className="animate-spin-slow" />
-          ) : isRegistered ? (
+          ) : userStatus?.isRegistered ? (
             <Icon type="check" size={40} className="text-success" />
           ) : !hasEnoughPoints ? (
             <Icon type="notification-error" size={40} className="text-error" />
@@ -222,9 +222,9 @@ export const Airdrop1RegistrationModal: React.FC<
             <Icon type="notification-error" size={40} className="text-error" />
           ) : null}
           <Typography variant="base">
-            {isGettingStatus || isLoadingUserActivities ? (
+            {isGettingUserStatus || isLoadingUserActivities ? (
               checkingSubmittedProofMessage
-            ) : isRegistered ? (
+            ) : userStatus?.isRegistered ? (
               <>
                 {proofAlreadySubmittedMessage}{" "}
                 <ExternalLink href={AIRDROPS_TERMS_URL} openInNewTab>
@@ -255,7 +255,9 @@ export const Airdrop1RegistrationModal: React.FC<
         {hasProofSubmitError && proofSubmitError ? (
           <Alert type="error" message={proofSubmitError} className="mt-4" />
         ) : null}
-        {!isGettingStatus && !isLoadingUserActivities && isRegistered ? (
+        {!isGettingUserStatus &&
+        !isLoadingUserActivities &&
+        userStatus?.isRegistered ? (
           <ShareOnSocials
             sharedMessage={sharedMessageOnSocialsText}
             className="flex flex-col sm:flex-row justify-end"

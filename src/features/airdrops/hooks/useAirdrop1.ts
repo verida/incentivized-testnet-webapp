@@ -1,4 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMemo } from "react";
 
 import { useActivity } from "~/features/activity";
 import { checkAirdrop1Conditions } from "~/features/airdrops/utils";
@@ -15,7 +16,7 @@ export function useAirdrop1() {
   const { isConnected, did, profile } = useVerida();
   const { userActivities, userXpPoints } = useActivity();
 
-  const { data: statusData, isLoading: isGettingStatus } = useQuery({
+  const { data: statusData, isLoading: isGettingUserStatus } = useQuery({
     queryKey: ["airdrop1", did],
     enabled: isConnected && !!did,
     staleTime: 1000 * 60 * 10, // 10 minutes
@@ -32,6 +33,16 @@ export function useAirdrop1() {
       Sentry.captureException(error);
     },
   });
+
+  const userStatus = useMemo(() => {
+    if (!statusData || statusData.status !== "success") {
+      return null;
+    }
+
+    const { status: requestStatus, ...userStatus } = statusData;
+
+    return userStatus;
+  }, [statusData]);
 
   const {
     mutateAsync: register,
@@ -68,9 +79,8 @@ export function useAirdrop1() {
   });
 
   return {
-    isRegistered: statusData?.status === "success" && statusData?.isRegistered,
-    isClaimed: statusData?.status === "success" && statusData?.isClaimed,
-    isGettingStatus,
+    isGettingUserStatus,
+    userStatus,
     register,
     isRegistering,
     errorRegisteringProof,
