@@ -1,6 +1,8 @@
 import { config } from "~/config";
 import {
   Airdrop1CheckSuccessResponse,
+  Airdrop1ClaimDto,
+  Airdrop1ClaimSuccessResponse,
   Airdrop1RegisterSuccessResponse,
   Airdrop1RegistrationDto,
   ApiErrorResponse,
@@ -68,6 +70,39 @@ export async function registerAirdrop1(
     return data;
   } catch (error) {
     logger.error("Error registering for airdrop 1", { error });
+    return {
+      status: "error",
+    };
+  }
+}
+
+export async function claimAirdrop1(
+  payload: Airdrop1ClaimDto
+): Promise<Airdrop1ClaimSuccessResponse | ApiErrorResponse> {
+  if (!config.api.baseUrl) {
+    throw new Error("No API URL set");
+  }
+  const apiUrl = `${config.api.baseUrl}/api/rest/v1/airdrops/1/claim`;
+
+  try {
+    const result = await fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    // TODO: Validate with Zod
+    const data = (await result.json()) as
+      | Airdrop1ClaimSuccessResponse
+      | ApiErrorResponse;
+    logger.debug("Airdrop 1 claim result", { data });
+
+    return data;
+  } catch (error) {
+    logger.error("Error claiming airdrop 1", { error });
     return {
       status: "error",
     };

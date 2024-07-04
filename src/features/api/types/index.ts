@@ -29,7 +29,22 @@ export type Airdrop1RegisterSuccessResponse = {
   status: "success";
 };
 
-// ==== Airdrop 1
+export type Airdrop1ClaimDto = {
+  did: string;
+  profile: {
+    name?: string;
+    country?: string;
+  };
+  termsAccepted?: boolean;
+  userEvmAddress: string;
+  userEvmAddressSignature: string;
+};
+
+export type Airdrop1ClaimSuccessResponse = {
+  status: "success";
+};
+
+// ==== Airdrop 2
 
 export type Airdrop2CheckEligibilitySuccessResponse = {
   status: "success";

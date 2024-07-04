@@ -3,6 +3,7 @@ import { useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { Typography } from "~/components/atoms";
+import { Airdrop1ClaimModal } from "~/components/modals/Airdrop1ClaimModal";
 import { Airdrop1RegistrationModal } from "~/components/modals/Airdrop1RegistrationModal";
 import { Airdrop2CheckModal } from "~/components/modals/Airdrop2CheckModal";
 import { ConnectVeridaButton } from "~/components/organisms";
@@ -55,6 +56,13 @@ export const AirdropModal: React.FC = () => {
     AIRDROP_1_DEFINITION.status === "registration-opened"
   ) {
     return <Airdrop1RegistrationModal onClose={handleClose} />;
+  }
+
+  if (
+    airdropId === AIRDROP_1_DEFINITION.id &&
+    AIRDROP_1_DEFINITION.status === "claim-opened"
+  ) {
+    return <Airdrop1ClaimModal onClose={handleClose} />;
   }
 
   if (

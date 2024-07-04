@@ -3,7 +3,12 @@ import { useMemo } from "react";
 
 import { useActivity } from "~/features/activity";
 import { checkAirdrop1Conditions } from "~/features/airdrops/utils";
-import { Airdrop1RegistrationDto, getAirdrop1Status } from "~/features/api";
+import {
+  Airdrop1ClaimDto,
+  Airdrop1RegistrationDto,
+  claimAirdrop1,
+  getAirdrop1Status,
+} from "~/features/api";
 import { registerAirdrop1 } from "~/features/api";
 import { Logger } from "~/features/logger";
 import { Sentry } from "~/features/sentry";
@@ -78,11 +83,57 @@ export function useAirdrop1() {
     },
   });
 
+  const {
+    mutateAsync: claim,
+    isLoading: isClaiming,
+    error: errorClaimingProof,
+  } = useMutation({
+    mutationFn: async ({
+      termsAccepted,
+      userEvmAddress,
+      userEvmAddressSignature,
+    }: {
+      termsAccepted: boolean;
+      userEvmAddress: string;
+      userEvmAddressSignature: string;
+    }) => {
+      if (!isConnected || !did) {
+        throw new Error("User not connected");
+      }
+
+      logger.info("Checking conditions for airdrop 1 claim", { did });
+      checkAirdrop1Conditions(userActivities, userXpPoints);
+
+      const payload: Airdrop1ClaimDto = {
+        did,
+        profile: {
+          country: profile?.country,
+        },
+        termsAccepted,
+        userEvmAddress: userEvmAddress,
+        userEvmAddressSignature: userEvmAddressSignature,
+      };
+
+      logger.info("Claiming airdrop 1", { did });
+      return claimAirdrop1(payload);
+    },
+    onSuccess: async () => {
+      await queryClient.invalidateQueries(["airdrop1", did]);
+    },
+    onError(error) {
+      logger.error("Error claiming airdrop 1", { error });
+      Sentry.captureException(error);
+    },
+  });
+
   return {
     isGettingUserStatus,
     userStatus,
     register,
     isRegistering,
     errorRegisteringProof,
+    claim,
+    isClaiming,
+    errorClaimingProof,
   };
 }
