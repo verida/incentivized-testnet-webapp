@@ -1,5 +1,6 @@
 export * from "./ActivityListItem";
 export * from "./ActivityStepCard";
+export * from "./Airdrop1ClaimSucessModalContent";
 export * from "./ComingSoonActivityItem";
 export * from "./ConnectVeridaButton";
 export * from "./ExploreMissionsHomeSection";

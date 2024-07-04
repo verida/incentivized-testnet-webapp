@@ -2,13 +2,15 @@ import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
 
 import { ExternalLink, Icon, Typography } from "~/components/atoms";
-import { Alert, ShareOnSocials } from "~/components/molecules";
+import { Alert } from "~/components/molecules";
+import { Airdrop1ClaimSucessModalContent } from "~/components/organisms";
 import { Modal } from "~/components/templates";
 import {
   AIRDROPS_TERMS_URL,
   AIRDROP_1_DEFINITION,
   useAirdrop1,
 } from "~/features/airdrops";
+import { Airdrop1ClaimSuccessResponse } from "~/features/api";
 
 export type Airdrop1ClaimModalProps = {
   onClose: () => void;
@@ -22,6 +24,8 @@ export const Airdrop1ClaimModal: React.FC<Airdrop1ClaimModalProps> = (
   const { isGettingUserStatus, userStatus, isClaiming, claim } = useAirdrop1();
 
   const [claimError, setClaimError] = useState<string | null>(null);
+  const [claimSuccessResult, setClaimSuccessResult] =
+    useState<Airdrop1ClaimSuccessResponse | null>(null);
   const [isTermsAccepted, setIsTermsAccepted] = useState(false);
 
   const handleClose = useCallback(() => {
@@ -46,6 +50,7 @@ export const Airdrop1ClaimModal: React.FC<Airdrop1ClaimModalProps> = (
         setClaimError(result.errorUserMessage || "Something went wrong"); // Not ideal as not localised but enough for now
       } else {
         setClaimError(null);
+        setClaimSuccessResult(result);
       }
     };
     void execute();
@@ -79,30 +84,6 @@ export const Airdrop1ClaimModal: React.FC<Airdrop1ClaimModalProps> = (
       ),
     }
   );
-
-  const alreadyClaimedMessage = i18n.formatMessage(
-    {
-      id: "Airdrop1ClaimModal.alreadyClaimedMessage",
-      defaultMessage: "Congratulations! You already claimed the {airdropTitle}",
-      description:
-        "Message displayed in the airdrop 1 claim modal when the user has already claimed the airdrop",
-    },
-    {
-      airdropTitle: i18n.formatMessage(AIRDROP_1_DEFINITION.title),
-      newline: (
-        <>
-          <br />
-        </>
-      ),
-    }
-  );
-
-  const sharedMessageOnSocialsText = i18n.formatMessage({
-    id: "Airdrop1ClaimModal.sharedMessageOnSocialsText",
-    description: "Message shared on social after claiming the airdrop",
-    defaultMessage:
-      "I have successfully claim my @verida_io Airdrop 1 at https://missions.verida.network/airdrops",
-  });
 
   const acceptTermsMessage = i18n.formatMessage({
     id: "Airdrop1ClaimModal.acceptTermsMessage",
@@ -198,50 +179,59 @@ export const Airdrop1ClaimModal: React.FC<Airdrop1ClaimModalProps> = (
                   ]
       }
     >
-      <div className="flex flex-col gap-6">
-        <div className="flex flex-col sm:flex-row gap-4 items-center">
-          {isGettingUserStatus || isClaiming ? (
-            <Icon type="loading" size={40} className="animate-spin-slow" />
-          ) : !userStatus?.isRegistered ? (
-            <Icon type="notification-error" size={40} className="text-error" />
-          ) : userStatus?.isClaimed ? (
-            <Icon type="check" size={40} className="text-success" />
-          ) : !isTermsAccepted ? (
-            <Icon type="agreement" size={40} />
-          ) : claimError ? (
-            <Icon type="notification-error" size={40} className="text-error" />
-          ) : null}
-          <Typography variant="base">
-            {isGettingUserStatus ? (
-              checkingStatusMessage
+      {userStatus?.isClaimed || claimSuccessResult ? (
+        <Airdrop1ClaimSucessModalContent
+          claimedTokenAmount={
+            claimSuccessResult?.claimedTokenAmount ??
+            userStatus?.claimedTokenAmount ??
+            undefined
+          }
+          transactionExplorerUrl={claimSuccessResult?.transactionExplorerUrl}
+        />
+      ) : (
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col sm:flex-row gap-4 items-center">
+            {isGettingUserStatus || isClaiming ? (
+              <Icon type="loading" size={40} className="animate-spin-slow" />
             ) : !userStatus?.isRegistered ? (
-              notRegisteredMessage
-            ) : userStatus?.isClaimed ? (
-              alreadyClaimedMessage
+              <Icon
+                type="notification-error"
+                size={40}
+                className="text-error"
+              />
             ) : !isTermsAccepted ? (
-              <>
-                {acceptTermsMessage}{" "}
-                <ExternalLink href={AIRDROPS_TERMS_URL} openInNewTab>
-                  {termsUrlLabel}
-                </ExternalLink>
-              </>
+              <Icon type="agreement" size={40} />
             ) : claimError ? (
-              claimErrorMessage
-            ) : (
-              claimMessage
-            )}
-          </Typography>
+              <Icon
+                type="notification-error"
+                size={40}
+                className="text-error"
+              />
+            ) : null}
+            <Typography variant="base">
+              {isGettingUserStatus ? (
+                checkingStatusMessage
+              ) : !userStatus?.isRegistered ? (
+                notRegisteredMessage
+              ) : !isTermsAccepted ? (
+                <>
+                  {acceptTermsMessage}{" "}
+                  <ExternalLink href={AIRDROPS_TERMS_URL} openInNewTab>
+                    {termsUrlLabel}
+                  </ExternalLink>
+                </>
+              ) : claimError ? (
+                claimErrorMessage
+              ) : (
+                claimMessage
+              )}
+            </Typography>
+          </div>
+          {claimError ? (
+            <Alert type="error" message={claimError} className="mt-4" />
+          ) : null}
         </div>
-        {claimError ? (
-          <Alert type="error" message={claimError} className="mt-4" />
-        ) : null}
-        {!isGettingUserStatus && userStatus?.isClaimed ? (
-          <ShareOnSocials
-            sharedMessage={sharedMessageOnSocialsText}
-            className="flex flex-col sm:flex-row justify-end"
-          />
-        ) : null}
-      </div>
+      )}
     </Modal>
   );
 };
