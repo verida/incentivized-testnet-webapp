@@ -150,7 +150,7 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
                 </button>
               ) : null}
             </div>
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 items-end">
               {airdrop.status === "check" ? (
                 <Typography className="text-center sm:text-right text-muted-foreground">
                   {checkMessage}
