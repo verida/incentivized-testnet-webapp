@@ -6,21 +6,15 @@ export type ApiErrorResponse = {
   errorUserMessage?: string;
 };
 
-export type Airdrop1CheckProofExistSuccessResponse = {
+// ==== Airdrop 1
+
+export type Airdrop1CheckSuccessResponse = {
   status: "success";
-  exists: boolean;
+  isRegistered: boolean;
+  isClaimed: boolean;
 };
 
-export type Airdrop1SubmitProofSuccessResponse = {
-  status: "success";
-};
-
-export type Airdrop2CheckEligibilitySuccessResponse = {
-  status: "success";
-  isEligible: boolean;
-};
-
-export type SubmitAirdrop1ProofPayload = {
+export type Airdrop1RegistrationDto = {
   did: string;
   activityProofs: UserActivityRecord[];
   profile: {
@@ -28,4 +22,15 @@ export type SubmitAirdrop1ProofPayload = {
     country?: string;
   };
   termsAccepted?: boolean;
+};
+
+export type Airdrop1RegisterSuccessResponse = {
+  status: "success";
+};
+
+// ==== Airdrop 1
+
+export type Airdrop2CheckEligibilitySuccessResponse = {
+  status: "success";
+  isEligible: boolean;
 };

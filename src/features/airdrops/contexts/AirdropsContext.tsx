@@ -29,26 +29,30 @@ export const AirdropsProvider: React.FC<AirdropsProviderProps> = (props) => {
   >({});
 
   const {
-    isProofSubmitted: isAirdrop1Registered,
-    isCheckingProofSubmitted: isAirdrop1CheckingRegistration,
+    isRegistered: isAirdrop1Registered,
+    isClaimed: isAirdrop1Claimed,
+    isGettingStatus: isAirdrop1GettingStatus,
   } = useAirdrop1();
 
   useEffect(() => {
     setAirdropUserStatues({
       [AIRDROP_1_DEFINITION.id]: !isVeridaConnected
         ? "not-connected"
-        : isAirdrop1Registered
-          ? "registered"
-          : isVeridaConnecting ||
-              (isVeridaConnected && isAirdrop1CheckingRegistration)
-            ? "loading"
-            : "none",
+        : isAirdrop1Claimed
+          ? "claimed"
+          : isAirdrop1Registered
+            ? "registered"
+            : isVeridaConnecting ||
+                (isVeridaConnected && isAirdrop1GettingStatus)
+              ? "loading"
+              : "none",
       [AIRDROP_2_DEFINITION.id]: !isVeridaConnected ? "not-connected" : "none",
     });
   }, [
     isVeridaConnected,
     isVeridaConnecting,
-    isAirdrop1CheckingRegistration,
+    isAirdrop1Claimed,
+    isAirdrop1GettingStatus,
     isAirdrop1Registered,
   ]);
 

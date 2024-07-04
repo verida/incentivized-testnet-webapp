@@ -22,12 +22,8 @@ export const Airdrop1RegistrationModal: React.FC<
   const { onClose } = props;
 
   const { userXpPoints, isLoadingUserActivities } = useActivity();
-  const {
-    isCheckingProofSubmitted,
-    isProofSubmitted,
-    isSubmittingProof,
-    submitProof,
-  } = useAirdrop1();
+  const { isGettingStatus, isRegistered, isRegistering, register } =
+    useAirdrop1();
 
   const [hasProofSubmitError, setHasProofSubmitError] = useState(false);
   const [proofSubmitError, setProofSubmitError] = useState<string | null>(null);
@@ -47,7 +43,7 @@ export const Airdrop1RegistrationModal: React.FC<
   const handleSubmit = useCallback(() => {
     const execute = async () => {
       setHasProofSubmitError(false);
-      const result = await submitProof(isTermsAccepted);
+      const result = await register(isTermsAccepted);
       if (result.status === "error") {
         setHasProofSubmitError(true);
         setProofSubmitError(result.errorUserMessage || null); // Not ideal as not localised but enough for now
@@ -57,7 +53,7 @@ export const Airdrop1RegistrationModal: React.FC<
       }
     };
     void execute();
-  }, [isTermsAccepted, submitProof]);
+  }, [isTermsAccepted, register]);
 
   const hasEnoughPoints = userXpPoints >= AIRDROP_1_MIN_XP_POINTS;
 
@@ -184,9 +180,9 @@ export const Airdrop1RegistrationModal: React.FC<
       onClose={handleClose}
       title={modalTitle}
       actions={
-        isCheckingProofSubmitted || isLoadingUserActivities
+        isGettingStatus || isLoadingUserActivities
           ? []
-          : isProofSubmitted
+          : isRegistered
             ? []
             : !hasEnoughPoints
               ? []
@@ -207,18 +203,16 @@ export const Airdrop1RegistrationModal: React.FC<
                         onClick: handleSubmit,
                         variant: "contained",
                         color: "primary",
-                        disabled: isSubmittingProof,
+                        disabled: isRegistering,
                       },
                     ]
       }
     >
       <div className="flex flex-col gap-6">
         <div className="flex flex-col sm:flex-row gap-4 items-center">
-          {isCheckingProofSubmitted ||
-          isLoadingUserActivities ||
-          isSubmittingProof ? (
+          {isGettingStatus || isLoadingUserActivities || isRegistering ? (
             <Icon type="loading" size={40} className="animate-spin-slow" />
-          ) : isProofSubmitted ? (
+          ) : isRegistered ? (
             <Icon type="check" size={40} className="text-success" />
           ) : !hasEnoughPoints ? (
             <Icon type="notification-error" size={40} className="text-error" />
@@ -228,9 +222,9 @@ export const Airdrop1RegistrationModal: React.FC<
             <Icon type="notification-error" size={40} className="text-error" />
           ) : null}
           <Typography variant="base">
-            {isCheckingProofSubmitted || isLoadingUserActivities ? (
+            {isGettingStatus || isLoadingUserActivities ? (
               checkingSubmittedProofMessage
-            ) : isProofSubmitted ? (
+            ) : isRegistered ? (
               <>
                 {proofAlreadySubmittedMessage}{" "}
                 <ExternalLink href={AIRDROPS_TERMS_URL} openInNewTab>
@@ -261,9 +255,7 @@ export const Airdrop1RegistrationModal: React.FC<
         {hasProofSubmitError && proofSubmitError ? (
           <Alert type="error" message={proofSubmitError} className="mt-4" />
         ) : null}
-        {!isCheckingProofSubmitted &&
-        !isLoadingUserActivities &&
-        isProofSubmitted ? (
+        {!isGettingStatus && !isLoadingUserActivities && isRegistered ? (
           <ShareOnSocials
             sharedMessage={sharedMessageOnSocialsText}
             className="flex flex-col sm:flex-row justify-end"
