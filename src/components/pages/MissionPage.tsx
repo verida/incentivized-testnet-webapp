@@ -1,4 +1,3 @@
-import { ReactComponent as VeridaNetworkLogo } from "assets/images/verida_network_logo_with_text_white.svg";
 import { useCallback, useMemo } from "react";
 import { defineMessage } from "react-intl";
 import { useParams } from "react-router-dom";
@@ -64,17 +63,21 @@ export const MissionPage: React.FC = () => {
     [missionId, allActivities, userActivities]
   );
 
-  const entity = defineMessage({
-    id: "MissionPage.entity",
-    description: "Entity for not found message",
-    defaultMessage: "Mission",
+  const missionEntity = defineMessage({
+    id: "MissionPage.missionEntity",
+    description: "Entity name for mission not found message",
+    defaultMessage: "mission",
   });
 
   if (!mission) {
     return (
-      <PageLayout>
-        <div className="flex flex-col h-[40vh] justify-center items-center">
-          <NotFoundMessage logo={<VeridaNetworkLogo />} entity={entity} />
+      <PageLayout
+        displayExploreMoreMissionsSection={!isOnboardingMission}
+        exploreMoreMissionsFilterPredicate={exploreMoreMissionsPredicate}
+        contentClassName="flex flex-col"
+      >
+        <div className="flex-1 flex flex-col justify-center items-center">
+          <NotFoundMessage entity={missionEntity} />
         </div>
       </PageLayout>
     );
