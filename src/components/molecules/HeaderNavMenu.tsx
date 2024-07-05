@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { useIntl } from "react-intl";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
 import { Typography } from "~/components/atoms";
@@ -19,6 +19,8 @@ export type HeaderNavMenuProps = {
 
 export const HeaderNavMenu: React.FC<HeaderNavMenuProps> = (props) => {
   const { open, onClose } = props;
+
+  const location = useLocation();
 
   const i18n = useIntl();
 
@@ -58,15 +60,16 @@ export const HeaderNavMenu: React.FC<HeaderNavMenuProps> = (props) => {
         <div className="h-full bg-background backdrop-blur-xl text-menu-foreground">
           <ul className="flex flex-col p-4">
             {menuItems.map((item) => (
-              <li>
+              <li key={item.url}>
                 <NavLink
                   to={item.url}
-                  className={({ isActive }) =>
-                    twMerge(
-                      "block px-4 py-4 w-full rounded-lg hover:bg-transparent-15",
-                      isActive ? "bg-transparent-5" : ""
-                    )
-                  }
+                  className={twMerge(
+                    "block px-4 py-4 w-full rounded-lg hover:bg-transparent-15",
+                    item.url === "/airdrops" &&
+                      location.pathname.startsWith("/airdrops")
+                      ? "bg-transparent-5"
+                      : ""
+                  )}
                 >
                   <Typography variant="base">{item.label}</Typography>
                 </NavLink>
