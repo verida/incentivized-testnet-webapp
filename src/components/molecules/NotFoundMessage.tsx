@@ -2,10 +2,11 @@ import React from "react";
 import { MessageDescriptor, useIntl } from "react-intl";
 import { twMerge } from "tailwind-merge";
 
+import { ReactComponent as VeridaNetworkLogo } from "~/assets/images/verida_network_logo_with_text_white.svg";
 import { Typography } from "~/components/atoms";
 
 export type NotFoundMessageProps = {
-  logo?: React.ReactNode;
+  logo?: React.ReactNode | null;
   entity: MessageDescriptor;
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
@@ -18,7 +19,7 @@ export const NotFoundMessage: React.FC<NotFoundMessageProps> = (props) => {
     {
       id: "NotFoundMessage.notFoundMessage",
       description: "Message when entity doesn't exist",
-      defaultMessage: "{entity} Not Found",
+      defaultMessage: "{entity} not found",
     },
     { entity: i18n.formatMessage(entity) }
   );
@@ -40,13 +41,17 @@ export const NotFoundMessage: React.FC<NotFoundMessageProps> = (props) => {
       )}
       {...divProps}
     >
-      {logo ? (
-        <div className="flex flex-row items-center w-50 h-50 sm:w-60 sm:h-60">
-          {logo}
+      {logo || logo === undefined ? (
+        <div className="flex flex-row items-center w-50 sm:w-60">
+          {logo || <VeridaNetworkLogo />}
         </div>
       ) : null}
-      <Typography variant="heading-m">{notFoundMessage}</Typography>
-      <Typography>{notFoundDescription}</Typography>
+      <Typography variant="heading-m" className="capitalize">
+        {notFoundMessage}
+      </Typography>
+      <Typography variant="base" className="text-muted-foreground">
+        {notFoundDescription}
+      </Typography>
     </div>
   );
 };

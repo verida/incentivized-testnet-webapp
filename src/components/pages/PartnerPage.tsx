@@ -1,4 +1,3 @@
-import { ReactComponent as VeridaNetworkLogo } from "assets/images/verida_network_logo_with_text_white.svg";
 import { defineMessage, useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
 
@@ -27,24 +26,21 @@ export const PartnerPage: React.FC = () => {
 
   const partnerEntity = defineMessage({
     id: "PartnerPage.partnerEntity",
-    description: "Entity for not found message",
-    defaultMessage: "Partner",
+    description: "Entity name for partner not found message",
+    defaultMessage: "partner",
   });
 
   const missionEntity = defineMessage({
     id: "PartnerPage.missionEntity",
-    description: "Entity for empty list",
+    description: "Entity name for the empty missions list in the partner page",
     defaultMessage: "missions",
   });
 
   if (!partner) {
     return (
-      <PageLayout>
-        <div className="flex flex-col h-[40vh] justify-center items-center">
-          <NotFoundMessage
-            logo={<VeridaNetworkLogo />}
-            entity={partnerEntity}
-          />
+      <PageLayout contentClassName="flex flex-col">
+        <div className="flex-1 flex flex-col justify-center items-center">
+          <NotFoundMessage entity={partnerEntity} />
         </div>
       </PageLayout>
     );
@@ -77,11 +73,8 @@ export const PartnerPage: React.FC = () => {
             ))}
           </ul>
         ) : (
-          <div className="flex flex-col w-full h-[40vh] justify-center items-center">
-            <EmptyListMessage
-              logo={<VeridaNetworkLogo />}
-              entity={missionEntity}
-            />
+          <div className="flex flex-col w-full justify-center items-center">
+            <EmptyListMessage entity={missionEntity} logo={null} />
           </div>
         )}
       </div>

@@ -8,7 +8,7 @@
     "description": "Message to show when the user is not connected"
   },
   "ActivityPage.entity": {
-    "defaultMessage": "Activity",
+    "defaultMessage": "activity",
     "description": "Entity for not found message"
   },
   "ActivityPage.rewardLabel": {
@@ -256,11 +256,11 @@
     "description": "Formatted value of days left in the activity days left chip"
   },
   "EmptyListMessage.emptyListDescription": {
-    "defaultMessage": "It looks like there are no {entity} available at the moment. Please check back later.",
+    "defaultMessage": "It looks like there are no {entity} available at the moment",
     "description": "Description when there are no entities"
   },
   "EmptyListMessage.emptyListMessage": {
-    "defaultMessage": "There are currently no {entity} to display",
+    "defaultMessage": "No {entity} to display",
     "description": "Message when there are no entities"
   },
   "ErrorFallbackCard.cardMessage": {
@@ -404,7 +404,7 @@
     "description": "Description when entity doesn't exist"
   },
   "NotFoundMessage.notFoundMessage": {
-    "defaultMessage": "{entity} Not Found",
+    "defaultMessage": "{entity} not found",
     "description": "Message when entity doesn't exist"
   },
   "OnboardingHomeCard.defaultActivityListMessage": {
@@ -465,11 +465,11 @@
   },
   "PartnerPage.missionEntity": {
     "defaultMessage": "missions",
-    "description": "Entity for empty list"
+    "description": "Entity name for the empty missions list in the partner page"
   },
   "PartnerPage.partnerEntity": {
-    "defaultMessage": "Partner",
-    "description": "Entity for not found message"
+    "defaultMessage": "partner",
+    "description": "Entity name for partner not found message"
   },
   "PartnersHomeSection.title": {
     "defaultMessage": "Partners",
@@ -478,6 +478,10 @@
   "PartnersHomeSection.viewAllPartnersButtonLabel": {
     "defaultMessage": "View All",
     "description": "Label of the button to view all partners"
+  },
+  "PartnersPage.partnerEntity": {
+    "defaultMessage": "partners",
+    "description": "Entity name for the empty partners list in the partners page"
   },
   "PartnersPage.title": {
     "defaultMessage": "Partners",
