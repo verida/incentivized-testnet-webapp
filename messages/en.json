@@ -1696,7 +1696,7 @@
     "description": "Title of the mission 06"
   },
   "partners.gamer31.description": {
-    "defaultMessage": "Gamer31 is a gaming identity provider",
+    "defaultMessage": "Gamer31 grant users unique identities derived from data extracted from renowned gaming and streaming platforms such as Steam, Twitch, and more. With innovative Polygon ID technology, players can prove eligibility in a privacy-preserving manner.",
     "description": "Description of the partner gamer31"
   },
   "partners.gamer31.resources.website": {
@@ -1712,7 +1712,7 @@
     "description": "Label of the Privado ID website"
   },
   "partners.reclaim.description": {
-    "defaultMessage": "Reclaim Protocol is a cryptographical digital notary, a solution designed to transform every website into an API",
+    "defaultMessage": "Reclaim Protocol is a cryptographical digital notary, a solution designed to transform every website into an API. It will empower users to manage and share their data, securely, anonymously and without any technical knowledge.The Reclaim Protocol aimed to revolutionize how individuals manage their digital footprint. From food delivery records to music playlists, gaming activity, document handling, financial transactions, and every other digital aspect of our lives – this data will now belong to its creators, the users.",
     "description": "Description of the partner Reclaim Protocol"
   },
   "partners.reclaim.resources.website": {
@@ -1720,7 +1720,7 @@
     "description": "Label of the Reclaim Protocol website"
   },
   "partners.synaps.description": {
-    "defaultMessage": "Synaps provides identity verification solutions",
+    "defaultMessage": "Synaps provides identity verification solutions from Personhood validation to regulated KYC / AML and KYB processes.",
     "description": "Description of the partner synaps"
   },
   "partners.synaps.resources.website": {
@@ -1728,7 +1728,7 @@
     "description": "Label of the Synaps website"
   },
   "partners.zkpass.description": {
-    "defaultMessage": "Protocol for private Data based on MPC, ZKP, 3P-TLS",
+    "defaultMessage": "zkPass provides TransGate, which enables users to selectively and privately validate their data on any HTTPS website to the web3 world without the need to disclose or upload any sensitive personal data to third parties. It can cover various data types such as legal identity, financial records, healthcare information, social interactions, work experience, education and skill certifications, etc.",
     "description": "Description of the partner zkPass"
   },
   "partners.zkpass.resources.website": {

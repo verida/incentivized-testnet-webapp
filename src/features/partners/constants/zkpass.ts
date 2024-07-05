@@ -10,7 +10,8 @@ export const partner: Partner = {
   name: "zkPass",
   description: defineMessage({
     id: "partners.zkpass.description",
-    defaultMessage: "Protocol for private Data based on MPC, ZKP, 3P-TLS",
+    defaultMessage:
+      "zkPass provides TransGate, which enables users to selectively and privately validate their data on any HTTPS website to the web3 world without the need to disclose or upload any sensitive personal data to third parties. It can cover various data types such as legal identity, financial records, healthcare information, social interactions, work experience, education and skill certifications, etc.",
     description: "Description of the partner zkPass",
   }),
   logo: "/images/partners/zkPass.png",
