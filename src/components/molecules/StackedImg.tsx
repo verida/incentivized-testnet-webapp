@@ -22,7 +22,7 @@ export const StackedImage: React.FC<StackedImageProps> = (props) => {
           src={image}
           alt={altText}
           className={twMerge(
-            "rounded-full w-8 h-8 bg-white p-1",
+            "rounded-full w-8 h-8 bg-white p-1 border-2 border-primary-background-disabled",
             index > 0 ? "-ml-3" : "ml-0"
           )}
         />

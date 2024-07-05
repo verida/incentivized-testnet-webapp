@@ -1,22 +1,26 @@
 import React, { useMemo } from "react";
 import { useIntl } from "react-intl";
 
-import { PageAsideSectionWrapper } from "~/components/molecules";
-import { MissionCardsCaroussel } from "~/components/organisms";
+import { MissionCardsCarousel } from "~/components/organisms";
+import { PageAsideSectionWrapper } from "~/components/templates";
 import { Mission, missions } from "~/features/missions";
 
 export type ExploreMoreMissionsSectionProps = {
   filterPredicate?: (mission: Mission) => boolean;
-} & Omit<React.ComponentPropsWithRef<"aside">, "children">;
+} & Omit<
+  React.ComponentPropsWithRef<typeof PageAsideSectionWrapper>,
+  "title" | "children"
+>;
 
 export const ExploreMoreMissionsSection: React.FC<
   ExploreMoreMissionsSectionProps
 > = (props) => {
-  const { filterPredicate = () => true, ...asideProps } = props;
+  const { filterPredicate = () => true, ...wrapperProps } = props;
 
   const displayedMissions = useMemo(() => {
-    // TODO: Improve the logic to select missions, maybe shuffling them, removing completed ones, etc.
-    return missions.filter(filterPredicate).slice(0, 3);
+    const filteredMissions = missions.filter(filterPredicate);
+    // Shuffle the list
+    return filteredMissions.sort(() => Math.random() - 0.5);
   }, [filterPredicate]);
 
   const i18n = useIntl();
@@ -27,11 +31,13 @@ export const ExploreMoreMissionsSection: React.FC<
     description: "Title of mission page",
   });
 
+  if (displayedMissions.length === 0) {
+    return null;
+  }
+
   return (
-    <aside {...asideProps}>
-      <PageAsideSectionWrapper title={sectionTitle}>
-        <MissionCardsCaroussel missions={displayedMissions} />
-      </PageAsideSectionWrapper>
-    </aside>
+    <PageAsideSectionWrapper title={sectionTitle} {...wrapperProps}>
+      <MissionCardsCarousel missions={displayedMissions} />
+    </PageAsideSectionWrapper>
   );
 };

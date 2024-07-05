@@ -1,6 +1,7 @@
-import { useIntl } from "react-intl";
+import { defineMessage, useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 
+import { EmptyListMessage } from "~/components/molecules";
 import { MissionCard } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { missions } from "~/features/missions";
@@ -13,6 +14,22 @@ export const MissionsPage: React.FC = () => {
     description: "Title of the Missions page",
     defaultMessage: "Missions",
   });
+
+  const missionEntity = defineMessage({
+    id: "MissionsPage.missionEntity",
+    description: "Entity name for the empty missions list in the missions page",
+    defaultMessage: "missions",
+  });
+
+  if (missions.length === 0) {
+    return (
+      <PageLayout title={title} contentClassName="flex flex-col">
+        <div className="flex-1 flex flex-col w-full justify-center items-center">
+          <EmptyListMessage entity={missionEntity} />
+        </div>
+      </PageLayout>
+    );
+  }
 
   return (
     <PageLayout title={title}>

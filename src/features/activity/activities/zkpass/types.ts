@@ -8,6 +8,6 @@ export type ZkPassCredentialSubject = {
   zkPassSchemaId: string;
   zkPassSchemaLabel: string;
   id: string;
-  publicFields?: any[];
+  publicFields?: unknown[];
   publicFieldsHash?: string;
 };

@@ -1,15 +1,17 @@
 import { useCallback, useMemo } from "react";
-import { useIntl } from "react-intl";
+import { defineMessage } from "react-intl";
 import { useParams } from "react-router-dom";
 
+import { NotFoundMessage } from "~/components/molecules";
 import { MissionBottomBar, MissionSection } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
-import { useActivity } from "~/features/activity";
+import { isMissionCompleted, useActivity } from "~/features/activity";
 import {
   Mission,
   getMissionById,
   isOnboardingMission as isOnboardingMissionFunc,
 } from "~/features/missions";
+import { useVerida } from "~/features/verida";
 
 export const MissionPage: React.FC = () => {
   // Extract mission id from url path
@@ -19,8 +21,11 @@ export const MissionPage: React.FC = () => {
   const mission = getMissionById(missionId);
   const isOnboardingMission = isOnboardingMissionFunc(missionId);
 
+  const { isConnected, isConnecting } = useVerida();
+
   const {
     activities: allActivities,
+    userActivities,
     isLoadingUserActivities,
     getUserActivity,
   } = useActivity();
@@ -49,44 +54,53 @@ export const MissionPage: React.FC = () => {
     });
   }, [missionActivities, getUserActivity]);
 
-  const filteroutCurrentMission = useCallback(
-    (mission: Mission) => mission.id !== missionId,
-    [missionId]
+  const exploreMoreMissionsPredicate = useCallback(
+    (mission: Mission) =>
+      // Filter out current mission
+      mission.id !== missionId &&
+      // Filter out completed missions
+      !isMissionCompleted(allActivities, userActivities, mission.id),
+    [missionId, allActivities, userActivities]
   );
 
-  const i18n = useIntl();
-
-  const emptry = i18n.formatMessage({
-    id: "MissionPage.emptyMessage",
-    description: "Message when mission doesn't exist",
-    defaultMessage: "No data",
+  const missionEntity = defineMessage({
+    id: "MissionPage.missionEntity",
+    description: "Entity name for mission not found message",
+    defaultMessage: "mission",
   });
+
+  if (!mission) {
+    return (
+      <PageLayout
+        displayExploreMoreMissionsSection={!isOnboardingMission}
+        exploreMoreMissionsFilterPredicate={exploreMoreMissionsPredicate}
+        contentClassName="flex flex-col"
+      >
+        <div className="flex-1 flex flex-col justify-center items-center">
+          <NotFoundMessage entity={missionEntity} />
+        </div>
+      </PageLayout>
+    );
+  }
 
   return (
     <PageLayout
       hideReportIssueButton
       displayExploreMoreMissionsSection={!isOnboardingMission}
-      exploreMoreMissionsFilterPredicate={filteroutCurrentMission}
+      exploreMoreMissionsFilterPredicate={exploreMoreMissionsPredicate}
     >
-      {mission ? (
-        <div className="flex flex-col items-center gap-6 lg:gap-11">
-          <div className="max-w-[calc(1264px_-_16rem)]">
-            <MissionSection mission={mission} activities={missionActivities} />
-          </div>
-          <footer className="sticky bottom-4 sm:bottom-6 max-w-[calc(1264px_-_12rem)] w-full">
-            <MissionBottomBar
-              activityStatuses={activityStatuses}
-              points={missionTotalXpPoints}
-              isLoading={isLoadingUserActivities}
-            />
-          </footer>
+      <div className="flex flex-col items-center gap-6 lg:gap-11">
+        <div className="max-w-[calc(1264px_-_16rem)]">
+          <MissionSection mission={mission} activities={missionActivities} />
         </div>
-      ) : (
-        <>
-          {/* TODO: Rework the not found state */}
-          <div className="">{emptry}</div>
-        </>
-      )}
+        <footer className="sticky bottom-4 sm:bottom-6 max-w-[calc(1264px_-_12rem)] w-full">
+          <MissionBottomBar
+            activityStatuses={activityStatuses}
+            points={missionTotalXpPoints}
+            isLoading={isConnecting || (isConnected && isLoadingUserActivities)}
+          />
+        </footer>
+      </div>
     </PageLayout>
   );
 };

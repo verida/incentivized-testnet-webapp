@@ -1,19 +1,19 @@
 import React from "react";
 import { useIntl } from "react-intl";
-import { twMerge } from "tailwind-merge";
 
-import { ButtonLink, Typography } from "~/components/atoms";
+import { ButtonLink } from "~/components/atoms";
+import { PageAsideSectionWrapper } from "~/components/templates";
 import { veridaSupportPlatforms } from "~/constants";
 
 const links = Object.values(veridaSupportPlatforms);
 
 export type GetSupportSectionProps = Omit<
-  React.ComponentPropsWithRef<"aside">,
-  "children"
+  React.ComponentPropsWithRef<typeof PageAsideSectionWrapper>,
+  "title" | "children"
 >;
 
 export const GetSupportSection: React.FC<GetSupportSectionProps> = (props) => {
-  const { className, ...asideProps } = props;
+  const { ...wrapperProps } = props;
 
   const i18n = useIntl();
 
@@ -24,16 +24,7 @@ export const GetSupportSection: React.FC<GetSupportSectionProps> = (props) => {
   });
 
   return (
-    <aside
-      {...asideProps}
-      className={twMerge(
-        "p-4 flex flex-col justify-center items-center gap-4",
-        className
-      )}
-    >
-      <Typography variant="heading-s" component="p">
-        {sectionTitle}
-      </Typography>
+    <PageAsideSectionWrapper title={sectionTitle} {...wrapperProps}>
       <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6 w-full">
         {links.map((link, index) => (
           <li key={index}>
@@ -50,6 +41,6 @@ export const GetSupportSection: React.FC<GetSupportSectionProps> = (props) => {
           </li>
         ))}
       </ul>
-    </aside>
+    </PageAsideSectionWrapper>
   );
 };

@@ -9,7 +9,7 @@ export type XpPointsBadgeProps = {
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
 export const XpPointsBadge: React.FC<XpPointsBadgeProps> = (props) => {
-  const { nbXpPoints, theme = "default", ...divProps } = props;
+  const { nbXpPoints, theme = "default", className, ...divProps } = props;
 
   const i18n = useIntl();
   const formattedValue = i18n.formatMessage(
@@ -23,7 +23,7 @@ export const XpPointsBadge: React.FC<XpPointsBadgeProps> = (props) => {
     }
   );
   return (
-    <div {...divProps}>
+    <div {...divProps} className={twMerge("min-w-40", className)}>
       <div
         className={twMerge(
           "flex flex-row justify-center items-center w-full aspect-square",

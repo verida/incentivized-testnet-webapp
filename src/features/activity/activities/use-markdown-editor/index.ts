@@ -82,17 +82,11 @@ export const activity: Activity = {
 
     description: "Title of the activity 'use markdown editor'",
   }),
-  shortDescription: defineMessage({
-    id: "activities.useMarkdownEditor.shortDescription",
+  description: defineMessage({
+    id: "activities.useMarkdownEditor.description",
     defaultMessage:
       "With the Markdown Editor demo app, you can create notes with markdown formatting. Notes are encrypted and securely stored in your Verida self-sovereign datastore.{newline}Note: this app is for demonstration purposes only.",
-    description: "Short description of the activity 'use markdown editor'",
-  }),
-  longDescription: defineMessage({
-    id: "activities.useMarkdownEditor.longDescription",
-    defaultMessage:
-      "With the Markdown Editor demo app, you can create notes with markdown formatting. Notes are encrypted and securely stored in your Verida self-sovereign datastore.{newline}Note: this app is for demonstration purposes only.{newline}{newline}Step 1. Connect to the Markdown Editor demo app (link in resources below) and create a new note.{newline}{newline}Step 2. Once you've created a note, click the 'Verify' button below.",
-    description: "Long description of the activity 'use markdown editor'",
+    description: "Description of the activity 'use markdown editor'",
   }),
   actionLabel: defineMessage({
     id: "activities.useMarkdownEditor.actionLabel",
@@ -106,6 +100,26 @@ export const activity: Activity = {
     description:
       "Label of the button when the activity 'use markdown editor is being executed",
   }),
+  steps: [
+    {
+      order: 1,
+      description: defineMessage({
+        id: "activities.useMarkdownEditor.step1.description",
+        defaultMessage:
+          "Connect to the Markdown Editor demo app (link in resources) and create a new note.",
+        description: "Step 1 of the activity 'use markdown editor'",
+      }),
+    },
+    {
+      order: 2,
+      description: defineMessage({
+        id: "activities.useMarkdownEditor.step2.description",
+        defaultMessage:
+          "Once you've created a note, click the 'Verify' button below.",
+        description: "Step 2 of the activity 'use markdown editor'",
+      }),
+    },
+  ],
   resources: [
     {
       label: defineMessage({

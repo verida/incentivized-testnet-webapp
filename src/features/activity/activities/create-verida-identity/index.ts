@@ -63,17 +63,11 @@ export const activity: Activity = {
     defaultMessage: "Create a Verida Identity",
     description: "Title of the activity 'create identity'",
   }),
-  shortDescription: defineMessage({
-    id: "activities.createVeridaIdentity.shortDescription",
+  description: defineMessage({
+    id: "activities.createVeridaIdentity.description",
     defaultMessage:
       "Verida identities are an implementation of the Decentralized Identifier (DID) Standard from the W3C. A DID has a unique address (e.g. did:vda:mainnet:0x6B2...a6F) that is controlled by an end user with a private key or seed phrase. A user can verify themselves to another user, entity or application by sharing their unique DID address.",
-    description: "Short description of the activity 'create identity'",
-  }),
-  longDescription: defineMessage({
-    id: "activities.createVeridaIdentity.longDescription",
-    defaultMessage:
-      "Verida identities are an implementation of the Decentralized Identifier (DID) Standard from the W3C. A DID has a unique address (e.g. did:vda:mainnet:0x6B2...a6F) that is controlled by an end user with a private key or seed phrase. A user can verify themselves to another user, entity or application by sharing their unique DID address.",
-    description: "Long description of the activity 'create identity'",
+    description: "Description of the activity 'create identity'",
   }),
   actionLabel: defineMessage({
     id: "activities.createVeridaIdentity.actionLabel",
@@ -88,4 +82,48 @@ export const activity: Activity = {
   }),
   onInit: handleInit,
   onExecute: handleExecute,
+  steps: [
+    {
+      order: 1,
+      description: defineMessage({
+        id: "activities.createVeridaIdentity.steps.1.description",
+        defaultMessage: "Click the 'Connect' button above.",
+        description: "Step 1 of the activity 'create Verida Identity'",
+      }),
+    },
+    {
+      order: 2,
+      description: defineMessage({
+        id: "activities.createVeridaIdentity.step2.description",
+        defaultMessage:
+          "Depending on being on mobile or desktop, either click the button, or scan the QR code with your phone.",
+        description: "Step 2 of the activity 'create Verida Identity'",
+      }),
+    },
+    {
+      order: 3,
+      description: defineMessage({
+        id: "activities.createVeridaIdentity.step3.description",
+        defaultMessage:
+          "Follow the instructions to install the Wallet app and create your Identity.",
+        description: "Step 3 of the activity 'create Verida Identity'",
+      }),
+    },
+    {
+      order: 4,
+      description: defineMessage({
+        id: "activities.createVeridaIdentity.step4.description",
+        defaultMessage: "You may have to refresh this page and connect again.",
+        description: "Step 4 of the activity 'create Verida Identity'",
+      }),
+    },
+    {
+      order: 5,
+      description: defineMessage({
+        id: "activities.createVeridaIdentity.step5.description",
+        defaultMessage: "This activity will automatically complete.",
+        description: "Step 5 of the activity 'create Verida Identity'",
+      }),
+    },
+  ],
 };

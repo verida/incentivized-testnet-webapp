@@ -31,7 +31,7 @@ export const ComingSoonActivityItem: React.FC<ComingSoonActivityItemProps> = (
             {activityIndex}
           </div>
           <Typography
-            variant={"heading-s"}
+            variant="heading-s"
             className="flex-1 text-nowrap overflow-ellipsis overflow-hidden text-transparent-60"
           >
             {nextActivityText}

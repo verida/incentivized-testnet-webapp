@@ -240,17 +240,11 @@ export const activity: Activity = {
     description:
       "Title of the activity 'Prove KYC level and claim a MEXC credential'",
   }),
-  shortDescription: defineMessage({
-    id: "activities.claimMEXCKYCzkPass.shortDescription",
+  description: defineMessage({
+    id: "activities.claimMEXCKYCzkPass.description",
     defaultMessage: `Prove KYC level and claim a MEXC credential using zkPass protocol. The credentials should be stored in your Verida Wallet.`,
     description:
-      "Short description of the activity 'Prove KYC level and claim a MEXC credential'",
-  }),
-  longDescription: defineMessage({
-    id: "activities.claimMEXCKYCzkPass.longDescription",
-    defaultMessage: `Prove KYC level and claim a credential of your MEXC account. The credentials will be securely stored on the Verida Network, and can be shared and verified.{newline}{newline}Step 1. Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.{newline}{newline}Step 2. Accept the proof credential received in your inbox to save the credential. {newline}{newline}Step 3. Reply to the message sent by Verida Missions to share your new credential.`,
-    description:
-      "Long description of the activity 'Prove KYC level and claim a MEXC credential'",
+      "Description of the activity 'Prove KYC level and claim a MEXC credential'",
   }),
   actionLabel: defineMessage({
     id: "activities.claimMEXCKYCzkPass.actionLabel",
@@ -272,6 +266,38 @@ export const activity: Activity = {
   onInit: handleInit,
   onExecute: handleExecute,
   onMessage: handleNewMessage,
+  steps: [
+    {
+      order: 1,
+      description: defineMessage({
+        id: "activities.claimMEXCKYCzkPass.step1.description",
+        defaultMessage:
+          "Click on the 'Verify' button and follow the instructions to perform the verification process. Once done, the proof will be sent to your inbox.",
+        description:
+          "Step 1 of the activity 'Prove KYC level and claim a MEXC credential'",
+      }),
+    },
+    {
+      order: 2,
+      description: defineMessage({
+        id: "activities.claimMEXCKYCzkPass.step2.description",
+        defaultMessage:
+          "Accept the proof credential received in your inbox to save the credential.",
+        description:
+          "Step 2 of the activity 'Prove KYC level and claim a MEXC credential'",
+      }),
+    },
+    {
+      order: 3,
+      description: defineMessage({
+        id: "activities.claimMEXCKYCzkPass.step3.description",
+        defaultMessage:
+          "Reply to the message sent by Verida Missions to share your new credential.",
+        description:
+          "Step 3 of the activity 'Prove KYC level and claim a MEXC credential'",
+      }),
+    },
+  ],
   resources: [
     {
       label: defineMessage({

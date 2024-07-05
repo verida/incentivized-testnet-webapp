@@ -24,13 +24,13 @@ export const mission: Mission = {
   description: defineMessage({
     id: "missions.mission-04.description",
     defaultMessage:
-      "Embrace the future of secure and authentic online interactions by claiming your Proof of Life with Polygon ID. This mission, in partnership with Synaps, empowers individuals to assert their humanity while upholding their privacy.",
-    description: "Short description of the mission 04",
+      "Embrace the future of secure and authentic online interactions by claiming your Proof of Life with Privado ID. This mission, in partnership with Synaps, empowers individuals to assert their humanity while upholding their privacy.",
+    description: "Description of the mission 04",
   }),
   longDescription: defineMessage({
     id: "missions.mission-04.longDescription",
     defaultMessage:
-      "Embrace the future of secure and authentic online interactions by claiming your Proof of Life with Polygon ID. This mission, in partnership with Synaps, empowers individuals to assert their humanity while upholding their privacy.",
+      "Embrace the future of secure and authentic online interactions by claiming your Proof of Life with Privado ID. This mission, in partnership with Synaps, empowers individuals to assert their humanity while upholding their privacy.",
     description: "Long description of the mission 04",
   }),
   resources: [],

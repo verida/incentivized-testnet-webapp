@@ -75,6 +75,8 @@ export const AirdropsPage: React.FC = () => {
     <>
       <PageLayout
         hideBackButton
+        displayGetSupportSection
+        displayLearnMoreSection
         containerClassName="bg-homepage"
         contentClassName="max-w-screen-sm sm:px-4 pt-4"
       >

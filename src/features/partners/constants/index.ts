@@ -1,18 +1,20 @@
+import { Partner } from "~/features/partners/types";
+
 import { partner as partnerGamer31 } from "./gamer31";
-import { partner as partnerPolygonId } from "./polygonid";
+import { partner as partnerPrivadoId } from "./privado-id";
 import { partner as partnerReclaim } from "./reclaim";
 import { partner as partnerSynaps } from "./synaps";
 import { partner as partnerzkPass } from "./zkpass";
 
 export { PARTNER_ID_GAMER31 } from "./gamer31";
-export { PARTNER_ID_POLYGONID } from "./polygonid";
+export { PARTNER_ID_PRIVADOID } from "./privado-id";
 export { PARTNER_ID_RECLAIM } from "./reclaim";
 export { PARTNER_ID_SYNAPS } from "./synaps";
 export { PARTNER_ID_ZKPASS } from "./zkpass";
 
-export const partners = [
+export const partners: Partner[] = [
   partnerGamer31,
-  partnerPolygonId,
+  partnerPrivadoId,
   partnerReclaim,
   partnerSynaps,
   partnerzkPass,

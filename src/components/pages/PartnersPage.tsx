@@ -1,8 +1,9 @@
 import React from "react";
-import { useIntl } from "react-intl";
+import { defineMessage, useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 
-import { PartnerListItem } from "~/components/molecules";
+import { EmptyListMessage } from "~/components/molecules";
+import { PartnerCard } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { partners } from "~/features/partners";
 
@@ -15,7 +16,21 @@ export const PartnersPage: React.FC = () => {
     defaultMessage: "Partners",
   });
 
-  // TODO: Implement the case where there are no partners
+  const partnerEntity = defineMessage({
+    id: "PartnersPage.partnerEntity",
+    description: "Entity name for the empty partners list in the partners page",
+    defaultMessage: "partners",
+  });
+
+  if (partners.length === 0) {
+    return (
+      <PageLayout title={title} contentClassName="flex flex-col">
+        <div className="flex-1 flex flex-col w-full justify-center items-center">
+          <EmptyListMessage entity={partnerEntity} />
+        </div>
+      </PageLayout>
+    );
+  }
 
   return (
     <PageLayout title={title}>
@@ -23,7 +38,10 @@ export const PartnersPage: React.FC = () => {
         {partners.map((partner) => (
           <li key={partner.id}>
             <Link to={`/partners/${partner.id}`}>
-              <PartnerListItem partner={partner} />
+              <PartnerCard
+                partner={partner}
+                className="hover:border-border-hover hover:bg-background-extra-light"
+              />
             </Link>
           </li>
         ))}

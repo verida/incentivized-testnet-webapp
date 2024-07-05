@@ -15,6 +15,7 @@ import {
   isOnboardingMission as isOnboardingMissionFunc,
 } from "~/features/missions";
 import { partners as allPartners } from "~/features/partners";
+import { useVerida } from "~/features/verida";
 
 export type MissionCardProps = {
   mission: Mission;
@@ -24,6 +25,8 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
   const { mission, className, ...articleProps } = props;
 
   const isOnboardingMission = isOnboardingMissionFunc(mission.id);
+
+  const { isConnected, isConnecting } = useVerida();
 
   const { isLoadingUserActivities, activities, getUserActivity } =
     useActivity();
@@ -69,23 +72,26 @@ export const MissionCard: React.FC<MissionCardProps> = (props) => {
   return (
     <article
       className={twMerge(
-        "border border-border bg-clip-padding rounded-xl h-full flex flex-col justify-start",
+        "border border-border bg-clip-padding rounded-xl h-full flex flex-col justify-start hover:shadow-3xl",
         isOnboardingMission ? "bg-mission-onboarding" : "bg-mission-default",
         className
       )}
       {...articleProps}
     >
       <div className="p-4 flex flex-col items-stretch">
-        <XpPointsBadge
-          nbXpPoints={totalMissionPoints}
-          theme={isOnboardingMission ? "onboarding" : "default"}
-        />
+        <div className="flex justify-center">
+          <XpPointsBadge
+            nbXpPoints={totalMissionPoints}
+            theme={isOnboardingMission ? "onboarding" : "default"}
+            className="w-40"
+          />
+        </div>
         <MissionCardActivitiesProgressBar
-          isLoading={isLoadingUserActivities}
+          isLoading={isConnecting || (isConnected && isLoadingUserActivities)}
           activityStatuses={activityStatuses}
         />
       </div>
-      <div className="py-6 px-4 rounded-[calc(0.75rem_-_1px)] bg-background/90 flex-grow flex flex-col justify-between gap-6">
+      <div className="py-6 px-4 rounded-[calc(0.75rem_-_1px)] bg-background-light/90 flex-grow flex flex-col justify-between gap-6">
         <Typography variant="heading-s" component="p" className="line-clamp-3">
           {missionLabel}
         </Typography>
