@@ -24,7 +24,7 @@ export const ActivityListItem: React.FC<ActivityListItemProps> = (props) => {
     ...divProps
   } = props;
 
-  const { isConnected } = useVerida();
+  const { isConnected, isConnecting } = useVerida();
   const { getUserActivity, isLoadingUserActivities } = useActivity();
   const userActivity = getUserActivity(activity.id);
   const status = userActivity?.status || "todo";
@@ -49,7 +49,7 @@ export const ActivityListItem: React.FC<ActivityListItemProps> = (props) => {
           <ActivityIndex
             index={String(activityIndex)}
             status={
-              isLoadingUserActivities
+              isConnecting || (isConnected && isLoadingUserActivities)
                 ? "checking"
                 : activity.ended
                   ? "ended"
