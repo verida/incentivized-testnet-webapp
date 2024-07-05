@@ -15,7 +15,6 @@ export const Footer: React.FC<FooterProps> = (props) => {
   const { className, ...footerProps } = props;
 
   const i18n = useIntl();
-  const copyrightYear = `${new Date().getFullYear()}`;
 
   const builtOnLabel = i18n.formatMessage({
     id: "Footer.builtOnLabel",
@@ -30,6 +29,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
       "Message stating that conditions will apply when using the app",
   });
 
+  const copyrightYear = `${new Date().getFullYear()}`;
   const copyrightMessage = i18n.formatMessage(
     {
       id: "Footer.copyrightMessage",
@@ -42,40 +42,37 @@ export const Footer: React.FC<FooterProps> = (props) => {
   return (
     <footer
       {...footerProps}
-      className={twMerge(
-        "flex flex-col items-center justify-center space-y-3 border-t border-solid border-divider py-4 px-6 sm:flex-row sm:justify-between",
-        className
-      )}
+      className={twMerge("border-t border-solid border-divider", className)}
     >
-      <div className="flex flex-col justify-center sm:order-2 px-8">
-        <ExternalLink
-          href={VERIDA_NETWORK_URL}
-          openInNewTab
-          className="flex flex-col items-center no-underline hover:underline text-muted-foreground"
-        >
-          <Typography
-            component="span"
-            className="mb-1 place-content-center text-center"
+      <div className="p-6 flex flex-col items-center  sm:flex-row gap-4 text-muted-foreground">
+        <div className="flex flex-col justify-center sm:order-2 px-8">
+          <ExternalLink
+            href={VERIDA_NETWORK_URL}
+            openInNewTab
+            className="flex flex-col items-center no-underline hover:underline"
           >
-            {builtOnLabel}
-          </Typography>
-          <div className="aspect-[9/3] h-6">
-            <VeridaNetworkLogo height="100%" width="100%" />
-          </div>
-        </ExternalLink>
-      </div>
-      <div className="sm:order-3 sm:flex-1">
-        <div className="flex flex-col items-center space-y-3 sm:flex-row sm:justify-end sm:space-x-4 sm:space-y-0">
-          {/* <Link to="/terms-and-conditions" className="hover:underline">
-            {termsAndConditionLinkLabel}
-          </Link> */}
-          <Typography className="text-center sm:text-right text-xs">
+            <Typography
+              variant="base-s"
+              component="span"
+              className="mb-1 place-content-center text-center"
+            >
+              {builtOnLabel}
+            </Typography>
+            <div className="aspect-[9/3] h-6">
+              <VeridaNetworkLogo height="100%" width="100%" />
+            </div>
+          </ExternalLink>
+        </div>
+        <div className="sm:order-3 sm:flex-1 sm:text-right">
+          <Typography variant="base-s" component="span">
             {conditionsWillApplyMessage}
           </Typography>
         </div>
-      </div>
-      <div className="sm:order-1 sm:flex-1">
-        <Typography component="span">{copyrightMessage}</Typography>
+        <div className="sm:order-1 sm:flex-1">
+          <Typography variant="base-s" component="span">
+            {copyrightMessage}
+          </Typography>
+        </div>
       </div>
     </footer>
   );
