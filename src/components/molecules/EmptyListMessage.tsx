@@ -5,30 +5,31 @@ import { twMerge } from "tailwind-merge";
 import { ReactComponent as VeridaNetworkLogo } from "~/assets/images/verida_network_logo_with_text_white.svg";
 import { Typography } from "~/components/atoms";
 
-export type NotFoundMessageProps = {
+export type EmptyListMessageProps = {
   logo?: React.ReactNode | null;
   entity: MessageDescriptor;
 } & Omit<React.ComponentPropsWithRef<"div">, "children">;
 
-export const NotFoundMessage: React.FC<NotFoundMessageProps> = (props) => {
+export const EmptyListMessage: React.FC<EmptyListMessageProps> = (props) => {
   const { logo, entity, className, ...divProps } = props;
 
   const i18n = useIntl();
 
-  const notFoundMessage = i18n.formatMessage(
+  const emptyListMessage = i18n.formatMessage(
     {
-      id: "NotFoundMessage.notFoundMessage",
-      description: "Message when entity doesn't exist",
-      defaultMessage: "{entity} not found",
+      id: "EmptyListMessage.emptyListMessage",
+      description: "Message when there are no entities",
+      defaultMessage: "No {entity} to display",
     },
     { entity: i18n.formatMessage(entity) }
   );
 
-  const notFoundDescription = i18n.formatMessage(
+  const emptyListDescription = i18n.formatMessage(
     {
-      id: "NotFoundMessage.notFoundDescription",
-      description: "Description when entity doesn't exist",
-      defaultMessage: "The {entity} you're looking for hasn't been found.",
+      id: "EmptyListMessage.emptyListDescription",
+      description: "Description when there are no entities",
+      defaultMessage:
+        "It looks like there are no {entity} available at the moment",
     },
     { entity: i18n.formatMessage(entity) }
   );
@@ -47,10 +48,10 @@ export const NotFoundMessage: React.FC<NotFoundMessageProps> = (props) => {
         </div>
       ) : null}
       <Typography variant="heading-m" className="capitalize">
-        {notFoundMessage}
+        {emptyListMessage}
       </Typography>
       <Typography variant="base" className="text-muted-foreground">
-        {notFoundDescription}
+        {emptyListDescription}
       </Typography>
     </div>
   );

@@ -8,7 +8,7 @@
     "description": "Message to show when the user is not connected"
   },
   "ActivityPage.entity": {
-    "defaultMessage": "Activity",
+    "defaultMessage": "activity",
     "description": "Entity for not found message"
   },
   "ActivityPage.rewardLabel": {
@@ -255,6 +255,14 @@
     "defaultMessage": "{nbDaysLeft, plural, one {{nbDaysLeft} day left} other {{nbDaysLeft} days left} }",
     "description": "Formatted value of days left in the activity days left chip"
   },
+  "EmptyListMessage.emptyListDescription": {
+    "defaultMessage": "It looks like there are no {entity} available at the moment",
+    "description": "Description when there are no entities"
+  },
+  "EmptyListMessage.emptyListMessage": {
+    "defaultMessage": "No {entity} to display",
+    "description": "Message when there are no entities"
+  },
   "ErrorFallbackCard.cardMessage": {
     "defaultMessage": "If the error persists, try refreshing your browser and cleaning your browser's data.",
     "description": "Message of the default error fallback card"
@@ -396,7 +404,7 @@
     "description": "Description when entity doesn't exist"
   },
   "NotFoundMessage.notFoundMessage": {
-    "defaultMessage": "{entity} Not Found",
+    "defaultMessage": "{entity} not found",
     "description": "Message when entity doesn't exist"
   },
   "OnboardingHomeCard.defaultActivityListMessage": {
@@ -451,13 +459,17 @@
     "defaultMessage": "Partner",
     "description": "Label above the partner info card"
   },
-  "PartnerPage.empty": {
-    "defaultMessage": "No data",
-    "description": "Description"
-  },
   "PartnerPage.missionActivityListMessage": {
     "defaultMessage": "{partnerName} activities:",
     "description": "Message displayed above the activity list of each mission section for a given partner"
+  },
+  "PartnerPage.missionEntity": {
+    "defaultMessage": "missions",
+    "description": "Entity name for the empty missions list in the partner page"
+  },
+  "PartnerPage.partnerEntity": {
+    "defaultMessage": "partner",
+    "description": "Entity name for partner not found message"
   },
   "PartnersHomeSection.title": {
     "defaultMessage": "Partners",
@@ -466,6 +478,10 @@
   "PartnersHomeSection.viewAllPartnersButtonLabel": {
     "defaultMessage": "View All",
     "description": "Label of the button to view all partners"
+  },
+  "PartnersPage.partnerEntity": {
+    "defaultMessage": "partners",
+    "description": "Entity name for the empty partners list in the partners page"
   },
   "PartnersPage.title": {
     "defaultMessage": "Partners",

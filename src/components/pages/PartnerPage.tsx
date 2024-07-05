@@ -1,6 +1,7 @@
-import { useIntl } from "react-intl";
+import { defineMessage, useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
 
+import { EmptyListMessage, NotFoundMessage } from "~/components/molecules";
 import { MissionSection, PartnerInfoCard } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import { usePartner } from "~/features/partners";
@@ -23,24 +24,37 @@ export const PartnerPage: React.FC = () => {
     }
   );
 
-  // TODO: Rework the not found state of the Partner page
-  const emptry = i18n.formatMessage({
-    id: "PartnerPage.empty",
-    description: "Description",
-    defaultMessage: "No data",
+  const partnerEntity = defineMessage({
+    id: "PartnerPage.partnerEntity",
+    description: "Entity name for partner not found message",
+    defaultMessage: "partner",
   });
 
-  // TODO: Implement the case there is no missions to display
+  const missionEntity = defineMessage({
+    id: "PartnerPage.missionEntity",
+    description: "Entity name for the empty missions list in the partner page",
+    defaultMessage: "missions",
+  });
+
+  if (!partner) {
+    return (
+      <PageLayout contentClassName="flex flex-col">
+        <div className="flex-1 flex flex-col justify-center items-center">
+          <NotFoundMessage entity={partnerEntity} />
+        </div>
+      </PageLayout>
+    );
+  }
 
   return (
     <PageLayout title={partner?.name}>
-      {partner ? (
-        <div className="flex flex-col justify-start lg:flex-row gap-10">
-          <PartnerInfoCard
-            partner={partner}
-            nbActivities={activities.length}
-            className="max-lg:w-full"
-          />
+      <div className="flex flex-col justify-start lg:flex-row gap-10">
+        <PartnerInfoCard
+          partner={partner}
+          nbActivities={activities.length}
+          className="max-lg:w-full"
+        />
+        {missions.length ? (
           <ul className={"flex-grow grid grid-cols-1 gap-8"}>
             {missions.map((mission) => (
               <li key={mission.id}>
@@ -58,10 +72,12 @@ export const PartnerPage: React.FC = () => {
               </li>
             ))}
           </ul>
-        </div>
-      ) : (
-        <div className="">{emptry}</div>
-      )}
+        ) : (
+          <div className="flex flex-col w-full justify-center items-center">
+            <EmptyListMessage entity={missionEntity} logo={null} />
+          </div>
+        )}
+      </div>
     </PageLayout>
   );
 };
