@@ -1703,13 +1703,13 @@
     "defaultMessage": "gamer31.com",
     "description": "Label of the Gamer31 website"
   },
-  "partners.polygonid.description": {
-    "defaultMessage": "Polygon ID gives you the power to build trusted and secure relationships between users and dApps.",
-    "description": "description of the partner Polygon ID"
+  "partners.privadoid.description": {
+    "defaultMessage": "Privado ID is a set of tools for developers that can be used to facilitate trusted and secure relationships between apps and users. Developers can use Privado ID to enable the exchange of verifiable credentials secured by cryptography and the blockchain. Privado ID is designed for developers with a strong focus on privacy, decentralization and user data self-sovereignty.",
+    "description": "description of the partner Privado ID"
   },
-  "partners.polygonid.resources.website": {
-    "defaultMessage": "polygon.technology/polygon-id",
-    "description": "Label of the Polygon ID website"
+  "partners.privadoid.resources.website": {
+    "defaultMessage": "privado.id",
+    "description": "Label of the Privado ID website"
   },
   "partners.reclaim.description": {
     "defaultMessage": "Reclaim Protocol is a cryptographical digital notary, a solution designed to transform every website into an API",
