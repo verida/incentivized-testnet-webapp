@@ -3,7 +3,7 @@ import { useIntl } from "react-intl";
 import { twMerge } from "tailwind-merge";
 
 import { ExternalLink, Typography } from "~/components/atoms";
-import { VERIDA_MISSIONS_FAQ_URL } from "~/constants";
+import { VERIDA_MISSIONS_GETTING_STARTED_GUIDE_URL } from "~/constants";
 import { AIRDROPS_FAQ_URL } from "~/features/airdrops";
 
 type Link = {
@@ -13,12 +13,8 @@ type Link = {
 
 const links: Link[] = [
   {
-    label: "Verida Mainnet is Live!",
-    url: "https://news.verida.io/verida-mainnet-is-launching-soon-e3b6cb95408c",
-  },
-  {
-    label: "Verida Missions FAQs",
-    url: VERIDA_MISSIONS_FAQ_URL,
+    label: "Get started on Verida Missions",
+    url: VERIDA_MISSIONS_GETTING_STARTED_GUIDE_URL,
   },
   {
     label: "Verida Airdrops FAQs",
