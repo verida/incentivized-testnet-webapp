@@ -11,7 +11,7 @@ export const partner: Partner = {
   description: defineMessage({
     id: "partners.privadoid.description",
     defaultMessage:
-      "Privado ID is a set of tools for developers that can be used to facilitate trusted and secure relationships between apps and users. Developers can use Privado ID to enable the exchange of verifiable credentials secured by cryptography and the blockchain. Privado ID is designed for developers with a strong focus on privacy, decentralization and user data self-sovereignty.",
+      "Formerly Polygon ID, Privado ID is a set of tools for developers that can be used to facilitate trusted and secure relationships between apps and users. Developers can use Privado ID to enable the exchange of verifiable credentials secured by cryptography and the blockchain. Privado ID is designed for developers with a strong focus on privacy, decentralization and user data self-sovereignty.",
     description: "description of the partner Privado ID",
   }),
   logo: "/images/partners/privado-id.svg",
