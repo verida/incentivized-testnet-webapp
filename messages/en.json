@@ -379,9 +379,9 @@
     "defaultMessage": "{nbCompletedActivities, number}/{nbActivities, number}",
     "description": "Message for the mission progress bar"
   },
-  "MissionPage.emptyMessage": {
-    "defaultMessage": "No data",
-    "description": "Message when mission doesn't exist"
+  "MissionPage.missionEntity": {
+    "defaultMessage": "mission",
+    "description": "Entity name for mission not found message"
   },
   "MissionSection.defaultActivityListMessage": {
     "defaultMessage": "Complete all activities below",
@@ -394,6 +394,10 @@
   "MissionSection.resourcesSectionTitle": {
     "defaultMessage": "Resources",
     "description": "Title of the resources section in each mission section"
+  },
+  "MissionsPage.missionEntity": {
+    "defaultMessage": "missions",
+    "description": "Entity name for the empty missions list in the missions page"
   },
   "MissionsPage.title": {
     "defaultMessage": "Missions",

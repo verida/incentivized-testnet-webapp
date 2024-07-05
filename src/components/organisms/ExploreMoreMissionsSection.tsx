@@ -28,6 +28,10 @@ export const ExploreMoreMissionsSection: React.FC<
     description: "Title of mission page",
   });
 
+  if (displayedMissions.length === 0) {
+    return null;
+  }
+
   return (
     <aside {...asideProps}>
       <PageAsideSectionWrapper title={sectionTitle}>
