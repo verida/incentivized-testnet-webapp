@@ -10,7 +10,8 @@ export const partner: Partner = {
   name: "Synaps",
   description: defineMessage({
     id: "partners.synaps.description",
-    defaultMessage: "Synaps provides identity verification solutions",
+    defaultMessage:
+      "Synaps provides identity verification solutions from Personhood validation to regulated KYC / AML and KYB processes.",
     description: "Description of the partner synaps",
   }),
   logo: "/images/partners/synaps.png",

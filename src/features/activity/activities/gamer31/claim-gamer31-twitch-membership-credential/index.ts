@@ -9,7 +9,7 @@ import type {
 } from "~/features/activity/types";
 import { Logger } from "~/features/logger";
 import { MISSION_03_ID } from "~/features/missions";
-import { PARTNER_ID_GAMER31, PARTNER_ID_POLYGONID } from "~/features/partners";
+import { PARTNER_ID_GAMER31, PARTNER_ID_PRIVADOID } from "~/features/partners";
 import { Sentry } from "~/features/sentry";
 import {
   type ReceivedMessage,
@@ -223,7 +223,7 @@ export const activity: Activity = {
   visible: true,
   order: 2,
   points: 50,
-  partners: [PARTNER_ID_GAMER31, PARTNER_ID_POLYGONID],
+  partners: [PARTNER_ID_GAMER31, PARTNER_ID_PRIVADOID],
   title: defineMessage({
     id: "activities.claimGamer31Twitch.title",
     defaultMessage: "Claim a Gamer31 Twitch credential",

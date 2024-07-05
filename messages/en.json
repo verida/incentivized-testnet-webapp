@@ -528,7 +528,7 @@
     "description": "Label of the button to perform the activity again "
   },
   "activities.claimAnimaPoLCredential.description": {
-    "defaultMessage": "Claim your Proof of Life with Polygon ID and join the Sybil resistance. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
+    "defaultMessage": "Claim your Proof of Life with Privado ID and join the Sybil resistance. The credential will be stored in your Verida Wallet, and can be securely shared and verified.",
     "description": "Description of the activity 'Claim Synaps/Anima Proof of Life credential'"
   },
   "activities.claimAnimaPoLCredential.executePendingMessage": {
@@ -552,7 +552,7 @@
     "description": "Label of the resource 'user guide'"
   },
   "activities.claimAnimaPoLCredential.resources.videoUserGuide.label": {
-    "defaultMessage": "Video: Synaps - Claim a Proof of Life (PoL) Polygon ID Credential / Verida Network",
+    "defaultMessage": "Video: Synaps - Claim a Proof of Life (PoL) Privado ID Credential / Verida Network",
     "description": "Label of the resource 'video user guide'"
   },
   "activities.claimAnimaPoLCredential.step1.description": {
@@ -564,7 +564,7 @@
     "description": "Step 2 of the activity 'Claim Synaps/Anima Proof of Life credential'"
   },
   "activities.claimAnimaPoLCredential.step3.description": {
-    "defaultMessage": "Claim your Proof of Life credential on Polygon ID. Use your Verida Wallet to connect and save the credential in your wallet.",
+    "defaultMessage": "Claim your Proof of Life credential on Privado ID. Use your Verida Wallet to connect and save the credential in your wallet.",
     "description": "Step 3 of the activity 'Claim Synaps/Anima Proof of Life credential'"
   },
   "activities.claimAnimaPoLCredential.step4.description": {
@@ -572,7 +572,7 @@
     "description": "Step 4 of the activity 'Claim Synaps/Anima Proof of Life credential'"
   },
   "activities.claimAnimaPoLCredential.title": {
-    "defaultMessage": "Synaps - Claim a Proof of Life (PoL) Polygon ID credential",
+    "defaultMessage": "Synaps - Claim a Proof of Life (PoL) Privado ID credential",
     "description": "Title of the activity 'Claim Synaps/Anima Proof of Life credential'"
   },
   "activities.claimBinanceKYCzkPass.actionExecutingLabel": {
@@ -1616,7 +1616,7 @@
     "description": "Title of the mission 01"
   },
   "missions.mission-02.description": {
-    "defaultMessage": "The Verida Wallet supports Polygon ID for receiving and storing Verifiable Credentials (VC), which can be presented in a privacy-preserving way to third parties via Zero-Knowledge Proofs (ZKP). This mission will guide you through the flow of using the Verida Wallet with various issuers and verifiers in the Polygon ID ecosystem.",
+    "defaultMessage": "The Verida Wallet supports Privado ID for receiving and storing Verifiable Credentials (VC), which can be presented in a privacy-preserving way to third parties via Zero-Knowledge Proofs (ZKP). This mission will guide you through the flow of using the Verida Wallet with various issuers and verifiers in the Privado ID ecosystem.",
     "description": "Description of the mission 02"
   },
   "missions.mission-02.idLabel": {
@@ -1624,15 +1624,15 @@
     "description": "Label of the mission id 02"
   },
   "missions.mission-02.longDescription": {
-    "defaultMessage": "The Verida Wallet supports Polygon ID for receiving and storing Verifiable Credentials (VC), which can be presented in a privacy-preserving way to third parties via Zero-Knowledge Proofs (ZKP). This mission will guide you through the flow of using the Verida Wallet with various issuers and verifiers in the Polygon ID ecosystem.",
+    "defaultMessage": "The Verida Wallet supports Privado ID for receiving and storing Verifiable Credentials (VC), which can be presented in a privacy-preserving way to third parties via Zero-Knowledge Proofs (ZKP). This mission will guide you through the flow of using the Verida Wallet with various issuers and verifiers in the Privado ID ecosystem.",
     "description": "Long description of the mission 02"
   },
   "missions.mission-02.title": {
-    "defaultMessage": "Leverage Credentials and Zero-Knowledge with Polygon ID",
+    "defaultMessage": "Leverage Credentials and Zero-Knowledge with Privado ID",
     "description": "Title of the mission 02"
   },
   "missions.mission-03.description": {
-    "defaultMessage": "Gamer31 is on a mission to redefine how gamers establish their identities and reputation. Combined with Verida's web3 wallet and database storage network, don't miss this opportunity to claim your gaming ZK Polygon ID credentials and build your private gaming identity for web3.",
+    "defaultMessage": "Gamer31 is on a mission to redefine how gamers establish their identities and reputation. Combined with Verida's web3 wallet and database storage network, don't miss this opportunity to claim your gaming ZK Privado ID credentials and build your private gaming identity for web3.",
     "description": "Description of the mission 03"
   },
   "missions.mission-03.idLabel": {
@@ -1640,7 +1640,7 @@
     "description": "Label of the mission id 03"
   },
   "missions.mission-03.longDescription": {
-    "defaultMessage": "Gamer31 is on a mission to redefine how gamers establish their identities and reputation. Combined with Verida's web3 wallet and database storage network, don't miss this opportunity to claim your gaming ZK Polygon ID credentials and build your private gaming identity for web3.",
+    "defaultMessage": "Gamer31 is on a mission to redefine how gamers establish their identities and reputation. Combined with Verida's web3 wallet and database storage network, don't miss this opportunity to claim your gaming ZK Privado ID credentials and build your private gaming identity for web3.",
     "description": "Long description of the mission 03"
   },
   "missions.mission-03.title": {
@@ -1648,7 +1648,7 @@
     "description": "Title of the mission 03"
   },
   "missions.mission-04.description": {
-    "defaultMessage": "Embrace the future of secure and authentic online interactions by claiming your Proof of Life with Polygon ID. This mission, in partnership with Synaps, empowers individuals to assert their humanity while upholding their privacy.",
+    "defaultMessage": "Embrace the future of secure and authentic online interactions by claiming your Proof of Life with Privado ID. This mission, in partnership with Synaps, empowers individuals to assert their humanity while upholding their privacy.",
     "description": "Description of the mission 04"
   },
   "missions.mission-04.idLabel": {
@@ -1656,7 +1656,7 @@
     "description": "Label of the mission id 04"
   },
   "missions.mission-04.longDescription": {
-    "defaultMessage": "Embrace the future of secure and authentic online interactions by claiming your Proof of Life with Polygon ID. This mission, in partnership with Synaps, empowers individuals to assert their humanity while upholding their privacy.",
+    "defaultMessage": "Embrace the future of secure and authentic online interactions by claiming your Proof of Life with Privado ID. This mission, in partnership with Synaps, empowers individuals to assert their humanity while upholding their privacy.",
     "description": "Long description of the mission 04"
   },
   "missions.mission-04.title": {
@@ -1696,23 +1696,23 @@
     "description": "Title of the mission 06"
   },
   "partners.gamer31.description": {
-    "defaultMessage": "Gamer31 is a gaming identity provider",
+    "defaultMessage": "Gamer31 grant users unique identities derived from data extracted from renowned gaming and streaming platforms such as Steam, Twitch, and more. With innovative Privado ID technology, players can prove eligibility in a privacy-preserving manner.",
     "description": "Description of the partner gamer31"
   },
   "partners.gamer31.resources.website": {
     "defaultMessage": "gamer31.com",
     "description": "Label of the Gamer31 website"
   },
-  "partners.polygonid.description": {
-    "defaultMessage": "Polygon ID gives you the power to build trusted and secure relationships between users and dApps.",
-    "description": "description of the partner Polygon ID"
+  "partners.privadoid.description": {
+    "defaultMessage": "Formerly Polygon ID, Privado ID is a set of tools for developers that can be used to facilitate trusted and secure relationships between apps and users. Developers can use Privado ID to enable the exchange of verifiable credentials secured by cryptography and the blockchain. Privado ID is designed for developers with a strong focus on privacy, decentralization and user data self-sovereignty.",
+    "description": "description of the partner Privado ID"
   },
-  "partners.polygonid.resources.website": {
-    "defaultMessage": "polygon.technology/polygon-id",
-    "description": "Label of the Polygon ID website"
+  "partners.privadoid.resources.website": {
+    "defaultMessage": "privado.id",
+    "description": "Label of the Privado ID website"
   },
   "partners.reclaim.description": {
-    "defaultMessage": "Reclaim Protocol is a cryptographical digital notary, a solution designed to transform every website into an API",
+    "defaultMessage": "Reclaim Protocol is a cryptographical digital notary, a solution designed to transform every website into an API. It will empower users to manage and share their data, securely, anonymously and without any technical knowledge.The Reclaim Protocol aimed to revolutionize how individuals manage their digital footprint. From food delivery records to music playlists, gaming activity, document handling, financial transactions, and every other digital aspect of our lives – this data will now belong to its creators, the users.",
     "description": "Description of the partner Reclaim Protocol"
   },
   "partners.reclaim.resources.website": {
@@ -1720,7 +1720,7 @@
     "description": "Label of the Reclaim Protocol website"
   },
   "partners.synaps.description": {
-    "defaultMessage": "Synaps provides identity verification solutions",
+    "defaultMessage": "Synaps provides identity verification solutions from Personhood validation to regulated KYC / AML and KYB processes.",
     "description": "Description of the partner synaps"
   },
   "partners.synaps.resources.website": {
@@ -1728,7 +1728,7 @@
     "description": "Label of the Synaps website"
   },
   "partners.zkpass.description": {
-    "defaultMessage": "Protocol for private Data based on MPC, ZKP, 3P-TLS",
+    "defaultMessage": "zkPass provides TransGate, which enables users to selectively and privately validate their data on any HTTPS website to the web3 world without the need to disclose or upload any sensitive personal data to third parties. It can cover various data types such as legal identity, financial records, healthcare information, social interactions, work experience, education and skill certifications, etc.",
     "description": "Description of the partner zkPass"
   },
   "partners.zkpass.resources.website": {
