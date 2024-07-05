@@ -11,7 +11,7 @@ export const partner: Partner = {
   description: defineMessage({
     id: "partners.gamer31.description",
     defaultMessage:
-      "Gamer31 grant users unique identities derived from data extracted from renowned gaming and streaming platforms such as Steam, Twitch, and more. With innovative Polygon ID technology, players can prove eligibility in a privacy-preserving manner.",
+      "Gamer31 grant users unique identities derived from data extracted from renowned gaming and streaming platforms such as Steam, Twitch, and more. With innovative Privado ID technology, players can prove eligibility in a privacy-preserving manner.",
     description: "Description of the partner gamer31",
   }),
   logo: "/images/partners/gamer31.svg",

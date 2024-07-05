@@ -227,13 +227,13 @@ export const activity: Activity = {
   title: defineMessage({
     id: "activities.claimAnimaPoLCredential.title",
     defaultMessage:
-      "Synaps - Claim a Proof of Life (PoL) Polygon ID credential",
+      "Synaps - Claim a Proof of Life (PoL) Privado ID credential",
     description:
       "Title of the activity 'Claim Synaps/Anima Proof of Life credential'",
   }),
   description: defineMessage({
     id: "activities.claimAnimaPoLCredential.description",
-    defaultMessage: `Claim your Proof of Life with Polygon ID and join the Sybil resistance. The credential will be stored in your Verida Wallet, and can be securely shared and verified.`,
+    defaultMessage: `Claim your Proof of Life with Privado ID and join the Sybil resistance. The credential will be stored in your Verida Wallet, and can be securely shared and verified.`,
     description:
       "Description of the activity 'Claim Synaps/Anima Proof of Life credential'",
   }),
@@ -283,7 +283,7 @@ export const activity: Activity = {
       description: defineMessage({
         id: "activities.claimAnimaPoLCredential.step3.description",
         defaultMessage:
-          "Claim your Proof of Life credential on Polygon ID. Use your Verida Wallet to connect and save the credential in your wallet.",
+          "Claim your Proof of Life credential on Privado ID. Use your Verida Wallet to connect and save the credential in your wallet.",
         description:
           "Step 3 of the activity 'Claim Synaps/Anima Proof of Life credential'",
       }),
@@ -321,7 +321,7 @@ export const activity: Activity = {
       label: defineMessage({
         id: "activities.claimAnimaPoLCredential.resources.videoUserGuide.label",
         defaultMessage:
-          "Video: Synaps - Claim a Proof of Life (PoL) Polygon ID Credential / Verida Network",
+          "Video: Synaps - Claim a Proof of Life (PoL) Privado ID Credential / Verida Network",
         description: "Label of the resource 'video user guide'",
       }),
       url: "https://youtu.be/YQCqeziLdZg",
