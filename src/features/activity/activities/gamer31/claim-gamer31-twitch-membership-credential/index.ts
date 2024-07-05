@@ -261,7 +261,7 @@ export const activity: Activity = {
       description: defineMessage({
         id: "activities.claimGamer31Twitch.step1.description",
         defaultMessage:
-          "Go to the Gamer 31 claim page (link in the resources below) and click on the Twitch 'Claim' button to start the process.",
+          "Go to the Gamer 31 claim page (link in the resources) and click on the Twitch 'Claim' button to start the process.",
         description: "Step 1 of the activity 'claim Gamer31 Twitch credential'",
       }),
     },

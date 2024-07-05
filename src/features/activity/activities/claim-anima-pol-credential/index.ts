@@ -263,7 +263,7 @@ export const activity: Activity = {
       description: defineMessage({
         id: "activities.claimAnimaPoLCredential.step1.description",
         defaultMessage:
-          "Go to the Synaps Proof of Life claim page to start the process (link in resources below).",
+          "Go to the Synaps Proof of Life claim page to start the process (link in resources).",
         description:
           "Step 1 of the activity 'Claim Synaps/Anima Proof of Life credential'",
       }),
@@ -283,7 +283,7 @@ export const activity: Activity = {
       description: defineMessage({
         id: "activities.claimAnimaPoLCredential.step3.description",
         defaultMessage:
-          "Claim your Proof of Life credential on Privado ID. Use your Verida Wallet to connect and save the credential in your wallet.",
+          "Claim your Proof of Life credential. Use your Verida Wallet to connect and save the credential in your wallet.",
         description:
           "Step 3 of the activity 'Claim Synaps/Anima Proof of Life credential'",
       }),

@@ -556,7 +556,7 @@
     "description": "Label of the resource 'video user guide'"
   },
   "activities.claimAnimaPoLCredential.step1.description": {
-    "defaultMessage": "Go to the Synaps Proof of Life claim page to start the process (link in resources below).",
+    "defaultMessage": "Go to the Synaps Proof of Life claim page to start the process (link in resources).",
     "description": "Step 1 of the activity 'Claim Synaps/Anima Proof of Life credential'"
   },
   "activities.claimAnimaPoLCredential.step2.description": {
@@ -564,7 +564,7 @@
     "description": "Step 2 of the activity 'Claim Synaps/Anima Proof of Life credential'"
   },
   "activities.claimAnimaPoLCredential.step3.description": {
-    "defaultMessage": "Claim your Proof of Life credential on Privado ID. Use your Verida Wallet to connect and save the credential in your wallet.",
+    "defaultMessage": "Claim your Proof of Life credential. Use your Verida Wallet to connect and save the credential in your wallet.",
     "description": "Step 3 of the activity 'Claim Synaps/Anima Proof of Life credential'"
   },
   "activities.claimAnimaPoLCredential.step4.description": {
@@ -780,7 +780,7 @@
     "description": "Label of the resource 'Gamer31 claim page'"
   },
   "activities.claimGamer31BrawlStars.step1.description": {
-    "defaultMessage": "Go to the Gamer 31 claim page (link in the resources below) and click on the Brawl Stars 'Claim' button to start the process.",
+    "defaultMessage": "Go to the Gamer 31 claim page (link in the resources) and click on the Brawl Stars 'Claim' button to start the process.",
     "description": "Step 1 of the activity 'claim Gamer31 Brawl Stars credential'"
   },
   "activities.claimGamer31BrawlStars.step2.description": {
@@ -824,7 +824,7 @@
     "description": "Label of the resource 'Gamer31 claim page'"
   },
   "activities.claimGamer31ClashOfClans.step1.description": {
-    "defaultMessage": "Go to the Gamer 31 claim page (link in the resources below) and click on the Clash of Clans 'Claim' button to start the process.",
+    "defaultMessage": "Go to the Gamer 31 claim page (link in the resources) and click on the Clash of Clans 'Claim' button to start the process.",
     "description": "Step 1 of the activity 'Claim Gamer31 Clash Of Clans credential'"
   },
   "activities.claimGamer31ClashOfClans.step2.description": {
@@ -868,7 +868,7 @@
     "description": "Label of the resource 'Gamer31 claim page'"
   },
   "activities.claimGamer31ClashRoyale.step1.description": {
-    "defaultMessage": "Go to the Gamer 31 claim page (link in the resources below) and click on the Clash Royale 'Claim' button to start the process.",
+    "defaultMessage": "Go to the Gamer 31 claim page (link in the resources) and click on the Clash Royale 'Claim' button to start the process.",
     "description": "Step 1 of the activity 'claim Gamer31 Clash Royale credential'"
   },
   "activities.claimGamer31ClashRoyale.step2.description": {
@@ -912,7 +912,7 @@
     "description": "Label of the resource 'Gamer31 claim page'"
   },
   "activities.claimGamer31Lichess.step1.description": {
-    "defaultMessage": "Go to the Gamer 31 claim page (link in the resources below) and click on the Lichess 'Claim' button to start the process.",
+    "defaultMessage": "Go to the Gamer 31 claim page (link in the resources) and click on the Lichess 'Claim' button to start the process.",
     "description": "Step 1 of the activity 'claim Gamer31 Lichess credential'"
   },
   "activities.claimGamer31Lichess.step2.description": {
@@ -956,7 +956,7 @@
     "description": "Label of the resource 'Gamer31 claim page'"
   },
   "activities.claimGamer31Steam.step1.description": {
-    "defaultMessage": "Go to the Gamer 31 claim page (link in the resources below) and click on the Steam 'Claim' button to start the process.",
+    "defaultMessage": "Go to the Gamer 31 claim page (link in the resources) and click on the Steam 'Claim' button to start the process.",
     "description": "Step 1 of the activity 'claim Gamer31 Steam credential'"
   },
   "activities.claimGamer31Steam.step2.description": {
@@ -1000,7 +1000,7 @@
     "description": "Label of the resource 'Gamer31 claim page'"
   },
   "activities.claimGamer31Twitch.step1.description": {
-    "defaultMessage": "Go to the Gamer 31 claim page (link in the resources below) and click on the Twitch 'Claim' button to start the process.",
+    "defaultMessage": "Go to the Gamer 31 claim page (link in the resources) and click on the Twitch 'Claim' button to start the process.",
     "description": "Step 1 of the activity 'claim Gamer31 Twitch credential'"
   },
   "activities.claimGamer31Twitch.step2.description": {
@@ -1096,7 +1096,7 @@
     "description": "Label of the user guide resources to claim to the GK adopter credential"
   },
   "activities.claimGateKeperAdopter.step1.description": {
-    "defaultMessage": "Go to the GateKeeper claim page to start the process (link in resources below).",
+    "defaultMessage": "Go to the GateKeeper claim page to start the process (link in resources).",
     "description": "Step 1 of the activity 'claim GateKeeper Adopter credential'"
   },
   "activities.claimGateKeperAdopter.step2.description": {
@@ -1524,7 +1524,7 @@
     "description": "Label of the resource 'Markdown Editor demo app'"
   },
   "activities.useMarkdownEditor.step1.description": {
-    "defaultMessage": "Connect to the Markdown Editor demo app (link in resources below) and create a new note.",
+    "defaultMessage": "Connect to the Markdown Editor demo app (link in resources) and create a new note.",
     "description": "Step 1 of the activity 'use markdown editor'"
   },
   "activities.useMarkdownEditor.step2.description": {
