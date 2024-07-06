@@ -5,6 +5,7 @@ export * from "./CollapsibleList";
 export * from "./ComingSoonAirdropCard";
 export * from "./CopyToClipboardButton";
 export * from "./DaysCountdownChip";
+export * from "./EmptyListMessage";
 export * from "./ErrorFallbackCard";
 export * from "./HeaderIdentityMenu";
 export * from "./HeaderNavMenu";

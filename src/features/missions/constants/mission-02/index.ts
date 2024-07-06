@@ -17,19 +17,19 @@ export const mission: Mission = {
   order: 2,
   title: defineMessage({
     id: "missions.mission-02.title",
-    defaultMessage: "Leverage Credentials and Zero-Knowledge with Polygon ID",
+    defaultMessage: "Leverage Credentials and Zero-Knowledge with Privado ID",
     description: "Title of the mission 02",
   }),
   description: defineMessage({
     id: "missions.mission-02.description",
     defaultMessage:
-      "The Verida Wallet supports Polygon ID for receiving and storing Verifiable Credentials (VC), which can be presented in a privacy-preserving way to third parties via Zero-Knowledge Proofs (ZKP). This mission will guide you through the flow of using the Verida Wallet with various issuers and verifiers in the Polygon ID ecosystem.",
+      "The Verida Wallet supports Privado ID for receiving and storing Verifiable Credentials (VC), which can be presented in a privacy-preserving way to third parties via Zero-Knowledge Proofs (ZKP). This mission will guide you through the flow of using the Verida Wallet with various issuers and verifiers in the Privado ID ecosystem.",
     description: "Description of the mission 02",
   }),
   longDescription: defineMessage({
     id: "missions.mission-02.longDescription",
     defaultMessage:
-      "The Verida Wallet supports Polygon ID for receiving and storing Verifiable Credentials (VC), which can be presented in a privacy-preserving way to third parties via Zero-Knowledge Proofs (ZKP). This mission will guide you through the flow of using the Verida Wallet with various issuers and verifiers in the Polygon ID ecosystem.",
+      "The Verida Wallet supports Privado ID for receiving and storing Verifiable Credentials (VC), which can be presented in a privacy-preserving way to third parties via Zero-Knowledge Proofs (ZKP). This mission will guide you through the flow of using the Verida Wallet with various issuers and verifiers in the Privado ID ecosystem.",
     description: "Long description of the mission 02",
   }),
   resources: [],

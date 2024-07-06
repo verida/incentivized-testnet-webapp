@@ -102,7 +102,7 @@ export const PageLayout: React.FC<PageLayoutProps> = (props) => {
       {displayGetSupportSection ||
       displayGetSupportSection ||
       displayExploreMoreMissionsSection ? (
-        <div className="mt-14 sm:mt-20 flex flex-col items-center">
+        <div className="mt-14 sm:mt-20 flex flex-col gap-10 sm:gap-12 items-center">
           {displayExploreMoreMissionsSection ? (
             <ExploreMoreMissionsSection
               filterPredicate={exploreMoreMissionsFilterPredicate}

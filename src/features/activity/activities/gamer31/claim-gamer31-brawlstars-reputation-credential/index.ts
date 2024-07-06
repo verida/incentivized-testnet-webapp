@@ -9,7 +9,7 @@ import type {
 } from "~/features/activity/types";
 import { Logger } from "~/features/logger";
 import { MISSION_03_ID } from "~/features/missions";
-import { PARTNER_ID_GAMER31, PARTNER_ID_POLYGONID } from "~/features/partners";
+import { PARTNER_ID_GAMER31, PARTNER_ID_PRIVADOID } from "~/features/partners";
 import { Sentry } from "~/features/sentry";
 import {
   type ReceivedMessage,
@@ -223,7 +223,7 @@ export const activity: Activity = {
   visible: true,
   order: 5,
   points: 50,
-  partners: [PARTNER_ID_GAMER31, PARTNER_ID_POLYGONID],
+  partners: [PARTNER_ID_GAMER31, PARTNER_ID_PRIVADOID],
   title: defineMessage({
     id: "activities.claimGamer31BrawlStars.title",
     defaultMessage: "Claim a Gamer31 Brawl Stars credential",
@@ -261,7 +261,7 @@ export const activity: Activity = {
       description: defineMessage({
         id: "activities.claimGamer31BrawlStars.step1.description",
         defaultMessage:
-          "Go to the Gamer 31 claim page (link in the resources below) and click on the Brawl Stars 'Claim' button to start the process.",
+          "Go to the Gamer 31 claim page (link in the resources) and click on the Brawl Stars 'Claim' button to start the process.",
         description:
           "Step 1 of the activity 'claim Gamer31 Brawl Stars credential'",
       }),

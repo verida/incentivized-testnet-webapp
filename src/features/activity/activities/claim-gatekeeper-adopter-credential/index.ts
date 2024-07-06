@@ -9,7 +9,7 @@ import type {
 } from "~/features/activity/types";
 import { Logger } from "~/features/logger";
 import { MISSION_02_ID } from "~/features/missions";
-import { PARTNER_ID_POLYGONID } from "~/features/partners";
+import { PARTNER_ID_PRIVADOID } from "~/features/partners";
 import { Sentry } from "~/features/sentry";
 import {
   type ReceivedMessage,
@@ -223,7 +223,7 @@ export const activity: Activity = {
   visible: true,
   order: 2,
   points: 100,
-  partners: [PARTNER_ID_POLYGONID],
+  partners: [PARTNER_ID_PRIVADOID],
   title: defineMessage({
     id: "activities.claimGateKeperAdopter.title",
     defaultMessage: "Claim a GateKeeper Adopter credential",
@@ -261,7 +261,7 @@ export const activity: Activity = {
       description: defineMessage({
         id: "activities.claimGateKeperAdopter.step1.description",
         defaultMessage:
-          "Go to the GateKeeper claim page to start the process (link in resources below).",
+          "Go to the GateKeeper claim page to start the process (link in resources).",
         description:
           "Step 1 of the activity 'claim GateKeeper Adopter credential'",
       }),

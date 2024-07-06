@@ -136,7 +136,7 @@ export const OnboardingHomeCard: React.FC<OnboardingHomeCardProps> = (
               />
               <div className="flex-1 flex flex-col gap-6 justify-between">
                 <div className="flex flex-col gap-3">
-                  <Typography variant="heading-m" className="line-clamp-2">
+                  <Typography variant="heading-m" className="line-clamp-3">
                     {i18n.formatMessage(ONBOARDING_MISSION.title)}
                   </Typography>
                   <div className="hidden sm:block">

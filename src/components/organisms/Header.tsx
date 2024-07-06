@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { useIntl } from "react-intl";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
 import { ReactComponent as VeridaNetworkLogoWithText } from "~/assets/images/verida_network_logo_with_text.svg";
@@ -21,6 +21,8 @@ export type HeaderProps = Omit<
 
 export const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const { ...headerProps } = props;
+
+  const location = useLocation();
 
   const [openIdentityMenu, setOpenIdentityMenu] = useState(false);
   const [openNavMenu, setOpenNavMenu] = useState(false);
@@ -81,27 +83,23 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
           <div className="hidden sm:flex flex-row gap-4">
             <NavLink
               to={"/"}
-              className={({ isActive }) =>
-                twMerge(
-                  "px-4 pt-px flex items-center border-b",
-                  isActive
-                    ? "text-foreground border-transparent-95"
-                    : "text-transparent-70 hover:text-foreground border-transparent"
-                )
-              }
+              className={twMerge(
+                "px-4 pt-px flex items-center border-b",
+                !location.pathname.startsWith("/airdrops")
+                  ? "text-foreground border-transparent-95"
+                  : "text-transparent-70 hover:text-foreground border-transparent"
+              )}
             >
               <Typography>{missionsNavLabel}</Typography>
             </NavLink>
             <NavLink
               to={"/airdrops"}
-              className={({ isActive }) =>
-                twMerge(
-                  "px-4 pt-px flex items-center border-b",
-                  isActive
-                    ? "text-foreground border-transparent-95"
-                    : "text-transparent-70 hover:text-foreground border-transparent"
-                )
-              }
+              className={twMerge(
+                "px-4 pt-px flex items-center border-b",
+                location.pathname.startsWith("/airdrops")
+                  ? "text-foreground border-transparent-95"
+                  : "text-transparent-70 hover:text-foreground border-transparent"
+              )}
             >
               <Typography>{airdropsNavLabel}</Typography>
             </NavLink>
