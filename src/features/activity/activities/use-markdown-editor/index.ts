@@ -106,7 +106,7 @@ export const activity: Activity = {
       description: defineMessage({
         id: "activities.useMarkdownEditor.step1.description",
         defaultMessage:
-          "Connect to the Markdown Editor demo app (link in resources below) and create a new note.",
+          "Connect to the Markdown Editor demo app (link in resources) and create a new note.",
         description: "Step 1 of the activity 'use markdown editor'",
       }),
     },

@@ -7,12 +7,15 @@ import { Mission, missions } from "~/features/missions";
 
 export type ExploreMoreMissionsSectionProps = {
   filterPredicate?: (mission: Mission) => boolean;
-} & Omit<React.ComponentPropsWithRef<"aside">, "children">;
+} & Omit<
+  React.ComponentPropsWithRef<typeof PageAsideSectionWrapper>,
+  "title" | "children"
+>;
 
 export const ExploreMoreMissionsSection: React.FC<
   ExploreMoreMissionsSectionProps
 > = (props) => {
-  const { filterPredicate = () => true, ...asideProps } = props;
+  const { filterPredicate = () => true, ...wrapperProps } = props;
 
   const displayedMissions = useMemo(() => {
     const filteredMissions = missions.filter(filterPredicate);
@@ -33,10 +36,8 @@ export const ExploreMoreMissionsSection: React.FC<
   }
 
   return (
-    <aside {...asideProps}>
-      <PageAsideSectionWrapper title={sectionTitle}>
-        <MissionCardsCarousel missions={displayedMissions} />
-      </PageAsideSectionWrapper>
-    </aside>
+    <PageAsideSectionWrapper title={sectionTitle} {...wrapperProps}>
+      <MissionCardsCarousel missions={displayedMissions} />
+    </PageAsideSectionWrapper>
   );
 };

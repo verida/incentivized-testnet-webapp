@@ -261,7 +261,7 @@ export const activity: Activity = {
       description: defineMessage({
         id: "activities.claimGateKeperAdopter.step1.description",
         defaultMessage:
-          "Go to the GateKeeper claim page to start the process (link in resources below).",
+          "Go to the GateKeeper claim page to start the process (link in resources).",
         description:
           "Step 1 of the activity 'claim GateKeeper Adopter credential'",
       }),
