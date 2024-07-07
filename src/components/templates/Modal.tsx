@@ -13,7 +13,7 @@ import { EVENT_TYPE_KEYDOWN, KEY_NAME_ESC } from "~/constants";
 
 // TODO: Implement similar to the Alert component
 export type ModalAction = {
-  label: string;
+  label: string | React.ReactNode;
   onClick: () => void;
   disabled?: boolean;
 } & ButtonBaseVariants;
@@ -88,9 +88,9 @@ export const Modal: React.FunctionComponent<ModalProps> = (props) => {
           <div className="overflow-auto">{children}</div>
           {actions && actions.length > 0 ? (
             <div className="flex flex-row-reverse gap-2">
-              {actions.map((action) => (
+              {actions.map((action, index) => (
                 <Button
-                  key={action.label}
+                  key={index}
                   onClick={action.onClick}
                   variant={action.variant}
                   disabled={action.disabled}

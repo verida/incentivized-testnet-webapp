@@ -21,7 +21,6 @@ export * from "./SideNavigation";
 export * from "./StackedDiv";
 export * from "./StackedImg";
 export * from "./TabbedCardBase";
-export * from "./TokenAmountCard";
 export * from "./VdaTokensChip";
 export * from "./XpPointsBadge";
 export * from "./XpPointsChip";
