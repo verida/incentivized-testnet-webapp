@@ -101,14 +101,8 @@ export function useAirdrop1() {
         throw new Error("User not connected");
       }
 
-      logger.info("Checking conditions for airdrop 1 claim", { did });
-      checkAirdrop1Conditions(userActivities, userXpPoints);
-
       const payload: Airdrop1ClaimDto = {
         did,
-        profile: {
-          country: profile?.country,
-        },
         termsAccepted,
         userEvmAddress: userEvmAddress,
         userEvmAddressSignature: userEvmAddressSignature,

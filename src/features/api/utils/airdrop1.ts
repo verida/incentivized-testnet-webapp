@@ -85,7 +85,7 @@ export async function claimAirdrop1(
   const apiUrl = `${config.api.baseUrl}/api/rest/v1/airdrops/1/claim`;
 
   try {
-    const result = await fetch(apiUrl, {
+    const response = await fetch(apiUrl, {
       method: "POST",
       headers: {
         "Accept": "application/json",
@@ -95,12 +95,12 @@ export async function claimAirdrop1(
     });
 
     // TODO: Validate with Zod
-    const data = (await result.json()) as
+    const result = (await response.json()) as
       | Airdrop1ClaimSuccessResponse
       | ApiErrorResponse;
-    logger.debug("Airdrop 1 claim result", { data });
+    logger.debug("Airdrop 1 claim result", { result });
 
-    return data;
+    return result;
   } catch (error) {
     logger.error("Error claiming airdrop 1", { error });
     return {

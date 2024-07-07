@@ -32,10 +32,6 @@ export type Airdrop1RegisterSuccessResponse = {
 
 export type Airdrop1ClaimDto = {
   did: string;
-  profile: {
-    name?: string;
-    country?: string;
-  };
   termsAccepted?: boolean;
   userEvmAddress: string;
   userEvmAddressSignature: string;
