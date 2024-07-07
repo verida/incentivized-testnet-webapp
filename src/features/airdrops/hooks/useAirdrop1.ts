@@ -109,6 +109,7 @@ export function useAirdrop1() {
       };
 
       logger.info("Claiming airdrop 1", { did });
+      logger.debug("Payload for claiming airdrop 1", { did, payload });
       return claimAirdrop1(payload);
     },
     onSuccess: async () => {

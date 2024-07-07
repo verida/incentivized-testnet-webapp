@@ -3,6 +3,7 @@ import { useIntl } from "react-intl";
 
 import AirdropFailureImage from "~/assets/images/airdrop_fail.png";
 import { Typography } from "~/components/atoms";
+import { Alert } from "~/components/molecules";
 
 export type AirdropClaimFailureModalContentProps = {
   errorMessage?: string;
@@ -40,6 +41,9 @@ export const AirdropClaimFailureModalContent: React.FC<
         <div className="flex flex-col gap-3 items-center text-center">
           <Typography variant="heading-l">{title}</Typography>
           <Typography variant="base">{subtitle}</Typography>
+          {errorUserMessage ? (
+            <Alert type="error" message={errorUserMessage} />
+          ) : null}
         </div>
       </div>
     </div>

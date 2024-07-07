@@ -14,6 +14,7 @@ export type Airdrop1CheckSuccessResponse = {
   isClaimed: boolean;
   claimableTokenAmount: number | null;
   claimedTokenAmount: number | null;
+  claimTransactionUrl: string | null;
 };
 
 export type Airdrop1RegistrationDto = {

@@ -1,6 +1,7 @@
 export * from "./ActivityListItem";
 export * from "./ActivityStepCard";
 export * from "./AirdropCard";
+export * from "./AirdropClaimCheckCryptoWalletModalContent";
 export * from "./AirdropClaimCheckStatusModalContent";
 export * from "./AirdropClaimConfirmationModalContent";
 export * from "./AirdropClaimFailureModalContent";
