@@ -57,7 +57,7 @@ export const WalletConnectProvider: React.FC<WalletConnectProviderProps> = (
   const { children } = props;
 
   const { open } = useWeb3Modal();
-  const { disconnect } = useDisconnect();
+  const { disconnect: wcDisconnect } = useDisconnect();
   const { address, isConnected } = useWeb3ModalAccount();
   const { walletProvider } = useWeb3ModalProvider();
 
@@ -67,6 +67,13 @@ export const WalletConnectProvider: React.FC<WalletConnectProviderProps> = (
     }
     void open();
   }, [isConnected, open]);
+
+  const disconnect = useCallback(() => {
+    if (!isConnected) {
+      return;
+    }
+    void wcDisconnect();
+  }, [isConnected, wcDisconnect]);
 
   const signMessage = useCallback(
     async (message: string) => {
