@@ -45,7 +45,7 @@ export const AirdropsProvider: React.FC<AirdropsProviderProps> = (props) => {
                 (isVeridaConnected && isAirdrop1GettingUserStatus)
               ? "loading"
               : "none",
-      [AIRDROP_2_DEFINITION.id]: !isVeridaConnected ? "not-connected" : "none",
+      [AIRDROP_2_DEFINITION.id]: !isVeridaConnected ? "not-connected" : "free",
     });
   }, [
     isVeridaConnected,

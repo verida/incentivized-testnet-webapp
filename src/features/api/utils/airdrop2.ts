@@ -8,7 +8,7 @@ import { isValidEvmAddress } from "~/utils";
 
 const logger = new Logger("API");
 
-export async function airdrop2CheckEligibility(
+export async function airdrop2LegacyCheckEligibility(
   walletAddress: string
 ): Promise<Airdrop2CheckEligibilitySuccessResponse | ApiErrorResponse> {
   if (!isValidEvmAddress(walletAddress)) {

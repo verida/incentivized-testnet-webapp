@@ -172,7 +172,8 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
                 </div>
               ) : airdrop.status === "claim-opened" &&
                 (airdropUserStatus === "not-connected" ||
-                  airdropUserStatus === "registered") ? (
+                  airdropUserStatus === "registered" ||
+                  airdropUserStatus === "free") ? (
                 <div className="flex flex-col sm:flex-row gap-2 items-center">
                   <Typography className="text-center sm:text-right text-muted-foreground w-full">
                     {claimMessage}
@@ -225,7 +226,8 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
                   </ButtonLink>
                 ) : airdrop.status === "claim-opened" &&
                   (airdropUserStatus === "not-connected" ||
-                    airdropUserStatus === "registered") ? (
+                    airdropUserStatus === "registered" ||
+                    airdropUserStatus === "free") ? (
                   <ButtonLink
                     variant="contained"
                     color="primary"

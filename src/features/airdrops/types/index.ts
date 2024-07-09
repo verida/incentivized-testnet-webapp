@@ -29,5 +29,6 @@ export type AirdropUserStatus =
   | "not-connected"
   | "loading"
   | "none"
+  | "free"
   | "registered"
   | "claimed";
