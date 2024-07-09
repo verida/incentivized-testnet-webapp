@@ -2,7 +2,9 @@ import { useMutation } from "@tanstack/react-query";
 
 import {
   Airdrop2CheckDto,
+  Airdrop2ClaimDto,
   airdrop2LegacyCheckEligibility,
+  claimAirdrop2,
   getAirdrop2UserStatus,
 } from "~/features/api";
 import { Logger } from "~/features/logger";
@@ -70,6 +72,44 @@ export function useAirdrop2() {
     },
   });
 
+  const {
+    mutateAsync: claim,
+    isLoading: isClaiming,
+    error: errorClaiming,
+  } = useMutation({
+    mutationFn: async ({
+      termsAccepted,
+      userEvmAddress,
+      userEvmAddressSignature,
+    }: {
+      termsAccepted: boolean;
+      userEvmAddress: string;
+      userEvmAddressSignature: string;
+    }) => {
+      if (!isConnected || !did) {
+        throw new Error("User not connected");
+      }
+
+      const payload: Airdrop2ClaimDto = {
+        did,
+        profile: {
+          country: profile?.country,
+        },
+        termsAccepted,
+        userEvmAddress: userEvmAddress,
+        userEvmAddressSignature: userEvmAddressSignature,
+      };
+
+      logger.info("Claiming airdrop 2", { did });
+      logger.debug("Payload for claiming airdrop 2", { did, payload });
+      return claimAirdrop2(payload);
+    },
+    onError(error) {
+      logger.error("Error claiming airdrop 2", { error });
+      Sentry.captureException(error);
+    },
+  });
+
   return {
     checkLegacyEligbility,
     isCheckingLegacyEligibility,
@@ -77,5 +117,8 @@ export function useAirdrop2() {
     getUserStatus,
     isGettingUserStatus,
     errorGettingUserStatus,
+    claim,
+    isClaiming,
+    errorClaiming,
   };
 }

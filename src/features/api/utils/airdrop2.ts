@@ -3,6 +3,8 @@ import {
   Airdrop2CheckDto,
   Airdrop2CheckEligibilitySuccessResponse,
   Airdrop2CheckSuccessResponse,
+  Airdrop2ClaimDto,
+  Airdrop2ClaimSuccessResponse,
   ApiErrorResponse,
 } from "~/features/api/types";
 import { Logger } from "~/features/logger";
@@ -76,6 +78,39 @@ export async function getAirdrop2UserStatus(
     return result;
   } catch (error) {
     logger.error("Error checking airdrop 2", { error });
+    return {
+      status: "error",
+    };
+  }
+}
+
+export async function claimAirdrop2(
+  payload: Airdrop2ClaimDto
+): Promise<Airdrop2ClaimSuccessResponse | ApiErrorResponse> {
+  if (!config.api.baseUrl) {
+    throw new Error("No API URL set");
+  }
+  const apiUrl = `${config.api.baseUrl}/api/rest/v1/airdrops/2/claim`;
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    // TODO: Validate with Zod
+    const result = (await response.json()) as
+      | Airdrop2ClaimSuccessResponse
+      | ApiErrorResponse;
+    logger.debug("Airdrop 2 claim result", { result });
+
+    return result;
+  } catch (error) {
+    logger.error("Error claiming airdrop 2", { error });
     return {
       status: "error",
     };

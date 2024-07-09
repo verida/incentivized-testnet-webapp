@@ -70,3 +70,20 @@ export type Airdrop2CheckSuccessResponse = {
   claimedTokenAmount: number | null;
   claimTransactionUrl: string | null;
 };
+
+export type Airdrop2ClaimDto = {
+  did: string;
+  profile: {
+    name?: string;
+    country?: string;
+  };
+  termsAccepted: boolean;
+  userEvmAddress: string;
+  userEvmAddressSignature: string;
+};
+
+export type Airdrop2ClaimSuccessResponse = {
+  status: "success";
+  transactionExplorerUrl: string;
+  claimedTokenAmount: number;
+};

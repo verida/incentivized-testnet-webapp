@@ -1,11 +1,13 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useIntl } from "react-intl";
 
+import { Icon } from "~/components/atoms";
 import {
   AirdropAcceptTermsModalContent,
   AirdropCheckCryptoWalletModalContent,
   AirdropCheckStatusModalContent,
   AirdropClaimConfirmationModalContent,
+  AirdropClaimFailureModalContent,
   AirdropClaimSuccessModalContent,
   AirdropNotEligibleModalContent,
   AirdropNotRegisteredModalContent,
@@ -16,7 +18,11 @@ import {
   AIRDROP_2_DEFINITION,
   useAirdrop2,
 } from "~/features/airdrops";
-import { Airdrop2CheckSuccessResponse, ApiErrorResponse } from "~/features/api";
+import {
+  Airdrop2CheckSuccessResponse,
+  Airdrop2ClaimSuccessResponse,
+  ApiErrorResponse,
+} from "~/features/api";
 import { useWalletConnect } from "~/features/walletconnect";
 
 export type Airdrop2ClaimModalProps = {
@@ -28,7 +34,8 @@ export const Airdrop2ClaimModal: React.FC<Airdrop2ClaimModalProps> = (
 ) => {
   const { onClose } = props;
 
-  const { getUserStatus, isGettingUserStatus } = useAirdrop2();
+  const { getUserStatus, isGettingUserStatus, claim, isClaiming } =
+    useAirdrop2();
   const isGettingUserStatusRef = useRef(false);
   const {
     address: cryptoWalletAddress,
@@ -42,6 +49,9 @@ export const Airdrop2ClaimModal: React.FC<Airdrop2ClaimModalProps> = (
   const [isSigningMessage, setIsSigningMessage] = useState(false);
   const [userStatusResult, setUserStatusResult] = useState<
     Airdrop2CheckSuccessResponse | ApiErrorResponse | null
+  >(null);
+  const [claimResult, setClaimResult] = useState<
+    Airdrop2ClaimSuccessResponse | ApiErrorResponse | null
   >(null);
 
   useEffect(() => {
@@ -84,6 +94,24 @@ export const Airdrop2ClaimModal: React.FC<Airdrop2ClaimModalProps> = (
   const handleAcceptTerms = useCallback(() => {
     setIsTermsAccepted(true);
   }, []);
+
+  const handleClaim = useCallback(() => {
+    if (!cryptoWalletAddress || !signedMessage) {
+      return;
+    }
+
+    const execute = async () => {
+      setClaimResult(null);
+      const result = await claim({
+        termsAccepted: isTermsAccepted,
+        userEvmAddress: cryptoWalletAddress,
+        userEvmAddressSignature: signedMessage,
+      });
+      setClaimResult(result);
+    };
+
+    void execute();
+  }, [isTermsAccepted, cryptoWalletAddress, signedMessage, claim]);
 
   const handleSignMessage = useCallback(() => {
     if (!isCryptoWalletConnected) {
@@ -134,6 +162,12 @@ export const Airdrop2ClaimModal: React.FC<Airdrop2ClaimModalProps> = (
       "Label for the button to close the modal in the airdrop 2 claim modal",
   });
 
+  const claimButtonLabel = i18n.formatMessage({
+    id: "Airdrop2ClaimModal.claimButtonLabel",
+    defaultMessage: "Claim",
+    description: "Label for the submit button in the airdrop 2 claim modal",
+  });
+
   return (
     <Modal
       open
@@ -170,10 +204,10 @@ export const Airdrop2ClaimModal: React.FC<Airdrop2ClaimModalProps> = (
                 ]
               : isGettingUserStatus ||
                   isGettingUserStatusRef.current ||
-                  !userStatusResult
+                  !userStatusResult ||
+                  userStatusResult.status === "error"
                 ? []
-                : userStatusResult?.status === "success" &&
-                    !userStatusResult.isRegistered
+                : !userStatusResult.isRegistered
                   ? [
                       {
                         label: closeButtonLabel,
@@ -182,7 +216,29 @@ export const Airdrop2ClaimModal: React.FC<Airdrop2ClaimModalProps> = (
                         color: "primary",
                       },
                     ]
-                  : []
+                  : userStatusResult.isClaimed ||
+                      claimResult?.status === "success" ||
+                      claimResult?.status === "error"
+                    ? []
+                    : [
+                        {
+                          label: (
+                            <>
+                              {isClaiming ? (
+                                <Icon
+                                  type="loading"
+                                  className="animate-spin-slow"
+                                />
+                              ) : null}
+                              <span>{claimButtonLabel}</span>
+                            </>
+                          ),
+                          onClick: handleClaim,
+                          variant: "contained",
+                          color: "primary",
+                          disabled: isClaiming,
+                        },
+                      ]
       }
     >
       {!isTermsAccepted ? (
@@ -194,6 +250,7 @@ export const Airdrop2ClaimModal: React.FC<Airdrop2ClaimModalProps> = (
         !userStatusResult ? (
         <AirdropCheckStatusModalContent />
       ) : userStatusResult.status === "error" ? (
+        // TODO: Deal if the error is an internal error
         // TODO: Pass error to the component to display a message to the user
         <AirdropNotEligibleModalContent />
       ) : !userStatusResult.isRegistered ? (
@@ -205,8 +262,17 @@ export const Airdrop2ClaimModal: React.FC<Airdrop2ClaimModalProps> = (
             userStatusResult.claimTransactionUrl ?? undefined
           }
         />
+      ) : claimResult?.status === "success" ? (
+        <AirdropClaimSuccessModalContent
+          claimedTokenAmount={claimResult?.claimedTokenAmount ?? undefined}
+          transactionExplorerUrl={claimResult?.transactionExplorerUrl}
+        />
+      ) : claimResult?.status === "error" ? (
+        <AirdropClaimFailureModalContent
+          errorMessage={claimResult.errorMessage}
+          errorUserMessage={claimResult.errorUserMessage}
+        />
       ) : (
-        // TODO: Handle claim success and error
         <AirdropClaimConfirmationModalContent
           claimableTokenAmount={userStatusResult.claimableTokenAmount ?? 0}
           blockchainAddress={cryptoWalletAddress}
