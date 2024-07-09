@@ -6,6 +6,7 @@ import { Typography } from "~/components/atoms";
 import { Airdrop1ClaimModal } from "~/components/modals/Airdrop1ClaimModal";
 import { Airdrop1RegistrationModal } from "~/components/modals/Airdrop1RegistrationModal";
 import { Airdrop2CheckModal } from "~/components/modals/Airdrop2CheckModal";
+import { Airdrop2ClaimModal } from "~/components/modals/Airdrop2ClaimModal";
 import { ConnectVeridaButton } from "~/components/organisms";
 import { Modal } from "~/components/templates";
 import {
@@ -70,6 +71,13 @@ export const AirdropModal: React.FC = () => {
     AIRDROP_2_DEFINITION.status === "check"
   ) {
     return <Airdrop2CheckModal onClose={handleClose} />;
+  }
+
+  if (
+    airdropId === AIRDROP_2_DEFINITION.id &&
+    AIRDROP_2_DEFINITION.status === "claim-opened"
+  ) {
+    return <Airdrop2ClaimModal onClose={handleClose} />;
   }
 
   return null;
