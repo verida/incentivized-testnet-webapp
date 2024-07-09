@@ -1,6 +1,8 @@
 import { config } from "~/config";
 import {
+  Airdrop2CheckDto,
   Airdrop2CheckEligibilitySuccessResponse,
+  Airdrop2CheckSuccessResponse,
   ApiErrorResponse,
 } from "~/features/api/types";
 import { Logger } from "~/features/logger";
@@ -41,6 +43,39 @@ export async function airdrop2LegacyCheckEligibility(
     return data;
   } catch (error) {
     logger.error("Error checking airdrop 2 eligibility", { error });
+    return {
+      status: "error",
+    };
+  }
+}
+
+export async function getAirdrop2UserStatus(
+  payload: Airdrop2CheckDto
+): Promise<Airdrop2CheckSuccessResponse | ApiErrorResponse> {
+  if (!config.api.baseUrl) {
+    throw new Error("No API URL set");
+  }
+  const apiUrl = `${config.api.baseUrl}/api/rest/v1/airdrops/2/check`;
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    // TODO: Validate with Zod
+    const result = (await response.json()) as
+      | Airdrop2CheckSuccessResponse
+      | ApiErrorResponse;
+    logger.debug("Airdrop 2 check result", { result });
+
+    return result;
+  } catch (error) {
+    logger.error("Error checking airdrop 2", { error });
     return {
       status: "error",
     };

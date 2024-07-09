@@ -50,3 +50,23 @@ export type Airdrop2CheckEligibilitySuccessResponse = {
   status: "success";
   isEligible: boolean;
 };
+
+export type Airdrop2CheckDto = {
+  did: string;
+  profile: {
+    name?: string;
+    country?: string;
+  };
+  termsAccepted: boolean;
+  userEvmAddress: string;
+  userEvmAddressSignature: string;
+};
+
+export type Airdrop2CheckSuccessResponse = {
+  status: "success";
+  isRegistered: boolean;
+  isClaimed: boolean;
+  claimableTokenAmount: number | null;
+  claimedTokenAmount: number | null;
+  claimTransactionUrl: string | null;
+};
