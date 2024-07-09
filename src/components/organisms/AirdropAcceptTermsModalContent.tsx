@@ -4,30 +4,30 @@ import { useIntl } from "react-intl";
 import { ExternalLink, Typography } from "~/components/atoms";
 import { AIRDROPS_TERMS_URL } from "~/features/airdrops";
 
-export type AirdropClaimTermsModalContentProps = Omit<
+export type AirdropAcceptTermsModalContentProps = Omit<
   React.ComponentProps<"div">,
   "children"
 >;
 
-export const AirdropClaimTermsModalContent: React.FC<
-  AirdropClaimTermsModalContentProps
+export const AirdropAcceptTermsModalContent: React.FC<
+  AirdropAcceptTermsModalContentProps
 > = (props) => {
   const { ...divProps } = props;
 
   const i18n = useIntl();
 
   const acceptTermsMessage = i18n.formatMessage({
-    id: "AirdropClaimTermsModalContent.acceptTermsMessage",
+    id: "AirdropAcceptTermsModalContent.acceptTermsMessage",
     defaultMessage: "Please read and accept the",
     description:
       "Message displayed in the airdrop modal when asking the user to accept the terms and conditions of the airdrop.",
   });
 
   const termsUrlLabel = i18n.formatMessage({
-    id: "AirdropClaimTermsModalContent.termsUrlLabel",
+    id: "AirdropAcceptTermsModalContent.termsUrlLabel",
     defaultMessage: "Terms and Conditions",
     description:
-      "Label of the Airdrops Terms and Conditions link displayed in the airdrop claim modal.",
+      "Label of the Airdrops Terms and Conditions link displayed in the airdrop modal.",
   });
 
   return (

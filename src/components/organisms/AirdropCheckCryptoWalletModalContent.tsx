@@ -4,13 +4,13 @@ import { useIntl } from "react-intl";
 import { Typography } from "~/components/atoms";
 import { useWalletConnect } from "~/features/walletconnect";
 
-export type AirdropClaimCheckCryptoWalletModalContentProps = Omit<
+export type AirdropCheckCryptoWalletModalContentProps = Omit<
   React.ComponentProps<"div">,
   "children"
 >;
 
-export const AirdropClaimCheckCryptoWalletModalContent: React.FC<
-  AirdropClaimCheckCryptoWalletModalContentProps
+export const AirdropCheckCryptoWalletModalContent: React.FC<
+  AirdropCheckCryptoWalletModalContentProps
 > = (props) => {
   const { ...divProps } = props;
 
@@ -19,20 +19,20 @@ export const AirdropClaimCheckCryptoWalletModalContent: React.FC<
   const i18n = useIntl();
 
   const informationMessage = i18n.formatMessage({
-    id: "AirdropClaimCheckCryptoWalletModalContent.informationMessage",
+    id: "AirdropCheckCryptoWalletModalContent.informationMessage",
     defaultMessage:
       "To claim this airdrop, we need you to connect your crypto wallet and we will ask you to sign a message to prove you own this wallet.",
     description: "",
   });
 
   const connectInformationMessage = i18n.formatMessage({
-    id: "AirdropClaimCheckCryptoWalletModalContent.connectInformationMessage",
+    id: "AirdropCheckCryptoWalletModalContent.connectInformationMessage",
     defaultMessage: "Please proceed in connecting your crypto wallet.",
     description: "",
   });
 
   const signInformationMessage = i18n.formatMessage({
-    id: "AirdropClaimCheckCryptoWalletModalContent.signInformationMessage",
+    id: "AirdropCheckCryptoWalletModalContent.signInformationMessage",
     defaultMessage: "Please sign the message to prove your ownership.",
     description: "",
   });

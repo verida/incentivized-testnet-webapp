@@ -3,30 +3,30 @@ import { useIntl } from "react-intl";
 
 import { Icon, Typography } from "~/components/atoms";
 
-export type AirdropClaimCheckStatusModalContentProps = Omit<
+export type AirdropCheckStatusModalContentProps = Omit<
   React.ComponentProps<"div">,
   "children"
 >;
 
-export const AirdropClaimCheckStatusModalContent: React.FC<
-  AirdropClaimCheckStatusModalContentProps
+export const AirdropCheckStatusModalContent: React.FC<
+  AirdropCheckStatusModalContentProps
 > = (props) => {
   const { ...divProps } = props;
 
   const i18n = useIntl();
 
   const checkingStatusMessage = i18n.formatMessage({
-    id: "AirdropClaimCheckStatusModalContent.checkingStatusMessage",
+    id: "AirdropCheckStatusModalContent.checkingStatusMessage",
     defaultMessage: "Checking the status of your airdrop",
     description:
-      "Message displayed in the airdrop claim modal when checking the status of the airdrop",
+      "Message displayed in the airdrop modal when checking the status of the airdrop",
   });
 
   const pleaseWaitMessage = i18n.formatMessage({
-    id: "AirdropClaimCheckStatusModalContent.pleaseWaitMessage",
+    id: "AirdropCheckStatusModalContent.pleaseWaitMessage",
     defaultMessage: "Please wait a moment...",
     description:
-      "Message displayed in the airdrop claim modal when checking the status of the airdrop",
+      "Message displayed in the airdrop modal when checking the status of the airdrop",
   });
 
   return (
