@@ -73,11 +73,7 @@ export const AirdropClaimConfirmationModalContent: React.FC<
             {userAddressLabel}
           </Typography>
           <div className="w-full">
-            <Typography
-              variant="heading-s"
-              component="p"
-              className="line-clamp-1"
-            >
+            <Typography variant="heading-s" component="p" className="truncate">
               <>{blockchainAddress ?? "-"}</>
             </Typography>
           </div>

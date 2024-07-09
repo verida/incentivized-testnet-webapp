@@ -41,10 +41,10 @@ export const AirdropClaimFailureModalContent: React.FC<
         <div className="flex flex-col gap-3 items-center text-center">
           <Typography variant="heading-l">{title}</Typography>
           <Typography variant="base">{subtitle}</Typography>
-          {errorUserMessage ? (
-            <Alert type="error" message={errorUserMessage} />
-          ) : null}
         </div>
+        {errorUserMessage ? (
+          <Alert type="error" message={errorUserMessage} className="w-full" />
+        ) : null}
       </div>
     </div>
   );

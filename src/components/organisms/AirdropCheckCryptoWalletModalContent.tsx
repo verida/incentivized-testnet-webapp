@@ -1,7 +1,7 @@
 import React from "react";
 import { useIntl } from "react-intl";
 
-import { Typography } from "~/components/atoms";
+import { Button, Typography } from "~/components/atoms";
 import { useWalletConnect } from "~/features/walletconnect";
 
 export type AirdropCheckCryptoWalletModalContentProps = Omit<
@@ -14,7 +14,7 @@ export const AirdropCheckCryptoWalletModalContent: React.FC<
 > = (props) => {
   const { ...divProps } = props;
 
-  const { isConnected } = useWalletConnect();
+  const { address, isConnected, disconnect } = useWalletConnect();
 
   const i18n = useIntl();
 
@@ -27,7 +27,19 @@ export const AirdropCheckCryptoWalletModalContent: React.FC<
 
   const connectInformationMessage = i18n.formatMessage({
     id: "AirdropCheckCryptoWalletModalContent.connectInformationMessage",
-    defaultMessage: "Please proceed in connecting your crypto wallet.",
+    defaultMessage: "Please connect your crypto wallet first.",
+    description: "",
+  });
+
+  const connectedAddressMessage = i18n.formatMessage({
+    id: "AirdropCheckCryptoWalletModalContent.connectedAddressMessage",
+    defaultMessage: "You are connected with:",
+    description: "",
+  });
+
+  const disconnectButtonLabel = i18n.formatMessage({
+    id: "AirdropCheckCryptoWalletModalContent.disconnectButtonLabel",
+    defaultMessage: "Disconnect",
     description: "",
   });
 
@@ -41,9 +53,26 @@ export const AirdropCheckCryptoWalletModalContent: React.FC<
     <div {...divProps}>
       <div className="flex flex-col gap-8">
         <Typography variant="base">{informationMessage}</Typography>
-        <Typography variant="base">
-          {isConnected ? signInformationMessage : connectInformationMessage}
-        </Typography>
+        {!isConnected ? (
+          <Typography variant="base">{connectInformationMessage}</Typography>
+        ) : (
+          <>
+            <div className="flex flex-col gap-3">
+              <Typography variant="base">{connectedAddressMessage}</Typography>
+              <Typography variant="base" className="truncate">
+                {address}
+              </Typography>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={disconnect}
+              >
+                {disconnectButtonLabel}
+              </Button>
+            </div>
+            <Typography variant="base">{signInformationMessage}</Typography>
+          </>
+        )}
       </div>
     </div>
   );

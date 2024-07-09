@@ -52,7 +52,7 @@ export function useAirdrop1() {
   const {
     mutateAsync: register,
     isLoading: isRegistering,
-    error: errorRegisteringProof,
+    error: errorRegistering,
   } = useMutation({
     mutationFn: async (termsAccepted: boolean) => {
       if (!isConnected || !did) {
@@ -86,7 +86,7 @@ export function useAirdrop1() {
   const {
     mutateAsync: claim,
     isLoading: isClaiming,
-    error: errorClaimingProof,
+    error: errorClaiming,
   } = useMutation({
     mutationFn: async ({
       termsAccepted,
@@ -126,9 +126,9 @@ export function useAirdrop1() {
     userStatus,
     register,
     isRegistering,
-    errorRegisteringProof,
+    errorRegistering,
     claim,
     isClaiming,
-    errorClaimingProof,
+    errorClaiming,
   };
 }

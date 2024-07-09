@@ -54,7 +54,7 @@ export const Airdrop1ClaimModal: React.FC<Airdrop1ClaimModalProps> = (
     setIsTermsAccepted(true);
   }, []);
 
-  const handleSubmit = useCallback(() => {
+  const handleClaim = useCallback(() => {
     if (!cryptoWalletAddress || !signedMessage) {
       return;
     }
@@ -100,8 +100,8 @@ export const Airdrop1ClaimModal: React.FC<Airdrop1ClaimModalProps> = (
       "Label for the button to accept the terms and conditions in the airdrop 1 claim modal",
   });
 
-  const submitButtonLabel = i18n.formatMessage({
-    id: "Airdrop1ClaimModal.submitButtonLabel",
+  const claimButtonLabel = i18n.formatMessage({
+    id: "Airdrop1ClaimModal.claimButtonLabel",
     defaultMessage: "Claim",
     description: "Label for the submit button in the airdrop 1 claim modal",
   });
@@ -186,10 +186,10 @@ export const Airdrop1ClaimModal: React.FC<Airdrop1ClaimModalProps> = (
                                   className="animate-spin-slow"
                                 />
                               ) : null}
-                              <span>{submitButtonLabel}</span>
+                              <span>{claimButtonLabel}</span>
                             </>
                           ),
-                          onClick: handleSubmit,
+                          onClick: handleClaim,
                           variant: "contained",
                           color: "primary",
                           disabled: isClaiming,
