@@ -12,9 +12,9 @@ export type Airdrop1CheckSuccessResponse = {
   status: "success";
   isRegistered: boolean;
   isClaimed: boolean;
-  claimableTokenAmount: number | null;
-  claimedTokenAmount: number | null;
-  claimTransactionUrl: string | null;
+  claimableTokenAmount?: number;
+  claimedTokenAmount?: number;
+  claimTransactionUrl?: string;
 };
 
 export type Airdrop1RegistrationDto = {
@@ -66,9 +66,9 @@ export type Airdrop2CheckSuccessResponse = {
   status: "success";
   isRegistered: boolean;
   isClaimed: boolean;
-  claimableTokenAmount: number | null;
-  claimedTokenAmount: number | null;
-  claimTransactionUrl: string | null;
+  claimableTokenAmount?: number;
+  claimedTokenAmount?: number;
+  claimTransactionUrl?: string;
 };
 
 export type Airdrop2ClaimDto = {
