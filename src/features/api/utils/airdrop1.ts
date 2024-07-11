@@ -8,6 +8,7 @@ import {
   ApiErrorResponse,
 } from "~/features/api/types";
 import { Logger } from "~/features/logger";
+import { wait } from "~/utils";
 
 const logger = new Logger("API");
 
@@ -17,6 +18,9 @@ export async function getAirdrop1Status(
   if (!config.api.baseUrl) {
     throw new Error("No API URL set");
   }
+
+  logger.info("Getting airdrop 1 status", { did });
+
   const apiUrl = `${config.api.baseUrl}/api/rest/v1/airdrops/1/check/${did}`;
 
   try {
@@ -32,11 +36,12 @@ export async function getAirdrop1Status(
     const data = (await result.json()) as
       | Airdrop1CheckSuccessResponse
       | ApiErrorResponse;
-    logger.debug("Getting airdrop 1 status", { data });
+
+    logger.debug("Airdrop 1 status", { data });
 
     return data;
   } catch (error) {
-    logger.error("Error checking airdrop 1 proof exists", { error });
+    logger.error("Error getting airdrop 1 status", { error });
     return {
       status: "error",
     };
@@ -82,6 +87,10 @@ export async function claimAirdrop1(
   if (!config.api.baseUrl) {
     throw new Error("No API URL set");
   }
+
+  logger.info("Claiming airdrop 1", { did: payload.did });
+  logger.debug("Payload for claiming airdrop 1", { payload });
+
   const apiUrl = `${config.api.baseUrl}/api/rest/v1/airdrops/1/claim`;
 
   try {
@@ -94,10 +103,34 @@ export async function claimAirdrop1(
       body: JSON.stringify(payload),
     });
 
+    if (response.status === 503) {
+      // Likely a time out
+      logger.info(
+        "Airdrop 1 claim resulted in a likely time out, waiting a moment and checking the status",
+        { did: payload.did }
+      );
+      await wait(config.airdrop.timeoutRetryDelay);
+
+      const airdropStatus = await getAirdrop1Status(payload.did);
+
+      if (airdropStatus.status === "success" && airdropStatus.isClaimed) {
+        return {
+          status: "success",
+          claimedTokenAmount: airdropStatus.claimedTokenAmount ?? 0,
+          transactionExplorerUrl: airdropStatus.claimTransactionUrl ?? "-",
+        };
+      } else {
+        return {
+          status: "error",
+        };
+      }
+    }
+
     // TODO: Validate with Zod
     const result = (await response.json()) as
       | Airdrop1ClaimSuccessResponse
       | ApiErrorResponse;
+
     logger.debug("Airdrop 1 claim result", { result });
 
     return result;

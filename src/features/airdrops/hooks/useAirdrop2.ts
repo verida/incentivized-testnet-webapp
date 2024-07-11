@@ -62,8 +62,6 @@ export function useAirdrop2() {
         userEvmAddressSignature,
       };
 
-      logger.info("Checking airdrop 2", { did });
-      logger.debug("Payload for checking airdrop 2", { did, payload });
       return getAirdrop2UserStatus(payload);
     },
     onError(error) {
@@ -100,8 +98,6 @@ export function useAirdrop2() {
         userEvmAddressSignature: userEvmAddressSignature,
       };
 
-      logger.info("Claiming airdrop 2", { did });
-      logger.debug("Payload for claiming airdrop 2", { did, payload });
       return claimAirdrop2(payload);
     },
     onError(error) {

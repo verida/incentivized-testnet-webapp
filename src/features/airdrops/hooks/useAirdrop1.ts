@@ -29,8 +29,6 @@ export function useAirdrop1() {
       if (!isConnected || !did) {
         throw new Error("User not connected");
       }
-
-      logger.info("Getting airdrop 1 status", { did });
       return getAirdrop1Status(did);
     },
     onError(error) {
@@ -108,8 +106,6 @@ export function useAirdrop1() {
         userEvmAddressSignature: userEvmAddressSignature,
       };
 
-      logger.info("Claiming airdrop 1", { did });
-      logger.debug("Payload for claiming airdrop 1", { did, payload });
       return claimAirdrop1(payload);
     },
     onSuccess: async () => {

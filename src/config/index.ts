@@ -49,6 +49,11 @@ export const config = {
   api: {
     baseUrl: process.env.REACT_APP_API_BASE_URL,
   },
+  airdrop: {
+    timeoutRetryDelay: process.env.REACT_APP_AIRDROPS_CLAIM_TIMEOUT_RETRY_DELAY
+      ? Number(process.env.REACT_APP_AIRDROPS_CLAIM_TIMEOUT_RETRY_DELAY)
+      : 5000,
+  },
   proof: {
     connectorBaseUrl: process.env.REACT_APP_ZK_DAPP_CONNECTOR_BASE_URL,
   },
