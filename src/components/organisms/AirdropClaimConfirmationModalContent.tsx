@@ -32,7 +32,7 @@ export const AirdropClaimConfirmationModalContent: React.FC<
 
   const claimableTokenAmountAsString = i18n.formatMessage(
     {
-      id: "AirdropClaimConfirmationModalContent.claimableTokenAmountLabel",
+      id: "AirdropClaimConfirmationModalContent.claimableTokenAmountAsString",
       defaultMessage: "{amount, number} VDA",
       description:
         "Claimable token amount in the content of the airdrop claim confirmation modal",

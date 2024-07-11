@@ -231,9 +231,13 @@
     "defaultMessage": "Please wait a moment...",
     "description": "Message displayed in the airdrop modal when checking the status of the airdrop"
   },
-  "AirdropClaimConfirmationModalContent.claimableTokenAmountLabel": {
+  "AirdropClaimConfirmationModalContent.claimableTokenAmountAsString": {
     "defaultMessage": "{amount, number} VDA",
     "description": "Claimable token amount in the content of the airdrop claim confirmation modal"
+  },
+  "AirdropClaimConfirmationModalContent.claimableTokenAmountLabel": {
+    "defaultMessage": "You will receive",
+    "description": "Label for the claimable token amount in the content of the airdrop claim confirmation modal"
   },
   "AirdropClaimConfirmationModalContent.confirmationMessage": {
     "defaultMessage": "You are registered for the airdrop! Please proceed with the claim to receive your tokens on your address on the Polygon blockchain.",
