@@ -43,6 +43,26 @@
     "defaultMessage": "To do",
     "description": "Label of the status for an activity to perform"
   },
+  "Airdrop1ClaimModal.acceptTermsButtonLabel": {
+    "defaultMessage": "Accept",
+    "description": "Label for the button to accept the terms and conditions in the airdrop 1 claim modal"
+  },
+  "Airdrop1ClaimModal.claimButtonLabel": {
+    "defaultMessage": "Claim",
+    "description": "Label for the submit button in the airdrop 1 claim modal"
+  },
+  "Airdrop1ClaimModal.closeButtonLabel": {
+    "defaultMessage": "Got It",
+    "description": "Label for the button to close the modal in the airdrop 1 claim modal"
+  },
+  "Airdrop1ClaimModal.connectCryptoWalletButtonLabel": {
+    "defaultMessage": "Connect your wallet",
+    "description": "Label for the button to connect the crypto wallet in the airdrop 1 claim modal"
+  },
+  "Airdrop1ClaimModal.signMessageButtonLabel": {
+    "defaultMessage": "Sign message",
+    "description": "Label for the button to connect the crypto wallet in the airdrop 1 claim modal"
+  },
   "Airdrop1RegistrationModal.acceptTermsButtonLabel": {
     "defaultMessage": "Accept",
     "description": "Label for the button to accept the terms and conditions in the airdrop 1 modal"
@@ -119,6 +139,34 @@
     "defaultMessage": "Terms and Conditions",
     "description": "Label of the Airdrops Terms and Conditions link."
   },
+  "Airdrop2ClaimModal.acceptTermsButtonLabel": {
+    "defaultMessage": "Accept",
+    "description": "Label for the button to accept the terms and conditions in the airdrop 2 claim modal"
+  },
+  "Airdrop2ClaimModal.claimButtonLabel": {
+    "defaultMessage": "Claim",
+    "description": "Label for the submit button in the airdrop 2 claim modal"
+  },
+  "Airdrop2ClaimModal.closeButtonLabel": {
+    "defaultMessage": "Got It",
+    "description": "Label for the button to close the modal in the airdrop 2 claim modal"
+  },
+  "Airdrop2ClaimModal.connectCryptoWalletButtonLabel": {
+    "defaultMessage": "Connect your wallet",
+    "description": "Label for the button to connect the crypto wallet in the airdrop 2 claim modal"
+  },
+  "Airdrop2ClaimModal.signMessageButtonLabel": {
+    "defaultMessage": "Sign message",
+    "description": "Label for the button to connect the crypto wallet in the airdrop 2 claim modal"
+  },
+  "AirdropAcceptTermsModalContent.acceptTermsMessage": {
+    "defaultMessage": "Please read and accept the",
+    "description": "Message displayed in the airdrop modal when asking the user to accept the terms and conditions of the airdrop."
+  },
+  "AirdropAcceptTermsModalContent.termsUrlLabel": {
+    "defaultMessage": "Terms and Conditions",
+    "description": "Label of the Airdrops Terms and Conditions link displayed in the airdrop modal."
+  },
   "AirdropCard.checkButtonLabel": {
     "defaultMessage": "Check",
     "description": "Label for the check button of the airdrop card"
@@ -155,6 +203,82 @@
     "defaultMessage": "Please wait for the claim to open",
     "description": "Message displayed in the airdrop card when the user is registered and has to wait for the claim process to open"
   },
+  "AirdropCheckCryptoWalletModalContent.connectInformationMessage": {
+    "defaultMessage": "Please connect your crypto wallet first.",
+    "description": ""
+  },
+  "AirdropCheckCryptoWalletModalContent.connectedAddressMessage": {
+    "defaultMessage": "You are connected with:",
+    "description": ""
+  },
+  "AirdropCheckCryptoWalletModalContent.disconnectButtonLabel": {
+    "defaultMessage": "Disconnect",
+    "description": ""
+  },
+  "AirdropCheckCryptoWalletModalContent.informationMessage": {
+    "defaultMessage": "To claim this airdrop, we need you to connect your crypto wallet and we will ask you to sign a message to prove you own this wallet.",
+    "description": ""
+  },
+  "AirdropCheckCryptoWalletModalContent.signInformationMessage": {
+    "defaultMessage": "Please sign the message to prove your ownership.",
+    "description": ""
+  },
+  "AirdropCheckStatusModalContent.checkingStatusMessage": {
+    "defaultMessage": "Checking the status of your airdrop",
+    "description": "Message displayed in the airdrop modal when checking the status of the airdrop"
+  },
+  "AirdropCheckStatusModalContent.pleaseWaitMessage": {
+    "defaultMessage": "Please wait a moment...",
+    "description": "Message displayed in the airdrop modal when checking the status of the airdrop"
+  },
+  "AirdropClaimConfirmationModalContent.claimableTokenAmountLabel": {
+    "defaultMessage": "{amount, number} VDA",
+    "description": "Claimable token amount in the content of the airdrop claim confirmation modal"
+  },
+  "AirdropClaimConfirmationModalContent.confirmationMessage": {
+    "defaultMessage": "You are registered for the airdrop! Please proceed with the claim to receive your tokens on your address on the Polygon blockchain.",
+    "description": "Message in the content of the airdrop claim confirmation modal"
+  },
+  "AirdropClaimConfirmationModalContent.sponsoredTransactionFees": {
+    "defaultMessage": "Verida is sponsoring the transaction fees.",
+    "description": "Message saying the transaction fees are sponsored in the content of the airdrop claim modal"
+  },
+  "AirdropClaimConfirmationModalContent.userAddressLabel": {
+    "defaultMessage": "On your wallet address",
+    "description": "Label for the user address in the content of the airdrop claim confirmation modal"
+  },
+  "AirdropClaimFailureModalContent.subtitle": {
+    "defaultMessage": "Unfortunately, your claim could not be processed at this time. We apologize for the inconvenience. Please try again later.",
+    "description": "Subtitle in the content of the Airdrop claim failure modal"
+  },
+  "AirdropClaimFailureModalContent.title": {
+    "defaultMessage": "Claim failed!",
+    "description": "Title in the content of the Airdrop claim failure modal"
+  },
+  "AirdropClaimSuccessModalContent.claimedAmountLabel": {
+    "defaultMessage": "Claimed VDA",
+    "description": "Label for the claimed amount in the content of the airdrop claim success modal"
+  },
+  "AirdropClaimSuccessModalContent.shareOnSocialsMessage": {
+    "defaultMessage": "Share your airdrop with the community",
+    "description": "Message to share the success on socials in the content of the airdrop claim success modal"
+  },
+  "AirdropClaimSuccessModalContent.sharedMessageOnSocialsText": {
+    "defaultMessage": "I have successfully claimed my @verida_io airdrop at https://missions.verida.network/",
+    "description": "Message shared on social after submitted the proof"
+  },
+  "AirdropClaimSuccessModalContent.subtitle": {
+    "defaultMessage": "You have successfully claimed your Verida airdrop",
+    "description": "Subtitle in the content of the airdrop claim success modal"
+  },
+  "AirdropClaimSuccessModalContent.title": {
+    "defaultMessage": "Congratulations!",
+    "description": "Title in the content of the airdrop claim success modal"
+  },
+  "AirdropClaimSuccessModalContent.transactionExplorerLinkLabel": {
+    "defaultMessage": "Check the transaction",
+    "description": "Message to view the transaction on Etherscan in the content of the airdrop claim success modal"
+  },
   "AirdropModal.notConnectedModalMessage": {
     "defaultMessage": "To proceed with the airdrop, you need to connect your Verida identity.",
     "description": "Message of the modal when the user is not connected"
@@ -162,6 +286,14 @@
   "AirdropModal.notConnectedModalTitle": {
     "defaultMessage": "Connect your Verida identity",
     "description": "Title of the modal when the user is not connected"
+  },
+  "AirdropNotEligibleModalContent.notEligibleAlertMessage": {
+    "defaultMessage": "Unfortunately, you are not eligible for this airdrop.",
+    "description": "Message displayed in the airdrop modal when the user is not eligible for the airdrop."
+  },
+  "AirdropNotRegisteredModalContent.notRegisteredAlertMessage": {
+    "defaultMessage": "Unfortunately, you are not registered for this airdrop.",
+    "description": "Message displayed in the airdrop modal when the user is not registered for the airdrop."
   },
   "AirdropRequirementsModal.airdropRequirementSectionMessage": {
     "defaultMessage": "For {airdropTitle}",
