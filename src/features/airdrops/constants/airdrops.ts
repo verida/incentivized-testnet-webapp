@@ -9,3 +9,6 @@ export const airdrops = [
 ]
   .filter((airdrop) => airdrop.enabled)
   .sort((a, b) => a.order - b.order);
+
+export const AIRDROPS_CRYPTO_WALLET_MESSAGE_TO_SIGN =
+  "I am the owner of this address for the Verida Airdrops";

@@ -1,12 +1,15 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMemo } from "react";
 
 import { useActivity } from "~/features/activity";
 import { checkAirdrop1Conditions } from "~/features/airdrops/utils";
 import {
-  SubmitAirdrop1ProofPayload,
-  airdrop1CheckProofSubmitted,
+  Airdrop1ClaimDto,
+  Airdrop1RegistrationDto,
+  claimAirdrop1,
+  getAirdrop1Status,
 } from "~/features/api";
-import { airdrop1SubmitProof } from "~/features/api";
+import { registerAirdrop1 } from "~/features/api";
 import { Logger } from "~/features/logger";
 import { Sentry } from "~/features/sentry";
 import { useVerida } from "~/features/verida";
@@ -18,39 +21,45 @@ export function useAirdrop1() {
   const { isConnected, did, profile } = useVerida();
   const { userActivities, userXpPoints } = useActivity();
 
-  const { data: checkProofSubmittedData, isLoading: isCheckingProofSubmitted } =
-    useQuery({
-      queryKey: ["airdrop1", did],
-      enabled: isConnected && !!did,
-      staleTime: 1000 * 60 * 10, // 10 minutes
-      queryFn: async () => {
-        if (!isConnected || !did) {
-          throw new Error("User not connected");
-        }
+  const { data: statusData, isLoading: isGettingUserStatus } = useQuery({
+    queryKey: ["airdrop1", did],
+    enabled: isConnected && !!did,
+    queryFn: async () => {
+      if (!isConnected || !did) {
+        throw new Error("User not connected");
+      }
+      return getAirdrop1Status(did);
+    },
+    onError(error) {
+      logger.error("Error getting airdrop 1 status", { error });
+      Sentry.captureException(error);
+    },
+  });
 
-        logger.info("Checking airdrop 1 proof exists", { did });
-        return airdrop1CheckProofSubmitted(did);
-      },
-      onError(error) {
-        logger.error("Error checking airdrop 1 proof exists", { error });
-        Sentry.captureException(error);
-      },
-    });
+  const userStatus = useMemo(() => {
+    if (!statusData || statusData.status !== "success") {
+      return null;
+    }
+
+    const { status: requestStatus, ...userStatus } = statusData;
+
+    return userStatus;
+  }, [statusData]);
 
   const {
-    mutateAsync: submitProof,
-    isLoading: isSubmittingProof,
-    error: errorSubmittingProof,
+    mutateAsync: register,
+    isLoading: isRegistering,
+    error: errorRegistering,
   } = useMutation({
     mutationFn: async (termsAccepted: boolean) => {
       if (!isConnected || !did) {
         throw new Error("User not connected");
       }
-      logger.info("Submitting airdrop 1 proof", { did });
 
+      logger.info("Checking conditions for airdrop 1 registration", { did });
       checkAirdrop1Conditions(userActivities, userXpPoints);
 
-      const payload: SubmitAirdrop1ProofPayload = {
+      const payload: Airdrop1RegistrationDto = {
         did,
         activityProofs: userActivities,
         profile: {
@@ -59,25 +68,62 @@ export function useAirdrop1() {
         termsAccepted,
       };
 
-      logger.info("Submitting airdrop 1 proof", { did });
-      return airdrop1SubmitProof(payload);
+      logger.info("Registering for airdrop 1", { did });
+      return registerAirdrop1(payload);
     },
     onSuccess: async () => {
       await queryClient.invalidateQueries(["airdrop1", did]);
     },
     onError(error) {
-      logger.error("Error submitting airdrop 1 proof", { error });
+      logger.error("Error registering for airdrop 1", { error });
+      Sentry.captureException(error);
+    },
+  });
+
+  const {
+    mutateAsync: claim,
+    isLoading: isClaiming,
+    error: errorClaiming,
+  } = useMutation({
+    mutationFn: async ({
+      termsAccepted,
+      userEvmAddress,
+      userEvmAddressSignature,
+    }: {
+      termsAccepted: boolean;
+      userEvmAddress: string;
+      userEvmAddressSignature: string;
+    }) => {
+      if (!isConnected || !did) {
+        throw new Error("User not connected");
+      }
+
+      const payload: Airdrop1ClaimDto = {
+        did,
+        termsAccepted,
+        userEvmAddress: userEvmAddress,
+        userEvmAddressSignature: userEvmAddressSignature,
+      };
+
+      return claimAirdrop1(payload);
+    },
+    onSuccess: async () => {
+      await queryClient.invalidateQueries(["airdrop1", did]);
+    },
+    onError(error) {
+      logger.error("Error claiming airdrop 1", { error });
       Sentry.captureException(error);
     },
   });
 
   return {
-    isProofSubmitted:
-      checkProofSubmittedData?.status === "success" &&
-      checkProofSubmittedData.exists,
-    isCheckingProofSubmitted,
-    submitProof,
-    isSubmittingProof,
-    errorSubmittingProof,
+    isGettingUserStatus,
+    userStatus,
+    register,
+    isRegistering,
+    errorRegistering,
+    claim,
+    isClaiming,
+    errorClaiming,
   };
 }

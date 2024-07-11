@@ -19,7 +19,7 @@ export const Airdrop2CheckModal: React.FC<Airdrop2CheckModalProps> = (
 ) => {
   const { onClose } = props;
 
-  const { checkEligbility, isChecking } = useAirdrop2();
+  const { checkLegacyEligbility, isCheckingLegacyEligibility } = useAirdrop2();
 
   const [walletAddress, setWalletAddress] = useState("");
   const [eligilibilityStatus, setEligibilityStatus] = useState<
@@ -41,7 +41,7 @@ export const Airdrop2CheckModal: React.FC<Airdrop2CheckModalProps> = (
 
   const handleCheckEligibility = useCallback(() => {
     const execute = async () => {
-      const response = await checkEligbility(walletAddress);
+      const response = await checkLegacyEligbility(walletAddress);
 
       if (response.status === "success") {
         setEligibilityStatus(response.isEligible ? "eligible" : "notEligible");
@@ -54,7 +54,7 @@ export const Airdrop2CheckModal: React.FC<Airdrop2CheckModalProps> = (
     };
 
     void execute();
-  }, [checkEligbility, walletAddress]);
+  }, [checkLegacyEligbility, walletAddress]);
 
   const handleClose = useCallback(() => {
     setWalletAddress("");
@@ -173,7 +173,7 @@ export const Airdrop2CheckModal: React.FC<Airdrop2CheckModalProps> = (
                 onClick: handleCheckEligibility,
                 variant: "contained",
                 color: "secondary",
-                disabled: isChecking,
+                disabled: isCheckingLegacyEligibility,
               },
             ]
           : []
@@ -181,7 +181,7 @@ export const Airdrop2CheckModal: React.FC<Airdrop2CheckModalProps> = (
     >
       <div className="flex flex-col gap-6">
         <div className="flex flex-col sm:flex-row gap-4 items-center">
-          {isChecking ? (
+          {isCheckingLegacyEligibility ? (
             <Icon type="loading" size={40} className="animate-spin-slow" />
           ) : eligilibilityStatus === "unknown" ||
             eligilibilityStatus === "error" ? null : eligilibilityStatus ===
@@ -191,7 +191,7 @@ export const Airdrop2CheckModal: React.FC<Airdrop2CheckModalProps> = (
             <Icon type="notification-error" size={40} className="text-error" />
           )}
           <Typography variant="base">
-            {isChecking ? (
+            {isCheckingLegacyEligibility ? (
               checkingEligibilityMessage
             ) : eligilibilityStatus === "unknown" ||
               eligilibilityStatus === "error" ? (
