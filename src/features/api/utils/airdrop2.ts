@@ -143,8 +143,25 @@ export async function claimAirdrop2(
     return result;
   } catch (error) {
     logger.error("Error claiming airdrop 2", { error });
-    return {
-      status: "error",
-    };
+
+    logger.info(
+      "Airdrop 2 claim resulted in an error, waiting a moment and checking the status, just in case",
+      { did: payload.did }
+    );
+    await wait(config.airdrop.timeoutRetryDelay);
+
+    const airdropStatus = await getAirdrop2UserStatus(payload);
+
+    if (airdropStatus.status === "success" && airdropStatus.isClaimed) {
+      return {
+        status: "success",
+        claimedTokenAmount: airdropStatus.claimedTokenAmount ?? 0,
+        transactionExplorerUrl: airdropStatus.claimTransactionUrl ?? "-",
+      };
+    } else {
+      return {
+        status: "error",
+      };
+    }
   }
 }

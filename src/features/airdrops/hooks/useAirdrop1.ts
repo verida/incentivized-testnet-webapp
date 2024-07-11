@@ -24,7 +24,6 @@ export function useAirdrop1() {
   const { data: statusData, isLoading: isGettingUserStatus } = useQuery({
     queryKey: ["airdrop1", did],
     enabled: isConnected && !!did,
-    staleTime: 1000 * 60 * 10, // 10 minutes
     queryFn: async () => {
       if (!isConnected || !did) {
         throw new Error("User not connected");
