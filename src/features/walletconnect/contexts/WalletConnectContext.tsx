@@ -23,7 +23,7 @@ const polygon = {
 const metadata = {
   name: APP_TITLE,
   description: DEFAULT_META_DESCRIPTION.defaultMessage,
-  url: "https://missions.verida.network", // origin must match your domain & subdomain
+  url: window.location.origin,
   icons: [config.verida.connectLogoUrl],
 };
 
