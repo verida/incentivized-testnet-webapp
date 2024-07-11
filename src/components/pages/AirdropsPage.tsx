@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 import AboutAirdropsImage from "~/assets/images/vda_airdrop_illustration.png";
 import { ButtonLink, Typography } from "~/components/atoms";
-import { AirdropCard } from "~/components/organisms/AirdropCard";
+import { AirdropCard } from "~/components/organisms";
 import { PageLayout } from "~/components/templates";
 import {
   AIRDROPS_COMMON_QUESTIONS,

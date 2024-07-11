@@ -152,14 +152,14 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
             </div>
             <div className="flex flex-col gap-6">
               {airdrop.status === "check" ? (
-                <Typography className="text-center sm:text-right text-muted-foreground">
+                <Typography className="text-center sm:text-right text-muted-foreground w-full">
                   {checkMessage}
                 </Typography>
               ) : airdrop.status === "registration-opened" &&
                 (airdropUserStatus === "not-connected" ||
                   airdropUserStatus === "none") ? (
                 <div className="flex flex-col sm:flex-row gap-2 items-center">
-                  <Typography className="text-center sm:text-right text-muted-foreground">
+                  <Typography className="text-center sm:text-right text-muted-foreground w-full">
                     {registerMessage}
                   </Typography>
                   {airdrop.registrationCloseDate ? (
@@ -172,9 +172,10 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
                 </div>
               ) : airdrop.status === "claim-opened" &&
                 (airdropUserStatus === "not-connected" ||
-                  airdropUserStatus === "registered") ? (
+                  airdropUserStatus === "registered" ||
+                  airdropUserStatus === "free") ? (
                 <div className="flex flex-col sm:flex-row gap-2 items-center">
-                  <Typography className="text-center sm:text-right text-muted-foreground">
+                  <Typography className="text-center sm:text-right text-muted-foreground w-full">
                     {claimMessage}
                   </Typography>
                   {airdrop.claimCloseDate ? (
@@ -191,12 +192,12 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
                   airdropUserStatus === "none") ||
                 (airdrop.status === "claim-closed" &&
                   airdropUserStatus === "registered") ? (
-                <Typography className="text-center sm:text-right text-muted-foreground">
+                <Typography className="text-center sm:text-right text-muted-foreground w-full">
                   {missedAirdropMessage}
                 </Typography>
               ) : airdrop.status === "registration-closed" &&
                 airdropUserStatus === "registered" ? (
-                <Typography className="text-center sm:text-right text-muted-foreground">
+                <Typography className="text-center sm:text-right text-muted-foreground w-full">
                   {waitForClaimMessage}
                 </Typography>
               ) : null}
@@ -225,7 +226,8 @@ export const AirdropCard: React.FC<AirdropCardProps> = (props) => {
                   </ButtonLink>
                 ) : airdrop.status === "claim-opened" &&
                   (airdropUserStatus === "not-connected" ||
-                    airdropUserStatus === "registered") ? (
+                    airdropUserStatus === "registered" ||
+                    airdropUserStatus === "free") ? (
                   <ButtonLink
                     variant="contained"
                     color="primary"

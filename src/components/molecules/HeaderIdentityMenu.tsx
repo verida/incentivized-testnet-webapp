@@ -7,6 +7,7 @@ import { PortalWrapper } from "~/components/molecules/PortalWrapper";
 import { config } from "~/config";
 import { useActivity } from "~/features/activity";
 import { truncateDid, useVerida } from "~/features/verida";
+import { useWalletConnect } from "~/features/walletconnect";
 
 type MenuItem = {
   key: string;
@@ -28,13 +29,15 @@ export const HeaderIdentityMenu: React.FunctionComponent<
   const { open, onClose } = props;
 
   const i18n = useIntl();
-  const { profile, did, disconnect } = useVerida();
+  const { profile, did, disconnect: disconnectVerida } = useVerida();
+  const { disconnect: disconnectWalletConnect } = useWalletConnect();
   const { deleteUserActivities } = useActivity();
 
   const handleDisconnect = useCallback(() => {
-    void disconnect();
+    void disconnectVerida();
+    void disconnectWalletConnect();
     onClose();
-  }, [onClose, disconnect]);
+  }, [onClose, disconnectVerida, disconnectWalletConnect]);
 
   const profileNameFallback = i18n.formatMessage({
     id: "HeaderIdentityMenu.profileNameFallback",

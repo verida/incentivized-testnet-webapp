@@ -6,6 +6,7 @@ import { AirdropsProvider } from "~/features/airdrops";
 import { IntlProvider } from "~/features/i18n";
 import { Notifications } from "~/features/notifications";
 import { VeridaProvider } from "~/features/verida";
+import { WalletConnectProvider } from "~/features/walletconnect";
 
 import { QueryProvider } from "./QueryContext";
 
@@ -20,14 +21,16 @@ export const AppContextProviders: React.FunctionComponent<
     <QueryProvider>
       <IntlProvider>
         <VeridaProvider>
-          <ActivityProvider>
-            <AirdropsProvider>
-              <HelmetProvider>
-                {props.children}
-                <Notifications />
-              </HelmetProvider>
-            </AirdropsProvider>
-          </ActivityProvider>
+          <WalletConnectProvider>
+            <ActivityProvider>
+              <AirdropsProvider>
+                <HelmetProvider>
+                  {props.children}
+                  <Notifications />
+                </HelmetProvider>
+              </AirdropsProvider>
+            </ActivityProvider>
+          </WalletConnectProvider>
         </VeridaProvider>
       </IntlProvider>
     </QueryProvider>

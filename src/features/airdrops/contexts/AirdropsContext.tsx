@@ -29,27 +29,29 @@ export const AirdropsProvider: React.FC<AirdropsProviderProps> = (props) => {
   >({});
 
   const {
-    isProofSubmitted: isAirdrop1Registered,
-    isCheckingProofSubmitted: isAirdrop1CheckingRegistration,
+    userStatus: airdrop1UserStatus,
+    isGettingUserStatus: isAirdrop1GettingUserStatus,
   } = useAirdrop1();
 
   useEffect(() => {
     setAirdropUserStatues({
       [AIRDROP_1_DEFINITION.id]: !isVeridaConnected
         ? "not-connected"
-        : isAirdrop1Registered
-          ? "registered"
-          : isVeridaConnecting ||
-              (isVeridaConnected && isAirdrop1CheckingRegistration)
-            ? "loading"
-            : "none",
-      [AIRDROP_2_DEFINITION.id]: !isVeridaConnected ? "not-connected" : "none",
+        : airdrop1UserStatus?.isClaimed
+          ? "claimed"
+          : airdrop1UserStatus?.isRegistered
+            ? "registered"
+            : isVeridaConnecting ||
+                (isVeridaConnected && isAirdrop1GettingUserStatus)
+              ? "loading"
+              : "none",
+      [AIRDROP_2_DEFINITION.id]: !isVeridaConnected ? "not-connected" : "free",
     });
   }, [
     isVeridaConnected,
     isVeridaConnecting,
-    isAirdrop1CheckingRegistration,
-    isAirdrop1Registered,
+    airdrop1UserStatus,
+    isAirdrop1GettingUserStatus,
   ]);
 
   const contextValue = useMemo(

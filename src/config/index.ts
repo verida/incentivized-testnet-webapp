@@ -49,6 +49,17 @@ export const config = {
   api: {
     baseUrl: process.env.REACT_APP_API_BASE_URL,
   },
+  airdrop: {
+    timeoutRetryDelay: process.env.REACT_APP_AIRDROPS_CLAIM_TIMEOUT_RETRY_DELAY
+      ? Number(process.env.REACT_APP_AIRDROPS_CLAIM_TIMEOUT_RETRY_DELAY)
+      : 10000,
+  },
+  proof: {
+    connectorBaseUrl: process.env.REACT_APP_ZK_DAPP_CONNECTOR_BASE_URL,
+  },
+  walletConnect: {
+    projectId: process.env.REACT_APP_WALLET_CONNECT_PROJECT_ID || "",
+  },
   sentry: {
     enabled: process.env.REACT_APP_SENTRY_ENABLED === "false" ? false : true,
     dsn: process.env.REACT_APP_SENTRY_DSN,
@@ -63,8 +74,5 @@ export const config = {
     replaysOnErrorSampleRate: Number(
       process.env.REACT_APP_SENTRY_REPLAYS_ON_ERROR_SAMPLE_RATE || 1.0
     ),
-  },
-  proof: {
-    connectorBaseUrl: process.env.REACT_APP_ZK_DAPP_CONNECTOR_BASE_URL,
   },
 };
