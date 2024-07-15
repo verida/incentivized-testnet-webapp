@@ -6,7 +6,7 @@ import { AirdropDefinition } from "~/features/airdrops/types";
 
 export const AIRDROP_2_DEFINITION: AirdropDefinition = {
   id: "airdrop2",
-  status: "check",
+  status: "claim-opened",
   order: 2,
   enabled: true && config.verida.environment === EnvironmentType.MAINNET,
   title: defineMessage({
