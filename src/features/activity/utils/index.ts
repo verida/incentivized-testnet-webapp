@@ -206,7 +206,7 @@ export function isMissionCompleted(
   const activityStatuses = missionActivities.map((activity) => {
     const userActivity = getUserActivityForId(userActivities, activity.id);
     // In this particular case, we can consider ended activities as completed
-    return activity.ended ? "completed" : userActivity?.status ?? "todo";
+    return activity.ended ? "completed" : (userActivity?.status ?? "todo");
   });
 
   return activityStatuses.every((status) => status === "completed");
