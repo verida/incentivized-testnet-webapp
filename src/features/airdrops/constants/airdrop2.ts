@@ -9,6 +9,7 @@ export const AIRDROP_2_DEFINITION: AirdropDefinition = {
   status: "claim-opened",
   order: 2,
   enabled: true && config.verida.environment === EnvironmentType.MAINNET,
+  claimCloseDate: new Date("2024-09-14T00:00:00Z"),
   title: defineMessage({
     id: "airdrops.airdrop2.title",
     defaultMessage: "Verida Airdrop 2",
