@@ -6,7 +6,7 @@ import { AirdropDefinition } from "~/features/airdrops/types";
 
 export const AIRDROP_2_DEFINITION: AirdropDefinition = {
   id: "airdrop2",
-  status: "claim-opened",
+  status: "claim-closed",
   order: 2,
   enabled: true && config.verida.environment === EnvironmentType.MAINNET,
   claimCloseDate: new Date("2024-09-14T00:00:00Z"),
